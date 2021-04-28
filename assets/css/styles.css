@@ -33,8 +33,12 @@
   --text-roman: "Bespoke";
   --text-italic: "BespokeItalic";
   /* Measurements */
-  --border-width: 3px;
+  --border-width: 6px;
   --margin: 20px;
+  /* Colors */
+  --dark-color: rgb(209, 3, 48);
+  --light-color: rgb(255, 219, 39);
+  --accent-color: whitesmoke;
 }
 
 * {
@@ -44,17 +48,21 @@
   -ms-user-select: none;
   user-select: none;
   /* Border */
-  outline: 2px solid red;
+  /* outline: 2px solid green; */
 }
 
 body {
   padding: 40px;
-  height: 100vh;
+  /* height: 100vh; */
+  background-color: var(--dark-color);
 }
 
 #blogTitle {
+  color: var(--light-color);
+  transform: translateY(-20px);
   font-family: var(--headlines);
   font-size: 140px;
+  font-weight: 900;
   line-height: 140px;
   height: 140px;
   font-weight: 600;
@@ -62,18 +70,49 @@ body {
 }
 
 .custom-post {
+  color: black;
   box-shadow: 5px 10px 8px #888888;
   border: var(--border-width) solid black;
+  background-color: var(--accent-color);
 }
 
 .posts-container {
   font-family: var(--text-roman);
+  flex-grow: 1;
+  margin-bottom: var(--margin);
+  padding-right: 30px;
 }
 
 .card-title {
   font-weight: 800;
 }
 
-#modalButton {
-  display: none;
+footer {
+  font-family: var(--headlines);
+  font-size: 30px;
+  color: var(--light-color);
+  height: 30px;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                    MODAL                                   */
+/* -------------------------------------------------------------------------- */
+
+button {
+  max-width: 180px;
+  outline: none;
+}
+
+.modal-content {
+  border: var(--border-width) solid black;
+  height: fit-content;
+}
+
+#exampleModalLabel {
+  color: black;
+  line-height: 80px;
+  font-family: var(--headlines);
+  font-size: 100px;
+  font-weight: 900;
+  height: 80px;
 }
