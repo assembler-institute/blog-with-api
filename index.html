@@ -16,6 +16,7 @@
     <title>Blog with API</title>
   </head>
   <body>
+    <header></header>
     <!-- ----------------------------------------------------------------------- -->
     <!--                              GENERAL GRID                               -->
     <!-- ----------------------------------------------------------------------- -->
@@ -25,18 +26,29 @@
     </div>
 
     <!-- Grid -->
-    <div class="container-fluid">
+    <div class="container-fluid posts-container">
       <div class="row">
-        <div class="col-6 col-lg-3 custom-post">Post</div>
-        <div class="col-6 col-lg-3 custom-post">Post</div>
-        <div class="col-6 col-lg-3 custom-post">Post</div>
-        <div class="col-6 col-lg-3 custom-post">Post</div>
-        <div class="col-6 col-lg-3 custom-post">Post</div>
-        <div class="col-6 col-lg-3 custom-post">Post</div>
-        <div class="col-6 col-lg-3 custom-post">Post</div>
-        <div class="col-6 col-lg-3 custom-post">Post</div>
-        <div class="col-6 col-lg-3 custom-post">Post</div>
-        <div class="col-6 col-lg-3 custom-post">Post</div>
+        <div class="col-6 col-lg-3 p-2">
+          <div class="card shadow-sm custom-post p-4">
+            <div class="card-title">Post</div>
+            <div class="card-text">This is some text</div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3 p-3">
+          <div class="card mb-4 shadow-sm custom-post">Post</div>
+        </div>
+        <div class="col-6 col-lg-3 p-3">
+          <div class="card mb-4 shadow-sm custom-post">Post</div>
+        </div>
+        <div class="col-6 col-lg-3 p-3">
+          <div class="card mb-4 shadow-sm custom-post">Post</div>
+        </div>
+        <div class="col-6 col-lg-3 p-3">
+          <div class="card mb-4 shadow-sm custom-post">Post</div>
+        </div>
+        <div class="col-6 col-lg-3 p-3">
+          <div class="card mb-4 shadow-sm custom-post">Post</div>
+        </div>
       </div>
     </div>
     <!-- ----------------------------------------------------------------------- -->
@@ -48,6 +60,7 @@
       class="btn btn-primary"
       data-toggle="modal"
       data-target="#exampleModal"
+      id="modalButton"
     >
       Launch demo modal
     </button>

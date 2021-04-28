@@ -27,13 +27,15 @@
   font-style: italic;
 }
 
-:root{
-    /* Fonts */
-    --headlines: "Pramukh"
-    --text-roman: "Bespoke"
-    --text-italic: "BespokeItalic"
+:root {
+  /* Fonts */
+  --headlines: "Pramukh";
+  --text-roman: "Bespoke";
+  --text-italic: "BespokeItalic";
+  /* Measurements */
+  --border-width: 3px;
+  --margin: 20px;
 }
-
 
 * {
   /* Disable text selection */
@@ -52,16 +54,26 @@ body {
 
 #blogTitle {
   font-family: var(--headlines);
-
-  font-size: 80px;
+  font-size: 140px;
+  line-height: 140px;
+  height: 140px;
   font-weight: 600;
+  margin-bottom: var(--margin);
 }
 
-.custom-post{
-    height: 200px;
-    box-shadow: 5px 10px 8px #888888;
+.custom-post {
+  box-shadow: 5px 10px 8px #888888;
+  border: var(--border-width) solid black;
 }
 
-#modalButton{
-    display: none;
+.posts-container {
+  font-family: var(--text-roman);
+}
+
+.card-title {
+  font-weight: 800;
+}
+
+#modalButton {
+  display: none;
 }
