@@ -11,7 +11,8 @@
 /*Bootstrap default styles*/
 .col,
 .col-12,
-.col-md-4 {
+.col-md-4,
+.col-md-12 {
   padding: 20px;
 }
 
@@ -72,11 +73,11 @@ figure img {
   -webkit-transform: rotate(15deg) scale(1.4);
   transform: rotate(15deg) scale(1.4);
   -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
+  transition: 0.8s ease-in-out;
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
   -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
+  transition: 0.8s ease-in-out;
 }
 .post figure:hover img {
   -webkit-transform: rotate(0) scale(1);
