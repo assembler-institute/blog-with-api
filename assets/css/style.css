@@ -2,6 +2,7 @@
 :root {
   --redColor: #e23049;
   --greenColor: #95c5b5;
+  --yellowColor: 
 }
 * {
   /* outline: 1px black solid; */
@@ -44,7 +45,7 @@ header img {
 .post span {
   position: absolute;
   bottom: 20%;
-  left: 0%;
+  left: 7%;
   z-index: 1;
   display: inline;
   width: auto;

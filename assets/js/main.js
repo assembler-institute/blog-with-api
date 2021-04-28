@@ -1,27 +1,40 @@
 var globalresponse = [];
 
-/*Request for getting all posts*/
-var settings = {
-  url: "https://jsonplaceholder.typicode.com/posts",
-  method: "GET",
-  timeout: 0,
-};
-$.ajax(settings).done(function (response) {
-  console.log(response);
-  globalresponse = response;
-  for (let k = 0; k < globalresponse.length; k = k + 10) {
-    /*Here we work as header post as col-12*/
-    setHeaderPost(k);
-    // $(".container").append(rowHeaderPost);
-    for (let i = k + 1; i < k + 10; i = i + 3) {
-      for (let j = i; j < i + 3; j++) {
-        /*Here we work as normal post as col-4*/
-        setRegularPost(k, j);
+
+
+
+//------------------------------------------------------------------------
+// CALLING FUNCTIONS
+//------------------------------------------------------------------------
+setPosts();
+
+
+//------------------------------------------------------------------------
+// FUNCTIONS
+//------------------------------------------------------------------------
+function setPosts() {
+  /*Request for getting all posts*/
+  var settings = {
+    url: "https://jsonplaceholder.typicode.com/posts",
+    method: "GET",
+    timeout: 0,
+  };
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+    globalresponse = response;
+    for (let k = 0; k < 10; k = k + 10) {
+      /*Here we work as header post as col-12*/
+      setHeaderPost(k);
+      for (let i = k + 1; i < k + 10; i = i + 3) {
+        for (let j = i; j < i + 3; j++) {
+          /*Here we work as normal post as col-4*/
+          setRegularPost(k, j);
+        }
       }
+      $(".container").append(rowPost);
     }
-    $(".container").append(rowPost);
-  }
-});
+  });
+}
 
 function setHeaderPost(k) {
   rowPost = $("<div>");
@@ -64,7 +77,6 @@ function setRegularPost(k, j) {
   spanPost = $("<span>");
   spanPost.html(globalresponse[j].title);
   spanDiv.append(spanPost);
-
 
   divPost = $("<div>");
   divPost.addClass("post");
