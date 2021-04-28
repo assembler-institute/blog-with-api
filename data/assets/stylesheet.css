@@ -1,0 +1,27 @@
+* {
+  font-family: "Lato", sans-serif;
+}
+body {
+  background-color: blanchedalmond;
+  outline: 1px black solid;
+}
+main {
+  background-color: aqua;
+  padding: 30px;
+}
+.navbar {
+  height: 8vh;
+}
+.masthead {
+  height: 30vh;
+  background-color: lightcoral;
+  padding: 90px;
+}
+.footer {
+  height: 10vh;
+}
+.header-text {
+  -webkit-text-fill-color: black; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+}
