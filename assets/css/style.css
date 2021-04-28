@@ -3,6 +3,10 @@
   outline: 1px black solid;
 }
 
+/*Post main page style*/
+.post {
+}
+
 .column {
   /* margin: 15px 15px 0; */
   /* padding: 0; */
@@ -73,12 +77,12 @@ figure:hover + span {
 
 /* Gray Scale */
 .hover08 figure img {
-	-webkit-filter: grayscale(100%);
-	filter: grayscale(100%);
-	-webkit-transition: .3s ease-in-out;
-	transition: .3s ease-in-out;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 .hover08 figure:hover img {
-	-webkit-filter: grayscale(0);
-	filter: grayscale(0);
+  -webkit-filter: grayscale(0);
+  filter: grayscale(0);
 }
