@@ -89,11 +89,14 @@ function loadModal() {
 
 //Open modal
 function openModal(id, userId) {
-  console.log(id + " - " + userId);
   checkPost(id);
   checkUser(userId);
   checkComments(id);
-  loadModal();
+  if (user !== undefined && post !== undefined) {
+    if (user !== null && post !== null) {
+      loadModal();
+    }
+  }
 }
 
 function closeModal() {
