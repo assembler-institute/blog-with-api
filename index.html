@@ -63,11 +63,10 @@
 
             <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
                 <div class="col-md-12 px-0">
-                    <h1 class="display-3" id="postTitle">Title of a longer featured blog post</h1>
-                    <p class="lead my-3" id="postText">Multiple lines of text that form the lede, informing new readers
-                        quickly and
-                        efficiently about what’s most interesting in this post’s contents.</p>
-                    <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
+                    <strong class="d-inline-block mb-2 text-success" id="userName"></strong>
+                    <h1 class="display-3" id="postTitle"></h1>
+                    <p class="lead my-3" id="postText"></p>
+                    <p class="lead mb-0"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">See the post</button></p>
                 </div>
             </div>
 
@@ -77,6 +76,29 @@
         </div>
 
         <main class="container">
+            <!-- Button trigger modal -->
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main><!-- /.container -->
 
         <footer class="blog-footer">
