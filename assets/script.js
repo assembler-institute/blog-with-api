@@ -28,37 +28,24 @@ postMaker();
 
 // this function inject body a title to modal
 $(document).on("click", function (event) {
-    return axios
-        .get("https://jsonplaceholder.typicode.com/users/")
-        .then((info) => {
-        console.log(info);
-        info.data.forEach((user) => {
-            const users = user.id;
-            console.log(user.email);
+    if (event.target.matches(".bi-pencil-square")) {
+        return axios
+            .get("https://jsonplaceholder.typicode.com/users/")
+            .then((info) => {
+            console.log(info);
+            info.data.forEach((user) => {
+                const users = user.id;
+                console.log(users);
 
-            if (event.target.matches(".bi-pencil-square")) {
-            $(".text-start").text(event.target.dataset.body);
-            let titleSet = $(`strong[data-id="${event.target.id}"]`).text();
-            $(".modal-title").text(titleSet);
-            $("#user").text()
-            }
-        });
-        });
+                $(".text-start").text(event.target.dataset.body);
+                    let titleSet = $(`strong[data-id="${event.target.id}"]`).text();
+                    $(".modal-title").text(titleSet);
+                    $("#user").text(event.target.dataset.userid)
+                });
+            });
+    };
 });
 
+if userid === id 
 
 
-// function userJson() {
-//     return axios
-//         .get("https://jsonplaceholder.typicode.com/users/")
-//         .then((info) => {
-
-//             console.log(info)
-//             info.data.forEach((user) => {
-//                 const users = user.id;
-//                 console.log(users);
-//         });
-//         });
-// }
-
-// userJson();
