@@ -1,0 +1,18 @@
+/* -------------------------------------------------------------------------- */
+/*                               GENERAL STYLING                              */
+/* -------------------------------------------------------------------------- */
+* {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+
+  outline: 2px solid red;
+}
+
+body {
+  padding: 20px;
+  height: 100vh;
+}
+
+#blogTitle {
+  font-size: 80px;
+  font-weight: 600;
+}
