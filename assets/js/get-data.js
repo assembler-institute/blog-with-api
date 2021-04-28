@@ -1,7 +1,10 @@
-function getPosts() {
-  fetch("https://jsonplaceholder.typicode.com/posts")
-    .then((response) => response.json())
-    .then((data) => console.log(data));
-}
+// var posts = $.get("https://jsonplaceholder.typicode.com/posts", (data) => {
+//   console.log(data);
+// });
 
-getPosts();
+// $.getJSON("https://jsonplaceholder.typicode.com/posts", (data) => {
+//   var items = [];
+//   $.each(data, function (key, val) {
+//     items.push("<li id='" + key + "'>" + val + "</li>");
+//   });
+// });
