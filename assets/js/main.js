@@ -21,11 +21,6 @@ var settings = {
 
 // Getting all posts
 $.ajax(settings).done(function (response) {
-  //   $(response).each(function (index, element) {
-  //     postBox(element);
-  //   });
-  console.log(response);
-
   for (let el = 1; el <= shownPosts; el++) {
     postBox(response[el]);
   }
