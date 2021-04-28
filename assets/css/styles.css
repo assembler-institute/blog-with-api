@@ -1,18 +1,67 @@
 /* -------------------------------------------------------------------------- */
 /*                               GENERAL STYLING                              */
 /* -------------------------------------------------------------------------- */
-* {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+/* Headline typeface */
+@font-face {
+  font-family: "Pramukh";
+  src: url("../fonts/PramukhRounded-Variable.ttf") format("truetype");
+  font-weight: 200 900;
+  font-display: swap;
+  font-style: normal;
+}
 
+/* Text typeface */
+@font-face {
+  font-family: "Bespoke";
+  src: url("../fonts/BespokeSerif-Variable.ttf") format("truetype");
+  font-weight: 300 800;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BespokeItalic";
+  src: url("../fonts/BespokeSerif-VariableItalic.ttf") format("truetype");
+  font-weight: 300 800;
+  font-display: swap;
+  font-style: italic;
+}
+
+:root{
+    /* Fonts */
+    --headlines: "Pramukh"
+    --text-roman: "Bespoke"
+    --text-italic: "BespokeItalic"
+}
+
+
+* {
+  /* Disable text selection */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Border */
   outline: 2px solid red;
 }
 
 body {
-  padding: 20px;
+  padding: 40px;
   height: 100vh;
 }
 
 #blogTitle {
+  font-family: var(--headlines);
+
   font-size: 80px;
   font-weight: 600;
+}
+
+.custom-post{
+    height: 200px;
+    box-shadow: 5px 10px 8px #888888;
+}
+
+#modalButton{
+    display: none;
 }
