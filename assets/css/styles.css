@@ -1,0 +1,135 @@
+/* 
+==================================
+*       General styles
+==================================
+*/
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 700;
+}
+h3 {
+  font-size: 1.3rem;
+}
+img {
+  filter: grayscale(30%) brightness(0.8);
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+ul {
+  list-style-type: none;
+}
+img.rounded-circle {
+  filter: none;
+  border: 2px solid black;
+}
+
+/* 
+==================================
+*       Header styles
+==================================
+*/
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+/* 
+==================================
+*       Hero styles
+==================================
+*/
+.hero-post {
+  position: relative;
+}
+.hero-post-badges {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+}
+.hero-post-badges > a {
+  display: block;
+  color: white;
+  background-color: #0b0c10;
+  font-size: 0.85rem;
+}
+.hero-post-content {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  /* background-color: white; */
+  color: white;
+  border-radius: 2.5rem 0 0 2.5rem;
+}
+/* 
+==================================
+*       Main styles
+==================================
+*/
+.blog-post .col-sm-8 {
+  border-left: 3px solid black;
+}
+.blog-post img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.blog-post p {
+  font-size: 0.9rem;
+}
+.blog-post h3 {
+  font-size: 1.4rem;
+}
+.badge {
+  margin-top: 1rem;
+}
+.badge > a {
+  margin-left: 0.5rem;
+  padding: 0.5rem;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+}
+/* 
+==================================
+*       aside styles
+==================================
+*/
+.aside-heading {
+  border-left: 3px solid black;
+}
+.social-links {
+  font-size: 0.9rem;
+}
+.badges-category > a {
+  margin: 0.3rem;
+  display: inline-block;
+  padding: 0.5rem;
+  background-color: black;
+  color: white;
+}
+/* 
+==================================
+*       Footer styles
+==================================
+*/
+.footer-logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: black;
+}
+.footer p,
+.footer a {
+  font-size: 0.9rem;
+}
