@@ -33,7 +33,17 @@ function testingDataPo(){
     return axios.get('https://jsonplaceholder.typicode.com/posts')
     .then(
         function dataPos(responsePos){
-           console.log (responsePos.data)
+            $.each( responsePos.data, function( index, elem ){
+                $('.post').append('<div></div>');
+                $('.post div:last-child').attr('id','posCont'+index);
+
+                $(`#posCont${index}`).append('<p>'+`${elem.id}`+'</p>')
+                
+                $(`#posCont${index}`).append('<p>'+`${elem.title}`+'</p>')
+                $(`#posCont${index}`).append('<p>'+`${elem.body}`+'</p>')
+                     
+            })
+
         }
     )
 }
