@@ -51,6 +51,10 @@
   /* outline: 2px solid green; */
 }
 
+header {
+  margin-bottom: 10px;
+}
+
 body {
   padding: 40px;
   /* height: 100vh; */
@@ -65,8 +69,6 @@ body {
   font-weight: 900;
   line-height: 140px;
   height: 140px;
-  font-weight: 600;
-  margin-bottom: var(--margin);
 }
 
 .custom-post {
