@@ -1,88 +1,86 @@
 /*General variables*/
+:root {
+  --redColor: #e23049;
+  --greenColor: #95c5b5;
+}
 * {
-  outline: 1px black solid;
+  /* outline: 1px black solid; */
+  font-family: "Montserrat", sans-serif;
+}
+
+/*Bootstrap default styles*/
+.col,
+.col-12,
+.col-md-4 {
+  padding: 20px;
+}
+
+/*Style for header*/
+header {
+  user-select: none;
+  background-color: black;
+  height: 80px;
+  padding-left: 80px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+header img {
+    margin-left: 10px;
 }
 
 /*Post main page style*/
 .post {
+  position: relative;
+  padding: 0;
+  text-align: center;
 }
 
-.column {
-  /* margin: 15px 15px 0; */
-  /* padding: 0; */
+.post:hover {
+  cursor: pointer;
 }
-/* .column:last-child {
-  padding-bottom: 60px;
-} */
-/* .column::after {
-  content: "";
-  clear: both;
-  display: block;
-} */
-.column div {
-  position: relative;
-  float: left;
-  /* width: 100%; */
-  /* height: 200px; */
-  /* margin: 0 0 0 25px; */
-  padding: 0;
-}
-/* .column div:first-child {
-  margin-left: 0;
-} */
-.column div span {
+
+.post span {
   position: absolute;
-  bottom: -20px;
-  left: 0;
-  z-index: -1;
-  display: block;
+  bottom: 20%;
+  left: 0%;
+  z-index: 1;
+  display: inline;
   width: auto;
-  margin: 0;
+  margin: 10px;
   padding: 0;
-  color: #444;
-  font-size: 18px;
+  color: white;
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: 0;
   text-decoration: none;
-  text-align: center;
-  -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
-  opacity: 0;
 }
+
 figure {
   width: 100%;
-  /* height: 200px; */
   margin: 0;
   padding: 0;
-  background: #fff;
+  background: black;
   overflow: hidden;
 }
 figure img {
   width: 100%;
 }
-figure:hover + span {
-  bottom: 50%;
-  opacity: 1;
-}
 
-/* Rotate */
-.hover06 figure img {
+/* Rotate and Gray Scale animation */
+.post figure img {
   -webkit-transform: rotate(15deg) scale(1.4);
   transform: rotate(15deg) scale(1.4);
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
-}
-.hover06 figure:hover img {
-  -webkit-transform: rotate(0) scale(1);
-  transform: rotate(0) scale(1);
-}
-
-/* Gray Scale */
-.hover08 figure img {
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
-.hover08 figure:hover img {
+.post figure:hover img {
+  -webkit-transform: rotate(0) scale(1);
+  transform: rotate(0) scale(1);
   -webkit-filter: grayscale(0);
   filter: grayscale(0);
 }
