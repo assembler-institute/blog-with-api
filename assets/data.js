@@ -8,8 +8,24 @@ function testingDataUs(){
     return axios.get('https://jsonplaceholder.typicode.com/users')
     .then(
         function dataUs(responseUs){
-           console.log (responseUs.data)
+            let count=0;
+            $.each( responseUs.data, function( index, elem ){
+                
+                if($('.getText').val()==elem.name){
+                  $('.name').text('thats your id '+`${elem.id}`)  
+                  $('.usName').text('thats your username '+`${elem.username}`)  
+                  $('.usEmail').text('thats your email '+` ${elem.email}`)  
+                    
+                    count+=1
+                }
+                
+            })
+            if(count==0){
+                console.log('el usuario que mencionas no esta registrado')
+            }
+            
         }
+        
     )
         
 }
