@@ -21,7 +21,7 @@ function testingDataUs(){
                 
             })
             if(count==0){
-                console.log('el usuario que mencionas no esta registrado')
+                $('.userId').text('el usuario que mencionas no esta registrado')
             }
             
         }
