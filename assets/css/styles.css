@@ -73,9 +73,11 @@ body {
 
 .custom-post {
   color: black;
-  box-shadow: 5px 10px 8px #888888;
   border: var(--border-width) solid black;
   background-color: var(--accent-color);
+  border-radius: 5px;
+  height: 200px;
+  text-transform: capitalize;
 }
 
 .posts-container {
