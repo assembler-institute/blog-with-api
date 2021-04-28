@@ -121,77 +121,60 @@
 
       <!-- Main -->
       <main>
-        <div class="row mb-2">
-          <div
-            class="col-11 p-4 d-flex flex-column position-static"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModalCenteredScrollable"
-          >
-            <h3 class="mb-2">Featured post</h3>
-            <p class="card-text mb-auto">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content.
-            </p>
+        <div class="row d-flex flex-row justify-content-center">
+          <div class="col-6">
+            <button type="button" class="btn btn-dark">
+              Get Posts
+            </button>
           </div>
-          <div class="col-1 d-flex flex-column justify-content-center">
-            <div class="row d-flex justify-content-center">
-              <button type="button" class="remove mb-2 btn btn-dark">
-                <i class="fa fa-trash"></i>
-              </button>
-            </div>
-            <div class="row d-flex justify-content-center">
-              <button type="button" class="edit btn btn-dark">
-                <i class="fa fa-edit"></i>
-              </button>
-            </div>
+          <div class="col-6">
+            <button type="button" class="btn btn-dark">
+              Get Users
+            </button>
           </div>
         </div>
 
-        <!-- Button trigger modal -->
-        <button
-          type="button"
-          class="btn btn-primary"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-        >
-          Launch demo modal
-        </button>
-
-        <!-- Modal -->
-        <div
-          class="modal fade"
-          id="exampleModal"
-          tabindex="-1"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div class="modal-body">...</div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Close
+        <div class = "post"> 
+          
+          <div class="row">
+            <div
+              class="col-11 p-4 d-flex flex-column position-static"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModalCenteredScrollable"
+            >
+              <h3 class="mb-2">Featured post</h3>
+              <p class="card-text mb-auto">
+                This is a wider card with supporting text below as a natural
+                lead-in to additional content.
+              </p>
+            </div>
+            <div class="col-1 d-flex flex-column justify-content-center">
+              <div class="row d-flex justify-content-center">
+                <button type="button" class="remove mb-2 btn btn-dark">
+                  <i class="fa fa-trash"></i>
                 </button>
-                <button type="button" class="btn btn-primary">
-                  Save changes
+              </div>
+              <div class="row d-flex justify-content-center">
+                <button type="button" class="edit btn btn-dark">
+                  <i class="fa fa-edit"></i>
                 </button>
               </div>
             </div>
           </div>
+
+          <div class="row ">
+            <div class="col-11 pull-right">
+              <button type="button" class="btn btn-dark">
+                Get Comments
+              </button>
+            </div>
+          </div>
+
         </div>
+
+
+
+
       </main>
     </div>
 
