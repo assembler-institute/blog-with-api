@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "b89fd0dc-0f33-472b-8b50-d716f7b44a3f",
+		"name": "MyBlog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				},
+				"description": "Gets the JSON that contains all posts"
+			},
+			"response": []
+		},
+		{
+			"name": "All users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/users",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"users"
+					]
+				},
+				"description": "Gets the JSON that contains all users."
+			},
+			"response": []
+		},
+		{
+			"name": "All comments made by a user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts/1/comments",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts",
+						"1",
+						"comments"
+					]
+				},
+				"description": "Gets all the comments written by an specific user. The user is indentified by their id.\r\n\r\nGeneral Request:\r\nhttps://jsonplaceholder.typicode.com/posts/:id/comments\r\n\r\nExample with id=1:\r\nhttps://jsonplaceholder.typicode.com/posts/1/comments"
+			},
+			"response": []
+		}
+	]
+}
