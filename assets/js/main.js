@@ -167,10 +167,12 @@ function setComments(postId) {
 
   $.ajax(settings).done(function (comments) {
     getPostComments(comments);
+    console.log(comments);
   });
 }
 
 function getPostComments(comments) {
+  commentsDiv.empty();
   $(comments).each(function (index, element) {
     // Comment wrapper
     let commentWrapper = $("<div>");
