@@ -1,6 +1,7 @@
 generatePostsGrid();
 
 function generatePostsGrid () {
+    $("main").append($("<div>").attr("id", "loading-msg").text("Loading Posts..."));
     const settings = {
         "url": "https://jsonplaceholder.typicode.com/posts",
         "method": "GET"
@@ -12,5 +13,4 @@ function generatePostsGrid () {
             $("#main-row").eq(-1).append($("<div>").addClass("col-12 col-sm-6 col-md-4 col-lg-3 border").text(i+1));
         }
     });
-    $("main").append($("<div>").attr("id", "loading-msg").text("Loading Posts..."));
 }
