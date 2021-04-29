@@ -11,3 +11,6 @@
 .modal-content {
   max-height: 90vh;
 }
+.material-icons {
+  font-size: 1rem !important;
+}

@@ -12,6 +12,14 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header class="navbar bg-light border-bottom">
@@ -69,9 +77,21 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" id="openComments">
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              id="openComments"
+            >
               <span id="commentsCount"></span>
               <span>Comments</span>
+            </button>
+            <button type="button" class="btn btn-outline-secondary">
+              <span class="material-icons"> edit </span>
+              Edit Post
+            </button>
+            <button type="button" class="btn btn-outline-danger">
+              <span class="material-icons">delete</span>
+              Delete Post
             </button>
           </div>
           <div

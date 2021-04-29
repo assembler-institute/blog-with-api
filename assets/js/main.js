@@ -159,7 +159,9 @@ function closeComments() {
   $("#openComments").on("click", openComments);
   $("#commentsCount").removeClass("d-none");
   $("#openComments span:last-child").text("Comments");
-  document.getElementById("postModal").handleUpdate();
+  const myModalEl = document.getElementById("postModal");
+  const modal = bootstrap.Modal.getInstance(myModalEl); // Returns a Bootstrap modal instance
+  modal.handleUpdate();
 }
 
 /* 
