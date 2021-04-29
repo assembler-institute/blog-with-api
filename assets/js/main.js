@@ -13,7 +13,7 @@ let localUrl = "http://localhost:3000";
 let post;
 let postUserName;
 let allPosts;
-let shownPosts = 20;
+let shownPosts = 12;
 let postsContainer = $(".posts-container");
 
 // Post
@@ -35,6 +35,16 @@ let modalText = $(".modal-text");
 // Others
 let breakLine = $("<hr/>");
 
+/* -------------------------------------------------------------------------- */
+/*                               CLOSING BUTTONS                              */
+/* -------------------------------------------------------------------------- */
+$(".personal-close").on("click", function () {
+  $(".collapse").each(function () {
+    if ($(this).hasClass("show")) {
+      $(this).toggleClass("show");
+    }
+  });
+});
 /* -------------------------------------------------------------------------- */
 /*                                    POSTS                                   */
 /* -------------------------------------------------------------------------- */
