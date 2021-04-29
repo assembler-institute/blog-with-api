@@ -18,7 +18,7 @@ h3 {
   font-size: 1.3rem;
 }
 img {
-  width: 100%;
+  /* width: 100%; */
   filter: grayscale(30%) brightness(0.8);
 }
 a {
@@ -76,26 +76,6 @@ img.rounded-circle {
   color: white;
   border-radius: 2.5rem 0 0 2.5rem;
 }
-/* .hero {
-  max-height: 90vh;
-  overflow-y: hidden;
-}
-.hero > div {
-  max-height: 100%;
-  overflow-y: hidden;
-} */
-.post-grande {
-  max-height: 80vh;
-  overflow-y: hidden;
-}
-.contenedor-padre {
-  max-height: 80vh;
-  overflow-y: hidden;
-}
-.post-pequeno {
-  max-height: 40vh;
-  overflow-y: hidden;
-}
 /* 
 ==================================
 *       Main styles
@@ -124,6 +104,9 @@ img.rounded-circle {
   background-color: black;
   color: white;
   text-decoration: none;
+}
+.img-post {
+  max-height: 200px;
 }
 /* 
 ==================================
