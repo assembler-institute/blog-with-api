@@ -53,6 +53,7 @@
 
 header {
   margin-bottom: 10px;
+  height: ;
 }
 
 body {
@@ -65,10 +66,10 @@ body {
   color: var(--light-color);
   transform: translateY(-20px);
   font-family: var(--headlines);
-  font-size: 140px;
+  font-size: 120px;
   font-weight: 900;
   line-height: 140px;
-  height: 140px;
+  height: 120px;
 }
 
 .custom-post {

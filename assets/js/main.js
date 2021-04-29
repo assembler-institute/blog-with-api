@@ -75,7 +75,7 @@ function postBox(post, postId) {
   rawUser = post.userId;
 
   let postWrapper = $("<div>");
-  postWrapper.addClass("container-fluid col-sm col-md-6 col-lg-3 p-2");
+  postWrapper.addClass("container-fluid col-md-6 col-lg-3 p-2");
 
   let postInside = $("<div>");
   postInside.attr("data-postId", postId);
@@ -83,14 +83,18 @@ function postBox(post, postId) {
 
   //Post (left & right)
   let postRow = $("<div>");
-  postRow.addClass("row h-100 px-4");
+  postRow.addClass("row h-100 px-4 d-flex justify-content-between");
   let postLeft = $("<div>");
-  postLeft.addClass("col-11 d-flex flex-column post-left p-0");
+  postLeft.addClass("col-10 d-flex flex-column post-left p-0");
   let postRight = $("<div>");
-  postRight.addClass("col-1 d-flex flex-column post-left p-0");
+  postRight.addClass(
+    "col-1 d-flex flex-column justify-content-start post-left p-0"
+  );
 
-  deleteIcon(postRight);
-  patchIcon(postRight);
+  //  DELETE
+  deleteIcon(postRight, postId);
+  // PATCH
+  patchIcon(postRight, postId);
 
   // Assigning title
   let postTitle = $("<div>");
@@ -111,28 +115,38 @@ function postBox(post, postId) {
   postWrapper.append(postInside);
   postsContainer.append(postWrapper);
 
-  postInside.on("click", function () {
+  postInside.on("click", function (event) {
     id = $(this).data("postid");
     modalContent(id);
   });
 }
 
-function deleteIcon(parentDiv) {
+function deleteIcon(parentDiv, postId) {
   // DELETE
   let deletePost = $("<i>");
-  deletePost.addClass("post-icon uil-times-circle");
+  deletePost.addClass("post-icon uil-times-circle text-right");
   deletePost.attr("id", "deleteIcon");
 
   parentDiv.append(deletePost);
+
+  deletePost.on("click", function (event) {
+    event.stopImmediatePropagation();
+    console.log("About to delete post: ", postId);
+  });
 }
 
-function patchIcon(parentDiv) {
+function patchIcon(parentDiv, postId) {
   // PATCH
   let editPost = $("<i>");
-  editPost.addClass("post-icon uil-edit");
+  editPost.addClass("post-icon uil-edit text-right");
   editPost.attr("id", "editIcon");
 
   parentDiv.append(editPost);
+
+  editPost.on("click", function (event) {
+    event.stopImmediatePropagation();
+    console.log("About to edit post: ", postId);
+  });
 }
 
 /* -------------------------------------------------------------------------- */
