@@ -56,12 +56,12 @@ function postBox(post, postId) {
   let postWrapper = $("<div>");
   postWrapper.addClass("col col-sm-6 col-lg-3 p-2");
   let postInside = $("<div>");
-  postInside.addClass("custom-post p-4");
+  postInside.addClass("custom-post p-4 d-flex flex-column");
   postInside.attr("data-postId", postId);
 
   // Assigning title
   let postTitle = $("<div>");
-  postTitle.addClass("card-title");
+  postTitle.addClass("card-title flex-grow-1");
   postTitle.text(rawTitle);
   // Assigning user
   let postUser = $("<div>");

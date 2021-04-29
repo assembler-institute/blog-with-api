@@ -130,7 +130,7 @@ button {
 
 .modal-title::first-letter,
 .modal-text::first-letter,
-.custom-post::first-letter {
+.card-title::first-letter {
   text-transform: uppercase;
 }
 
