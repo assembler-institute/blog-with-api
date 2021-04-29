@@ -1,8 +1,8 @@
 
 
-$('.bringDataUS').on('click',testingDataUs);
-$('.bringDataPO').on('click',testingDataPo);
-$('.bringDataCo').on('click',testingDataCom);
+$('#usBut').on('click',testingDataUs);
+$('#posBut').on('click',testingDataPo);
+$('#comBut').on('click',testingDataCom);
 
 function testingDataUs(){
     return axios.get('https://jsonplaceholder.typicode.com/users')
