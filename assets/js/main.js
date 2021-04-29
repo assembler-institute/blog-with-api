@@ -13,7 +13,7 @@ let localUrl = "http://localhost:3000";
 let post;
 let postUserName;
 let allPosts;
-let shownPosts = 5;
+let shownPosts = 20;
 let postsContainer = $(".posts-container");
 
 // Post
@@ -182,7 +182,7 @@ function getPostComments(comments) {
     commentTitle.addClass("comment-title");
     // Comment mail element
     let commentMail = $("<h6>");
-    commentMail.addClass("comment-mail");
+    commentMail.addClass("comment-mail text-lowercase");
     // Comment body element
     let commentBody = $("<h6>");
     commentBody.addClass("comment-body");
