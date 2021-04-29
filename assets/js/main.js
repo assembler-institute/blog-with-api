@@ -1,9 +1,13 @@
+//------------------------------------------------------------------------
+// GLOBAL VARIABLES
+//------------------------------------------------------------------------
 var urlBase = "https://jsonplaceholder.typicode.com/";
 var urlBaseLocal = "http://localhost:3000/";
+var indexPage = 0;
 /*Para arrancar nuestra db usando json-server*/
 //------------------------------------------------------------------------
 /*Abrimos cmd
-/**/ 
+/**/
 /*cd Desktop\Assembler School Engineering\Projects\06 - Blog with API\blog-with-api\data*/
 /**/
 /*json-server --watch db.json*/
@@ -16,22 +20,50 @@ $("#btnComments").on("click", function () {
   $("#commentsContainer").toggle("slow", function () {});
 });
 /*Depending of window size the header post change its picture*/
-$(window).resize(function(){
-  if($(window).width() < 749){
+$(window).resize(function () {
+  if ($(window).width() < 749) {
     $(".imgHeader").attr("src", "./assets/img/0_sm.jpg");
-  }else{
+  } else {
     $(".imgHeader").attr("src", "./assets/img/0.jpg");
   }
-})
+});
+$(".fa-chevron-circle-left").on("click", previusPage);
+$(".fa-chevron-circle-right").on("click", nextPage);
 
 //------------------------------------------------------------------------
 // CALLING FUNCTIONS
 //------------------------------------------------------------------------
 getPostsRequest();
-
+checkIndexPage();
 //------------------------------------------------------------------------
 // FUNCTIONS
 //------------------------------------------------------------------------
+function previusPage() {
+  indexPage--;
+  checkIndexPage();
+  console.log(indexPage);
+}
+function nextPage() {
+  indexPage++;
+  checkIndexPage();
+  console.log(indexPage);
+}
+
+function checkIndexPage() {
+  if (indexPage === -1 || indexPage === 0) {
+    indexPage = 0;
+    $(".fa-chevron-circle-left").addClass("arrowDisabled");
+  } else {
+    $(".fa-chevron-circle-left").removeClass("arrowDisabled");
+  }
+  if (indexPage === 10 || indexPage === 9) {
+    indexPage = 9;
+    $(".fa-chevron-circle-right").addClass("arrowDisabled");
+  } else {
+    $(".fa-chevron-circle-right").removeClass("arrowDisabled");
+  }
+}
+
 function getPostsRequest() {
   /*Request for getting all posts*/
   var settings = {

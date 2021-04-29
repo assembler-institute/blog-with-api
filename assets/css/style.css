@@ -31,6 +31,34 @@ header img {
   height: 90px;
   margin-left: 10px;
 }
+/*Arrows por pagination*/
+.paginationContainer .col{
+  padding: 0px 20px;
+}
+.paginationContainer i{
+  font-size: 50px;
+  cursor: pointer;
+  color: black;
+  /* color: var(--greenColor); */
+  transition: 0.3s ease-in-out;
+}
+.paginationContainer .fa-chevron-circle-left:hover{
+  color: var(--yellowColor);
+}
+.paginationContainer .fa-chevron-circle-right:hover{
+  color: var(--yellowColor);
+}
+
+.paginationContainer .arrowDisabled{
+  cursor: auto;
+  opacity: 0.4;
+
+}
+
+.paginationContainer .arrowDisabled:hover{
+  color: black;
+}
+
 
 /*Post main page style*/
 .post {
@@ -41,9 +69,6 @@ header img {
 
 .post:hover {
   cursor: pointer;
-}
-
-.post .spanDiv {
 }
 
 .post span {
