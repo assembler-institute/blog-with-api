@@ -8,7 +8,8 @@
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="./assets/styles.css">
-    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;600&display=swap" rel="stylesheet">
     <title>testing</title>
 
 
@@ -20,29 +21,29 @@
     
     <main class="form-signin">
       <div>
-        <h1 class="titol">Write the user post</h1>
+        <h1 class="titol">Write the user name to their posts</h1>
     
         <div class="form-floating">
-          <input type="text" class="myButon" id="floatingInput" placeholder="User name">
+          <input autofocus=true type="text" class="myButon" id="floatingInput" >
           <label class="myButonLabel" for="floatingInput">Write a user to read their posts</label>
         </div>
-        <button class="sendBut" id='usBut'>search</button>
+        <button class="sendBut" id='usBut'>Search</button>
       
     </div>
-    <section class='showData'>
-        <div class='userId'>
+   
+    </main>
+    <section class='container'>
+        <!--<div class='userId'>
             <p class="name"></p>
             <p class="usName"></p>
             <p class="usEmail"></p>
-        </div>
-        <div class="post">
+        </div>-->
+        <div id='post'class="row align-items-start">
             
         </div>
 
 
     </section>
-    </main>
-    
   
     <script src="./assets/data.js"></script>
 </body>
