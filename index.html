@@ -61,12 +61,13 @@
                 </nav>
             </header>
 
-            <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+            <div class="p-4 p-md-5 mb-4 text-dark rounded" style="background-image: url('/img/barcelona.jpg');">
                 <div class="col-md-12 px-0">
-                    <strong class="d-inline-block mb-2 text-success" id="userName"></strong>
+                    <strong class="d-inline-block mb-2 text-warning" id="userName"></strong>
                     <h1 class="display-3" id="postTitle"></h1>
-                    <p class="lead my-3" id="postText"></p>
-                    <p class="lead mb-0"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">See the post</button></p>
+                    <p class="lead my-3 text-dark bg-light p-4 rounded" id="postText"></p>
+                    <p class="lead mb-0"><button type="button" class="btn btn-primary modalBtn" id="modalBtn"
+                            data-toggle="modal" data-target="#exampleModal" data-id="1">See the post</button></p>
                 </div>
             </div>
 
@@ -90,15 +91,30 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                        
+
+                        </div>
+                        <p class="modal-info pl-3" id="modal-name"></p>
+                        <p class="modal-info pl-3" id="modal-email"></p>
+                        <p class="pl-3 pt-3">
+                            <button class="btn btn-dark" type="button" data-toggle="collapse"
+                                data-target=".multi-collapse" aria-expanded="false"
+                                aria-controls="multiCollapseExample1 multiCollapseExample2">Comments</button>
+                        </p>
+                        <div class="row">
+                            <div class="col">
+                                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                                    
+                                </div>
+                            </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-primary">Edit</button>
+                            <button type="button" class="btn btn-danger">Delete</button>
                         </div>
                     </div>
                 </div>
             </div>
+
         </main><!-- /.container -->
 
         <footer class="blog-footer">

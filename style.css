@@ -8,6 +8,16 @@
     right: 0px;
 }
 
+#modalBtn {
+  width: 20%;
+  right: 0px;
+}
+
+.modal-info {
+  font-weight: bold;
+  margin: 0;
+}
+
 .bodyPost {
   line-height: var(--lh);
 }
