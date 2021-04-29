@@ -24,7 +24,7 @@ function printArticle(data) {
     if (index < 3) {
       $(".hero-post").each(function (i, v) {
         if (index === i) {
-          $(v).find(".bg-img").attr("src", data[el.id].url);
+          $(v).find(".bg-img");
           $(v).find("h2").length
             ? $(v).find("h2").text(el.title)
             : $(v).find("h3").text(el.title);
@@ -33,7 +33,9 @@ function printArticle(data) {
     } else {
       let article = $($("#main-article").html());
       $(article).find(".col-sm-8 h3").text(el.title);
-      $(article).find(".prueba2").attr("src", data[el.id].url);
+      $(article)
+        .find(".img-post")
+        .attr("src", `https://picsum.photos/id/${el.id}/300`);
       $(article).attr({
         "data-postid": el.id,
         "data-userid": el.userId,
