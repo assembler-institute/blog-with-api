@@ -39,6 +39,7 @@ var userRequestSettings = {
     Cookies: "__cfduid=dc4543ecb63ede243bc85284095cc31a71619515823",
   },
 };
+
 /*---------------------------------------------------------------*/
 
 /*------------------------- Functions ---------------------------*/
@@ -121,7 +122,32 @@ function makeRequest(requestType, limit, postID) {
   }
 }
 
-/*-------------------- Listeners -----------------------*/
+// Creates a post enrty for every post in the request 
+// repsonse stored in the posts array and displays it
+function getPosts(requestType, limit, postID){
+  
+  // Stores request in posts
+  makeRequest(requestType, limit, postID);
+  
+  // Creates posts environment to display response 
+  //stored in array posts
+  for(let p=0; p<posts.length; p++){
+    $(main).append("<div id =post"+ `${p}` + "class = 'post'> <div class='row'> <div class='col-11 p-4 d-flex flex-column position-static'"+ "data-bs-toggle='modal'"+ "data-bs-target='#exampleModalCenteredScrollable'</div></div></div>");
+    $("#post" + `${p}`).children()[0].children()[0].append("<h3 class='mb-2'>" + $(posts)[0].title +"</h3><p class='card-text mb-auto'>"+ $(posts)[0].body +"</p>");
+  }
+}
 
-/*------------------ Function calls --------------------*/
+function getUsers(){
+  console.log(users)
+}
+/*---------------------------------------------------------------*/
+
+/*------------------------- Listeners ---------------------------*/
+
+getUsersBtn.on("click", getUsers);
+getPostsBtn.on("click", getPosts);
+
+/*---------------------------------------------------------------*/
+
+/*----------------------- Function calls ------------------------*/
 makeRequest("users", limit, null);
