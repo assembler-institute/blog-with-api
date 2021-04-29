@@ -106,13 +106,19 @@ button {
   outline: none;
 }
 
-.modal-title {
-  text-overflow: ellipsis;
-}
-
 .modal-content {
   border: var(--border-width) solid black;
   height: fit-content;
+}
+
+.modal-title {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-transform: capitalize;
+}
+
+.modal-body {
+  font-family: var(--text-roman);
 }
 
 #exampleModalLabel {
