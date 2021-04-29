@@ -141,6 +141,20 @@ function renderModalUser(user, nameDiv, mailDiv) {
 }
 
 /* -------------------------------------------------------------------------- */
+/*                                  COMMENTS                                  */
+/* -------------------------------------------------------------------------- */
+var settings = {
+  url: "https://jsonplaceholder.typicode.com/comments?postId=2",
+  method: "GET",
+  timeout: 0,
+  headers: {},
+};
+
+$.ajax(settings).done(function (comments) {
+  console.log("Tests", comments);
+});
+
+/* -------------------------------------------------------------------------- */
 /*                                MODAL CONTENT                               */
 /* -------------------------------------------------------------------------- */
 function modalContent(postId) {
@@ -152,9 +166,13 @@ function modalContent(postId) {
   };
 
   $.ajax(settings).done(function (response) {
+    // Title
     modalTitle.text(response[0].title);
+    // Body
     modalText.text(response[0].body);
+    // User
     setModalUser(response[0].userId, modalUser, modalMail);
+    // Comments
   });
 }
 
