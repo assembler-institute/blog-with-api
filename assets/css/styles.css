@@ -134,11 +134,16 @@ button {
   font-family: var(--text-roman);
 }
 
+.modal-subtitle {
+  font-weight: 800;
+}
+
 #exampleModalLabel {
   color: black;
-  line-height: 80px;
+  line-height: 100px;
+  transform: translateY(-10px);
   font-family: var(--headlines);
   font-size: 100px;
   font-weight: 900;
-  height: 80px;
+  height: 100px;
 }

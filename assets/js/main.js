@@ -20,7 +20,8 @@ let rawBody;
 
 // Modal
 let modalTitle = $(".modal-title");
-let modalUser;
+let modalUser = $("#userName");
+let modalMail = $("#userMail");
 let modalBody = $(".modal-body");
 let modalText = $(".modal-text");
 
@@ -96,6 +97,7 @@ function modalContent(postId) {
   $.ajax(settings).done(function (response) {
     modalTitle.text(response[0].title);
     modalText.text(response[0].body);
+    setModalUser(response[0].userId, modalUser, modalMail);
   });
 }
 
@@ -103,7 +105,7 @@ function modalContent(postId) {
 /*                                    USERS                                   */
 /* -------------------------------------------------------------------------- */
 // Getting all users
-// Return username
+// Post user
 function setPostUser(userId, userDiv) {
   var settings = {
     url: `https://jsonplaceholder.typicode.com/users?id=${userId}`,
@@ -112,12 +114,31 @@ function setPostUser(userId, userDiv) {
     headers: {},
   };
   $.ajax(settings).done(function (user) {
-    postUserName = user[0].name;
+    postUserName = user[0].username;
     renderPostUser(postUserName, userDiv);
   });
 }
 
 function renderPostUser(postUserName, postUserDiv) {
   postUserDiv.text(postUserName);
-  console.log("Rendered user");
+}
+
+// Modal user
+function setModalUser(userId, nameDiv, mailDiv) {
+  var settings = {
+    url: `https://jsonplaceholder.typicode.com/users?id=${userId}`,
+    method: "GET",
+    timeout: 0,
+    headers: {},
+  };
+  $.ajax(settings).done(function (user) {
+    postUserName = user[0].username;
+    renderModalUser(user[0], nameDiv, mailDiv);
+  });
+}
+
+function renderModalUser(user, nameDiv, mailDiv) {
+  nameDiv.text(user.username);
+  mailDiv.text(user.email);
+  console.log("Loaded render for modal");
 }
