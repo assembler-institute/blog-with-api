@@ -6,6 +6,9 @@ console.log("Loaded javaScript file");
 /* -------------------------------------------------------------------------- */
 /*                              GLOBAL VARIABLES                              */
 /* -------------------------------------------------------------------------- */
+// Local URL
+let localUrl = "http://localhost:3000";
+
 // Responese
 let post;
 let postUserName;
@@ -37,7 +40,7 @@ closeBtn.on("click", () => console.log("Closed"));
 /* -------------------------------------------------------------------------- */
 // Getting all posts
 var settings = {
-  url: "https://jsonplaceholder.typicode.com/posts",
+  url: localUrl + "/posts",
   method: "GET",
   timeout: 0,
   headers: {},
@@ -61,7 +64,7 @@ function postBox(post, postId) {
   rawUser = post.userId;
 
   let postWrapper = $("<div>");
-  postWrapper.addClass("col col-md-6 col-lg-3 p-2");
+  postWrapper.addClass("col-sm col-md-6 col-lg-3 p-2");
   let postInside = $("<div>");
   postInside.addClass("custom-post p-4 d-flex flex-column");
   postInside.attr("data-postId", postId);
@@ -93,7 +96,7 @@ function postBox(post, postId) {
 // Getting all users
 function allUsers(userId, userDiv) {
   var settings = {
-    url: "https://jsonplaceholder.typicode.com/users",
+    url: localUrl + "/users",
     method: "GET",
     timeout: 0,
     headers: {},
@@ -106,7 +109,7 @@ function allUsers(userId, userDiv) {
 // Post user
 function setPostUser(userId, userDiv) {
   var settings = {
-    url: `https://jsonplaceholder.typicode.com/users?id=${userId}`,
+    url: localUrl + `/users?id=${userId}`,
     method: "GET",
     timeout: 0,
     headers: {},
@@ -124,7 +127,7 @@ function renderPostUser(postUserName, postUserDiv) {
 // Modal user
 function setModalUser(userId, nameDiv, mailDiv) {
   var settings = {
-    url: `https://jsonplaceholder.typicode.com/users?id=${userId}`,
+    url: localUrl + `/users?id=${userId}`,
     method: "GET",
     timeout: 0,
     headers: {},
@@ -144,7 +147,7 @@ function renderModalUser(user, nameDiv, mailDiv) {
 /*                                  COMMENTS                                  */
 /* -------------------------------------------------------------------------- */
 var settings = {
-  url: "https://jsonplaceholder.typicode.com/comments?postId=2",
+  url: localUrl + "/comments?postId=2",
   method: "GET",
   timeout: 0,
   headers: {},
@@ -159,7 +162,7 @@ $.ajax(settings).done(function (comments) {
 /* -------------------------------------------------------------------------- */
 function modalContent(postId) {
   var settings = {
-    url: `https://jsonplaceholder.typicode.com/posts?id=${postId + 1}`,
+    url: localUrl + `/posts?id=${postId + 1}`,
     method: "GET",
     timeout: 0,
     headers: {},
