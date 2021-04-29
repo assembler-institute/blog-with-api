@@ -10,7 +10,7 @@ console.log("Loaded javaScript file");
 let post;
 let postUserName;
 let allPosts;
-let shownPosts = 50;
+let shownPosts = 20;
 let postsContainer = $(".posts-container");
 
 // Post
@@ -39,8 +39,6 @@ $.ajax(settings).done(function (response) {
   for (let el = 1; el <= shownPosts; el++) {
     postBox(response[el], el);
   }
-
-  console.log(response);
 
   // Making all posts clickables
   $(".custom-post").each(function () {
@@ -78,7 +76,6 @@ function postBox(post, postId) {
 
   postInside.on("click", function () {
     id = $(this).data("postid");
-    console.log(id);
     modalContent(id);
   });
 }
@@ -105,6 +102,18 @@ function modalContent(postId) {
 /*                                    USERS                                   */
 /* -------------------------------------------------------------------------- */
 // Getting all users
+function allUsers(userId, userDiv) {
+  var settings = {
+    url: "https://jsonplaceholder.typicode.com/users",
+    method: "GET",
+    timeout: 0,
+    headers: {},
+  };
+  $.ajax(settings).done(function (users) {
+    console.log(users);
+  });
+}
+
 // Post user
 function setPostUser(userId, userDiv) {
   var settings = {
@@ -140,5 +149,9 @@ function setModalUser(userId, nameDiv, mailDiv) {
 function renderModalUser(user, nameDiv, mailDiv) {
   nameDiv.text(user.username);
   mailDiv.text(user.email);
-  console.log("Loaded render for modal");
 }
+
+/* -------------------------------------------------------------------------- */
+/*                              CALLING FUNCTIONS                             */
+/* -------------------------------------------------------------------------- */
+// allUsers();
