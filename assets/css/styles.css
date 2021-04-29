@@ -107,6 +107,10 @@ button {
   outline: none;
 }
 
+.modal-title {
+  text-overflow: ellipsis;
+}
+
 .modal-content {
   border: var(--border-width) solid black;
   height: fit-content;
