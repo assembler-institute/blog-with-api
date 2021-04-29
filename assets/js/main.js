@@ -12,6 +12,15 @@ let allPosts;
 let shownPosts = 30;
 let postsContainer = $(".posts-container");
 
+// Post
+let rawTitle;
+let rawUser;
+let rawBody;
+
+// Modal
+let modalTitle = $(".modal-title");
+let modalBody = $(".modal-body");
+
 /* -------------------------------------------------------------------------- */
 /*                                    POSTS                                   */
 /* -------------------------------------------------------------------------- */
@@ -37,9 +46,9 @@ $.ajax(settings).done(function (response) {
 
 // Create the box container
 function postBox(post, postId) {
-  let rawTitle = post.title;
-  let rawBody = post.body;
-  let rawUser = post.userId;
+  rawTitle = post.title;
+  rawBody = post.body;
+  rawUser = post.userId;
 
   let postWrapper = $("<div>");
   postWrapper.addClass("col col-sm-6 col-lg-3 p-2");
@@ -64,8 +73,14 @@ function postBox(post, postId) {
 
   postInside.on("click", function () {
     console.log($(this).data("postid"));
+    modalContent($(this).data("postid"));
   });
 }
+
+/* -------------------------------------------------------------------------- */
+/*                                MODAL CONTENT                               */
+/* -------------------------------------------------------------------------- */
+function modalContent(postId) {}
 
 /* -------------------------------------------------------------------------- */
 /*                                    USERS                                   */
