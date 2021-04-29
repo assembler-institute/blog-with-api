@@ -13,13 +13,17 @@ let localUrl = "http://localhost:3000";
 let post;
 let postUserName;
 let allPosts;
-let shownPosts = 20;
+let shownPosts = 5;
 let postsContainer = $(".posts-container");
 
 // Post
 let rawTitle;
 let rawUser;
 let rawBody;
+let bodyPost = $("#bodyPost");
+
+// Comments
+let commentsDiv = $("#commentsBlock");
 
 // Modal
 let modalTitle = $(".modal-title");
@@ -27,13 +31,9 @@ let modalUser = $("#userName");
 let modalMail = $("#userMail");
 let modalBody = $(".modal-body");
 let modalText = $(".modal-text");
-let commentsBtn = $(".btn-dark");
-let saveBtn = $(".btn-primary");
-let closeBtn = $(".btn-secondary");
 
-commentsBtn.on("click", () => console.log("Loaded comments"));
-saveBtn.on("click", () => console.log("Saved"));
-closeBtn.on("click", () => console.log("Closed"));
+// Others
+let breakLine = $("<hr/>");
 
 /* -------------------------------------------------------------------------- */
 /*                                    POSTS                                   */
@@ -147,15 +147,59 @@ function renderModalUser(user, nameDiv, mailDiv) {
 /*                                  COMMENTS                                  */
 /* -------------------------------------------------------------------------- */
 var settings = {
-  url: localUrl + "/comments?postId=2",
+  url: localUrl + "/comments",
   method: "GET",
   timeout: 0,
   headers: {},
 };
 
 $.ajax(settings).done(function (comments) {
-  console.log("Tests", comments);
+  console.log("Comments loaded");
 });
+
+function setComments(postId) {
+  var settings = {
+    url: localUrl + `/post/${postId}/comments`,
+    method: "GET",
+    timeout: 0,
+    headers: {},
+  };
+
+  $.ajax(settings).done(function (comments) {
+    getPostComments(comments);
+  });
+}
+
+function getPostComments(comments) {
+  $(comments).each(function (index, element) {
+    // Comment wrapper
+    let commentWrapper = $("<div>");
+    commentWrapper.addClass("pb-4");
+    // Comment title element
+    let commentTitle = $("<h6>");
+    commentTitle.addClass("comment-title");
+    // Comment mail element
+    let commentMail = $("<h6>");
+    commentMail.addClass("comment-mail");
+    // Comment body element
+    let commentBody = $("<h6>");
+    commentBody.addClass("comment-body");
+
+    let textTitle = element.name;
+    let textMail = element.email;
+    let textBody = element.body;
+
+    commentTitle.text(textTitle);
+    commentMail.text(textMail);
+    commentBody.text(textBody);
+
+    commentWrapper.append(commentTitle);
+    commentWrapper.append(commentMail);
+    commentWrapper.append(commentBody);
+
+    commentsDiv.append(commentWrapper);
+  });
+}
 
 /* -------------------------------------------------------------------------- */
 /*                                MODAL CONTENT                               */
@@ -172,10 +216,11 @@ function modalContent(postId) {
     // Title
     modalTitle.text(response[0].title);
     // Body
-    modalText.text(response[0].body);
+    bodyPost.text(response[0].body);
     // User
     setModalUser(response[0].userId, modalUser, modalMail);
     // Comments
+    setComments(postId);
   });
 }
 

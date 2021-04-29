@@ -159,6 +159,17 @@ button {
   max-height: 24px;
 }
 
+/* Comments */
+.comment-title{
+  font-weight: 800;
+}
+
+.comment-body{
+  font-family: var(--text-italic);
+  font-weight: 200;
+}
+
+
 #exampleModalLabel {
   color: black;
   line-height: 100px;
