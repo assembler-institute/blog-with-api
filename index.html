@@ -36,7 +36,13 @@
       aria-hidden="true"
     >
       <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <div class="text-center" id="spinner-container">
+          <div
+            class="spinner-border justify-content-center my-own-spinner"
+            role="status"
+          ></div>
+        </div>
+        <div class="modal-content" style="display: none">
           <div class="modal-header">
             <h5 class="modal-title" id="postModalLabel">Modal title</h5>
             <button
@@ -63,15 +69,12 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
+            <button type="button" class="btn btn-secondary" id="openComments">
+              <span id="commentsCount"></span>
+              <span>Comments</span>
             </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
+          <div class="modal-comments collapse" id="commentsCollapse"></div>
         </div>
       </div>
     </div>

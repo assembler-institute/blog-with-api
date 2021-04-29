@@ -3,3 +3,8 @@
   background-color: #cccccc;
    TODO parallax */
 }
+.my-own-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
