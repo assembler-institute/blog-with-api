@@ -9,6 +9,10 @@
   font-family: "Montserrat", sans-serif;
 }
 
+body{
+  margin-bottom: 80px;
+}
+
 /*Bootstrap default styles*/
 .col,
 .col-12,
@@ -25,7 +29,7 @@ header {
   padding-left: 80px;
   display: flex;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 header img {
   height: 90px;
@@ -214,12 +218,16 @@ figure img {
   .modal-body .titleModal {
     font-size: 20px;
   }
+  .paginationContainer i{
+    font-size: 40px;
+  }
+  
 }
 
 @media (max-width: 576px) {
   header {
     padding-left: 0px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
   header img {
     height: 70px;
@@ -227,5 +235,8 @@ figure img {
   }
   .post span {
     font-size: 15px;
+  }
+  .paginationContainer i{
+    font-size: 30px;
   }
 }

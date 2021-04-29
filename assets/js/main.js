@@ -20,21 +20,16 @@ $("#btnComments").on("click", function () {
   $("#commentsContainer").toggle("slow", function () {});
 });
 /*Depending of window size the header post change its picture*/
-$(window).resize(function () {
-  if ($(window).width() < 749) {
-    $(".imgHeader").attr("src", "./assets/img/0_sm.jpg");
-  } else {
-    $(".imgHeader").attr("src", "./assets/img/0.jpg");
-  }
-});
+$(window).resize(resizeHeaderPost);
 $(".fa-chevron-circle-left").on("click", previusPage);
 $(".fa-chevron-circle-right").on("click", nextPage);
 
 //------------------------------------------------------------------------
 // CALLING FUNCTIONS
 //------------------------------------------------------------------------
-getPostsRequest();
+getPostsRequest(indexPage);
 checkIndexPage();
+// resizeHeaderPost();
 //------------------------------------------------------------------------
 // FUNCTIONS
 //------------------------------------------------------------------------
@@ -42,37 +37,46 @@ function previusPage() {
   indexPage--;
   checkIndexPage();
   console.log(indexPage);
+  getPostsRequest(indexPage);
 }
 function nextPage() {
   indexPage++;
   checkIndexPage();
   console.log(indexPage);
+  getPostsRequest(indexPage);
 }
 
 function checkIndexPage() {
   if (indexPage === -1 || indexPage === 0) {
     indexPage = 0;
     $(".fa-chevron-circle-left").addClass("arrowDisabled");
+    // $(".fa-chevron-circle-left").off("click", previusPage);
   } else {
     $(".fa-chevron-circle-left").removeClass("arrowDisabled");
+    // $(".fa-chevron-circle-left").on("click", previusPage);
   }
   if (indexPage === 10 || indexPage === 9) {
     indexPage = 9;
     $(".fa-chevron-circle-right").addClass("arrowDisabled");
+    // $(".fa-chevron-circle-right").off("click", nextPage);
   } else {
     $(".fa-chevron-circle-right").removeClass("arrowDisabled");
+    // $(".fa-chevron-circle-right").on("click", nextPage);
   }
+  resizeHeaderPost();
 }
 
-function getPostsRequest() {
+function getPostsRequest(indexPage) {
   /*Request for getting all posts*/
+  $(".mainContainer").empty();
+  console.log($(".mainContainer"));
   var settings = {
-    url: urlBaseLocal + "posts?_start=0&_limit=10",
+    url: urlBaseLocal + "posts?_start=" + indexPage * 10 + "&_limit=" + 10,
     method: "GET",
     timeout: 0,
   };
   $.ajax(settings).done(function (response) {
-    globalresponse = response;
+    console.log(response);
     for (let k = 0; k < response.length; k = k + 10) {
       /*Here we work as header post as col-12*/
       setHeaderPost(response, k);
@@ -95,7 +99,11 @@ function setHeaderPost(response, k) {
 
   imgPost = $("<img>");
   imgPost.addClass("imgHeader");
-  imgPost.attr("src", "./assets/img/0.jpg");
+  if ($(window).width() < 749) {
+    imgPost.attr("src", "./assets/img/0_sm.jpg");
+  } else {
+    imgPost.attr("src", "./assets/img/0.jpg");
+  }
 
   figurePost = $("<figure>");
   figurePost.append(imgPost);
@@ -234,4 +242,13 @@ function setComentsModalContent(element) {
   divRowComment.append(divColEmailComment, divColBodyComment);
 
   $("#commentsContainer").append(divRowComment);
+}
+
+function resizeHeaderPost() {
+  console.log("entro en el resize");
+  if ($(window).width() < 749) {
+    $(".imgHeader").attr("src", "./assets/img/0_sm.jpg");
+  } else {
+    $(".imgHeader").attr("src", "./assets/img/0.jpg");
+  }
 }
