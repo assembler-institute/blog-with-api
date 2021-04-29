@@ -61,7 +61,7 @@ function postBox(post, postId) {
   rawUser = post.userId;
 
   let postWrapper = $("<div>");
-  postWrapper.addClass("col col-sm-6 col-lg-3 p-2");
+  postWrapper.addClass("col col-md-6 col-lg-3 p-2");
   let postInside = $("<div>");
   postInside.addClass("custom-post p-4 d-flex flex-column");
   postInside.attr("data-postId", postId);
