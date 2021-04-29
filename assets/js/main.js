@@ -5,29 +5,33 @@ const baseURL = `http://localhost:3000/`;
 To run on document load
 */
 $(function () {
-  getPosts(0, 10);
+  getPosts(1, 10, false);
 });
 
 // TODO first start load animation
 /*
 This function gets posts between input numbers from API and displays them in homepage
+The refresh variable indicates if a whole page reload is necessary of if we'll just apend more posts
  */
-function getPosts(from, to) {
+function getPosts(page, limit, refresh) {
   var postsJSON = [];
   const settings = {
-    url: `${baseURL}posts?_start=${from}&_limit=${to}`,
+    url: `${baseURL}posts?_page=${page}&_limit=${limit}`,
     method: "GET",
     timeout: 0,
   };
   $.ajax(settings).done(function (response) {
-    populatePosts(response);
+    populatePosts(response, refresh);
   });
 }
 
 /* 
 This function inserts in DOM all elements from an array of objects
 */
-function populatePosts(postsJSON) {
+function populatePosts(postsJSON, refresh) {
+  if (refresh === true) {
+    $("#posts-container .container .row").empty();
+  }
   $(postsJSON).each(function (index) {
     $("#posts-container .container .row").append(
       $("<div>")
@@ -67,20 +71,23 @@ $("#postModal").on("show.bs.modal", function (event) {
     injectCommentCount(response.id);
     $("#postModalLabel").text(response.title);
     $("#postModalText").text(response.body);
-    $("#postModal").attr("userId", response.userId);
-    $("#openComments").attr("postId", response.id);
+    $("#postModal").attr("userId", response.userId).attr("postId", response.id);
     $("#openComments").on("click", openComments); //TODO add variables
+    $("#editPost").on("click", openEditModal);
+    $("#deletePost").on("click", deletePost);
   });
 });
 
 // Event post modal close
 $("#postModal").on("hidden.bs.modal", function () {
-  $("#openComments").off();
   if ($("#commentsCollapse").hasClass("show")) {
     closeComments();
   }
-  $(".modal-content").css("display", "none");
+  $("#postModalContent").css("display", "none");
   $("#spinner-container").css("display", "inline-block");
+  $("#openComments").off();
+  $("#editPost").off();
+  $("#deletePost").off();
 });
 
 /* 
@@ -119,7 +126,7 @@ This function opens and injects info into the collapsable comments section
 function openComments() {
   $("#openComments").off();
   $("#openComments").on("click", closeComments);
-  const postId = $(this).attr("postId");
+  const postId = $("#postModal").attr("postId");
   var settings = {
     url: `${baseURL}comments?postId=${postId}`,
     method: "GET",
@@ -175,4 +182,36 @@ function toggleCollapseComments() {
   var collapseList = collapseElementList.map(function (collapseEl) {
     return new bootstrap.Collapse(collapseEl);
   });
+}
+
+/* 
+This function deletes de selected post from database
+*/
+function deletePost() {
+  const postId = $("#postModal").attr("postId");
+  var settings = {
+    url: `${baseURL}posts/${postId}`,
+    method: "DELETE",
+    timeout: 0,
+  };
+
+  $.ajax(settings).done(function (response) {
+    getPosts(1, 10, true);
+    $("#postModal").modal("hide");
+  });
+}
+/* 
+This functions opens the Edit modal and injects its content
+*/
+function openEditModal() {
+  const postId = $("#postModal").attr("postId");
+  $("#postEditTitle").val($("#postModalLabel").text());
+  $("#postEditBody").val($("#postModalText").text());
+  $("#postEditUserId").val($("#postModal").attr("userId"));
+  $("#saveEdit").attr("postId", postId);
+  $("#editModal").modal("show");
+}
+
+function saveEditedPost() {
+  //TODO
 }
