@@ -8,8 +8,9 @@ console.log("Loaded javaScript file");
 /* -------------------------------------------------------------------------- */
 // Responese
 let post;
+let postUserName;
 let allPosts;
-let shownPosts = 30;
+let shownPosts = 50;
 let postsContainer = $(".posts-container");
 
 // Post
@@ -37,6 +38,8 @@ $.ajax(settings).done(function (response) {
     postBox(response[el], el);
   }
 
+  console.log(response);
+
   // Making all posts clickables
   $(".custom-post").each(function () {
     currPost = $(this);
@@ -63,8 +66,8 @@ function postBox(post, postId) {
   postTitle.text(rawTitle);
   // Assigning user
   let postUser = $("<div>");
-  postUser.addClass("card-text");
-  postUser.text(rawUser);
+  postUser.addClass("card-text postUser");
+  setPostUser(rawUser, postUser);
 
   // Appending divs
   postInside.append(postTitle);
@@ -93,7 +96,6 @@ function modalContent(postId) {
   $.ajax(settings).done(function (response) {
     modalTitle.text(response[0].title);
     modalBody.text(response[0].body);
-    console.log(response[0].title);
   });
 }
 
@@ -101,18 +103,21 @@ function modalContent(postId) {
 /*                                    USERS                                   */
 /* -------------------------------------------------------------------------- */
 // Getting all users
-var settings = {
-  url: "https://jsonplaceholder.typicode.com/users",
-  method: "GET",
-  timeout: 0,
-  headers: {},
-};
-$.ajax(settings).done(function (users) {
-  console.log(users);
-  returnUser(2, users);
-});
-
 // Return username
-function returnUser(index, response) {
-  console.log(response[index].username);
+function setPostUser(userId, userDiv) {
+  var settings = {
+    url: `https://jsonplaceholder.typicode.com/users?id=${userId}`,
+    method: "GET",
+    timeout: 0,
+    headers: {},
+  };
+  $.ajax(settings).done(function (user) {
+    postUserName = user[0].name;
+    renderPostUser(postUserName, userDiv);
+  });
+}
+
+function renderPostUser(postUserName, postUserDiv) {
+  postUserDiv.text(postUserName);
+  console.log("Rendered user");
 }
