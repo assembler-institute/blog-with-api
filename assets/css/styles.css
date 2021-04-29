@@ -146,7 +146,9 @@ button {
 
 .modal-title::first-letter,
 .modal-text::first-letter,
-.card-title::first-letter {
+.card-title::first-letter,
+.comment-title::first-letter,
+.comment-body::first-letter {
   text-transform: uppercase;
 }
 
