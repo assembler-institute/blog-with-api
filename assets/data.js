@@ -3,7 +3,7 @@
 $('.bringDataUS').on('click',testingDataUs);
 $('.bringDataPO').on('click',testingDataPo);
 $('.bringDataCo').on('click',testingDataCom);
-
+let cont=0;
 function testingDataUs(){
     return axios.get('https://jsonplaceholder.typicode.com/users')
     .then(
@@ -41,17 +41,22 @@ function testingDataPo(){
                 
                 $(`#posCont${index}`).append('<p>'+`${elem.title}`+'</p>')
                 $(`#posCont${index}`).append('<p>'+`${elem.body}`+'</p>')
-                     
+                cont+=1;     
             })
 
         }
     )
 }
 function testingDataCom(){
-    return axios.get('https://jsonplaceholder.typicode.com/posts/:id/comments')
+
+    
+    return axios.get('https://jsonplaceholder.typicode.com/posts/1/comments')
     .then(
         function dataCom(responseCom){
-           console.log (responseCom.data)
+            $.each( responseCom.data, function( index, elem ){
+                
+            })
         }
     )
+    
 }
