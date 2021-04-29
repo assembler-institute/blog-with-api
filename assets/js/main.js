@@ -1,5 +1,13 @@
-var globalresponse = [];
-
+var urlBase = "https://jsonplaceholder.typicode.com/";
+var urlBaseLocal = "http://localhost:3000/";
+/*Para arrancar nuestra db usando json-server*/
+//------------------------------------------------------------------------
+/*Abrimos cmd
+/**/ 
+/*cd Desktop\Assembler School Engineering\Projects\06 - Blog with API\blog-with-api\data*/
+/**/
+/*json-server --watch db.json*/
+//------------------------------------------------------------------------
 
 //------------------------------------------------------------------------
 // ADDING EVENT LISTENERS
@@ -7,6 +15,15 @@ var globalresponse = [];
 $("#btnComments").on("click", function () {
   $("#commentsContainer").toggle("slow", function () {});
 });
+/*Depending of window size the header post change its picture*/
+$(window).resize(function(){
+  if($(window).width() < 749){
+    $(".imgHeader").attr("src", "./assets/img/0_sm.jpg");
+  }else{
+    $(".imgHeader").attr("src", "./assets/img/0.jpg");
+  }
+})
+
 //------------------------------------------------------------------------
 // CALLING FUNCTIONS
 //------------------------------------------------------------------------
@@ -18,19 +35,19 @@ getPostsRequest();
 function getPostsRequest() {
   /*Request for getting all posts*/
   var settings = {
-    url: "https://jsonplaceholder.typicode.com/posts?_start=0&_limit=10",
+    url: urlBaseLocal + "posts?_start=0&_limit=10",
     method: "GET",
     timeout: 0,
   };
   $.ajax(settings).done(function (response) {
     globalresponse = response;
-    for (let k = 0; k < globalresponse.length; k = k + 10) {
+    for (let k = 0; k < response.length; k = k + 10) {
       /*Here we work as header post as col-12*/
-      setHeaderPost(k);
+      setHeaderPost(response, k);
       for (let i = k + 1; i < k + 10; i = i + 3) {
         for (let j = i; j < i + 3; j++) {
           /*Here we work as regular post as col-4*/
-          setRegularPost(k, j);
+          setRegularPost(response, k, j);
         }
       }
       $(".mainContainer").append(rowPost);
@@ -38,13 +55,14 @@ function getPostsRequest() {
   });
 }
 
-function setHeaderPost(k) {
+function setHeaderPost(response, k) {
   rowPost = $("<div>");
   rowPost.addClass("row");
   colHeaderPost = $("<div>");
-  colHeaderPost.addClass("d-none d-md-block col-md-12");
+  colHeaderPost.addClass("col-6 col-md-12");
 
   imgPost = $("<img>");
+  imgPost.addClass("imgHeader");
   imgPost.attr("src", "./assets/img/0.jpg");
 
   figurePost = $("<figure>");
@@ -53,15 +71,15 @@ function setHeaderPost(k) {
   spanDiv = $("<div>");
   spanDiv.addClass("spanDiv");
   spanPost = $("<span>");
-  spanPost.html(globalresponse[k].title);
+  spanPost.html(response[k].title);
   spanDiv.append(spanPost);
 
   divPost = $("<div>");
   divPost.addClass("post headerpost");
   divPost.attr("data-toggle", "modal");
   divPost.attr("data-target", "#postModal");
-  divPost.attr("data-id", globalresponse[k].id);
-  divPost.attr("data-userId", globalresponse[k].userId);
+  divPost.attr("data-id", response[k].id);
+  divPost.attr("data-userId", response[k].userId);
   divPost.attr("data-img", "./assets/img/0_sm.jpg");
   divPost.append(figurePost, spanDiv);
   divPost.on("click", setModalContent);
@@ -71,7 +89,7 @@ function setHeaderPost(k) {
   rowPost.append(colHeaderPost);
 }
 
-function setRegularPost(k, j) {
+function setRegularPost(response, k, j) {
   colPost = $("<div>");
   colPost.addClass("col-6 col-md-4");
 
@@ -83,15 +101,15 @@ function setRegularPost(k, j) {
   spanDiv = $("<div>");
   spanDiv.addClass("spanDiv");
   spanPost = $("<span>");
-  spanPost.html(globalresponse[j].title);
+  spanPost.html(response[j].title);
   spanDiv.append(spanPost);
 
   divPost = $("<div>");
   divPost.addClass("post");
   divPost.attr("data-toggle", "modal");
   divPost.attr("data-target", "#postModal");
-  divPost.attr("data-id", globalresponse[j].id);
-  divPost.attr("data-userId", globalresponse[j].userId);
+  divPost.attr("data-id", response[j].id);
+  divPost.attr("data-userId", response[j].userId);
   divPost.attr("data-img", "./assets/img/" + (j - k) + ".jpg");
   divPost.append(figurePost, spanDiv);
 
@@ -110,6 +128,7 @@ function setModalContent() {
   getPostModalContent(idPost);
   getUserModalContent(idUser);
   getCommentsModalContent(idPost);
+  /*Loading img post using its attribute*/
   $(".imgModal").attr("src", $(this).attr("data-img"));
 }
 
@@ -127,7 +146,7 @@ function getPostModalContent(idPost) {
 
 function getUserModalContent(idUser) {
   var settings = {
-    url: "https://jsonplaceholder.typicode.com/users?id=" + idUser + "",
+    url: urlBaseLocal + "users?id=" + idUser + "",
     method: "GET",
     timeout: 0,
   };
@@ -139,13 +158,12 @@ function getUserModalContent(idUser) {
 
 function getCommentsModalContent(idPost) {
   var settings = {
-    url: "https://jsonplaceholder.typicode.com/posts/" + idPost + "/comments",
+    url: urlBaseLocal + "posts/" + idPost + "/comments",
     method: "GET",
     timeout: 0,
   };
 
   $.ajax(settings).done(function (response) {
-    console.log(response);
     response.forEach(function (element) {
       setComentsModalContent(element);
     });

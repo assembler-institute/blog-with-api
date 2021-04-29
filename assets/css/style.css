@@ -28,6 +28,7 @@ header {
   margin-bottom: 40px;
 }
 header img {
+  height: 90px;
   margin-left: 10px;
 }
 
@@ -40,6 +41,9 @@ header img {
 
 .post:hover {
   cursor: pointer;
+}
+
+.post .spanDiv {
 }
 
 .post span {
@@ -95,6 +99,9 @@ figure img {
   background-color: black;
   color: white;
   padding: 15px;
+}
+.modal-header img {
+  height: 80px;
 }
 .modal-header span {
   color: white;
@@ -157,4 +164,43 @@ figure img {
 .commentsContainer .bodyComment {
   font-style: italic;
   font-weight: 300;
+}
+
+/* Media queries */
+@media (max-width: 992px) {
+  .post span {
+    font-size: 20px;
+  }
+  .modal-body .titleModal {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .post span {
+    font-size: 20px;
+  }
+  .modal-header {
+    height: 70px;
+  }
+  .modal-header img {
+    height: 50px;
+  }
+  .modal-body .titleModal {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  header {
+    padding-left: 0px;
+    margin-bottom: 10px;
+  }
+  header img {
+    height: 70px;
+    margin-left: 10px;
+  }
+  .post span {
+    font-size: 15px;
+  }
 }
