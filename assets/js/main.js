@@ -45,6 +45,7 @@ $(".personal-close").on("click", function () {
     }
   });
 });
+
 /* -------------------------------------------------------------------------- */
 /*                                    POSTS                                   */
 /* -------------------------------------------------------------------------- */
@@ -74,10 +75,22 @@ function postBox(post, postId) {
   rawUser = post.userId;
 
   let postWrapper = $("<div>");
-  postWrapper.addClass("col-sm col-md-6 col-lg-3 p-2");
+  postWrapper.addClass("container-fluid col-sm col-md-6 col-lg-3 p-2");
+
   let postInside = $("<div>");
-  postInside.addClass("custom-post p-4 d-flex flex-column");
   postInside.attr("data-postId", postId);
+  postInside.addClass("container-fluid custom-post p-4");
+
+  //Post (left & right)
+  let postRow = $("<div>");
+  postRow.addClass("row h-100 px-4");
+  let postLeft = $("<div>");
+  postLeft.addClass("col-11 d-flex flex-column post-left p-0");
+  let postRight = $("<div>");
+  postRight.addClass("col-1 d-flex flex-column post-left p-0");
+
+  deleteIcon(postRight);
+  patchIcon(postRight);
 
   // Assigning title
   let postTitle = $("<div>");
@@ -89,8 +102,12 @@ function postBox(post, postId) {
   setPostUser(rawUser, postUser);
 
   // Appending divs
-  postInside.append(postTitle);
-  postInside.append(postUser);
+  postLeft.append(postTitle);
+  postLeft.append(postUser);
+  postRow.append(postLeft);
+  postRow.append(postRight);
+
+  postInside.append(postRow);
   postWrapper.append(postInside);
   postsContainer.append(postWrapper);
 
@@ -98,6 +115,24 @@ function postBox(post, postId) {
     id = $(this).data("postid");
     modalContent(id);
   });
+}
+
+function deleteIcon(parentDiv) {
+  // DELETE
+  let deletePost = $("<i>");
+  deletePost.addClass("post-icon uil-times-circle");
+  deletePost.attr("id", "deleteIcon");
+
+  parentDiv.append(deletePost);
+}
+
+function patchIcon(parentDiv) {
+  // PATCH
+  let editPost = $("<i>");
+  editPost.addClass("post-icon uil-edit");
+  editPost.attr("id", "editIcon");
+
+  parentDiv.append(editPost);
 }
 
 /* -------------------------------------------------------------------------- */
