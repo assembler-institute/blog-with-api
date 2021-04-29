@@ -159,6 +159,7 @@ function closeComments() {
   $("#openComments").on("click", openComments);
   $("#commentsCount").removeClass("d-none");
   $("#openComments span:last-child").text("Comments");
+  document.getElementById("postModal").handleUpdate();
 }
 
 /* 
