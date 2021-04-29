@@ -46,6 +46,8 @@ function fnShowPost(e) {
   let post = $(e.target).closest(".blog-post").get(0);
   const info = getInfo(post);
   console.log(info);
+
+  $(post).clone().appendTo("body");
 }
 
 /*
