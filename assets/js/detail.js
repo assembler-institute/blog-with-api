@@ -1,4 +1,5 @@
 import { fnAjax } from "./_ajax.js";
+import { postInfo } from "./main.js";
 
 let arrPosts = [];
 
@@ -16,6 +17,9 @@ document.addEventListener("DOMContentLoaded", function () {
     success: (data) => printArticle(data),
     error: () => console.log("Fail loading photos"),
   });
+
+  console.log(postInfo);
+  // fnPrintDetail(postInfo);
 });
 
 // TODO: INTENTA OPTIMIZAR ESTO, BUSCA EN JQUERY.COM
@@ -34,13 +38,7 @@ function printArticle(data) {
       let article = $($("#main-article").html());
       $(article).find(".col-sm-8 h3").text(el.title);
       $(article).find(".prueba2").attr("src", data[el.id].url);
-      $(article).attr({
-        "data-postid": el.id,
-        "data-userid": el.userId,
-        "data-bs-toggle": "modal",
-        "data-bs-target": "#exampleModal",
-      });
-
+      $(article).attr({ "data-postid": el.id, "data-userid": el.userId });
       $(article).on("click", fnShowPost);
       $(".prueba").append(article);
     }
@@ -52,10 +50,6 @@ function fnShowPost(e) {
   let post = $(e.target).closest(".blog-post").get(0);
   const info = getInfo(post);
   console.log(info);
-
-  // setTimeout(() => {
-  //   window.open("./detail.html", "_self");
-  // }, 5000);
 }
 
 /*
@@ -79,7 +73,7 @@ function getInfo(post) {
   url = "https://jsonplaceholder.typicode.com/users/";
   fnAjax(url + post.dataset.userid, {
     method: "GET",
-    success: (data) => fnPrintPostModal(data),
+    success: (data) => (info.user = data),
     error: () => console.log("Fail loading modal user"),
   });
 
@@ -89,15 +83,9 @@ function getInfo(post) {
 /*
  * print post details
  */
-function fnPrintPostModal(post) {
-  let article = $($("#modal-article").html());
-  // User datail
-  $(article).find(".detail-post-content h2").text(post.user.name);
-  $(article)
-    .find(".detail-post-content h2")
-    .after($("<h2>").text(post.user.email));
-  $(article).on("click", function () {
-    $(this).remove();
-  });
-  // $(".blog-posts").append(article);
+function fnPrintDetail(post) {
+  $(".detail-post-content h2").text(post.user.name);
+
+  console.log($(".detail-post-content h2").text());
+  // console.log("Holaa");
 }
