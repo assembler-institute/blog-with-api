@@ -50,9 +50,8 @@ OPEN MODAL
 */
 
 $("#postModal").on("show.bs.modal", function (event) {
-  let userId = [];
   const postId = $(event.relatedTarget).attr("postId");
-  var settings = {
+  const settings = {
     url: `https://jsonplaceholder.typicode.com/posts/${postId}`,
     method: "GET",
     timeout: 0,
@@ -60,9 +59,23 @@ $("#postModal").on("show.bs.modal", function (event) {
 
   $.ajax(settings).done(function (response) {
     console.log(response);
-    $("#postModal .modal-header").text(response.title);
-    $("#postModal .modal-body").text(response.body);
-    userId.push(response.userId);
-    $("#postModal").css("display: block");
+    $("#postModalLabel").text(response.title);
+    $("#postModalText").text(response.body);
+    $("#postModal").attr("userId", response.userId);
+    $("#postModal").attr("postId", response.id);
+    renderUserPostModal(response.userId);
   });
 });
+
+function renderUserPostModal(userId) {
+  var settings = {
+    url: `https://jsonplaceholder.typicode.com/users/${userId}`,
+    method: "GET",
+    timeout: 0,
+  };
+
+  $.ajax(settings).done(function (response) {
+    $("#username").text(response.username);
+    $("#userEmail").text(response.email);
+  });
+}
