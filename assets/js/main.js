@@ -24,6 +24,13 @@ let modalUser = $("#userName");
 let modalMail = $("#userMail");
 let modalBody = $(".modal-body");
 let modalText = $(".modal-text");
+let commentsBtn = $(".btn-dark");
+let saveBtn = $(".btn-primary");
+let closeBtn = $(".btn-secondary");
+
+commentsBtn.on("click", () => console.log("Loaded comments"));
+saveBtn.on("click", () => console.log("Saved"));
+closeBtn.on("click", () => console.log("Closed"));
 
 /* -------------------------------------------------------------------------- */
 /*                                    POSTS                                   */
@@ -81,24 +88,6 @@ function postBox(post, postId) {
 }
 
 /* -------------------------------------------------------------------------- */
-/*                                MODAL CONTENT                               */
-/* -------------------------------------------------------------------------- */
-function modalContent(postId) {
-  var settings = {
-    url: `https://jsonplaceholder.typicode.com/posts?id=${postId + 1}`,
-    method: "GET",
-    timeout: 0,
-    headers: {},
-  };
-
-  $.ajax(settings).done(function (response) {
-    modalTitle.text(response[0].title);
-    modalText.text(response[0].body);
-    setModalUser(response[0].userId, modalUser, modalMail);
-  });
-}
-
-/* -------------------------------------------------------------------------- */
 /*                                    USERS                                   */
 /* -------------------------------------------------------------------------- */
 // Getting all users
@@ -149,6 +138,24 @@ function setModalUser(userId, nameDiv, mailDiv) {
 function renderModalUser(user, nameDiv, mailDiv) {
   nameDiv.text(user.username);
   mailDiv.text(user.email);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                MODAL CONTENT                               */
+/* -------------------------------------------------------------------------- */
+function modalContent(postId) {
+  var settings = {
+    url: `https://jsonplaceholder.typicode.com/posts?id=${postId + 1}`,
+    method: "GET",
+    timeout: 0,
+    headers: {},
+  };
+
+  $.ajax(settings).done(function (response) {
+    modalTitle.text(response[0].title);
+    modalText.text(response[0].body);
+    setModalUser(response[0].userId, modalUser, modalMail);
+  });
 }
 
 /* -------------------------------------------------------------------------- */

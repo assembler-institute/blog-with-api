@@ -84,7 +84,6 @@ body {
   font-family: var(--text-roman);
   flex-grow: 1;
   margin-bottom: var(--margin);
-  padding-right: 30px;
 }
 
 .card-title {
@@ -102,7 +101,7 @@ footer {
 /*                                    MODAL                                   */
 /* -------------------------------------------------------------------------- */
 button {
-  max-width: 180px;
+  width: 200px;
   outline: none;
 }
 
@@ -112,6 +111,10 @@ button {
 
 .modal-header {
   border-bottom: none;
+}
+
+.close {
+  width: fit-content;
 }
 
 .modal-footer {
@@ -126,6 +129,7 @@ button {
 .modal-title {
   text-overflow: ellipsis;
   overflow: hidden;
+  overflow-y: scroll;
 }
 
 .modal-title::first-letter,
