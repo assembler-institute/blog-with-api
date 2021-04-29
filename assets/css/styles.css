@@ -78,6 +78,7 @@ body {
   border-radius: 5px;
   height: 200px;
   text-transform: capitalize;
+  overflow: scroll;
 }
 
 .posts-container {
