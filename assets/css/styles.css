@@ -107,6 +107,18 @@ button {
   outline: none;
 }
 
+.modal {
+  display: none;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-footer {
+  border-top: none;
+}
+
 .modal-content {
   border: var(--border-width) solid black;
   height: fit-content;

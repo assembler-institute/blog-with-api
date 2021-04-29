@@ -22,6 +22,7 @@ let rawBody;
 let modalTitle = $(".modal-title");
 let modalUser;
 let modalBody = $(".modal-body");
+let modalText = $(".modal-text");
 
 /* -------------------------------------------------------------------------- */
 /*                                    POSTS                                   */
@@ -51,7 +52,6 @@ $.ajax(settings).done(function (response) {
 // Create the box container
 function postBox(post, postId) {
   rawTitle = post.title;
-  rawBody = post.body;
   rawUser = post.userId;
 
   let postWrapper = $("<div>");
@@ -95,7 +95,7 @@ function modalContent(postId) {
 
   $.ajax(settings).done(function (response) {
     modalTitle.text(response[0].title);
-    modalBody.text(response[0].body);
+    modalText.text(response[0].body);
   });
 }
 
