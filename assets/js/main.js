@@ -19,6 +19,7 @@ let rawBody;
 
 // Modal
 let modalTitle = $(".modal-title");
+let modalUser;
 let modalBody = $(".modal-body");
 
 /* -------------------------------------------------------------------------- */
@@ -72,15 +73,29 @@ function postBox(post, postId) {
   postsContainer.append(postWrapper);
 
   postInside.on("click", function () {
-    console.log($(this).data("postid"));
-    modalContent($(this).data("postid"));
+    id = $(this).data("postid");
+    console.log(id);
+    modalContent(id);
   });
 }
 
 /* -------------------------------------------------------------------------- */
 /*                                MODAL CONTENT                               */
 /* -------------------------------------------------------------------------- */
-function modalContent(postId) {}
+function modalContent(postId) {
+  var settings = {
+    url: `https://jsonplaceholder.typicode.com/posts?id=${postId + 1}`,
+    method: "GET",
+    timeout: 0,
+    headers: {},
+  };
+
+  $.ajax(settings).done(function (response) {
+    modalTitle.text(response[0].title);
+    modalBody.text(response[0].body);
+    console.log(response[0].title);
+  });
+}
 
 /* -------------------------------------------------------------------------- */
 /*                                    USERS                                   */
