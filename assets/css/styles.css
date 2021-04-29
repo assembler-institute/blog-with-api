@@ -77,7 +77,6 @@ body {
   background-color: var(--accent-color);
   border-radius: 5px;
   height: 200px;
-  text-transform: capitalize;
   overflow: scroll;
 }
 
@@ -127,7 +126,12 @@ button {
 .modal-title {
   text-overflow: ellipsis;
   overflow: hidden;
-  text-transform: capitalize;
+}
+
+.modal-title::first-letter,
+.modal-text::first-letter,
+.custom-post::first-letter {
+  text-transform: uppercase;
 }
 
 .modal-body {
