@@ -117,6 +117,18 @@ button {
   width: fit-content;
 }
 
+/* Icons */
+.uil{
+  font-size: 24px;
+  color: black;
+}
+
+.modal-text-container{
+  min-height: 100px;
+  max-height: 180px;
+  over
+}
+
 .modal-footer {
   border-top: none;
 }
