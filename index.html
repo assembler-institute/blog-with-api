@@ -4,19 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./assets/style.css">
+    <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="./assets/styles.css">
-    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    
     <title>testing</title>
+
+
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </head>
-<body>
-    <div class="users">
-        <input class="getText" type="text">
-        <button class="bringDataUS">find user</button>
-    </div>
-    <div class='posts'>
-        <button class="bringDataPO">get post data</button>
-        <button class="bringDataCo">get coments data</button>
+<body class="text-center">
+    
+    <main class="form-signin">
+      <div>
+        <h1 class="titol">Write the user post</h1>
+    
+        <div class="form-floating">
+          <input type="text" class="myButon" id="floatingInput" placeholder="User name">
+          <label class="myButonLabel" for="floatingInput">Write a user to read their posts</label>
+        </div>
+        <button class="sendBut" id='usBut'>search</button>
+        <button class="sendBut" id='posBut'>search</button>
+        <button class="sendBut" id='comBut'>search</button>
     </div>
     <section class='showData'>
         <div class='userId'>
@@ -30,6 +42,9 @@
 
 
     </section>
+    </main>
+    
+  
     <script src="./assets/data.js"></script>
 </body>
 </html>

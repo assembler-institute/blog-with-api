@@ -1,9 +1,9 @@
 
 
-$('.bringDataUS').on('click',testingDataUs);
-$('.bringDataPO').on('click',testingDataPo);
-$('.bringDataCo').on('click',testingDataCom);
-let cont=0;
+$('#usBut').on('click',testingDataUs);
+$('#posBut').on('click',testingDataPo);
+$('#comBut').on('click',testingDataCom);
+
 function testingDataUs(){
     return axios.get('https://jsonplaceholder.typicode.com/users')
     .then(
@@ -34,6 +34,7 @@ function testingDataPo(){
     .then(
         function dataPos(responsePos){
             $.each( responsePos.data, function( index, elem ){
+                console.log(elem)
                 $('.post').append('<div></div>');
                 $('.post div:last-child').attr('id','posCont'+index);
 
@@ -41,7 +42,7 @@ function testingDataPo(){
                 
                 $(`#posCont${index}`).append('<p>'+`${elem.title}`+'</p>')
                 $(`#posCont${index}`).append('<p>'+`${elem.body}`+'</p>')
-                cont+=1;     
+                    
             })
 
         }
