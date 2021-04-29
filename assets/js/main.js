@@ -41,7 +41,7 @@ function printArticle(data) {
   });
 }
 
-//* Show modal
+//* Show details
 function fnShowPost(e) {
   let post = $(e.target).closest(".blog-post").get(0);
   const info = getInfo(post);
