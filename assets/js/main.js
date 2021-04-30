@@ -67,13 +67,6 @@ function loadPosts(postPage, postLimit) {
       postBox(response[index], response[index].id);
       // console.log("Loaded post!", response[index].id);
     });
-
-    // Making all posts clickables
-    $(".custom-post").each(function () {
-      currPost = $(this);
-      currPost.attr("data-target", "#exampleModal");
-      currPost.attr("data-toggle", "modal");
-    });
   });
 }
 
@@ -83,7 +76,7 @@ function postBox(post, postId) {
   rawUser = post.userId;
 
   let postWrapper = $("<div>");
-  postWrapper.addClass("container-fluid col-md-6 col-lg-3 p-2");
+  postWrapper.addClass("col-md-6 col-lg-3 p-2");
 
   let postInside = $("<div>");
   postInside.attr("data-postId", postId);
@@ -139,6 +132,13 @@ function postBox(post, postId) {
   postInside.on("click", function () {
     id = $(this).data("postid");
     modalContent(id);
+  });
+
+  // Making all posts clickables
+  $(".custom-post").each(function () {
+    currPost = $(this);
+    currPost.attr("data-target", "#exampleModal");
+    currPost.attr("data-toggle", "modal");
   });
 }
 
