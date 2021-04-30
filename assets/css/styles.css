@@ -91,8 +91,9 @@ body {
   font-weight: 800;
 }
 
-.post-right{
+.post-right {
   display: none;
+  font-size: 20px;
 }
 
 footer {
@@ -123,15 +124,14 @@ button {
 }
 
 /* Icons */
-.uil{
+.uil {
   font-size: 24px;
   color: black;
 }
 
-.modal-text-container{
+.modal-text-container {
   min-height: 100px;
   max-height: 180px;
-  over
 }
 
 .modal-footer {
@@ -167,18 +167,16 @@ button {
 }
 
 /* Comments */
-.comment-title{
+.comment-title {
   font-weight: 800;
 }
 
-.comment-body{
+.comment-body {
   font-family: var(--text-italic);
   font-weight: 200;
 }
 
-
 #exampleModalLabel {
-  color: black;
   line-height: 100px;
   transform: translateY(-10px);
   font-family: var(--headlines);
@@ -187,13 +185,15 @@ button {
   height: 100px;
 }
 
-.edit-modal-title{
+.edit-modal-title {
   font-family: var(--headlines);
   font-weight: 400;
   font-size: 100px;
   height: 100px;
   line-height: 100px;
+  transform: translateY(-10px);
+}
 
-
-
+textarea {
+  resize: none;
 }

@@ -152,8 +152,9 @@ function editIcon(parentDiv, postId) {
 
   editPost.on("click", function (event) {
     event.stopImmediatePropagation();
-    console.log("About to edit post: ", postId);
     $("#editModal").modal("show");
+
+    // data - whatever = "@mdo";
   });
 }
 

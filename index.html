@@ -162,16 +162,6 @@
       </div>
     </div>
     <!-- Edit modal -->
-    <button
-      type="button"
-      class="btn btn-primary"
-      data-toggle="modal"
-      data-target="#editModal"
-      data-whatever="@mdo"
-    >
-      Open modal for @mdo
-    </button>
-
     <div
       class="modal fade"
       id="editModal"
@@ -180,32 +170,39 @@
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content p-3">
           <div class="modal-header">
             <h5 class="edit-modal-title" id="editModalLabel">Edit post</h5>
             <button
               type="button"
-              class="close"
+              class="close personal-close"
               data-dismiss="modal"
               aria-label="Close"
             >
-              <span aria-hidden="true">&times;</span>
+              <i class="uil uil-times"></i>
             </button>
           </div>
           <div class="modal-body">
             <form>
               <div class="form-group">
-                <label for="editTitle" class="modal-subtitle">Title</label>
+                <label for="editTitle">
+                  <h5 class="modal-subtitle">Title</h5>
+                </label>
                 <input type="text" class="form-control" id="editTitle" />
               </div>
               <div class="form-group">
-                <label for="editBody" class="modal-subtitle">Body</label>
-                <textarea class="form-control" id="editBody"></textarea>
+                <label for="editBody"
+                  ><h5 class="modal-subtitle">Body</h5>
+                </label>
+                <textarea
+                  class="form-control modal-text-container"
+                  id="editBody"
+                ></textarea>
               </div>
             </form>
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer d-flex justify-content-between">
             <button type="button" class="btn btn-danger" data-dismiss="modal">
               Delete
             </button>
