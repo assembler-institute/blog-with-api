@@ -3,19 +3,40 @@
   --lh: 1.4rem;
 }
 
-.modalBtn {
-    width: 50%;
-    right: 0px;
+* {
+  text-transform: capitalize;
 }
 
-#modalBtn {
-  width: 20%;
-  right: 0px;
+#buttonComment{
+  display: flex;
+  justify-content: flex-start;
+  align-items:center;
+}
+
+.modal-body {
+  font-size: 18px;
 }
 
 .modal-info {
-  font-weight: bold;
-  margin: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items:center;
+  margin-right: 25px;
+}
+
+.btn img {
+  margin-right: 10px;
+}
+
+.modalBtn {
+}
+
+#modalBtn {
+}
+
+.modal-title {
+  font-size: 40px;
+  line-height: 1.2;
 }
 
 .bodyPost {
@@ -34,13 +55,62 @@
   bottom: 0;
   right: 0;
 }
-.bodyPost::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  width: 1rem;
-  height: 1rem;
-  background: white;
+
+.data-body{
+  margin-bottom: 0px;
+}
+
+.data-name {
+  font-weight: 500;
+  font-size: 20px;
+  width: 70%;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.post-creator {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.button-flex {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 990px) {
+  .data-name {
+    font-weight: bold;
+    font-size: 20px;
+    width: 100%;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+}
+
+
+#modal-name {
+  font-weight: bold;
+}
+
+#modal-email {
+  font-size: 10px;
+  margin-top: -20px;
+}
+
+.data-email {
+  margin-bottom: 0px;
+  font-size: 10px;
+  font-weight: bold;
+  margin-left: 10px;
+  justify-content: flex-end;
+  display: flex;
+  align-items:center;
+}
+
+.data-email img {
+  margin-left: 10px;
+
 }
 
 .blog-header {
@@ -67,15 +137,36 @@ h6 {
   font-weight: 700;
 }
 
+#fullPost {
+  /* The image used */
+  background-image: url("img/barcelona.jpg");
+
+  /* Set a specific height */
+  min-height: 500px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
 #postTitle {
   font-weight: 700;
 }
 
-.titlePost{
-text-overflow: ellipsis;
-white-space: nowrap;
-overflow: hidden;
-width: 70%; 
+.titlePost {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 70%;
 }
 
 .display-4 {

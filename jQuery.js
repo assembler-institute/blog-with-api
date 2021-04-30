@@ -22,7 +22,7 @@ function getPost(id) {
 for (let id = 1; id < 101; id++) {
     getPost(id);
     if (id > 1) {
-        var post = $('<div class="col-md-6"><div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative post-box" id="box' + id + '"> <div class="col p-4 d-flex flex-column position-static"> <strong class="d-inline-block mb-2 text-warning" id="userName' + id + '">Jose Lara</strong><h3 class="mb-3 titlePost" id="titlePost' + id + '">Featured post</h3><p class="card-text mb-auto bodyPost" id="bodyPost' + id + '">This is a wider card with supporting text below as a naturallead-in to additional content.</p> <button type="button" class="btn btn-primary modalBtn" data-toggle="modal" data-target="#exampleModal" data-btn-id="' + id + '">See the post</button></div></div></div>')
+        var post = $('<div class="col-md-6"><div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative post-box" id="box' + id + '"> <div class="col p-4 d-flex flex-column position-static"><h3 class="mb-3 titlePost" id="titlePost' + id + '">Featured post</h3><p class="card-text mb-auto bodyPost" id="bodyPost' + id + '"></p> <div class="post-creator"><strong class="d-inline-block mb-2 text-warning" id="userName' + id + '"></strong></div><div class="button-flex"><button type="button" class="btn btn-primary modalBtn" data-toggle="modal" data-target="#exampleModal" data-btn-id="' + id + '">Read post</button></div></div></div></div>')
         $('#postDiv').append(post);
     }
 }
@@ -67,6 +67,7 @@ $('.modalBtn').each(function () {
                     $('.modal-title').text(response[0].title);
                 }
                 userModalInfo(response[0].userId);
+                console.log(response[0].id)
                 getComments(response[0].id);
             })
     });
@@ -125,9 +126,10 @@ function getComments(postId) {
       };
       
       $.ajax(settings).done(function (response) {
+            $('.collapse').empty();
           response.forEach(function (data) {
               console.log(data.body);
-            $('.collapse').append('<div class="card card-body">'+data.body+'</div>');
+              $('.collapse').append('<div class="card card-body p-5"><p class="data-name">'+data.name+'</p><p class="data-body p-4 bg-light rounded">'+data.body+'<p><p class="data-email">'+data.email+'<img src="img/user.png"  width="20" height="20"></p></div>');
           })
       });
 }

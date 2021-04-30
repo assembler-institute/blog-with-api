@@ -61,13 +61,12 @@
                 </nav>
             </header>
 
-            <div class="p-4 p-md-5 mb-4 text-dark rounded" style="background-image: url('/img/barcelona.jpg');">
+            <div class="p-4 p-md-5 mb-4 text-dark rounded" id="fullPost">
                 <div class="col-md-12 px-0">
                     <strong class="d-inline-block mb-2 text-warning" id="userName"></strong>
-                    <h1 class="display-3" id="postTitle"></h1>
-                    <p class="lead my-3 text-dark bg-light p-4 rounded" id="postText"></p>
-                    <p class="lead mb-0"><button type="button" class="btn btn-primary modalBtn" id="modalBtn"
-                            data-toggle="modal" data-target="#exampleModal" data-id="1">See the post</button></p>
+                    <h1 class="display-3 text-light mb-5" id="postTitle"></h1>
+                    <p class="lead mb-0"><button type="button" class="btn btn-light modalBtn" id="modalBtn"
+                            data-toggle="modal" data-target="#exampleModal" data-id="1">Read post</button></p>
                 </div>
             </div>
 
@@ -82,7 +81,7 @@
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
@@ -95,10 +94,10 @@
                         </div>
                         <p class="modal-info pl-3" id="modal-name"></p>
                         <p class="modal-info pl-3" id="modal-email"></p>
-                        <p class="pl-3 pt-3">
-                            <button class="btn btn-dark" type="button" data-toggle="collapse"
+                        <p class="pl-3 pt-3" id="buttonComment">
+                            <button class="btn btn-light" type="button" data-toggle="collapse"
                                 data-target=".multi-collapse" aria-expanded="false"
-                                aria-controls="multiCollapseExample1 multiCollapseExample2">Comments</button>
+                                aria-controls="multiCollapseExample1 multiCollapseExample2"><img src="img/commentButton.png" width="30" height="30">Comments</button>
                         </p>
                         <div class="row">
                             <div class="col">
