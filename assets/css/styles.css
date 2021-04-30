@@ -32,7 +32,10 @@ img.rounded-circle {
   filter: none;
   border: 2px solid black;
 }
-
+textarea {
+  height: 200px;
+  resize: none;
+}
 /* 
 ==================================
 *       Header styles
@@ -72,7 +75,6 @@ img.rounded-circle {
   position: absolute;
   bottom: 10px;
   left: 10px;
-  /* background-color: white; */
   color: white;
   border-radius: 2.5rem 0 0 2.5rem;
 }
@@ -94,16 +96,38 @@ img.rounded-circle {
 }
 .blog-post h3 {
   font-size: 1.4rem;
+  cursor: pointer;
+}
+.blog-post h3:hover {
+  font-size: 1.4rem;
+  cursor: pointer;
+  text-decoration: underline;
 }
 .badge {
   margin-top: 1rem;
 }
 .badge > a {
   margin-left: 0.5rem;
-  padding: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  min-width: 1.5rem;
+  text-decoration: none;
+  border: 2px solid black;
+}
+.delete-post {
   background-color: black;
   color: white;
-  text-decoration: none;
+}
+.edit-post {
+  background-color: white;
+  color: black;
+}
+.edit-post:hover {
+  background-color: black;
+  color: white;
+}
+.delete-post:hover {
+  background-color: white;
+  color: black;
 }
 .img-post {
   max-height: 200px;
@@ -128,15 +152,20 @@ img.rounded-circle {
 }
 /* 
 ==================================
-*        Detail page
+*        modals style
 ==================================
 */
 .comment-post {
   display: flex;
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.2);
 }
 .comment-post img {
   width: 85px;
+  max-height: 85px;
+  min-height: 85px;
+}
+.modal-header {
+  border-bottom: 1px solid black;
 }
 /* 
 ==================================

@@ -67,12 +67,12 @@
                         </div>
                         <div class="hero-post-content">
                             <div class="row">
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <img src="https://picsum.photos/100/100" alt="author"
                                         class="img-fluid rounded-circle">
                                 </div>
-                                <div class="col-sm-9">
-                                    <h2>My blog post bla bla blb baa</h2>
+                                <div class="col-sm-10">
+                                    <h2>My blog post </h2>
                                 </div>
                             </div>
                         </div>
@@ -90,12 +90,12 @@
                         </div>
                         <div class="hero-post-content">
                             <div class="row">
-                                <div class="col-sm-3">
+                                <div class="col-md-3">
                                     <img src="https://picsum.photos/100/100" alt="author"
                                         class="img-fluid rounded-circle">
                                 </div>
-                                <div class="col-sm-9">
-                                    <h3>My blog post bla bla blb baa</h3>
+                                <div class="col-md-9">
+                                    <h3>My blog post </h3>
                                 </div>
                             </div>
                         </div>
@@ -111,12 +111,12 @@
                         </div>
                         <div class="hero-post-content">
                             <div class="row">
-                                <div class="col-sm-3">
+                                <div class="col-md-3">
                                     <img src="https://picsum.photos/100/100" alt="author"
                                         class="img-fluid rounded-circle">
                                 </div>
-                                <div class="col-sm-9">
-                                    <h3>My blog post bla bla blb baa</h3>
+                                <div class="col-md-9">
+                                    <h3>My blog post</h3>
                                 </div>
                             </div>
                         </div>
@@ -130,8 +130,7 @@
     <section class="blog-posts py-4">
         <div class="container">
             <div class="row">
-                <div class="prueba col-md-8">
-
+                <div class="posts-wrapper col-md-8">
 
                 </div>
                 <aside class="col-md-4 px-4">
@@ -198,6 +197,89 @@
         </div>
     </section>
 
+    <!-- * MODAL -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="bg-light">
+                        <!-- CONTENT DETAIL -->
+                        <div class="detail-post shadow">
+                            <img class="img-fluid bg-img" src="https://picsum.photos/1200/720" alt="">
+                            <div class="detail-post-badges">
+                                <a class="text-center text-decoration-none p-2 mb-1"" href=" #">Technology</a>
+                                <a class="text-center text-decoration-none p-2" href="#">
+                                    <i class="mx-2 far fa-calendar"></i> 15. March 2020
+                                </a>
+                            </div>
+                            <div class="detail-post-content">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <img src="https://picsum.photos/100/100" alt="author"
+                                            class="img-fluid rounded-circle">
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <h2>user name</h2>
+                                        <h2>user email</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="post-body my-4">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error sed voluptatum
+                                possimus
+                                officiis dolorem praesentium cumque ad, enim officia earum iste animi blanditiis sit
+                                molestiae corporis facere maxime facilis deserunt.</p>
+                        </div>
+
+                        <h3>Comments</h3>
+                        <div class="comments mt-3">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- * EDIT MODAL -->
+    <div class="modal fade" id="EditModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-2">
+                    <h5 class="modal-title" id="editModalLabel">Edit post</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="title-name" class="col-form-label">Title:</label>
+                            <input type="text" class="form-control" id="title-name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="body-text" class="col-form-label">Body:</label>
+                            <textarea class="form-control" id="body-text"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="patch-post" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- * FOOTER SECTION -->
     <footer class="footer py-4 bg-light">
         <div class="container">
@@ -230,6 +312,7 @@
         </div>
     </footer>
 
+    <!-- * ARTICLE TEMPLATE -->
     <template id="main-article">
         <article class="blog-post mb-3 shadow">
             <div class="row">
@@ -242,95 +325,27 @@
                         necessitatibus itaque
                         enim</p>
                     <div class="badge">
-                        <a href="#">Technology</a>
-                        <a href="#">Programming</a>
+                        <a class="edit-post" href="#">Edit</a>
+                        <a class="delete-post" href="#">Delete</a>
                     </div>
                 </div>
             </div>
         </article>
     </template>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-
-                    <div class="bg-light">
-                        <!-- CONTENT DETAIL -->
-
-                        <div class="detail-post shadow">
-                            <img class="img-fluid bg-img" src="https://picsum.photos/1200/720" alt="">
-                            <div class="detail-post-badges">
-                                <a class="text-center text-decoration-none p-2 mb-1"" href=" #">Technology</a>
-                                <a class="text-center text-decoration-none p-2" href="#">
-                                    <i class="mx-2 far fa-calendar"></i> 15. March 2020
-                                </a>
-                            </div>
-                            <div class="detail-post-content">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <img src="https://picsum.photos/100/100" alt="author"
-                                            class="img-fluid rounded-circle">
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <h2>My blog post bla bla blb baa</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-4">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error sed voluptatum
-                                possimus
-                                officiis dolorem praesentium cumque ad, enim officia earum iste animi blanditiis sit
-                                molestiae corporis facere maxime facilis deserunt.</p>
-
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error sed voluptatum
-                                possimus
-                                officiis dolorem praesentium cumque ad, enim officia earum iste animi blanditiis sit
-                                molestiae corporis facere maxime facilis deserunt.</p>
-                        </div>
-
-                        <div class="comments">
-                            <h3>Comments</h3>
-                            <article class="comment-post p-3 mb-3">
-                                <img class="me-3" src="https://picsum.photos/100/100" alt="">
-                                <div>
-                                    <h6 class="comments-username">Brahim Benalia</h6>
-                                    <p class="m-0">officiis dolorem praesentium cumque ad, enim officia earum iste
-                                        animi
-                                        blanditiis sit
-                                        molestiae corporis facere maxime facilis deserunt.</p>
-                                </div>
-                            </article>
-                            <article class="comment-post p-3 mb-3">
-                                <img class="me-3" src="https://picsum.photos/100/100" alt="">
-                                <div>
-                                    <h6 class="comments-username">Brahim Benalia</h6>
-                                    <p class="m-0">officiis dolorem praesentium cumque ad, enim officia earum iste
-                                        animi
-                                        blanditiis sit
-                                        molestiae corporis facere maxime facilis deserunt.</p>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+    <!-- * COMMENT TEMPLATE -->
+    <template id="comment-article">
+        <article class="comment-post p-3 mb-3">
+            <img class="me-3" src="https://picsum.photos/100/100" alt="">
+            <div>
+                <h6 class="comments-username fw-bold">Brahim Benalia</h6>
+                <p class="m-0">officiis dolorem praesentium cumque ad, enim officia earum iste
+                    animi
+                    blanditiis sit
+                    molestiae corporis facere maxime facilis deserunt.</p>
             </div>
-        </div>
-    </div>
-
-
-
+        </article>
+    </template>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
