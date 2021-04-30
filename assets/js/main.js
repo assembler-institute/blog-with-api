@@ -262,7 +262,7 @@ function setComments(postId) {
 
   $.ajax(settings).done(function (comments) {
     getPostComments(comments);
-    console.log(comments);
+    // console.log(comments);
   });
 }
 
