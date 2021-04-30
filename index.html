@@ -20,56 +20,48 @@
     />
     <title>Blog with API</title>
   </head>
-  <body class="d-flex flex-column">
+  <body class="d-flex flex-column p-0">
     <!-- ----------------------------------------------------------------------- -->
     <!--                                 HEADER                                  -->
     <!-- ----------------------------------------------------------------------- -->
-    <!-- <nav class="navbar navbar-light bg-light justify-content-between">
-      <a class="navbar-brand">Blog with API</a>
-      <form class="form-inline">
-        <input
-          class="form-control mr-sm-2"
-          type="search"
-          placeholder="User"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">
-          Search
-        </button>
-      </form>
-    </nav> -->
-
-    <header class="container-fluid">
+    <header class="container-fluid p-0">
       <!-- Title -->
-      <div class="row d-flex justify-content-between align-items-start">
+      <!-- <div class="row d-flex justify-content-between align-items-start">
         <div id="blogTitle" class="col-6">Blog with API</div>
-        <!-- <form class="col-4 d-flex">
-          <input
-            class="form-control mr-sm-2"
-            type="search"
-            placeholder="User"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">
-            Search
-          </button>
-        </form> -->
-      </div>
+      </div> -->
+
+      <nav
+        class="navbar navbar-expand-lg d-flex justify-content-between align-items-start pt-4 pb-0"
+      >
+        <div id="blogTitle" class="col-12 col-md-6 p-0 px-4">Blog with API</div>
+
+        <div
+          class="col-4 collapse navbar-collapse d-flex justify-content-end"
+          id="navbarNavAltMarkup"
+        >
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="#">Home</a>
+            <a class="nav-item nav-link" href="#">Users</a>
+          </div>
+        </div>
+      </nav>
     </header>
 
     <!-- ----------------------------------------------------------------------- -->
     <!--                              GENERAL GRID                               -->
     <!-- ----------------------------------------------------------------------- -->
     <!-- Grid -->
-    <div class="container-fluid flex-grow-1 overflow-auto">
-      <div class="row posts-container d-flex flex-row"></div>
+    <div class="container-fluid flex-grow-1 overflow-auto py-0 px-4">
+      <div class="row posts-container d-flex flex-row p-4"></div>
     </div>
 
     <footer
-      class="footer mt-auto px-2 d-flex align-items-center justify-content-between"
+      class="footer mt-auto px-2 d-flex align-items-center justify-content-between px-4"
     >
-      <div id="footerLeft">Ricard Garcia</div>
-      <div id="footerRight">Assembler | School of Software Engineering</div>
+      <div id="footerLeft" class="pl-4">Ricard Garcia</div>
+      <div id="footerRight" class="pr-4">
+        Assembler | School of Software Engineering
+      </div>
     </footer>
 
     <!-- ----------------------------------------------------------------------- -->
