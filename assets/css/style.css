@@ -1,0 +1,108 @@
+
+
+/*
+!============================
+!Header
+!============================
+*/
+
+.stars {
+  animation: stars 20s ease-out;
+}
+.star {
+  background-image: url(/assets/img/estrella.jpg);
+}
+h1 {
+  -webkit-text-stroke: 0.5px yellow;
+  color: transparent;
+}
+
+h2 {
+  -webkit-text-stroke: 0.5px yellow;
+  color: transparent;
+}
+.title {
+  color: var(--bs-light);
+  cursor: pointer;
+}
+.navbar-brand {
+  font-size: 4rem;
+  justify-content: end;
+}
+
+
+/*
+!============================
+!Modal
+!============================
+*/
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-body>button {
+    margin: 50px 0 10px;
+}
+.modal-body>p {
+    margin-bottom: 20px;
+}
+
+.modal-body2 {
+    position: relative;
+    flex: 1 1 auto;
+    padding: 1rem;;
+    border: 1px solid rgba(0,0,0,.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-body2 > strong {
+    margin-bottom: 10px;
+}
+.bi-x-circle {
+  color: red;
+  cursor: pointer;
+}
+.bi-x-circle:hover {
+  transform: scale(1.05);
+}
+.postcont{
+transition: box-shadow 0.3s cubic-bezier(.25,.8,.25,1);
+}
+.postcont:hover{
+box-shadow: 0 0px 0px rgba(198, 255, 145, 0.25), 0 10px 10px rgba(198, 255, 145, 0.25);
+}
+
+/*
+!============================
+!Animation
+!============================
+*/
+
+
+
+@keyframes stars {
+  0% {
+    opacity: 0;
+    transform: scale(1.5) translateY(-0.75em);
+  }
+  20% {
+    opacity: 1;
+  }
+  89% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateZ(-1000em);
+  }
+}
+
+
+
+
+
+

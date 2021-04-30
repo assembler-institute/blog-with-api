@@ -5,7 +5,7 @@
  */
 
 const container = $("#posts");
-let limit = 10;
+let limit = 15;
 let page = 1;
 
 
@@ -29,14 +29,14 @@ async function getPost() {
 async function showPosts() {
     const posts = await getPost();
     posts.forEach((post) => {
-        const randomColor = Math.floor(Math.random() * 16777215)
-          .toString(16)
-          .padStart(6, "0");
-        let postCont = $(`<div class="d-flex text-muted pt-3">
-                        <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="70" height="70" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#${randomColor}"/><text x="0%" y="50%" fill="black" dy=".3em">${post.id}</text></svg>
+        const randomImg = Math.floor(Math.random() * 8) + 1
+        let postCont = $(`<div class="d-flex text-white pt-3 postcont" id="${post.id}">
+        
+                            <img src="assets/img/${post.userId}.jpg" class="flex-shrink-0 me-2 rounded" width="80" height="80">
                             <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                                 <div class="d-flex justify-content-between">
-                                <strong data-id="${post.id}" class="text-gray-dark title fs-6" data-userid="${post.userId}" id="${post.id}" data-body="${post.body}" data-bs-toggle="modal" data-bs-target="#exampleModal">${post.title}</strong>
+                                <strong data-id="${post.id}" class="title fs-6" data-userid="${post.userId}" id="${post.id}" data-body="${post.body}" data-bs-toggle="modal" data-bs-target="#exampleModal">${post.id}) ${post.title}</strong>
+                                <i class="bi bi-x-circle fs-7" data-id="${post.id}" id="${post.id}"></i>
                                 </div>
                             </div>
                     </div>`);
@@ -63,7 +63,7 @@ $(window).scroll(function () {
  */
 
 $(document).on("click", function (event) {
-    if (event.target.matches(".text-gray-dark")) {
+    if (event.target.matches(".title")) {
       let settings = {
         url: `https://jsonplaceholder.typicode.com/users/${event.target.dataset.userid}`,
         method: "GET",
@@ -108,6 +108,25 @@ $("#exampleModal").on("hide.bs.modal", function () {
     $("#load-comments").off();
 });
 
+function deletePost() {
+
+$(document).on("click", function (event) {
+    if (event.target.matches(".bi-x-circle")) {
 
 
+  var settings = {
+    url: `https://jsonplaceholder.typicode.com/posts/${event.target.id}`,
+    method: "DELETE",
+    timeout: 0,
+  };
+  $.ajax(settings).done(function (response) {
+    const div = $(`div[id="${event.target.id}"]`);
+    div.remove();
+    alert("Post has been deleted");
+  });
+}
+});
+}
+
+deletePost();
 
