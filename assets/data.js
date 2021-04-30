@@ -79,8 +79,7 @@ function deletePost(userNam,postID){
     
     $('#finalDelet').on('click',function(){
         axios.delete(url+`post/${postID}`).then(
-            
-            
+              
           )
           .catch(function (error) {
             console.log(error);
@@ -137,8 +136,7 @@ function DataComent(idpost){
                         $('p.emailCom',this).show()
                     
                    })
-                }
-               
+                }               
             })
         }
     )
