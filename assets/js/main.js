@@ -113,6 +113,8 @@ function postBox(post, postId) {
   let postUser = $("<div>");
   postUser.addClass("badge badge-dark");
   postUser.attr("data-user-id", rawUser);
+  // Making badges clickables
+  getUsersPost(rawUser);
   setPostUser(rawUser, postUser);
 
   // Appending divs
@@ -150,6 +152,16 @@ function deletePost(postId) {
   };
   $.ajax(settings).done(function () {
     console.log("Deleted post with id:", postId);
+  });
+
+  var settings = {
+    url: localUrl + `/posts/${postId}/comments`,
+    method: "DELETE",
+    timeout: 0,
+    headers: {},
+  };
+  $.ajax(settings).done(function () {
+    console.log("Deleted comments of post with id:", postId);
   });
 }
 
@@ -239,22 +251,33 @@ function renderModalUser(user, nameDiv, mailDiv) {
 }
 
 // Return user in tag
-function getUserByTag() {}
+function getUsersPost(userId) {
+  $(".badge").each(function () {
+    $(this).on("click", function (event) {
+      event.stopImmediatePropagation();
+      var settings = {
+        url: `https://jsonplaceholder.typicode.com/users/${userId}/posts`,
+        method: "GET",
+        timeout: 0,
+        headers: {},
+      };
+
+      $.ajax(settings).done(function (response) {
+        // Emptying posts grid
+        postsContainer.empty();
+
+        $(response).each(function (index, element) {
+          postBox(response[index], response[index].id);
+        });
+        console.log("Loaded all posts by user:", userId);
+      });
+    });
+  });
+}
 
 /* -------------------------------------------------------------------------- */
 /*                                  COMMENTS                                  */
 /* -------------------------------------------------------------------------- */
-// Getting all comments
-var settings = {
-  url: localUrl + "/comments",
-  method: "GET",
-  timeout: 0,
-  headers: {},
-};
-
-$.ajax(settings).done(function (comments) {
-  console.log("Comments loaded");
-});
 
 function setComments(postId) {
   var settings = {
