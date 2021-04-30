@@ -16,9 +16,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
-    <header>
-      <nav class="container-fuid">
-        <span>IMAGEN LOGO</span>
+    <header class="container-fuid">
+      <nav class="d-flex justify-content-center">
+        <img src="./assets/img/logo-blanco.png" />
       </nav>
     </header>
     <main class="container-fuid">
@@ -36,7 +36,7 @@
         >
           <div class="container-fluid">
             <div class="style__fly">
-              <div id="containerPosts" class="row"></div>
+              <div id="containerPosts" class="row m-0 p-0"></div>
             </div>
           </div>
         </section>
@@ -44,8 +44,7 @@
     </main>
 
     <section class="modal__background">
-      <div id="modal" class="modal__post">
-        <!--class= amodal__posts -->
+      <div class="modal__post">
         <div class="modal__post--btn">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -60,78 +59,11 @@
             />
           </svg>
         </div>
-        <h5>Title</h5>
-        <div class="post__content">
-          <span
-            >asdadsdasdasdasd das ds dd ads asasdadsdasdasdasd das ds dd ads
-            asasdadsdasdasdasd das ds dd ads asasdadsdasdasdasd das ds dd ads as
-          </span>
-        </div>
-        <div class="post__content--user">
-          <span>username</span>
-          <span>email</span>
-        </div>
-        <hr />
-        <button>Load Coments</button>
-        <div class="post__content--coments">
-          <span>
-            asjdnaskjd asajsndkjs jajsnd kjasnd asnd jsajasnd jasajs nasdskjdakj
-          </span>
-          <hr />
-          <span>
-            asjdnaskjd asajsndkjs jajsnd kjasnd asnd jsajasnd jasajs nasdskjdakj
-          </span>
-          <hr />
-          <span>
-            asjdnaskjd asajsndkjs jajsnd kjasnd asnd jsajasnd jasajs nasdskjdakj
-          </span>
-          <hr />
-          <span>
-            asjdnaskjd asajsndkjs jajsnd kjasnd asnd jsajasnd jasajs nasdskjdakj
-          </span>
-          <hr />
-          <span>
-            asjdnaskjd asajsndkjs jajsnd kjasnd asnd jsajasnd jasajs nasdskjdakj
-          </span>
-          <hr />
-        </div>
-      </div>
-    </section>
+        <div class="post__title"></div>
+        <div class="post__content--user"></div>
 
-    <section>
-      <div
-        class="modal fade"
-        id="staticBackdrop"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabindex="-1"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">...</div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">Understood</button>
-            </div>
-          </div>
-        </div>
+        <button class="button">Load Coments</button>
+        <div class="post__content--coments"></div>
       </div>
     </section>
     <footer class="text-muted py-5"></footer>
