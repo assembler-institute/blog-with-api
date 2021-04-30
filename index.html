@@ -108,14 +108,15 @@
             Are you sure you want to delete this post?
           </div>
           <div class="modal-footer border-top-0">
-            <button
+            <a
               id="deletePost"
-              type="button"
               class="btn btn-danger"
+              href="#shadowModal"
+              data-bs-toggle="modal"
+              role="button"
               data-bs-dismiss="modal"
+              >Delete</a
             >
-              Delete
-            </button>
             <button
               type="button"
               class="btn btn-secondary"
@@ -128,15 +129,31 @@
       </div>
     </div>
 
+    <!-- * Shadow modal for delete confirmation -->
+    <div class="modal" tabindex="-1" id="shadowModal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 bg-transparent align-items-center">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- * Toast -->
-    <div
-      class="toast hide"
-      role="alert"
-      aria-live="assertive"
-      aria-atomic="true"
-      id="deletedMessage"
-    >
-      <div class="toast-body">The post has been deleted!</div>
+    <div id="toast-container">
+      <div
+        class="toast align-items-center hide start-50 translate-middle bg-light"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        id="deletedMessage"
+        data-delay="30"
+      >
+        <div class="d-flex">
+          <div class="toast-body">The post has been deleted!</div>
+        </div>
+      </div>
     </div>
 
     <!-- * Main -->

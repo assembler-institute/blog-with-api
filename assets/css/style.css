@@ -32,11 +32,14 @@ main div {
   background-color: #e7e9eb;
 }
 
-#shadow {
-  position: fix;
-  top: 0;
-  left: 0;
-  z-index: 1060;
-  width: 100%;
+#toast-container {
+  position: relative;
   height: 100%;
+  width: 100%;
+}
+
+#deletedMessage {
+  position: fixed;
+  margin-top: 35vh;
+  z-index: 2000;
 }

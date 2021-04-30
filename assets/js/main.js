@@ -6,7 +6,23 @@ function deletePost(postIdToRemove) {
     dataType: "JSON",
   });
 
-  deletePetition.done(function () {});
+  deletePetition.done(function () {
+    $("#shadowModal").hide();
+    $("#spinner").css("display", "none");
+    $("#deletedMessage").toast("show");
+    $("#deletedMessage").on("hidden.bs.toast", function () {
+      $(".modal-backdrop").hide();
+    });
+    console.log(postIdToRemove);
+    $(".post").each(function (index, element) {
+      if ($(element).data("id") == postIdToRemove) {
+        $(element).remove();
+      }
+    });
+    /* console.log($('.post[data-id="' + postIdToRemove + '"'));
+    $('.post[data-id="' + postIdToRemove + '"').remove(); */
+    console.log("Deleted!");
+  });
 }
 
 /* GET functions */
@@ -66,28 +82,17 @@ function openModal() {
   $(".post").each(function (index, element) {
     $(element).on("click", function () {
       let id = $(this).data("id");
+      $("#deletePost").attr("data-id", id);
       postData(id);
     });
   });
 }
 
-function confirmDelete() {
-  console.log("henlo");
+function confirmDelete(deleteFunction) {
   $("#deletePost").on("click", function () {
     console.log("click");
-    $("<div>").attr("id", "shadow");
-    $("<div>")
-      .attr({
-        class: "spinner-border text-primary",
-        role: "status",
-        id: "spinner",
-      })
-      .appendTo($("#shadow"));
-    $("<span>")
-      .addClass("visually-hidden")
-      .text("Loading...")
-      .appendTo($("#spinner"));
-    $("#shadow").appendTo($("main"));
+    let myPostId = $(this).data("id");
+    deleteFunction(myPostId);
   });
 }
 
@@ -118,4 +123,4 @@ function init(openModal) {
 }
 
 init(openModal);
-confirmDelete();
+confirmDelete(deletePost);
