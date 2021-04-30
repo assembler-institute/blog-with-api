@@ -34,7 +34,8 @@ let modalText = $(".modal-text");
 
 let editModalTitle = $("#editTitle");
 let editModalBody = $("#editBody");
-let deleteButton = $("");
+let deleteButton = $("#deleteBtn");
+let saveButton = $("#saveBtn");
 
 let editJSON = { title: new String(), body: new String() };
 
@@ -100,11 +101,14 @@ function postBox(post, postId) {
   postRight.addClass("col-1 flex-column justify-content-start post-right p-0");
 
   // DELETE or PATCH
-  editIcon(postRight, post);
+  editModal(postRight, post, postId);
 
   // Assigning title
   let postTitle = $("<div>");
-  postTitle.addClass("card-title capitalized-text");
+  postTitle.addClass(
+    "card-title capitalized-text overflow-hidden d-inline-block"
+  );
+
   postTitle.text(rawTitle);
   // Assigning user
   let postUser = $("<div>");
@@ -136,34 +140,61 @@ function postBox(post, postId) {
   });
 }
 
+// Delete request based on post Id
+function deletePost(postId) {
+  var settings = {
+    url: localUrl + `/posts/${postId}`,
+    method: "DELETE",
+    timeout: 0,
+    headers: {},
+  };
+  $.ajax(settings).done(function () {
+    console.log("Deleted post with id:", postId);
+  });
+}
+
+// Edit post
+function editPost(postId, newTitle, newBody) {
+  var settings = {
+    url: localUrl + `/posts/${postId}`,
+    method: "PATCH",
+    timeout: 0,
+    data: {
+      title: newTitle,
+      body: newBody,
+    },
+  };
+
+  $.ajax(settings).done(function () {
+    console.log("Edited post widh id:", postId);
+  });
+}
+
 // DELETE or PATCH
+function editModal(parentDiv, post, postId) {
+  let editIcon = $("<i>");
+  editIcon.addClass("post-icon uil-edit text-right");
+  editIcon.attr("id", "editIcon");
 
-// function deleteIcon(parentDiv, post) {
-//   let deletePost = $("<i>");
-//   deletePost.addClass("post-icon uil-times-circle text-right");
-//   deletePost.attr("id", "deleteIcon");
+  parentDiv.append(editIcon);
 
-//   parentDiv.append(deletePost);
-
-//   deletePost.on("click", function (event) {
-//     event.stopImmediatePropagation();
-//     console.log("About to delete post: ", post);
-//   });
-// }
-
-// DELETE or PATCH
-function editIcon(parentDiv, post) {
-  let editPost = $("<i>");
-  editPost.addClass("post-icon uil-edit text-right");
-  editPost.attr("id", "editIcon");
-
-  parentDiv.append(editPost);
-
-  editPost.on("click", function (event) {
+  editIcon.on("click", function (event) {
     event.stopImmediatePropagation();
     $("#editModal").modal("show");
     editModalTitle.val(post.title);
     editModalBody.text(post.body);
+    console.log(postId);
+
+    //Delete post
+    deleteButton.on("click", function () {
+      deletePost(postId);
+    });
+
+    saveButton.on("click", function () {
+      editPost(postId, editModalTitle.val(), editModalBody.val());
+    });
+
+    // Save post
   });
 }
 
@@ -187,19 +218,6 @@ function patchPost(postId) {
 /* -------------------------------------------------------------------------- */
 /*                                    USERS                                   */
 /* -------------------------------------------------------------------------- */
-// Getting all users
-function allUsers(userId, userDiv) {
-  var settings = {
-    url: localUrl + "/users",
-    method: "GET",
-    timeout: 0,
-    headers: {},
-  };
-  $.ajax(settings).done(function (users) {
-    console.log(users);
-  });
-}
-
 // Post user
 function setPostUser(userId, userDiv) {
   var settings = {

@@ -90,9 +90,6 @@ body {
 .card-title {
   font-weight: 800;
   max-height: 50%;
-  overflow: hidden;
-  white-space: wrap;
-  text-overflow: ellipsis;
 }
 
 .post-right {
