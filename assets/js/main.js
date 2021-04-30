@@ -1,7 +1,7 @@
 /* -------------------------------------------------------------------------- */
 /*                                   TESTING                                  */
 /* -------------------------------------------------------------------------- */
-console.log("Loaded javaScript file");
+// console.log("Loaded javaScript file");
 
 /* -------------------------------------------------------------------------- */
 /*                              GLOBAL VARIABLES                              */
@@ -64,7 +64,8 @@ function loadPosts(postPage, postLimit) {
   $.ajax(settings).done(function (response) {
     console.log(response);
     $(response).each(function (index, element) {
-      postBox(response[index], index + 1);
+      postBox(response[index], response[index].id);
+      console.log("Loaded post!", response[index].id);
     });
 
     // Making all posts clickables
@@ -75,8 +76,6 @@ function loadPosts(postPage, postLimit) {
     });
   });
 }
-
-loadPosts(1, 12);
 
 // Create the box container
 function postBox(post, postId) {
@@ -183,6 +182,7 @@ function editModal(parentDiv, post, postId) {
     $("#editModal").modal("show");
     editModalTitle.val(post.title);
     editModalBody.text(post.body);
+
     console.log(postId);
 
     //Delete post
@@ -190,28 +190,10 @@ function editModal(parentDiv, post, postId) {
       deletePost(postId);
     });
 
+    // Save post
     saveButton.on("click", function () {
       editPost(postId, editModalTitle.val(), editModalBody.val());
     });
-
-    // Save post
-  });
-}
-
-//
-function patchPost(postId) {
-  var settings = {
-    url: `https://jsonplaceholder.typicode.com/post/${postId}`,
-    method: "PATCH",
-    timeout: 0,
-    headers: {
-      "Content-Type": "application/json",
-    },
-    data: JSON.stringify(editJSON),
-  };
-
-  $.ajax(settings).done(function (response) {
-    console.log(response);
   });
 }
 
@@ -320,8 +302,9 @@ function getPostComments(comments) {
 /*                                MODAL CONTENT                               */
 /* -------------------------------------------------------------------------- */
 function modalContent(postId) {
+  console.log("Clicked", postId);
   var settings = {
-    url: localUrl + `/posts?id=${postId}`,
+    url: localUrl + `/posts/${postId}`,
     method: "GET",
     timeout: 0,
     headers: {},
@@ -329,11 +312,11 @@ function modalContent(postId) {
 
   $.ajax(settings).done(function (response) {
     // Title
-    modalTitle.text(response[0].title);
+    modalTitle.text(response.title);
     // Body
-    bodyPost.text(response[0].body);
+    bodyPost.text(response.body);
     // User
-    setModalUser(response[0].userId, modalUser, modalMail);
+    setModalUser(response.userId, modalUser, modalMail);
     // Comments
     setComments(postId);
   });
@@ -342,4 +325,5 @@ function modalContent(postId) {
 /* -------------------------------------------------------------------------- */
 /*                              CALLING FUNCTIONS                             */
 /* -------------------------------------------------------------------------- */
-// allUsers();
+// Page & Limit
+loadPosts(1, 12);
