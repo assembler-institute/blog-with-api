@@ -94,7 +94,7 @@ function postBox(post, postId) {
   postRow.addClass("row h-100 px-4 d-flex justify-content-between");
   let postLeft = $("<div>");
   postLeft.addClass(
-    "col-10 d-flex flex-column justify-content-between post-left p-0 mh-100"
+    "col-10 d-flex flex-column align-items-start justify-content-between post-left p-0 mh-100"
   );
   let postRight = $("<div>");
   postRight.addClass("col-1 flex-column justify-content-start post-right p-0");
@@ -111,7 +111,7 @@ function postBox(post, postId) {
   postTitle.text(rawTitle);
   // Assigning user
   let postUser = $("<div>");
-  postUser.addClass("card-text postUser");
+  postUser.addClass("badge badge-dark");
   setPostUser(rawUser, postUser);
 
   // Appending divs

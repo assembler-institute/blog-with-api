@@ -40,6 +40,8 @@
   --dark-color: rgb(255, 133, 158);
   --light-color: rgb(0, 0, 0);
   --accent-color: whitesmoke;
+  /* Time */
+  --transition-time: 0.5s;
 }
 
 * {
@@ -49,7 +51,6 @@
   -ms-user-select: none;
   user-select: none;
   /* Border */
-  border-radius: 10px;
   /* outline: 2px solid green; */
 }
 
@@ -80,12 +81,17 @@ body {
   border-radius: 10px;
   height: 200px;
   overflow: scroll;
-  transition: 0.5s;
+  transition: var(--transition-time);
 }
 
 .custom-post:hover {
   background-color: transparent;
   color: var(--accent-color);
+}
+
+.custom-post:hover > .row > .badge-dark {
+  background-color: var(--accent-color);
+  color: var(--dark-color);
 }
 
 .posts-container {
@@ -97,6 +103,13 @@ body {
 .card-title {
   font-weight: 800;
   max-height: 50%;
+}
+
+.badge-dark {
+  font-size: 14px;
+  border: 2px solid var(--dark-color);
+  color: var(--dark-color);
+  background-color: transparent;
 }
 
 .post-right {
