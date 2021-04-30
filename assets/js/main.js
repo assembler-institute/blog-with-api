@@ -40,10 +40,10 @@ function populatePosts(postsJSON, refresh) {
         .addClass("col")
         .append(
           $("<div>")
-            .addClass("card")
+            .addClass("card bg-light h-100")
             .append(
               $("<div>")
-                .addClass("card-body")
+                .addClass("card-body ")
                 .attr("postId", postsJSON[index].id)
                 .attr("data-bs-toggle", "modal")
                 .attr("data-bs-target", "#postModal")
@@ -122,7 +122,9 @@ function injectCommentCount(postId) {
   };
   $.ajax(settings).done(function (response) {
     $("#commentsCount").text(response.length);
-    $("#spinner-container").fadeOut(200, () => $(".modal-content").fadeIn(200));
+    $("#spinner-container").fadeOut(200, () =>
+      $("#postModalContent").fadeIn(200)
+    );
   });
 }
 
@@ -239,7 +241,7 @@ function saveEditedPost(event) {
     }),
   };
 
-  $.ajax(settings).done(function (response) {
+  $.ajax(settings).done(function () {
     $("#editModal").modal("hide");
     $("#editForm").off();
     $("#postModalLabel").text($("#postEditTitle").val());
@@ -275,6 +277,5 @@ function populateHomePage() {
   for (let i = 0; i < pagesToLoad; i++) {
     currentPage += 1;
     getPosts(currentPage, 5, false);
-    console.log("nextPage");
   }
 }
