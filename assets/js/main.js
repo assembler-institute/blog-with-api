@@ -39,6 +39,10 @@ let saveButton = $("#saveBtn");
 
 let editJSON = { title: new String(), body: new String() };
 
+// Navbar
+let homeButton = $("#homeBtn");
+let usersButton = $("#usersBtn");
+
 /* -------------------------------------------------------------------------- */
 /*                               CLOSING BUTTONS                              */
 /* -------------------------------------------------------------------------- */
@@ -347,6 +351,16 @@ function modalContent(postId) {
     setComments(postId);
   });
 }
+
+/* -------------------------------------------------------------------------- */
+/*                                 NAV BUTTONS                                */
+/* -------------------------------------------------------------------------- */
+homeButton.on("click", function () {
+  // Emptying posts grid
+  postsContainer.empty();
+  loadPosts(1, 12);
+});
+usersButton.on("click", () => console.log("Users list"));
 
 /* -------------------------------------------------------------------------- */
 /*                              DEFAULT FUNCTIONS                             */
