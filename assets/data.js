@@ -1,5 +1,6 @@
 
 
+
 $('#usBut').on('click',DataUser);
 //$('#posBut').on('click',DataPost);
 //$('#comBut').on('click',DataComent);
@@ -48,22 +49,41 @@ function DataPost(userId,userName){
                     $('#post div:last-child').attr('class','col');
 
                     //$(`#posCont${index}`).append('<p>'+`${elemPos.id}`+'</p>')
-                    $(`#posCont${index}`).append('<p>'+`<span class='user'>${userName}</span>  :`+'</p>')
-                    $(`#posCont${index}`).append('<p>'+`<span class='tit'>Title ${cnt} :<br></span> ${elemPos.title}`+'</p>')
+                    $(`#posCont${index}`).append('<p>'+`<span class='user'>${userName}</span>  :`+'</p>');
+                    $(`#posCont${index}`).append('<p>'+`<span class='tit'>Post ${cnt} :<br></span> ${elemPos.title}`+'</p>');
                     
                     //$(`#posCont${index}`).append('<p>'+`${elemPos.body}`+'</p>')
-                    $(`#posCont${index}`).append('<button  class="sendButP" data-toggle="modal" data-target="#exampleModalCenter">Full info</button>')
-                    $(`#posCont${index} button.sendButP`).on('click',function(){postData(this,elemPos.id,elemPos.body,userName)})
+                    $(`#posCont${index}`).append('<button  class="sendButP" data-toggle="modal" data-target="#exampleModalCenter">Full info</button>');
+                    $(`#posCont${index}`).append('<button  class="deleButP">X</button>');
+                    $(`#posCont${index} button.deleButP`).on('click',function(){deletePost(userName,elemPos.id)});
+                    $(`#posCont${index} button.sendButP`).on('click',function(){postData(this,elemPos.id,elemPos.body,userName)});
                 }   
             })
         }
     )
 }
+function deletePost(userNam,postID){
+    $('.delete').show()
+    $('.delete').append(`<h4 class='delteText'> ¿Are your sure to delete the post of ${userNam}? </h4>`)
+    $('.delete').append(`<button id='finalDelet' class='sendButP'>Confirm</button>`)
+    $('.delete').append(`<button id='Delet' class='deleButP'>X</button>`)
+    $('#Delet').on('click',function(){
+        $('.delete').hide();
+        $('h4.delteText').remove();
+        $('#finalDelet').remove();
+        $('#Delet').remove();
+    })
+    
+    $('#finalDelet').on('click',function(){
+       console.log(postID);
+    })
+}
 
 function postData(event,post_id,post_body,user_name){
     
     $('.comBox').empty();
-    $('.modal-header').empty();
+    $('.modal-header img').remove();
+    $('#exampleModalLongTitle').empty();
     $('#exampleModalLongTitle').append(`<p class='idpost'>${user_name} post: </p>`);
     $('.modal-header').prepend('<img src="https://yt3.ggpht.com/ytc/AAUvwngLxx3Ylzao3sJXP_H8faqBjtRf6VO0dX8ZkVJt=s176-c-k-c0x00ffffff-no-rj" alt="hola">')
     $('#textContent').empty();
