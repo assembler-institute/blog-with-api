@@ -107,11 +107,12 @@ function postBox(post, postId) {
   postTitle.addClass(
     "card-title capitalized-text overflow-hidden d-inline-block"
   );
-
   postTitle.text(rawTitle);
+
   // Assigning user
   let postUser = $("<div>");
   postUser.addClass("badge badge-dark");
+  postUser.attr("data-user-id", rawUser);
   setPostUser(rawUser, postUser);
 
   // Appending divs
@@ -236,6 +237,9 @@ function renderModalUser(user, nameDiv, mailDiv) {
   nameDiv.text(user.username);
   mailDiv.text(user.email);
 }
+
+// Return user in tag
+function getUserByTag() {}
 
 /* -------------------------------------------------------------------------- */
 /*                                  COMMENTS                                  */
