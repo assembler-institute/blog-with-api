@@ -89,11 +89,6 @@ body {
   color: var(--accent-color);
 }
 
-.custom-post:hover > .row > .badge-dark {
-  background-color: var(--accent-color);
-  color: var(--dark-color);
-}
-
 .posts-container {
   font-family: var(--text-roman);
   flex-grow: 1;
@@ -110,6 +105,12 @@ body {
   border: 2px solid var(--dark-color);
   color: var(--dark-color);
   background-color: transparent;
+}
+
+.custom-post:hover > .row > .post-left > .badge-dark {
+  border: 2px solid var(--accent-color);
+  background-color: var(--accent-color);
+  color: var(--dark-color);
 }
 
 .post-right {
@@ -162,6 +163,7 @@ button {
 .modal-content {
   border: none;
   height: fit-content;
+  border-radius: 10px;
 }
 
 .modal-title {
@@ -213,4 +215,15 @@ button {
 
 textarea {
   resize: none;
+}
+
+#deleteBtn {
+  color: var(--red);
+  border: var(--border-width) solid var(--red);
+  background-color: transparent;
+}
+
+#saveBtn {
+  background-color: var(--dark-color);
+  border: none;
 }
