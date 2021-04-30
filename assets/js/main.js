@@ -210,8 +210,33 @@ function openEditModal() {
   $("#postEditUserId").val($("#postModal").attr("userId"));
   $("#saveEdit").attr("postId", postId);
   $("#editModal").modal("show");
+  $("#editForm").on("submit", saveEditedPost);
 }
 
-function saveEditedPost() {
-  //TODO
+/* 
+This function saves the edited post to DB after submitted form
+*/
+function saveEditedPost(event) {
+  event.preventDefault();
+  const postId = $("#postModal").attr("postId");
+  var settings = {
+    url: `${baseURL}posts/${postId}`,
+    method: "PATCH",
+    timeout: 0,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: JSON.stringify({
+      userId: $("#postEditUserId").val(),
+      title: $("#postEditTitle").val(),
+      body: $("#postEditBody").val(),
+    }),
+  };
+
+  $.ajax(settings).done(function (response) {
+    $("#editModal").modal("hide");
+    $("#editForm").off();
+    $("#postModal").modal("hide");
+    getPosts(1, 10, true);
+  });
 }
