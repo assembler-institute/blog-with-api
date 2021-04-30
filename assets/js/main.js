@@ -70,15 +70,22 @@ function fnShowPost(e) {
  */
 function getInfo(post) {
   // get post info
-  let url = "https://jsonplaceholder.typicode.com/posts/";
-  fnAjax(url + post.dataset.postid, {
-    method: "GET",
-    success: (data) => fnPrintPostModal(data),
-    error: () => console.log("Fail loading modal post"),
-  });
+  // let url = "https://jsonplaceholder.typicode.com/posts/";
+  // fnAjax(url + post.dataset.postid, {
+  //   method: "GET",
+  //   success: (data) => fnPrintPostModal(data),
+  //   error: () => console.log("Fail loading modal post"),
+  // });
+  const [postinfo] = arrPosts.filter((v) => v.id == post.dataset.postid);
+  $(".modal .bg-img").attr(
+    "src",
+    `https://picsum.photos/id/${postinfo.id}/1200/700`
+  );
+  $(".modal-title").text(postinfo.title);
+  $(".post-body").text(postinfo.body);
 
   // get user info
-  url = "https://jsonplaceholder.typicode.com/users/";
+  let url = "https://jsonplaceholder.typicode.com/users/";
   fnAjax(url + post.dataset.userid, {
     method: "GET",
     success: (data) => fnPrintUserModal(data),
@@ -179,4 +186,5 @@ function fnModifyPost(data) {
   const article = $(`article[data-postid=${data.id}]`);
   $(article).find("h3").text(data.title);
   $(article).find("p").text(data.body);
+  arrPosts[parseInt(data.id) - 1] = data;
 }
