@@ -126,7 +126,7 @@ footer {
 }
 
 /* -------------------------------------------------------------------------- */
-/*                                    MODAL                                   */
+/*                                    MODALS                                  */
 /* -------------------------------------------------------------------------- */
 button {
   width: 200px;
@@ -223,7 +223,22 @@ textarea {
   background-color: transparent;
 }
 
-#saveBtn {
+#saveBtn,
+.btn-dark {
+  border: var(--border-width) solid var(--dark-color);
   background-color: var(--dark-color);
-  border: none;
+}
+
+#saveBtn:hover,
+.btn-dark:hover {
+  border: var(--border-width) solid var(--dark-color);
+  background-color: transparent;
+  color: var(--dark-color);
+}
+
+.btn-secondary,
+.btn-secondary:hover {
+  color: var(--light-color);
+  border: var(--border-width) solid var(--light-color);
+  background-color: transparent;
 }
