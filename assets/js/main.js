@@ -1,9 +1,4 @@
 /* -------------------------------------------------------------------------- */
-/*                                   TESTING                                  */
-/* -------------------------------------------------------------------------- */
-// console.log("Loaded javaScript file");
-
-/* -------------------------------------------------------------------------- */
 /*                              GLOBAL VARIABLES                              */
 /* -------------------------------------------------------------------------- */
 // Local URL
@@ -37,7 +32,13 @@ let editModalBody = $("#editBody");
 let deleteButton = $("#deleteBtn");
 let saveButton = $("#saveBtn");
 
-let editJSON = { title: new String(), body: new String() };
+//Scroll
+let body = $("#blogBody");
+console.log(body);
+
+$(window).scroll(function (event) {
+  console.log("Scrolled grid", event.target);
+});
 
 /* -------------------------------------------------------------------------- */
 /*                               CLOSING BUTTONS                              */
@@ -62,10 +63,10 @@ function loadPosts(postPage, postLimit) {
     headers: {},
   };
   $.ajax(settings).done(function (response) {
-    console.log(response);
+    // console.log(response);
     $(response).each(function (index, element) {
       postBox(response[index], response[index].id);
-      console.log("Loaded post!", response[index].id);
+      // console.log("Loaded post!", response[index].id);
     });
 
     // Making all posts clickables
@@ -240,18 +241,6 @@ function renderModalUser(user, nameDiv, mailDiv) {
 /* -------------------------------------------------------------------------- */
 /*                                  COMMENTS                                  */
 /* -------------------------------------------------------------------------- */
-// Getting all comments
-var settings = {
-  url: localUrl + "/comments",
-  method: "GET",
-  timeout: 0,
-  headers: {},
-};
-
-$.ajax(settings).done(function (comments) {
-  console.log("Comments loaded");
-});
-
 function setComments(postId) {
   var settings = {
     url: localUrl + `/post/${postId}/comments`,
