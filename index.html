@@ -19,11 +19,13 @@
     <title>Blog with API</title>
   </head>
   <body>
+    <!-- * Header -->
     <header class="container-fluid bg-dark text-white mb-4">
       <h1>ExAPIriment</h1>
     </header>
 
-    <div class="modal" tabindex="-1" id="postModal">
+    <!-- * Post modal -->
+    <div class="modal fade" tabindex="-1" id="postModal">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
@@ -70,19 +72,74 @@
           </div>
 
           <div class="modal-footer border-top-0">
-            <button
-              type="button"
-              class="btn btn-secondary"
+            <button type="button" class="btn btn-success">Edit</button>
+            <a
+              class="btn btn-danger"
+              href="#deleteModal"
+              data-bs-toggle="modal"
+              role="button"
               data-bs-dismiss="modal"
+              >Delete</a
             >
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">Remove</button>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- * Delete Alert Modal  -->
+    <div
+      class="modal fade"
+      id="deleteModal"
+      tabindex="-1"
+      aria-labelledby="deleteModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header border-bottom-0">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body text-center fs-5">
+            Are you sure you want to delete this post?
+          </div>
+          <div class="modal-footer border-top-0">
+            <button
+              id="deletePost"
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Delete
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- * Toast -->
+    <div
+      class="toast hide"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+      id="deletedMessage"
+    >
+      <div class="toast-body">The post has been deleted!</div>
+    </div>
+
+    <!-- * Main -->
     <main class="container-fluid"></main>
 
     <script

@@ -1,3 +1,15 @@
+/* DELETE function */
+function deletePost(postIdToRemove) {
+  let deletePetition = $.ajax({
+    method: "DELETE",
+    url: "https://jsonplaceholder.typicode.com/posts/" + postIdToRemove,
+    dataType: "JSON",
+  });
+
+  deletePetition.done(function () {});
+}
+
+/* GET functions */
 function userData(userId) {
   $.get(
     "https://jsonplaceholder.typicode.com/users/" + userId,
@@ -49,6 +61,7 @@ function postData(postId) {
   });
 }
 
+/* Event Listeners */
 function openModal() {
   $(".post").each(function (index, element) {
     $(element).on("click", function () {
@@ -58,6 +71,27 @@ function openModal() {
   });
 }
 
+function confirmDelete() {
+  console.log("henlo");
+  $("#deletePost").on("click", function () {
+    console.log("click");
+    $("<div>").attr("id", "shadow");
+    $("<div>")
+      .attr({
+        class: "spinner-border text-primary",
+        role: "status",
+        id: "spinner",
+      })
+      .appendTo($("#shadow"));
+    $("<span>")
+      .addClass("visually-hidden")
+      .text("Loading...")
+      .appendTo($("#spinner"));
+    $("#shadow").appendTo($("main"));
+  });
+}
+
+/* Init function */
 function init(openModal) {
   var settings = {
     url: "https://jsonplaceholder.typicode.com/posts",
@@ -84,3 +118,4 @@ function init(openModal) {
 }
 
 init(openModal);
+confirmDelete();
