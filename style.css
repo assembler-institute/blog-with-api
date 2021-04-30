@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&family=Roboto+Slab:wght@100;200;300;400;500;600&display=swap');
+
+* {
+    font-family: 'Roboto Slab', serif;
+}
+
+
+#userInfo {
+    text-align: end;
+}
+
+.modal-header {
+    background-color: rgba(238, 242, 247, 0.959);
+}
+
+p {
+    font-family: 'Open Sans Condensed';
+    font-size: 18px;
+}
