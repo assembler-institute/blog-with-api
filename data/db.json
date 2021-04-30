@@ -1,12 +1,13 @@
 {
     "post":[
-        {
+        {   
+            
             "userId": 1,
             "id": 1,
             "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
             "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
           },
-          {
+          { 
             "userId": 1,
             "id": 2,
             "title": "qui est esse",
@@ -335,7 +336,8 @@
             }
           }
     ],
-    "coments":[{
+    "coments":[
+      {
         "postId": 1,
         "id": 1,
         "name": "id labore ex et quam laborum",
@@ -1734,5 +1736,6 @@
         "name": "aperiam et omnis totam",
         "email": "Amir@kaitlyn.org",
         "body": "facere maxime alias aspernatur ab quibusdam necessitatibus\nratione similique error enim\nsed minus et\net provident minima voluptatibus"
-      }]
+      }
+    ]
 }
