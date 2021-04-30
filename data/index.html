@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
       crossorigin="anonymous"
     />
     <link href="/data/assets/stylesheet.css" rel="stylesheet" />
@@ -21,120 +21,113 @@
   </head>
   <body>
     <!-- Nav Bar -->
-    <nav class="navbar navbar-expand-xl navbar-light bg-light">
+    <nav class="navbar sticky-top navbar-expand-xl navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">ApiBlogg</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarWithDropdown"
-          aria-controls="navbarWithDropdown"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+        <img class="pngHeader" src="/data/assets/img/pngfind.com-biker-png-90003.png" alt="">
+        <a  class="navbar-brand" href="#">TheApiBikeBlog</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarBasic" aria-controls="navbarBasic" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse show" id="navbarWithDropdown">
-          <ul class="navbar-nav">
+        <div class="collapse navbar-collapse show" id="navbarBasic">
+          <ul class="navbar-nav me-auto mb-2 mb-xl-0">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
-
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdownMenuLink"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Blogs
-              </a>
-              <ul
-                class="dropdown-menu"
-                aria-labelledby="navbarDropdownMenuLink"
-              >
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
+           
         </div>
       </div>
     </nav>
     <!-- Page Header-->
-    <header class="masthead">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-5 col-md-10 mx-auto">
-            <div class="site-heading">
-              <h1 class="header-text">ApiBlogg</h1>
-              <span class="subheading"
-                >Here you will find the best blogs imported from API's</span
-              >
-            </div>
-          </div>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active ">
+          <img class="d-block w-100 imgBox" src="assets/img/02.jpg" alt="First slide">
+          
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100 imgBox" src="assets/img/03.jpg" alt="Second slide">
+        
+        </div>
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="carousel-intro">Have you ever read about true freedom?</h5>
+          <h6 class="carousel-popular">Don't wait get your eyes on our most popular bolgs</h6>
+          <p class="carousel-title">Title</p>
+          <button class="snip1575 hover carousel_btn">Read More</button>
+        </div>
+        <div class="carousel-item imgBox">
+          <img class="d-block w-100" src="assets/img/01.jpg" alt="Third slide">
         </div>
       </div>
-    </header>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
     <!-- Main Content-->
     <main id="main">
+      
       <div class="container">
         <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="post-preview">
-              <h2 class="post-title" id="one">Title</h2>
-              <h3 class="post-subtitle">Body</h3>
-            </div>
-            <hr />
-            <div class="post-preview">
-              <h2 class="post-title">Title</h2>
-              <h3 class="post-subtitle">Body</h3>
-            </div>
-            <hr />
-            <div class="post-preview">
-              <h2 class="post-title">Title</h2>
-              <h3 class="post-subtitle">Body</h3>
-            </div>
-            <hr />
-            <div class="post-preview">
-              <h2 class="post-title">Title</h2>
-              <h3 class="post-subtitle">Body</h3>
-            </div>
-            <hr />
-            <div class="post-preview">
-              <h2 class="post-title">Title</h2>
-              <h3 class="post-subtitle">Body</h3>
-            </div>
-            <hr />
-            <div class="post-preview">
-              <h2 class="post-title">Title</h2>
-              <h3 class="post-subtitle">Body</h3>
-            </div>
-            <hr />
-            <div class="post-preview">
-              <h2 class="post-title">Title</h2>
-              <h3 class="post-subtitle">Body</h3>
-            </div>
-            <hr />
-            <div class="post-preview">
-              <h2 class="post-title">Title</h2>
-              <h3 class="post-subtitle">Body</h3>
-            </div>
-            <hr />
-            <!-- Pager-->
-            <div class="clearfix">
-              <a class="btn btn-primary float-right" href="#!">Older Posts →</a>
-            </div>
-          </div>
+          <div class="col-lg-8 col-md-10 mx-auto divBox"></div>
         </div>
       </div>
     </main>
+
+    >    <!-- Modal -->    
+    <div
+      class="modal fade"
+      id="myModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+            
+      <div class="modal-dialog" role="document">
+                
+        <div class="modal-content">
+                    
+          <div class="modal-header">
+                        
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+                            <span aria-hidden="true">&times;</span
+              >            </button
+            >          
+          </div>
+                    
+          <div class="modal-body"></div>
+          <div class="modal-username"></div>
+          <div class="modal-email"></div>
+          <div class="modal-comments"></div>
+                    
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary loadCommentsBtn">Load comments</button>
+                        <button
+              type="button"
+              class="btn btn-secondary close_btn"
+              data-dismiss="modal"
+            >
+                            Close            
+          </div>       
+        </div>    
+      </div>    
+    </div>
+
     <!-- Footer-->
     <footer class="footer">
       <div class="container">
@@ -143,14 +136,15 @@
         </div>
       </div>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
-      integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+      integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
       crossorigin="anonymous"
     ></script>
     <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
-      integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
       crossorigin="anonymous"
     ></script>
     <script src="/data/assets/script.js"></script>
