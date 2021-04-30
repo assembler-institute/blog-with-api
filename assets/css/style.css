@@ -9,7 +9,7 @@
   font-family: "Montserrat", sans-serif;
 }
 
-body{
+body {
   margin-bottom: 80px;
 }
 
@@ -36,36 +36,34 @@ header img {
   margin-left: 10px;
 }
 /*Arrows por pagination*/
-.paginationContainer .col{
+.paginationContainer .col {
   padding: 0px 20px;
 }
-.paginationContainer i{
+.paginationContainer i {
   font-size: 50px;
   cursor: pointer;
   color: black;
   /* color: var(--greenColor); */
   transition: 0.3s ease-in-out;
 }
-.paginationContainer .fa-chevron-circle-left:hover{
+.paginationContainer .fa-chevron-circle-left:hover {
   color: var(--yellowColor);
 }
-.paginationContainer .fa-chevron-circle-right:hover{
+.paginationContainer .fa-chevron-circle-right:hover {
   color: var(--yellowColor);
 }
 
-.paginationContainer .arrowDisabled{
+.paginationContainer .arrowDisabled {
   cursor: auto;
   opacity: 0.4;
-
 }
 
-.paginationContainer .arrowDisabled:hover{
+.paginationContainer .arrowDisabled:hover {
   color: black;
 }
 
-
 /*Post main page style*/
-.mainContainer{
+.mainContainer {
   transition: 0.1s ease-in-out;
 }
 .post {
@@ -124,16 +122,25 @@ figure img {
 }
 
 /* Modal post styles */
+.modalPost{
+  overflow-y: auto;
+}
 .modal-content {
   border: none;
 }
-.modalPostContent{
+.modalPostContent {
   opacity: 1;
 }
 .modal-header {
   background-color: black;
   color: white;
   padding: 15px;
+  justify-self: center;
+}
+.modal-header .modal-title {
+  font-size: 25px;
+  font-weight: 900;
+  padding-left: 20px;
 }
 .modal-header img {
   height: 80px;
@@ -160,29 +167,29 @@ figure img {
   color: black;
   opacity: 0.7;
 }
-.modal-body .container .rowIcons{
+.modal-body .container .rowIcons {
   padding: 0px;
   padding-right: 30px;
   /* margin-bottom: 20px; */
 }
-.btnPostIcon{
+.btnPostIcon {
   background-color: red;
   color: white;
   transition: 0.3s ease-in-out;
 }
-.btnPostIcon i{
+.btnPostIcon i {
   font-weight: 500;
   /* font-size: 50px;; */
 }
-.btnPostIcon:hover{
+.btnPostIcon:hover {
   color: white;
   opacity: 0.8;
   /* font-size: 50px;; */
 }
-.btnEditPost{
+.btnEditPost {
   background-color: var(--greenColor);
 }
-.btnDeletePost{
+.btnDeletePost {
   background-color: var(--redColor);
 }
 .modal-body .container .row .col,
@@ -226,6 +233,35 @@ figure img {
   font-style: italic;
   font-weight: 300;
 }
+/* Modal editing-deleting post styles */
+.labelForm {
+  display: block;
+  font-weight: 900;
+  font-size: 20px;
+}
+.bodyTitleInput{
+  min-height: 200px;
+}
+
+.cancelModalBtn {
+  background-color: var(--redColor);
+  color: white;
+}
+.cancelModalBtn:hover {
+  background-color: var(--redColor);
+  color: white;
+  opacity: 0.7;
+}
+.confirmModalBtn {
+  background-color: var(--greenColor);
+  color: white;
+}
+.confirmModalBtn:hover {
+  background-color: var(--greenColor);
+  color: white;
+  opacity: 0.7;
+}
+
 
 /* Media queries */
 @media (max-width: 992px) {
@@ -250,10 +286,9 @@ figure img {
   .modal-body .titleModal {
     font-size: 20px;
   }
-  .paginationContainer i{
+  .paginationContainer i {
     font-size: 40px;
   }
-  
 }
 
 @media (max-width: 576px) {
@@ -268,7 +303,7 @@ figure img {
   .post span {
     font-size: 15px;
   }
-  .paginationContainer i{
+  .paginationContainer i {
     font-size: 30px;
   }
 }
