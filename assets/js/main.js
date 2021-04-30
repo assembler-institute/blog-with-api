@@ -34,6 +34,8 @@ let modalText = $(".modal-text");
 
 let editModalTitle = $("#editTitle");
 let editModalBody = $("#editBody");
+let deleteButton = $("");
+
 let editJSON = { title: new String(), body: new String() };
 
 /* -------------------------------------------------------------------------- */
@@ -91,7 +93,9 @@ function postBox(post, postId) {
   let postRow = $("<div>");
   postRow.addClass("row h-100 px-4 d-flex justify-content-between");
   let postLeft = $("<div>");
-  postLeft.addClass("col-10 d-flex flex-column post-left p-0");
+  postLeft.addClass(
+    "col-10 d-flex flex-column justify-content-between post-left p-0 mh-100"
+  );
   let postRight = $("<div>");
   postRight.addClass("col-1 flex-column justify-content-start post-right p-0");
 
@@ -100,9 +104,7 @@ function postBox(post, postId) {
 
   // Assigning title
   let postTitle = $("<div>");
-  postTitle.addClass(
-    "card-title flex-grow-1 mh-70 capitalized-text overflow-hidden"
-  );
+  postTitle.addClass("card-title capitalized-text");
   postTitle.text(rawTitle);
   // Assigning user
   let postUser = $("<div>");
