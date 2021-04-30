@@ -31,6 +31,9 @@ function DataUser(){
         }
         
     )
+    .catch(function (error) {
+        console.log(error);
+      });
             
 }
 function DataPost(userId,userName){
@@ -75,7 +78,13 @@ function deletePost(userNam,postID){
     })
     
     $('#finalDelet').on('click',function(){
-       console.log(postID);
+        axios.delete(url+`post/${postID}`).then(
+            
+            
+          )
+          .catch(function (error) {
+            console.log(error);
+          });
     })
 }
 
