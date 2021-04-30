@@ -242,7 +242,10 @@ function saveEditedPost(event) {
   $.ajax(settings).done(function (response) {
     $("#editModal").modal("hide");
     $("#editForm").off();
-    $("#postModal").modal("hide");
+    $("#postModalLabel").text($("#postEditTitle").val());
+    $("#postModalText").text($("#postEditBody").val());
+    $("#postModal").attr("userId", $("#postEditUserId").val());
+    $("#postModal").modal("show");
     getPosts(1, 10, true);
   });
 }
