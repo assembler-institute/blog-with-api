@@ -133,6 +133,13 @@ button {
   outline: none;
 }
 
+/* Background */
+#exampleModal,
+#editModal {
+  backdrop-filter: blur(4px);
+  background-color: transparent;
+}
+
 .modal {
   display: none;
 }
@@ -241,4 +248,8 @@ textarea {
   color: var(--light-color);
   border: var(--border-width) solid var(--light-color);
   background-color: transparent;
+}
+
+.btn:focus {
+  outline: none !important;
 }
