@@ -89,6 +89,7 @@ body {
 
 .card-title {
   font-weight: 800;
+  overflow: scroll;
 }
 
 .post-right {

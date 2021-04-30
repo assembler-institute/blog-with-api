@@ -57,7 +57,10 @@
       <div class="modal-dialog modal-dialog modal-dialog-centered">
         <div class="modal-content p-3">
           <div class="modal-header">
-            <h5 class="modal-title capitalized-text" id="exampleModalLabel">
+            <h5
+              class="modal-title capitalized-text text-truncate overflow-hidden"
+              id="exampleModalLabel"
+            >
               Post's title
             </h5>
             <button
@@ -78,7 +81,7 @@
             <hr />
 
             <!-- Body (collapsable) -->
-            <div id="accordianId" role="tablist" aria-multiselectable="true">
+            <div id="accordionBody" role="tablist" aria-multiselectable="true">
               <div class="card border-0">
                 <div class="subtitle-wrapper d-flex justify-content-between">
                   <h5 class="col-11 modal-subtitle p-0 mb-0">Body</h5>
@@ -87,10 +90,10 @@
                     <h5 class="mb-0 p-0">
                       <a
                         data-toggle="collapse"
-                        data-parent="#accordianId"
-                        href="#section1ContentId"
+                        data-parent="#accordionBody"
+                        href="#accordionContent"
                         aria-expanded="true"
-                        aria-controls="section1ContentId"
+                        aria-controls="accordionContent"
                       >
                         <i class="uil uil-angle-down pb-0 text-right"></i>
                       </a>
@@ -98,7 +101,7 @@
                   </div>
                 </div>
                 <div
-                  id="section1ContentId"
+                  id="accordionContent"
                   class="collapse in"
                   role="tabpanel"
                   aria-labelledby="section1HeaderId"
@@ -115,7 +118,11 @@
             <hr />
 
             <!-- Comments (collapsable) -->
-            <div id="accordianId" role="tablist" aria-multiselectable="true">
+            <div
+              id="accordionComments"
+              role="tablist"
+              aria-multiselectable="true"
+            >
               <div class="card border-0">
                 <div class="subtitle-wrapper d-flex justify-content-between">
                   <h5 class="col-11 modal-subtitle p-0 mb-0">Comments</h5>
@@ -124,7 +131,7 @@
                     <h5 class="mb-0 p-0">
                       <a
                         data-toggle="collapse"
-                        data-parent="#accordianId"
+                        data-parent="#accordionComments"
                         href="#commentsContainer"
                         aria-expanded="true"
                         aria-controls="commentsContainer"

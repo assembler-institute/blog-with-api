@@ -39,13 +39,13 @@ let editJSON = { title: new String(), body: new String() };
 /* -------------------------------------------------------------------------- */
 /*                               CLOSING BUTTONS                              */
 /* -------------------------------------------------------------------------- */
-$(".personal-close").on("click", function () {
-  $(".collapse").each(function () {
-    if ($(this).hasClass("show")) {
-      $(this).toggleClass("show");
-    }
-  });
-});
+// $(".personal-close").on("click", function () {
+//   $(".collapse").each(function () {
+//     if ($(this).hasClass("show")) {
+//       $(this).toggleClass("show");
+//     }
+//   });
+// });
 
 /* -------------------------------------------------------------------------- */
 /*                                    POSTS                                   */
@@ -100,7 +100,9 @@ function postBox(post, postId) {
 
   // Assigning title
   let postTitle = $("<div>");
-  postTitle.addClass("card-title flex-grow-1 capitalized-text");
+  postTitle.addClass(
+    "card-title flex-grow-1 mh-70 capitalized-text overflow-hidden"
+  );
   postTitle.text(rawTitle);
   // Assigning user
   let postUser = $("<div>");
@@ -299,7 +301,7 @@ function getPostComments(comments) {
 /* -------------------------------------------------------------------------- */
 function modalContent(postId) {
   var settings = {
-    url: localUrl + `/posts?id=${postId + 1}`,
+    url: localUrl + `/posts?id=${postId}`,
     method: "GET",
     timeout: 0,
     headers: {},
