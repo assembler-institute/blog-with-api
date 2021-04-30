@@ -33,11 +33,12 @@
   --text-roman: "Bespoke";
   --text-italic: "BespokeItalic";
   /* Measurements */
-  --border-width: 6px;
+  --border-width: 3px;
   --margin: 20px;
   /* Colors */
-  --dark-color: rgb(209, 3, 48);
-  --light-color: rgb(255, 219, 39);
+  /* --dark-color: rgb(209, 3, 48); */
+  --dark-color: rgb(255, 133, 158);
+  --light-color: rgb(0, 0, 0);
   --accent-color: whitesmoke;
 }
 
@@ -48,12 +49,12 @@
   -ms-user-select: none;
   user-select: none;
   /* Border */
+  border-radius: 10px;
   /* outline: 2px solid green; */
 }
 
 header {
   margin-bottom: 10px;
-  height: ;
 }
 
 body {
@@ -74,11 +75,17 @@ body {
 
 .custom-post {
   color: black;
-  border: var(--border-width) solid black;
+  border: var(--border-width) solid var(--accent-color);
   background-color: var(--accent-color);
-  border-radius: 5px;
+  border-radius: 10px;
   height: 200px;
   overflow: scroll;
+  transition: 0.5s;
+}
+
+.custom-post:hover {
+  background-color: transparent;
+  color: var(--accent-color);
 }
 
 .posts-container {
@@ -140,7 +147,7 @@ button {
 }
 
 .modal-content {
-  border: var(--border-width) solid black;
+  border: none;
   height: fit-content;
 }
 
