@@ -36,9 +36,6 @@ let editModalTitle = $("#editTitle");
 let editModalBody = $("#editBody");
 let editJSON = { title: new String(), body: new String() };
 
-// Others
-let breakLine = $("<hr/>");
-
 /* -------------------------------------------------------------------------- */
 /*                               CLOSING BUTTONS                              */
 /* -------------------------------------------------------------------------- */
@@ -54,24 +51,29 @@ $(".personal-close").on("click", function () {
 /*                                    POSTS                                   */
 /* -------------------------------------------------------------------------- */
 // Getting all posts
-var settings = {
-  url: localUrl + "/posts",
-  method: "GET",
-  timeout: 0,
-  headers: {},
-};
-$.ajax(settings).done(function (response) {
-  for (let el = 1; el <= shownPosts; el++) {
-    postBox(response[el], el);
-  }
+function loadPosts(postPage, postLimit) {
+  var settings = {
+    url: localUrl + `/posts?_page=${postPage}&_limit=${postLimit}`,
+    method: "GET",
+    timeout: 0,
+    headers: {},
+  };
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+    $(response).each(function (index, element) {
+      postBox(response[index], index + 1);
+    });
 
-  // Making all posts clickables
-  $(".custom-post").each(function () {
-    currPost = $(this);
-    currPost.attr("data-target", "#exampleModal");
-    currPost.attr("data-toggle", "modal");
+    // Making all posts clickables
+    $(".custom-post").each(function () {
+      currPost = $(this);
+      currPost.attr("data-target", "#exampleModal");
+      currPost.attr("data-toggle", "modal");
+    });
   });
-});
+}
+
+loadPosts(1, 12);
 
 // Create the box container
 function postBox(post, postId) {
