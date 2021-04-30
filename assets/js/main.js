@@ -2,21 +2,26 @@
 const baseURL = `http://localhost:3000/`;
 var currentPage = 1;
 const listElm = document.querySelector("#scrollableElement");
+
 /*
 To run on document load
 */
 $(function () {
   getPosts(1, 5, true);
   listElm.addEventListener("scroll", infiniteScroll);
+  $(window).on("resize", isFilled);
 });
 
-// TODO first start load animation
 /*
 This function gets posts between input numbers from API and displays them in homepage
 The refresh variable indicates if a whole page reload is necessary of if we'll just apend more posts
  */
 function getPosts(page, limit, refresh) {
-  var postsJSON = [];
+  if (refresh === true) {
+    $("html").addClass("preparation");
+    currentPage = 1;
+    $("#posts-container .container .row").empty();
+  }
   const settings = {
     url: `${baseURL}posts?_page=${page}&_limit=${limit}`,
     method: "GET",
@@ -31,9 +36,6 @@ function getPosts(page, limit, refresh) {
 This function inserts in DOM all elements from an array of objects
 */
 function populatePosts(postsJSON, refresh) {
-  if (refresh === true) {
-    $("#posts-container .container .row").empty();
-  }
   $(postsJSON).each(function (index) {
     $("#posts-container .container .row").append(
       $("<div>")
@@ -56,9 +58,9 @@ function populatePosts(postsJSON, refresh) {
     );
   });
   if (refresh === true) {
-    currentPage = 1;
-    populateHomePage();
+    $("html").removeClass("preparation");
   }
+  isFilled();
 }
 
 /* 
@@ -264,17 +266,11 @@ function infiniteScroll() {
 }
 
 /* 
-This function makes the first population fo the homepage 
-calculating the height needed
+This function verifies if the height is filled with posts
 */
-function populateHomePage() {
-  let postCont = document.getElementById("posts-container");
-  let header = document.querySelector("header");
-  let body = document.querySelector("body");
-  const pagesToLoad = Math.ceil(
-    body.clientHeight / (postCont.clientHeight + header.clientHeight)
-  );
-  for (let i = 0; i < pagesToLoad; i++) {
+function isFilled() {
+  /* To fill up on first load and refresh */
+  if (!(listElm.scrollHeight > listElm.clientHeight)) {
     currentPage += 1;
     getPosts(currentPage, 5, false);
   }

@@ -4,20 +4,21 @@
 
 html {
   overflow: hidden;
+  opacity: 1;
+  transition: opacity 800ms ease-in-out;
+}
+.preparation {
+  opacity: 0;
 }
 body {
   height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
   background-image: url(../img/header-background.jpg);
-
-  background-size: cover; /* Resize the background image to cover the entire container */
+  background-size: cover;
 }
 
 .header-background-img {
-  /*background-image: url(../img/header-background.jpg);
-  background-color: #cccccc;
-   TODO parallax */
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
