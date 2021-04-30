@@ -91,6 +91,10 @@ body {
   font-weight: 800;
 }
 
+.post-right{
+  display: none;
+}
+
 footer {
   font-family: var(--headlines);
   font-size: 30px;

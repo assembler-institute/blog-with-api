@@ -87,14 +87,12 @@ function postBox(post, postId) {
   let postLeft = $("<div>");
   postLeft.addClass("col-10 d-flex flex-column post-left p-0");
   let postRight = $("<div>");
-  postRight.addClass(
-    "col-1 d-flex flex-column justify-content-start post-left p-0"
-  );
+  postRight.addClass("col-1 flex-column justify-content-start post-right p-0");
 
   //  DELETE
   deleteIcon(postRight, postId);
   // PATCH
-  patchIcon(postRight, postId);
+  editIcon(postRight, postId);
 
   // Assigning title
   let postTitle = $("<div>");
@@ -115,14 +113,23 @@ function postBox(post, postId) {
   postWrapper.append(postInside);
   postsContainer.append(postWrapper);
 
-  postInside.on("click", function (event) {
+  // Show/hide delete and patch icons when mouse over/out post
+  postInside.on("mouseover", function () {
+    $(postRow.children()[1]).toggleClass("d-flex");
+  });
+  postInside.on("mouseout", function () {
+    $(postRow.children()[1]).toggleClass("d-flex");
+  });
+
+  // Open the modal when clicking the post
+  postInside.on("click", function () {
     id = $(this).data("postid");
     modalContent(id);
   });
 }
 
+// DELETE
 function deleteIcon(parentDiv, postId) {
-  // DELETE
   let deletePost = $("<i>");
   deletePost.addClass("post-icon uil-times-circle text-right");
   deletePost.attr("id", "deleteIcon");
@@ -135,8 +142,8 @@ function deleteIcon(parentDiv, postId) {
   });
 }
 
-function patchIcon(parentDiv, postId) {
-  // PATCH
+// PATCH
+function editIcon(parentDiv, postId) {
   let editPost = $("<i>");
   editPost.addClass("post-icon uil-edit text-right");
   editPost.attr("id", "editIcon");
