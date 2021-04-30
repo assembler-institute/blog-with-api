@@ -1,11 +1,13 @@
-// CONSTANTS
+// GLOBAL CONSTANTS AND VARIABLES
 const baseURL = `http://localhost:3000/`;
-
+var currentPage = 1;
+const listElm = document.querySelector("#scrollableElement");
 /*
 To run on document load
 */
 $(function () {
-  getPosts(1, 10, false);
+  getPosts(1, 5, true);
+  listElm.addEventListener("scroll", infiniteScroll);
 });
 
 // TODO first start load animation
@@ -53,6 +55,10 @@ function populatePosts(postsJSON, refresh) {
         )
     );
   });
+  if (refresh === true) {
+    currentPage = 1;
+    populateHomePage();
+  }
 }
 
 /* 
@@ -239,4 +245,33 @@ function saveEditedPost(event) {
     $("#postModal").modal("hide");
     getPosts(1, 10, true);
   });
+}
+
+/* 
+This function loads the infinite Scroll
+*/
+function infiniteScroll() {
+  if (listElm.scrollTop + listElm.clientHeight >= listElm.scrollHeight) {
+    currentPage += 1;
+    getPosts(currentPage, 5, false);
+    console.log("nextPage");
+  }
+}
+
+/* 
+This function makes the first population fo the homepage 
+calculating the height needed
+*/
+function populateHomePage() {
+  let postCont = document.getElementById("posts-container");
+  let header = document.querySelector("header");
+  let body = document.querySelector("body");
+  const pagesToLoad = Math.ceil(
+    body.clientHeight / (postCont.clientHeight + header.clientHeight)
+  );
+  for (let i = 0; i < pagesToLoad; i++) {
+    currentPage += 1;
+    getPosts(currentPage, 5, false);
+    console.log("nextPage");
+  }
 }

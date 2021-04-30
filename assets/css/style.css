@@ -1,3 +1,11 @@
+html {
+  overflow: hidden;
+}
+body {
+  height: 100vh;
+  overflow: auto;
+}
+
 .header-background-img {
   /*background-image: url(../img/header-background.jpg);
   background-color: #cccccc;
