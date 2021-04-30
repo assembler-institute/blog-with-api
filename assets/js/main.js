@@ -32,6 +32,10 @@ let modalMail = $("#userMail");
 let modalBody = $(".modal-body");
 let modalText = $(".modal-text");
 
+let editModalTitle = $("#editTitle");
+let editModalBody = $("#editBody");
+let editJSON = { title: new String(), body: new String() };
+
 // Others
 let breakLine = $("<hr/>");
 
@@ -89,14 +93,12 @@ function postBox(post, postId) {
   let postRight = $("<div>");
   postRight.addClass("col-1 flex-column justify-content-start post-right p-0");
 
-  //  DELETE
-  // deleteIcon(postRight, postId);
-  // PATCH
-  editIcon(postRight, postId);
+  // DELETE or PATCH
+  editIcon(postRight, post);
 
   // Assigning title
   let postTitle = $("<div>");
-  postTitle.addClass("card-title flex-grow-1");
+  postTitle.addClass("card-title flex-grow-1 capitalized-text");
   postTitle.text(rawTitle);
   // Assigning user
   let postUser = $("<div>");
@@ -128,22 +130,23 @@ function postBox(post, postId) {
   });
 }
 
-// DELETE
-function deleteIcon(parentDiv, postId) {
-  let deletePost = $("<i>");
-  deletePost.addClass("post-icon uil-times-circle text-right");
-  deletePost.attr("id", "deleteIcon");
+// DELETE or PATCH
 
-  parentDiv.append(deletePost);
+// function deleteIcon(parentDiv, post) {
+//   let deletePost = $("<i>");
+//   deletePost.addClass("post-icon uil-times-circle text-right");
+//   deletePost.attr("id", "deleteIcon");
 
-  deletePost.on("click", function (event) {
-    event.stopImmediatePropagation();
-    console.log("About to delete post: ", postId);
-  });
-}
+//   parentDiv.append(deletePost);
 
-// PATCH
-function editIcon(parentDiv, postId) {
+//   deletePost.on("click", function (event) {
+//     event.stopImmediatePropagation();
+//     console.log("About to delete post: ", post);
+//   });
+// }
+
+// DELETE or PATCH
+function editIcon(parentDiv, post) {
   let editPost = $("<i>");
   editPost.addClass("post-icon uil-edit text-right");
   editPost.attr("id", "editIcon");
@@ -153,8 +156,25 @@ function editIcon(parentDiv, postId) {
   editPost.on("click", function (event) {
     event.stopImmediatePropagation();
     $("#editModal").modal("show");
+    editModalTitle.val(post.title);
+    editModalBody.text(post.body);
+  });
+}
 
-    // data - whatever = "@mdo";
+//
+function patchPost(postId) {
+  var settings = {
+    url: `https://jsonplaceholder.typicode.com/post/${postId}`,
+    method: "PATCH",
+    timeout: 0,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: JSON.stringify(editJSON),
+  };
+
+  $.ajax(settings).done(function (response) {
+    console.log(response);
   });
 }
 
@@ -214,6 +234,7 @@ function renderModalUser(user, nameDiv, mailDiv) {
 /* -------------------------------------------------------------------------- */
 /*                                  COMMENTS                                  */
 /* -------------------------------------------------------------------------- */
+// Getting all comments
 var settings = {
   url: localUrl + "/comments",
   method: "GET",
@@ -247,13 +268,13 @@ function getPostComments(comments) {
     commentWrapper.addClass("pb-4");
     // Comment title element
     let commentTitle = $("<h6>");
-    commentTitle.addClass("comment-title");
+    commentTitle.addClass("comment-title capitalized-text");
     // Comment mail element
     let commentMail = $("<h6>");
     commentMail.addClass("comment-mail text-lowercase");
     // Comment body element
     let commentBody = $("<h6>");
-    commentBody.addClass("comment-body");
+    commentBody.addClass("comment-body capitalized-text");
 
     let textTitle = element.name;
     let textMail = element.email;

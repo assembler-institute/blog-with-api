@@ -130,7 +130,7 @@ button {
 }
 
 .modal-text-container {
-  min-height: 100px;
+  min-height: 120px;
   max-height: 180px;
 }
 
@@ -149,11 +149,7 @@ button {
   overflow-y: scroll;
 }
 
-.modal-title::first-letter,
-.modal-text::first-letter,
-.card-title::first-letter,
-.comment-title::first-letter,
-.comment-body::first-letter {
+.capitalized-text::first-letter {
   text-transform: uppercase;
 }
 

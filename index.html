@@ -48,7 +48,7 @@
     <!-- ----------------------------------------------------------------------- -->
     <!-- Modal -->
     <div
-      class="modal fade show"
+      class="modal fade personal-close"
       id="exampleModal"
       tabindex="-1"
       aria-labelledby="exampleModalLabel"
@@ -57,7 +57,9 @@
       <div class="modal-dialog modal-dialog modal-dialog-centered">
         <div class="modal-content p-3">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Post's title</h5>
+            <h5 class="modal-title capitalized-text" id="exampleModalLabel">
+              Post's title
+            </h5>
             <button
               type="button"
               class="close personal-close"
@@ -68,7 +70,7 @@
             </button>
           </div>
           <div class="modal-body pb-0">
-            <h5 class="modal-subtitle">Username</h5>
+            <h5 class="modal-subtitle" class="capitalized-text">Username</h5>
             <p id="userName">Actual username</p>
             <hr />
             <h5 class="modal-subtitle">Email</h5>
@@ -103,7 +105,7 @@
                 >
                   <div
                     id="bodyPost"
-                    class="card-body modal-text modal-text-container overflow-auto pl-0"
+                    class="card-body modal-text modal-text-container overflow-auto capitalized-text pl-0"
                   >
                     Post's body
                   </div>
@@ -140,7 +142,7 @@
                 >
                   <div
                     id="commentsBlock"
-                    class="comments-text card-body modal-text modal-text-container overflow-auto pl-0"
+                    class="comments-text card-body modal-text modal-text-container overflow-auto capitalized-text pl-0"
                   ></div>
                 </div>
               </div>
@@ -161,9 +163,10 @@
         </div>
       </div>
     </div>
+
     <!-- Edit modal -->
     <div
-      class="modal fade"
+      class="modal fade personal-close"
       id="editModal"
       tabindex="-1"
       role="dialog"
@@ -173,7 +176,9 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content p-3">
           <div class="modal-header">
-            <h5 class="edit-modal-title" id="editModalLabel">Edit post</h5>
+            <h5 class="edit-modal-title capitalized-text" id="editModalLabel">
+              Edit post
+            </h5>
             <button
               type="button"
               class="close personal-close"
@@ -189,14 +194,18 @@
                 <label for="editTitle">
                   <h5 class="modal-subtitle">Title</h5>
                 </label>
-                <input type="text" class="form-control" id="editTitle" />
+                <input
+                  type="text"
+                  class="form-control capitalized-text"
+                  id="editTitle"
+                />
               </div>
               <div class="form-group">
                 <label for="editBody"
                   ><h5 class="modal-subtitle">Body</h5>
                 </label>
                 <textarea
-                  class="form-control modal-text-container"
+                  class="form-control modal-text-container capitalized-text"
                   id="editBody"
                 ></textarea>
               </div>
