@@ -62,10 +62,10 @@ function loadPosts(postPage, postLimit) {
     headers: {},
   };
   $.ajax(settings).done(function (response) {
-    console.log(response);
+    // console.log(response);
     $(response).each(function (index, element) {
       postBox(response[index], response[index].id);
-      console.log("Loaded post!", response[index].id);
+      // console.log("Loaded post!", response[index].id);
     });
 
     // Making all posts clickables
@@ -302,7 +302,6 @@ function getPostComments(comments) {
 /*                                MODAL CONTENT                               */
 /* -------------------------------------------------------------------------- */
 function modalContent(postId) {
-  console.log("Clicked", postId);
   var settings = {
     url: localUrl + `/posts/${postId}`,
     method: "GET",
