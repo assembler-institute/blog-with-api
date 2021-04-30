@@ -65,6 +65,9 @@ header img {
 
 
 /*Post main page style*/
+.mainContainer{
+  transition: 0.1s ease-in-out;
+}
 .post {
   position: relative;
   padding: 0;
@@ -120,9 +123,12 @@ figure img {
   filter: grayscale(0);
 }
 
-/* Modal styles */
+/* Modal post styles */
 .modal-content {
   border: none;
+}
+.modalPostContent{
+  opacity: 1;
 }
 .modal-header {
   background-color: black;
@@ -140,9 +146,13 @@ figure img {
 }
 .modal-body {
   padding: 20px;
+  padding-top: 20px;
 }
 .modal-body .container {
   padding: 0;
+}
+.modal-body .container .row {
+  padding: 10px 30px;
 }
 .modal-body .titleModal {
   font-weight: 900;
@@ -150,8 +160,30 @@ figure img {
   color: black;
   opacity: 0.7;
 }
-.modal-body .container .row {
-  padding: 10px 30px;
+.modal-body .container .rowIcons{
+  padding: 0px;
+  padding-right: 30px;
+  /* margin-bottom: 20px; */
+}
+.btnPostIcon{
+  background-color: red;
+  color: white;
+  transition: 0.3s ease-in-out;
+}
+.btnPostIcon i{
+  font-weight: 500;
+  /* font-size: 50px;; */
+}
+.btnPostIcon:hover{
+  color: white;
+  opacity: 0.8;
+  /* font-size: 50px;; */
+}
+.btnEditPost{
+  background-color: var(--greenColor);
+}
+.btnDeletePost{
+  background-color: var(--redColor);
 }
 .modal-body .container .row .col,
 .modal-body .container .row .col-12 {

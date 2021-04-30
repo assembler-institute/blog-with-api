@@ -29,7 +29,6 @@ $(".fa-chevron-circle-right").on("click", nextPage);
 //------------------------------------------------------------------------
 getPostsRequest(indexPage);
 checkIndexPage();
-// resizeHeaderPost();
 //------------------------------------------------------------------------
 // FUNCTIONS
 //------------------------------------------------------------------------
@@ -68,6 +67,7 @@ function checkIndexPage() {
 
 function getPostsRequest(indexPage) {
   /*Request for getting all posts*/
+  // $(".mainContainer").fadeOut();
   $(".mainContainer").empty();
   console.log($(".mainContainer"));
   var settings = {
@@ -89,6 +89,7 @@ function getPostsRequest(indexPage) {
       $(".mainContainer").append(rowPost);
     }
   });
+  // $(".mainContainer").fadeIn();
 }
 
 function setHeaderPost(response, k) {
