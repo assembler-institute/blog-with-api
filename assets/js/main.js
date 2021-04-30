@@ -90,7 +90,7 @@ function postBox(post, postId) {
   postRight.addClass("col-1 flex-column justify-content-start post-right p-0");
 
   //  DELETE
-  deleteIcon(postRight, postId);
+  // deleteIcon(postRight, postId);
   // PATCH
   editIcon(postRight, postId);
 
@@ -153,6 +153,7 @@ function editIcon(parentDiv, postId) {
   editPost.on("click", function (event) {
     event.stopImmediatePropagation();
     console.log("About to edit post: ", postId);
+    $("#editModal").modal("show");
   });
 }
 

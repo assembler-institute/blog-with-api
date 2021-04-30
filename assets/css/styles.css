@@ -186,3 +186,14 @@ button {
   font-weight: 900;
   height: 100px;
 }
+
+.edit-modal-title{
+  font-family: var(--headlines);
+  font-weight: 400;
+  font-size: 100px;
+  height: 100px;
+  line-height: 100px;
+
+
+
+}
