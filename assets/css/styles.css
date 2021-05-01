@@ -56,6 +56,14 @@ nav {
   color: var(--dark-color);
 }
 
+.separator {
+  font-weight: 400;
+}
+
+.separator:hover {
+  color: var(--light-color);
+}
+
 body {
   padding: 40px;
   height: 100vh;
@@ -285,4 +293,16 @@ textarea {
 
 .btn:focus {
   outline: none !important;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  width: 100%;
+  color: var(--light-color);
+  transition: 0.4s;
+}
+
+a:hover {
+  color: var(--dark-color);
 }
