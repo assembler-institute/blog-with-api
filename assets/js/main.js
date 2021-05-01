@@ -1,7 +1,7 @@
 // Variables
 
 let from = 0;
-let limit = 20;
+let limit = 100;
 let mainUrl = "http://localhost:3000/"; //https://jsonplaceholder.typicode.com/
 let section;
 let id;
@@ -66,13 +66,31 @@ $("#comments-btn").on("click", function () {
   }
 });
 
-// Get the id and delete the post with that id when you click on "confirm" button. Then load the posts for the main page
-//!(it doesn't show it properly). It should close the modals, clean the main page and load it with the right posts.
-// $("#confirm-delete-btn").on("click", function () {
-//   id = $("#post-title").attr("post-id");
-//   deletePost(id);
-//   loadPosts();
-// });
+//Prevent the default of the form to submit the changes when a post is edited
+$("#edit-form").on("submit", function (e) {
+  e.preventDefault();
+});
+
+//Confirm and send the edit. Then empty the posts main container and load the post to refresh the page
+$('#submit-btn').on('click', function() {
+  id = $("#modal-for-posts").attr("post-id");
+  title = $("#input-for-title").val();
+  body = $("#input-for-body").val();
+  editPost(id, title, body);
+  $('#main-container-posts').empty();
+  loadPosts();
+})
+
+
+// Get the id and delete the post with that id when you click on "confirm" button. 
+// Then load the posts for the main page
+$("#confirm-delete-btn").on("click", function () {
+  id = $("#post-title").attr("post-id");
+  console.log(id)
+  deletePost(id);
+  $('#main-container-posts').empty();
+  loadPosts();
+});
 
 // Functions
 
@@ -192,35 +210,10 @@ function createComments(commentEmail, commentTitle, commentBody) {
     );
 }
 
-$("#edit-form").on("submit", function (e) {
-  e.preventDefault();
-  id = $("#modal-for-posts").attr("post-id");
-  title = $("#input-for-title").val();
-  body = $("#input-for-body").val();
-  editPost(id, title, body);
-});
-
-// var postToEdit = {
-//   url: "http://localhost:3000/posts/2/",
-//   method: "PATCH",
-//   timeout: 0,
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-//   data: JSON.stringify({
-//     title: "titletest",
-//     body: "bodytest",
-//   }),
-// };
-
-// $.ajax(settings).done(function (response) {
-//   console.log(response);
-// });
-
 function editPost(id, title, body) {
   section = "posts/";
   var postToEdit = {
-    url: `https://${mainUrl}${section}${id}/`,
+    url: `${mainUrl}${section}${id}/`,
     method: "PATCH",
     timeout: 0,
     data: {
@@ -230,26 +223,17 @@ function editPost(id, title, body) {
   };
 
   $.ajax(postToEdit).done(function (response) {
-    console.log(response);
-    // console.log(
-    //   `Post with id: ${id}, edited succesfully with title: ${title} and body: ${body}`
-    // );
   });
 }
 
-// function deletePost(id) {
-//   section = "posts/";
-//   var postToDelete = {
-//     url: `${mainUrl}${section}${id}`,
-//     method: "DELETE",
-//     timeout: 0,
-//   };
+function deletePost(id) {
+  section = "posts/";
+  var postToDelete = {
+    url: `${mainUrl}${section}${id}`,
+    method: "DELETE",
+    timeout: 0,
+  };
 
-//   $(".modal").hide();
-//   $(".modal-backdrop").hide();
-//   console.log(id);
-
-//   // $.ajax(postToDelete).done(function (response) {
-//   //   console.log(`post ${id} deleted. Remember to load it again on db.json`);
-//   // });
-// }
+  $.ajax(postToDelete).done(function (response) {
+  });
+}
