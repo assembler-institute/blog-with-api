@@ -25,7 +25,6 @@ let bodyPost = $("#bodyPost");
 
 // Comments
 let commentsDiv = $("#commentsBlock");
-let commentsIcon = $("#commentsIcon");
 
 // Modal
 let modalTitle = $(".modal-title");
@@ -74,7 +73,6 @@ function loadPosts(postPage, postLimit) {
         postBox(response[index], response[index].id, false);
       }
     });
-    scrollFunctionality();
   });
 }
 
@@ -266,12 +264,9 @@ function renderModalUser(user, nameDiv, mailDiv) {
 function getUsersPost(userId) {
   $(`.badge-${userId}`).each(function () {
     $(this).on("click", function (event) {
-      console.log("Reset height");
-      let postsContHeight =
-        postsContainerScroll.height() + postsContPadding * 2;
-      $(postsContHeight).css("height", "0");
-
       event.stopImmediatePropagation();
+      postsContainerScroll.css("height", "100px");
+
       var settings = {
         url: localUrl + `/users/${userId}/posts`,
         method: "GET",
@@ -365,7 +360,7 @@ function modalContent(postId) {
     // User
     setModalUser(response.userId, modalUser, modalMail);
     // Comments
-    commentsIcon.on("click", () => setComments(postId));
+    setComments(postId);
   });
 }
 
@@ -373,6 +368,10 @@ function modalContent(postId) {
 /*                                 NAV BUTTONS                                */
 /* -------------------------------------------------------------------------- */
 homeButton.on("click", function () {
+  // Reseting height
+  postsContainerScroll.css("height", "fit-content");
+
+  console.clear();
   pageNum = 1;
   // Emptying posts grid
   postsContainer.empty();
@@ -385,7 +384,7 @@ usersButton.on("click", () => console.log("Users list"));
 /*                                   SCROLL                                   */
 /* -------------------------------------------------------------------------- */
 
-function scrollFunctionality() {
+function scrollFunctionality(responseItems) {
   $(postsWrapperScroll).scroll(function () {
     // Posts container with padding
     let postsContHeight = postsContainerScroll.height() + postsContPadding * 2;
@@ -399,6 +398,8 @@ function scrollFunctionality() {
       pageNum++;
       console.log("New request");
       loadPosts(pageNum, 12);
+    } else {
+      console.log("Already loaded all response");
     }
   });
 }
@@ -408,3 +409,4 @@ function scrollFunctionality() {
 /* -------------------------------------------------------------------------- */
 // Page & Limit
 loadPosts(pageNum, 15);
+scrollFunctionality();
