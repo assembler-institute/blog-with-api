@@ -89,7 +89,7 @@ function setRequestURL(start, limit, requestSettings, postID) {
     } else {
       let newStart = start + limit;
       requestSettings.url = "https://jsonplaceholder.typicode.com/posts/" + postID;
-      requestSettings.url = requestSettings.url + "/comments" + "?_start=" + "&_limit=" + limit;
+      requestSettings.url = requestSettings.url + "/comments" + "?_start=" + newStart + "&_limit=" + limit;
       console.log("comments url -->", requestSettings.url);
       commentStart = newStart;
     }
@@ -187,11 +187,6 @@ function createPostsEnvironment(limit, postID, response){
             )
           )
         )
-        .append($("<div>").addClass("row")
-          .append($("<div>").addClass("col-11")
-            .append($("<button>").addClass("btn btn-dark").attr("type", "button").text("Get Comments"))
-          )
-        )
       )
     );
     
@@ -201,12 +196,9 @@ function createPostsEnvironment(limit, postID, response){
       // Setting up post request URL and making request
       let postID = $(this).attr("data-id");
       specificPostRequestSettings.url = "https://jsonplaceholder.typicode.com/posts/" + postID;
-
-      $.ajax(specificPostRequestSettings).done(function (response) {
-        // Creating post environment and showing post
-        createShowModalEnvironment(response, postID);
-        $("#exampleModal").modal("show");
-      });
+      
+      // Creating modal to show specific post
+      createShowModalEnvironment(specificPostRequestSettings, postID);
 
     });
 
@@ -214,6 +206,7 @@ function createPostsEnvironment(limit, postID, response){
 }
 
 // Creates the modal environment for a given post
+/*
 function createShowModalEnvironment(response, postID){
   
   // Making user request and creating modal environtment
@@ -257,13 +250,13 @@ function createShowModalEnvironment(response, postID){
   });
   
 }
-
+*/
 function createShowCommentEnvironment(){
   console.log("im in");
   //for(let comment of response){
   for(let i=0; i<5; i++){
 
-    $("#exampleModalFooter").append($("<div>").addClass("modal-body")
+    $("#modalFooter").append($("<div>").addClass("modal-body")
       .append($("<h6>").addClass("modal-title").text("Mock comment name "))
       .append($("<p>").text("Mock comment body"))
       .append($("<p>").text("Mock comment mail"))
@@ -272,7 +265,93 @@ function createShowCommentEnvironment(){
   }
 }
 
+// Makes an specific post request and creates the first part for the modal
+// that needs to in order to fill its fields that this request receives.
+function specificPostRequestinfo(specificPostRequestSettings, postID){
+
+  $.ajax(specificPostRequestSettings).done(function (post) {
+    
+    $(".modal-content").attr("id", "showPostModal").append(
+      $("<div>").addClass("modal-header").append(
+        $("<h5>").addClass("modal-title").attr("id", "exampleModalLabel").text(post.title)
+        )
+        .append($("<button>").attr("id", "btnClose").addClass("btn btn-dark")
+          .append($("<i>").addClass("fa fa-window-close")
+        )
+      )
+    )
+    .append($("<div>").addClass("modal-body").attr("id", "modalBody")
+      .append($("<p>").text(post.body))
+    )
+    .append($("<div>").addClass("modal-footer flex-column").attr("id", "modalFooter")
+      .append($("<h5>").addClass("modal-title").text("Comments"))
+      .append($("<button>").attr("id", "btnLoadComments").addClass("btn btn-dark").attr("type", "button").text("Load Comments"))
+    );
+
+    // Adding event listeners to empty modal content
+    $("main").on("click", emptyHideModalEnvironment); 
+    $("#btnClose").on("click", emptyHideModalEnvironment);
+    
+    // Adding listsener to show post comments
+    $("#btnLoadComments").on("click", function(){
+      $("#btnLoadComments").addClass("d-none");
+      specificPostCommentsRequestinfo(commentRequestSettings, postID);
+    });
+
+  });
+
+}
+
+// Makes an specific user request and creates the second part for the modal
+// that needs to in order to fill its fields that this request receives.
+function specificPostUserRequestInfo(userRequestSettings, postID){
+
+  // Setting specific post user URL
+  userRequestSettings.url = "https://jsonplaceholder.typicode.com/users" +"/"+ $("#post"+ postID).attr("data-user");
+
+  // Making specific user request and filling modal user fields
+  $.ajax(userRequestSettings).done(function(users){
+    
+    $("#modalBody").append(
+      $("<h5>").addClass("modal-title").text("USER")
+      .append($("<p>").text(users.name))
+      .append($("<p>").text(users.email))
+    );
+  });
+
+}
+
+// Makes an specific user request and creates the second part for the modal
+// that needs to in order to fill its fields that this request receives.
+function specificPostCommentsRequestinfo(commentRequestSettings, postID){
+  
+  // Setting up specific post comments URL
+  commentRequestSettings.url ="https://jsonplaceholder.typicode.com/posts/" + postID + "/comments?_start=" + commentStart + "&_limit=" + limit;
+
+  // Making comments request and creating and filling modal comments fields
+  $.ajax(commentRequestSettings).done(function(comments){
+    console.log(comments);
+    $(comments).each(function(index){
+      
+      $("#modalFooter").append($("<div>").addClass("modal-body")
+        .append($("<h6>").addClass("modal-title").text($(comments)[index].name))
+        .append($("<p>").text($(comments)[index].body))
+        .append($("<p>").text($(comments)[index].email))
+      );
+
+    });
+
+  });
+}
+
 // Creates the modal environment and shows the modal 
+function createShowModalEnvironment(specificPostRequestSettings, postID){
+
+  specificPostRequestinfo(specificPostRequestSettings, postID);
+  specificPostUserRequestInfo(userRequestSettings, postID)
+  $("#exampleModal").modal("show");
+
+}
 
 // Removes all children from post modal and hides modal
 function emptyHideModalEnvironment(){
@@ -288,7 +367,7 @@ function getUsers(){
 /*------------------------- Listeners ---------------------------*/
 
 getUsersBtn.on("click", getUsers);
-getPostsBtn.on("click", function(){
+$(window).on("load", function(){
   getPostsRequest(limit, null);
 });
 
