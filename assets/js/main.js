@@ -33,12 +33,9 @@ let deleteButton = $("#deleteBtn");
 let saveButton = $("#saveBtn");
 
 //Scroll
-let body = $("#blogBody");
-console.log(body);
-
-$(window).scroll(function (event) {
-  console.log("Scrolled grid", event.target);
-});
+let postsWrapperScroll = $("#postsWrapper");
+let postsContainerScroll = $("#postsContainer");
+let pageNum = 1;
 
 // Navbar
 let homeButton = $("#homeBtn");
@@ -58,7 +55,7 @@ function loadPosts(postPage, postLimit) {
   $.ajax(settings).done(function (response) {
     $(response).each(function (index, element) {
       // Style first post
-      if (index === 0) {
+      if (postPage === 1 && index === 0) {
         postBox(response[index], response[index].id, true);
       } else {
         //Rest of the posts
@@ -362,7 +359,25 @@ homeButton.on("click", function () {
 usersButton.on("click", () => console.log("Users list"));
 
 /* -------------------------------------------------------------------------- */
+/*                                   SCROLL                                   */
+/* -------------------------------------------------------------------------- */
+$(postsWrapperScroll).scroll(function () {
+  if (
+    $(this).scrollTop() + $(this).height() ===
+    postsContainerScroll.height()
+  ) {
+    pageNum++;
+    console.log("New request");
+    loadPosts(pageNum, 12);
+  }
+  // console.log(
+  //   $(this).scrollTop() + $(this).height(),
+  //   postsContainerScroll.height()
+  // );
+});
+
+/* -------------------------------------------------------------------------- */
 /*                              DEFAULT FUNCTIONS                             */
 /* -------------------------------------------------------------------------- */
 // Page & Limit
-loadPosts(1, 11);
+loadPosts(pageNum, 15);
