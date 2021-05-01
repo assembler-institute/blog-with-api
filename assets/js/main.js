@@ -15,7 +15,7 @@ let post;
 let postUserName;
 let allPosts;
 let shownPosts = 12;
-let postsContainer = $(".posts-container");
+let postsContainer = $("#postsContainer");
 
 // Post
 let rawTitle;
@@ -73,6 +73,7 @@ function loadPosts(postPage, postLimit) {
         postBox(response[index], response[index].id, false);
       }
     });
+    scrollFunctionality();
   });
 }
 
@@ -264,6 +265,11 @@ function renderModalUser(user, nameDiv, mailDiv) {
 function getUsersPost(userId) {
   $(`.badge-${userId}`).each(function () {
     $(this).on("click", function (event) {
+      console.log("Reset height");
+      let postsContHeight =
+        postsContainerScroll.height() + postsContPadding * 2;
+      $(postsContHeight).css("height", "0");
+
       event.stopImmediatePropagation();
       var settings = {
         url: localUrl + `/users/${userId}/posts`,
@@ -273,9 +279,6 @@ function getUsersPost(userId) {
       };
 
       $.ajax(settings).done(function (response) {
-        postsContainerScroll.css("height", "fit-content");
-        postsWrapperScroll.css("height", "fit-content");
-
         // Emptying posts grid
         postsContainer.empty();
         console.log(response);
@@ -380,17 +383,24 @@ usersButton.on("click", () => console.log("Users list"));
 /* -------------------------------------------------------------------------- */
 /*                                   SCROLL                                   */
 /* -------------------------------------------------------------------------- */
-$(postsWrapperScroll).scroll(function () {
-  // Posts container with padding
-  let postsContHeight = postsContainerScroll.height() + postsContPadding * 2;
-  // Only make new requests when the bottom is reached
-  // console.log($(this).scrollTop() + $(this).height(), postsContHeight);
-  if ($(this).scrollTop() + $(this).height() === postsContHeight) {
-    pageNum++;
-    console.log("New request");
-    loadPosts(pageNum, 12);
-  }
-});
+
+function scrollFunctionality() {
+  $(postsWrapperScroll).scroll(function () {
+    // Posts container with padding
+    let postsContHeight = postsContainerScroll.height() + postsContPadding * 2;
+    // Only make new requests when the bottom is reached
+    console.log(
+      $(this).scrollTop() + $(this).height(),
+      "Posts container total height",
+      postsContHeight
+    );
+    if ($(this).scrollTop() + $(this).height() === postsContHeight) {
+      pageNum++;
+      console.log("New request");
+      loadPosts(pageNum, 12);
+    }
+  });
+}
 
 /* -------------------------------------------------------------------------- */
 /*                              DEFAULT FUNCTIONS                             */
