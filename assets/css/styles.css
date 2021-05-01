@@ -78,6 +78,7 @@ body {
   font-weight: 900;
   line-height: 110px;
   height: 80px;
+  cursor: pointer
 }
 
 .custom-post {
