@@ -21,6 +21,13 @@ var postRequestSettings = {
   timeout: 0,
 };
 
+// Specific Post settings
+var specificPostRequestSettings = {
+  url: "https://jsonplaceholder.typicode.com/posts",
+  method: "GET",
+  timeout: 0,
+};
+
 // Comments request settings
 var commentRequestSettings = {
   url: "https://jsonplaceholder.typicode.com/posts/",
@@ -89,7 +96,36 @@ function setRequestURL(start, limit, requestSettings, postID) {
   }
 }
 
-// Creates and makes a request and stores its response into global variables
+// Creates and makes a request and shows posts
+function getPostsRequest(limit, postID) {
+  
+  // Set posts url
+  setRequestURL(postStart, limit, postRequestSettings, null);
+  
+  // Make posts requests and create posts environment
+  $.ajax(postRequestSettings).done(function (response) {
+    createPostsEnvironment(limit, null, response);
+  });
+
+}
+
+// Creates and makes a request and shows comments for a given post
+function getCommentsRequest(limit, postID) {
+  
+  // Set posts url
+  setRequestURL(commentStart, limit, commentRequestSettings, postID);
+  console.log("commentRequestSettings.url -->", commentRequestSettings.url);
+  
+  // Make posts requests and create posts environment
+  $.ajax(commentRequestSettings).done(function (response) {
+    createCommentsEnvironment(limit, postID, response)
+
+  });
+
+}
+
+// 
+/*
 function makeRequest(requestType, limit, postID) {
   // Choosing request
   if (requestType === "posts?") {
@@ -97,7 +133,7 @@ function makeRequest(requestType, limit, postID) {
     setRequestURL(postStart, limit, postRequestSettings, null);
     console.log("postRequestSettings.url -->", postRequestSettings.url);
     $.ajax(postRequestSettings).done(function (response) {
-      posts = response;
+      getPosts(requestType, limit, null, response)
       console.log("posts -->", posts);
     });
 
@@ -120,21 +156,128 @@ function makeRequest(requestType, limit, postID) {
     });
     
   }
-}
+}*/
 
 // Creates a post enrty for every post in the request 
-// repsonse stored in the posts array and displays it
-function getPosts(requestType, limit, postID){
-  
-  // Stores request in posts
-  makeRequest(requestType, limit, postID);
-  
-  // Creates posts environment to display response 
-  //stored in array posts
-  for(let p=0; p<posts.length; p++){
-    $(main).append("<div id =post"+ `${p}` + "class = 'post'> <div class='row'> <div class='col-11 p-4 d-flex flex-column position-static'"+ "data-bs-toggle='modal'"+ "data-bs-target='#exampleModalCenteredScrollable'</div></div></div>");
-    $("#post" + `${p}`).children()[0].children()[0].append("<h3 class='mb-2'>" + $(posts)[0].title +"</h3><p class='card-text mb-auto'>"+ $(posts)[0].body +"</p>");
+// response stored in the posts array and displays it
+function createPostsEnvironment(limit, postID, response){
+
+  // Creates posts environment to display response stored in array posts
+  for(element of response){
+
+    let postLeftDiv = $("<div>");
+
+    $("#postsContainer").append(
+        $("<div>").addClass("post").attr("id", "post" + element.id).attr("data-user", element.userId).append(
+          $("<div>").addClass("row")
+          .append(
+            postLeftDiv.addClass("col-11 p-4 d-flex flex-column position-static").attr("data-id", element.id)
+            .append($("<h3>").addClass("mb-2").text(element.title))
+            .append($("<p>").addClass("card-text mb-auto").text(element.body))
+          )
+        .append($("<div>").addClass("col-1 d-flex flex-column justify-content-center")
+          .append($("<div>").addClass("row d-flex justify-content-center")
+            .append($("<button>").addClass("remove mb-2 btn btn-dark").attr("type", "button")
+              .append($("<i>").addClass("fa fa-trash"))
+            )
+          )
+          .append($("<div>").addClass("row d-flex justify-content-center")
+            .append($("<button>").addClass("edit mb-2 btn btn-dark").attr("type", "button")
+              .append($("<i>").addClass("fa fa-edit"))
+            )
+          )
+        )
+        .append($("<div>").addClass("row")
+          .append($("<div>").addClass("col-11")
+            .append($("<button>").addClass("btn btn-dark").attr("type", "button").text("Get Comments"))
+          )
+        )
+      )
+    );
+    
+    // Add an event listener to show the modal to every post
+    postLeftDiv.on("click",function(){
+      
+      // Setting up post request URL and making request
+      let postID = $(this).attr("data-id");
+      specificPostRequestSettings.url = "https://jsonplaceholder.typicode.com/posts/" + postID;
+
+      $.ajax(specificPostRequestSettings).done(function (response) {
+        // Creating post environment and showing post
+        createShowModalEnvironment(response, postID);
+        $("#exampleModal").modal("show");
+      });
+
+    });
+
   }
+}
+
+// Creates the modal environment for a given post
+function createShowModalEnvironment(response, postID){
+  
+  // Making user request and creating modal environtment
+  // when the response is received
+  $.ajax(userRequestSettings.url +"/"+ $("#post"+ postID).attr("data-user")).done(function(data){
+    
+    // Modal environment to show a post
+    $(".modal-content").attr("id", "showPostModal").append(
+      $("<div>").addClass("modal-header").append(
+        $("<h5>").addClass("modal-title").attr("id", "exampleModalLabel").text(response.title)
+        )
+        .append($("<button>").attr("id", "btnClose").addClass("btn btn-dark")
+          .append($("<i>").addClass("fa fa-window-close")
+        )
+      )
+    )
+    .append($("<div>").addClass("modal-body")
+      .append($("<p>").text(response.body))
+      .append($("<h5>").addClass("modal-title").text("USER"))
+      .append($("<p>").text(data.name))
+      .append($("<p>").text(data.email))
+    )
+    .append($("<div>").addClass("modal-footer flex-column").attr("id", "exampleModalFooter")
+      .append($("<h5>").addClass("modal-title").text("Comments"))
+      .append($("<button>").attr("id", "btnLoadComments").addClass("btn btn-dark").attr("type", "button").text("Load Comments"))
+    );
+    
+    let modalCloseBtn = $("#btnClose");
+    let loadCommentsBtn = $("#btnLoadComments");
+
+    // Adding event listeners to empty modal content
+    $("main").on("click", emptyHideModalEnvironment); // comentar con compis esto del listener de cerrar
+    modalCloseBtn.on("click", emptyHideModalEnvironment);
+
+    // Adding listsener to show post comments
+    loadCommentsBtn.on("click", function(){
+      $(loadCommentsBtn).addClass("d-none");
+      createShowCommentEnvironment();
+      // createShowCommentEnvironment(postID, response);
+    });
+  });
+  
+}
+
+function createShowCommentEnvironment(){
+  console.log("im in");
+  //for(let comment of response){
+  for(let i=0; i<5; i++){
+
+    $("#exampleModalFooter").append($("<div>").addClass("modal-body")
+      .append($("<h6>").addClass("modal-title").text("Mock comment name "))
+      .append($("<p>").text("Mock comment body"))
+      .append($("<p>").text("Mock comment mail"))
+    );
+
+  }
+}
+
+// Creates the modal environment and shows the modal 
+
+// Removes all children from post modal and hides modal
+function emptyHideModalEnvironment(){
+  $("#exampleModal").modal("hide");
+  $("#showPostModal").empty();
 }
 
 function getUsers(){
@@ -145,9 +288,11 @@ function getUsers(){
 /*------------------------- Listeners ---------------------------*/
 
 getUsersBtn.on("click", getUsers);
-getPostsBtn.on("click", getPosts);
+getPostsBtn.on("click", function(){
+  getPostsRequest(limit, null);
+});
 
 /*---------------------------------------------------------------*/
 
 /*----------------------- Function calls ------------------------*/
-makeRequest("users", limit, null);
+// makeRequest("users", limit, null);
