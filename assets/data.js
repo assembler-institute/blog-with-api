@@ -6,6 +6,11 @@ $('#usBut').on('click',DataUser);
 //$('#comBut').on('click',DataComent);
 let url='http://localhost:3000/'
 function DataUser(){
+    /*$('.delete').hide()
+    $('h4.delteText').remove()
+    $('#finalDelet').remove()
+    $('#Delet').remove()*/
+    removePost ()
     return axios.get(url+'users')
     
     .then(
@@ -14,22 +19,19 @@ function DataUser(){
             let count=0;
             $.each( responseUs.data, function( index, elemUs ){
                 
-            if($('#floatingInput').val()==elemUs.name){
+                if($('#floatingInput').val()==elemUs.name){
                     $('#post').empty();
                  /*$('.name').text('thats your id '+`${elemUs.id}`)  
                   $('.usName').text('thats your username '+`${elemUs.username}`)  
                   $('.usEmail').text('thats your email '+` ${elemUs.email}`)*/
                   DataPost(elemUs.id,elemUs.name);
                   count+=1
-                }
-                
+                }    
             })
             if(count==0){
                 $('#post').text('el usuario que mencionas no esta registrado')
-            }
-            
-        }
-        
+            }    
+        }    
     )
     .catch(function (error) {
         console.log(error);
@@ -70,7 +72,7 @@ function deletePost(userNam,postID){
     $('.delete').append(`<h4 class='delteText'> ¿Are your sure to delete the post of ${userNam}? </h4>`)
     $('.delete').append(`<button id='finalDelet' class='sendButP'>Confirm</button>`)
     $('.delete').append(`<button id='Delet' class='deleButP'>X</button>`)
-    $('#Delet').on('click',function(){
+    $('#Delet').on('click',function removePost (){
         $('.delete').hide();
         $('h4.delteText').remove();
         $('#finalDelet').remove();
@@ -79,7 +81,9 @@ function deletePost(userNam,postID){
     
     $('#finalDelet').on('click',function(){
         axios.delete(url+`post/${postID}`).then(
-              
+           
+            DataUser()
+            
           )
           .catch(function (error) {
             console.log(error);
@@ -100,7 +104,7 @@ function postData(event,post_id,post_body,user_name){
     $('#buttonsZone').append(`<button class="sendButC">See post coments </button>`);
     //$('button.sendButC').on('click',function(){DataComent(post_id)})
 
-   // $('button.sendButC').on('click',function(){DataComent(post_id)})
+    //$('button.sendButC').on('click',function(){DataComent(post_id)})
 
 
     $('button.sendButC').on('click',function(){DataComent(post_id)})
