@@ -1,4 +1,9 @@
 /* -------------------------------------------------------------------------- */
+/*                                    TODO                                    */
+/* -------------------------------------------------------------------------- */
+// · Scrollable with only posts from one user
+
+/* -------------------------------------------------------------------------- */
 /*                              GLOBAL VARIABLES                              */
 /* -------------------------------------------------------------------------- */
 // Local URL
@@ -35,6 +40,9 @@ let saveButton = $("#saveBtn");
 //Scroll
 let postsWrapperScroll = $("#postsWrapper");
 let postsContainerScroll = $("#postsContainer");
+let postsContPadding = parseInt(
+  postsContainerScroll.css("padding").replace("px", "")
+);
 let pageNum = 1;
 
 // Navbar
@@ -368,10 +376,9 @@ usersButton.on("click", () => console.log("Users list"));
 /*                                   SCROLL                                   */
 /* -------------------------------------------------------------------------- */
 $(postsWrapperScroll).scroll(function () {
-  if (
-    $(this).scrollTop() + $(this).height() ===
-    postsContainerScroll.height()
-  ) {
+  let postsContHeight = postsContainerScroll.height() + postsContPadding * 2;
+
+  if ($(this).scrollTop() + $(this).height() === postsContHeight) {
     pageNum++;
     console.log("New request");
     loadPosts(pageNum, 12);

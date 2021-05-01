@@ -101,6 +101,7 @@ body {
 .posts-container {
   font-family: var(--text-roman);
   flex-grow: 1;
+  padding: 50px;
   /* margin-bottom: var(--margin); */
 }
 
