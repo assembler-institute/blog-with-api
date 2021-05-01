@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <!-- Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Bootstrap stylesheet -->
     <link
       rel="stylesheet"
@@ -20,27 +27,45 @@
     />
     <title>Blog with API</title>
   </head>
-  <body id="blogBody" class="d-flex flex-column">
+  <body class="d-flex flex-column p-0">
     <!-- ----------------------------------------------------------------------- -->
     <!--                                 HEADER                                  -->
     <!-- ----------------------------------------------------------------------- -->
-    <header>
-      <!-- Title -->
-      <div class="container-fluid">
-        <div id="blogTitle">Blog with API</div>
-      </div>
+    <header class="container-fluid p-0">
+      <nav
+        class="navbar navbar-expand-lg d-flex justify-content-between align-items-start pt-2 pb-0"
+      >
+        <div id="blogTitle" class="col-12 col-md-8 p-0 px-4">Blog with API</div>
+
+        <div
+          class="col-4 collapse navbar-collapse d-flex justify-content-end py-3"
+          id="navbarNavAltMarkup"
+        >
+          <div class="navbar-nav">
+            <a id="homeBtn" class="nav-item nav-link active" href="#">Home</a>
+            <a id="usersBtn" class="nav-item nav-link" href="#">Users</a>
+          </div>
+        </div>
+      </nav>
     </header>
 
     <!-- ----------------------------------------------------------------------- -->
     <!--                              GENERAL GRID                               -->
     <!-- ----------------------------------------------------------------------- -->
     <!-- Grid -->
-    <div id="postsGrid" class="container-fluid flex-grow-1 overflow-auto">
-      <div class="row posts-container"></div>
+    <div
+      class="container-fluid flex-grow-1 flex-shrink-1 overflow-auto py-0 px-4"
+    >
+      <div class="row posts-container d-flex flex-row p-4"></div>
     </div>
 
-    <footer class="footer mt-auto px-2 d-flex align-items-center">
-      Sticky footer
+    <footer
+      class="footer mt-auto px-2 d-flex align-items-center justify-content-between px-4"
+    >
+      <div id="footerLeft" class="pl-4">Ricard Garcia</div>
+      <div id="footerRight" class="pr-4">
+        Assembler | School of Software Engineering
+      </div>
     </footer>
 
     <!-- ----------------------------------------------------------------------- -->
@@ -149,7 +174,7 @@
                 >
                   <div
                     id="commentsBlock"
-                    class="comments-text card-body modal-text modal-text-container overflow-auto capitalized-text pl-0"
+                    class="comments-text card-body modal-text modal-text-container overflow-auto capitalized-text pl-0 mt-4"
                   ></div>
                 </div>
               </div>
@@ -157,15 +182,14 @@
             <hr />
           </div>
 
-          <div class="modal-footer d-flex justify-content-between">
+          <div class="modal-footer d-flex justify-content-end">
             <button
               type="button"
-              class="btn btn-secondary personal-close"
+              class="btn btn-dark personal-close"
               data-dismiss="modal"
             >
-              Close
+              Done
             </button>
-            <button type="button" class="btn btn-dark">Done</button>
           </div>
         </div>
       </div>

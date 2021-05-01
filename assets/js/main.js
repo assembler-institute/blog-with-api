@@ -40,16 +40,9 @@ $(window).scroll(function (event) {
   console.log("Scrolled grid", event.target);
 });
 
-/* -------------------------------------------------------------------------- */
-/*                               CLOSING BUTTONS                              */
-/* -------------------------------------------------------------------------- */
-// $(".personal-close").on("click", function () {
-//   $(".collapse").each(function () {
-//     if ($(this).hasClass("show")) {
-//       $(this).toggleClass("show");
-//     }
-//   });
-// });
+// Navbar
+let homeButton = $("#homeBtn");
+let usersButton = $("#usersBtn");
 
 /* -------------------------------------------------------------------------- */
 /*                                    POSTS                                   */
@@ -63,39 +56,42 @@ function loadPosts(postPage, postLimit) {
     headers: {},
   };
   $.ajax(settings).done(function (response) {
-    // console.log(response);
     $(response).each(function (index, element) {
-      postBox(response[index], response[index].id);
-      // console.log("Loaded post!", response[index].id);
-    });
-
-    // Making all posts clickables
-    $(".custom-post").each(function () {
-      currPost = $(this);
-      currPost.attr("data-target", "#exampleModal");
-      currPost.attr("data-toggle", "modal");
+      // Style first post
+      if (index === 0) {
+        postBox(response[index], response[index].id, true);
+      } else {
+        //Rest of the posts
+        postBox(response[index], response[index].id, false);
+      }
     });
   });
 }
 
 // Create the box container
-function postBox(post, postId) {
+function postBox(post, postId, firstPost) {
   rawTitle = post.title;
   rawUser = post.userId;
 
   let postWrapper = $("<div>");
-  postWrapper.addClass("container-fluid col-md-6 col-lg-3 p-2");
-
   let postInside = $("<div>");
-  postInside.attr("data-postId", postId);
+
+  if (firstPost) {
+    postWrapper.addClass("col-md-6 p-2");
+    postInside.addClass("first-post");
+  } else {
+    postWrapper.addClass("col-md-6 col-lg-3 p-2");
+  }
+
   postInside.addClass("container-fluid custom-post p-4");
+  postInside.attr("data-postId", postId);
 
   //Post (left & right)
   let postRow = $("<div>");
   postRow.addClass("row h-100 px-4 d-flex justify-content-between");
   let postLeft = $("<div>");
   postLeft.addClass(
-    "col-10 d-flex flex-column justify-content-between post-left p-0 mh-100"
+    "col-10 d-flex flex-column align-items-start justify-content-between post-left p-0 mh-100"
   );
   let postRight = $("<div>");
   postRight.addClass("col-1 flex-column justify-content-start post-right p-0");
@@ -108,11 +104,14 @@ function postBox(post, postId) {
   postTitle.addClass(
     "card-title capitalized-text overflow-hidden d-inline-block"
   );
-
   postTitle.text(rawTitle);
+
   // Assigning user
   let postUser = $("<div>");
-  postUser.addClass("card-text postUser");
+  postUser.addClass("badge badge-dark");
+  postUser.attr("data-user-id", rawUser);
+  // Making badges clickables
+  getUsersPost(rawUser);
   setPostUser(rawUser, postUser);
 
   // Appending divs
@@ -138,6 +137,13 @@ function postBox(post, postId) {
     id = $(this).data("postid");
     modalContent(id);
   });
+
+  // Making all posts clickables
+  $(".custom-post").each(function () {
+    currPost = $(this);
+    currPost.attr("data-target", "#exampleModal");
+    currPost.attr("data-toggle", "modal");
+  });
 }
 
 // Delete request based on post Id
@@ -150,6 +156,16 @@ function deletePost(postId) {
   };
   $.ajax(settings).done(function () {
     console.log("Deleted post with id:", postId);
+  });
+
+  var settings = {
+    url: localUrl + `/posts/${postId}/comments`,
+    method: "DELETE",
+    timeout: 0,
+    headers: {},
+  };
+  $.ajax(settings).done(function () {
+    console.log("Deleted comments of post with id:", postId);
   });
 }
 
@@ -238,6 +254,31 @@ function renderModalUser(user, nameDiv, mailDiv) {
   mailDiv.text(user.email);
 }
 
+// Return user in tag
+function getUsersPost(userId) {
+  $(".badge").each(function () {
+    $(this).on("click", function (event) {
+      event.stopImmediatePropagation();
+      var settings = {
+        url: `https://jsonplaceholder.typicode.com/users/${userId}/posts`,
+        method: "GET",
+        timeout: 0,
+        headers: {},
+      };
+
+      $.ajax(settings).done(function (response) {
+        // Emptying posts grid
+        postsContainer.empty();
+
+        $(response).each(function (index, element) {
+          postBox(response[index], response[index].id);
+        });
+        console.log("Loaded all posts by user:", userId);
+      });
+    });
+  });
+}
+
 /* -------------------------------------------------------------------------- */
 /*                                  COMMENTS                                  */
 /* -------------------------------------------------------------------------- */
@@ -251,7 +292,7 @@ function setComments(postId) {
 
   $.ajax(settings).done(function (comments) {
     getPostComments(comments);
-    console.log(comments);
+    // console.log(comments);
   });
 }
 
@@ -291,7 +332,6 @@ function getPostComments(comments) {
 /*                                MODAL CONTENT                               */
 /* -------------------------------------------------------------------------- */
 function modalContent(postId) {
-  console.log("Clicked", postId);
   var settings = {
     url: localUrl + `/posts/${postId}`,
     method: "GET",
@@ -312,7 +352,17 @@ function modalContent(postId) {
 }
 
 /* -------------------------------------------------------------------------- */
-/*                              CALLING FUNCTIONS                             */
+/*                                 NAV BUTTONS                                */
+/* -------------------------------------------------------------------------- */
+homeButton.on("click", function () {
+  // Emptying posts grid
+  postsContainer.empty();
+  loadPosts(1, 11);
+});
+usersButton.on("click", () => console.log("Users list"));
+
+/* -------------------------------------------------------------------------- */
+/*                              DEFAULT FUNCTIONS                             */
 /* -------------------------------------------------------------------------- */
 // Page & Limit
-loadPosts(1, 12);
+loadPosts(1, 11);

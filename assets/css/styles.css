@@ -3,42 +3,27 @@
 /* -------------------------------------------------------------------------- */
 /* Headline typeface */
 @font-face {
-  font-family: "Pramukh";
-  src: url("../fonts/PramukhRounded-Variable.ttf") format("truetype");
-  font-weight: 200 900;
+  font-family: "Bevellier";
+  src: url("../fonts/Bevellier-Variable.ttf") format("truetype");
+  font-weight: 100 900;
   font-display: swap;
   font-style: normal;
-}
-
-/* Text typeface */
-@font-face {
-  font-family: "Bespoke";
-  src: url("../fonts/BespokeSerif-Variable.ttf") format("truetype");
-  font-weight: 300 800;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "BespokeItalic";
-  src: url("../fonts/BespokeSerif-VariableItalic.ttf") format("truetype");
-  font-weight: 300 800;
-  font-display: swap;
-  font-style: italic;
 }
 
 :root {
   /* Fonts */
-  --headlines: "Pramukh";
-  --text-roman: "Bespoke";
-  --text-italic: "BespokeItalic";
+  --headlines: "Bevellier";
+  --text-roman: "IBM Plex Sans", sans-serif;
   /* Measurements */
-  --border-width: 6px;
+  --border-width: 4px;
   --margin: 20px;
   /* Colors */
-  --dark-color: rgb(209, 3, 48);
-  --light-color: rgb(255, 219, 39);
+  /* --dark-color: rgb(209, 3, 48); */
+  --dark-color: rgb(255, 133, 158);
+  --light-color: rgb(0, 0, 0);
   --accent-color: whitesmoke;
+  /* Time */
+  --transition-time: 0.5s;
 }
 
 * {
@@ -51,14 +36,29 @@
   /* outline: 2px solid green; */
 }
 
-header {
-  margin-bottom: 10px;
+/* -------------------------------------------------------------------------- */
+/*                                    BODY                                    */
+/* -------------------------------------------------------------------------- */
+nav {
+  background-color: var(--accent-color);
+  border-bottom: 4px solid var(--light-color);
+}
+
+.nav-item {
+  color: var(--light-color);
+  font-family: var(--text-roman);
+  font-weight: 700;
+  font-size: 20px;
+  transition: var(--transition-time);
+}
+
+.nav-item:hover {
+  color: var(--dark-color);
 }
 
 body {
   padding: 40px;
-  height: 102vh;
-  overflow: scroll;
+  height: 100vh;
   background-color: var(--dark-color);
 }
 
@@ -66,7 +66,7 @@ body {
   color: var(--light-color);
   transform: translateY(-20px);
   font-family: var(--headlines);
-  font-size: 120px;
+  font-size: 80px;
   font-weight: 900;
   line-height: 140px;
   height: 120px;
@@ -74,22 +74,70 @@ body {
 
 .custom-post {
   color: black;
-  border: var(--border-width) solid black;
+  border: var(--border-width) solid var(--accent-color);
   background-color: var(--accent-color);
-  border-radius: 5px;
-  height: 200px;
+  border-radius: 10px;
+  height: 210px;
   overflow: scroll;
+  transition: var(--transition-time);
+  cursor: pointer;
+}
+
+.custom-post:hover {
+  background-color: transparent;
+  color: var(--accent-color);
+}
+
+.first-post {
+  border: var(--border-width) solid var(--light-color);
+  background-color: transparent;
+  font-size: 30px;
+}
+
+.first-post:hover {
+  border: var(--border-width) solid var(--accent-color);
 }
 
 .posts-container {
   font-family: var(--text-roman);
   flex-grow: 1;
-  margin-bottom: var(--margin);
+  /* margin-bottom: var(--margin); */
 }
 
 .card-title {
   font-weight: 800;
-  max-height: 50%;
+  max-height: 65%;
+  line-height: 22px;
+}
+
+.first-post > .row > .post-left > .card-title {
+  max-height: 70%;
+  line-height: 30px;
+}
+
+.badge-dark {
+  font-size: 14px;
+  border: 2px solid var(--dark-color);
+  color: var(--dark-color);
+  background-color: transparent;
+}
+
+.first-post > .row > .post-left > .badge-dark {
+  border: 2px solid var(--light-color);
+  background-color: var(--light-color);
+  color: var(--dark-color);
+}
+
+.custom-post:hover > .row > .post-left > .badge-dark {
+  border: 2px solid var(--accent-color);
+  background-color: var(--accent-color);
+  color: var(--dark-color);
+}
+
+.custom-post:hover > .row > .post-left > .badge-dark:hover {
+  border: 2px solid var(--accent-color);
+  background-color: transparent;
+  color: var(--accent-color);
 }
 
 .post-right {
@@ -98,18 +146,24 @@ body {
 }
 
 footer {
-  font-family: var(--headlines);
-  font-size: 30px;
+  font-family: var(--text-roman);
+  font-size: 16px;
+  font-weight: 700;
   color: var(--light-color);
-  height: 30px;
+  height: 60px;
+  border-top: 4px solid var(--light-color);
+  background-color: var(--accent-color);
 }
 
 /* -------------------------------------------------------------------------- */
-/*                                    MODAL                                   */
+/*                                    MODALS                                  */
 /* -------------------------------------------------------------------------- */
-button {
-  width: 200px;
-  outline: none;
+
+/* Background */
+#exampleModal,
+#editModal {
+  backdrop-filter: blur(4px);
+  background-color: transparent;
 }
 
 .modal {
@@ -140,14 +194,14 @@ button {
 }
 
 .modal-content {
-  border: var(--border-width) solid black;
+  border: none;
   height: fit-content;
+  border-radius: 10px;
 }
 
 .modal-title {
   text-overflow: ellipsis;
   overflow: hidden;
-  overflow-y: scroll;
 }
 
 .capitalized-text::first-letter {
@@ -170,6 +224,7 @@ button {
 
 .comment-body {
   font-family: var(--text-italic);
+  font-style: italic;
   font-weight: 200;
 }
 
@@ -179,12 +234,12 @@ button {
   font-family: var(--headlines);
   font-size: 100px;
   font-weight: 900;
-  height: 100px;
+  height: 120px;
 }
 
 .edit-modal-title {
   font-family: var(--headlines);
-  font-weight: 400;
+  font-weight: 300;
   font-size: 100px;
   height: 100px;
   line-height: 100px;
@@ -193,4 +248,41 @@ button {
 
 textarea {
   resize: none;
+}
+
+#deleteBtn {
+  color: var(--red);
+  border: var(--border-width) solid var(--red);
+  background-color: transparent;
+}
+
+#saveBtn,
+.btn-dark {
+  border: var(--border-width) solid var(--dark-color);
+  background-color: var(--dark-color);
+}
+
+#saveBtn:hover,
+.btn-dark:hover {
+  border: var(--border-width) solid var(--dark-color);
+  background-color: transparent;
+  color: var(--dark-color);
+}
+
+.btn-secondary,
+.btn-secondary:hover {
+  color: var(--light-color);
+  border: var(--border-width) solid var(--light-color);
+  background-color: transparent;
+}
+
+.btn {
+  font-family: var(--text-roman);
+  font-weight: 600;
+  width: 200px;
+  outline: none;
+}
+
+.btn:focus {
+  outline: none !important;
 }
