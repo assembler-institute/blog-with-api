@@ -3,35 +3,17 @@
 /* -------------------------------------------------------------------------- */
 /* Headline typeface */
 @font-face {
-  font-family: "Pramukh";
-  src: url("../fonts/PramukhRounded-Variable.ttf") format("truetype");
-  font-weight: 200 900;
+  font-family: "Bevellier";
+  src: url("../fonts/Bevellier-Variable.ttf") format("truetype");
+  font-weight: 100 900;
   font-display: swap;
   font-style: normal;
-}
-
-/* Text typeface */
-@font-face {
-  font-family: "Bespoke";
-  src: url("../fonts/BespokeSerif-Variable.ttf") format("truetype");
-  font-weight: 300 800;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "BespokeItalic";
-  src: url("../fonts/BespokeSerif-VariableItalic.ttf") format("truetype");
-  font-weight: 300 800;
-  font-display: swap;
-  font-style: italic;
 }
 
 :root {
   /* Fonts */
-  --headlines: "Pramukh";
-  --text-roman: "Bespoke";
-  --text-italic: "BespokeItalic";
+  --headlines: "Bevellier";
+  --text-roman: "IBM Plex Sans", sans-serif;
   /* Measurements */
   --border-width: 3px;
   --margin: 20px;
@@ -54,17 +36,20 @@
   /* outline: 2px solid green; */
 }
 
-header {
-  margin-bottom: 10px;
-}
-
+/* -------------------------------------------------------------------------- */
+/*                                    BODY                                    */
+/* -------------------------------------------------------------------------- */
 nav {
   background-color: transparent;
-  /* border-bottom: var(--border-width) solid var(--light-color); */
+  border-bottom: var(--border-width) solid var(--light-color);
 }
 
 .nav-item {
   color: var(--light-color);
+  font-family: var(--text-roman);
+  font-weight: 700;
+  font-size: 20px;
+  transition: var(--transition-time);
 }
 
 .nav-item:hover {
@@ -73,7 +58,7 @@ nav {
 
 body {
   padding: 40px;
-  /* height: 100vh; */
+  height: 100vh;
   background-color: var(--dark-color);
 }
 
@@ -111,6 +96,7 @@ body {
 .card-title {
   font-weight: 800;
   max-height: 50%;
+  line-height: 22px;
 }
 
 .badge-dark {
@@ -132,10 +118,12 @@ body {
 }
 
 footer {
-  font-family: var(--headlines);
-  font-size: 30px;
+  font-family: var(--text-roman);
+  font-size: 16px;
+  font-weight: 700;
   color: var(--light-color);
-  height: 30px;
+  height: 60px;
+  border-top: var(--border-width) solid var(--light-color);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -212,6 +200,7 @@ button {
 
 .comment-body {
   font-family: var(--text-italic);
+  font-style: italic;
   font-weight: 200;
 }
 
