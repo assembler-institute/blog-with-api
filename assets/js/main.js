@@ -1,7 +1,6 @@
 /* -------------------------------------------------------------------------- */
 /*                                    TODO                                    */
 /* -------------------------------------------------------------------------- */
-// · Scrollable with only posts from one user
 // · Alert when deleting post
 
 /* -------------------------------------------------------------------------- */
@@ -13,7 +12,6 @@ let localUrl = "http://localhost:3000";
 // Responese
 let post;
 let postUserName;
-let allPosts;
 let shownPosts = 12;
 let postsContainer = $("#postsContainer");
 
@@ -53,7 +51,7 @@ let pageNum = 1;
 let userOverview = false; // Flag
 
 // Navbar
-let homeButton = $("#homeBtn");
+let backHomes = $(".back-home");
 let usersButton = $("#usersBtn");
 
 /* -------------------------------------------------------------------------- */
@@ -227,6 +225,52 @@ function editModal(parentDiv, post, postId) {
 /* -------------------------------------------------------------------------- */
 /*                                    USERS                                   */
 /* -------------------------------------------------------------------------- */
+// Get all users
+function allUsers() {
+  var settings = {
+    url: localUrl + "/users",
+    method: "GET",
+    timeout: 0,
+    headers: {},
+  };
+
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+    setUserDiv(response);
+  });
+}
+
+function setUserDiv(response) {
+  // Emptying posts grid
+  postsContainer.empty();
+
+  $(response).each(function (index, user) {
+    let userWrapper = $("<div>");
+    userWrapper.addClass("d-flex flex-column col col-sm-12 col-lg-6 p-2");
+    let userDiv = $("<div>");
+    userDiv.addClass(
+      `col user-div d-flex flex-column align-items-center text-center badge-${user.id}`
+    );
+    let userNameText = $("<span>");
+    userNameText.addClass("user-username");
+    userNameText.text(" (" + user.username + ")");
+    userDiv.text(user.name);
+    userDiv.append(userNameText);
+
+    userWrapper.append(userDiv);
+    // Emptying posts grid
+    postsContainer.append(userWrapper);
+
+    userDiv.on("click", function () {
+      // Flag turned on
+      userOverview = true;
+      getUsersPost(user.id);
+      // Accessed in scrollFunctionality
+      userIdOut = user.id;
+    });
+  });
+}
+
 // Post user
 function setPostUser(userId, userDiv) {
   var settings = {
@@ -379,20 +423,22 @@ function modalContent(postId) {
 /* -------------------------------------------------------------------------- */
 /*                                 NAV BUTTONS                                */
 /* -------------------------------------------------------------------------- */
-homeButton.on("click", function () {
-  // Reseting height
-  postsContainerScroll.css("height", "fit-content");
-  // Flag turned off
-  userOverview = false;
+backHomes.each(function () {
+  $(this).on("click", function () {
+    // Reseting height
+    postsContainerScroll.css("height", "fit-content");
+    // Flag turned off
+    userOverview = false;
 
-  console.clear();
-  pageNum = 1;
-  // Emptying posts grid
-  postsContainer.empty();
-  loadPosts(pageNum, 15);
+    console.clear();
+    pageNum = 1;
+    // Emptying posts grid
+    postsContainer.empty();
+    loadPosts(pageNum, 15);
+  });
 });
 
-usersButton.on("click", () => console.log("Users list"));
+usersButton.on("click", () => allUsers());
 
 /* -------------------------------------------------------------------------- */
 /*                                   SCROLL                                   */

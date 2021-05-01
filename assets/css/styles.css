@@ -153,6 +153,29 @@ body {
   font-size: 20px;
 }
 
+/* Users overview */
+.user-div {
+  color: var(--accent-color);
+  font-weight: 400;
+  font-size: 30px;
+  border: var(--border-width) solid var(--accent-color);
+  border-radius: 10px;
+  transition: var(--transition-time);
+}
+
+.user-div:hover {
+  color: var(--dark-color);
+  background-color: var(--accent-color);
+  font-weight: 400;
+  font-size: 30px;
+  border: var(--border-width) solid var(--accent-color);
+  border-radius: 10px;
+}
+
+.user-username {
+  font-weight: 300;
+}
+
 footer {
   font-family: var(--text-roman);
   font-size: 16px;
