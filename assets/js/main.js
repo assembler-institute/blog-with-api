@@ -44,17 +44,6 @@ let homeButton = $("#homeBtn");
 let usersButton = $("#usersBtn");
 
 /* -------------------------------------------------------------------------- */
-/*                               CLOSING BUTTONS                              */
-/* -------------------------------------------------------------------------- */
-// $(".personal-close").on("click", function () {
-//   $(".collapse").each(function () {
-//     if ($(this).hasClass("show")) {
-//       $(this).toggleClass("show");
-//     }
-//   });
-// });
-
-/* -------------------------------------------------------------------------- */
 /*                                    POSTS                                   */
 /* -------------------------------------------------------------------------- */
 // Getting all posts
@@ -66,25 +55,35 @@ function loadPosts(postPage, postLimit) {
     headers: {},
   };
   $.ajax(settings).done(function (response) {
-    // console.log(response);
     $(response).each(function (index, element) {
-      postBox(response[index], response[index].id);
-      // console.log("Loaded post!", response[index].id);
+      // Style first post
+      if (index === 0) {
+        postBox(response[index], response[index].id, true);
+      } else {
+        //Rest of the posts
+        postBox(response[index], response[index].id, false);
+      }
     });
   });
 }
 
 // Create the box container
-function postBox(post, postId) {
+function postBox(post, postId, firstPost) {
   rawTitle = post.title;
   rawUser = post.userId;
 
   let postWrapper = $("<div>");
-  postWrapper.addClass("col-md-6 col-lg-3 p-2");
-
   let postInside = $("<div>");
-  postInside.attr("data-postId", postId);
+
+  if (firstPost) {
+    postWrapper.addClass("col-md-6 p-2");
+    postInside.addClass("first-post");
+  } else {
+    postWrapper.addClass("col-md-6 col-lg-3 p-2");
+  }
+
   postInside.addClass("container-fluid custom-post p-4");
+  postInside.attr("data-postId", postId);
 
   //Post (left & right)
   let postRow = $("<div>");
@@ -358,7 +357,7 @@ function modalContent(postId) {
 homeButton.on("click", function () {
   // Emptying posts grid
   postsContainer.empty();
-  loadPosts(1, 12);
+  loadPosts(1, 11);
 });
 usersButton.on("click", () => console.log("Users list"));
 
@@ -366,4 +365,4 @@ usersButton.on("click", () => console.log("Users list"));
 /*                              DEFAULT FUNCTIONS                             */
 /* -------------------------------------------------------------------------- */
 // Page & Limit
-loadPosts(1, 12);
+loadPosts(1, 11);

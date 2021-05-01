@@ -15,7 +15,7 @@
   --headlines: "Bevellier";
   --text-roman: "IBM Plex Sans", sans-serif;
   /* Measurements */
-  --border-width: 3px;
+  --border-width: 4px;
   --margin: 20px;
   /* Colors */
   /* --dark-color: rgb(209, 3, 48); */
@@ -40,8 +40,8 @@
 /*                                    BODY                                    */
 /* -------------------------------------------------------------------------- */
 nav {
-  background-color: transparent;
-  border-bottom: var(--border-width) solid var(--light-color);
+  background-color: var(--accent-color);
+  border-bottom: 4px solid var(--light-color);
 }
 
 .nav-item {
@@ -53,7 +53,7 @@ nav {
 }
 
 .nav-item:hover {
-  color: var(--accent-color);
+  color: var(--dark-color);
 }
 
 body {
@@ -66,7 +66,7 @@ body {
   color: var(--light-color);
   transform: translateY(-20px);
   font-family: var(--headlines);
-  font-size: 120px;
+  font-size: 80px;
   font-weight: 900;
   line-height: 140px;
   height: 120px;
@@ -77,14 +77,25 @@ body {
   border: var(--border-width) solid var(--accent-color);
   background-color: var(--accent-color);
   border-radius: 10px;
-  height: 200px;
+  height: 210px;
   overflow: scroll;
   transition: var(--transition-time);
+  cursor: pointer;
 }
 
 .custom-post:hover {
   background-color: transparent;
   color: var(--accent-color);
+}
+
+.first-post {
+  border: var(--border-width) solid var(--light-color);
+  background-color: transparent;
+  font-size: 30px;
+}
+
+.first-post:hover {
+  border: var(--border-width) solid var(--accent-color);
 }
 
 .posts-container {
@@ -95,8 +106,13 @@ body {
 
 .card-title {
   font-weight: 800;
-  max-height: 50%;
-  line-height: 22px;
+  max-height: 65%;
+  line-height: 30px;
+}
+
+.first-post > .row > .post-left > .card-title {
+  max-height: 70%;
+  line-height: 30px;
 }
 
 .badge-dark {
@@ -106,10 +122,22 @@ body {
   background-color: transparent;
 }
 
+.first-post > .row > .post-left > .badge-dark {
+  border: 2px solid var(--light-color);
+  background-color: var(--light-color);
+  color: var(--dark-color);
+}
+
 .custom-post:hover > .row > .post-left > .badge-dark {
   border: 2px solid var(--accent-color);
   background-color: var(--accent-color);
   color: var(--dark-color);
+}
+
+.custom-post:hover > .row > .post-left > .badge-dark:hover {
+  border: 2px solid var(--accent-color);
+  background-color: transparent;
+  color: var(--accent-color);
 }
 
 .post-right {
@@ -123,16 +151,13 @@ footer {
   font-weight: 700;
   color: var(--light-color);
   height: 60px;
-  border-top: var(--border-width) solid var(--light-color);
+  border-top: 4px solid var(--light-color);
+  background-color: var(--accent-color);
 }
 
 /* -------------------------------------------------------------------------- */
 /*                                    MODALS                                  */
 /* -------------------------------------------------------------------------- */
-button {
-  width: 200px;
-  outline: none;
-}
 
 /* Background */
 #exampleModal,
@@ -177,7 +202,6 @@ button {
 .modal-title {
   text-overflow: ellipsis;
   overflow: hidden;
-  overflow-y: scroll;
 }
 
 .capitalized-text::first-letter {
@@ -210,12 +234,12 @@ button {
   font-family: var(--headlines);
   font-size: 100px;
   font-weight: 900;
-  height: 100px;
+  height: 120px;
 }
 
 .edit-modal-title {
   font-family: var(--headlines);
-  font-weight: 400;
+  font-weight: 300;
   font-size: 100px;
   height: 100px;
   line-height: 100px;
@@ -250,6 +274,13 @@ textarea {
   color: var(--light-color);
   border: var(--border-width) solid var(--light-color);
   background-color: transparent;
+}
+
+.btn {
+  font-family: var(--text-roman);
+  font-weight: 600;
+  width: 200px;
+  outline: none;
 }
 
 .btn:focus {
