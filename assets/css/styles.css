@@ -273,20 +273,20 @@ footer {
 
 #exampleModalLabel {
   line-height: 100px;
-  transform: translateY(-10px);
+  transform: translateY(-24px);
   font-family: var(--headlines);
-  font-size: 100px;
+  font-size: 55px;
   font-weight: 900;
-  height: 120px;
+  height: 80px;
 }
 
 .edit-modal-title {
   font-family: var(--headlines);
   font-weight: 300;
-  font-size: 100px;
-  height: 100px;
+  font-size: 55px;
+  height: 80px;
   line-height: 100px;
-  transform: translateY(-10px);
+  transform: translateY(-24px);
 }
 
 textarea {
@@ -345,9 +345,6 @@ a:hover {
 /* -------------------------------------------------------------------------- */
 /*                                MEDIA QUERIES                               */
 /* -------------------------------------------------------------------------- */
-/* Small devices (landscape phones, 576px and up) */
-/* @media (min-width: 576px) { } */
-
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   #blogTitle {
@@ -359,5 +356,17 @@ a:hover {
 
   #footerRight {
     display: block;
+  }
+
+  #exampleModalLabel {
+    transform: translateY(-10px);
+    font-size: 100px;
+    height: 120px;
+  }
+
+  .edit-modal-title {
+    font-size: 100px;
+    height: 100px;
+    transform: translateY(-10px);
   }
 }
