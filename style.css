@@ -5,15 +5,130 @@
 }
 
 
+nav {
+    height: 10vh;
+}
+
+p {
+    font-family: 'Open Sans Condensed';
+    font-size: 18px;
+}
+
 #userInfo {
     text-align: end;
+}
+
+/* Flashing */
+figure:hover img {
+	opacity: 1;
+	-webkit-animation: flash 1.5s;
+	animation: flash 1.5s;
 }
 
 .modal-header {
     background-color: rgba(238, 242, 247, 0.959);
 }
 
-p {
-    font-family: 'Open Sans Condensed';
-    font-size: 18px;
+.toast-container {
+    z-index: 9999;
+    right: 0;
+}
+
+.updated {
+    background-color: rgba(187, 248, 228, 0.808);
+    border: 1px solid rgba(7, 173, 118, 0.808);
+}
+
+.removed {
+    background-color: rgba(248, 206, 187, 0.808);
+    border: 1px solid rgba(245, 119, 110, 0.808);
+}
+
+
+.modal-style {
+	background-color: rgb(235, 255, 248);
+}
+
+
+.checkModal {
+	top: 60px;
+}
+
+.card-title, .modal-title {
+	text-transform: capitalize;
+}
+
+
+.delete:hover {
+	color: rgb(197, 48, 11);
+}
+
+.editPost:hover {
+	color: rgb(30, 157, 161);
+}
+
+.icon-container {
+	padding-right: 1rem;
+}
+
+.logo {
+	color:rgb(175, 200, 204)
+  }
+
+.logo:hover {
+	color: rgb(169, 218, 238);
+	animation: flash 2s infinite
+}
+
+
+ #btn-to-top {
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	text-align: center;
+	border-radius: 4px;
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+	transition: background-color .3s, 
+	  opacity .5s, visibility .5s;
+	opacity: 0;
+	visibility: hidden;
+	z-index: 1000;
+	color: rgb(175, 200, 204)
+  }
+ #btn-to-top::after {
+	font-size: 2em;
+	color: #fff;
+  }
+ #btn-to-top:hover {
+	cursor: pointer;
+	color: rgb(169, 218, 238)
+  }
+ #btn-to-top:active {
+	color: rgb(126, 201, 236);
+  }
+ #btn-to-top.show {
+	opacity: 1;
+	visibility: visible;
+  }
+  
+
+
+
+@-webkit-keyframes flash {
+	0% {
+		opacity: .4;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes flash {
+	0% {
+		opacity: .4;
+	}
+	100% {
+		opacity: 1;
+	}
 }
