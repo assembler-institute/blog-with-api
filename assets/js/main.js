@@ -17,6 +17,9 @@ let allPosts;
 let shownPosts = 12;
 let postsContainer = $("#postsContainer");
 
+// User
+let userIdOut;
+
 // Post
 let rawTitle;
 let rawUser;
@@ -47,6 +50,7 @@ let postsContPadding = parseInt(
   postsContainerScroll.css("padding").replace("px", "")
 );
 let pageNum = 1;
+let userOverview = false; // Flag
 
 // Navbar
 let homeButton = $("#homeBtn");
@@ -129,7 +133,7 @@ function postBox(post, postId, firstPost) {
   postsContainer.append(postWrapper);
 
   // Making badges clickables
-  getUsersPost(rawUser);
+  clickBadge(rawUser);
   setPostUser(rawUser, postUser);
 
   // Show/hide delete and patch icons when mouse over/out post
@@ -261,35 +265,43 @@ function renderModalUser(user, nameDiv, mailDiv) {
 }
 
 // Return user in tag
-function getUsersPost(userId) {
+function clickBadge(userId) {
   $(`.badge-${userId}`).each(function () {
     $(this).on("click", function (event) {
+      // Flag turned on
+      userOverview = true;
       event.stopImmediatePropagation();
-      postsContainerScroll.css("height", "100px");
-
-      var settings = {
-        url: localUrl + `/users/${userId}/posts`,
-        method: "GET",
-        timeout: 0,
-        headers: {},
-      };
-
-      $.ajax(settings).done(function (response) {
-        // Emptying posts grid
-        postsContainer.empty();
-        console.log(response);
-        $(response).each(function (index) {
-          // Style first post
-          if (index === 0) {
-            postBox(response[index], response[index].id, true);
-          } else {
-            //Rest of the posts
-            postBox(response[index], response[index].id, false);
-          }
-        });
-        console.log("Loaded all posts by user:", userId);
-      });
+      // Making request
+      getUsersPost(userId);
+      // Accessed in scrollFunctionality
+      userIdOut = userId;
     });
+  });
+}
+
+// GET all posts by user
+function getUsersPost(userId) {
+  var settings = {
+    url: localUrl + `/users/${userId}/posts`,
+    method: "GET",
+    timeout: 0,
+    headers: {},
+  };
+
+  $.ajax(settings).done(function (response) {
+    // Emptying posts grid
+    postsContainer.empty();
+    console.log(response);
+    $(response).each(function (index) {
+      // Style first post
+      if (index === 0) {
+        postBox(response[index], response[index].id, true);
+      } else {
+        //Rest of the posts
+        postBox(response[index], response[index].id, false);
+      }
+    });
+    console.log("Loaded all posts by user:", userId);
   });
 }
 
@@ -370,6 +382,8 @@ function modalContent(postId) {
 homeButton.on("click", function () {
   // Reseting height
   postsContainerScroll.css("height", "fit-content");
+  // Flag turned off
+  userOverview = false;
 
   console.clear();
   pageNum = 1;
@@ -384,7 +398,7 @@ usersButton.on("click", () => console.log("Users list"));
 /*                                   SCROLL                                   */
 /* -------------------------------------------------------------------------- */
 
-function scrollFunctionality(responseItems) {
+function scrollFunctionality() {
   $(postsWrapperScroll).scroll(function () {
     // Posts container with padding
     let postsContHeight = postsContainerScroll.height() + postsContPadding * 2;
@@ -397,7 +411,16 @@ function scrollFunctionality(responseItems) {
     if ($(this).scrollTop() + $(this).height() === postsContHeight) {
       pageNum++;
       console.log("New request");
-      loadPosts(pageNum, 12);
+      // User's posts
+      if (userOverview === true) {
+        getUsersPost(userIdOut);
+        console.log("Inside user's overview");
+      }
+      // All posts
+      else {
+        loadPosts(pageNum, 12);
+        console.log("Inside general overview");
+      }
     } else {
       console.log("Already loaded all response");
     }
