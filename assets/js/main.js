@@ -257,7 +257,7 @@ function getUsersPost(userId) {
     $(this).on("click", function (event) {
       event.stopImmediatePropagation();
       var settings = {
-        url: `https://jsonplaceholder.typicode.com/users/${userId}/posts`,
+        url: localUrl + `/users/${userId}/posts`,
         method: "GET",
         timeout: 0,
         headers: {},
