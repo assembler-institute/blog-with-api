@@ -53,7 +53,7 @@ function loadPosts(postPage, postLimit) {
     headers: {},
   };
   $.ajax(settings).done(function (response) {
-    $(response).each(function (index, element) {
+    $(response).each(function (index) {
       // Style first post
       if (postPage === 1 && index === 0) {
         postBox(response[index], response[index].id, true);
@@ -267,10 +267,16 @@ function getUsersPost(userId) {
         // Emptying posts grid
         postsContainer.empty();
 
-        $(response).each(function (index, element) {
-          postBox(response[index], response[index].id);
+        $(response).each(function (index) {
+          // Style first post
+          if (index === 0) {
+            postBox(response[index], response[index].id, true);
+          } else {
+            //Rest of the posts
+            postBox(response[index], response[index].id, false);
+          }
+          console.log("Loaded all posts by user:", userId);
         });
-        console.log("Loaded all posts by user:", userId);
       });
     });
   });
@@ -354,7 +360,7 @@ function modalContent(postId) {
 homeButton.on("click", function () {
   // Emptying posts grid
   postsContainer.empty();
-  loadPosts(1, 11);
+  loadPosts(1, 15);
 });
 usersButton.on("click", () => console.log("Users list"));
 
@@ -370,10 +376,6 @@ $(postsWrapperScroll).scroll(function () {
     console.log("New request");
     loadPosts(pageNum, 12);
   }
-  // console.log(
-  //   $(this).scrollTop() + $(this).height(),
-  //   postsContainerScroll.height()
-  // );
 });
 
 /* -------------------------------------------------------------------------- */
