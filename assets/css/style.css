@@ -9,9 +9,6 @@
 .stars {
   animation: stars 10s ease-out;
 }
-.star {
-  background-image: url(/assets/img/estrella.jpg);
-}
 h1 {
   -webkit-text-stroke: 0.5px yellow;
   color: transparent;
@@ -28,6 +25,15 @@ h2 {
 .navbar-brand {
   font-size: 4rem;
   justify-content: end;
+}
+
+
+.star{
+background-image: url(/assets/img/estrella.jpg);
+background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
 }
 
 
