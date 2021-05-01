@@ -3,7 +3,7 @@
  * Global Variables
  * @ author:
  */
-
+var postID;
 const container = $("#posts");
 let limit = 15;
 let page = 1;
@@ -29,14 +29,11 @@ async function getPost() {
 async function showPosts() {
     const posts = await getPost();
     posts.forEach((post) => {
-        const randomImg = Math.floor(Math.random() * 8) + 1
         let postCont = $(`<div class="d-flex text-white pt-3 postcont" id="${post.id}">
-        
                             <img src="assets/img/${post.userId}.jpg" class="flex-shrink-0 me-2 rounded" width="80" height="80">
                             <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                                 <div class="d-flex justify-content-between">
                                 <strong data-id="${post.id}" class="title fs-6" data-userid="${post.userId}" id="${post.id}" data-body="${post.body}" data-bs-toggle="modal" data-bs-target="#exampleModal">${post.id}) ${post.title}</strong>
-                                <i class="bi bi-x-circle fs-7" data-id="${post.id}" id="${post.id}"></i>
                                 </div>
                             </div>
                     </div>`);
@@ -69,6 +66,7 @@ $(document).on("click", function (event) {
         method: "GET",
       };
       $.ajax(settings).done(function (response) {
+        postID = event.target.id;
         $("#user").text(response.username);
         $("#email").text(response.email);
         $(".text-start").text(event.target.dataset.body);
@@ -88,8 +86,8 @@ $(document).on("click", function (event) {
           comments.forEach((comms) => {
             let comCont = $(`<div class="modal-body2">
                 <strong class="fs-4">${comms.name}</strong>
-                <span>${comms.body}</span>
-                <span class="text-muted">${comms.email}</span>
+                <span class="mt-2">${comms.body}</span>
+                <span class="text-muted mt-3">${comms.email}</span>
                 </div>`);
             commetsContainer.append(comCont);
           });
@@ -108,25 +106,59 @@ $("#exampleModal").on("hide.bs.modal", function () {
     $("#load-comments").off();
 });
 
+/*
+ * this function delete posts
+ * @ author:
+ */
+
 function deletePost() {
 
-$(document).on("click", function (event) {
-    if (event.target.matches(".bi-x-circle")) {
-
+$("#delete").on("click", function () {
 
   var settings = {
-    url: `https://jsonplaceholder.typicode.com/posts/${event.target.id}`,
+    url: `https://jsonplaceholder.typicode.com/posts/${postID}`,
     method: "DELETE",
     timeout: 0,
   };
-  $.ajax(settings).done(function (response) {
-    const div = $(`div[id="${event.target.id}"]`);
+  $.ajax(settings).done(function () {
+    const div = $(`div[id="${postID}"]`);
     div.remove();
-    alert("Post has been deleted");
+    $("#exampleModal").modal("hide");
+    $("#modal2").modal("show");
+    $("#delete-close").on("click",function () {
+      $("#modal2").modal("hide");
+    });
   });
-}
 });
 }
-
 deletePost();
 
+/*
+ * this function edit posts
+ * @ author:
+ */
+
+function editPost() {
+$("#edit").on("click", function () {
+
+  var settings = {
+    url: `https://jsonplaceholder.typicode.com/posts/${postID}`,
+    method: "PATCH",
+    timeout: 0,
+    data: {
+      title: $("#titlEdit").val(),
+      body: $("#bodyEditbodyEdit").val(),
+    },
+  };
+
+  $.ajax(settings).done(function () {
+    $("#exampleModal").modal("hide");
+    $("input").val("");
+    $("#modal3").modal("show");
+    $("#edit-close").on("click", function () {
+      $("#modal3").modal("hide");
+    });
+  });
+});
+}
+editPost();

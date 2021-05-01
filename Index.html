@@ -15,7 +15,7 @@
 
 <header>
     <div class="navbar star">
-        <div class="container">
+        <div class="container justify-content-center">
             <h1 class="navbar-brand stars">My Blog</h1>
         </div>
     </div>
@@ -30,21 +30,55 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Post</h5>
+            <strong class="modal-title fs-4" id="exampleModalLabel">Post</strong>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <p class="text-start">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque et aliquid reiciendis vel voluptatum cum quia, ratione iure eos excepturi ad itaque unde? Ipsum iste odit animi praesentium, reprehenderit fuga?</p>
-            <strong>User</strong>
-            <span id="user">Admin</span>
-            <span id="email">Test@test.com</span>
-            <button id="load-comments" type="button" class="btn btn-secondary">Load Comments</button>
+            <strong id="user">Admin</strong>
+            <span class="text-muted" id="email">Test@test.com</span>
+            <div class="mt-4">
+                <button id="load-comments" type="button" class="btn btn-secondary">Load Comments</button>
+                <button id="delete" type="button"class="btn btn-danger">Delete</button>
+                <button id="edit" type="button" class="btn btn-primary">Edit</button>
+            </div>
         </div>
         <div class="modal-body2">
         </div>
         </div>
     </div>
 </div>
+<!-- Modal delete -->
+<div class="modal fade" id="modal2" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <p class="fs-3 text-center mt-4">this post has been deleted</p>
+            <div class="modal-footer">
+
+            <a class="btn btn-primary" id="delete-close" role="button">Close</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal delete -->
+<div class="modal fade" id="modal3" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content justify-content-center d-flex">
+            <strong class="text-center fs-1">Editing Post</strong>
+            <label class="ms-3" for="title">Title:</label>
+            <input class="rounded  p-1 ms-3 me-3" type="text" id="titlEdit">
+            <label class="mt-2 ms-3"  for="Body">Body:</label>
+            <input class="rounded  p-1 ms-3 me-3" type="text" id="bodyEdit">
+            <div class="modal-footer">
+
+            <a class="btn btn-success" id="edit-close" role="button">Save</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 
 
