@@ -101,7 +101,6 @@ body {
 .posts-container {
   font-family: var(--text-roman);
   flex-grow: 1;
-  padding: 50px;
   /* margin-bottom: var(--margin); */
 }
 
@@ -112,7 +111,7 @@ body {
 }
 
 .first-post > .row > .post-left > .card-title {
-  max-height: 70%;
+  max-height: 60%;
   line-height: 30px;
 }
 

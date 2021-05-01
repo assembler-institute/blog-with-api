@@ -2,6 +2,7 @@
 /*                                    TODO                                    */
 /* -------------------------------------------------------------------------- */
 // · Scrollable with only posts from one user
+// · Alert when deleting post
 
 /* -------------------------------------------------------------------------- */
 /*                              GLOBAL VARIABLES                              */
@@ -40,6 +41,8 @@ let saveButton = $("#saveBtn");
 //Scroll
 let postsWrapperScroll = $("#postsWrapper");
 let postsContainerScroll = $("#postsContainer");
+postsWrapperScroll.css("height", "fit-content");
+postsContainerScroll.css("height", "fit-content");
 let postsContPadding = parseInt(
   postsContainerScroll.css("padding").replace("px", "")
 );
@@ -113,21 +116,21 @@ function postBox(post, postId, firstPost) {
 
   // Assigning user
   let postUser = $("<div>");
-  postUser.addClass("badge badge-dark");
+  postUser.addClass(`badge badge-dark badge-${rawUser}`);
   postUser.attr("data-user-id", rawUser);
-  // Making badges clickables
-  getUsersPost(rawUser);
-  setPostUser(rawUser, postUser);
 
   // Appending divs
   postLeft.append(postTitle);
   postLeft.append(postUser);
   postRow.append(postLeft);
   postRow.append(postRight);
-
   postInside.append(postRow);
   postWrapper.append(postInside);
   postsContainer.append(postWrapper);
+
+  // Making badges clickables
+  getUsersPost(rawUser);
+  setPostUser(rawUser, postUser);
 
   // Show/hide delete and patch icons when mouse over/out post
   postInside.on("mouseover", function () {
@@ -205,8 +208,6 @@ function editModal(parentDiv, post, postId) {
     editModalTitle.val(post.title);
     editModalBody.text(post.body);
 
-    console.log(postId);
-
     //Delete post
     deleteButton.on("click", function () {
       deletePost(postId);
@@ -261,7 +262,7 @@ function renderModalUser(user, nameDiv, mailDiv) {
 
 // Return user in tag
 function getUsersPost(userId) {
-  $(".badge").each(function () {
+  $(`.badge-${userId}`).each(function () {
     $(this).on("click", function (event) {
       event.stopImmediatePropagation();
       var settings = {
@@ -272,9 +273,12 @@ function getUsersPost(userId) {
       };
 
       $.ajax(settings).done(function (response) {
+        postsContainerScroll.css("height", "fit-content");
+        postsWrapperScroll.css("height", "fit-content");
+
         // Emptying posts grid
         postsContainer.empty();
-
+        console.log(response);
         $(response).each(function (index) {
           // Style first post
           if (index === 0) {
@@ -283,8 +287,8 @@ function getUsersPost(userId) {
             //Rest of the posts
             postBox(response[index], response[index].id, false);
           }
-          console.log("Loaded all posts by user:", userId);
         });
+        console.log("Loaded all posts by user:", userId);
       });
     });
   });
@@ -303,7 +307,6 @@ function setComments(postId) {
 
   $.ajax(settings).done(function (comments) {
     getPostComments(comments);
-    // console.log(comments);
   });
 }
 
@@ -366,10 +369,12 @@ function modalContent(postId) {
 /*                                 NAV BUTTONS                                */
 /* -------------------------------------------------------------------------- */
 homeButton.on("click", function () {
+  pageNum = 1;
   // Emptying posts grid
   postsContainer.empty();
-  loadPosts(1, 15);
+  loadPosts(pageNum, 15);
 });
+
 usersButton.on("click", () => console.log("Users list"));
 
 /* -------------------------------------------------------------------------- */
@@ -378,8 +383,8 @@ usersButton.on("click", () => console.log("Users list"));
 $(postsWrapperScroll).scroll(function () {
   // Posts container with padding
   let postsContHeight = postsContainerScroll.height() + postsContPadding * 2;
-
   // Only make new requests when the bottom is reached
+  // console.log($(this).scrollTop() + $(this).height(), postsContHeight);
   if ($(this).scrollTop() + $(this).height() === postsContHeight) {
     pageNum++;
     console.log("New request");
