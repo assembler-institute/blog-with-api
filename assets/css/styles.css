@@ -81,9 +81,9 @@ body {
 }
 
 .custom-post {
-  color: black;
+  color: var(--accent-color);
   border: var(--border-width) solid var(--accent-color);
-  background-color: var(--accent-color);
+  /* background-color: var(--accent-color); */
   border-radius: 10px;
   height: 210px;
   overflow: scroll;
@@ -92,14 +92,15 @@ body {
 }
 
 .custom-post:hover {
-  background-color: transparent;
-  color: var(--accent-color);
+  background-color: var(--accent-color);
+  color: var(--light-color);
 }
 
 .first-post {
   border: var(--border-width) solid var(--light-color);
   background-color: transparent;
   font-size: 30px;
+  color: var(--light-color);
 }
 
 .first-post:hover {
@@ -125,9 +126,9 @@ body {
 
 .badge-dark {
   font-size: 14px;
-  border: 2px solid var(--dark-color);
+  border: 2px solid var(--accent-color);
   color: var(--dark-color);
-  background-color: transparent;
+  background-color: var(--accent-color);
 }
 
 .first-post > .row > .post-left > .badge-dark {
@@ -136,15 +137,21 @@ body {
   color: var(--dark-color);
 }
 
+.first-post:hover > .row > .post-left > .badge-dark {
+  border: 2px solid var(--dark-color);
+  background-color: transparent
+  color: var(--dark-color);
+}
+
 .custom-post:hover > .row > .post-left > .badge-dark {
-  border: 2px solid var(--accent-color);
-  background-color: var(--accent-color);
+  border: 2px solid var(--dark-color);
+  /* background-color: var(--accent-color); */
   color: var(--dark-color);
 }
 
 .custom-post:hover > .row > .post-left > .badge-dark:hover {
-  border: 2px solid var(--accent-color);
-  background-color: transparent;
+  border: 2px solid var(--dark-color);
+  background-color: var(--dark-color);
   color: var(--accent-color);
 }
 
