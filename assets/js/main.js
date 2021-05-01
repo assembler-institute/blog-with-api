@@ -403,26 +403,16 @@ function scrollFunctionality() {
     // Posts container with padding
     let postsContHeight = postsContainerScroll.height() + postsContPadding * 2;
     // Only make new requests when the bottom is reached
-    console.log(
-      $(this).scrollTop() + $(this).height(),
-      "Posts container total height",
-      postsContHeight
-    );
     if ($(this).scrollTop() + $(this).height() === postsContHeight) {
       pageNum++;
-      console.log("New request");
       // User's posts
       if (userOverview === true) {
         getUsersPost(userIdOut);
-        console.log("Inside user's overview");
       }
       // All posts
       else {
         loadPosts(pageNum, 12);
-        console.log("Inside general overview");
       }
-    } else {
-      console.log("Already loaded all response");
     }
   });
 }
