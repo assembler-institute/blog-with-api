@@ -3,3 +3,34 @@
   box-sizing: border-box;
   /* outline: 1px solid red; */
 }
+
+.loading-el {
+  display: none;
+  position: fixed;
+  top: 0;
+  z-index: 99999;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  align-items: center;
+}
+
+.loading {
+  overflow: hidden;
+  display: flex;
+}
+
+.bg-grey {
+  background-color: #f4f7f6;
+}
+
+.card-body {
+  min-height: 85px;
+}
+
+.usr-img {
+  margin-top: 0.5rem;
+  width: 25px;
+  height: 25px;
+  margin-left: 1rem;
+}

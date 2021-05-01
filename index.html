@@ -12,20 +12,21 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./assets/css/root.css" />
+    <link rel="icon" href="./assets/img/cloud-computing.png" type="image/png" sizes="16x16">
   </head>
-  <body class="vh-100">
+  <body class="vh-100 bg-grey">
     <header
-      class="navbar container-fluid border-bottom border-primary border-2 sticky-top bg-white"
+      class="navbar container-fluid border-bottom border-primary sticky-top bg-grey"
       style="height: 60px"
     >
       <nav class="navbar-brand">Blog with API</nav>
     </header>
 
-    <div class="h-25 text-center container-fluid mt-3 mb-3">
-      <div class="col h-100 col bg-primary rounded-3 position-relative">
+    <div class="text-center container-fluid mt-3 mb-3">
+      <div class="col col position-relative bg-grey" style="height: 150px;">
         <h1
           class="align-bottom m-auto position-absolute top-50 start-50 translate-middle"
-          style="color: white"
+          style="color: black;"
         >
           Blog with API
         </h1>
@@ -33,11 +34,25 @@
     </div>
 
     <!-- MAIN CONTAINER --------------------------- -->
-    <div class="h-60 container-fluid">
+    <div class="container-fluid">
       <div
         id="main-container-posts"
-        class="row row-cols-2 row-cols-lg-4 g-4 g-lg-3"
+        class="row row-cols-2 row-cols-xl-3 p-5 g-5"
       ></div>
+        <nav aria-label="Page navigation example" class="p-5">
+          <ul class="pagination d-flex justify-content-between">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
     </div>
     <!-- MODALS ------------------------- -->
     <!-- MODAL FOR POSTS ------------------------ -->
@@ -197,6 +212,10 @@
       </div>
     </div>
     <!-- END OF MODAL FOR DELETE --------------------------- -->
+    <div class="justify-content-center loading-el">
+      <div class="spinner-border text-primary" role="status"></div>
+    </div>     
+    <!-- <div class="loading-el"></div> -->
     <script
       src="https://code.jquery.com/jquery-3.6.0.js"
       integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
