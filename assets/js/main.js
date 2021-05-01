@@ -26,6 +26,7 @@ let bodyPost = $("#bodyPost");
 
 // Comments
 let commentsDiv = $("#commentsBlock");
+let commentsIcon = $("#commentsIcon");
 
 // Modal
 let modalTitle = $(".modal-title");
@@ -416,7 +417,9 @@ function modalContent(postId) {
     // User
     setModalUser(response.userId, modalUser, modalMail);
     // Comments
-    setComments(postId);
+    commentsIcon.on("click", function () {
+      setComments(postId);
+    });
   });
 }
 
