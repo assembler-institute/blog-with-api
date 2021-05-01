@@ -376,8 +376,10 @@ usersButton.on("click", () => console.log("Users list"));
 /*                                   SCROLL                                   */
 /* -------------------------------------------------------------------------- */
 $(postsWrapperScroll).scroll(function () {
+  // Posts container with padding
   let postsContHeight = postsContainerScroll.height() + postsContPadding * 2;
 
+  // Only make new requests when the bottom is reached
   if ($(this).scrollTop() + $(this).height() === postsContHeight) {
     pageNum++;
     console.log("New request");
