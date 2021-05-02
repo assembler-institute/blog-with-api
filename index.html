@@ -177,10 +177,11 @@
             </form>
           </div>
           <div class="modal-footer">
-            <a id="cancelEditPostBtn" class="btn cancelModalBtn" href="#postModal" data-bs-toggle="modal">Cancel</a>
-            <button type="button" class="btn btn-primary confirmModalBtn" id="saveEditPostBtn">
+            <a id="saveEditPostBtn" class="btn confirmModalBtn" href="#postModal" data-bs-toggle="modal">Save</a>
+            <!-- <button type="button" class="btn btn-primary confirmModalBtn" id="saveEditPostBtn">
               Save
-            </button>
+            </button> -->
+            <a id="cancelEditPostBtn" class="btn cancelModalBtn" href="#postModal" data-bs-toggle="modal">Cancel</a>
           </div>
         </div>
       </div>
@@ -198,6 +199,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
+          <h5 class="modal-title">Delete Post</h5>
           <button
             type="button"
             class="close"
@@ -208,10 +210,17 @@
           </button>
         </div>
         <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <p class="detelePostText">Are you sure you want to delete the post?</p>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="modal-footer">
-          <a id="" class="btn cancelModalBtn" href="#postModal">No</a>
-          <a id="" class="btn confirmModalBtn" href="#postModal">Yes</a>
+          <a id="confirmDeletePost" class="btn confirmModalBtn" href="#postModal">Yes</a>
+          <a id="cancelDeletePost" class="btn cancelModalBtn" href="#postModal">No</a>
         </div>
       </div>
     </div>

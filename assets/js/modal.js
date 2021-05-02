@@ -4,6 +4,9 @@
 $(".btnEditPost").on("click", setEditPostContent);
 $("#saveEditPostBtn").on("click", saveEditPost);
 $("#cancelEditPostBtn").on("click", cancelEditPost);
+$(".btnDeletePost").on("click", setDeletePostContent);
+$("#cancelDeletePost").on("click", cancelDeletePost);
+$("#confirmDeletePost").on("click", confirmDeletePost);
 //------------------------------------------------------------------------
 // FUNCTIONS
 //------------------------------------------------------------------------
@@ -94,6 +97,7 @@ function setComentsModalContent(element) {
 
 function setEditPostContent() {
   $("#postModal").modal("hide");
+  $('body').addClass("modal-open");
   // $("#postModal").css("opacity", "0.5")
   var settings = {
     url: urlBaseLocal + "posts?id=" + idPost + "",
@@ -128,6 +132,32 @@ function saveEditPost() {
     getPostsRequest(indexPage);
     $("#editPostModal").modal("hide");
     $("#postModal").modal("show");
+    $('body').addClass("modal-open");
   });
 }
 
+function setDeletePostContent() {
+  $("#postModal").modal("hide");
+  $('body').addClass("modal-open");
+}
+
+function cancelDeletePost() {
+  $("#deletePostModal").modal("hide");
+  $("#postModal").modal("show");
+  $('body').addClass("modal-open");
+}
+
+function confirmDeletePost() {
+  var settings = {
+    url: urlBaseLocal + "posts/" + idPost,
+    method: "DELETE",
+    timeout: 0,
+  };
+
+  $.ajax(settings).done(function (response) {
+    getPostsRequest(indexPage);
+    $("#deletePostModal").modal("hide");
+    $("#postModal").modal("hide");
+    $('body').addClass("modal-open");
+  });
+}

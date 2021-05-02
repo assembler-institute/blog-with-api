@@ -1,8 +1,8 @@
 //------------------------------------------------------------------------
 // GLOBAL VARIABLES
 //------------------------------------------------------------------------
-var urlBase = "https://jsonplaceholder.typicode.com/";
-var urlBaseLocal = "http://localhost:3000/";
+var urlBaseLocal = "https://jsonplaceholder.typicode.com/";
+var urlBase = "http://localhost:3000/";
 var indexPage = 0;
 var idPost;
 /*Para arrancar nuestra db usando json-server*/

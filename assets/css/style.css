@@ -122,7 +122,7 @@ figure img {
 }
 
 /* Modal post styles */
-.modalPost{
+.modal{
   overflow-y: auto;
 }
 .modal-content {
@@ -261,6 +261,10 @@ figure img {
   color: white;
   opacity: 0.7;
 }
+.detelePostText{
+  margin-bottom: 0px;
+  font-size: 18px;
+}
 
 
 /* Media queries */
@@ -289,6 +293,21 @@ figure img {
   .paginationContainer i {
     font-size: 40px;
   }
+  .modal-header .modal-title {
+    font-size: 20px;
+    font-weight: 900;
+    padding-left: 20px;
+  }
+  .labelForm {
+    font-size: 20px;
+  }
+  .bodyTitleInput{
+    font-size: 16px;
+  }
+  .deletePostText{
+    font-size: 16px;
+  }
+  
 }
 
 @media (max-width: 576px) {
@@ -305,5 +324,19 @@ figure img {
   }
   .paginationContainer i {
     font-size: 30px;
+  }
+  .modal-header .modal-title {
+    font-size: 20px;
+    font-weight: 900;
+    padding-left: 20px;
+  }
+  .labelForm {
+    font-size: 20px;
+  }
+  .bodyTitleInput{
+    font-size: 16px;
+  }
+  .deletePostText{
+    font-size: 16px;
   }
 }
