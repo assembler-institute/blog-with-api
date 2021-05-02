@@ -72,7 +72,16 @@
           </div>
 
           <div class="modal-footer border-top-0">
-            <button type="button" class="btn btn-success">Edit</button>
+            <a
+              class="btn btn-success"
+              href="#editModal"
+              data-bs-toggle="modal"
+              role="button"
+              data-bs-dismiss="modal"
+              id="editModalBtn"
+              >Edit</a
+            >
+
             <a
               class="btn btn-danger"
               href="#deleteModal"
@@ -130,7 +139,15 @@
     </div>
 
     <!-- * Shadow modal for delete confirmation -->
-    <div class="modal" tabindex="-1" id="shadowModal">
+    <div
+      id="shadowModal"
+      class="modal fade"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0 bg-transparent align-items-center">
           <div class="spinner-border text-primary" role="status">
@@ -148,10 +165,65 @@
         aria-live="assertive"
         aria-atomic="true"
         id="deletedMessage"
-        data-delay="30"
+        data-bs-delay="1500"
       >
         <div class="d-flex">
           <div class="toast-body">The post has been deleted!</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- * Edit modal -->
+    <div
+      class="modal fade"
+      id="editModal"
+      tabindex="-1"
+      aria-labelledby="editModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editModalLabel">Edit</h5>
+          </div>
+          <div class="modal-body">
+            <div id="editForm" class="mb-3">
+              <label for="editTitle" class="form-label">Title:</label>
+              <textarea
+                name="editTitle"
+                id="editTitle"
+                class="form-control"
+              ></textarea>
+            </div>
+
+            <div id="editForm" class="mb-3">
+              <label for="editBody" class="form-label">Content:</label>
+              <textarea
+                name="editBody"
+                id="editBody"
+                class="form-control"
+              ></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a
+              class="btn btn-primary"
+              href="#postModal"
+              data-bs-toggle="modal"
+              role="button"
+              data-bs-dismiss="modal"
+              id="saveChanges"
+              >Save changes</a
+            >
+
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+          </div>
         </div>
       </div>
     </div>

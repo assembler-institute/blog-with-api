@@ -7,21 +7,15 @@ function deletePost(postIdToRemove) {
   });
 
   deletePetition.done(function () {
-    $("#shadowModal").hide();
-    $("#spinner").css("display", "none");
+    $("#shadowModal").modal("hide");
+    $("<div>").addClass("shadow").appendTo("body");
     $("#deletedMessage").toast("show");
+
     $("#deletedMessage").on("hidden.bs.toast", function () {
-      $(".modal-backdrop").hide();
+      $(".shadow").remove();
     });
-    console.log(postIdToRemove);
-    $(".post").each(function (index, element) {
-      if ($(element).data("id") == postIdToRemove) {
-        $(element).remove();
-      }
-    });
-    /* console.log($('.post[data-id="' + postIdToRemove + '"'));
-    $('.post[data-id="' + postIdToRemove + '"').remove(); */
-    console.log("Deleted!");
+
+    $('.post[data-id="' + postIdToRemove + '"').remove();
   });
 }
 
@@ -70,7 +64,7 @@ function postData(postId) {
   };
 
   $.ajax(settings).done(function (response) {
-    $(".modal-title").text(response.title);
+    $("#postModal .modal-title").text(response.title);
     $(".modal-body p").text(response.body);
     userData(response.userId);
     commentsData(response.id);
@@ -78,6 +72,12 @@ function postData(postId) {
 }
 
 /* Event Listeners */
+function confirmDelete(deleteFunction) {
+  $("#deletePost").on("click", function () {
+    deleteFunction($(this).attr("data-id"));
+  });
+}
+
 function openModal() {
   $(".post").each(function (index, element) {
     $(element).on("click", function () {
@@ -88,11 +88,39 @@ function openModal() {
   });
 }
 
-function confirmDelete(deleteFunction) {
-  $("#deletePost").on("click", function () {
-    console.log("click");
-    let myPostId = $(this).data("id");
-    deleteFunction(myPostId);
+function editPost() {
+  $("#editModalBtn").on("click", function () {
+    $("#editTitle").val($("#postModal .modal-title").text());
+    $("#editBody").val($("#postModal .modal-body p").text());
+  });
+}
+
+function saveEdit() {
+  $("#saveChanges").on("click", function () {
+    let postIdToEdit = $("#postModal #deletePost").attr("data-id");
+    let newTitle = $("#editTitle").val();
+    let newContent = $("#editBody").val();
+
+    var settings = {
+      url: "https://jsonplaceholder.typicode.com/posts/" + postIdToEdit,
+      method: "PATCH",
+      timeout: 0,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: JSON.stringify({
+        userId: 1,
+        id: 5,
+        title: '"' + newTitle + '"',
+        body: '"' + newContent + '"',
+      }),
+    };
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+      $("#postModal .modal-title").text(newTitle);
+      $("#postModal .modal-body p").text(newContent);
+    });
   });
 }
 
@@ -124,3 +152,5 @@ function init(openModal) {
 
 init(openModal);
 confirmDelete(deletePost);
+editPost();
+saveEdit();
