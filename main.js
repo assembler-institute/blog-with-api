@@ -4,6 +4,8 @@ let $posts = $("#cardsContainer");
 let buttonToTop = $('#btn-to-top');
 
 
+// Get all Posts
+
 $.get(`${URL}/posts`, function (allPosts) {
   $.each(allPosts, function (i, post) {
     $("#cardsContainer").append(`
@@ -26,6 +28,9 @@ $.get(`${URL}/posts`, function (allPosts) {
 }).fail(function() {
   console.log(error)
 });
+
+
+// Delete a Post
 
 $posts.on("click", ".delete", function (e) {
   e.preventDefault();
@@ -50,6 +55,9 @@ $posts.on("click", ".delete", function (e) {
   });
 });
 
+
+// Update a Post
+
 $posts.on("click", ".editPost", function (e) {
   e.preventDefault();
   let $card = $(this).closest(".card");
@@ -62,13 +70,13 @@ $posts.on("click", ".editPost", function (e) {
       e.preventDefault();
       let post = {
         title: $("input.title").val(),
-        body: $("textarea.body").val(),
+        body: $("textarea.body").val()
       };
       $.ajax({
         type: "PUT",
         url: `${URL}/posts/${$card.attr("id")}`,
         data: post,
-        success: function () {
+        success: function (result) {
           $(".checkModal .modal-body").text("Update this post?");
           $(".checkModal").modal("show");
 
@@ -90,6 +98,9 @@ $posts.on("click", ".editPost", function (e) {
       });
     });
 });
+
+
+// Post Modal 
 
 $posts.on("click", ".card-body", function (e) {
   e.preventDefault();
@@ -130,11 +141,17 @@ $posts.on("click", ".card-body", function (e) {
 });
 
 
+// Handling Closing Modal 
+
 $(".modal").on("hidden.bs.modal", function () {
   $("#comments").empty();
   $("#title-input, #body-text").val("");
   $("#comments").hide();
 });
+
+
+
+// Go to the Top button 
 
 $(window).scroll(function() {
   if ($(window).scrollTop() > 300) {
