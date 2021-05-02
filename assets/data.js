@@ -4,7 +4,7 @@
 $('#usBut').on('click',DataUser);
 //$('#posBut').on('click',DataPost);
 //$('#comBut').on('click',DataComent);
-let url='http://localhost:3000/'
+let url=' https://jsonplaceholder.typicode.com/'
 function DataUser(){
     $('.delete').hide()
     $('h4.delteText').remove()
@@ -40,7 +40,7 @@ function DataUser(){
 }
 function DataPost(userId,userName){
 if($('#floatingInput').val()==''){
-    return axios.get(url+'post')
+    return axios.get(url+'posts')
     .then(
         function dataP(responsePos){
             let cnt=0;
@@ -67,7 +67,7 @@ if($('#floatingInput').val()==''){
         }
     )
 }else if($('#floatingInput').val()==userName){
-    return axios.get(url+`users/${userId}/post`)
+    return axios.get(url+`users/${userId}/posts`)
     .then(
         function dataP(responsePos){
             //console.log(responsePos.data)
@@ -109,7 +109,7 @@ function deletePost(userNam,postID){
     })
     
     $('#finalDelet').on('click',function(){
-        axios.delete(url+`post/${postID}`).then(
+        axios.delete(url+`posts/${postID}`).then(
            
             DataUser()
             
@@ -150,7 +150,7 @@ function DataComent(idpost){
    $('.modal-body').css('opacity','0.7');
    $('.modal-footer').css('opacity','0.7');
     
-    return axios.get(url+`post/${idpost}/coments`)
+    return axios.get(url+`posts/${idpost}/comments`)
     .then(
         function dataCom(responseCom){
             
