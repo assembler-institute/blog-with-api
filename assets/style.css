@@ -1,8 +1,9 @@
-*{
-    outline: 1px solid red;
+#header{
+
+    background-color: #343a40;
+    color:white;
 }
 
-.myCustomRow{
-    background-color:bisque;
-    height: 400px;
+.post{
+    cursor: pointer;
 }

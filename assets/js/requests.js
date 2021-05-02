@@ -4,14 +4,6 @@ var postStart = 0;
 var commentStart = 0;
 var userStart = 0;
 var limit = 10;
-var firstTimePosts = true;
-var firstTimeComments = true;
-var firstTimeUsers = true;
-var posts = [];
-var users = [];
-var comments = [];
-var getUsersBtn = $("#usersBtn");
-var getPostsBtn = $("#postsBtn");
 
 // Requests Settings
 // Posts request settings
@@ -51,100 +43,23 @@ var userRequestSettings = {
 
 /*------------------------- Functions ---------------------------*/
 
-// Sets up the request URL for any given request to any of the endpoints
-function setRequestURL(start, limit, requestSettings, postID) {
-  // Setting up URL for current Request and
-  // newStart for the given requestSettings
-  if (postID === null) {
-
-    if(requestSettings.url.indexOf("posts?")){
-
-      if (start === 0) {
-        requestSettings.url = "https://jsonplaceholder.typicode.com/posts?_start=0&_limit=" + limit;
-      } else {
-        let newStart = start + limit;
-        requestSettings.url.replace("?_start=0", "?_start=" + newStart);
-        postStart = newStart;
-      }
-
-    }else if(requestSettings.url.indexOf("users")){
-
-      if (start === 0) {
-        requestSettings.url = "https://jsonplaceholder.typicode.com/users?_start=0&_limit=" + limit;
-      } else {
-        let newStart = start + limit;
-        requestSettings.url.replace("?_start=0", "?_start=" + newStart);
-        userStart = newStart;
-      }
-    }
-  } else if (requestSettings.url.indexOf("posts/")) {
-    // Adding postID to request URL
-    requestSettings.url = requestSettings.url.replace(
-      "posts/",
-      "posts/" + postID + "/comments?_start="
-    );
-
-    if (start === 0) {
-      requestSettings.url = requestSettings.url + "0&_limit=" + limit;
-    } else {
-      let newStart = start + limit;
-      requestSettings.url = "https://jsonplaceholder.typicode.com/posts/" + postID;
-      requestSettings.url = requestSettings.url + "/comments" + "?_start=" + newStart + "&_limit=" + limit;
-      console.log("comments url -->", requestSettings.url);
-      commentStart = newStart;
-    }
-  }
-}
-
 // Creates and makes a request and shows posts
-function getPostsRequest(limit, postID) {
+function getPostsRequest(limit) {
   
-  // Set posts url
+  // Set posts url method
   postRequestSettings.url = "https://jsonplaceholder.typicode.com/posts?_start=0&_limit=" + limit;
+  postRequestSettings.method = "GET";
   
   // Make posts requests and create posts environment
   $.ajax(postRequestSettings).done(function (response) {
-    createPostsEnvironment(limit, null, response);
+    createPostsEnvironment(response);
   });
 
 }
 
-/*
-function makeRequest(requestType, limit, postID) {
-  // Choosing request
-  if (requestType === "posts?") {
-
-    setRequestURL(postStart, limit, postRequestSettings, null);
-    console.log("postRequestSettings.url -->", postRequestSettings.url);
-    $.ajax(postRequestSettings).done(function (response) {
-      getPosts(requestType, limit, null, response)
-      console.log("posts -->", posts);
-    });
-
-  } else if (requestType === "users") {
-
-    setRequestURL(userStart, limit, userRequestSettings, null);
-    console.log("userRequestSettings.url -->", userRequestSettings.url);
-    $.ajax(userRequestSettings).done(function (response) {
-      users = response;
-      console.log("users -->", users);
-    });
-
-  } else if (requestType === "posts/") {
-
-    setRequestURL(commentStart, limit, commentRequestSettings, postID);
-    console.log("commentRequestSettings.url -->", commentRequestSettings.url);
-    $.ajax(commentRequestSettings).done(function (response) {
-      comments = response;
-      console.log("comments -->", comments);
-    });
-    
-  }
-}*/
-
 // Creates a post enrty for every post in the request 
 // response stored in the posts array and displays it
-function createPostsEnvironment(limit, postID, response){
+function createPostsEnvironment(response){
 
   // Creates posts environment to display response stored in array posts
   for(element of response){
@@ -152,8 +67,8 @@ function createPostsEnvironment(limit, postID, response){
     let postLeftDiv = $("<div>");
 
     $("#postsContainer").append(
-        $("<div>").addClass("post").attr("id", "post" + element.id).attr("data-user", element.userId).append(
-          $("<div>").addClass("row")
+        $("<div>").addClass("post mt-3").attr("id", "post" + element.id).attr("data-user", element.userId).append(
+          $("<div>").addClass("row border border-dark")
           .append(
             postLeftDiv.addClass("col-11 p-4 d-flex flex-column position-static").attr("data-id", element.id)
             .append($("<h3>").addClass("mb-2").text(element.title))
@@ -177,9 +92,10 @@ function createPostsEnvironment(limit, postID, response){
     // Add an event listener to show the modal to every post
     postLeftDiv.on("click",function(){
       
-      // Setting up post request URL and making request
+      // Setting up post request URL and  method and making request
       let postID = $(this).attr("data-id");
       specificPostRequestSettings.url = "https://jsonplaceholder.typicode.com/posts/" + postID;
+      specificPostRequestSettings.method = "GET";
       
       // Creating modal to show specific post
       createShowModalEnvironment(specificPostRequestSettings, postID);
@@ -208,7 +124,7 @@ function specificPostRequestinfo(specificPostRequestSettings, postID){
       .append($("<p>").text(post.body))
     )
     .append($("<div>").addClass("modal-footer flex-column").attr("id", "modalFooter")
-      .append($("<h5>").addClass("modal-title").text("Comments"))
+      .append($("<h5>").addClass("modal-title mb-3").text("Comments"))
       .append($("<button>").attr("id", "btnLoadComments").addClass("btn btn-dark").attr("type", "button").text("Load Comments"))
     );
 
@@ -232,15 +148,16 @@ function specificPostUserRequestInfo(userRequestSettings, postID){
 
   // Setting specific post user URL
   userRequestSettings.url = "https://jsonplaceholder.typicode.com/users" +"/"+ $("#post"+ postID).attr("data-user");
+  userRequestSettings.method = "GET";
 
   // Making specific user request and filling modal user fields
   $.ajax(userRequestSettings).done(function(users){
     
-    $("#modalBody").append(
-      $("<h5>").addClass("modal-title").text("USER")
-      .append($("<p>").text(users.name))
-      .append($("<p>").text(users.email))
-    );
+    $("#modalBody")
+    .append($("<h5>").addClass("modal-title mb-3").text("USER"))
+      .append($("<p>").addClass("mb-0").text(users.name))
+      .append($("<p>").addClass("mb-0").text(users.email));
+      $("#exampleModal").modal("show");
   });
 
 }
@@ -254,13 +171,13 @@ function specificPostCommentsRequestinfo(commentRequestSettings, postID){
 
   // Making comments request and creating and filling modal comments fields
   $.ajax(commentRequestSettings).done(function(comments){
-    console.log(comments);
+    
     $(comments).each(function(index){
       
-      $("#modalFooter").append($("<div>").addClass("modal-body")
-        .append($("<h6>").addClass("modal-title").text($(comments)[index].name))
+      $("#modalFooter").append($("<div>").addClass("modal-body border mb-3")
+        .append($("<h6>").addClass("modal-title mb-3").text($(comments)[index].name))
         .append($("<p>").text($(comments)[index].body))
-        .append($("<p>").text($(comments)[index].email))
+        .append($("<p>").addClass("mb-0").text($(comments)[index].email))
       );
 
     });
@@ -273,7 +190,7 @@ function createShowModalEnvironment(specificPostRequestSettings, postID){
 
   specificPostRequestinfo(specificPostRequestSettings, postID);
   specificPostUserRequestInfo(userRequestSettings, postID)
-  $("#exampleModal").modal("show");
+  // $("#exampleModal").modal("show");
 
 }
 
