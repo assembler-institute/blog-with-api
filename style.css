@@ -28,12 +28,6 @@
   margin-right: 10px;
 }
 
-.modalBtn {
-}
-
-#modalBtn {
-}
-
 .modal-title {
   font-size: 40px;
   line-height: 1.2;
@@ -88,6 +82,11 @@
   }
 }
 
+#postText {
+  background-color: rgba(255, 255, 255, 0.801);
+  padding: 2%;
+  border-radius: 5px;
+}
 
 #modal-name {
   font-weight: bold;
@@ -137,14 +136,16 @@ h6 {
   font-weight: 700;
 }
 
+label {
+  display: block;
+  float: left;
+  width: 200px;
+}
+
 #fullPost {
-  /* The image used */
+
   background-image: url("img/barcelona.jpg");
-
-  /* Set a specific height */
   min-height: 500px;
-
-  /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;

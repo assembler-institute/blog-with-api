@@ -65,11 +65,12 @@
                 <div class="col-md-12 px-0">
                     <strong class="d-inline-block mb-2 text-warning" id="userName"></strong>
                     <h1 class="display-3 text-light mb-5" id="postTitle"></h1>
-                    <p class="lead mb-0"><button type="button" class="btn btn-light modalBtn" id="modalBtn"
+                    <h5 class="display-7 text-dark mb-5" id="postText"></h5>
+                    <p class="lead mb-0"><button type="button" class="btn btn-primary modalBtn" id="modalBtn"
                             data-toggle="modal" data-target="#exampleModal" data-id="1">Read post</button></p>
                 </div>
             </div>
-
+        
             <div class="row mb-2" id="postDiv">
 
             </div>
@@ -84,12 +85,12 @@
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <h5 class="modal-title" id="exampleModalLabel"></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body" id="modalBody">
 
                         </div>
                         <p class="modal-info pl-3" id="modal-name"></p>
@@ -97,24 +98,54 @@
                         <p class="pl-3 pt-3" id="buttonComment">
                             <button class="btn btn-light" type="button" data-toggle="collapse"
                                 data-target=".multi-collapse" aria-expanded="false"
-                                aria-controls="multiCollapseExample1 multiCollapseExample2"><img src="img/commentButton.png" width="30" height="30">Comments</button>
+                                aria-controls="multiCollapseExample1 multiCollapseExample2"><img
+                                    src="img/commentButton.png" width="30" height="30">Comments</button>
                         </p>
                         <div class="row">
                             <div class="col">
                                 <div class="collapse multi-collapse" id="multiCollapseExample1">
-                                    
+
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">Edit</button>
-                            <button type="button" class="btn btn-danger">Delete</button>
+                            <button type="button" class="btn btn-primary" id="edit-post">Edit</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-        </main><!-- /.container -->
+            <!------------ Edit Modal -------------->
+            <template id="editModal">
+                    <div class="modal-dialog edit-modal" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabelEdit">Edit post</h5>
+                                <button type="button" class="close" aria-label="Close">
+                                    <span aria-hidden="true" id="closeModal">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="col-form-label">New title</label>
+                                        <input type="text" class="form-control" id="newTitle">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label" >New body</label>
+                                        <textarea class="form-control" id="newBody"></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" id="buttonEdit" data-dismiss="modal">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+            </template>
+
+        </main>
 
         <footer class="blog-footer">
 
