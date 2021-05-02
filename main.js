@@ -1,6 +1,8 @@
 const URL = "https://jsonplaceholder.typicode.com";
 
 let $posts = $("#cardsContainer");
+let buttonToTop = $('#btn-to-top');
+
 
 $.get(`${URL}/posts`, function (allPosts) {
   $.each(allPosts, function (i, post) {
@@ -11,16 +13,18 @@ $.get(`${URL}/posts`, function (allPosts) {
              <i class="bi bi-trash delete" type="button" id="${post.id}" aria-label="Close"></i>
         </div>
         <div class="card-body" id="cardBody">
-              <div id="imgContainer">
+            <div id="imgContainer">
               <figure> 
                <img src="https://picsum.photos/500/250?random=${post.id}" alt="post" class="rounded mx-auto d-block card-img-top">
-              </div><br>
               </figure>
-                  <h5 class="card-title text-black-50">${post.title}</h5>
-                  <p class="card-text">${post.body}</p>       
-              </div>
+            </div><br>
+            <h5 class="card-title text-black-50">${post.title}</h5>
+            <p class="card-text">${post.body}</p>       
+        </div>
       </div>`);
   });
+}).fail(function() {
+  console.log(error)
 });
 
 $posts.on("click", ".delete", function (e) {
@@ -40,6 +44,9 @@ $posts.on("click", ".delete", function (e) {
         $card.remove();
       });
     },
+    error: function (error) {
+      console.log(error);
+    }
   });
 });
 
@@ -94,9 +101,12 @@ $posts.on("click", ".card-body", function (e) {
   $(".modal-title").text($cardTitle);
   $(".modal-body p").text($cardText);
   $("#modal-image img").attr("src", $cardImage);
+
   $.get(`${URL}/users/${$card.attr("data-id")}`, function (response) {
     $(`#userName`).text(response.username);
     $(`#userEmail`).text(response.email);
+  }).fail(function() {
+    console.log(error)
   });
 
   $.get(`${URL}/comments/?postId=${$card.attr("id")}`, function (postData) {
@@ -104,16 +114,18 @@ $posts.on("click", ".card-body", function (e) {
       $(
         "#comments"
       ).append(`<h6 class="fw-bold text-light bg-secondary p-2 rounded-2" style="text-indent: 5px">${this.name}</h6>
-                          <p style="text-indent: 5px">${this.body}</p>
-                          <p class="text-end text-secondary">${this.email}</p>
+                <p style="text-indent: 5px">${this.body}</p>
+                <p class="text-end text-secondary">${this.email}</p>
                           `);
     });
     $(".comments-btn")
       .off("click")
       .on("click", function (e) {
         e.preventDefault();
-        $("#comments").fadeToggle()
+        $("#comments").fadeToggle();
       });
+  }).fail(function() {
+    console.log(error)
   });
 });
 
@@ -123,9 +135,6 @@ $(".modal").on("hidden.bs.modal", function () {
   $("#title-input, #body-text").val("");
   $("#comments").hide();
 });
-
-
-let buttonToTop = $('#btn-to-top');
 
 $(window).scroll(function() {
   if ($(window).scrollTop() > 300) {

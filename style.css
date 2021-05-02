@@ -58,10 +58,14 @@ figure:hover img {
 	text-transform: capitalize;
 }
 
+.editPost, .delete {
+	color: rgb(175, 200, 204);
+}
 
 .delete:hover {
 	color: rgb(197, 48, 11);
 }
+
 
 .editPost:hover {
 	color: rgb(30, 157, 161);
