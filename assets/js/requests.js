@@ -100,7 +100,7 @@ function setRequestURL(start, limit, requestSettings, postID) {
 function getPostsRequest(limit, postID) {
   
   // Set posts url
-  setRequestURL(postStart, limit, postRequestSettings, null);
+  postRequestSettings.url = "https://jsonplaceholder.typicode.com/posts?_start=0&_limit=" + limit;
   
   // Make posts requests and create posts environment
   $.ajax(postRequestSettings).done(function (response) {
@@ -109,22 +109,6 @@ function getPostsRequest(limit, postID) {
 
 }
 
-// Creates and makes a request and shows comments for a given post
-function getCommentsRequest(limit, postID) {
-  
-  // Set posts url
-  setRequestURL(commentStart, limit, commentRequestSettings, postID);
-  console.log("commentRequestSettings.url -->", commentRequestSettings.url);
-  
-  // Make posts requests and create posts environment
-  $.ajax(commentRequestSettings).done(function (response) {
-    createCommentsEnvironment(limit, postID, response)
-
-  });
-
-}
-
-// 
 /*
 function makeRequest(requestType, limit, postID) {
   // Choosing request
@@ -201,66 +185,6 @@ function createPostsEnvironment(limit, postID, response){
       createShowModalEnvironment(specificPostRequestSettings, postID);
 
     });
-
-  }
-}
-
-// Creates the modal environment for a given post
-/*
-function createShowModalEnvironment(response, postID){
-  
-  // Making user request and creating modal environtment
-  // when the response is received
-  $.ajax(userRequestSettings.url +"/"+ $("#post"+ postID).attr("data-user")).done(function(data){
-    
-    // Modal environment to show a post
-    $(".modal-content").attr("id", "showPostModal").append(
-      $("<div>").addClass("modal-header").append(
-        $("<h5>").addClass("modal-title").attr("id", "exampleModalLabel").text(response.title)
-        )
-        .append($("<button>").attr("id", "btnClose").addClass("btn btn-dark")
-          .append($("<i>").addClass("fa fa-window-close")
-        )
-      )
-    )
-    .append($("<div>").addClass("modal-body")
-      .append($("<p>").text(response.body))
-      .append($("<h5>").addClass("modal-title").text("USER"))
-      .append($("<p>").text(data.name))
-      .append($("<p>").text(data.email))
-    )
-    .append($("<div>").addClass("modal-footer flex-column").attr("id", "exampleModalFooter")
-      .append($("<h5>").addClass("modal-title").text("Comments"))
-      .append($("<button>").attr("id", "btnLoadComments").addClass("btn btn-dark").attr("type", "button").text("Load Comments"))
-    );
-    
-    let modalCloseBtn = $("#btnClose");
-    let loadCommentsBtn = $("#btnLoadComments");
-
-    // Adding event listeners to empty modal content
-    $("main").on("click", emptyHideModalEnvironment); // comentar con compis esto del listener de cerrar
-    modalCloseBtn.on("click", emptyHideModalEnvironment);
-
-    // Adding listsener to show post comments
-    loadCommentsBtn.on("click", function(){
-      $(loadCommentsBtn).addClass("d-none");
-      createShowCommentEnvironment();
-      // createShowCommentEnvironment(postID, response);
-    });
-  });
-  
-}
-*/
-function createShowCommentEnvironment(){
-  console.log("im in");
-  //for(let comment of response){
-  for(let i=0; i<5; i++){
-
-    $("#modalFooter").append($("<div>").addClass("modal-body")
-      .append($("<h6>").addClass("modal-title").text("Mock comment name "))
-      .append($("<p>").text("Mock comment body"))
-      .append($("<p>").text("Mock comment mail"))
-    );
 
   }
 }
@@ -359,14 +283,10 @@ function emptyHideModalEnvironment(){
   $("#showPostModal").empty();
 }
 
-function getUsers(){
-  console.log(users)
-}
 /*---------------------------------------------------------------*/
 
-/*------------------------- Listeners ---------------------------*/
+/*--------------------- Global Listeners ------------------------*/
 
-getUsersBtn.on("click", getUsers);
 $(window).on("load", function(){
   getPostsRequest(limit, null);
 });
