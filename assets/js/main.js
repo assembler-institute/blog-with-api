@@ -88,7 +88,7 @@ function postBox(post, postId, firstPost) {
   let postInside = $("<div>");
 
   if (firstPost) {
-    postWrapper.addClass("col-md-6 p-2");
+    postWrapper.addClass("col-lg-6 p-2");
     postInside.addClass("first-post");
   } else {
     postWrapper.addClass("col-md-6 col-lg-3 p-2");
