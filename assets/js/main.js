@@ -1,9 +1,11 @@
 function startLoadingSpinner() {
-    $('.spinner-border').show();
+    $("div.spanner").addClass("show");
+    $("div.overlay").addClass("show");
 }
 
 function stopLoadingSpinner() {
-    $('.spinner-border').hide();
+    $("div.spanner").removeClass("show");
+    $("div.overlay").removeClass("show");
 }
 
 function getPosts() {
@@ -33,7 +35,7 @@ function deletePost(id) {
         url: `https://jsonplaceholder.typicode.com/posts/${id}`,
         type: 'DELETE',
         success: _ => {
-            $(`li[data-id=${id}]`)?.fadeOut(300, _ => {
+            $(`li[data-id=${id}]`)?.fadeOut(400, _ => {
                 $(`li[data-id=${id}]`).remove();
             });
         },
