@@ -7,6 +7,9 @@ var postID;
 const container = $("#posts");
 let limit = 15;
 let page = 1;
+let finishPost = $(
+  `<h3 class="d-flex justify-content-center mt-4 fs-2"> Not More Posts</h3>`
+);
 
 
 /*
@@ -29,7 +32,7 @@ async function getPost() {
 async function showPosts() {
     const posts = await getPost();
     posts.forEach((post) => {
-        let postCont = $(`<div class="d-flex text-white pt-3 postcont" id="${post.id}">
+        let postCont = $(`<div class="d-flex text-white pt-3 postcont mt-2" id="${post.id}">
                             <img src="assets/img/${post.userId}.jpg" class="flex-shrink-0 me-2 rounded" width="80" height="80">
                             <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                                 <div class="d-flex justify-content-between">
@@ -38,6 +41,9 @@ async function showPosts() {
                             </div>
                     </div>`);
     container.append(postCont);
+    if(post.id >= 100) {
+      container.append(finishPost);
+    }
     });
 }
 
