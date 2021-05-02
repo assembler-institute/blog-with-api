@@ -1,4 +1,5 @@
 $.get("http://localhost:3000/posts", function succes(data) {
+  $("#recoverBtn").css("margin-right", "20px");
   const containerPosts = document.getElementById("containerPosts");
   for (var i = 0; i < 100; i++) {
     /*CREACION DE LOS POSTS*/
@@ -64,7 +65,7 @@ $.get("http://localhost:3000/posts", function succes(data) {
               $("#modal-comments").append($(comment));
             });
           });
-          //Cambiar por un on('click', function(){}); para poder cerrar el eventListenner
+          //Closes Buttons
           $("#closebtn").one("click", function () {
             $(".modal-comments").children().remove();
           });
@@ -75,12 +76,27 @@ $.get("http://localhost:3000/posts", function succes(data) {
       );
       //Delete function
       $("#deleteBtn").one("click", function () {
-        $.ajax({
-          url: "http://localhost:3000/posts/" + dataNum,
-          type: "DELETE",
-          success: function (data) {
-            alert("Has borrado el post " + dataNum);
-          },
+        $.get("http://localhost:3000/posts/" + dataNum, function succes(data) {
+          var datarecover = data;
+          $.ajax({
+            url: "http://localhost:3000/posts/" + dataNum,
+            type: "GET",
+            success: function (data) {
+              var datarecover = data;
+              $.ajax({
+                url: "http://localhost:3000/posts/" + dataNum,
+                type: "DELETE", //"DELETE"
+                success: function (data) {
+                  console.log("Has borrado el post " + dataNum);
+                },
+              });
+            },
+          });
+
+          //Recover Posts & Childs
+          $("#recoverBtn").on("click", function () {
+            console.log(datarecover);
+          });
         });
       });
     });
