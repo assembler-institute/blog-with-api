@@ -49,25 +49,20 @@ function checkIndexPage() {
   if (indexPage === -1 || indexPage === 0) {
     indexPage = 0;
     $(".fa-chevron-circle-left").addClass("arrowDisabled");
-    // $(".fa-chevron-circle-left").off("click", previusPage);
   } else {
     $(".fa-chevron-circle-left").removeClass("arrowDisabled");
-    // $(".fa-chevron-circle-left").on("click", previusPage);
   }
   if (indexPage === 10 || indexPage === 9) {
     indexPage = 9;
     $(".fa-chevron-circle-right").addClass("arrowDisabled");
-    // $(".fa-chevron-circle-right").off("click", nextPage);
   } else {
     $(".fa-chevron-circle-right").removeClass("arrowDisabled");
-    // $(".fa-chevron-circle-right").on("click", nextPage);
   }
   resizeHeaderPost();
 }
 
 function getPostsRequest(indexPage) {
   /*Request for getting all posts*/
-  // $(".mainContainer").fadeOut();
   $(".mainContainer").empty();
   var settings = {
     url: urlBaseLocal + "posts?_start=" + indexPage * 10 + "&_limit=" + 10,
@@ -87,7 +82,6 @@ function getPostsRequest(indexPage) {
       $(".mainContainer").append(rowPost);
     }
   });
-  // $(".mainContainer").fadeIn();
 }
 
 function setHeaderPost(response, k) {

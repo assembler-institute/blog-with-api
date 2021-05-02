@@ -98,7 +98,6 @@ function setComentsModalContent(element) {
 function setEditPostContent() {
   $("#postModal").modal("hide");
   $('body').addClass("modal-open");
-  // $("#postModal").css("opacity", "0.5")
   var settings = {
     url: urlBaseLocal + "posts?id=" + idPost + "",
     method: "GET",
