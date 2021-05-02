@@ -1,7 +1,21 @@
 * {
-  color: #0d6efd;
+  color: #202121;
   box-sizing: border-box;
-  /* outline: 1px solid red; */
+  font-family: "Dosis", sans-serif;
+}
+
+:root {
+  --bg: #f4f7f6;
+  --bg-card: #fcfcfc;
+  --text: #202121;
+  --x-light: 200;
+  --light: 300;
+  --semi-bold: 500;
+  --bold: 700;
+}
+
+body {
+  padding-top: 100px;
 }
 
 .loading-el {
@@ -21,7 +35,7 @@
 }
 
 .bg-grey {
-  background-color: #f4f7f6;
+  background-color: var(--bg);
 }
 
 .card-body {
@@ -33,4 +47,24 @@
   width: 25px;
   height: 25px;
   margin-left: 1rem;
+}
+
+.no-border {
+  border: none;
+}
+
+.no-radius {
+  border-radius: 0;
+}
+
+h5.post {
+  transition: 0.2s;
+}
+
+h5.post:hover {
+  opacity: 0.8;
+}
+
+.bold {
+  font-weight: var(--bold);
 }

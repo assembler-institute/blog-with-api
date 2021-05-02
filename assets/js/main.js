@@ -1,6 +1,6 @@
 // Variables
 let from = 0;
-let limit = 9;
+let limit = 10;
 let mainUrl = "http://localhost:3000/"; //https://jsonplaceholder.typicode.com/
 let section;
 let id;
@@ -10,7 +10,26 @@ let title;
 let body;
 
 // Event listeners
-loadPosts();
+$(function () {
+  loadPosts();
+});
+
+$("#menu-btn").on("click", function () {
+  $("#main-container-posts").empty();
+  from = 0;
+  limit = 10;
+  loadPosts();
+});
+
+$("#load-more").on("click", function () {
+  from = limit;
+  limit += 10;
+  loadPosts();
+  if (limit === 100) {
+    $("#load-more").text("End of content");
+    $("#load-more").attr("disabled", "disabled");
+  }
+});
 
 // Collapses the modal for comments
 $("#modal-for-posts").on("hide.bs.modal", function () {
@@ -24,10 +43,6 @@ $("#modal-for-posts").on("hide.bs.modal", function () {
 // Change the text on the "open comments" button and load the comments for the post
 $("#comments-btn").text("Open comments");
 $("#comments-btn").on("click", function () {
-  if ($("#modal-for-comments").children().length === 0) {
-    postId = $("#post-title").attr("post-id");
-    loadCommentsOfPost(postId);
-  }
   if ($("#comments-btn").text() === "Open comments") {
     $("#comments-btn").text("Close comments");
   } else {
@@ -61,28 +76,43 @@ $("#edit-form").on("submit", function (e) {
 });
 
 //Confirm and send the edit. Then empty the posts main container and load the post to refresh the page
-$('#submit-btn').on('click', function() {
-  id = $("#modal-for-posts").attr("post-id");
-  title = $("#input-for-title").val();
-  body = $("#input-for-body").val();
-  editPost(id, title, body);
-  $('#main-container-posts').empty();
-  loadPosts();
-})
+$("#submit-btn").on("click", function () {
+  if ($("#input-for-body").val() && $("#input-for-title").val()) {
+    id = $("#modal-for-posts").attr("post-id");
+    title = $("#input-for-title").val();
+    body = $("#input-for-body").val();
+    editPost(id, title, body);
+    $("#main-container-posts").empty();
+    from = 0;
+    limit = 10;
+    loadPosts();
+  }
+  $("#modal-for-edit").modal("hide");
+});
 
-
-// Get the id and delete the post with that id when you click on "confirm" button. 
+// Get the id and delete the post with that id when you click on "confirm" button.
 // Then load the posts for the main page
 $("#confirm-delete-btn").on("click", function () {
   id = $("#post-title").attr("post-id");
-  console.log(id)
   deletePost(id);
-  $('#main-container-posts').empty();
+  $("#main-container-posts").empty();
+  from = 0;
+  limit = 10;
   loadPosts();
+  $("#modal-confirm-delete").modal("hide");
+});
+
+$(document).ajaxStart(function () {
+  $(".loading-el").addClass("loading");
+  $("#load-more").text("Loading...");
+});
+
+$(document).ajaxStop(function () {
+  $(".loading-el").removeClass("loading");
+  $("#load-more").text("Load More");
 });
 
 // Functions
-
 function loadPosts() {
   section = "posts/";
   var allPosts = {
@@ -95,8 +125,8 @@ function loadPosts() {
     $(response).each(function (i, e) {
       createPostWithTitle(e.title, e.id, e.userId);
     });
-    $('.post').each(function(i,e) {
-      $(this).on('click', function() {
+    $(".post").each(function (i, e) {
+      $(this).on("click", function () {
         cleanPostBodyUserEmail();
         userId = $(this).attr("user-id");
         postId = $(this).attr("post-id");
@@ -104,8 +134,9 @@ function loadPosts() {
         $("#modal-for-posts").attr("user-id", userId);
         loadBodyOfPost(postId);
         loadUserAndEmail(userId);
-      })
-    })
+        loadCommentsOfPost(postId);
+      });
+    });
   });
 }
 
@@ -115,10 +146,13 @@ function createPostWithTitle(element, id, user) {
       .addClass("col")
       .append(
         $("<div>")
-          .addClass(
-            "card bg-white"
+          .addClass("card bg-white no-border shadow-sm no-radius")
+          .append(
+            $("<img>")
+              .attr("src", "./assets/img/post2.jpg")
+              .attr("alt", "post img")
+              .addClass("card-img-top no-radius")
           )
-          .append($('<img>').attr('src', "./assets/img/post.jpg").attr('alt', 'post img').addClass("card-img-top"))
           .append(
             $("<div>")
               .addClass("card-body")
@@ -129,28 +163,19 @@ function createPostWithTitle(element, id, user) {
                   .attr("post-id", id)
                   .attr("role", "button")
                   .attr("user-id", user)
-                  .addClass("post card-title fs-6")
+                  .addClass("post card-title fs-6 bold")
                   .text(element)
-              )            
-          )
-          .append($('<div>')
-            .addClass("list-group list-group-flush d-flex flex-row")
-            .append($('<img>').addClass('rounded-circle usr-img').attr('alt', 'user-img').attr('src', './assets/img/user.png'))
-            .append($('<p>')
-              .addClass("list-group-item")
-              .css('margin-bottom', '0px')
-              .text(user)
-            ) 
+              )
           )
       )
   );
 }
 
 function cleanPostBodyUserEmail() {
-  $("#post-title").text('');
-  $("#post-body").html('');
-  $("#user-name").html('');
-  $("#email-user").html('');
+  $("#post-title").text("");
+  $("#post-body").html("");
+  $("#user-name").html("");
+  $("#email-user").html("");
 }
 
 function loadBodyOfPost(postId) {
@@ -236,8 +261,7 @@ function editPost(id, title, body) {
     },
   };
 
-  $.ajax(postToEdit).done(function (response) {
-  });
+  $.ajax(postToEdit).done(function (response) {});
 }
 
 function deletePost(id) {
@@ -248,15 +272,5 @@ function deletePost(id) {
     timeout: 0,
   };
 
-  $.ajax(postToDelete).done(function (response) {
-  });
+  $.ajax(postToDelete).done(function (response) {});
 }
-
-$(document).ajaxStart(function() {
-  $(".loading-el").addClass('loading')
-})
-
-$(document).ajaxStop(function() {
-  $(".loading-el").removeClass('loading')
-})
-

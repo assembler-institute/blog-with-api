@@ -12,55 +12,58 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./assets/css/root.css" />
-    <link rel="icon" href="./assets/img/cloud-computing.png" type="image/png" sizes="16x16">
+    <link
+      rel="icon"
+      href="./assets/img/favicon.png"
+      type="image/png"
+      sizes="16x16"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;500;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body class="vh-100 bg-grey">
     <header
-      class="navbar container-fluid border-bottom border-primary sticky-top bg-grey"
-      style="height: 60px"
+      class="navbar container-fluid border-bottom fixed-top bg-grey"
+      style="height: 80px"
     >
-      <nav class="navbar-brand">Blog with API</nav>
+      <nav id="menu-btn" class="navbar-brand btn">Blog with API</nav>
     </header>
 
     <div class="text-center container-fluid mt-3 mb-3">
-      <div class="col col position-relative bg-grey" style="height: 150px;">
+      <div class="col col position-relative bg-grey" style="height: 150px">
         <h1
           class="align-bottom m-auto position-absolute top-50 start-50 translate-middle"
-          style="color: black;"
+          style="color: black"
         >
           Blog with API
         </h1>
       </div>
     </div>
 
-    <!-- MAIN CONTAINER --------------------------- -->
-    <div class="container-fluid">
+    <div class="container-xxl">
       <div
         id="main-container-posts"
-        class="row row-cols-2 row-cols-xl-3 p-5 g-5"
+        class="row row-cols-1 row-cols-md-2 row-cols-xl-3 p-5 g-5"
       ></div>
-        <nav aria-label="Page navigation example" class="p-5">
-          <ul class="pagination d-flex justify-content-between">
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
+      <nav
+        aria-label="Page navigation example"
+        class="pb-5 d-flex justify-content-center"
+      >
+        <button id="load-more" type="button" class="btn btn-outline-secondary">
+          Load More
+        </button>
+      </nav>
     </div>
-    <!-- MODALS ------------------------- -->
-    <!-- MODAL FOR POSTS ------------------------ -->
+
     <div id="modal-for-posts" class="modal fade" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="post-title">Modal title</h5>
+            <h5 class="modal-title bold" id="post-title">Modal title</h5>
             <button
               type="button"
               class="btn-close"
@@ -102,25 +105,23 @@
               Delete post
             </button>
           </div>
-          <!-- MODAL FOR COMMENTS --------------------------- -->
+
           <div
             id="modal-for-comments"
             class="collapse modal-content border-primary border-2 border-start-0 border-end-0 border-bottom-0 rounded-0 rounded-bottom mb-3"
             style="max-height: 400px; overflow: auto"
           ></div>
-          <!-- END OF MODAL FOR COMMENTS --------------------------- -->
         </div>
       </div>
     </div>
-    <!-- END OF MODAL FOR POSTS ------------------------- -->
-    <!-- MODAL FOR EDIT --------------------------- -->
+
     <div id="modal-for-edit" class="modal fade" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <form id="edit-form">
             <div class="modal-header">
               <div class="mb-3" style="width: 90%">
-                <label for="validationDefault01" class="form-label"
+                <label for="input-for-title" class="form-label"
                   >Post Title</label
                 >
                 <input
@@ -140,9 +141,7 @@
             </div>
             <div class="modal-body">
               <div class="mb-3">
-                <label for="validationDefault02" class="form-label"
-                  >Post Body</label
-                >
+                <label for="input-for-body" class="form-label">Post Body</label>
                 <textarea
                   class="form-control"
                   id="input-for-body"
@@ -163,19 +162,22 @@
               >
                 Back to post
               </button>
-              <button id="submit-btn" type="submit" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+              <button id="submit-btn" type="submit" class="btn btn-primary">
+                Submit
+              </button>
             </div>
           </form>
         </div>
       </div>
     </div>
-    <!-- END OF MODAL FOR EDIT --------------------------- -->
-    <!-- MODAL FOR DELETE --------------------------- -->
+
     <div id="modal-confirm-delete" class="modal fade" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="confirm-delete-title">Are you sure?</h5>
+            <h5 class="modal-title" id="confirm-delete-title">
+              Hey! Wait a minute
+            </h5>
             <button
               type="button"
               class="btn-close"
@@ -203,7 +205,6 @@
               type="button"
               class="btn btn-danger"
               id="confirm-delete-btn"
-              data-bs-dismiss="modal"
             >
               Confirm delete
             </button>
@@ -211,11 +212,10 @@
         </div>
       </div>
     </div>
-    <!-- END OF MODAL FOR DELETE --------------------------- -->
+
     <div class="justify-content-center loading-el">
       <div class="spinner-border text-primary" role="status"></div>
-    </div>     
-    <!-- <div class="loading-el"></div> -->
+    </div>
     <script
       src="https://code.jquery.com/jquery-3.6.0.js"
       integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
