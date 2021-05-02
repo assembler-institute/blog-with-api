@@ -6,11 +6,11 @@ $('#usBut').on('click',DataUser);
 //$('#comBut').on('click',DataComent);
 let url='http://localhost:3000/'
 function DataUser(){
-    /*$('.delete').hide()
+    $('.delete').hide()
     $('h4.delteText').remove()
     $('#finalDelet').remove()
-    $('#Delet').remove()*/
-    removePost ()
+    $('#Delet').remove()
+    
     return axios.get(url+'users')
     
     .then(
@@ -19,14 +19,14 @@ function DataUser(){
             let count=0;
             $.each( responseUs.data, function( index, elemUs ){
                 
-                if($('#floatingInput').val()==elemUs.name){
+                if($('#floatingInput').val()==elemUs.name||$('#floatingInput').val()==''){
                     $('#post').empty();
                  /*$('.name').text('thats your id '+`${elemUs.id}`)  
                   $('.usName').text('thats your username '+`${elemUs.username}`)  
                   $('.usEmail').text('thats your email '+` ${elemUs.email}`)*/
                   DataPost(elemUs.id,elemUs.name);
                   count+=1
-                }    
+                }
             })
             if(count==0){
                 $('#post').text('el usuario que mencionas no esta registrado')
@@ -39,7 +39,7 @@ function DataUser(){
             
 }
 function DataPost(userId,userName){
-    
+if($('#floatingInput').val()==''){
     return axios.get(url+'post')
     .then(
         function dataP(responsePos){
@@ -55,7 +55,7 @@ function DataPost(userId,userName){
 
                     //$(`#posCont${index}`).append('<p>'+`${elemPos.id}`+'</p>')
                     $(`#posCont${index}`).append('<p>'+`<span class='user'>${userName}</span>  :`+'</p>');
-                    $(`#posCont${index}`).append('<p>'+`<span class='tit'>Post ${cnt} :<br></span> ${elemPos.title}`+'</p>');
+                    $(`#posCont${index}`).append('<p>'+`<span class='tit'>Post ${index+1} :<br></span> ${elemPos.title}`+'</p>');
                     
                     //$(`#posCont${index}`).append('<p>'+`${elemPos.body}`+'</p>')
                     $(`#posCont${index}`).append('<button  class="sendButP" data-toggle="modal" data-target="#exampleModalCenter">Full info</button>');
@@ -66,6 +66,35 @@ function DataPost(userId,userName){
             })
         }
     )
+}else if($('#floatingInput').val()==userName){
+    return axios.get(url+`users/${userId}/post`)
+    .then(
+        function dataP(responsePos){
+            //console.log(responsePos.data)
+            let cnt=0;
+            $.each( responsePos.data, function( index, elemPos ){
+                
+                
+                
+                    cnt=cnt+1;
+                    $('#post').append('<div></div>');
+                    $('#post div:last-child').attr('id','posCont'+index);
+                    $('#post div:last-child').attr('class','col');
+
+                    //$(`#posCont${index}`).append('<p>'+`${elemPos.id}`+'</p>')
+                    $(`#posCont${index}`).append('<p>'+`<span class='user'>${userName}</span>  :`+'</p>');
+                    $(`#posCont${index}`).append('<p>'+`<span class='tit'>Post ${cnt} :<br></span> ${elemPos.title}`+'</p>');
+                    
+                    //$(`#posCont${index}`).append('<p>'+`${elemPos.body}`+'</p>')
+                    $(`#posCont${index}`).append('<button  class="sendButP" data-toggle="modal" data-target="#exampleModalCenter">Full info</button>');
+                    $(`#posCont${index}`).append('<button  class="deleButP">X</button>');
+                    $(`#posCont${index} button.deleButP`).on('click',function(){deletePost(userName,elemPos.id)});
+                    $(`#posCont${index} button.sendButP`).on('click',function(){postData(this,elemPos.id,elemPos.body,userName)});
+                  
+            })
+        }
+    )
+}
 }
 function deletePost(userNam,postID){
     $('.delete').show()
@@ -121,13 +150,13 @@ function DataComent(idpost){
    $('.modal-body').css('opacity','0.7');
    $('.modal-footer').css('opacity','0.7');
     
-    return axios.get(url+'coments')
+    return axios.get(url+`post/${idpost}/coments`)
     .then(
         function dataCom(responseCom){
             
             $.each( responseCom.data, function( index, elemCom ){
                
-                if(idpost==elemCom.postId){
+               // if(idpost==elemCom.postId){
                     
                     $('.comBox').append(`<div class='comntbox2' id="coment${index}"></div>`)
                     $(`#coment${index}`).append(`<p class="nameCom">${elemCom.name}</p>`)
@@ -140,7 +169,7 @@ function DataComent(idpost){
                         $('p.emailCom',this).show()
                     
                    })
-                }               
+                //}               
             })
         }
     )

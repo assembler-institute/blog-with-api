@@ -161,7 +161,7 @@ h4.delteText{
     display: none;
     position: fixed;
     width: 50%;
-    height: 30%;
+    height: 50%;
     top:35%;
     left:25%;
     background-image: linear-gradient(6deg, rgb(235, 183, 141),rgba(251, 253, 232, 0.3));
