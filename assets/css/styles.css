@@ -1,0 +1,12 @@
+.maxvh90 {
+    max-height: 90vh;
+}
+
+.commentScroll {
+    max-height: 40vh;
+    overflow-y: auto;
+}
+
+textarea.form-control {
+    max-height: 55vh;
+}
