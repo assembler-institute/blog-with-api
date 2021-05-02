@@ -35,7 +35,6 @@ $.get("http://localhost:3000/posts", function succes(data) {
       $("#modal-info").css("padding-left", "12px");
       $("#modal-title").text($("#title" + dataNum).text());
       $("#modal-body").text($("#cont" + dataNum).text());
-
       //Sacar la info del usuario (userName and email)
       $.get("http://localhost:3000/users/" + UserssId, function succes(data) {
         $("#modal-info").html(
@@ -74,6 +73,16 @@ $.get("http://localhost:3000/posts", function succes(data) {
           });
         }
       );
+      //Delete function
+      $("#deleteBtn").one("click", function () {
+        $.ajax({
+          url: "http://localhost:3000/posts/" + dataNum,
+          type: "DELETE",
+          success: function (data) {
+            alert("Has borrado el post " + dataNum);
+          },
+        });
+      });
     });
   }
 });
