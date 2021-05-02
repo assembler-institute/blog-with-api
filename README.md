@@ -18,8 +18,8 @@
 
 ## Typeface credits
 
-- [Pramukh Rounded](https://www.fontshare.com/fonts/pramukh-rounded)
-- [Bespos Serif](https://www.fontshare.com/fonts/bespoke-serif)
+- [Bevellier](https://www.fontshare.com/fonts/bevellier) by [Indian Type Foundry](https://www.indiantypefoundry.com/)
+- [IBM Plex Sans](https://www.ibm.com/plex/) by [Bold Monday](https://boldmonday.com/)
 
 ## Requirements
 
