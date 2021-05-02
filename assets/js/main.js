@@ -98,8 +98,10 @@ function getComments(postId) {
 }
 
 function showPost(post) {
-    $('#pTitle').text(post.title);
-    $('#pBody').text(post.body);
+    let liItemDivLeft = $(`li[data-id=${post.id}] .ms-2`);
+    $('#pTitle').text(liItemDivLeft.children().first().text());
+    $('#pBody').text(liItemDivLeft.children().last().text());
+
     getUserById(post.userId).then(user => {
         $('#pUserName').text(user.username);
         $('#pUserEmail').text(user.email);
@@ -114,7 +116,7 @@ function buildPostsContainer(posts) {
         let ul = $('.container-sm > ul');
         let li = $(`<li class="list-group-item d-flex justify-content-between align-items-start list-group-item-action" data-id=${post.id}></li>`);
 
-        let divLeft = $('<div>', {class: "ms-2 me-auto px-3"});
+        let divLeft = $('<div>', {class: "ms-2 me-auto px-3", style: 'flex-basis: 100%;cursor:pointer;'});
         divLeft.on('click', _ => {
             showPost(post);
             $('#showModal').modal('show');
