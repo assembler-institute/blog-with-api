@@ -58,7 +58,7 @@ let usersButton = $("#usersBtn");
 /* -------------------------------------------------------------------------- */
 /*                                    POSTS                                   */
 /* -------------------------------------------------------------------------- */
-// Getting all posts
+// GET all posts
 function loadPosts(postPage, postLimit) {
   var settings = {
     url: localUrl + `/posts?_page=${postPage}&_limit=${postLimit}`,
@@ -157,8 +157,10 @@ function postBox(post, postId, firstPost) {
   });
 }
 
-// Delete request based on post Id
+// DELETE
 function deletePost(postId) {
+  console.clear();
+
   var settings = {
     url: localUrl + `/posts/${postId}`,
     method: "DELETE",
@@ -180,7 +182,7 @@ function deletePost(postId) {
   });
 }
 
-// Edit post
+// PATCH
 function editPost(postId, newTitle, newBody) {
   var settings = {
     url: localUrl + `/posts/${postId}`,
@@ -226,7 +228,7 @@ function editModal(parentDiv, post, postId) {
 /* -------------------------------------------------------------------------- */
 /*                                    USERS                                   */
 /* -------------------------------------------------------------------------- */
-// Get all users
+// GET all users
 function allUsers() {
   var settings = {
     url: localUrl + "/users",
@@ -236,7 +238,6 @@ function allUsers() {
   };
 
   $.ajax(settings).done(function (response) {
-    console.log(response);
     setUserDiv(response);
   });
 }
@@ -272,7 +273,7 @@ function setUserDiv(response) {
   });
 }
 
-// Post user
+// Post user name
 function setPostUser(userId, userDiv) {
   var settings = {
     url: localUrl + `/users?id=${userId}`,
@@ -326,6 +327,8 @@ function clickBadge(userId) {
 
 // GET all posts by user
 function getUsersPost(userId) {
+  console.clear();
+
   var settings = {
     url: localUrl + `/users/${userId}/posts`,
     method: "GET",
@@ -334,9 +337,11 @@ function getUsersPost(userId) {
   };
 
   $.ajax(settings).done(function (response) {
+    console.clear();
+
     // Emptying posts grid
     postsContainer.empty();
-    console.log(response);
+    // Add each post
     $(response).each(function (index) {
       // Style first post
       if (index === 0) {
@@ -366,6 +371,7 @@ function setComments(postId) {
   });
 }
 
+// GET post's comments
 function getPostComments(comments) {
   commentsDiv.empty();
   $(comments).each(function (index, element) {
