@@ -1,3 +1,5 @@
+// const URL = 'https://jsonplaceholder.typicode.com/';
+const URL = 'http://localhost:3000/';
 function startLoadingSpinner() {
     $("div.spanner").addClass("show");
     $("div.overlay").addClass("show");
@@ -10,7 +12,7 @@ function stopLoadingSpinner() {
 
 function getPosts() {
     startLoadingSpinner();
-    $.get('https://jsonplaceholder.typicode.com/posts/', res => {
+    $.get(URL+'posts/', res => {
         buildPostsContainer(res);
         stopLoadingSpinner();
     });
@@ -18,7 +20,7 @@ function getPosts() {
 
 function getUserById(userId) {
     startLoadingSpinner();
-    return $.get(`https://jsonplaceholder.typicode.com/users/${userId}`, stopLoadingSpinner);
+    return $.get(`${URL}users/${userId}`, stopLoadingSpinner);
 }
 
 function disableButton(element) {
@@ -32,7 +34,7 @@ function enableButton(element) {
 function deletePost(id) {
     startLoadingSpinner();
     $.ajax({
-        url: `https://jsonplaceholder.typicode.com/posts/${id}`,
+        url: `${URL}posts/${id}`,
         type: 'DELETE',
         success: _ => {
             $(`li[data-id=${id}]`)?.fadeOut(400, _ => {
@@ -64,7 +66,7 @@ function editPost(postId) {
         let saveBtn = $('#saveBtn');
         disableButton(saveBtn);
         saveBtn.append($('<span>', {class: 'spinner-border spinner-border-sm ml-2'}));
-        $.post('https://jsonplaceholder.typicode.com/posts',
+        $.post(URL+'posts',
             {id: postId, title: inputTitle.val(), body: inputBody.val()},
             _ => {
                 liItemDivLeft.children().first().text(inputTitle.val());
@@ -78,7 +80,7 @@ function getComments(postId) {
     let loadCommentsBtn = $('#loadCommentsBtn');
     loadCommentsBtn.append($('<span>', {class: 'spinner-border spinner-border-sm ml-2'}));
     disableButton(loadCommentsBtn);
-    $.get(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`, res => {
+    $.get(`${URL}comments?postId=${postId}`, res => {
         loadCommentsBtn.hide();
         if (res.length) {
             let ulComments = $('<ul>', {class: 'p-0 commentScroll'});
