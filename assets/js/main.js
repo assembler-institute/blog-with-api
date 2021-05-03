@@ -101,7 +101,6 @@ function fnSetPost() {
         }).append($("<span>").text(post[index].body))
       );
   });
-  //$(".modal__background").css({ visibility: "visible" });
 }
 
 function setComents(id) {
@@ -153,7 +152,11 @@ function fnSetUser() {
       .append($("<span>").text(user[index].email))
       .append($("<hr />"));
   });
-  $(".modal__background").css({ visibility: "visible" });
+  // content-placeHolder + setTimeout !!!aqui!!!
+  setTimeout(() => {
+    $("#placeHolderModal").remove();
+    $(".modal__background").css({ visibility: "visible" });
+  }, 500);
 }
 
 /*
@@ -168,28 +171,89 @@ function handleEvents() {
       e.target.matches("div.div__card *") ||
       e.target.matches("#listPosts *")
     ) {
-      //console.log("entro");
-      console.log("Data-id: " + e.target.getAttribute("data-id"));
-      //console.log(e.target.getAttribute("data-us"));
-
+      //console.log("Data-id: " + e.target.getAttribute("data-id"));
+      placeHolderModal();
       setComents(e.target.getAttribute("data-id"));
       setUser(e.target.getAttribute("data-us"));
       setPost(e.target.getAttribute("data-id"));
     }
 
     if (e.target.matches(".modal__background") || e.target.matches("svg *")) {
-      console.log("modal closed");
-      $(".modal__background").css({ visibility: "hidden" });
-      $(".post__content--coments").css({ display: "none" });
-      $("button.button").attr("disabled", false).css({ opacity: "1" });
-      $(".post__title").empty();
-      $(".post__content--user").empty();
-      $(".post__content--coments").empty();
+      deleteContentPost();
     }
     if (e.target.matches(".button")) {
-      console.log("open coments");
       $(".post__content--coments").css({ display: "block" });
       $("button.button").attr("disabled", true).css({ opacity: "0.5" });
     }
   });
 }
+
+function deleteContentPost() {
+  $(".modal__background").css({ visibility: "hidden" });
+  $(".post__content--coments").css({ display: "none" });
+  $("button.button").attr("disabled", false).css({ opacity: "1" });
+  $(".post__title").empty();
+  $(".post__content--user").empty();
+  $(".post__content--coments").empty();
+}
+
+function placeHolderModal() {
+  console.log("hola entro en placeholdercontent");
+  $("main.container-fuid").after(
+    "<section id='placeHolderModal' class='placeHolder__modal--background'>"
+  );
+
+  $("section#placeHolderModal").append(
+    $("<div>", {
+      class: "placeHolder__modal--post",
+    })
+      .append(
+        $("<div>", {
+          class: "placeHolder__modal--contentBtn",
+        }).append("<span>", {
+          class: "placeHolder__modal--btn",
+        })
+      )
+      .append(
+        $("<div>", {
+          class: "placeHolder__modal--title ",
+        })
+      )
+      .append(
+        $("<div>", {
+          class: "placeHolder__modal--content",
+        })
+          .append(
+            $("<span>", {
+              class: "placeHolder__modal--contentBody",
+            })
+          )
+          .append(
+            $("<span>", {
+              class: "placeHolder__modal--contentUser",
+            })
+          )
+          .append(
+            $("<span>", {
+              class: "placeHolder__modal--contentEmail",
+            })
+          )
+      )
+      .append($("<hr>"))
+      .append(
+        $("<button>", {
+          class: "placeHolder__modal--button",
+        })
+      )
+  );
+}
+
+/*
+
+window.onscroll = function(ev) {
+if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+alert("you're at the bottom of the page");
+}
+};
+
+*/

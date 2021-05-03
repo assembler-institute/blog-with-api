@@ -343,3 +343,114 @@ div .modal-footer {
   box-shadow: 0px 0px 2px 2px rgba(66, 66, 66, 0.3);
   transform: scale(1.05);
 }
+
+/*
+ * PLACE HOLDER CONTENT
+ */
+.placeHolder__modal--background {
+  background-color: rgba(82, 82, 82, 0.6);
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.placeHolder__modal--post {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  max-height: 600px;
+  background-color: var(--color2);
+  border: PowderBlue 5px double;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 1rem;
+}
+.placeHolder__modal--contentBtn {
+  width: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: row;
+  height: 26px;
+  margin-bottom: 6px;
+}
+.placeHolder__modal--contentBtn > span {
+  background-color: rgb(197, 61, 61);
+  color: rgb(197, 61, 61);
+  height: 25px;
+  width: 25px;
+  border-radius: 4px;
+  animation: fading 1.5s infinite;
+}
+
+.placeHolder__modal--title {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 358px;
+  height: 30px;
+  background-color: var(--color1);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  animation: fading 1.5s infinite;
+}
+.placeHolder__modal--content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.placeHolder__modal--contentBody {
+  width: 358px;
+  height: 140px;
+  background-color: var(--color1);
+  border-radius: 10px;
+  margin-bottom: 6px;
+  animation: fading 1.5s infinite;
+}
+.placeHolder__modal--contentUser {
+  width: 358px;
+  height: 20px;
+  background-color: var(--color1);
+  border-radius: 10px;
+  margin-bottom: 6px;
+  animation: fading 1.5s infinite;
+}
+.placeHolder__modal--contentEmail {
+  width: 358px;
+  height: 20px;
+  background-color: var(--color1);
+  border-radius: 10px;
+  margin-bottom: 6px;
+  animation: fading 1.5s infinite;
+}
+.placeHolder__modal--button {
+  padding: 0.5rem;
+  border-radius: 10px;
+  background-color: var(--color3);
+  color: var(--color1);
+  border: none;
+  margin-bottom: 1rem;
+  width: 130px;
+  height: 40px;
+  animation: fading 1.5s infinite;
+}
+
+@keyframes fading {
+  0% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.6;
+  }
+}
