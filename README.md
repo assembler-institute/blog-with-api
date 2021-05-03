@@ -1,4 +1,4 @@
-`#html` `#css` `#js` `#dom` `#JSON` `#HTTP` `#API` `#Bootstrap` `#master-in-software-engineering`
+`#html` `#css` `#js` `#dom` `#JSON` `#HTTP` `#API` `#Bootstrap` `#GraphicDesign` `#master-in-software-engineering`
 
 # Blog with API <!-- omit in toc -->
 
@@ -16,13 +16,17 @@
 - [Project delivery](#project-delivery)
 - [Resources](#resources)
 
+## Typeface credits
+
+- [Bevellier](https://www.fontshare.com/fonts/bevellier) by [Indian Type Foundry](https://www.indiantypefoundry.com/)
+- [IBM Plex Sans](https://www.ibm.com/plex/) by [Bold Monday](https://boldmonday.com/)
+
 ## Requirements
 
 - You must use semantic HTML5 elements for all the contents of the application
 - You have to use the jQuery library for the development of this pill
 - You must use jQuery Ajax to do the requests
-- You have to use Bootstrap Framework for the Layout and the styles. 
-
+- You have to use Bootstrap Framework for the Layout and the styles.
 
 ## Repository
 
@@ -57,7 +61,6 @@ To deliver this project you must follow the steps indicated in the document:
 - [Submitting a solution](https://www.notion.so/Submitting-a-solution-524dab1a71dd4b96903f26385e24cdb6)
 
 ## Resources
-
 
 - [JSONPlaceholder](https://jsonplaceholder.typicode.com/)
 - [JSONPlaceholder Guide](https://jsonplaceholder.typicode.com/guide.html)
