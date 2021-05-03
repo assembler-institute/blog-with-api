@@ -1,5 +1,5 @@
 let from = 0;
-let limit = 50;
+let limit = 10;
 let mainUrl = "http://localhost:3000/"; //https://jsonplaceholder.typicode.com/
 let section;
 let id;
@@ -21,7 +21,7 @@ $("#menu-btn").on("click", function () {
 
 $("#load-more").on("click", function () {
   from = limit;
-  limit += 50;
+  limit += 10;
   loadPosts();
 });
 
