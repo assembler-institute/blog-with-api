@@ -3,7 +3,7 @@
 var postStart = 0;
 var commentStart = 0;
 var userStart = 0;
-var limit = 10;
+var limit = 20;
 
 // Requests Settings
 // Posts request settings
