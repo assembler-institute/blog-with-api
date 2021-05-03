@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>JSONPlaceHolder Fake Online Forum</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>JSONPlaceHolder Forum</h1>
+    </header>
+    <main>
+      <div class="posts-container">
+        <ul id="posts-list" class="posts-ul"></ul>
+      </div>
+    </main>
+    <div class="modal loading"></div>
+    <div class="modal">
+      <div class="modal__container">
+        <span class="x-close">ⓧ</span>
+        <h2 id="modal__title">Post Title</h2>
+        <p id="modal__body">Post Body</p>
+        <h3>USER</h3>
+        <p id="modal__user">User</p>
+        <a id="modal__email" href="">User email</a>
+        <hr />
+        <h2>Comments</h2>
+        <button id="modal__loadComments">Load comments</button>
+        <ul id="modal__comments"></ul>
+      </div>
+      <div class="modal__edit">
+        <span class="x-close">ⓧ</span>
+        <div id="modal__edit__form">
+          <h2>Edit Post</h2>
+          <label for="modal__edit_title">Title</label>
+          <input type="text" id="modal__edit__title" />
+          <label for="modal__edit__body">Body</label>
+          <input type="text" id="modal__edit__body" />
+          <button>Save</button>
+        </div>
+        <div class="hidden" id="modal__edit__loading"></div>
+        <div class="hidden" id="modal__edit__success">
+          <h2>Post Edited!</h2>
+        </div>
+      </div>
+      <div class="modal__deleted">
+        <span class="x-close">ⓧ</span>
+        <h2>Post Deleted!</h2>
+      </div>
+    </div>
+  </body>
+  <script src="./assets/js/app.js"></script>
+</html>
