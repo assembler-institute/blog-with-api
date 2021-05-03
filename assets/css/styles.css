@@ -1,0 +1,19 @@
+*[contenteditable="true"] {
+  background-color: whitesmoke;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.post-actions-panel {
+  display: none;
+}
+
+.post-actions-panel {
+  transition: 0.5s all;
+  display: block;
+  opacity: 0;
+}
+
+li:hover > .post-actions-panel {
+  opacity: 1;
+}

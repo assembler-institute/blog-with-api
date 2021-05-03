@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="icon" type="image/gif" href="assets/img/favicon.ico" />
+    <link
+      href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="./node_modules/bootstrap-icons/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/css/styles.css"
+    />
+  </head>
+  <body>
+    <header class="sticky-top">
+      <nav class="navbar navbar-light bg-dark font-weight-bold">
+        <div class="navbar navbar-brand text-white">Blog With API</div>
+      </nav>
+    </header>
+    <main>
+      <div class="container-fluid">
+        <div class="container-sm">
+          <ul class="list-group list-group-flush list-group-numbered"></ul>
+        </div>
+      </div>
+    </main>
+    <div id="postDetailsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="postModalTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="postModalTitle" contenteditable="false">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p id='postBody' class='font-weight-light' contenteditable="false"></p>
+            <p id="postedByLabel" class='font-weight-bold'>Posted by: </p>
+            <p id='postUser' class='font-weight-light'></p>
+          </div>
+          <div class="modal-footer d-flex justify-content-between detailBtns">
+            <button id="commentsBtn" type="button" class="btn btn-primary" onclick="loadPostComments(this)">Load comments</button>
+            <p id="commentsLabel" class='font-weight-bold invisible'>Comments: </p>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+          <div class="modal-footer d-flex justify-content-between editBtns">
+            <button id="resetEditBtn" type="button" class="btn btn-outline-secondary" onclick="resetEditPanel(this)">Reset</button>
+            <button id="saveEditBtn" type="button" class="btn btn-primary" onclick="confirmSaveChanges(this)">Save Changes</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="confirmModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="confirmModalTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-danger text-white font-weight-bold">
+            <h5 class="modal-title" id="confirmModalTitle">Confirm?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p id='confirmMsg' class='font-weight-light'></p>
+          </div>
+          <div class="modal-footer d-flex justify-content-around confirmBtns">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button id="confirmBtn" type="button" class="btn btn-primary" onclick="confirmAction(this)">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./assets/js/main.js"></script>
+</html>
