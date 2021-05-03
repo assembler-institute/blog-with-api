@@ -1,0 +1,11 @@
+*{
+    /* outline: 1px solid black; */
+}
+
+.edit-btn, .eliminate-btn{
+    cursor: pointer;
+}
+
+.edit-btn:hover, .eliminate-btn:hover{
+    text-shadow: 0px 0px 10px lightblue;
+}
