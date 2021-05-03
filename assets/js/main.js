@@ -16,7 +16,9 @@ function loadPosts() {
   let posts = $.get(url + "/posts", (data) => {
     $.each(data, (i, element) => {
       let post = $(
-        '<div id="post" class="col mb-2" onclick="openModal(' +
+        '<div id="post" class="col mb-2" data-id="' +
+          element.id +
+          '" onclick="openModal(' +
           element.id +
           "," +
           element.userId +
@@ -182,6 +184,8 @@ function deletePost() {
     type: "DELETE",
     success: () => {
       console.log("Post deleted");
+      closeModal();
+      $("#post[data-id='" + post.id + "']").remove;
     },
   });
 }
