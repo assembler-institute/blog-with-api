@@ -13,6 +13,7 @@ function deletePost(postIdToRemove) {
 
     $("#deletedMessage").on("hidden.bs.toast", function () {
       $(".shadow").remove();
+      $("#shadowModal").modal("hide");
     });
 
     $('.post[data-id="' + postIdToRemove + '"').remove();
@@ -121,8 +122,7 @@ function saveEdit() {
       console.log(response);
       $("#postModal .modal-title").text(newTitle);
       $("#postModal .modal-body p").text(newContent);
-      // This line updates the post title in main page but creates a conflict with the remove function (bootstrap)
-      /* $('.post[data-id="' + postIdToEdit + '"] h2').text(newTitle); */
+      $('.post[data-id="' + postIdToEdit + '"] h2').text(newTitle);
     });
   });
 }
