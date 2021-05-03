@@ -1,5 +1,5 @@
 let from = 0;
-let limit = 10;
+let limit = 50;
 let mainUrl = "http://localhost:3000/"; //https://jsonplaceholder.typicode.com/
 let section;
 let id;
@@ -21,12 +21,8 @@ $("#menu-btn").on("click", function () {
 
 $("#load-more").on("click", function () {
   from = limit;
-  limit += 10;
+  limit += 50;
   loadPosts();
-  if (limit === 100) {
-    $("#load-more").text("End of content");
-    $("#load-more").attr("disabled", "disabled");
-  }
 });
 
 $("#modal-for-posts").on("hide.bs.modal", function () {
@@ -99,7 +95,13 @@ $(document).ajaxStart(function () {
 
 $(document).ajaxStop(function () {
   $(".loading-el").removeClass("loading");
-  $("#load-more").text("Load More");
+  if (limit === 100) {
+    $("#load-more").attr("disabled", "disabled");
+    $("#load-more").text("End of content");
+    debugger;
+  } else {
+    $("#load-more").text("Load More");
+  }
 });
 
 function loadPosts() {
