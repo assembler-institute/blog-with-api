@@ -159,7 +159,7 @@ function loadPostComments(loading) {
       $("#commentsBtn").addClass("d-none");
       $("#commentsLabel").removeClass("invisible").addClass("visible");
       if (res.length) {
-        let ulComments = $("<ul>", { class: "p-0 commentScroll" });
+        let ulComments = $("<ul>", { class: "p-0 commentsCard" });
         $("#postDetailsModal .detailBtns").append(ulComments);
         $.each(res, (index, comment) => {
           let liComment = $("<li>", { class: "list-group-item " });

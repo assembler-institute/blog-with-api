@@ -17,3 +17,8 @@
 li:hover > .post-actions-panel {
   opacity: 1;
 }
+
+.commentsCard {
+  max-height: 40vh;
+  overflow-y: auto;
+}
