@@ -190,5 +190,3 @@ function cleanEditModalListener() {
     cleanEditModalListener();
     getPosts();
 }())
-
-
