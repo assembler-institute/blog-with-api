@@ -5,7 +5,7 @@ const comments_url = "https://jsonplaceholder.typicode.com/comments/";
 
 // Function that prints all titles and bodys in new div
 
-function showPost(e) {
+function showPost() {
   fetch(post_url)
     .then((res) => {
       return res.json();
