@@ -4,13 +4,17 @@ var closeModalUpBtn = $("#closeModalUpBtn");
 var postsArray = [];
 
 $("#postsWrapper").click(function (event) {
-  console.log(event.target.href);
   if (event.target.href) {
     $(".modal-title").html(postsArray[event.target.id - 1].title);
-    $(".modal-body").html(postsArray[event.target.id - 1].body);
+    $("#modalBody").html(postsArray[event.target.id - 1].body);
     displayUserData(postsArray[event.target.id - 1].userId);
+    $("#commentsBtn").val(event.target.id);
     postModal.toggleClass("show").show();
   }
+});
+
+$("#commentsBtn").click(function (event) {
+  displayComments(event.target.value);
 });
 
 closeModalDownBtn.click(function () {
@@ -22,7 +26,6 @@ closeModalUpBtn.click(function () {
 });
 
 $.get("https://jsonplaceholder.typicode.com/posts", function (data) {
-  //console.log($("#postsWrapper"));
   postsArray = data;
   for (post of data) {
     appendNewPostCard();
@@ -42,13 +45,14 @@ function displayAPIPostFields(postCard, postData) {
   postCard.find("p").html(postData.body.slice(0, 72) + "...");
   postCard.find("h3").html(postData.title.slice(0, 19));
   postCard.find("a").attr("id", postData.id);
+  postCard.find("a").attr("href", "#" + postData.userId + " " + postData.id);
 }
 
 function displayUserData(userId) {
-  return $.get(
+  $.get(
     "https://jsonplaceholder.typicode.com/users/" + userId,
     function (data) {
-      $(".modal-body").append(
+      $("#modalBody").append(
         "<br><br><strong>" +
           data.name +
           "</strong><br><strong>" +
@@ -57,4 +61,25 @@ function displayUserData(userId) {
       );
     }
   );
+}
+
+function displayComments(postId) {
+  if ($("#modalBody").children().length < 6) {
+    $.get(
+      "https://jsonplaceholder.typicode.com/posts/" + postId + "/comments",
+      function (data) {
+        for (comment of data) {
+          $("#modalBody").append(
+            "<hr><div class='modal-body'><i>" +
+              comment.name +
+              "</i><br>" +
+              comment.body +
+              "<br><br>" +
+              comment.email +
+              "</div>"
+          );
+        }
+      }
+    );
+  }
 }
