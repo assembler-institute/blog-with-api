@@ -10,9 +10,9 @@ En la rama develop escribe en la terminal:
           json-server --watch ./data/db.json 
               
               
-Debes instalar bootstrap, jquery  mediante npm:
+Debes ejecutar npm:
           
-          npm install bootstrap
-          npm install jquery
+          npm install 
+          
  
 
