@@ -17,12 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
     success: (data) => printArticle(data),
     error: () => console.log("Fail loading photos"),
   });
-
-  console.log(postInfo);
-  // fnPrintDetail(postInfo);
 });
 
-// TODO: INTENTA OPTIMIZAR ESTO, BUSCA EN JQUERY.COM
 function printArticle(data) {
   arrPosts.forEach((el, index) => {
     if (index < 3) {
@@ -85,7 +81,5 @@ function getInfo(post) {
  */
 function fnPrintDetail(post) {
   $(".detail-post-content h2").text(post.user.name);
-
   console.log($(".detail-post-content h2").text());
-  // console.log("Holaa");
 }

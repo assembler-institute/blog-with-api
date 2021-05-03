@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
   searchFilters(".input-search", ".blog-post h3");
 });
 
-// TODO: INTENTA OPTIMIZAR ESTO, BUSCA EN JQUERY.COM
 function printArticle(data) {
   arrPosts.forEach((el, index) => {
     if (index < 3) {
@@ -72,13 +71,6 @@ function fnShowPost(e) {
  * }
  */
 function getInfo(post) {
-  // get post info
-  // let url = "https://jsonplaceholder.typicode.com/posts/";
-  // fnAjax(url + post.dataset.postid, {
-  //   method: "GET",
-  //   success: (data) => fnPrintPostModal(data),
-  //   error: () => console.log("Fail loading modal post"),
-  // });
   const [postinfo] = arrPosts.filter((v) => v.id == post.dataset.postid);
   $(".modal .bg-img").attr(
     "src",
@@ -206,7 +198,6 @@ function fnModifyPost(data) {
  * Print popular user
  * based on number of comments
  */
-
 fnAjax("https://jsonplaceholder.typicode.com/users/", {
   method: "GET",
   success: (data) => fnPrintPopularUsers(data),

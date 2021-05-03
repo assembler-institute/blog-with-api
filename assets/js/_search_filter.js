@@ -9,13 +9,4 @@ export function searchFilters(input, selector) {
       }
     });
   });
-
-  //   $(input).on("focusout", function () {
-  //     console.log($(input).val());
-  //     if ($(input).val().trim() === "") {
-  //       $(selector).each(function (index, el) {
-  //         $(selector).closest("article").show();
-  //       });
-  //     }
-  //   });
 }
