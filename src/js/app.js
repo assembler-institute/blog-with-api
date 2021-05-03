@@ -85,7 +85,7 @@ $.get("http://localhost:3000/posts", function succes(data) {
               var datarecover = data;
               $.ajax({
                 url: "http://localhost:3000/posts/" + dataNum,
-                type: "DELETE", //"DELETE"
+                type: "GET", //"DELETE"
                 success: function (data) {
                   console.log("Has borrado el post " + dataNum);
                 },
@@ -95,7 +95,7 @@ $.get("http://localhost:3000/posts", function succes(data) {
 
           //Recover Posts & Childs
           $("#recoverBtn").on("click", function () {
-            console.log(datarecover);
+            //Recover btn
           });
         });
       });
