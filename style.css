@@ -1,0 +1,280 @@
+/* stylelint-disable selector-list-comma-newline-after */
+:root {
+  --lh: 1.4rem;
+}
+
+* {
+  text-transform: capitalize;
+}
+
+#buttonComment{
+  display: flex;
+  justify-content: flex-start;
+  align-items:center;
+}
+
+.modal-body {
+  font-size: 18px;
+}
+
+.modal-info {
+  display: flex;
+  justify-content: flex-end;
+  align-items:center;
+  margin-right: 25px;
+}
+
+.btn img {
+  margin-right: 10px;
+}
+
+.modal-title {
+  font-size: 40px;
+  line-height: 1.2;
+}
+
+.bodyPost {
+  line-height: var(--lh);
+}
+
+.bodyPost {
+  --max-lines: 3;
+  position: relative;
+  max-height: calc(var(--lh) * var(--max-lines));
+  overflow: hidden;
+  padding-right: 1rem; /* space for ellipsis */
+}
+.bodyPost::before {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.data-body{
+  margin-bottom: 0px;
+}
+
+.data-name {
+  font-weight: 500;
+  font-size: 20px;
+  width: 70%;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.post-creator {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.button-flex {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 990px) {
+  .data-name {
+    font-weight: bold;
+    font-size: 20px;
+    width: 100%;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+}
+
+#postText {
+  background-color: rgba(255, 255, 255, 0.801);
+  padding: 2%;
+  border-radius: 5px;
+}
+
+#modal-name {
+  font-weight: bold;
+}
+
+#modal-email {
+  font-size: 10px;
+  margin-top: -20px;
+}
+
+.data-email {
+  margin-bottom: 0px;
+  font-size: 10px;
+  font-weight: bold;
+  margin-left: 10px;
+  justify-content: flex-end;
+  display: flex;
+  align-items:center;
+}
+
+.data-email img {
+  margin-left: 10px;
+
+}
+
+.blog-header {
+  line-height: 1;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.blog-header-logo {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.25rem;
+}
+
+.blog-header-logo:hover {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+
+label {
+  display: block;
+  float: left;
+  width: 200px;
+}
+
+#fullPost {
+
+  background-image: url("img/barcelona.jpg");
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+#postTitle {
+  font-weight: 700;
+}
+
+.titlePost {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 70%;
+}
+
+.display-4 {
+  font-size: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .display-4 {
+    font-size: 3rem;
+  }
+}
+
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+  display: flex;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-scroller .nav-link {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-size: 0.875rem;
+}
+
+.card-img-right {
+  height: 100%;
+  border-radius: 0 3px 3px 0;
+}
+
+.flex-auto {
+  flex: 0 0 auto;
+}
+
+.h-250 {
+  height: 250px;
+}
+
+@media (min-width: 768px) {
+  .h-md-250 {
+    height: 250px;
+  }
+}
+
+/* Pagination */
+.blog-pagination {
+  margin-bottom: 4rem;
+}
+
+.blog-pagination > .btn {
+  border-radius: 2rem;
+}
+
+/*
+            * Blog posts
+            */
+.blog-post {
+  margin-bottom: 4rem;
+}
+
+.blog-post-title {
+  margin-bottom: 0.25rem;
+  font-size: 2.5rem;
+}
+
+.blog-post-meta {
+  margin-bottom: 1.25rem;
+  color: #727272;
+}
+
+/*
+            * Footer
+            */
+.blog-footer {
+  padding: 2.5rem 0;
+  color: #727272;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-top: 0.05rem solid #e5e5e5;
+}
+
+.blog-footer p:last-child {
+  margin-bottom: 0;
+}
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
