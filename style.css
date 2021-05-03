@@ -21,10 +21,6 @@ figure:hover img {
 	animation: flash 1.5s;
 }
 
-.modal-header {
-    background-color: rgba(238, 242, 247, 0.959);
-}
-
 .toast-container {
     z-index: 9999;
     right: 0;
@@ -45,6 +41,9 @@ figure:hover img {
 	background-color: rgb(235, 255, 248);
 }
 
+.modal-header {
+    background-color: rgba(238, 242, 247, 0.959);
+}
 
 .checkModal {
 	top: 60px;
@@ -97,17 +96,21 @@ figure:hover img {
 	z-index: 1000;
 	color: rgb(175, 200, 204)
   }
+
  #btn-to-top::after {
 	font-size: 2em;
 	color: #fff;
   }
+
  #btn-to-top:hover {
 	cursor: pointer;
 	color: rgb(169, 218, 238)
   }
+
  #btn-to-top:active {
 	color: rgb(126, 201, 236);
   }
+
  #btn-to-top.show {
 	opacity: 1;
 	visibility: visible;
