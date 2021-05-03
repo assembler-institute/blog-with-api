@@ -1,0 +1,65 @@
+* {
+  font-family: "Lexend", sans-serif;
+}
+
+html {
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 800ms ease-in-out;
+}
+.preparation {
+  opacity: 0;
+}
+body {
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-image: url(../img/header-background.jpg);
+  background-size: cover;
+}
+
+.header-background-img {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+.my-own-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+.modal-content {
+  max-height: 90vh;
+}
+.material-icons {
+  font-size: 1rem !important;
+}
+.higher-fade {
+  z-index: 1061;
+  background-color: rgba(43, 43, 43, 0.233);
+  backdrop-filter: blur(1px);
+}
+.higher-content {
+  z-index: 1062;
+}
+.card {
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+  transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+    0.3s box-shadow,
+    0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+.col > .card {
+  cursor: pointer;
+}
+.col > .card:hover {
+  transform: scale(1.01);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+}
+body.modal-open {
+  overflow: auto;
+}
