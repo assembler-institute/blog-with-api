@@ -1,0 +1,241 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/ecea200bd3.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>API Blog</title>
+  </head>
+  <body>
+    <header>
+      <img src="./assets/img/apibloglogo.png" alt="" />
+    </header>
+    <div class="container paginationContainer">
+      <div class="row">
+        <div class="col text-right">
+          <i class="fas fa-chevron-circle-left"></i>
+          <i class="fas fa-chevron-circle-right"></i>
+        </div>
+      </div>
+    </div>
+    <div class="container mainContainer"></div>
+    <div
+      class="modal modalPost fade"
+      id="postModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content modalPostContent">
+          <div class="modal-header">
+            <img src="./assets/img/modallogo.png" alt="" />
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <h5 class="titleModal">My post title</h5>
+                </div>
+              </div>
+              <div class="row rowIcons">
+                <div class="col text-right">
+                  <div class="icons">
+                    <button
+                      type="button"
+                      class="btn btnPostIcon btnEditPost"
+                      data-toggle="modal"
+                      data-target="#editPostModal"
+                    >
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btnPostIcon btnDeletePost"
+                      data-toggle="modal"
+                      data-target="#deletePostModal"
+                    >
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <img class="w-100 imgModal" src="./assets/img/2.jpg" alt="" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <p class="bodyModal"></p>
+                </div>
+                <div class="col-12 text-right">
+                  <p class="nameModal"></p>
+                </div>
+                <div class="col-12 text-right">
+                  <p class="emailModal"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col text-center">
+                  <button
+                    type="button"
+                    class="btn btnComments"
+                    id="btnComments"
+                  >
+                    Load Comments ↓
+                  </button>
+                </div>
+              </div>
+              <div
+                style="display: none"
+                class="container commentsContainer"
+                id="commentsContainer"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Editing post modal -->
+      <div
+      class="modal editPostModal fade"
+      id="editPostModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Post</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="container">
+              <div class="row">
+                <div class="col">
+                  <label class="labelForm" for="postTitleInput">
+                    Post title
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="First name"
+                      id="postTitleInput"
+                    />
+                  </label>
+                </div>
+              </div>
+
+                <div class="row">
+                  <div class="col">
+                    <label class="labelForm" for="bodyTitleInput">
+                      Post body
+                      <textarea
+                        type="text"
+                        class="form-control bodyTitleInput"
+                        placeholder=""
+                        id="bodyTitleInput"
+                      >
+                      </textarea>
+                    </label>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <a id="saveEditPostBtn" class="btn confirmModalBtn" href="#postModal" data-bs-toggle="modal">Save</a>
+            <!-- <button type="button" class="btn btn-primary confirmModalBtn" id="saveEditPostBtn">
+              Save
+            </button> -->
+            <a id="cancelEditPostBtn" class="btn cancelModalBtn" href="#postModal" data-bs-toggle="modal">Cancel</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+    <!-- Deleting post modal -->
+    <div
+    class="modal deletePostModal fade"
+    id="deletePostModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby=""
+    aria-hidden=""
+  >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Delete Post</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <p class="detelePostText">Are you sure you want to delete the post?</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a id="confirmDeletePost" class="btn confirmModalBtn" href="#postModal">Yes</a>
+          <a id="cancelDeletePost" class="btn cancelModalBtn" href="#postModal">No</a>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+      integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/modal.js"></script>
+  </body>
+</html>
