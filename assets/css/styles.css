@@ -46,7 +46,13 @@ textarea {
   font-weight: 700;
   font-size: 1.5rem;
 }
-
+/* nav form {
+  padding-right: 6rem;
+} */
+.form-control {
+  /* padding: 0.375rem 1rem; */
+  min-width: 330px;
+}
 /* 
 ==================================
 *       Hero styles
@@ -73,10 +79,11 @@ textarea {
 .hero-post-content,
 .detail-post-content {
   position: absolute;
-  bottom: 10px;
-  left: 10px;
+  bottom: 0;
+  left: 0;
   color: white;
   border-radius: 2.5rem 0 0 2.5rem;
+  width: 100%;
 }
 /* 
 ==================================
@@ -93,6 +100,8 @@ textarea {
 }
 .blog-post p {
   font-size: 0.9rem;
+  /* max-height: 40px; */
+  overflow-y: hidden;
 }
 .blog-post h3 {
   font-size: 1.4rem;
@@ -103,12 +112,13 @@ textarea {
   cursor: pointer;
   text-decoration: underline;
 }
-.badge {
+.badged {
   margin-top: 1rem;
+  padding: 0.7rem 0.5rem;
 }
-.badge > a {
+.badged > a {
   margin-left: 0.5rem;
-  padding: 0.5rem 1.5rem;
+  padding: 0.3rem 1.3rem;
   min-width: 1.5rem;
   text-decoration: none;
   border: 2px solid black;
@@ -131,6 +141,22 @@ textarea {
 }
 .img-post {
   max-height: 200px;
+}
+.post-position {
+  position: relative;
+}
+.spinner-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+.element-center {
+  position: absolute;
+  top: 40%;
+  left: 50%;
 }
 /* 
 ==================================
@@ -181,4 +207,29 @@ textarea {
 .footer p,
 .footer a {
   font-size: 0.9rem;
+}
+
+/* display: block;
+display: -webkit-box;
+max-width: 100%;
+height: 44px;
+margin: 0 auto;
+font-size: 12px;
+line-height: 1;
+-webkit-line-clamp: 4;
+-webkit-box-orient: vertical;
+overflow: hidden;
+text-overflow: ellipsis; */
+
+.provant {
+  background-color: brown;
+  height: 200px;
+}
+.provant .col-3 {
+  background-color: black;
+  height: 200px;
+}
+.provant .col-9 {
+  background-color: blue;
+  height: 200px;
 }

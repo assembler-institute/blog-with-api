@@ -1,4 +1,5 @@
 import { fnAjax } from "./_ajax.js";
+import { searchFilters } from "./_search_filter.js";
 
 let arrPosts = [];
 
@@ -16,6 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
     success: (data) => printArticle(data),
     error: () => console.log("Fail loading photos"),
   });
+
+  searchFilters(".input-search", ".blog-post h3");
 });
 
 // TODO: INTENTA OPTIMIZAR ESTO, BUSCA EN JQUERY.COM
@@ -166,6 +169,13 @@ function fnDeletePost(e) {
   e.preventDefault();
   let post = $(e.target).closest(".blog-post").get(0);
   let url = "https://jsonplaceholder.typicode.com/posts/";
+  $(post).find(".post-position").append(
+    `<div class="spinner-back">
+     <div class="spinner-border element-center" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    </div>`
+  );
 
   // delete post
   fnAjax(url + post.dataset.postid, {
@@ -182,9 +192,34 @@ function fnDeletePost(e) {
   });
 }
 
+/*
+ * Modify title & body of post
+ */
 function fnModifyPost(data) {
   const article = $(`article[data-postid=${data.id}]`);
   $(article).find("h3").text(data.title);
   $(article).find("p").text(data.body);
   arrPosts[parseInt(data.id) - 1] = data;
+}
+
+/*
+ * Print popular user
+ * based on number of comments
+ */
+
+fnAjax("https://jsonplaceholder.typicode.com/users/", {
+  method: "GET",
+  success: (data) => fnPrintPopularUsers(data),
+  error: () => console.log("Fail loading modal user"),
+});
+
+function fnPrintPopularUsers(data) {
+  for (let i = 0; i <= 2; i++) {
+    $(".author").find("h5").eq(i).text(data[i].name);
+    $(".author")
+      .find(".website")
+      .eq(i)
+      .text("Visit: " + data[i].website);
+    $(".author").find(".city").eq(i).text(`City: ${data[i].address.city}`);
+  }
 }
