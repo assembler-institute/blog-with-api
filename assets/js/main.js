@@ -83,6 +83,7 @@ function openModal() {
     $(element).on("click", function () {
       let id = $(this).data("id");
       $("#deletePost").attr("data-id", id);
+      $("#saveChanges").attr("data-id", id);
       postData(id);
     });
   });
@@ -97,7 +98,7 @@ function editPost() {
 
 function saveEdit() {
   $("#saveChanges").on("click", function () {
-    let postIdToEdit = $("#postModal #deletePost").attr("data-id");
+    let postIdToEdit = $("#saveChanges").attr("data-id");
     let newTitle = $("#editTitle").val();
     let newContent = $("#editBody").val();
 
@@ -111,8 +112,8 @@ function saveEdit() {
       data: JSON.stringify({
         userId: 1,
         id: 5,
-        title: '"' + newTitle + '"',
-        body: '"' + newContent + '"',
+        title: newTitle,
+        body: newContent,
       }),
     };
 
@@ -120,6 +121,8 @@ function saveEdit() {
       console.log(response);
       $("#postModal .modal-title").text(newTitle);
       $("#postModal .modal-body p").text(newContent);
+      // This line updates the post title in main page but creates a conflict with the remove function (bootstrap)
+      /* $('.post[data-id="' + postIdToEdit + '"] h2').text(newTitle); */
     });
   });
 }
