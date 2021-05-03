@@ -15,4 +15,8 @@ Debes ejecutar npm:
           npm install 
           
  
+ 
+Enlaçe presentación:
+
+          https://docs.google.com/presentation/d/1_o_eBGKk-lkAmlMO2BIqa6O_84DcmG4ZJ4LfqmCcD1g/edit?usp=sharing
 
