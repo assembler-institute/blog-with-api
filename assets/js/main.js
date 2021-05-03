@@ -1,4 +1,3 @@
-// Variables
 let from = 0;
 let limit = 10;
 let mainUrl = "http://localhost:3000/"; //https://jsonplaceholder.typicode.com/
@@ -9,7 +8,6 @@ let postId;
 let title;
 let body;
 
-// Event listeners
 $(function () {
   loadPosts();
 });
@@ -31,7 +29,6 @@ $("#load-more").on("click", function () {
   }
 });
 
-// Collapses the modal for comments
 $("#modal-for-posts").on("hide.bs.modal", function () {
   $("#modal-for-comments").empty();
   if ($("#modal-for-comments").hasClass("show")) {
@@ -40,7 +37,6 @@ $("#modal-for-posts").on("hide.bs.modal", function () {
   $("#comments-btn").text("Open comments");
 });
 
-// Change the text on the "open comments" button and load the comments for the post
 $("#comments-btn").text("Open comments");
 $("#comments-btn").on("click", function () {
   if ($("#comments-btn").text() === "Open comments") {
@@ -50,7 +46,6 @@ $("#comments-btn").on("click", function () {
   }
 });
 
-// get the info of id, title and body's post when you click on edit
 $("#edit-btn").on("click", function () {
   $("#btp-edit").attr("user-id", $("#modal-for-posts").attr("user-id"));
   $("#btp-edit").attr("post-id", $("#modal-for-posts").attr("post-id"));
@@ -62,7 +57,6 @@ $("#edit-btn").on("click", function () {
   body = $("#input-for-body").val();
 });
 
-// get the info of user id and post id when you click on delete
 $("#delete-btn").on("click", function () {
   $("#btp-delete").attr("user-id", $("#modal-for-posts").attr("user-id"));
   $("#btp-delete").attr("post-id", $("#modal-for-posts").attr("post-id"));
@@ -70,12 +64,10 @@ $("#delete-btn").on("click", function () {
   postId = $("#btp-delete").attr("post-id");
 });
 
-//Prevent the default of the form to submit the changes when a post is edited
 $("#edit-form").on("submit", function (e) {
   e.preventDefault();
 });
 
-//Confirm and send the edit. Then empty the posts main container and load the post to refresh the page
 $("#submit-btn").on("click", function () {
   if ($("#input-for-body").val() && $("#input-for-title").val()) {
     id = $("#modal-for-posts").attr("post-id");
@@ -90,8 +82,6 @@ $("#submit-btn").on("click", function () {
   $("#modal-for-edit").modal("hide");
 });
 
-// Get the id and delete the post with that id when you click on "confirm" button.
-// Then load the posts for the main page
 $("#confirm-delete-btn").on("click", function () {
   id = $("#post-title").attr("post-id");
   deletePost(id);
@@ -112,7 +102,6 @@ $(document).ajaxStop(function () {
   $("#load-more").text("Load More");
 });
 
-// Functions
 function loadPosts() {
   section = "posts/";
   var allPosts = {
