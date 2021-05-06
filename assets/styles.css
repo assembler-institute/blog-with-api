@@ -1,0 +1,9 @@
+.posts{
+    display: flex;
+    flex-direction: column;
+    
+}
+.post div{
+    margin-bottom: 50px;
+    background-color: red;
+}

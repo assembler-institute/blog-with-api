@@ -1,0 +1,174 @@
+
+.text-center{
+    background-image: linear-gradient(24deg,rgb(109, 224, 245),rgb(245, 248, 248));
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    min-height: 1000px;
+}
+
+.form-signin{
+    background-color:'none';
+    margin: 10% 30%;
+}
+div.form-floating .form-control{
+    background-color: rgba(0,0,0,0);
+
+    border:none;
+    outline: none;
+    font-family: 'Quicksand', sans-serif;
+
+}
+.titol{
+    font-size: 15px;
+    color:rgb(59, 192, 150) ;
+    font-family: 'Quicksand', sans-serif;
+}
+.myButon{
+    background-image: linear-gradient(12deg, rgb(169, 238, 217),rgba(0, 0, 0,0));
+    background-color: rgba(0, 0, 0,0);
+    height: 50px;
+    width: 100%;
+    border:none;
+    border-bottom: rgb(2, 44, 51);
+    outline: none;
+    border-radius: 10px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    padding-left: 40px;
+}
+.myButonLabel{
+   font-size: 10px;
+   color:rgb(59, 192, 150) ;
+   font-family: 'Quicksand', sans-serif;
+}
+.sendBut{
+    background-image: linear-gradient(6deg, rgb(28, 241, 178),rgba(0, 0, 0,0));
+    background-color: rgba(0, 0, 0,0);
+    border:none;
+    height: 50px;
+    width: 50%;
+    border-radius: 10px;
+    color: rgb(88, 150, 130);
+    
+}
+.col{
+    position: relative;
+    background-image: linear-gradient(6deg, rgb(28, 241, 178),rgba(0, 0, 0,0));
+    min-width: 200px;
+    border-radius: 10px;
+    margin: 5%;
+    font-family: 'Quicksand', sans-serif;
+}
+.col .user{
+    color:rgb(27, 195, 218);;
+}
+.col .tit{
+    color:rgb(7, 94, 66);
+    font-weight: 600;
+}
+.sendButP{
+    background-image: linear-gradient(6deg, rgb(28, 209, 241),rgba(0, 0, 0,0));
+    background-color: rgba(0, 0, 0,0);
+    border:none;
+    height: 20px;
+    width: 30%;
+    border-radius: 10px;
+    color: rgb(55, 110, 93);
+    font-size: 8px;
+    margin-bottom: 20px;
+    font-size: 12px;
+}
+.sendButC{
+    background-image: linear-gradient(6deg, rgb(28, 209, 241),rgba(0, 0, 0,0));
+    background-color: rgba(0, 0, 0,0);
+    border:none;
+    height: 20px;
+    width: 30%;
+    border-radius: 10px;
+    color: rgb(55, 110, 93);
+    font-size: 8px;
+    margin-bottom: 20px;
+}
+.deleButP{
+    position: absolute;
+    background-image: linear-gradient(6deg, rgb(28, 209, 241),rgba(0, 0, 0,0));
+    background-color: rgba(0, 0, 0,0);
+    border:none;
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+    color: rgb(55, 110, 93);
+    font-size: 8px;
+    margin-bottom: 20px;
+    top:2%;
+    right:2%;
+}
+h4.delteText{
+    margin:10% 10%;
+}
+/*.modal{
+    background-color: green;
+}*/
+.comBox{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top:0%;
+    right:0%;
+    z-index: 100;
+    overflow: scroll;
+    max-width: 40%;
+    
+
+}
+.comntbox2{
+    margin-bottom: 5px;
+   
+    background-image: linear-gradient(6deg, rgb(28, 209, 241),rgba(250, 250, 250, 0.5));
+    
+    border-radius: 10px;
+    height: 100%;
+}
+.nameCom{
+    font-family: 'Quicksand', sans-serif;  
+    font-weight: 400;
+}
+.bodyCom{
+    display: none;
+    font-family: 'Quicksand', sans-serif;  
+    
+}
+.emailCom{
+    display: none;
+    font-family: 'Quicksand', sans-serif;  
+   
+    
+}
+#exampleModalCenter{
+    backdrop-filter: blur(2px); 
+    background-image: linear-gradient(6deg, rgba(188, 229, 236, 0.3),rgba(250, 250, 250, 0));
+}
+.modal-header{
+    display: flex;
+    flex-direction: row;
+}
+.modal-title{
+    margin-top:33%;
+    margin-left: 5%;
+}
+.delete{
+    display: none;
+    position: fixed;
+    width: 50%;
+    height: 50%;
+    top:35%;
+    left:25%;
+    background-image: linear-gradient(6deg, rgb(235, 183, 141),rgba(251, 253, 232, 0.3));
+
+    z-index: 100;
+    border-radius: 30px;
+}
+.modal{
+    overflow-y: auto;
+}
