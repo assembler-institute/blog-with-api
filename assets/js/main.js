@@ -82,9 +82,6 @@ $("#confirm-delete-btn").on("click", function () {
   id = $("#post-title").attr("post-id");
   deletePost(id);
   $("#main-container-posts").empty();
-  from = 0;
-  limit = 10;
-  loadPosts();
   $("#modal-confirm-delete").modal("hide");
 });
 
@@ -263,5 +260,9 @@ function deletePost(id) {
     timeout: 0,
   };
 
-  $.ajax(postToDelete).done(function (response) {});
+  $.ajax(postToDelete).done(function (response) {
+    from = 0;
+    limit = 10;
+    loadPosts();
+  });
 }
