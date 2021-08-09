@@ -1,0 +1,23 @@
+{
+  "name": "blog-with-api",
+  "version": "1.0.0",
+  "description": "`#html` `#css` `#js` `#dom` `#JSON` `#HTTP` `#API` `#Bootstrap` `#master-in-software-engineering`",
+  "main": "index.js",
+  "dependencies": {
+    "json-server": "^0.16.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cherrerotinoco/blog-with-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cherrerotinoco/blog-with-api/issues"
+  },
+  "homepage": "https://github.com/Cherrerotinoco/blog-with-api#readme"
+}
