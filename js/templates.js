@@ -12,7 +12,13 @@ let templateHeader = `
     <main>
         <div class="container">
             <div class="row row-cols-3">
-              <div class="col">Column</div>
+              <div class="col">
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                </div>
+            </div>
+        </div>
               <div class="col">Column</div>
               <div class="col">Column</div>
               <div class="col">Column</div>
