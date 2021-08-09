@@ -1,0 +1,22 @@
+/**
+ * LAYOUT - COMMON
+ */
+
+.section{
+  height: calc(100vh - 4rem);
+  max-height: calc(100vh - 4rem);
+  margin: 2rem;
+  background-color: #F8F9FA;
+}
+
+.grid{
+  height: calc(100vh - 4rem);
+  max-height: calc(100vh - 4rem);
+  margin: 2rem;
+  /* background-color: #F8F9FA; */
+}
+
+.header{
+  z-index: 2;
+  padding: 2rem 4rem;
+}

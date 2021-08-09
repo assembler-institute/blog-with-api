@@ -1,0 +1,19 @@
+/**
+ * STYLES
+ */
+
+/* BASE FOLDER */
+@import "BASE/reset.css";
+
+ /* LAYOUT FOLDER */
+@import "LAYOUT/common.css";
+
+ /* MODULE FOLDER */
+@import "MODULE/post-card.css";
+@import "MODULE/toggle.css";
+
+ /* STATUS FOLDER */
+@import "STATUS/dark-mode.css";
+
+ /* THEME FOLDER */
+@import "THEME/vars.css";
