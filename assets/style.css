@@ -1,0 +1,25 @@
+main {
+    display: grid;
+    padding: 2rem;
+}
+
+.blog-grid {
+    margin: auto;
+    gap: 5rem;
+    padding: 2rem;
+}
+
+.card {
+    margin: auto;
+    width: 20rem;
+    height: 25rem;
+}
+
+.card-img-top {
+    margin-top: 0.7rem;
+}
+
+.card-text {
+    height: 5rem;
+    overflow: hidden;
+}
