@@ -7,7 +7,10 @@ btnTest.addEventListener("click", createCard);
 function getPosts() {
     return fetch("http://localhost:3000/posts")
         .then((response) => response.json())
-        .then((json) => console.log(json));
+        .then((json) => {
+            let data = json.title;
+            console.log(data);
+        });
 }
 
 function createCard() {
