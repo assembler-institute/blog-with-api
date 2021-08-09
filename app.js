@@ -5,12 +5,9 @@ let btnTest = document.querySelector(".button");
 btnTest.addEventListener("click", createCard);
 
 function getPosts() {
-    return fetch("http://localhost:3000/comments")
-        .then(function(response) {
-            response.json();
-            console.log(response);
-        })
-        .then(function(data) {});
+    return fetch("http://localhost:3000/posts")
+        .then((response) => response.json())
+        .then((json) => console.log(json));
 }
 
 function createCard() {
