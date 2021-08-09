@@ -1,168 +1,369 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog with API</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="assets/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+    <script src="assets/js/main.js" defer></script>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"
+      defer
+    ></script>
+  </head>
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog with API</title>
-  <link rel='stylesheet' type='text/css' media='screen' href='assets/css/styles.css'>
-  <script src='assets/js/main.js' defer></script>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"
-    defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"
-    defer></script>
-</head>
+  <body>
+    <main class="main">
+      <!-- Header -->
+      <header
+        class="header w-100 position-fixed d-flex justify-content-between"
+      >
+        <h1 class="brand__title">Blog</h1>
 
-<body>
+        <!-- Toggle -->
+        <label class="toggle__wrapper" htmlFor="toggle">
+          <div class="toggle" id="toggle">
+            <div class="toggle_icons">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6.995 12C6.995 14.761 9.241 17.007 12.002 17.007C14.763 17.007 17.009 14.761 17.009 12C17.009 9.239 14.763 6.993 12.002 6.993C9.241 6.993 6.995 9.239 6.995 12ZM11 19H13V22H11V19ZM11 2H13V5H11V2ZM2 11H5V13H2V11ZM19 11H22V13H19V11Z"
+                />
+                <path
+                  d="M5.63702 19.778L4.22302 18.364L6.34402 16.243L7.75802 17.657L5.63702 19.778Z"
+                />
+                <path
+                  d="M16.242 6.34405L18.364 4.22205L19.778 5.63605L17.656 7.75805L16.242 6.34405Z"
+                />
+                <path
+                  d="M6.34402 7.75902L4.22302 5.63702L5.63802 4.22302L7.75802 6.34502L6.34402 7.75902Z"
+                />
+                <path
+                  d="M19.778 18.3639L18.364 19.7779L16.242 17.6559L17.656 16.2419L19.778 18.3639Z"
+                /></svg
+              ><!-- Sun -->
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 11.807C10.7418 10.5483 9.88488 8.94484 9.53762 7.1993C9.19037 5.45375 9.36832 3.64444 10.049 2C8.10826 2.38205 6.3256 3.33431 4.92899 4.735C1.02399 8.64 1.02399 14.972 4.92899 18.877C8.83499 22.783 15.166 22.782 19.072 18.877C20.4723 17.4805 21.4245 15.6983 21.807 13.758C20.1625 14.4385 18.3533 14.6164 16.6077 14.2692C14.8622 13.9219 13.2588 13.0651 12 11.807V11.807Z"
+                /></svg
+              ><!-- Moon -->
+            </div>
+            <input
+              class="toggle__input"
+              id="toggle__input"
+              name="toggle"
+              type="checkbox"
+            />
+          </div> </label
+        ><!-- Toggle -->
+      </header>
+      <!-- Header -->
 
-  <main class="main">
+      <!-- Post main -->
+      <section
+        class="
+          section
+          d-flex
+          align-items-center
+          justify-content-center
+          text-center
+        "
+      >
+        <article class="post-main">
+          <span class="post-main__author">Hungry cat 6</span>
+          <h1 class="post-main__title">Hungry cat 6</h1>
+          <button
+            type="button"
+            class="btn btn-dark"
+            data-bs-toggle="modal"
+            data-bs-target="#postModal"
+          >
+            Dark
+          </button>
+        </article>
+      </section>
+      <!-- Post main -->
 
-    <!-- Header -->
-    <header class="header w-100 position-fixed d-flex justify-content-between">
-      <h1 class="brand__title">Blog</h1>
-
-      <!-- Toggle -->
-      <label class="toggle__wrapper" htmlFor="toggle">
-        <div class="toggle" id="toggle">
-          <div class="toggle_icons">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M6.995 12C6.995 14.761 9.241 17.007 12.002 17.007C14.763 17.007 17.009 14.761 17.009 12C17.009 9.239 14.763 6.993 12.002 6.993C9.241 6.993 6.995 9.239 6.995 12ZM11 19H13V22H11V19ZM11 2H13V5H11V2ZM2 11H5V13H2V11ZM19 11H22V13H19V11Z" />
-              <path d="M5.63702 19.778L4.22302 18.364L6.34402 16.243L7.75802 17.657L5.63702 19.778Z" />
-              <path d="M16.242 6.34405L18.364 4.22205L19.778 5.63605L17.656 7.75805L16.242 6.34405Z" />
-              <path d="M6.34402 7.75902L4.22302 5.63702L5.63802 4.22302L7.75802 6.34502L6.34402 7.75902Z" />
-              <path d="M19.778 18.3639L18.364 19.7779L16.242 17.6559L17.656 16.2419L19.778 18.3639Z" />
-            </svg><!-- Sun -->
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M12 11.807C10.7418 10.5483 9.88488 8.94484 9.53762 7.1993C9.19037 5.45375 9.36832 3.64444 10.049 2C8.10826 2.38205 6.3256 3.33431 4.92899 4.735C1.02399 8.64 1.02399 14.972 4.92899 18.877C8.83499 22.783 15.166 22.782 19.072 18.877C20.4723 17.4805 21.4245 15.6983 21.807 13.758C20.1625 14.4385 18.3533 14.6164 16.6077 14.2692C14.8622 13.9219 13.2588 13.0651 12 11.807V11.807Z" />
-            </svg><!-- Moon -->
+      <!-- Posts tinder -->
+      <section class="grid d-flex flex-column justify-content-center">
+        <div class="row h-50">
+          <div class="col-md-4">
+            <div
+              class="
+                post-card
+                d-flex
+                h-100
+                flex-column
+                align-items-center
+                justify-content-center
+                text-center
+              "
+            >
+              <div class="post-card__top brown">
+                <div class="post-card__img"></div>
+                <h2 class="post-card__name">Hungry cat 6</h2>
+              </div>
+              <div class="post-card__btm">
+                <p class="post-card__we">Whatever</p>
+              </div>
+              <div class="post-card__choice m--reject"></div>
+              <div class="post-card__choice m--like"></div>
+              <div class="post-card__drag"></div>
+            </div>
           </div>
-          <input class="toggle__input" id="toggle__input" name="toggle" type="checkbox" />
-        </div>
-      </label><!-- Toggle -->
-    </header><!-- Header -->
-
-    <!-- Post main -->
-    <section class="section d-flex align-items-center justify-content-center text-center">
-      <article class="post-main">
-        <span class="post-main__author">Hungry cat 6</span>
-        <h1 class="post-main__title">Hungry cat 6</h1>
-        <button type="button" class="btn btn-dark">Dark</button>
-      </article>
-    </section><!-- Post main -->
-
-    <!-- Posts tinder -->
-    <section class="grid d-flex flex-column justify-content-center">
-      <div class="row h-50">
-        <div class="col-md-4">
-          <div class="post-card d-flex h-100 flex-column align-items-center justify-content-center text-center">
-            <div class="post-card__top brown">
-              <div class="post-card__img"></div>
-              <h2 class="post-card__name">Hungry cat 6</h2>
+          <div class="col-md-4">
+            <div
+              class="
+                post-card
+                d-flex
+                h-100
+                flex-column
+                align-items-center
+                justify-content-center
+                text-center
+              "
+            >
+              <div class="post-card__top brown">
+                <div class="post-card__img"></div>
+                <h2 class="post-card__name">Hungry cat 6</h2>
+              </div>
+              <div class="post-card__btm">
+                <p class="post-card__we">Whatever</p>
+              </div>
+              <div class="post-card__choice m--reject"></div>
+              <div class="post-card__choice m--like"></div>
+              <div class="post-card__drag"></div>
             </div>
-            <div class="post-card__btm">
-              <p class="post-card__we">Whatever</p>
+          </div>
+          <div class="col-md-4">
+            <div
+              class="
+                post-card
+                d-flex
+                h-100
+                flex-column
+                align-items-center
+                justify-content-center
+                text-center
+              "
+            >
+              <div class="post-card__top brown">
+                <div class="post-card__img"></div>
+                <h2 class="post-card__name">Hungry cat 6</h2>
+              </div>
+              <div class="post-card__btm">
+                <p class="post-card__we">Whatever</p>
+              </div>
+              <div class="post-card__choice m--reject"></div>
+              <div class="post-card__choice m--like"></div>
+              <div class="post-card__drag"></div>
             </div>
-            <div class="post-card__choice m--reject"></div>
-            <div class="post-card__choice m--like"></div>
-            <div class="post-card__drag"></div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="post-card d-flex h-100 flex-column align-items-center justify-content-center text-center">
-            <div class="post-card__top brown">
-              <div class="post-card__img"></div>
-              <h2 class="post-card__name">Hungry cat 6</h2>
+        <div class="row h-50">
+          <div class="col-md-4">
+            <div
+              class="
+                post-card
+                d-flex
+                h-100
+                flex-column
+                align-items-center
+                justify-content-center
+                text-center
+              "
+            >
+              <div class="post-card__top brown">
+                <div class="post-card__img"></div>
+                <h2 class="post-card__name">Hungry cat 6</h2>
+              </div>
+              <div class="post-card__btm">
+                <p class="post-card__we">Whatever</p>
+              </div>
+              <div class="post-card__choice m--reject"></div>
+              <div class="post-card__choice m--like"></div>
+              <div class="post-card__drag"></div>
             </div>
-            <div class="post-card__btm">
-              <p class="post-card__we">Whatever</p>
+          </div>
+          <div class="col-md-4">
+            <div
+              class="
+                post-card
+                d-flex
+                h-100
+                flex-column
+                align-items-center
+                justify-content-center
+                text-center
+              "
+            >
+              <div class="post-card__top brown">
+                <div class="post-card__img"></div>
+                <h2 class="post-card__name">Hungry cat 6</h2>
+              </div>
+              <div class="post-card__btm">
+                <p class="post-card__we">Whatever</p>
+              </div>
+              <div class="post-card__choice m--reject"></div>
+              <div class="post-card__choice m--like"></div>
+              <div class="post-card__drag"></div>
             </div>
-            <div class="post-card__choice m--reject"></div>
-            <div class="post-card__choice m--like"></div>
-            <div class="post-card__drag"></div>
+          </div>
+          <div class="col-md-4">
+            <div
+              class="
+                post-card
+                d-flex
+                h-100
+                flex-column
+                align-items-center
+                justify-content-center
+                text-center
+              "
+            >
+              <div class="post-card__top brown">
+                <div class="post-card__img"></div>
+                <h2 class="post-card__name">Hungry cat 6</h2>
+              </div>
+              <div class="post-card__btm">
+                <p class="post-card__we">Whatever</p>
+              </div>
+              <div class="post-card__choice m--reject"></div>
+              <div class="post-card__choice m--like"></div>
+              <div class="post-card__drag"></div>
+            </div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="post-card d-flex h-100 flex-column align-items-center justify-content-center text-center">
-            <div class="post-card__top brown">
-              <div class="post-card__img"></div>
-              <h2 class="post-card__name">Hungry cat 6</h2>
+      </section>
+      <!-- Posts tinder -->
+
+      <!-- Posts list -->
+      <section class="section">
+        <div class="post-line">
+          <div class="post-line__top purple">
+            <div class="post-line__img"></div>
+            <p class="post-line__name">Hungry cat</p>
+          </div>
+        </div>
+      </section>
+      <!-- Posts list -->
+    </main>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="postModal"
+      tabindex="-1"
+      aria-labelledby="postModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content p-4">
+          <div class="row">
+            <div
+              class="
+                col-4
+                d-flex
+                flex-column
+                align-items-stretch
+                justify-content-around
+                p-4
+              "
+            >
+              <div class="col p-4">
+                <i class="bi bi-emoji-sunglasses big"></i>
+              </div>
+              <div class="col">
+                <h6><strong>By</strong> Leanne Graham</h6>
+                <h6><strong>From</strong> Romaguera-Crona</h6>
+                <hr />
+                <p>
+                  <small> 3 min read</small>
+                </p>
+              </div>
             </div>
-            <div class="post-card__btm">
-              <p class="post-card__we">Whatever</p>
+            <div class="col-8">
+              <div class="row modal-header">
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+                <h3 class="modal-title pb-10" id="postModalLabel">
+                  Sunt aut facere repellat provident occaecati excepturi optio
+                  reprehenderit
+                </h3>
+              </div>
+              <div class="modal-body">
+                <h5>
+                  <em
+                    >Sunt aut facere repellat provident occaecati excepturi
+                    optio reprehenderit</em
+                  >
+                </h5>
+              </div>
+              <hr />
+              <div class="comments col 12">10 comments</div>
+              <hr />
+              <div class="row p-4">
+                <div class="col-2"><i class="bi bi-emoji-sunglasses"></i></div>
+                <div class="col">
+                  <blockquote class="blockquote">
+                    <p class="blockquote-text">
+                      laudantium enim quasi est quidem magnam voluptate ipsam
+                      eos\ntempora quo necessitatibus\ndolor quam autem
+                      quasi\nreiciendis et nam sapiente accusantium.
+                    </p>
+                    <footer class="blockquote-footer">
+                      Leanne Graham
+                      <cite title="Source Title">Romaguera-Crona </cite>
+                    </footer>
+                  </blockquote>
+                </div>
+              </div>
             </div>
-            <div class="post-card__choice m--reject"></div>
-            <div class="post-card__choice m--like"></div>
-            <div class="post-card__drag"></div>
           </div>
         </div>
       </div>
-      <div class="row h-50">
-        <div class="col-md-4">
-          <div class="post-card d-flex h-100 flex-column align-items-center justify-content-center text-center">
-            <div class="post-card__top brown">
-              <div class="post-card__img"></div>
-              <h2 class="post-card__name">Hungry cat 6</h2>
-            </div>
-            <div class="post-card__btm">
-              <p class="post-card__we">Whatever</p>
-            </div>
-            <div class="post-card__choice m--reject"></div>
-            <div class="post-card__choice m--like"></div>
-            <div class="post-card__drag"></div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="post-card d-flex h-100 flex-column align-items-center justify-content-center text-center">
-            <div class="post-card__top brown">
-              <div class="post-card__img"></div>
-              <h2 class="post-card__name">Hungry cat 6</h2>
-            </div>
-            <div class="post-card__btm">
-              <p class="post-card__we">Whatever</p>
-            </div>
-            <div class="post-card__choice m--reject"></div>
-            <div class="post-card__choice m--like"></div>
-            <div class="post-card__drag"></div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="post-card d-flex h-100 flex-column align-items-center justify-content-center text-center">
-            <div class="post-card__top brown">
-              <div class="post-card__img"></div>
-              <h2 class="post-card__name">Hungry cat 6</h2>
-            </div>
-            <div class="post-card__btm">
-              <p class="post-card__we">Whatever</p>
-            </div>
-            <div class="post-card__choice m--reject"></div>
-            <div class="post-card__choice m--like"></div>
-            <div class="post-card__drag"></div>
-          </div>
-        </div>
-      </div>
-    </section><!-- Posts tinder -->
-
-    <!-- Posts list -->
-    <section class="section">
-      <div class="post-line">
-        <div class="post-line__top purple">
-          <div class="post-line__img"></div>
-          <p class="post-line__name">Hungry cat</p>
-        </div>
-      </div>
-    </section><!-- Posts list -->
-
-  </main>
-</body>
-
+    </div>
+  </body>
 </html>

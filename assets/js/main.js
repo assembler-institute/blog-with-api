@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var $toggleInput = document.getElementById("toggle__input");
 $toggleInput.addEventListener("click", switchStyles);

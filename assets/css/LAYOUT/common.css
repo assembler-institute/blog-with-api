@@ -2,21 +2,35 @@
  * LAYOUT - COMMON
  */
 
-.section{
+.section {
   height: calc(100vh - 4rem);
   max-height: calc(100vh - 4rem);
   margin: 2rem;
-  background-color: #F8F9FA;
+  background-color: #f8f9fa;
 }
 
-.grid{
+.grid {
   height: calc(100vh - 4rem);
   max-height: calc(100vh - 4rem);
   margin: 2rem;
   /* background-color: #F8F9FA; */
 }
 
-.header{
+.header {
   z-index: 2;
   padding: 2rem 4rem;
+}
+
+.bi {
+  font-size: 4rem;
+  /* border: solid black 1px;
+  border-radius: 50%;
+  padding: 0.25em 0.5em; */
+}
+
+.big {
+  font-size: 8rem;
+  /*  border: solid black 2px;
+  border-radius: 50%;
+  padding: 0.25em 0.5em; */
 }
