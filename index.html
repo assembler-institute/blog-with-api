@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="script.js" defer></script>
+    <script src="./modal.js" defer></script>
     <title>Blog with Api</title>
 
 </head>
@@ -29,19 +30,38 @@
     </header>
     <main class="container-xl">
         <div class="container row row-cols-4" id="cards-container">
-
         </div>
     </main>
-<template id="card-temp">
+    <div id="modal-container">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitle">title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="modalbody">
+                        body
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="prueba">prueba</button>
+
+    <template id="card-temp">
   <div class="container-md">
     <figure class="figure">
-      <img src="https://dmagazine.com.ar/wp-content/uploads/2017/11/rick.png" class="figure-img img-fluid rounded" width="300" height="300" alt="rick and morty">
-      <a class="nav-item nav-link btn-outline-success" href="#"><figcaption class="figure-caption"></figcaption></a>
+      <img src="https://dmagazine.com.ar/wp-content/uploads/2017/11/rick.png" class="figure-img img-fluid rounded" width="300" height="300" alt="rick and morty" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <a class="nav-item nav-link btn-outline-success" href="#"><figcaption class="figure-caption"data-bs-toggle="modal" data-bs-target="#exampleModal"></figcaption></a>
     </figure>
+    
   </div>
 </template>
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
