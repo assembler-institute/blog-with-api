@@ -49,10 +49,6 @@ animate = () => {
 
 animate();
 
-// document.addEventListener('scroll', (e) => {
-//   requestAnimationFrame(animate);
-// })
-
 document.addEventListener('mousemove', (e) => {
   mouseX = e.pageX;
   mouseY = e.pageY;

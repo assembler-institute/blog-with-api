@@ -8,8 +8,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog with API</title>
   <link rel='stylesheet' type='text/css' media='screen' href='assets/css/styles.css'>
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+  <!-- JS files -->
   <script src='assets/js/cursor.js' defer></script>
   <script src='assets/js/main.js' defer></script>
+  <script src='assets/js/tinder.js' defer></script>
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,10 +51,10 @@
 
     <!-- Header -->
     <header class="header w-100 position-fixed d-flex justify-content-between">
-      <h1 class="brand__title">Blog</h1>
+      <h1 class="header__title">Blog</h1>
 
       <!-- Toggle -->
-      <label class="toggle__wrapper" htmlFor="toggle">
+      <label class="toggle__wrapper hoverable" htmlFor="toggle">
         <div class="toggle" id="toggle">
           <div class="toggle_icons">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -76,8 +80,8 @@
       <article class="post-main">
         <p class="post-main__author">Leanne Graham</p>
         <div class="headline-card__line"></div>
-        <h1 class="post-main__title text-capitalize">sunt aut facere repellat provident occaecati excepturi optio
-          reprehenderit</h1>
+        <h2 class="post-main__title text-capitalize">sunt aut facere repellat provident occaecati excepturi optio
+          reprehenderit</h2>
         <div class="headline-card__line"></div>
         <div class="post-main__button">
           <button type="button" class="btn btn-dark text-uppercase hoverable">Read more</button>
@@ -86,92 +90,50 @@
     </section><!-- Post main -->
 
     <!-- Posts tinder -->
-    <section class="grid d-flex flex-column justify-content-center">
-      <div class="row h-50">
-        <div class="col-md-4">
-          <div class="post-card d-flex h-100 flex-column align-items-center justify-content-center text-center">
-            <div class="post-card__top brown">
-              <div class="post-card__img"></div>
-              <h2 class="post-card__name">Hungry cat 6</h2>
+    <section class="section">
+      <div class="posts d-flex justify-content-center align-items-center h-100">
+        <div class="post__card-cont row">
+          <div class="post__card col-md-4 hoverable">
+            <div class="post__card__top d-flex flex-column align-items-center justify-content-center bg-black">
+              <p class="post__card__author">Whatever</p>
+              <h2 class="post__card__name">Hungry cat 6</h2>
             </div>
-            <div class="post-card__btm">
-              <p class="post-card__we">Whatever</p>
-            </div>
-            <div class="post-card__choice m--reject"></div>
-            <div class="post-card__choice m--like"></div>
-            <div class="post-card__drag"></div>
+            <div class="post__card__drag"></div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="post-card d-flex h-100 flex-column align-items-center justify-content-center text-center">
-            <div class="post-card__top brown">
-              <div class="post-card__img"></div>
-              <h2 class="post-card__name">Hungry cat 6</h2>
+          <div class="post__card col-md-4 hoverable">
+            <div class="post__card__top d-flex flex-column align-items-center justify-content-center bg-black">
+              <p class="post__card__author">Whatever</p>
+              <h2 class="post__card__name">Hungry cat 5</h2>
             </div>
-            <div class="post-card__btm">
-              <p class="post-card__we">Whatever</p>
-            </div>
-            <div class="post-card__choice m--reject"></div>
-            <div class="post-card__choice m--like"></div>
-            <div class="post-card__drag"></div>
+            <div class="post__card__drag"></div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="post-card d-flex h-100 flex-column align-items-center justify-content-center text-center">
-            <div class="post-card__top brown">
-              <div class="post-card__img"></div>
-              <h2 class="post-card__name">Hungry cat 6</h2>
+          <div class="post__card col-md-4 hoverable">
+            <div class="post__card__top d-flex flex-column align-items-center justify-content-center bg-black">
+              <p class="post__card__author">Whatever</p>
+              <h2 class="post__card__name">Hungry cat 4</h2>
             </div>
-            <div class="post-card__btm">
-              <p class="post-card__we">Whatever</p>
-            </div>
-            <div class="post-card__choice m--reject"></div>
-            <div class="post-card__choice m--like"></div>
-            <div class="post-card__drag"></div>
+            <div class="post__card__drag"></div>
           </div>
-        </div>
-      </div>
-      <div class="row h-50">
-        <div class="col-md-4">
-          <div class="post-card d-flex h-100 flex-column align-items-center justify-content-center text-center">
-            <div class="post-card__top brown">
-              <div class="post-card__img"></div>
-              <h2 class="post-card__name">Hungry cat 6</h2>
+          <div class="post__card col-md-4 hoverable">
+            <div class="post__card__top d-flex flex-column align-items-center justify-content-center bg-black">
+              <p class="post__card__author">Whatever</p>
+              <h2 class="post__card__name">Hungry cat 3</h2>
             </div>
-            <div class="post-card__btm">
-              <p class="post-card__we">Whatever</p>
-            </div>
-            <div class="post-card__choice m--reject"></div>
-            <div class="post-card__choice m--like"></div>
-            <div class="post-card__drag"></div>
+            <div class="post__card__drag"></div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="post-card d-flex h-100 flex-column align-items-center justify-content-center text-center">
-            <div class="post-card__top brown">
-              <div class="post-card__img"></div>
-              <h2 class="post-card__name">Hungry cat 6</h2>
+          <div class="post__card col-md-4 hoverable">
+            <div class="post__card__top d-flex flex-column align-items-center justify-content-center bg-black">
+              <p class="post__card__author">Whatever</p>
+              <h2 class="post__card__name">Hungry cat 2</h2>
             </div>
-            <div class="post-card__btm">
-              <p class="post-card__we">Whatever</p>
-            </div>
-            <div class="post-card__choice m--reject"></div>
-            <div class="post-card__choice m--like"></div>
-            <div class="post-card__drag"></div>
+            <div class="post__card__drag"></div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="post-card d-flex h-100 flex-column align-items-center justify-content-center text-center">
-            <div class="post-card__top brown">
-              <div class="post-card__img"></div>
-              <h2 class="post-card__name">Hungry cat 6</h2>
+          <div class="post__card col-md-4 hoverable">
+            <div class="post__card__top d-flex flex-column align-items-center justify-content-center bg-black">
+              <p class="post__card__author">Whatever</p>
+              <h2 class="post__card__name">Hungry cat</h2>
             </div>
-            <div class="post-card__btm">
-              <p class="post-card__we">Whatever</p>
-            </div>
-            <div class="post-card__choice m--reject"></div>
-            <div class="post-card__choice m--like"></div>
-            <div class="post-card__drag"></div>
+            <div class="post__card__drag"></div>
           </div>
         </div>
       </div>

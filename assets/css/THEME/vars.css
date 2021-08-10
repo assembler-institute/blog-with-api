@@ -5,7 +5,7 @@
 :root {
   --black: #121212;
   --white: #f5f5f5;
-  --background: var(--white);
-  --foreground: var(--black);
+  --background: var(--black);
+  --foreground: var(--white);
   --transition: 0.2s ease;
 }

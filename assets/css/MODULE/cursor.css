@@ -36,3 +36,7 @@
   width: 10px;
   height: 10px;
 }
+
+.cursor__ball--small {
+  display: none;
+}
