@@ -6,7 +6,7 @@
   height: calc(100vh - 4rem);
   max-height: calc(100vh - 4rem);
   margin: 2rem;
-  background-color: #F8F9FA;
+  background: #F8F9FA;
 }
 
 .grid{
