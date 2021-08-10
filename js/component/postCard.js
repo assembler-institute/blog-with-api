@@ -1,8 +1,8 @@
 import getPostsByLimit from "../requests/getPostsByLimit.js";
 
-export async function insertPostCards() {
+export async function insertPostCards(start, limit) {
 	const grid = document.querySelector("#post-card-grid");
-	const posts = await getPostsByLimit(0, 10);
+	const posts = await getPostsByLimit(start, limit);
 
 	posts.forEach((post) => {
 		const postCard = createPostCard(post);
@@ -10,10 +10,14 @@ export async function insertPostCards() {
 	});
 }
 
+export function clearPostCards() {
+	document.querySelector("#post-card-grid").innerHTML = null;
+}
+
 function createPostCard(post) {
 	const template = `
-		<div class="col-12 col-sm-6 col-lg-4 p-3 d-flex justify-content-center">
-			<article data-component="post-card" class="card w-100 shadow-sm" data-post-id=${post.id} data-post-user=${post.userId}>
+		<div data-component="post-card" class="col-12 col-sm-6 col-lg-4 p-3 d-flex justify-content-center">
+			<article class="card w-100 shadow-sm" data-post-id=${post.id} data-post-user=${post.userId}>
 				<img class="card-img-top card-img-height" src="https://picsum.photos/400/600?random=${post.id}" alt="preview" />
 				<div class="card-body p-3">
 					<h6 class="fs-5">${post.title}</h6>
