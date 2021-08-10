@@ -62,6 +62,8 @@ function printPosts() {
 
           document.querySelector(".modal-title").textContent =
             jsonPosts[postNumber - 1].title;
+          document.querySelector(".modal-body").textContent =
+            jsonPosts[postNumber - 1].body;
         });
       });
     });
