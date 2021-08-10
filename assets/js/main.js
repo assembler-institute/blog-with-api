@@ -59,7 +59,7 @@ function renderPost(post, cont, div) {
         <div class="card m-auto my-2" style="">
           
           <div class="card-body position-relative">
-          <img src="./assets/images/image.jpg" class="card-img-top" alt="...">
+          <img src="./assets/images/image.jpg" class="card-img-top" alt="..." data-bs-toggle="modal" data-bs-target="#exampleModal">
             <h5 class="card-title card__letters">${post.title}</h5>
             <!-- <p class="card-text">${post.body}</p>-->
           </div>
@@ -74,7 +74,7 @@ function renderPost(post, cont, div) {
       <div class="card m-auto my-2" style="">
         
         <div class="card-body position-relative">
-        <img src="./assets/images/image.jpg" class="card-img-top" alt="...">
+        <img src="./assets/images/image.jpg" class="card-img-top" alt="..." data-bs-toggle="modal" data-bs-target="#exampleModal">
           <h5 class="card-title card__letters">${post.title}</h5>
           <!--<p class="card-text">${post.body}</p>-->
         </div>
