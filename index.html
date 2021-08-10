@@ -17,33 +17,100 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">BLOGS</a>
+                <a class="navbar-brand" id="page-">BLOGS</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                    </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button class="btn btn-outline-success" type="submit">
+                            <a class="nav-link active" aria-current="page" id="page-">Home</a
+                >
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-success" type="submit">
                 Search
               </button>
-                    </form>
-                </div>
-            </div>
-        </nav>
+            </form>
+          </div>
+        </div>
+      </nav>
     </header>
     <main role="main">
-        <section class="container-fluid bg-light" id="blog-container">
-            <!---------------------------- BLOG CARDS---------------------------------->
-            <div class="row blog-grid" id="blog-grid"></div>
-            <!--------------------END BLOG CARD---------------------->
-        </section>
-    </main>
-</body>
+      <section class="container-fluid bg-light" id="blog-container">
+        <!---------------------------- BLOG CARDS---------------------------------->
+        <div
+          class="row col-sm-4 col-md-6 col-lg-12 blog-grid"
+          id="blog-grid"
+        ></div>
+        <!--------------------END BLOG CARD---------------------->
+      </section>
 
+      <!-------------------------Modal------------------------------------->
+      <section>
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="ModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modal__title">Modal title</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body" id="modal__body">...</div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="button" class="btn btn-primary">Edit Blog</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-----------------------END--Modal------------------------------------->
+
+      <section>
+        <nav aria-label="Page navigation example" id="nav-bar">
+          <ul class="pagination justify-content-center">
+            <li class="page-item disabled" id="prev-li">
+              <button class="page-link" id="page-previous">Previous</button>
+            </li>
+            <li class="page-item">
+              <button class="page-link" id="page-1">1</button>
+            </li>
+            <li class="page-item">
+              <button class="page-link" id="page-2">2</button>
+            </li>
+            <li class="page-item">
+              <button class="page-link" id="page-3">3</button>
+            </li>
+            <li class="page-item" id="next-li">
+              <button class="page-link" id="page-next">Next</button>
+            </li>
+          </ul>
+        </nav>
+      </section>
+    </main>
+  </body>
 </html>

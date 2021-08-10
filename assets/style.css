@@ -1,5 +1,4 @@
 main {
-    display: grid;
     padding: 2rem;
 }
 
@@ -22,4 +21,17 @@ main {
 .card-text {
     height: 5rem;
     overflow: hidden;
+}
+
+.card-title {
+    overflow: hidden;
+    height: 3.5rem;
+}
+
+.page-item {
+    cursor: pointer;
+}
+
+.current-page {
+    border: 3px solid rgb(117, 117, 190);
 }
