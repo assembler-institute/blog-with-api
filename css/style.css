@@ -1,3 +1,7 @@
+*::-webkit-scrollbar {
+	display: none;
+}
+
 [data-component="post-card"] {
 	transition: opacity 0.125s ease;
 }
@@ -16,6 +20,12 @@
 
 .fs-8 {
 	font-size: 0.64rem;
+}
+
+.modal-img-height {
+	height: 12rem;
+	object-fit: cover;
+	object-position: center 80%;
 }
 
 .card-img-height {

@@ -1,9 +1,7 @@
-import { navigationListener } from "./component/navigation.js";
-import { insertPostCards } from "./component/postCard.js";
+import { navigationListener } from "./components/navigation.js";
+import { postCardListener } from "./components/postCard.js";
+import init from "./init.js";
 
-sessionStorage.start = 0;
-sessionStorage.limit = 12;
-sessionStorage.url = "http://localhost:3000";
-
-insertPostCards(sessionStorage.start, sessionStorage.limit);
+init();
 navigationListener();
+postCardListener();

@@ -11,6 +11,34 @@
 		<title>Blog with API</title>
 	</head>
 	<body>
+		<div class="modal fade" id="post-modal" tabindex="-1" aria-labelledby="post-modal-label" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-scrollable">
+				<div class="modal-content">
+					<div class="modal-header bg-secondary text-white">
+						<h5 class="modal-title" id="post-modal-label">Blog Post</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<img class="modal-img-height" src="https://picsum.photos/400/600" alt="preview" />
+					<div class="modal-body">
+						<h4 id="post-modal-title" class="mb-3"></h4>
+						<p id="post-modal-body"></p>
+						<p id="post-modal-user" class="card-body-author-height fs-7 text-black-50 text-end m-0"><span class="fw-bold"></span>, <span class="fst-italic"></span></p>
+					</div>
+					<div class="modal-footer">
+						<div class="accordion w-100" id="post-comments-accordion">
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="post-comments-header">
+									<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#post-modal-comment-section" aria-expanded="true" aria-controls="post-comments-section">Load Comments</button>
+								</h2>
+								<div id="post-modal-comment-section" class="accordion-collapse collapse" aria-labelledby="post-comments-header" data-bs-parent="#post-comments-accordion">
+									<div class="accordion-body" style="overflow-y: scroll; max-height: 30rem"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<header class="bg-dark text-white">
 			<div class="container-fluid px-2 px-sm-4 py-2">
 				<h1 class="fw-light text-center text-sm-start">Blog with API</h1>
