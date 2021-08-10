@@ -1,8 +1,10 @@
+var recievedData;
+var idPersona
 document.addEventListener('DOMContentLoaded', (event) => {
-    
-    
+
+
     fetch("https://jsonplaceholder.typicode.com/posts")
-    .then(response => response.json())
+        .then(response => response.json())
 
     .then(data => {
     data.forEach(blog => {
@@ -18,23 +20,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 })
 });
 
-// document.getElementById("edit-modal").addEventListener("show.bs.modal", function (event) {
-//     fetch("https://jsonplaceholder.typicode.com/posts")
-//     .then(response => response.json())
-//     .then(data => {
-//         data.forEach(post => {
-            
-//             if(post.id === event.target.id){
-
-                
-//             document.getElementById("post-title").setAttribute("value",)}
-            
-//         });
-        
-        
-//     })
-// })
-
 document.addEventListener("click", (event)=>{
     if (event.target.matches('[data-bs-toggle="modal"]')){
         fetch("https://jsonplaceholder.typicode.com/posts")
@@ -42,10 +27,17 @@ document.addEventListener("click", (event)=>{
         .then(data => {
             data.forEach(post => {
         
-                if(post.id === parseInt(event.target.dataset.id) ){
-                    document.getElementById("post-title").setAttribute("value", post.title)
+                if(post.id === parseInt(event.target.dataset.id)){
+                    document.getElementById("post-title").innerText= post.title
+                    document.getElementById("post-body").innerText = post.body
                 }
             })
         })
-    }
-})
+        fetch("https://jsonplaceholder.typicode.com/users")
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(post => {
+
+            })
+    })
+}})
