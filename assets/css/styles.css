@@ -5,15 +5,18 @@
 /* BASE FOLDER */
 @import "BASE/reset.css";
 
- /* LAYOUT FOLDER */
+/* LAYOUT FOLDER */
 @import "LAYOUT/common.css";
 
- /* MODULE FOLDER */
+/* MODULE FOLDER */
+@import "MODULE/header.css";
 @import "MODULE/post-card.css";
 @import "MODULE/toggle.css";
+@import "MODULE/cursor.css";
+@import "MODULE/post-main.css";
 
- /* STATUS FOLDER */
+/* STATUS FOLDER */
 @import "STATUS/dark-mode.css";
 
- /* THEME FOLDER */
+/* THEME FOLDER */
 @import "THEME/vars.css";

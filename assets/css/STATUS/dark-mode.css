@@ -10,7 +10,7 @@
   transform: translateX(0);
 }
 
-.dark-mode .toggle {
+/* .dark-mode .toggle {
   background: var(--white);
 }
 
@@ -24,4 +24,4 @@
 
 .dark-mode .exercise__code{
   color: var(--black);
-}
+} */
