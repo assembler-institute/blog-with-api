@@ -1,6 +1,8 @@
 let blogGrid = document.getElementById("blog-grid");
 let navbar = document.getElementById("nav-bar");
 var retrieveData;
+var users;
+var comments;
 
 var h = 0;
 var j = 9;
@@ -8,11 +10,19 @@ var j = 9;
 //-------------------------Grid of Blogs-----------------------------//
 
 function createBlogs() {
+    //--------------------USER DATA-----------------------//
+
+    fetch("https://jsonplaceholder.typicode.com/users/")
+        .then((response) => response.json())
+        .then((data) => (users = data));
+
+    //--------------------BLOG DATA-----------------------//
+
     fetch("https://jsonplaceholder.typicode.com/posts/")
         .then((response) => response.json())
         .then((data) => {
             for (i = h; i < j; i++) {
-                blogGrid.innerHTML += `<div class="card" id="${data[i].id}">
+                blogGrid.innerHTML += `<div class="card" id="${data[i].id}" data-id = "${data[i].userId}">
     <img src="./assets/images/bg-img.jfif" class="card-img-top" alt="..." />
     <div class="card-body">
         <h5 class="card-title" id="blog-title-${i}">${data[i].title}</h5>
@@ -22,9 +32,8 @@ function createBlogs() {
         <button class="btn btn-primary read-blog" data-bs-toggle="modal" data-bs-target="#exampleModal">Read Blog</button>
     </div>
     </div>`;
-
-                retrieveData = data;
             }
+            retrieveData = data;
         });
 }
 
@@ -37,12 +46,55 @@ document.addEventListener("click", (event) => {
         //document.getElementById("modal").style.display = "block";
 
         retrieveData.forEach((blog) => {
-            if (parseInt(event.target.parentNode.parentNode.id) === blog.id) {
-                //-----------get individual data from the data array-----------//
-                document.getElementById("modal__title").innerHTML = blog.title;
-                document.getElementById("modal__body").innerHTML = blog.body;
-            }
+            users.forEach((user) => {
+                if (
+                    parseInt(event.target.parentNode.parentNode.id) === blog.id &&
+                    parseInt(
+                        event.target.parentNode.parentNode.getAttribute("data-id")
+                    ) === user.id
+                ) {
+                    document.getElementById("modal__content").innerHTML = "";
+
+                    //-----------get individual data from the data array-----------//
+                    let modalWindow = ` <div class="modal-header" id="modal__header">
+                <h5 class="modal-title" id="modal__title">${blog.title}</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body" id="modal__body">${blog.body}</div>
+              <div class="modal-body">
+               </div>
+               <div class="modal-body" id="author__details">
+               <div><span>Author:</span> <span class = "details"> ${user.name}</span></div>
+              <div><span>Email:</span> <span class = "details"> ${user.email}</span></div></div>
+              <div class="modal-footer" id= "modal__footer" data-id = "${blog.id}"> <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" id = "open__comments">Read Comments</button>
+              <button type="button" class="btn btn-primary" id="edit-blog">Edit Blog</button>`;
+
+                    document
+                        .getElementById("modal__content")
+                        .insertAdjacentHTML("afterbegin", modalWindow);
+                }
+            });
         });
+    }
+});
+
+//--------------------Load Comments-----------------------//
+
+document.addEventListener("click", (event) => {
+    if (event.target.matches("#open__comments")) {
+        fetch(
+                `https://jsonplaceholder.typicode.com/posts/${event.target.parentNode.getAttribute(
+        "data-id"
+      )}/comments`
+            )
+            .then((response) => response.json())
+            .then((data) => console.log(data));
     }
 });
 
@@ -145,6 +197,30 @@ navbar.addEventListener("click", (event) => {
     }
 });
 
-// document
-//     .getElementById(`page-${(h + 10) / 10}`)
-//     .classList.toggle("current-page");
+//--------------------EDIT BLOG-----------------------//
+
+window.addEventListener("click", (event) => {
+    if (event.target.matches("#edit-blog")) {
+        let title = document.getElementById("modal__title").textContent;
+        let body = document.getElementById("modal__body");
+        let header = document.getElementById("modal__header");
+        let footer = document.getElementById("modal__footer");
+        let authorDetails = document.getElementById("author__details");
+
+        header.innerHTML = `<h5>Title:</h5>
+        <textarea   cols="60"  style = "resize: none">${title}
+    </textarea>
+    <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="modal"
+    aria-label="Close"
+  >`;
+
+        body.innerHTML = `<h5>Blog:</h5> <textarea rows="10" cols="60">${body.textContent}</textarea > `;
+        footer.innerHTML = `</button> <div class="modal-footer"> <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="save-blog">Save Changes</button>`;
+
+        authorDetails.remove();
+    }
+});
