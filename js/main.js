@@ -14,3 +14,23 @@ function printHome() {
 }
 
 printHome();
+
+fetch("http://localhost:3000/posts")
+  .then((response) => response.json())
+  .then((jsonPosts) => {
+    console.log(jsonPosts);
+    console.log(jsonPosts[0].title);
+    console.log(jsonPosts[0].userId);
+
+    fetch("http://localhost:3000/users")
+      .then((response) => response.json())
+      .then((jsonUsers) => {
+        console.log(jsonUsers);
+        jsonUsers.forEach((element) => {
+          if (element.id == jsonPosts[0].userId) {
+            console.log(element.username);
+            console.log(element.email);
+          }
+        });
+      });
+  });
