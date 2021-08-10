@@ -13,3 +13,18 @@ function switchStyles() {
   $toggle.classList.toggle("enabled");
   $html.classList.toggle("dark-mode");
 }
+
+/**
+ * Fetch data
+ *
+ * @param {Number} from
+ * @param {Number} limit
+ * @param {String} section
+ */
+
+function fetchData(section = "posts", from = 0, limit = 20) {
+  const baseUrl = "https://jsonplaceholder.typicode.com";
+  fetch(`${baseUrl}/${section}?_start=${from}&_limit=${limit}`)
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+}
