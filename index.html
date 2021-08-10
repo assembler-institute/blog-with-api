@@ -94,13 +94,12 @@
       class="modal fade"
       id="exampleModal"
       tabindex="-1"
-      aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel"></h5>
+            <h5 class="modal-title"></h5>
             <button
               type="button"
               class="btn-close"
@@ -110,7 +109,26 @@
           </div>
 
           <div class="modal-body">
-            <h5 class="modal-body" id="exampleModalBody"></h5>
+            <h5 class="modal-body post-text"></h5>
+            <h5 class="modal-user"></h5>
+            <p class="modal-email"></p>
+
+            <p>
+              <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Comments
+              </button>
+              <button class="btn btn-primary btn-edit" type="button">
+                Edit
+              </button>
+            </p>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                <p class="card-body-name"></p>
+                <p class="card-body-email"></p>
+                <p class="card-body-comment"></p>
+                <!-- Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger. -->
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -126,8 +144,10 @@
       <div class="card" style="width: 18rem">
         <!-- <img src="..." class="card-img-top" alt="..."> -->
         <div class="card-body">
+          <span class="card-userId" hidden="true"></span>
+          <span class="card-id" hidden="true"></span>
           <h5 class="card-title"></h5>
-          <p class="card-text"></p>
+          <!-- <p class="card-text"></p> -->
           <button type="button" class="btn btn-info">Info</button>
         </div>
       </div>

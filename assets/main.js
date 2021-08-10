@@ -3,6 +3,7 @@ const cards = document.querySelector(".cards");
 const template = document.getElementById("template-card").content;
 const fragment = document.createDocumentFragment();
 
+
 // Template
 fetch("http://localhost:3000/posts")
   .then((res) => res.json())
@@ -12,42 +13,78 @@ fetch("http://localhost:3000/posts")
       //console.log(ele);
       // template.querySelector(".card-img-top").setAttribute("src", "../assets/img/levitan.jpg")
 
-      template.querySelector(".card-title").textContent =
-        ele.id + ". " + ele.title;
-      template.querySelector(".card-text").textContent = ele.body;
+      template.querySelector(".btn-info").setAttribute("data-id", `${ele.id}`)
+
+      template.querySelector(".card-title").textContent = ele.id + ". " + ele.title;
+      // template.querySelector(".card-text").textContent = ele.body;
+
 
       let clone = document.importNode(template, true);
       fragment.appendChild(clone);
+      
+    
     });
     cards.appendChild(fragment);
-    let listItems = document.querySelectorAll(".btn-info");
-    listItems.forEach((element) => {
-      element.addEventListener("click", function () {
-        exampleModal.style.display = "block";
-        exampleModal.classList.add("show");
-        const modalTitle = document.querySelector(".modal-title").content;
-        console.log(modalTitle);
-        const modalBody = document.querySelector(".modal-body");
-        modalTitle = ele.title;
-        modalBody = ele.body;
-      });
+
+    const listBtn = document.querySelectorAll(".btn-info");
+    const modalTitle = document.querySelector(".modal-title");
+    const modalBody = document.querySelector(".post-text");
+    const modalUser = document.querySelector(".modal-user");
+    const modalEmail = document.querySelector(".modal-email");
+    const modalComments = document.querySelector(".card-body-comment");
+    const modalCommentName = document.querySelector(".card-body-name");
+    const modalCommentEmail = document.querySelector(".card-body-email");
+
+
+    listBtn.forEach((element) => {
+      element.addEventListener("click", event => {
+        // console.log(element.dataset.id)
+        displayModal(element.dataset.id)
+      });  
     });
+
+    function displayModal(id) {
+      exampleModal.style.display = "block";
+      exampleModal.classList.add("show");
+      // console.log(id)
+      displayModalInfo(id)
+    }
+
+    function displayModalInfo(id) {
+      fetch("http://localhost:3000/users")
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log(data[id-1])
+          modalUser.textContent = data[id-1].name
+          modalEmail.textContent = data[id-1].email
+        })
+
+      fetch("http://localhost:3000/posts")
+        .then((res) => res.json())
+        .then((data) => {
+          modalTitle.textContent = data[id-1].title
+          modalBody.textContent = data[id-1].body
+        })
+
+      fetch("http://localhost:3000/comments")
+        .then((res) => res.json())
+        .then((data) => {
+          modalCommentName.textContent = data[id-1].name
+          modalCommentEmail.textContent = data[id-1].email
+          modalComments.textContent = data[id-1].body
+        })
+    }
+
+
+
+    
+
   });
 
 let btnClose = document.querySelector(".btn-close");
 let exampleModal = document.getElementById("exampleModal");
 
 btnClose.addEventListener("click", closeModal);
-
-function modalWindow(element) {
-  // element.focus()
-  exampleModal.style.display = "block";
-  exampleModal.classList.add("show");
-  const modalTitle = document.querySelector(".modal-title");
-  const modalBody = document.querySelector(".modal-body");
-  modalTitle = ele.title;
-  modalBody = ele.body;
-}
 
 function closeModal() {
   exampleModal.style.display = "none";
@@ -59,3 +96,5 @@ window.onclick = function (event) {
     closeModal();
   }
 };
+
+
