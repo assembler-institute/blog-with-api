@@ -23,8 +23,6 @@ let templateCard = `
         <div class="card" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
-                <p class="username-post"> PRUEBA </p>
-                <p class="email-post"> PRUEBA </p>
                 <button data-show type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Launch demo modal
                 </button>

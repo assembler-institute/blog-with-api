@@ -1,5 +1,4 @@
 import { templateHeader, templateCard } from "./templates.js";
-
 function printHome() {
   document
     .querySelector("body")
@@ -12,7 +11,6 @@ function printHome() {
 
   document.querySelector("body").appendChild(copyNode);
 }
-
 printHome();
 printPosts();
 
@@ -29,6 +27,37 @@ function printCard() {
 }
 
 function printPosts() {
+  $.get("http://localhost:3000/posts", function (jsonPosts) {
+    var postsLength = jsonPosts.length;
+    for (let i = 0; i < postsLength; i++) {
+      printCard();
+      document.querySelectorAll(".card-body")[i].dataset.postNum = i + 1;
+      document.querySelectorAll(".card-title")[i].textContent =
+        jsonPosts[i].title;
+    }
+
+    $("[data-show]").on("click", (e) => {
+      let postNumber = e.target.parentElement.dataset.postNum;
+
+      document.querySelector(".modal-title").textContent =
+        jsonPosts[postNumber - 1].title;
+      document.querySelector(".modal-body").textContent =
+        jsonPosts[postNumber - 1].body;
+
+      $.get("http://localhost:3000/users", function (jsonUsers) {
+        jsonUsers.forEach((jsonUser) => {
+          if (jsonPosts[postNumber - 1].userId == jsonUser.id) {
+            document.querySelector("[data-username]").textContent =
+              jsonUser.username;
+            //document.querySelector().textContent = jsonUser.email;
+          }
+        });
+      });
+    });
+  });
+}
+
+/*
   fetch("http://localhost:3000/posts")
     .then((response) => response.json())
     .then((jsonPosts) => {
@@ -39,6 +68,10 @@ function printPosts() {
         document.querySelectorAll(".card-body")[i].dataset.postNum = i + 1;
         document.querySelectorAll(".card-title")[i].textContent =
           jsonPosts[i].title;
+
+
+
+
 
         fetch("http://localhost:3000/users")
           .then((response) => response.json())
@@ -57,8 +90,8 @@ function printPosts() {
       }
       let showButtons = document.querySelectorAll("[data-show]");
       showButtons.forEach((element) => {
-        element.addEventListener("click", () => {
-          let postNumber = element.parentElement.dataset.postNum;
+        element.addEventListener("click", (e) => {
+          let postNumber = e.target.parentElement.dataset.postNum;
 
           document.querySelector(".modal-title").textContent =
             jsonPosts[postNumber - 1].title;
@@ -67,4 +100,4 @@ function printPosts() {
         });
       });
     });
-}
+    */
