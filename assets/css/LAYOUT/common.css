@@ -6,17 +6,27 @@
   height: calc(100vh - 4rem);
   max-height: calc(100vh - 4rem);
   margin: 2rem;
-  background: #F8F9FA;
+  background: #fbfbfd;
 }
 
 .grid{
   height: calc(100vh - 4rem);
   max-height: calc(100vh - 4rem);
   margin: 2rem;
-  /* background-color: #F8F9FA; */
 }
 
 .header{
   z-index: 2;
   padding: 2rem 4rem;
+}
+
+.headline-card__line{
+  background-image: url(/assets/images/svg/anim-true.svg);
+  background-size: 100% auto;
+  margin: 0 auto;
+  width: 4px;
+  -webkit-box-flex: 100;
+  -webkit-flex: 100;
+  flex: 100;
+  height: 150px;
 }

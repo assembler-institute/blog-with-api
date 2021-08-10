@@ -12,6 +12,7 @@
 @import "MODULE/post-card.css";
 @import "MODULE/toggle.css";
 @import "MODULE/cursor.css";
+@import "MODULE/post-main.css";
 
  /* STATUS FOLDER */
 @import "STATUS/dark-mode.css";
