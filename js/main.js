@@ -15,19 +15,22 @@ function printHome() {
 
 printHome();
 
-fetch("https://jsonplaceholder.typicode.com/todos/1")
+fetch("http://localhost:3000/posts")
   .then((response) => response.json())
-  .then((json) => console.log(json));
+  .then((jsonPosts) => {
+    console.log(jsonPosts);
+    console.log(jsonPosts[0].title);
+    console.log(jsonPosts[0].userId);
 
-// fetch("https://jsonplaceholder.typicode.com/todos")
-//   .then((response) => {
-//     if (response.ok) {
-//       console.log("Request Done");
-//       response.json();
-//     } else {
-//       console.log("Request Failed");
-//     }
-//   })
-//   .then((json) => {
-//     console.log(json);
-//   });
+    fetch("http://localhost:3000/users")
+      .then((response) => response.json())
+      .then((jsonUsers) => {
+        console.log(jsonUsers);
+        jsonUsers.forEach((element) => {
+          if (element.id == jsonPosts[0].userId) {
+            console.log(element.username);
+            console.log(element.email);
+          }
+        });
+      });
+  });
