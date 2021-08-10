@@ -32,13 +32,32 @@ function printPosts() {
   fetch("http://localhost:3000/posts")
     .then((response) => response.json())
     .then((jsonPosts) => {
-      console.log(jsonPosts);
       var postsLength = jsonPosts.length;
       for (let i = 0; i < postsLength; i++) {
         printCard();
         document.querySelectorAll(".card-body")[i].dataset.postNum = i + 1;
         document.querySelectorAll(".card-title")[i].textContent =
           jsonPosts[i].title;
+        let postInfo = document.querySelector(`.card-body[data-post-num="1"]`);
+        postInfo.addEventListener("click", (e) => {
+          document.querySelector(".modal-title").textContent = "Hello";
+          console.log(e.target);
+        });
+
+        fetch("http://localhost:3000/users")
+          .then((response) => response.json())
+          .then((jsonUsers) => {
+            jsonUsers.forEach((jsonUser) => {
+              if (jsonPosts[i].userId == jsonUser.id) {
+                document.querySelector(
+                  `.card-body[data-post-num="${i + 1}"] .username-post`
+                ).textContent = jsonUser.username;
+                document.querySelector(
+                  `.card-body[data-post-num="${i + 1}"] .email-post`
+                ).textContent = jsonUser.email;
+              }
+            });
+          });
       }
     });
 }

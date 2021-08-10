@@ -20,7 +20,7 @@ let templateHeader = `
 let templateCard = `
 <template id = "template-card">
     <div class="col">
-        <div class="card" style="width: 18rem;">
+        <div class="card" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="username-post"> PRUEBA </p>
