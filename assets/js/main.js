@@ -45,28 +45,32 @@ async function fillMainPost() {
 
   const templateCard = `
     <template id="post-${id}">
-      <article class="post-main">
-        <span class="post-main__author">${name}</span>
-        <h1 class="post-main__title">${title}</h1>
-        <button
-          type="button"
-          class="btn btn-dark"
-          data-bs-toggle="modal"
-          data-bs-target="#postModal"
-        >
-          Read more
-        </button>
+      <article class="post-main" id="post-main">
+        <p class="post-main__author">${name}</p>
+        <div class="headline-card__line"></div>
+        <h2 class="post-main__title text-capitalize">${title}</h2>
+        <div class="headline-card__line"></div>
+        <div class="post-main__button">
+          <button 
+            type="button" 
+            class="btn btn-dark text-uppercase hoverable"
+            data-bs-toggle="modal"
+            data-bs-target="#postModal"
+          >
+            Read more
+          </button>
+        </div>
       </article>
     </template>
   `;
 
-  const mainPost = document.getElementById("mainPost");
-  mainPost.insertAdjacentHTML("beforeend", templateCard);
+  const postMain = document.getElementById("post-main");
+  postMain.insertAdjacentHTML("beforeend", templateCard);
 
   const contentTemplate = document.getElementById(`post-${id}`).content;
   const copyContent = document.importNode(contentTemplate, true);
-  mainPost.innerHTML = '';
-  mainPost.appendChild(copyContent);
+  postMain.innerHTML = '';
+  postMain.appendChild(copyContent);
 }
 
 fillMainPost();
