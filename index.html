@@ -18,24 +18,50 @@
       defer
     ></script>
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <script src="./assets/js/main.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <script src="./assets/js/posts.js" defer></script>
+    <script src="./assets/js/modal.js" defer></script>
   </head>
 
   <body>
+    <header>
+      <div class="socialMedia">
+        <i class="fab fa-facebook socialMedia__icon"></i>
+        <i class="fab fa-instagram socialMedia__icon"></i>
+        <i class="fab fa-twitter socialMedia__icon"></i>
+      </div>
+      <nav class="navbar navbar-light bg-white">
+        <div class="container-fluid">
+          <a class="navbar-brand text-center navbar__title" href="#">Blog with API</a>
+        </div>
+      </nav>
+    </header>
     <main id="app" class="container-fluid"></main>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
+          <div class="d-flex justify-content-between p-3">
+            <div class="">
+              <button type="button" class="btn btn-primary"><i class="fas fa-edit"></i></button>
+              <button type="button" class="btn btn-primary"><i class="fas fa-trash"></i></button>
+              <button type="button" class="btn btn-primary"><i class="fas fa-comments"></i></button>
+            </div>
+            <div>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+          </div>
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+          <div class="modal-body"></div>
+          <div class="modal-footer d-flex justify-content-between p-3">
+            <div class="modal-footer__username"></div>
+            <div class="modal-footer__email"></div>
           </div>
         </div>
       </div>

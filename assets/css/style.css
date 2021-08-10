@@ -3,6 +3,14 @@
 *{
     box-sizing: border-box;
 }
+
+.socialMedia{
+    padding: 0.5rem;
+}
+.socialMedia__icon{
+    font-size: 1.5rem;
+}
+
 .card__letters{
     position: absolute;
     color: white;
@@ -12,4 +20,10 @@
     padding: 0.5rem;
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
+}
+
+.navbar__title{
+    padding: 1rem;
+    width: 100%;
+    font-size: 2rem;
 }
