@@ -1,8 +1,7 @@
-let cardy = `<div class="card" id="card"><p class="title" id="title">I am the title</p></div>`;
-
-let btnTest = document.querySelector(".button");
-
-btnTest.addEventListener("click", getPosts);
+function adjHtml(a, b) {
+    let cardy = `<div class="card" id=${a}><p class="title">${b}</p><div><button class="edit" data-edit="${a}">Edit</button><button class="delete" data-delete="${b}">Delete</button></div></div>`;
+    return cardy;
+}
 
 function getPosts() {
     return fetch("http://localhost:3000/posts")
@@ -10,17 +9,19 @@ function getPosts() {
         .then((data) => {
             let container = document.querySelector("#grid");
             data.forEach((element) => {
-                container.innerHTML += `<div class="card" id=${element.id}><p class="title" id="title">${element.title}</p></div>`;
+                container.appendChild(adjHtml(element.id, element.title));
             });
         });
 }
+
+getPosts();
 
 function getComments() {
     return fetch("http://localhost:3000/comments")
         .then((response) => response.json())
         .then((data) => {
             data.forEach((element) => {
-                //console.log(element.body);
+                console.log(element.body);
             });
         });
 }
@@ -30,7 +31,7 @@ function getUsers() {
         .then((response) => response.json())
         .then((data) => {
             data.forEach((element) => {
-                // console.log(element.username);
+                console.log(element.username);
             });
         });
 }
