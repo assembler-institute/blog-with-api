@@ -1,0 +1,24 @@
+{
+  "name": "blog-with-api",
+  "version": "1.0.0",
+  "description": "fake rest API for testing",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^5.1.0",
+    "json-server": "^0.16.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "json:server": "json-server --watch data/db.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SalvaBandicoot/blog-with-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SalvaBandicoot/blog-with-api/issues"
+  },
+  "homepage": "https://github.com/SalvaBandicoot/blog-with-api#readme"
+}
