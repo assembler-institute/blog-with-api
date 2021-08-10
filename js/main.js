@@ -1,4 +1,4 @@
-import { templateHeader } from "./templates.js";
+import { templateHeader, templateCard } from "./templates.js";
 
 function printHome() {
   document
@@ -14,23 +14,31 @@ function printHome() {
 }
 
 printHome();
+printPosts();
 
-fetch("http://localhost:3000/posts")
-  .then((response) => response.json())
-  .then((jsonPosts) => {
-    console.log(jsonPosts);
-    console.log(jsonPosts[0].title);
-    console.log(jsonPosts[0].userId);
+function printCard() {
+  document
+    .querySelector(".row-cols-3")
+    .insertAdjacentHTML("beforeend", templateCard);
 
-    fetch("http://localhost:3000/users")
-      .then((response) => response.json())
-      .then((jsonUsers) => {
-        console.log(jsonUsers);
-        jsonUsers.forEach((element) => {
-          if (element.id == jsonPosts[0].userId) {
-            console.log(element.username);
-            console.log(element.email);
-          }
-        });
-      });
-  });
+  let mainNode = document.querySelector("#template-card").content;
+  let copyNode = document.importNode(mainNode, true);
+
+  document.querySelector(".row-cols-3").lastChild.remove();
+  document.querySelector(".row-cols-3").appendChild(copyNode);
+}
+
+function printPosts() {
+  fetch("http://localhost:3000/posts")
+    .then((response) => response.json())
+    .then((jsonPosts) => {
+      console.log(jsonPosts);
+      var postsLength = jsonPosts.length;
+      for (let i = 0; i < postsLength; i++) {
+        printCard();
+        document.querySelectorAll(".card-body")[i].dataset.postNum = i + 1;
+        document.querySelectorAll(".card-title")[i].textContent =
+          jsonPosts[i].title;
+      }
+    });
+}
