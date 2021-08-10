@@ -8,35 +8,70 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="script.js" defer></script>
+    
     <title>Blog with Api</title>
+
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="main.css"/>
 
 </head>
 
 <body>
-    <header>
-        <div class="container-xl">
-            <nav class="nav nav-pills nav-fill bg-dark bg-gradient">
-                <a class="navbar-brand" href="#">
-                    <img src="https://www.penguinrandomhousegrupoeditorial.com/wp-content/uploads/2017/07/B_PRHGE_negro.png" width="40" height="40" class="d-inline-block align-top" alt="logo B"> Blog with Api
-                </a>
-                <a class="nav-item nav-link btn-outline-success" href="#">Active</a>
-                <a class="nav-item nav-link btn-outline-success" href="#">Link</a>
-                <a class="nav-item nav-link btn-outline-success" href="#">Link</a>
-                <a class="nav-item nav-link btn-outline-success" href="#">Disabled</a>
-            </nav>
-        </div>
-    </header>
-    <main class="container-xl">
-        <div class="container row row-cols-4" id="cards-container">
+  <header id="header">
+    <div class="container-xxl">
+      <nav class="nav nav-pills nav-fill bg-dark bg-gradient">
+          <a class="navbar-brand" href="#">
+            <img src="https://www.penguinrandomhousegrupoeditorial.com/wp-content/uploads/2017/07/B_PRHGE_negro.png" width="40" height="40" class="d-inline-block align-top" alt="logo B"> Blog with Api
+          </a>
+          <a class="nav-item nav-link btn-outline-success" href="#">Active</a>
+          <a class="nav-item nav-link btn-outline-success" href="#">Link</a>
+          <a class="nav-item nav-link btn-outline-success" href="#">Link</a>
+          <a class="nav-item nav-link btn-outline-success" href="#">Disabled</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container p-0" id="main">
+    <div class="container-fluid row row-cols-4 justify-content-md-center"  id="cards-container">
+    </div>
+</main>
 
-        </div>
-    </main>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit-modal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Editing Post</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Post Title:</label>
+            <input type="text" class="form-control" id="post-title">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Post Content: </label>
+            <textarea class="form-control" id="post-content"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Get Back</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <template id="card-temp">
-  <div class="container-md">
-    <figure class="figure">
-      <img src="https://dmagazine.com.ar/wp-content/uploads/2017/11/rick.png" class="figure-img img-fluid rounded" width="300" height="300" alt="rick and morty">
-      <a class="nav-item nav-link btn-outline-success" href="#"><figcaption class="figure-caption"></figcaption></a>
+  <div class="container-md m-4 p-0 shadow hover" data-bs-toggle="modal" data-bs-target="#edit-modal" data-set="card-cont">
+    <figure class="figure" data-bs-toggle="modal" data-bs-target="#edit-modal">
+      <img src="https://dmagazine.com.ar/wp-content/uploads/2017/11/rick.png" class="figure-img img-fluid rounded" data-bs-toggle="modal" data-bs-target="#edit-modal" alt="rick and morty">
+      <figcaption class="m-1 ms-4" data-bs-toggle="modal" data-bs-target="#edit-modal"></figcaption>
     </figure>
   </div>
 </template>

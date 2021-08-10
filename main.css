@@ -1,0 +1,22 @@
+.container-md:hover{
+    cursor: pointer;
+}
+
+.hover:hover > .fig_caption {
+    color: white;
+    font-size: larger;
+
+}
+
+.modal_background{
+    position: fixed; 
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    overflow: auto;
+    transition: all 0.50s ease-in;
+    background-color: rgba(128, 128, 128, 0.411);
+}
