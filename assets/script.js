@@ -1,5 +1,6 @@
 let blogGrid = document.getElementById("blog-grid");
 let navbar = document.getElementById("nav-bar");
+let modalContent = document.getElementById("modal__content");
 var retrieveData;
 var users;
 var comments;
@@ -87,14 +88,36 @@ document.addEventListener("click", (event) => {
 //--------------------Load Comments-----------------------//
 
 document.addEventListener("click", (event) => {
+    let commentSection = `<div class="container-sm" id = "comment__section"></div>`;
+
     if (event.target.matches("#open__comments")) {
+        modalContent.insertAdjacentHTML("beforeend", commentSection);
         fetch(
                 `https://jsonplaceholder.typicode.com/posts/${event.target.parentNode.getAttribute(
         "data-id"
       )}/comments`
             )
             .then((response) => response.json())
-            .then((data) => console.log(data));
+            .then((data) =>
+                data.forEach((comment) => {
+                    let everyComment = `<div class="container-sm">
+                <span>Name:</span> <span>${comment.name}</span>
+                </div>
+                <div class="container-sm">
+                <span>Email:</span> <span>${comment.email}</span>
+                </div>
+                <div class="container-sm">
+                <span>Name:</span> <span>${comment.name}</span>
+                </div>
+                <div class="container-sm">
+                <span>Comment:</span> <span>${comment.body}</span>
+                </div>`;
+
+                    document
+                        .getElementById("comment__section")
+                        .insertAdjacentHTML("afterbegin", everyComment);
+                })
+            );
     }
 });
 
