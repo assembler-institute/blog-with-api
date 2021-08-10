@@ -33,16 +33,12 @@ function printPosts() {
     .then((response) => response.json())
     .then((jsonPosts) => {
       var postsLength = jsonPosts.length;
+
       for (let i = 0; i < postsLength; i++) {
         printCard();
         document.querySelectorAll(".card-body")[i].dataset.postNum = i + 1;
         document.querySelectorAll(".card-title")[i].textContent =
           jsonPosts[i].title;
-        let postInfo = document.querySelector(`.card-body[data-post-num="1"]`);
-        postInfo.addEventListener("click", (e) => {
-          document.querySelector(".modal-title").textContent = "Hello";
-          console.log(e.target);
-        });
 
         fetch("http://localhost:3000/users")
           .then((response) => response.json())
@@ -59,5 +55,14 @@ function printPosts() {
             });
           });
       }
+      let showButtons = document.querySelectorAll("[data-show]");
+      showButtons.forEach((element) => {
+        element.addEventListener("click", () => {
+          let postNumber = element.parentElement.dataset.postNum;
+
+          document.querySelector(".modal-title").textContent =
+            jsonPosts[postNumber - 1].title;
+        });
+      });
     });
 }

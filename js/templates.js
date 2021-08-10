@@ -11,7 +11,7 @@ let templateHeader = `
     </header>
     <main>
         <div class="container">
-            <div class="row row-cols-3">
+            <div id ="grid" class="row row-cols-3">
             </div>
         </div>
     </main>
@@ -25,6 +25,9 @@ let templateCard = `
                 <h5 class="card-title">Card title</h5>
                 <p class="username-post"> PRUEBA </p>
                 <p class="email-post"> PRUEBA </p>
+                <button data-show type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Launch demo modal
+                </button>
             </div>
         </div>
     </div>
