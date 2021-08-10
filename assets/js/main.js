@@ -28,3 +28,9 @@ function fetchData(section = "posts", from = 0, limit = 20) {
     .then((response) => response.json())
     .then((data) => console.log(data));
 }
+
+function fetchLocalData(section) {
+  fetch(`assets/data/${section}.json`)
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+}

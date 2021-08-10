@@ -1,4 +1,4 @@
-$(document).ready(function () {
+/* $(document).ready(function () {
 
   var animating = false;
   var cardsCounter = 0;
@@ -76,4 +76,4 @@ $(document).ready(function () {
     });
   });
 
-});
+}); */

@@ -2,11 +2,9 @@
  * MODULE - POST CARD
  */
 
-
-.post-card{
-  background-color: #F8F9FA;
+.post-card {
+  background-color: #f8f9fa;
 }
-
 
 /* *, *:before, *:after {
   box-sizing: border-box;
