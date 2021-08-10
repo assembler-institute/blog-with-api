@@ -34,12 +34,12 @@ const fragment = document.createDocumentFragment();
 fetch("http://localhost:3000/posts")
   .then((res) => res.json())
   .then((data) => {
-    // console.log(data.length)
+    console.log(data.length)
     data.slice(0, 20).forEach((ele) => {
-      // console.log(ele)
-      template.querySelector(".card-img-top").setAttribute("src", "../assets/img/levitan.jpg")
+      console.log(ele)
+      // template.querySelector(".card-img-top").setAttribute("src", "../assets/img/levitan.jpg")
 
-      template.querySelector(".card-title").textContent = ele.id + ". "  + ele.title
+      template.querySelector(".card-title").textContent = ele.id + ". " + ele.title
       template.querySelector(".card-text").textContent = ele.body
 
       let clone = document.importNode(template, true);
