@@ -1,7 +1,7 @@
 import { getPostComments } from "../requests.js";
 
 export async function insertPostComments(id) {
-	const postCommentSection = document.querySelector("#post-modal-comment-section").children[0];
+	const postCommentSection = document.querySelector("#post-comments-section").children[0];
 	const comments = await getPostComments(id);
 
 	comments.forEach((comment) => {
@@ -11,7 +11,7 @@ export async function insertPostComments(id) {
 }
 
 export function clearPostComments() {
-	document.querySelector("#post-modal-comment-section").children[0].innerHTML = null;
+	document.querySelector("#post-comments-section").children[0].innerHTML = null;
 }
 
 function createPostCommentCard(comment) {

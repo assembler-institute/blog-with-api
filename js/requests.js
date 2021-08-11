@@ -25,3 +25,16 @@ export async function getUser(id) {
 
 	return user;
 }
+
+export async function updatePost(id, data) {
+	const url = `http://localhost:3000/posts/${id}`;
+	const options = {
+		method: "PATCH",
+		body: JSON.stringify(data),
+		headers: {
+			"Content-Type": "application/json; charset=utf-8",
+		},
+	};
+
+	await fetch(url, options).then((response) => console.log(response.status));
+}
