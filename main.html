@@ -104,16 +104,18 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title bold" id="titlepost">Modal title</h5>
+                        <h5 class="modal-title bold">This is the title</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body" id="bodymodal">
-                        <div id="bodypost" class="mb-3"></div>
-                        <div id="username" class="fw-bold"></div>
-                        <div id="emailuser" class="fst-italic"></div>
+                        <div id="bodypost" class="mb-3">
+                            Lorem ipsum dolor sit amet consecteturLorem ipsum dolor sit amet consecteturLorem ipsum dolor sit amet consectetur
+                        </div>
+                        <div id="username" class="fw-bold">Team A</div>
+                        <div id="emailuser" class="fst-italic">myemail@gmail.com</div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="btn__showcomments" data-bs-toggle="collapse" data-bs-target="#modal-for-comments">
+                    <div class="mt-4 p-3">
+                        <button type="button" id="btn__showcomments" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#modal-for-comments">
                 Show comments
               </button>
                         <button type="button" id="editModalBtn" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal-for-edit" data-bs-dismiss="modal">
@@ -123,20 +125,11 @@
                 Delete post
               </button>
                     </div>
-
-                    <div id="commentsmodal" class="
-                collapse
-                modal-content
-                border-primary
-                border-2border-start-0
-                border-end-0
-                border-bottom-0
-                rounded-0 rounded-bottom
-                mb-3
-              "></div>
                 </div>
+                <div id="commentsmodal" class="modal-body2"></div>
             </div>
         </div>
+
         <!-- Modal -->
         <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog">

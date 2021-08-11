@@ -2,3 +2,12 @@
     color: var(--bs-light);
     cursor: pointer;
 }
+
+.modal-body2 {
+    position: relative;
+    flex: 1 1 auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
