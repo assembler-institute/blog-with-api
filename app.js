@@ -9,7 +9,7 @@ async function getPosts() {
   const posts = await axios("http://localhost:3000/posts/");
   let postInfo = posts.data;
   postInfo.forEach((element) => {
-    container.innerHTML += `<div class="card"><p class="title" id="${element.id}" data-bs-toggle="modal" data-bs-target="#staticBackdrop">${element.title}</p><div><button class="btn btn-warning" data-edit="${element.id}">Edit</button><button class="btn btn-danger" data-delete="${element.id}">Delete</button></div></div>`;
+    container.innerHTML += `<div class="card"><p class="title" id="${element.id}" data-bs-toggle="modal" data-bs-target="#staticBackdrop">${element.title}</p><div><button class="btn btn-warning" data-edit="${element.id}">Edit</button><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" data-delete="${element.id}">Delete</button></div></div>`;
   });
   modalDrawer();
 }
