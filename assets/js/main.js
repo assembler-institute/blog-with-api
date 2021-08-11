@@ -21,7 +21,7 @@ function switchStyles() {
  * @param {Number} limit
  * @param {String} section
  */
-async function fetchData(section = "posts", from = 0, limit = 20) {
+async function fetchData(section = "posts", from = 0, limit = 10) {
   const baseUrl = "https://jsonplaceholder.typicode.com";
 
   let response = await fetch(`${baseUrl}/${section}?_start=${from}&_limit=${limit}`)
@@ -73,10 +73,46 @@ async function fillMainPost() {
 }
 
 /**
+ * Fill post of line Section
+ */
+async function fillLinesSection() {
+  let cards = await fetchData("posts", 1, 6);
+
+  const postsContent = document.getElementById("lines-content");
+
+  for (const card of cards) {
+    const { userId, id, title } = { ...card };
+
+    const users = await fetchData("users", userId - 1, userId);
+
+    const { name } = { ...users[0] };
+
+    const templateCard = `
+      <template id="lines-template-${id}">
+        <div class="post-block d-block">
+          <div class="post-block__content d-block">
+            <div class="post-block__img d-block"></div>
+            <p class="post-block__name d-block text-uppercase">${name}</p>
+            <p class="post-block__title d-block text-capitalize">${title}</p>
+          </div>
+        </div>
+      </template>
+    `;
+
+    postsContent.insertAdjacentHTML("beforeend", templateCard);
+    const contentTemplate = document.getElementById(`lines-template-${id}`).content;
+    const copyContent = document.importNode(contentTemplate, true);
+
+    document.getElementById(`lines-template-${id}`).remove();
+    postsContent.appendChild(copyContent);
+  }
+}
+
+/**
  * Fill post of tinder Section
  */
 async function fillTinderSection() {
-  let cards = await fetchData("posts", 1, 6);
+  let cards = await fetchData("posts", 7, 6);
 
   const tinderContent = document.getElementById("tinder-content");
 
@@ -90,11 +126,13 @@ async function fillTinderSection() {
     const templateCard = `
       <template id="tinder-template-${id}">
         <div class="post__card col-md-4 hoverable">
-          <div class="post__card__top d-flex flex-column align-items-center justify-content-center bg-black">
+          <div class="post__card__content outside">
+            <div class="post__card__top inside d-flex flex-column align-items-center justify-content-center bg-black">
             <p class="post__card__author">${name}</p>
-            <h2 class="post__card__name">${title}</h2>
+            <h2 class="post__card__name text-capitalize">${title}</h2>
+            </div>
+            <div class="post__card__drag"></div>
           </div>
-          <div class="post__card__drag"></div>
         </div>
       </template>
     `;
@@ -109,9 +147,47 @@ async function fillTinderSection() {
 }
 
 /**
+ * Fill post of line Section
+ */
+async function fillInlineSection() {
+  let cards = await fetchData("posts", 13, 10);
+
+  const postsContent = document.getElementById("inline-content");
+
+  for (const card of cards) {
+    const { userId, id, title } = { ...card };
+
+    const users = await fetchData("users", userId - 1, userId);
+
+    const { name } = { ...users[0] };
+
+    const templateCard = `
+      <template id="lines-template-${id}">
+        <div class="post-inline d-inline">
+          <div class="post-inline__content d-inline">
+            <div class="post-inline__img d-inline"></div>
+            <p class="post-inline__name d-inline text-uppercase">${name}</p>
+            <p class="post-inline__title d-inline text-capitalize">${title}</p>
+          </div>
+        </div>
+      </template>
+    `;
+
+    postsContent.insertAdjacentHTML("beforeend", templateCard);
+    const contentTemplate = document.getElementById(`lines-template-${id}`).content;
+    const copyContent = document.importNode(contentTemplate, true);
+
+    document.getElementById(`lines-template-${id}`).remove();
+    postsContent.appendChild(copyContent);
+  }
+}
+
+/**
  * Initialize the blog
  */
 (function initialize() {
   fillMainPost();
+  fillLinesSection();
   fillTinderSection();
+  fillInlineSection()
 })()

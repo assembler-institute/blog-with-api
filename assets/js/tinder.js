@@ -57,7 +57,6 @@ function swipeCard() {
         $card
           .attr("style", "")
           .removeClass("reset")
-          .find(".post__card__choice")
           .attr("style", "");
 
         pullDeltaX = 0;
