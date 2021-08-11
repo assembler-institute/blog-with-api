@@ -4,11 +4,11 @@
 
 .main {
   background-color: #ffffff;
+  margin: 0 auto;
+  max-width: 992px;
 }
 
 .section {
-  /* height: calc(100vh - 4rem);
-  max-height: calc(100vh - 4rem); */
   margin: 2rem;
   background: #fbfbfd;
 }
