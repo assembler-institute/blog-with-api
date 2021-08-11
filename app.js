@@ -12,7 +12,7 @@ async function getPosts() {
     container.innerHTML += `<div class="card"><p class="title" id="${element.id}" data-bs-toggle="modal" data-bs-target="#staticBackdrop">${element.title}</p><div><button class="btn btn-warning" data-edit="${element.id}">Edit</button><button class="btn btn-danger delete" data-bs-toggle="modal" data-bs-target="#exampleModal" data-delete="${element.id}">Delete</button></div></div>`;
   });
   modalDrawer();
-  // deleteButton();
+  deleteButton();
 }
 
 function modalDrawer() {
@@ -64,13 +64,15 @@ closeModal2.addEventListener("click", () => {
 
 function deleteButton() {
   let deleteButon = document.querySelectorAll(".delete");
+  let confirmDelete = document.getElementById("confirmDelete");
   for (let i = 0; i < deleteButon.length; i++) {
     deleteButon[i].addEventListener("click", async (e) => {
-      let target = e.target;
       let idDelete = e.target.attributes.getNamedItem("data-delete").value;
-      const resp = await axios.delete(
-        `http://localhost:3000/posts/${idDelete}`
-      );
+      confirmDelete.setAttribute("data-delete", idDelete);
     });
   }
+  confirmDelete.addEventListener("click", () => {
+    let iddDelete = confirmDelete.attributes.getNamedItem("data-delete").value;
+    const resp = axios.delete(`http://localhost:3000/posts/${iddDelete}`);
+  });
 }
