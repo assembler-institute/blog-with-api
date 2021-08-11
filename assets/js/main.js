@@ -21,7 +21,7 @@ function switchStyles() {
  * @param {Number} limit
  * @param {String} section
  */
-async function fetchData(section = "posts", from = 0, limit = 20) {
+async function fetchData(section = "posts", from = 0, limit = 10) {
   const baseUrl = "https://jsonplaceholder.typicode.com";
 
   let response = await fetch(
@@ -45,7 +45,7 @@ async function fillMainPost() {
 
   const templateCard = `
     <template id="mainTemplate">
-      <article class="post-main" id="post-main">
+      
         <p class="post-main__author">${name}</p>
         <div class="headline-card__line"></div>
         <h2 class="post-main__title text-capitalize">${title}</h2>
@@ -62,11 +62,12 @@ async function fillMainPost() {
             Read more
           </button>
         </div>
-      </article>
+      
     </template>
   `;
 
   const postMain = document.getElementById("post-main");
+  postMain.innerHTML="";
   postMain.insertAdjacentHTML("beforeend", templateCard);
 
   const contentTemplate = document.getElementById(`mainTemplate`).content;
@@ -79,10 +80,55 @@ async function fillMainPost() {
 }
 
 /**
+ * Fill post of line Section
+ */
+async function fillLinesSection() {
+  let cards = await fetchData("posts", 1, 6);
+
+  const postsContent = document.getElementById("lines-content");
+
+  for (const card of cards) {
+    const { userId, id, title } = { ...card };
+
+    const users = await fetchData("users", userId - 1, 1);
+
+    const { name } = { ...users[0] };
+    const templateCard = `
+      <template id="lines-template-${id}">
+        <div class="post-block d-block">
+          <div class="post-block__content d-block" id="post-block-${id}">
+            <div class="post-block__img d-block"></div>
+            <p class="post-block__name d-block text-uppercase">${name}</p>
+            <p class="post-block__title d-block text-capitalize">${title}</p>
+          </div>
+        </div>
+      </template>
+    `;
+
+    postsContent.insertAdjacentHTML("beforeend", templateCard);
+    const contentTemplate = document.getElementById(`lines-template-${id}`).content;
+    const copyContent = document.importNode(contentTemplate, true);
+
+    document.getElementById(`lines-template-${id}`).remove();
+    postsContent.appendChild(copyContent);
+    document.getElementById(`post-block-${id}`).addEventListener("click", function () {
+      fillModal(id);
+
+      let modal = new bootstrap.Modal(document.getElementById('postModal'), {
+        keyboard: false
+      })
+
+      modal.show();
+    });
+
+  }
+}
+
+/**
  * Fill post of tinder Section
  */
 async function fillTinderSection() {
-  let cards = await fetchData("posts", 1, 6);
+  let cards = await fetchData("posts", 7, 6);
 
   const tinderContent = document.getElementById("tinder-content");
 
@@ -95,11 +141,13 @@ async function fillTinderSection() {
     const templateCard = `
       <template id="tinder-template-${id}">
         <div class="post__card col-md-4 hoverable" id="card-${id}">
-          <div class="post__card__top d-flex flex-column align-items-center justify-content-center bg-black">
+          <div class="post__card__content outside">
+            <div class="post__card__top inside d-flex flex-column align-items-center justify-content-center bg-black">
             <p class="post__card__author">${name}</p>
-            <h2 class="post__card__name">${title}</h2>
+            <h2 class="post__card__name text-capitalize">${title}</h2>
+            </div>
+            <div class="post__card__drag"></div>
           </div>
-          <div class="post__card__drag"></div>
         </div>
       </template>
     `;
@@ -124,63 +172,61 @@ async function fillTinderSection() {
  * Fill the modal when read more is clicked
  */
 async function fillModal(modalId) {
-  const post = await fetchData("posts", modalId, 1);
+
+  const post = await fetchData("posts", modalId - 1, 1);
+
   const { userId, id, title, body } = { ...post[0] };
+
   const user = await fetchData("users", userId, 1);
-  const { name, username, email, address, company } = { ...user[0] };
+
+  const { name, company } = { ...user[0] };
+
   const modalContentArea = document.getElementById("postModal");
-  console.log(modalContentArea);
+
+  modalContentArea.innerHTML = "";
+
   const templateModal = `
-      <template id="modal-template-${id}">
-          <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content p-4">
-              <div class="row">
-                <div
-                class=" col-4 d-flex flex-column
-                align-items-stretch justify-content-around p-4">
-                <div class="col p-4">
-                  <i class="bi bi-emoji-sunglasses big"></i>
-                </div>
-                <div class="col">
-                  <h6><strong>By</strong> ${name} hola!</h6>
-                  <h6><strong>From</strong> ${company.name}</h6>
-                <hr />
-                  <p> <small>${company.catchPhrase}</small> </p>
-                </div>
+    <template id="modal-template-${id}">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content p-4">
+          <div class="post row">
+            <div class="post__user col-4 col-md-3 d-flex flex-column align-items-stretch justify-content-start p-4">
+              <div class="">
+                <i class="bi bi-emoji-sunglasses big"></i>
               </div>
-            <div class="col-8">
-              <div class="row modal-header">
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close">
-                </button>
-                <h3 class="modal-title pb-10" id="postModalLabel">
-                ${title}
+              <div class="">
+                <h6><strong>By</strong> ${name}</h6>
+                <h6><strong>From</strong> ${company.name}</h6>
+                <hr />
+                <p>
+                  <small> ${company.catchPhrase}</small>
+                </p>
+              </div>
+            </div>
+            <div class="post__content col-8 col-md-9">
+              <div class="post__header row modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h3 class="post__title" id="postModalLabel">
+                  ${title}
                 </h3>
               </div>
-              <div class="modal-body">
-                <h5>
+              <div class="post__body modal-body">
+                <div class="post__text">
                   <em>${body}</em>
-                </h5>
-              </div>
-              <hr />
-              <div class="comments col 12" id="totalComments"> </div>
-              <hr />
-              <div id="commentsArea" class"commentsArea">
-                <div class="row p-4">
-                  <div class="col-2">
-                    <i class="bi bi-emoji-sunglasses"></i>
-                  </div>
-                  <div class="col">
+                </div>
+                <hr />
+                <div class="comments col 12" id="totalComments">N comments</div>
+                <hr />
+                <div id="commentsArea" class="comments-area">
+                  <div class="d-flex p-4">
+                    <i class="bi bi-emoji-sunglasses pr-4"></i>
                     <blockquote class="blockquote">
                       <p class="blockquote__text">
-                        body
+                        comment text
                       </p>
                       <footer class="blockquote__footer">
-                        name
-                        <cite title="Source Title">company name </cite>
+                        comment author
+                        <cite title="Source Title">comment author company name </cite>
                       </footer>
                     </blockquote>
                   </div>
@@ -190,13 +236,12 @@ async function fillModal(modalId) {
           </div>
         </div>
       </div>
-      </template>
-    `;
+    </template>
+  `;
 
   modalContentArea.insertAdjacentHTML("beforeend", templateModal);
-  const contentTemplate = document.getElementById(
-    `modal-template-${id}`
-  ).content;
+  const contentTemplate = document.getElementById(`modal-template-${id}`).content;
+
   const copyContent = document.importNode(contentTemplate, true);
   document.getElementById(`modal-template-${id}`).remove();
   modalContentArea.appendChild(copyContent);
@@ -211,33 +256,29 @@ async function fillModalComments(modalId, companyName) {
   const comments = await fetchData("comments", 0, 500);
   let commentsCounter = 0;
   const commentArea = document.getElementById("commentsArea");
+  commentArea.innerHTML = "";
   for (const comment of comments) {
     const { postId, id, name, email, body } = { ...comment };
     if (postId === modalId) {
       commentsCounter++;
       const templateModalComment = `
-      <template id="comment-template-${id}">
-      <div class="row p-4">
-      <div class="col-2">
-        <i class="bi bi-emoji-sunglasses"></i>
-      </div>
-        <div class="col">
-          <blockquote class="blockquote">
-            <p class="blockquote__text">${body} </p>
-            <footer class="blockquote__footer">
-              ${name}
-              <cite title="Source Title">${companyName} </cite>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-      </template>
-    `;
+        <template id="comment-template-${id}">
+          <div class="d-flex p-4">
+            <i class="bi bi-emoji-sunglasses pr-4"></i>
+            <blockquote class="blockquote">
+              <p class="blockquote__text">${body} </p>
+              <footer class="blockquote__footer">
+                ${name}
+                <cite title="Source Title">${companyName} </cite>
+              </footer>
+            </blockquote>
+          </div>
+        </template>
+      `;
 
       commentArea.insertAdjacentHTML("beforeend", templateModalComment);
-      const contentTemplate = document.getElementById(
-        `comment-template-${id}`
-      ).content;
+      const contentTemplate = document.getElementById(`comment-template-${id}`).content;
+
       const copyContent = document.importNode(contentTemplate, true);
       document.getElementById(`comment-template-${id}`).remove();
       commentArea.appendChild(copyContent);
@@ -249,9 +290,50 @@ async function fillModalComments(modalId, companyName) {
 }
 
 /**
+ * Fill post of line Section
+ */
+async function fillInlineSection() {
+  let cards = await fetchData("posts", 13, 10);
+
+  const postsContent = document.getElementById("inline-content");
+
+  for (const card of cards) {
+    const { userId, id, title } = { ...card };
+
+    const users = await fetchData("users", userId - 1, userId);
+
+    const { name } = { ...users[0] };
+
+    const templateCard = `
+      <template id="lines-template-${id}">
+        <div class="post-inline d-inline">
+          <div class="post-inline__content d-inline">
+            <div class="post-inline__img d-inline"></div>
+            <p class="post-inline__name d-inline text-uppercase">${name}</p>
+            <p class="post-inline__title d-inline text-capitalize">${title}</p>
+          </div>
+        </div>
+      </template>
+    `;
+
+    postsContent.insertAdjacentHTML("beforeend", templateCard);
+    const contentTemplate = document.getElementById(`lines-template-${id}`).content;
+    const copyContent = document.importNode(contentTemplate, true);
+
+    document.getElementById(`lines-template-${id}`).remove();
+    postsContent.appendChild(copyContent);
+  }
+  document.getElementById(
+    "totalComments"
+  ).innerHTML = `${commentsCounter} comments`;
+}
+
+/**
  * Initialize the blog
  */
 (function initialize() {
   fillMainPost();
+  fillLinesSection();
   fillTinderSection();
-})();
+  fillInlineSection()
+})()

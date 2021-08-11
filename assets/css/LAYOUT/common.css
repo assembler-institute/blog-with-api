@@ -4,11 +4,11 @@
 
 .main {
   background-color: #ffffff;
+  margin: 0 auto;
+  max-width: 992px;
 }
 
 .section {
-  height: calc(100vh - 4rem);
-  max-height: calc(100vh - 4rem);
   margin: 2rem;
   background: #fbfbfd;
 }
@@ -30,10 +30,30 @@
   height: 150px;
 }
 
+.full-page{
+  height: calc(100vh - 4rem);
+  max-height: calc(100vh - 4rem);
+}
+
+.outside {
+  width: 100%;
+  padding-top: 133.33%; /* 4:3 Aspect Ratio (divide 4 by 3 = 1.3333)  */
+  position: relative; /* If you want text inside of it */
+}
+
+/* If you want text inside of the container */
+.inside {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
 /* background */
 
 .bg-black {
-  background-color: #000000;
+  background-color: #121212;
 }
 .bg-blue {
   background-color: #0d6efd;
@@ -72,14 +92,9 @@
 }
 
 .bi {
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 .big {
-  font-size: 8rem;
-}
-
-.commentsArea {
-  max-height: 10vh;
-  overflow: auto;
+  font-size: 6rem;
 }

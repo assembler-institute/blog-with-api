@@ -1,0 +1,11 @@
+/**
+ * MODULE - BLOCKQUOTE
+ */
+
+.blockquote {
+  margin-left: 1.5rem;
+}
+
+.blockquote__text{
+  font-size: 1.2rem;
+}

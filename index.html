@@ -156,61 +156,56 @@
       </section>
       <!-- Post main -->
 
-      <!-- Posts tinder -->
-      <section class="section">
-        <div
-          class="posts d-flex justify-content-center align-items-center h-100"
-        >
-          <div class="post__card-cont row" id="tinder-content"></div>
+    <!-- Post main -->
+    <section class="section full-page d-flex align-items-center justify-content-center text-center">
+      <article class="post-main" id="post-main">
+        <p class="post-main__author">Leanne Graham</p>
+        <div class="headline-card__line"></div>
+        <h2 class="post-main__title text-capitalize">sunt aut facere repellat provident occaecati excepturi optio
+          reprehenderit</h2>
+        <div class="headline-card__line"></div>
+        <div class="post-main__button">
+          <button type="button" class="btn btn-dark text-uppercase hoverable">Read more</button>
         </div>
       </section>
       <!-- Posts tinder -->
 
-      <!-- Posts list -->
-      <section class="section">
-        <div class="post-line">
-          <div class="post-line__top purple">
-            <div class="post-line__img"></div>
-            <p class="post-line__name">Hungry cat</p>
-          </div>
-        </div>
-      </section>
-      <!-- Posts list -->
-    </main>
-    <!-- Main -->
+    <!-- Posts block -->
+    <section class="section">
+      <div class="posts-block">
+        <span class="posts-block__content d-block" id="lines-content">
+        </span>
+      </div>
+    </section><!-- Posts lines -->
 
-    <!-- Modal -->
-    <div
-      class="modal fade"
-      id="postModal"
-      tabindex="-1"
-      aria-labelledby="postModalLabel"
-      aria-hidden="true"
-    >
-      <!-- <div class="modal-dialog modal-dialog-scrollable">
-        <div class="modal-content p-4">
-          <div class="row">
-            <div
-              class="
-                col-4
-                d-flex
-                flex-column
-                align-items-stretch
-                justify-content-around
-                p-4
-              "
-            >
-              <div class="col p-4">
-                <i class="bi bi-emoji-sunglasses big"></i>
-              </div>
-              <div class="col">
-                <h6><strong>By</strong> Leanne Graham</h6>
-                <h6><strong>From</strong> Romaguera-Crona</h6>
-                <hr />
-                <p>
-                  <small> 3 min read</small>
-                </p>
-              </div>
+    <!-- Posts tinder -->
+    <section class="section">
+      <div class="posts d-flex justify-content-around align-items-center h-100 position-relative">
+        <span class="posts__swipe-label d-md-none">Swipe left</span>
+        <div class="post__card-cont row" id="tinder-content">
+        </div>
+        <span class="posts__swipe-label d-md-none">Swipe right</span>
+      </div>
+    </section><!-- Posts tinder -->
+
+    <!-- Posts inline -->
+    <section class="section">
+      <div class="posts-inline">
+        <span class="posts-inline__content d-inline" id="inline-content">
+        </span>
+      </div>
+    </section><!-- Posts inline -->
+
+  </main><!-- Main -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content p-4">
+        <div class="row">
+          <div class="col-4 d-flex flex-column align-items-stretch justify-content-around p-4">
+            <div class="col p-4">
+              <i class="bi bi-emoji-sunglasses big"></i>
             </div>
             <div class="col-8">
               <div class="row modal-header">
@@ -234,27 +229,41 @@
                 </h5>
               </div>
               <hr />
-              <div class="comments col 12" id="totalComments">10 comments</div>
-              <hr />
-              <div id="commentsArea">
-                <div class="row p-4">
-                  <div class="col-2">
-                    <i class="bi bi-emoji-sunglasses"></i>
-                  </div>
-                  <div class="col">
-                    <blockquote class="blockquote">
-                      <p class="blockquote__text">
-                        laudantium enim quasi est quidem magnam voluptate ipsam
-                        eos\ntempora quo necessitatibus\ndolor quam autem
-                        quasi\nreiciendis et nam sapiente accusantium.
-                      </p>
-                      <footer class="blockquote__footer">
-                        Leanne Graham
-                        <cite title="Source Title">Romaguera-Crona </cite>
-                      </footer>
-                    </blockquote>
-                  </div>
-                </div>
+              <p>
+                <small> 3 min read</small>
+              </p>
+            </div>
+          </div>
+          <div class="col-8">
+            <div class="row modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <h3 class="modal-title" id="postModalLabel">
+                Sunt aut facere repellat provident occaecati excepturi optio
+                reprehenderit
+              </h3>
+            </div>
+            <div class="modal-body">
+              <h5>
+                <em>Sunt aut facere repellat provident occaecati excepturi
+                  optio reprehenderit</em>
+              </h5>
+            </div>
+            <hr />
+            <div class="comments col 12">10 comments</div>
+            <hr />
+            <div class="row p-4">
+              <div class="col-2"><i class="bi bi-emoji-sunglasses"></i></div>
+              <div class="col">
+                <blockquote class="blockquote">
+                  <p class="blockquote__text">
+                    laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam
+                    autem quasi\nreiciendis et nam sapiente accusantium.
+                  </p>
+                  <footer class="blockquote__footer">
+                    Leanne Graham
+                    <cite title="Source Title">Romaguera-Crona </cite>
+                  </footer>
+                </blockquote>
               </div>
             </div>
           </div>
