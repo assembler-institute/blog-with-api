@@ -8,6 +8,11 @@
   background-color: #ffffff;
 }
 
+.posts__swipe-label{
+  text-align: center;
+  width: 100%;
+}
+
 .post__card-cont {
   height: 100%;
   width: 100%;
@@ -46,7 +51,7 @@
   line-height: 1.25;
   text-align: center;
   font-size: 2rem;
-  font-weight: bold;
+  font-weight: 600;
   color: #fff;
   padding: 1rem;
   margin: 0;
@@ -58,25 +63,21 @@
   padding: 1rem;
   margin: 0;
 }
-.post__card__drag {
-  z-index: 5;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  cursor: grab;
+.post__card__content {
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 767px) {
   .posts{
-    padding: 4rem;
+    padding: 4rem 1rem;
     background-color: transparent;
   }
   .post__card-cont {
     position: relative;
     width: 24rem;
+    min-width: 24rem;
     height: 32rem;
+    min-height: 32rem;
     margin: 0 auto;
   }
   .post__card {
@@ -91,5 +92,15 @@
   }
   .post__card:nth-child(n) {
     padding: 0;
+  }
+  .post__card__drag {
+    position: block;
+    z-index: 5;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    cursor: grab;
   }
 }
