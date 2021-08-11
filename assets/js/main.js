@@ -38,7 +38,7 @@ async function fetchData(section = "posts", from = 0, limit = 20) {
  */
 async function fillMainPost() {
   let cards = await fetchData("posts", 0, 1);
-  console.log(cards);
+
   const { userId, id, title } = { ...cards[0] };
 
   const users = await fetchData("users", userId - 1, userId);
@@ -75,7 +75,9 @@ async function fillMainPost() {
  */
 async function fillTinderSection() {
   const cards = await fetchData("posts", 1, 6);
+
   console.log(cards);
+  const tinderContent = document.getElementById("tinderContent");
   for (const card of cards) {
     const { userId, id, title } = { ...card };
     const users = await fetchData("users", userId - 1, userId);
@@ -94,7 +96,6 @@ async function fillTinderSection() {
       </template>
     `;
 
-    const tinderContent = document.getElementById("tinderContent");
     tinderContent.insertAdjacentHTML("beforeend", templateCard);
     const contentTemplate = document.getElementById(
       `tinderTemplate-${id}`
