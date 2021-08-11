@@ -79,13 +79,11 @@ function loadPostInfo(e, jsonPosts) {
 
 $("[data-show-comments]").on("click", () => {
   let postId = document.querySelector(".modal-content").dataset.blogId;
-  console.log(postId);
   $.get(
     `http://localhost:3000/posts/${postId}/comments`,
     function (jsonComments) {
       $("[data-comment]").html("");
       jsonComments.forEach((comment) => {
-        console.log("WRITE");
         $("[data-comment]").append(`<p>${comment.body}</p>`);
       });
     }
