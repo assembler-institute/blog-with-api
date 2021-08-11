@@ -37,67 +37,26 @@ function printPosts() {
     }
 
     $("[data-show]").on("click", (e) => {
-      let postNumber = e.target.parentElement.dataset.postNum;
-
-      document.querySelector(".modal-title").textContent =
-        jsonPosts[postNumber - 1].title;
-      document.querySelector(".modal-body").textContent =
-        jsonPosts[postNumber - 1].body;
-
-      $.get("http://localhost:3000/users", function (jsonUsers) {
-        jsonUsers.forEach((jsonUser) => {
-          if (jsonPosts[postNumber - 1].userId == jsonUser.id) {
-            document.querySelector("[data-username]").textContent =
-              jsonUser.username;
-            //document.querySelector().textContent = jsonUser.email;
-          }
-        });
-      });
+      loadPostInfo(e, jsonPosts);
     });
   });
 }
 
-/*
-  fetch("http://localhost:3000/posts")
-    .then((response) => response.json())
-    .then((jsonPosts) => {
-      var postsLength = jsonPosts.length;
+function loadPostInfo(e, jsonPosts) {
+  let postNumber = e.target.parentElement.dataset.postNum;
 
-      for (let i = 0; i < postsLength; i++) {
-        printCard();
-        document.querySelectorAll(".card-body")[i].dataset.postNum = i + 1;
-        document.querySelectorAll(".card-title")[i].textContent =
-          jsonPosts[i].title;
+  document.querySelector(".modal-title").textContent =
+    jsonPosts[postNumber - 1].title;
+  document.querySelector(".modal-body").textContent =
+    jsonPosts[postNumber - 1].body;
 
-
-
-
-
-        fetch("http://localhost:3000/users")
-          .then((response) => response.json())
-          .then((jsonUsers) => {
-            jsonUsers.forEach((jsonUser) => {
-              if (jsonPosts[i].userId == jsonUser.id) {
-                document.querySelector(
-                  `.card-body[data-post-num="${i + 1}"] .username-post`
-                ).textContent = jsonUser.username;
-                document.querySelector(
-                  `.card-body[data-post-num="${i + 1}"] .email-post`
-                ).textContent = jsonUser.email;
-              }
-            });
-          });
+  $.get("http://localhost:3000/users", function (jsonUsers) {
+    jsonUsers.forEach((jsonUser) => {
+      if (jsonPosts[postNumber - 1].userId == jsonUser.id) {
+        document.querySelector("[data-username]").textContent =
+          jsonUser.username;
+        document.querySelector("[data-email]").textContent = jsonUser.email;
       }
-      let showButtons = document.querySelectorAll("[data-show]");
-      showButtons.forEach((element) => {
-        element.addEventListener("click", (e) => {
-          let postNumber = e.target.parentElement.dataset.postNum;
-
-          document.querySelector(".modal-title").textContent =
-            jsonPosts[postNumber - 1].title;
-          document.querySelector(".modal-body").textContent =
-            jsonPosts[postNumber - 1].body;
-        });
-      });
     });
-    */
+  });
+}
