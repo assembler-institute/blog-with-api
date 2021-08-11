@@ -1,19 +1,20 @@
 document.addEventListener("click", function (e) {
-    if (e.target.matches("[data-edit]")) editPost(e,e.target.dataset.edit);
-  });
-  
-  
-  function editPost(e,post){
-      e.preventDefault();
-    let title = document.querySelector('#edit-title').value;
-    let body = document.querySelector('#edit-body').value;
+  if (e.target.matches("[data-edit]")) editPost(e, e.target.dataset.edit);
+});
 
-    console.log(title,body);
-    fetch(`http://localhost:3000/posts/${post}`,{
-      method: 'PATCH',
-      body : {"title": title,"body": body}
+function editPost(e, post) {
+  e.preventDefault();
+  let title = document.querySelector("#edit-title").value;
+  let body = document.querySelector("#edit-body").value;
+
+  fetch(`http://localhost:3000/posts/${post}`, {
+    method: "PATCH",
+    body: JSON.stringify({ title: title, body: body }),
+    headers: { "Content-type": "application/json; charset=UTF-8" },
+  })
+    .then((response) => response.json())
+    .then(() => {
+      location.reload();
     })
-      .then((response) => response.json())
-      .then((post) => {console.log(post)})
-      .catch((err) => console.log(err));
-  }
+    .catch((err) => console.log(err));
+}

@@ -7,39 +7,42 @@ document.addEventListener("click", function (e) {
   if (e.target.matches("[data-post]")) renderEditModal(e);
 });
 
-function fetchGetPost(post) {
-  return fetch(`http://localhost:3000/posts/${post}`);
+async function fetchGetPost(post) {
+  return await fetch(`http://localhost:3000/posts/${post}`);
 }
 
-function renderEditModal(e) {
-  /*  fetch(`http://localhost:3000/posts/${e.target.dataset.post}`) */
-  fetchGetPost(e.target.dataset.post)
-    .then((response) => response.json())
+async function renderEditModal(e) {
+ const postResponse =  await fetchGetPost(e.target.dataset.post)
+ const postData = await postResponse.json();  
+ fillEditModal(postData);
+/*  .then((response) => response.json())
     .then((post) => {
       fillEditModal(post);
-    });
+    }); */
 }
 
 function fillEditModal(post) {
   document.querySelector("#edit-title").value = post.title;
   document.querySelector("#edit-body").value = post.body;
-  console.log(post);
 }
 
 //get correct post for the modal
 function getModalPost(e) {
-  fetch(`http://localhost:3000/posts/${e.target.dataset.id}`)
+  fetchGetPost(e.target.dataset.id)
     .then((response) => response.json())
     .then((post) => fillModalContent(post));
 }
 
 //add content to the modal
 function fillModalContent(post) {
+  document.querySelector('#comments').classList.remove('show');
   document.querySelector("#edit-button").dataset.post = post.id;
   document.querySelector("#confirm-edit").dataset.edit = post.id;
   document.querySelector("#confirm-delete").dataset.delete = post.id;
+  document.querySelector("#show-comments").dataset.comments = post.id;
   document.querySelector(".modal-title").textContent = post.title;
   document.querySelector(".modal-body").textContent = post.body;
+  
   getUser(post);
 }
 

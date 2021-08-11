@@ -27,3 +27,12 @@
     width: 100%;
     font-size: 2rem;
 }
+
+.comments{
+    max-height: 25rem;
+    overflow-y: scroll;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}

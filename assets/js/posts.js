@@ -24,9 +24,9 @@ function renderPost(post, cont, div) {
       <div class="col-lg-4 col-md-6 col-sm-12">
         <div class="card m-auto my-2" style="">
           
-          <div class="card-body position-relative" data-id="${post.id}">
-          <img src="./assets/images/image.jpg" class="card-img-top" alt="..." data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="${post.id}">
-            <h5 class="card-title card__letters">${post.title}</h5>
+          <div class="card-body position-relative cursor-pointer" data-id="${post.id}" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <img src="https://picsum.photos/id/${post.id}/300/300" class="card-img-top" alt="..." data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="${post.id}">
+            <h5 class="card-title card__letters" data-id="${post.id}">${post.title}</h5>
             <!-- <p class="card-text">${post.body}</p>-->
           </div>
         </div>
@@ -39,9 +39,9 @@ function renderPost(post, cont, div) {
     <div class="col-lg-4 col-md-6 col-sm-12">
       <div class="card m-auto my-2" style="">
         
-        <div class="card-body position-relative" data-id="${post.id}">
-        <img src="./assets/images/image.jpg" class="card-img-top" alt="..." data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="${post.id}">
-          <h5 class="card-title card__letters">${post.title}</h5>
+        <div class="card-body position-relative cursor-pointer" data-id="${post.id}" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <img src="https://picsum.photos/id/${post.id}/300/300" class="card-img-top cursor-pointer" alt="..." data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="${post.id}" >
+          <h5 class="card-title card__letters" data-id="${post.id}">${post.title}</h5>
           <!--<p class="card-text">${post.body}</p>-->
         </div>
       </div>
