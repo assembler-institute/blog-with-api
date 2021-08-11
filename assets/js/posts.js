@@ -1,6 +1,6 @@
 let page = 1;
 //Get list of posts
-fetch(`https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=9`)
+fetch(`http://localhost:3000/posts?_page=${page}&_limit=9`)
   .then((response) => response.json())
   .then((data) => renderPosts(data));
 
@@ -59,7 +59,7 @@ window.addEventListener("scroll", () => {
 
 async function showMorePosts() {
   page++;
-  const postResponse = await fetch(`https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=3`);
+  const postResponse = await fetch(`http://localhost:3000/posts?_page=${page}&_limit=3`);
   const postData = await postResponse.json();
   renderPosts(postData);
 }
