@@ -113,9 +113,14 @@ async function fillLinesSection() {
     postsContent.appendChild(copyContent);
     document.getElementById(`post-block-${id}`).addEventListener("click", function () {
       fillModal(id);
-      document.getElementById(`postModal`).modal('show')
+
+      let modal = new bootstrap.Modal(document.getElementById('postModal'), {
+        keyboard: false
+      })
+
+      modal.show();
     });
-    
+
   }
 }
 
@@ -148,9 +153,7 @@ async function fillTinderSection() {
     `;
 
     tinderContent.insertAdjacentHTML("beforeend", templateCard);
-    const contentTemplate = document.getElementById(
-      `tinder-template-${id}`
-    ).content;
+    const contentTemplate = document.getElementById(`tinder-template-${id}`).content;
     const copyContent = document.importNode(contentTemplate, true);
 
     document.getElementById(`tinder-template-${id}`).remove();
@@ -167,72 +170,78 @@ async function fillTinderSection() {
  * Fill the modal when read more is clicked
  */
 async function fillModal(modalId) {
-  const post = await fetchData("posts", modalId, 1);
+
+  const post = await fetchData("posts", modalId - 1, 1);
+
   const { userId, id, title, body } = { ...post[0] };
+
   const user = await fetchData("users", userId, 1);
+
   const { name, company } = { ...user[0] };
+
   const modalContentArea = document.getElementById("postModal");
-  modalContentArea.innerHTML="";
+
+  modalContentArea.innerHTML = "";
+
   const templateModal = `
-  <template id="modal-template-${id}">
-    <div class="modal-dialog modal-dialog-scrollable">
-      <div class="modal-content p-4">
-        <div class="row">
-          <div class="col-4 d-flex flex-column align-items-stretch justify-content-around p-4">
-            <div class="col p-4">
-              <i class="bi bi-emoji-sunglasses big"></i>
+    <template id="modal-template-${id}">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content p-4">
+          <div class="row">
+            <div class="col-4 d-flex flex-column align-items-stretch justify-content-around p-4">
+              <div class="">
+                <i class="bi bi-emoji-sunglasses big"></i>
+              </div>
+              <div class="">
+                <h6><strong>By</strong> ${name}</h6>
+                <h6><strong>From</strong> ${company.name}</h6>
+                <hr />
+                <p>
+                  <small> ${company.catchPhrase}</small>
+                </p>
+              </div>
             </div>
-            <div class="col">
-              <h6><strong>By</strong> ${name}</h6>
-              <h6><strong>From</strong> ${company.name}</h6>
+            <div class="col-8">
+              <div class="row modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h3 class="modal-title pb-10" id="postModalLabel">
+                ${title}
+                </h3>
+              </div>
+              <div class="modal-body">
+                <h5>
+                  <em>${body}</em>
+                </h5>
+              </div>
               <hr />
-              <p>
-                <small> ${company.catchPhrase}</small>
-              </p>
-            </div>
-          </div>
-          <div class="col-8">
-            <div class="row modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              <h3 class="modal-title pb-10" id="postModalLabel">
-              ${title}
-              </h3>
-            </div>
-            <div class="modal-body">
-              <h5>
-                <em>${body}</em>
-              </h5>
-            </div>
-            <hr />
-            <div class="comments col 12" id="totalComments">N comments</div>
-            <hr />
-            <div id="commentsArea" class="commentsArea">
-            <div class="row p-4">
-              <div class="col-2"><i class="bi bi-emoji-sunglasses"></i></div>
-                <div class="col">
-                  <blockquote class="blockquote">
-                    <p class="blockquote__text">
-                      comment text
-                    </p>
-                    <footer class="blockquote__footer">
-                      comment author
-                      <cite title="Source Title">comment author company name </cite>
-                    </footer>
-                 </blockquote>
+              <div class="comments col 12" id="totalComments">N comments</div>
+              <hr />
+              <div id="commentsArea" class="commentsArea">
+              <div class="row p-4">
+                <div class="col-2"><i class="bi bi-emoji-sunglasses"></i></div>
+                  <div class="col">
+                    <blockquote class="blockquote">
+                      <p class="blockquote__text">
+                        comment text
+                      </p>
+                      <footer class="blockquote__footer">
+                        comment author
+                        <cite title="Source Title">comment author company name </cite>
+                      </footer>
+                  </blockquote>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </template>
-    `;
+    </template>
+  `;
 
   modalContentArea.insertAdjacentHTML("beforeend", templateModal);
-  const contentTemplate = document.getElementById(
-    `modal-template-${id}`
-  ).content;
+  const contentTemplate = document.getElementById(`modal-template-${id}`).content;
+
   const copyContent = document.importNode(contentTemplate, true);
   document.getElementById(`modal-template-${id}`).remove();
   modalContentArea.appendChild(copyContent);
@@ -247,7 +256,7 @@ async function fillModalComments(modalId, companyName) {
   const comments = await fetchData("comments", 0, 500);
   let commentsCounter = 0;
   const commentArea = document.getElementById("commentsArea");
-  commentArea.innerHTML="";
+  commentArea.innerHTML = "";
   for (const comment of comments) {
     const { postId, id, name, email, body } = { ...comment };
     if (postId === modalId) {
