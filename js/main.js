@@ -32,7 +32,8 @@ function printPosts() {
     for (let i = 0; i < postsLength; i++) {
       printCard();
 
-      document.querySelectorAll(".card-body[data-post]")[i].dataset.postNum = i;
+      document.querySelectorAll(".card-body[data-post]")[i].dataset.postNum =
+        jsonPosts[i].id;
 
       document.querySelectorAll(".card-title")[i].textContent =
         jsonPosts[i].title;
@@ -55,10 +56,10 @@ function collapseButton() {
 function loadPostInfo(e, jsonPosts) {
   let postNumber = e.target.parentElement.dataset.postNum;
 
-  let parsed = parseInt(postNumber);
-  let parsedResult = parsed + 1;
+  //let parsed = parseInt(postNumber);
+  //let parsedResult = parsed + 1;
 
-  document.querySelector(".modal-content").dataset.blogId = parsedResult;
+  document.querySelector(".modal-content").dataset.blogId = postNumber;
 
   document.querySelector(".modal-title").textContent =
     jsonPosts[postNumber].title;
@@ -98,7 +99,7 @@ $(`[data-action="delete"]`).on("click", () => {
   let postId = document.querySelector(".modal-content").dataset.blogId;
   console.log(postId);
   fetch(`http://localhost:3000/posts/${postId}`, {
-    method: "GET",
+    method: "DELETE",
   }).then((response) => {
     if (response.ok) {
       console.log("It's Ok");
