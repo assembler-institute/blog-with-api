@@ -43,7 +43,7 @@ async function fillMainPost() {
   const { name } = { ...users[0] };
 
   const templateCard = `
-    <template id="post-${id}">
+    <template id="mainTemplate">
       <article class="post-main" id="post-main">
         <p class="post-main__author">${name}</p>
         <div class="headline-card__line"></div>
@@ -76,16 +76,19 @@ async function fillMainPost() {
  * Fill post of tinder Section
  */
 async function fillTinderSection() {
-  const cards = await fetchData("posts", 1, 6);
-  console.log(cards);
+  let cards = await fetchData("posts", 1, 6);
+
+  const tinderContent = document.getElementById("tinder-content");
 
   for (const card of cards) {
     const { userId, id, title } = { ...card };
+
     const users = await fetchData("users", userId - 1, userId);
+
     const { name } = { ...users[0] };
 
     const templateCard = `
-      <template id="tinderTemplate-${id}">
+      <template id="tinder-template-${id}">
         <div class="post__card col-md-4 hoverable">
           <div class="post__card__top d-flex flex-column align-items-center justify-content-center bg-black">
             <p class="post__card__author">${name}</p>
@@ -96,22 +99,19 @@ async function fillTinderSection() {
       </template>
     `;
 
-    const tinderContent = document.getElementById("tinderContent");
     tinderContent.insertAdjacentHTML("beforeend", templateCard);
-
-    const contentTemplate = document.getElementById(`tinderTemplate-${id}`).content;
+    const contentTemplate = document.getElementById(`tinder-template-${id}`).content;
     const copyContent = document.importNode(contentTemplate, true);
-    document.getElementById(`tinderTemplate-${id}`).remove();
+
+    document.getElementById(`tinder-template-${id}`).remove();
     tinderContent.appendChild(copyContent);
   }
 }
 
 /**
- * Initialize
+ * Initialize the blog
  */
 (function initialize() {
   fillMainPost();
   fillTinderSection();
 })()
-
-// initialize();
