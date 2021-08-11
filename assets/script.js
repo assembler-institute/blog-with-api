@@ -23,13 +23,11 @@ function createBlogs() {
         .then((response) => response.json())
         .then((data) => {
             for (i = h; i < j; i++) {
-                blogGrid.innerHTML += `<div class="card" id="${
-          data[i].id
-        }" data-id = "${data[i].userId}">
+                blogGrid.innerHTML += `<div class="card" id="${data[i].id}" data-id = "${data[i].userId}">
     <img src="./assets/images/bg-img.jfif" class="card-img-top" alt="..." />
     <div class="card-body">
-        <h5 class="card-title" id="blog-title-${i + 1}">${data[i].title}</h5>
-        <p class="card-text" id="blog-body-${i + 1}">
+        <h5 class="card-title" id="blog-title-${data[i].id}">${data[i].title}</h5>
+        <p class="card-text" id="blog-body-${data[i].id}">
            ${data[i].body}
         </p>
         <button class="btn btn-primary read-blog" data-bs-toggle="modal" data-bs-target="#exampleModal">Read Blog</button>
@@ -162,8 +160,8 @@ navbar.addEventListener("click", (event) => {
 
             case "page-2":
                 blogGrid.innerHTML = "";
-                h = 10;
-                j = 19;
+                h = 9;
+                j = 18;
                 createBlogs();
 
                 document.getElementById("prev-li").classList.remove("disabled");
@@ -173,8 +171,8 @@ navbar.addEventListener("click", (event) => {
 
             case "page-3":
                 blogGrid.innerHTML = "";
-                h = 20;
-                j = 29;
+                h = 18;
+                j = 27;
                 createBlogs();
                 document.getElementById("prev-li").classList.remove("disabled");
                 document.getElementById("next-li").classList.remove("disabled");
@@ -183,8 +181,8 @@ navbar.addEventListener("click", (event) => {
 
             case "page-previous":
                 blogGrid.innerHTML = "";
-                h -= 10;
-                j -= 10;
+                h -= 9;
+                j -= 9;
                 createBlogs();
 
                 document.getElementById("next-li").classList.remove("disabled");
@@ -198,11 +196,11 @@ navbar.addEventListener("click", (event) => {
                 if (document.getElementById("new-tile") !== null) {
                     document.getElementById("new-tile").remove();
                 }
-                if ((h + 10) / 10 > 3) {
+                if ((h + 9) / 9 > 3) {
                     let newTile = `<li class="page-item" id = "new-tile">
-                    <button class="page-link" id="page-${
-                      (h + 10) / 10
-                    }">....  ${(h + 10) / 10}</button>
+                    <button class="page-link" id="page-${(h + 9) / 9}">....  ${
+            (h + 9) / 9
+          }</button>
                   </li>`;
                     document
                         .getElementById("next-li")
@@ -215,22 +213,27 @@ navbar.addEventListener("click", (event) => {
                 document.getElementById("prev-li").classList.remove("disabled");
 
                 blogGrid.innerHTML = "";
-                h += 10;
-                j += 10;
+                h += 9;
+                j += 9;
+
+                if (j > retrieveData.length) {
+                    j = retrieveData.length;
+                }
+
                 createBlogs();
 
-                if (j === retrieveData.length - 1) {
+                if (j > retrieveData.length - 3) {
                     document.getElementById("next-li").classList.add("disabled");
                 }
 
-                if (j > 29) {
+                if (j > 27) {
                     if (document.getElementById("new-tile") !== null) {
                         document.getElementById("new-tile").remove();
                     }
                     let newTile = `<li class="page-item" id = "new-tile">
-                    <button class="page-link" id="page-${
-                      (h + 10) / 10
-                    }">....  ${(h + 10) / 10}</button>
+                    <button class="page-link" id="page-${(h + 9) / 9}">....  ${
+            (h + 9) / 9
+          }</button>
                   </li>`;
                     document
                         .getElementById("next-li")
@@ -267,7 +270,7 @@ window.addEventListener("click", (event) => {
   >`;
 
         body.innerHTML = `<h5>Blog:</h5> <textarea rows="10" cols="60" id="edit__body">${body.textContent}</textarea > `;
-        footer.innerHTML = `</button> <div class="modal-footer"> <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        footer.innerHTML = `<div class="modal-footer"> <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button><button type="button" data-bs-dismiss="modal" class="btn btn-warning" id="delete-blog">Delete</button>
         <button type="button" class="btn btn-primary" id="save-blog">Save Changes</button>`;
 
         authorDetails.remove();
@@ -354,3 +357,75 @@ window.addEventListener("click", (event) => {
 });
 
 //----------------------SAVED AND PATCHED--------------------//
+
+//--------------------SEARCH ANY BLOGS----------------------//
+
+document
+    .getElementById("search__blog__button")
+    .addEventListener("click", (event) => {
+        event.preventDefault();
+
+        retrieveData.forEach((post) => {
+            if (post.title.includes(document.getElementById("search__blog").value)) {
+                blogGrid.innerHTML = "";
+
+                blogGrid.innerHTML += `<div class="card" id="${post.id}" data-id = "${post.userId}">
+              <img src="./assets/images/bg-img.jfif" class="card-img-top" alt="..." />
+              <div class="card-body">
+                  <h5 class="card-title" id="blog-title-${post.id}">${post.title}</h5>
+                  <p class="card-text" id="blog-body-${post.id}">
+                     ${post.body}
+                  </p>
+                  <button class="btn btn-primary read-blog" data-bs-toggle="modal" data-bs-target="#exampleModal">Read Blog</button>
+              </div>
+              </div>`;
+            }
+        });
+    });
+
+//----------------------END SEARCH FUNCTION-------------//
+
+//-------------------DELETE BLOG----------------------//
+
+document.addEventListener("click", (event) => {
+    if (event.target.matches("#delete-blog")) {
+        let postNumber = parseInt(event.target.parentNode.parentNode.dataset.id);
+
+        fetch(`http://localhost:3000/posts/${postNumber}`, {
+            method: "DELETE",
+        });
+
+        document.getElementById(postNumber).remove();
+        let newPost = parseInt(blogGrid.lastChild.id);
+
+        let numberArray = [];
+
+        fetch(`http://localhost:3000/posts/`)
+            .then((response) => response.json())
+            .then((data) => {
+                for (p = 0; p < data.length; p++) {
+                    if (data[p].id > newPost) {
+                        numberArray.push(data[p].id);
+                    }
+                }
+
+                let newPostId = numberArray[0];
+                data.forEach((post) => {
+                    if (post.id === newPostId) {
+                        blogGrid.innerHTML += `<div class="card" id="${post.id}" data-id = "${post.userId}">
+        <img src="./assets/images/bg-img.jfif" class="card-img-top" alt="..." />
+        <div class="card-body">
+            <h5 class="card-title" id="blog-title-${post.id}">${post.title}</h5>
+            <p class="card-text" id="blog-body-${post.id}">
+               ${post.body}
+            </p>
+            <button class="btn btn-primary read-blog" data-bs-toggle="modal" data-bs-target="#exampleModal">Read Blog</button>
+        </div>
+        </div>`;
+                    }
+                });
+            });
+    }
+});
+
+//------------------DELETE BLOG END------------------//
