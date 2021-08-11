@@ -1,85 +1,73 @@
 // Declaring variables
-let localHost = "https://jsonplaceholder.typicode.com/"; //"http://localhost:3000"; //forced to create local host in mac with npx https://jsonplaceholder.typicode.com/
-let initialPosts = 0;
-let limit = 4;
+let localHost = "https://jsonplaceholder.typicode.com/"; //"http://localhost:3000"; forced to create local host in mac with npx https://jsonplaceholder.typicode.com/
+let postsContainer = $("#cards__container");
+let initialPosts = 1;
+let limit = 20;
 let title;
 let body;
 let userId;
 let id;
 let cards;
 let postid;
+let posts;
 // Declaring events
 
 // Declaring funtions
 
-$(() => loadPosts());
+// Fetch the data from the API with await response.json() returns a promise resolved to a JSON object
 
-$("#navbar").on("click", function() {
-    $("#cards__container").empty();
-    initialPosts = 0;
-    limit = 4;
-    loadPosts();
-});
+async function getAllPosts() {
+    const RESPONSE = await fetch(
+        `https://jsonplaceholder.typicode.com/posts/?_page=${initialPosts}&_limit=${limit}`
+    );
+    const DATA = await RESPONSE.json();
+    return DATA;
+}
+
+// Let´s inject data to the DOM
+
+async function showAllPosts() {
+    const POSTS = await getAllPosts();
+    POSTS.forEach((post) => {
+        let eachPost = $(`<div class="col">
+                <div class="card h-100">
+                    <img src="assets/img/mjackson.jpg" class="card-img-top" alt="..." />
+                    <div class="card-body bg-dark">
+                        <p data-id="${post.id}" class="card-title text-white" id="${post.id}" data-body="${post.body}" data-bs-toggle="modal" data-bs-target="#exampleModal" data-userid="${post.userId}">${post.id}&#160;&#160;${post.title}</p>
+                        </div>
+                        </div>
+                        </div>)`);
+        postsContainer.append(eachPost);
+    });
+}
+showAllPosts();
+
+// $(window).scroll(function() {
+//     if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+//         limit++;
+//         showAllPosts();
+//     }
+// });
 
 $("#loadmore").on("click", function() {
-    initialPosts = limit + 1;
-    limit += 4;
+    limit++;
+    showAllPosts();
 });
 
-$("#titlepost").onload(
-    "https://jsonplaceholder.typicode.com/posts",
-    function() {
-        $("#titlepost").append(data.title);
-        alert(data.title);
+$(document).on("click", function(element) {
+    if (element.target.matches(".card")) {
+        let getElements = {
+            url: `https://jsonplaceholder.typicode.com/users/${element.target.dataset.userid}`,
+            method: "GET",
+        };
+        $.ajax(getElements).document(function(response) {
+            post = element.target.id;
+            // console.log(post);
+            $("#bodypost").text(element.target.dataset.body);
+            $("#username").text(response.username);
+            $("#emailuser").text(response.email);
+            let titlePost = $(`[data-id="${element.target.id}"]`).text();
+            $(".modal-title").text(titlePost);
+        });
     }
-);
-
-function title() {
-    $.get(
-        "https://jsonplaceholder.typicode.com/posts",
-        function(data) {
-            $("#titlepost").append(data.title);
-            console.log(data.title);
-        },
-        "json"
-    );
-}
-title();
-
-// function loadPosts() {
-//     cards = "posts/";
-//     let posts = {
-//         url: `${localhost}${cards}/?_start=${initialPosts}&_limit=${limit}`,
-//         method: "GET",
-//         timeout: 0,
-//     };
-
-//     $.ajax(posts).done(function(response) {
-//                 $(response).each(function(index, element) {
-//                     create(element.title, element.id, element.userId)
-//                 });
-//                 $("#cards__container").each(function(index, element) {
-//                         $(this).on("click", function() {
-//                             userId = $(this).attr("user-id");
-//                             postno = $(this).attr("post-id");
-//                             $("#cards__container").attr("user-id", userId);
-//                             $("#cards__container").attr("post-id", postno);
-//                             loadbody();
-//                             loadUser(userId);
-//                             // Need to input here the rest of the functions
-//                         })
-//                     }
-//                 })
-
-// function loadUser(userId) {
-//     cards = "users/";
-//     let users = {
-//         url: `${localhost}${cards}${userId}`,
-//         method: "GET",
-//         timeout: 0,
-//     };
-//     $.ajax(users).load(function(response) {
-//         $("#username").html(response.username);
-//         $("#emailuser").html(response.email);
-//     });
-// }
+});

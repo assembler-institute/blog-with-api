@@ -5,18 +5,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--JS link -->
+    <script src="assets/js/main.js" type="module" defer async></script>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
 
-    <link rel="stylesheet" href="./assets/css/root.css" />
-    <!--JS link -->
-    <script href="assets/js/main.js" type="module" defer async></script>
+    <link rel="stylesheet" href="assets/css/root.css" />
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     <!-- JQuery CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
 
     <title>Blog with API</title>
 </head>
@@ -88,20 +88,12 @@
     <main>
         <section>
             <div class="p-5">
-                <div id="cards__container" class="row row-cols-1 row-cols-md-2 g-4">
-                    <div class="col">
-                        <div class="card h-100">
-                            <img src="assets/img/mjackson.jpg" class="card-img-top" alt="..." />
-                            <div class="card-body bg-dark">
-                                <h5 class="card-title text-white">Card title</h5>
-                            </div>
-                        </div>
-                    </div>
-
+                <div id="cards__container" class="row row-cols-1 row-cols-md-3 g-4"></div>
+            </div>
         </section>
         <section class="d-flex justify-content-center">
             <button type="button" id="loadmore" class="btn btn-dark mb-5 rounded-pill p-2 w-25">
-          Load more...
+          Load more
         </button>
 
             <!--Modal with article content-->
@@ -120,27 +112,26 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" id="btn__showcomments" data-bs-toggle="collapse" data-bs-target="#modal-for-comments">
-                          Show comments
-                        </button>
+                Show comments
+              </button>
                         <button type="button" class="btn btn-warning" id="btn__editpost" data-bs-toggle="modal" data-bs-target="#modal-for-edit" data-bs-dismiss="modal">
-                          Edit post
-                        </button>
+                Edit post
+              </button>
                         <button type="button" class="btn btn-danger" id="btn__deletepost" data-bs-toggle="modal" data-bs-target="#modal-confirm-delete" data-bs-dismiss="modal">
-                          Delete post
-                        </button>
+                Delete post
+              </button>
                     </div>
 
                     <div id="commentsmodal" class="
                 collapse
                 modal-content
                 border-primary
-                border-2
-                border-start-0
+                border-2border-start-0
                 border-end-0
                 border-bottom-0
                 rounded-0 rounded-bottom
                 mb-3
-              " style="max-height: 400px; overflow: auto"></div>
+              "></div>
                 </div>
             </div>
         </div>
