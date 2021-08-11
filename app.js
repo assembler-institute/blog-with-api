@@ -11,6 +11,10 @@ async function getPosts() {
   postInfo.forEach((element) => {
     container.innerHTML += `<div class="card"><p class="title" id="${element.id}" data-bs-toggle="modal" data-bs-target="#staticBackdrop">${element.title}</p><div><button class="btn btn-warning" data-edit="${element.id}">Edit</button><button class="btn btn-danger" data-delete="${element.id}">Delete</button></div></div>`;
   });
+  modalDrawer();
+}
+
+function modalDrawer() {
   let titles = document.querySelectorAll(".title");
   for (let index = 0; index < titles.length; index++) {
     titles[index].addEventListener("click", async (e) => {
@@ -32,8 +36,19 @@ async function getPosts() {
                 email.textContent = usersInfo[h].email;
                 if (postInfo[j].id == commentsInfo[i].postId) {
                   let comment = document.createElement("div");
-                  comment.textContent = commentsInfo[i].body;
+                  comment.setAttribute("id", commentsInfo[i].postId);
+                  comment.classList.add("comment");
+                  comment.innerHTML = `
+<pre><strong>${commentsInfo[i].name}</strong>
+${commentsInfo[i].body}
+<i>${commentsInfo[i].email}</i></pre>`;
                   comments2.appendChild(comment);
+                  let listComment = document.querySelectorAll(".comment");
+                  listComment.forEach((element) => {
+                    if (element.id != commentsInfo[i].postId) {
+                      element.remove();
+                    }
+                  });
                 }
               }
             }
@@ -43,5 +58,4 @@ async function getPosts() {
     });
   }
 }
-
 getPosts();
