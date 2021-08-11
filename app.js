@@ -1,46 +1,49 @@
-function adjHtml(a, b) {
-  let cardy = `<div class="card" id=${a}><p class="title">${b}</p><div><button class="edit" data-edit="${a}">Edit</button><button class="delete" data-delete="${b}">Delete</button></div></div>`;
-  return cardy;
-}
-
-function getPosts() {
-  return fetch("http://localhost:3000/posts")
-    .then((response) => response.json())
-    .then((data) => {
-      let container = document.querySelector("#grid");
-      data.forEach((element) => {
+async function getPosts() {
+    let container = document.querySelector("#grid");
+    const posts = await axios("http://localhost:3000/posts/");
+    let postInfo = posts.data;
+    postInfo.forEach((element) => {
         container.innerHTML += `<div class="card" id=${element.id}><p class="title" id="title" data-bs-toggle="modal" data-bs-target="#staticBackdrop">${element.title}</p><div><button class="btn btn-warning" data-edit="${element.id}">Edit</button><button class="btn btn-danger" data-delete="${element.id}">Delete</button></div></div>`;
-      });
-      let titles = document.querySelectorAll(".title");
-      titles.forEach((element) => {
-        element.addEventListener("click", () => {
-          let textoTitulo = element.textContent;
-          document.getElementById("staticBackdropLabel").innerHTML =
-            textoTitulo;
-          document.getElementById("modal-body").innerHTML = data.body;
-        });
-      });
     });
+    let titles = document.querySelectorAll(".title");
+    // let paragraphWrapper = document.querySelectorAll(".card");
+    let modalBody = document.querySelector("#modal-body");
+    titles.forEach((element) => {
+        element.addEventListener("click", () => {
+            let textoTitulo = element.textContent;
+            document.getElementById("staticBackdropLabel").innerHTML = textoTitulo;
+        });
+    });
+    async() => {
+        const comments = await axios("http://localhost:3000/comments/");
+        let commentsInfo = comments.data;
+        for (let j = 0; j < postInfo.length; j++) {
+            for (let i = 0; i < commentsInfo.length; i++) {
+                if (postInfo[j].id === commentsInfo[i].postId) {
+                    modalBody.innerHTML += "Hola";
+                }
+            }
+        }
+    };
 }
+// console.log(paragraphWrapper[0].id);
+// console.log(modalInfo[0].postId);
 
 getPosts();
 
-function getComments() {
-  return fetch("http://localhost:3000/comments")
-    .then((response) => response.json())
-    .then((data) => {
-      data.forEach((element) => {
-        //console.log(element.body);
-      });
-    });
+async function getComments() {
+    let containerComm = document.querySelector("#grid");
+    const comments = await axios("http://localhost:3000/posts/");
+    let comInfo = comments.data;
+    console.log(comInfo);
 }
 
-function getUsers() {
-  return fetch("http://localhost:3000/users")
-    .then((response) => response.json())
-    .then((data) => {
-      data.forEach((element) => {
-        // console.log(element.username);
-      });
-    });
-}
+// function getUsers() {
+//     return fetch("http://localhost:3000/users")
+//         .then((response) => response.json())
+//         .then((data) => {
+//             data.forEach((element) => {
+//                 // console.log(element.username);
+//             });
+//         });
+// }
