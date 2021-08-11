@@ -8,69 +8,96 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    
+
     <title>Blog with Api</title>
 
     <script src="script.js" defer></script>
-    <link rel="stylesheet" href="main.css"/>
+    <link rel="stylesheet" href="main.css" />
 
 </head>
 
 <body>
-  <header id="header">
-    <div class="container-xxl">
-      <nav class="nav nav-pills nav-fill bg-dark bg-gradient">
-          <a class="navbar-brand" href="#">
-            <img src="https://www.penguinrandomhousegrupoeditorial.com/wp-content/uploads/2017/07/B_PRHGE_negro.png" width="40" height="40" class="d-inline-block align-top" alt="logo B"> Blog with Api
-          </a>
-          <a class="nav-item nav-link btn-outline-success" href="#">Active</a>
-          <a class="nav-item nav-link btn-outline-success" href="#">Link</a>
-          <a class="nav-item nav-link btn-outline-success" href="#">Link</a>
-          <a class="nav-item nav-link btn-outline-success" href="#">Disabled</a>
-      </nav>
-    </div>
-  </header>
-  <main class="container p-0" id="main">
-    <div class="container-fluid row row-cols-4 justify-content-md-center"  id="cards-container">
-    </div>
-</main>
-<!-- Modal -->
-<div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title" id="post-title"></h3>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-          <div class="mb-3">
-            <p id="post-body"></p>
-          </div>
-      </div>
-      <div class="modal-body">
-        <div class="mb-3">
-          <h4>USER</h4>
-            <p id="username"></p>
-            <p id="email"></p>
+    <header id="header">
+        <div class="container-xxl">
+            <nav class="nav nav-pills nav-fill bg-dark bg-gradient">
+                <a class="navbar-brand" href="#">
+                    <img src="https://www.penguinrandomhousegrupoeditorial.com/wp-content/uploads/2017/07/B_PRHGE_negro.png" width="40" height="40" class="d-inline-block align-top" alt="logo B"> Blog with Api
+                </a>
+                <a class="nav-item nav-link btn-outline-success" href="#">Active</a>
+                <a class="nav-item nav-link btn-outline-success" href="#">Link</a>
+                <a class="nav-item nav-link btn-outline-success" href="#">Link</a>
+                <a class="nav-item nav-link btn-outline-success" href="#">Disabled</a>
+            </nav>
+        </div>
+    </header>
+    <main class="container p-0" id="main">
+        <div class="container-fluid row row-cols-4 justify-content-md-center" id="cards-container">
+        </div>
+    </main>
+    <!-- Modal info-->
+    <div class="modal fade" id="summary-modal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="post-title"></h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <p id="post-body"></p>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <h4>USER</h4>
+                        <p id="username"></p>
+                        <p id="email"></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Load Comments</button>
+                </div>
+            </div>
         </div>
     </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Load Comments</button>
-      </div>
+    <!--------------------------------------------------Modal edit--------------------------------------------->
+    <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Title</label>
+                            <input type="text" class="form-control" id="recipient-title">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Body</label>
+                            <textarea class="form-control" id="message-text"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="send">Send message</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-
-<template id="card-temp">
-  <div class="container-md m-4 p-0 shadow hover" data-bs-toggle="modal" data-bs-target="#edit-modal" data-set="card-cont">
-    <figure class="figure" data-bs-toggle="modal" data-bs-target="#edit-modal">
-      <img src="https://dmagazine.com.ar/wp-content/uploads/2017/11/rick.png" class="figure-img img-fluid rounded" data-bs-toggle="modal" data-bs-target="#edit-modal" alt="rick and morty">
-      <figcaption class="m-1 ms-4" data-bs-toggle="modal" data-bs-target="#edit-modal"></figcaption>
+    <!------------------------------------------finish modal edit------------------------------------------------------>
+    <template id="card-temp">
+  <div class="container-md m-4 p-0 shadow hover" data-bs-toggle="modal" data-bs-target="#summary-modal" data-set="card-cont">
+    <figure class="figure" data-bs-toggle="modal" data-bs-target="#summary-modal">
+      <img src="https://dmagazine.com.ar/wp-content/uploads/2017/11/rick.png" class="figure-img img-fluid rounded" data-bs-toggle="modal" data-bs-target="#summary-modal" alt="rick and morty">
+      <figcaption class="m-1 ms-4" data-bs-toggle="modal" data-bs-target="#summary-modal"></figcaption>
     </figure>
-    <button type="button" class="btn btn-secondary">EDIT</button>
+    <button data-bs-toggle="modal" data-bs-target="#edit-modal"type="button" class="btn btn-secondary" id="edit">EDIT</button>
     <button type="button" class="btn btn-danger">DELETE</button>
   </div>
-</template>
+ </template>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
