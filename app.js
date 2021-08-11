@@ -9,9 +9,10 @@ async function getPosts() {
   const posts = await axios("http://localhost:3000/posts/");
   let postInfo = posts.data;
   postInfo.forEach((element) => {
-    container.innerHTML += `<div class="card"><p class="title" id="${element.id}" data-bs-toggle="modal" data-bs-target="#staticBackdrop">${element.title}</p><div><button class="btn btn-warning" data-edit="${element.id}">Edit</button><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" data-delete="${element.id}">Delete</button></div></div>`;
+    container.innerHTML += `<div class="card"><p class="title" id="${element.id}" data-bs-toggle="modal" data-bs-target="#staticBackdrop">${element.title}</p><div><button class="btn btn-warning" data-edit="${element.id}">Edit</button><button class="btn btn-danger delete" data-bs-toggle="modal" data-bs-target="#exampleModal" data-delete="${element.id}">Delete</button></div></div>`;
   });
   modalDrawer();
+  // deleteButton();
 }
 
 function modalDrawer() {
@@ -60,3 +61,16 @@ closeModal.addEventListener("click", () => {
 closeModal2.addEventListener("click", () => {
   comments2.innerHTML = "";
 });
+
+function deleteButton() {
+  let deleteButon = document.querySelectorAll(".delete");
+  for (let i = 0; i < deleteButon.length; i++) {
+    deleteButon[i].addEventListener("click", async (e) => {
+      let target = e.target;
+      let idDelete = e.target.attributes.getNamedItem("data-delete").value;
+      const resp = await axios.delete(
+        `http://localhost:3000/posts/${idDelete}`
+      );
+    });
+  }
+}
