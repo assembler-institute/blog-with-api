@@ -87,7 +87,25 @@
             </div>
         </div>
     </div>
-    <!------------------------------------------finish modal edit------------------------------------------------------>
+
+    <!-- -----------------------------------------------DELETE MODAL -->
+    <div class="modal fade" id="delete-modal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Think about it</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure do you want to delete this post?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="sure-btn">Yes i'm sure of it</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <template id="card-temp">
   <div class="container-md m-4 p-0 shadow hover" data-bs-toggle="modal" data-bs-target="#summary-modal" data-set="card-cont">
     <figure class="figure" data-bs-toggle="modal" data-bs-target="#summary-modal">
@@ -95,7 +113,7 @@
       <figcaption class="m-1 ms-4" data-bs-toggle="modal" data-bs-target="#summary-modal"></figcaption>
     </figure>
     <button data-bs-toggle="modal" data-bs-target="#edit-modal"type="button" class="btn btn-secondary" id="edit">EDIT</button>
-    <button type="button" class="btn btn-danger">DELETE</button>
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-modal" id="delete">DELETE</button>
   </div>
  </template>
 
