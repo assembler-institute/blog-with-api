@@ -36,19 +36,11 @@ function modalDrawer() {
                 email.textContent = usersInfo[h].email;
                 if (postInfo[j].id == commentsInfo[i].postId) {
                   let comment = document.createElement("div");
-                  comment.setAttribute("id", commentsInfo[i].postId);
-                  comment.classList.add("comment");
                   comment.innerHTML = `
 <pre><strong>${commentsInfo[i].name}</strong>
 ${commentsInfo[i].body}
 <i>${commentsInfo[i].email}</i></pre>`;
                   comments2.appendChild(comment);
-                  let listComment = document.querySelectorAll(".comment");
-                  listComment.forEach((element) => {
-                    if (element.id != commentsInfo[i].postId) {
-                      element.remove();
-                    }
-                  });
                 }
               }
             }
@@ -59,3 +51,12 @@ ${commentsInfo[i].body}
   }
 }
 getPosts();
+
+let closeModal = document.getElementById("btnClose");
+let closeModal2 = document.getElementById("btnClose2");
+closeModal.addEventListener("click", () => {
+  comments2.innerHTML = "";
+});
+closeModal2.addEventListener("click", () => {
+  comments2.innerHTML = "";
+});
