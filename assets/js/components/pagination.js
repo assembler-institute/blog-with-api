@@ -37,10 +37,9 @@ export const getButtonsPagination = (response, page) => {
 
 
   for (let i = paginate.first; i <= paginate.last; i++) {
-    console.log(page, i)
+
     if (page === i) {
       htmlButtons += `<li class="page-item active"><a class="page-link" href="#">${i}</a><li/>`
-      console.log('hey')
     } else {
       htmlButtons += `<li class="page-item"><a class="page-link" href="#page-${i}">${i}</a>`
     }
