@@ -19,6 +19,7 @@
       defer
     ></script>
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/modal.css">
     <link
       rel="stylesheet"
       href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -53,9 +54,9 @@
         <div class="modal-content">
           <div class="d-flex justify-content-between p-3">
             <div class="">
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#editModal" id="edit-button"><i class="fas fa-edit"></i></button>
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#deleteModal" id="delete-button"><i class="fas fa-trash"></i></button>
-              <button type="button" class="btn btn-primary position-relative" id="show-comments" type="button" data-bs-toggle="collapse" data-bs-target="#comments" aria-expanded="false" aria-controls="collapseExample">
+              <button type="button" class="btn btn-primary bg-dark color-border" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#editModal" id="edit-button"><i class="fas fa-edit"></i></button>
+              <button type="button" class="btn btn-primary bg-dark color-border" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#deleteModal" id="delete-button"><i class="fas fa-trash"></i></button>
+              <button type="button" class="btn btn-primary position-relative bg-dark color-border" id="show-comments" type="button" data-bs-toggle="collapse" data-bs-target="#comments" aria-expanded="false" aria-controls="collapseExample">
                 <i class="fas fa-comments"></i><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="counter-messages">
                   5
                   <span class="visually-hidden">unread messages</span>
@@ -102,7 +103,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-warning" data-bs-dismiss="modal"><i class="fas fa-ban"></i></button>
-            <button type="button" class="btn btn-primary" id="confirm-edit"><i class="far fa-save"></i></button>
+            <button type="button" class="btn btn-primary " id="confirm-edit"><i class="far fa-save"></i></button>
           </div>
         </div>
       </div>
@@ -117,8 +118,8 @@
           </div>
           <div class="modal-body">Sure you want to delete the post?</div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-ban"></i></button>
-            <button type="button" class="btn btn-primary" id="confirm-delete"><i class="far fa-trash"></i></button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-ban color-border"></i></button>
+            <button type="button" class="btn btn-primary" id="confirm-delete"><i class="far fa-trash color-border"></i></button>
           </div>
         </div>
       </div>
