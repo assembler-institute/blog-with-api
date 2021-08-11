@@ -51,6 +51,7 @@ function loadPostInfo(e, jsonPosts) {
     jsonPosts[postNumber - 1].body;
 
   $.get("http://localhost:3000/users", function (jsonUsers) {
+    console.log(jsonUsers);
     jsonUsers.forEach((jsonUser) => {
       if (jsonPosts[postNumber - 1].userId == jsonUser.id) {
         document.querySelector("[data-username]").textContent =
@@ -60,14 +61,12 @@ function loadPostInfo(e, jsonPosts) {
     });
   });
 }
+
 $("[data-show-comments]").on("click", () => {
-  $.get(`http://localhost:3000/posts/1/comments`),
-    function (jsonComments) {
-      console.log(jsonComments);
-      jsonComments.forEach((comment) => {
-        console.log(comment);
-        $("[data-comment]").text(comment.body);
-        console.log(jsonComments);
-      });
-    };
+  console.log("CLICK");
+  $.get(`http://localhost:3000/posts/1/comments`, function (jsonComments) {
+    jsonComments.forEach((comment) => {
+      $("[data-comment]").text(comment.body);
+    });
+  });
 });
