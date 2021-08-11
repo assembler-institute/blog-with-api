@@ -89,6 +89,7 @@ document.addEventListener("click", (event) => {
 
 document.addEventListener("click", (event) => {
     let commentSection = `<div class="container-sm" id = "comment__section"></div>`;
+    let hideComments = `<button class="btn btn-secondary" id="hide__comments">Hide Comments</button>`;
 
     if (event.target.matches("#open__comments")) {
         modalContent.insertAdjacentHTML("beforeend", commentSection);
@@ -100,26 +101,45 @@ document.addEventListener("click", (event) => {
             .then((response) => response.json())
             .then((data) =>
                 data.forEach((comment) => {
-                    let everyComment = `<div class="container-sm">
-                <span>Name:</span> <span>${comment.name}</span>
-                </div>
-                <div class="container-sm">
-                <span>Email:</span> <span>${comment.email}</span>
-                </div>
-                <div class="container-sm">
-                <span>Name:</span> <span>${comment.name}</span>
-                </div>
-                <div class="container-sm">
-                <span>Comment:</span> <span>${comment.body}</span>
-                </div>`;
+                    let everyComment = `<div class="comment">
+                    <p> <span class= "bold-it">Name:</span> <span>${comment.name}</span></p>
+                    
+                    <p><span class= "bold-it">Email:</span> ${comment.email}</span></p>
+                    
+                    <p><span class= "bold-it">Comment:</span>  <span>${comment.body}</span></p>
+                    </div>`;
 
                     document
                         .getElementById("comment__section")
                         .insertAdjacentHTML("afterbegin", everyComment);
                 })
             );
+
+        document.getElementById("open__comments").remove();
+        document
+            .getElementById("edit-blog")
+            .insertAdjacentHTML("beforebegin", hideComments);
     }
 });
+
+//--------------------END Load Comments-----------------------//
+
+//--------------------Hide Comments-----------------------//
+
+document.addEventListener("click", (event) => {
+    let readButton = `<button type="button" class="btn btn-secondary" id="open__comments">Read Comments</button>`;
+    if (event.target.matches("#hide__comments")) {
+        document.getElementById("comment__section").remove();
+
+        document.getElementById("hide__comments").remove();
+
+        document
+            .getElementById("edit-blog")
+            .insertAdjacentHTML("beforebegin", readButton);
+    }
+});
+
+//--------------------END Hide Comments-----------------------//
 
 //---------------------------------NEXT PREVIOUS BUTTONS -------------------------------------------//
 

@@ -39,3 +39,13 @@ main {
 .details {
     font-weight: bold;
 }
+
+.comment {
+    padding: 1rem;
+    margin: 1rem;
+    border: 1px solid gray;
+}
+
+.bold-it {
+    font-weight: bold;
+}
