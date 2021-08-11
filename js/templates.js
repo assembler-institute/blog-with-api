@@ -21,7 +21,7 @@ let templateCard = `
 <template id = "template-card">
     <div class="col">
         <div class="card" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="width: 18rem;">
-            <div class="card-body">
+            <div data-post class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <button data-show type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Launch demo modal

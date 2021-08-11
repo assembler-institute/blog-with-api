@@ -31,29 +31,43 @@ function printPosts() {
     var postsLength = jsonPosts.length;
     for (let i = 0; i < postsLength; i++) {
       printCard();
-      document.querySelectorAll(".card-body")[i].dataset.postNum = i + 1;
+
+      document.querySelectorAll(".card-body[data-post]")[i].dataset.postNum = i;
+
       document.querySelectorAll(".card-title")[i].textContent =
         jsonPosts[i].title;
     }
 
     $("[data-show]").on("click", (e) => {
       loadPostInfo(e, jsonPosts);
+      collapseButton();
     });
   });
+}
+
+function collapseButton() {
+  let collapse = document.querySelector("#collapseExample");
+  if (collapse.classList.contains("show")) {
+    collapse.classList.remove("show");
+  }
 }
 
 function loadPostInfo(e, jsonPosts) {
   let postNumber = e.target.parentElement.dataset.postNum;
 
+  let parsed = parseInt(postNumber);
+  let parsedResult = parsed + 1;
+
+  document.querySelector(".modal-content").dataset.blogId = parsedResult;
+
   document.querySelector(".modal-title").textContent =
-    jsonPosts[postNumber - 1].title;
+    jsonPosts[postNumber].title;
   document.querySelector(".modal-body").textContent =
-    jsonPosts[postNumber - 1].body;
+    jsonPosts[postNumber].body;
 
   $.get("http://localhost:3000/users", function (jsonUsers) {
-    console.log(jsonUsers);
     jsonUsers.forEach((jsonUser) => {
-      if (jsonPosts[postNumber - 1].userId == jsonUser.id) {
+      if (jsonPosts[postNumber].userId == jsonUser.id) {
         document.querySelector("[data-username]").textContent =
           jsonUser.username;
         document.querySelector("[data-email]").textContent = jsonUser.email;
@@ -63,10 +77,21 @@ function loadPostInfo(e, jsonPosts) {
 }
 
 $("[data-show-comments]").on("click", () => {
-  console.log("CLICK");
-  $.get(`http://localhost:3000/posts/1/comments`, function (jsonComments) {
-    jsonComments.forEach((comment) => {
-      $("[data-comment]").text(comment.body);
-    });
-  });
+  let postId = document.querySelector(".modal-content").dataset.blogId;
+  console.log(postId);
+  $.get(
+    `http://localhost:3000/posts/${postId}/comments`,
+    function (jsonComments) {
+      $("[data-comment]").html("");
+
+      console.log(jsonComments);
+      jsonComments.forEach((comment) => {
+        $("[data-comment]").append(`<p>${comment.body}</p>`);
+      });
+    }
+  );
+});
+
+$("[delete-content]").on("click", () => {
+  $("[data-comment]").html("");
 });
