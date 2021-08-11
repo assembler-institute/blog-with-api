@@ -25,7 +25,7 @@ async function fetchData(section = "posts", from = 0, limit = 20) {
   const baseUrl = "https://jsonplaceholder.typicode.com";
 
   let response = await fetch(`${baseUrl}/${section}?_start=${from}&_limit=${limit}`)
-    .then((response) => { return response.json() })
+    .then((response) => response.json());
 
   return response;
 }
@@ -34,14 +34,13 @@ async function fetchData(section = "posts", from = 0, limit = 20) {
  * Fill main post
  */
 async function fillMainPost() {
+  let cards = await fetchData("posts", 0, 1);
 
-  const cards = await fetchData("posts", 0, 1);
-
-  const { userId, id, title } = { ...cards[0] }
+  const { userId, id, title } = { ...cards[0] };
 
   const users = await fetchData("users", userId - 1, userId);
 
-  const { name } = { ...users[0] }
+  const { name } = { ...users[0] };
 
   const templateCard = `
     <template id="post-${id}">
@@ -67,10 +66,52 @@ async function fillMainPost() {
   const postMain = document.getElementById("post-main");
   postMain.insertAdjacentHTML("beforeend", templateCard);
 
-  const contentTemplate = document.getElementById(`post-${id}`).content;
+  const contentTemplate = document.getElementById(`mainTemplate`).content;
   const copyContent = document.importNode(contentTemplate, true);
   postMain.innerHTML = '';
   postMain.appendChild(copyContent);
 }
 
-fillMainPost();
+/**
+ * Fill post of tinder Section
+ */
+async function fillTinderSection() {
+  const cards = await fetchData("posts", 1, 6);
+  console.log(cards);
+
+  for (const card of cards) {
+    const { userId, id, title } = { ...card };
+    const users = await fetchData("users", userId - 1, userId);
+    const { name } = { ...users[0] };
+
+    const templateCard = `
+      <template id="tinderTemplate-${id}">
+        <div class="post__card col-md-4 hoverable">
+          <div class="post__card__top d-flex flex-column align-items-center justify-content-center bg-black">
+            <p class="post__card__author">${name}</p>
+            <h2 class="post__card__name">${title}</h2>
+          </div>
+          <div class="post__card__drag"></div>
+        </div>
+      </template>
+    `;
+
+    const tinderContent = document.getElementById("tinderContent");
+    tinderContent.insertAdjacentHTML("beforeend", templateCard);
+
+    const contentTemplate = document.getElementById(`tinderTemplate-${id}`).content;
+    const copyContent = document.importNode(contentTemplate, true);
+    document.getElementById(`tinderTemplate-${id}`).remove();
+    tinderContent.appendChild(copyContent);
+  }
+}
+
+/**
+ * Initialize
+ */
+(function initialize() {
+  fillMainPost();
+  fillTinderSection();
+})()
+
+// initialize();

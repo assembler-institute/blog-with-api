@@ -2,12 +2,11 @@
  * MODULE - POST CARD
  */
 
-
-.post-card{
-  background-color: #F8F9FA;
+.post-card {
+  background-color: #f8f9fa;
 }
 
-.posts{
+.posts {
   margin-left: -0.75rem;
   margin-right: -0.75rem;
   background-color: #ffffff;
@@ -19,12 +18,12 @@
 }
 .post__card:nth-child(1),
 .post__card:nth-child(2),
-.post__card:nth-child(3){
+.post__card:nth-child(3) {
   padding-bottom: 0.75rem;
 }
 .post__card:nth-child(4),
 .post__card:nth-child(5),
-.post__card:nth-child(6){
+.post__card:nth-child(6) {
   padding-top: 0.75rem;
 }
 .demo__content {
@@ -32,7 +31,7 @@
   position: relative;
   height: 48rem;
   user-select: none;
-      margin: 0 -7.5px;
+  margin: 0 -7.5px;
 }
 .post__card.reset {
   transition: transform 0.3s;
@@ -108,7 +107,7 @@
     padding: 0;
   }
 
-  .post__card:nth-child(n){
+  .post__card:nth-child(n) {
     padding: 0;
   }
 }

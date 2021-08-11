@@ -2,24 +2,24 @@
  * LAYOUT - COMMON
  */
 
-.main{
+.main {
   background-color: #ffffff;
 }
 
-.section{
+.section {
   height: calc(100vh - 4rem);
   max-height: calc(100vh - 4rem);
   margin: 2rem;
   background: #fbfbfd;
 }
 
-.grid{
+.grid {
   height: calc(100vh - 4rem);
   max-height: calc(100vh - 4rem);
   margin: 2rem;
 }
 
-.headline-card__line{
+.headline-card__line {
   background-image: url(/assets/images/svg/anim-true.svg);
   background-size: 100% auto;
   margin: 0 auto;
@@ -32,36 +32,36 @@
 
 /* background */
 
-.bg-black    {
+.bg-black {
   background-color: #000000;
 }
-.bg-blue    {
+.bg-blue {
   background-color: #0d6efd;
 }
-.bg-indigo  {
+.bg-indigo {
   background-color: #6610f2;
 }
-.bg-purple  {
+.bg-purple {
   background-color: #6f42c1;
 }
-.bg-pink    {
+.bg-pink {
   background-color: #d63384;
 }
-.bg-red     {
+.bg-red {
   background-color: #dc3545;
 }
-.bg-orange  {
+.bg-orange {
   background-color: #fd7e14;
 }
-.bg-yellow  {
+.bg-yellow {
   background-color: #ffc107;
 }
-.bg-green   {
+.bg-green {
   background-color: #198754;
 }
-.bg-teal    {
+.bg-teal {
   background-color: #20c997;
 }
-.bg-cyan    {
+.bg-cyan {
   background-color: #0dcaf0;
 }
