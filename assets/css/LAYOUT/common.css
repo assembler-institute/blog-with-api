@@ -92,21 +92,9 @@
 }
 
 .bi {
-  font-size: 4rem;
-
+  font-size: 3rem;
 }
 
 .big {
-  font-size: 8rem;
-
-}
-
-.commentsArea {
-  overflow-y: auto;
-  overflow-x: hidden;
-  height: 25vh;
-  
-}
-::-webkit-scrollbar {
-  width: 0px;
+  font-size: 6rem;
 }

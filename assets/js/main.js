@@ -187,8 +187,8 @@ async function fillModal(modalId) {
     <template id="modal-template-${id}">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content p-4">
-          <div class="row">
-            <div class="col-4 d-flex flex-column align-items-stretch justify-content-around p-4">
+          <div class="post row">
+            <div class="post__user col-4 col-md-3 d-flex flex-column align-items-stretch justify-content-start p-4">
               <div class="">
                 <i class="bi bi-emoji-sunglasses big"></i>
               </div>
@@ -201,25 +201,23 @@ async function fillModal(modalId) {
                 </p>
               </div>
             </div>
-            <div class="col-8">
-              <div class="row modal-header">
+            <div class="post__content col-8 col-md-9">
+              <div class="post__header row modal-header">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                <h3 class="modal-title pb-10" id="postModalLabel">
-                ${title}
+                <h3 class="post__title" id="postModalLabel">
+                  ${title}
                 </h3>
               </div>
-              <div class="modal-body">
-                <h5>
+              <div class="post__body modal-body">
+                <div class="post__text">
                   <em>${body}</em>
-                </h5>
-              </div>
-              <hr />
-              <div class="comments col 12" id="totalComments">N comments</div>
-              <hr />
-              <div id="commentsArea" class="commentsArea">
-              <div class="row p-4">
-                <div class="col-2"><i class="bi bi-emoji-sunglasses"></i></div>
-                  <div class="col">
+                </div>
+                <hr />
+                <div class="comments col 12" id="totalComments">N comments</div>
+                <hr />
+                <div id="commentsArea" class="comments-area">
+                  <div class="d-flex p-4">
+                    <i class="bi bi-emoji-sunglasses pr-4"></i>
                     <blockquote class="blockquote">
                       <p class="blockquote__text">
                         comment text
@@ -228,7 +226,7 @@ async function fillModal(modalId) {
                         comment author
                         <cite title="Source Title">comment author company name </cite>
                       </footer>
-                  </blockquote>
+                    </blockquote>
                   </div>
                 </div>
               </div>
@@ -262,28 +260,23 @@ async function fillModalComments(modalId, companyName) {
     if (postId === modalId) {
       commentsCounter++;
       const templateModalComment = `
-      <template id="comment-template-${id}">
-      <div class="row p-4">
-      <div class="col-2">
-        <i class="bi bi-emoji-sunglasses"></i>
-      </div>
-        <div class="col">
-          <blockquote class="blockquote">
-            <p class="blockquote__text">${body} </p>
-            <footer class="blockquote__footer">
-              ${name}
-              <cite title="Source Title">${companyName} </cite>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-      </template>
-    `;
+        <template id="comment-template-${id}">
+          <div class="d-flex p-4">
+            <i class="bi bi-emoji-sunglasses pr-4"></i>
+            <blockquote class="blockquote">
+              <p class="blockquote__text">${body} </p>
+              <footer class="blockquote__footer">
+                ${name}
+                <cite title="Source Title">${companyName} </cite>
+              </footer>
+            </blockquote>
+          </div>
+        </template>
+      `;
 
       commentArea.insertAdjacentHTML("beforeend", templateModalComment);
-      const contentTemplate = document.getElementById(
-        `comment-template-${id}`
-      ).content;
+      const contentTemplate = document.getElementById(`comment-template-${id}`).content;
+
       const copyContent = document.importNode(contentTemplate, true);
       document.getElementById(`comment-template-${id}`).remove();
       commentArea.appendChild(copyContent);

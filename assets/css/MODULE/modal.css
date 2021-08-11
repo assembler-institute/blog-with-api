@@ -1,0 +1,19 @@
+/**
+ * MODULE - MODAL
+ */
+
+.modal-header {
+  border-bottom: 0;
+}
+
+.modal-header .btn-close {
+  transform: scale(1.5);
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    width: calc(100% - 3rem);
+    max-width: 992px;
+    margin: 1.75rem auto;
+  }
+}
