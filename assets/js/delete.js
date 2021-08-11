@@ -8,5 +8,5 @@ function deletePost(post){
     method: 'DELETE'
   })
     .then((response) => response.json())
-    .then((post) => location.reload());
+    .then(() => location.reload());
 }
