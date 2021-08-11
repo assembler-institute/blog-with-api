@@ -16,14 +16,14 @@ printPosts();
 
 function printCard() {
   document
-    .querySelector(".row-cols-3")
+    .querySelector(".row-cols-1")
     .insertAdjacentHTML("beforeend", templateCard);
 
   let mainNode = document.querySelector("#template-card").content;
   let copyNode = document.importNode(mainNode, true);
 
-  document.querySelector(".row-cols-3").lastChild.remove();
-  document.querySelector(".row-cols-3").appendChild(copyNode);
+  document.querySelector(".row-cols-1").lastChild.remove();
+  document.querySelector(".row-cols-1").appendChild(copyNode);
 }
 
 function printPosts() {
@@ -78,13 +78,11 @@ function loadPostInfo(e, jsonPosts) {
 
 $("[data-show-comments]").on("click", () => {
   let postId = document.querySelector(".modal-content").dataset.blogId;
-  console.log(postId);
   $.get(
     `http://localhost:3000/posts/${postId}/comments`,
     function (jsonComments) {
       $("[data-comment]").html("");
 
-      console.log(jsonComments);
       jsonComments.forEach((comment) => {
         $("[data-comment]").append(`<p>${comment.body}</p>`);
       });
@@ -95,3 +93,24 @@ $("[data-show-comments]").on("click", () => {
 $("[delete-content]").on("click", () => {
   $("[data-comment]").html("");
 });
+
+$(`[data-action="delete"]`).on("click", () => {
+  let postId = document.querySelector(".modal-content").dataset.blogId;
+  console.log(postId);
+  fetch(`http://localhost:3000/posts/${postId}`, {
+    method: "GET",
+  }).then((response) => {
+    if (response.ok) {
+      console.log("It's Ok");
+    } else {
+      console.log("Te troleo");
+    }
+  });
+});
+
+// [15:38] Antonio Copete
+// fetch('https://example.com/delete-item/' + id, {
+//   method: 'DELETE',
+// })
+// .then(res => res.text()) // or res.json()
+// .then(res => console.log(res))

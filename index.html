@@ -51,13 +51,24 @@
               aria-expanded="false"
               aria-controls="collapseExample"
             >
-              SHOW COMMENTS
+              Show Comments
             </button>
           </p>
           <div class="collapse" id="collapseExample">
             <div class="card card-body" data-comment></div>
           </div>
           <div class="modal-footer">
+            <a
+              class="btn btn-danger"
+              data-bs-toggle="modal"
+              data-action="delete"
+              href="#exampleModalToggle"
+              role="button"
+              >Delete</a
+            >
+            <button type="button" data-action="edit" class="btn btn-warning">
+              Edit
+            </button>
             <button
               type="button"
               class="btn btn-secondary"
@@ -66,7 +77,28 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary">Understood</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ------- MODAL ARE YOU SURE? -------- -->
+    <div
+      class="modal fade"
+      id="exampleModalToggle"
+      aria-hidden="true"
+      aria-labelledby="exampleModalToggleLabel"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalToggleLabel">
+              We are deleting this post...
+            </h5>
+          </div>
+          <div class="modal-body">
+            Are you sure you wanna send this to Singapur?
           </div>
         </div>
       </div>
