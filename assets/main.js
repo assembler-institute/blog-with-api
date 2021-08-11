@@ -3,7 +3,14 @@ const cards = document.querySelector(".cards");
 const template = document.getElementById("template-card").content;
 const fragment = document.createDocumentFragment();
 
-let editModalBtn = document.querySelectorAll(".btn-edit");
+// Variables of modal
+let btnClose = document.querySelector(".btn-close");
+let exampleModal = document.getElementById("exampleModal");
+let editModal = document.getElementById("edit-Modal");
+
+// Variables of alert
+const alertSuccess = document.querySelector(".alert-success")
+const alertDanger = document.querySelector(".alert-danger")
 
 // Template
 fetch("http://localhost:3000/posts")
@@ -15,15 +22,12 @@ fetch("http://localhost:3000/posts")
       // template.querySelector(".card-img-top").setAttribute("src", "../assets/img/levitan.jpg")
 
       template.querySelector(".btn-info").setAttribute("data-id", `${ele.id}`)
-      //editModalBtn.setAttribute("data-id", `${ele.id}`)
+      template.querySelector(".btn-edit").setAttribute("data-id", `${ele.id}`)
       template.querySelector(".card-title").textContent = ele.id + ". " + ele.title;
       // template.querySelector(".card-text").textContent = ele.body;
 
-
       let clone = document.importNode(template, true);
-      fragment.appendChild(clone);
-      
-    
+      fragment.appendChild(clone);    
     });
     cards.appendChild(fragment);
 
@@ -36,7 +40,7 @@ fetch("http://localhost:3000/posts")
     const modalCommentName = document.querySelector(".card-body-name");
     const modalCommentEmail = document.querySelector(".card-body-email");
 
-
+    // Modal to display info
     listBtn.forEach((element) => {
       element.addEventListener("click", event => {
         // console.log(element.dataset.id)
@@ -75,10 +79,65 @@ fetch("http://localhost:3000/posts")
           modalComments.textContent = data[id-1].body
         })
     }
-  });
 
-let btnClose = document.querySelector(".btn-close");
-let exampleModal = document.getElementById("exampleModal");
+    // Modal to edit info
+    let editModalBtn = document.querySelectorAll(".btn-edit");
+    let formTitle = document.querySelector(".form-title");
+    let formText = document.querySelector(".form-text");
+
+    editModalBtn.forEach((element) => {
+      element.addEventListener("click", event => {
+        displayModalEdit(element.dataset.id)
+      });
+    });
+    
+    function displayModalEdit(id) {
+      editModal.style.display = "block";
+      editModal.classList.add("show");
+          // console.log(id)
+          displayModalEditInfo(id)
+    };
+
+    function displayModalEditInfo(id) {
+      fetch("http://localhost:3000/posts")
+        .then((res) => res.json())
+        .then((data) => {
+          formTitle.value = data[id-1].title
+          formText.value = data[id-1].body
+        })
+    }
+    
+    // Close edit modal
+    let btnCloseEdit = document.querySelectorAll(".btn-close-edit");
+    btnCloseEdit.forEach((element) => {
+      element.addEventListener("click", () => {
+        editModal.style.display = "none"})
+    });
+
+    // Change data
+    let editFormModal = document.querySelector("#edit-form-modal")
+    editFormModal.addEventListener("submit", () => {
+      // console.log(formTitle.value)
+      fetch("http://localhost:3000/posts/${id}", {
+        method: "PATCH",
+        body: JSON.stringify({
+          title: formTitle.value, 
+          body: formText.value
+        }), 
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        alertSuccess.classList.remove("visually-hidden")
+      })
+      .catch((error) => {
+        alertDanger.classList.remove("visually-hidden")
+      })
+    })
+    
+  });
 
 btnClose.addEventListener("click", closeModal);
 
@@ -93,22 +152,22 @@ window.onclick = function (event) {
   }
 };
 
-editModalBtn.forEach((element) => {
-  element.addEventListener("click", event => {
-    //console.log(element.dataset.id)
-    displayModalEdit(element.dataset.id)
-  });
-});
+// editModalBtn.forEach((element) => {
+//   element.addEventListener("click", event => {
+//     //console.log(element.dataset.id)
+//     displayModalEdit(element.dataset.id)
+//   });
+// });
 
-let editModal = document.getElementById("edit-Modal")
-function displayModalEdit(id) {
-  editModal.style.display = "block";
-  editModal.classList.add("show");
-      // console.log(id)
-      //displayModalEdit(id)
-};
+// let editModal = document.getElementById("edit-Modal")
+// function displayModalEdit(id) {
+//   editModal.style.display = "block";
+//   editModal.classList.add("show");
+//       // console.log(id)
+//       //displayModalEdit(id)
+// };
 
-let btnCloseEdit = document.querySelectorAll(".btn-close-edit");
-btnCloseEdit.forEach((element) => {
-  element.addEventListener("click", ()=> {editModal.style.display = "none"})
-});
+// let btnCloseEdit = document.querySelectorAll(".btn-close-edit");
+// btnCloseEdit.forEach((element) => {
+//   element.addEventListener("click", ()=> {editModal.style.display = "none"})
+// });
