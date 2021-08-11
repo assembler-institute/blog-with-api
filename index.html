@@ -38,8 +38,24 @@
             ></button>
           </div>
           <div class="modal-body">...</div>
-          <p data-username>NAME</p>
-          <p data-email>EMAIL</p>
+          <p class="p-3" data-username>NAME</p>
+          <p class="p-3" data-email>EMAIL</p>
+          <p class="p-3">
+            <button
+              class="btn btn-primary"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseExample"
+              data-show-comments
+              aria-expanded="false"
+              aria-controls="collapseExample"
+            >
+              SHOW COMMENTS
+            </button>
+          </p>
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body" data-comment>1st COMMENTS</div>
+          </div>
           <div class="modal-footer">
             <button
               type="button"

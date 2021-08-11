@@ -60,3 +60,14 @@ function loadPostInfo(e, jsonPosts) {
     });
   });
 }
+$("[data-show-comments]").on("click", () => {
+  $.get(`http://localhost:3000/posts/1/comments`),
+    function (jsonComments) {
+      console.log(jsonComments);
+      jsonComments.forEach((comment) => {
+        console.log(comment);
+        $("[data-comment]").text(comment.body);
+        console.log(jsonComments);
+      });
+    };
+});
