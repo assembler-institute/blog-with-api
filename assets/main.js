@@ -3,6 +3,7 @@ const cards = document.querySelector(".cards");
 const template = document.getElementById("template-card").content;
 const fragment = document.createDocumentFragment();
 
+let editModalBtn = document.querySelectorAll(".btn-edit");
 
 // Template
 fetch("http://localhost:3000/posts")
@@ -14,7 +15,7 @@ fetch("http://localhost:3000/posts")
       // template.querySelector(".card-img-top").setAttribute("src", "../assets/img/levitan.jpg")
 
       template.querySelector(".btn-info").setAttribute("data-id", `${ele.id}`)
-
+      //editModalBtn.setAttribute("data-id", `${ele.id}`)
       template.querySelector(".card-title").textContent = ele.id + ". " + ele.title;
       // template.querySelector(".card-text").textContent = ele.body;
 
@@ -40,7 +41,7 @@ fetch("http://localhost:3000/posts")
       element.addEventListener("click", event => {
         // console.log(element.dataset.id)
         displayModal(element.dataset.id)
-      });  
+      });
     });
 
     function displayModal(id) {
@@ -74,11 +75,6 @@ fetch("http://localhost:3000/posts")
           modalComments.textContent = data[id-1].body
         })
     }
-
-
-
-    
-
   });
 
 let btnClose = document.querySelector(".btn-close");
@@ -97,4 +93,22 @@ window.onclick = function (event) {
   }
 };
 
+editModalBtn.forEach((element) => {
+  element.addEventListener("click", event => {
+    //console.log(element.dataset.id)
+    displayModalEdit(element.dataset.id)
+  });
+});
 
+let editModal = document.getElementById("edit-Modal")
+function displayModalEdit(id) {
+  editModal.style.display = "block";
+  editModal.classList.add("show");
+      // console.log(id)
+      //displayModalEdit(id)
+};
+
+let btnCloseEdit = document.querySelectorAll(".btn-close-edit");
+btnCloseEdit.forEach((element) => {
+  element.addEventListener("click", ()=> {editModal.style.display = "none"})
+});
