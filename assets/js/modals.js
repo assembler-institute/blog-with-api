@@ -1,3 +1,10 @@
+// Show modal with text content
+
+// $(".modal__btn").on("click", function() {
+//     $("#postsmodal").css("display", "block");
+//     $("#postsmodal").css("opacity", "1");
+// });
+
 //modal to edit
 
 $("#editModalBtn").on("click", function() {

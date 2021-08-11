@@ -1,7 +1,7 @@
 // Declaring variables
 let localHost = "https://jsonplaceholder.typicode.com/"; //"http://localhost:3000"; forced to create local host in mac with npx https://jsonplaceholder.typicode.com/
 let postsContainer = $("#cards__container");
-let initialPosts = 1;
+let initialPosts = 0;
 let limit = 20;
 let title;
 let body;
@@ -18,7 +18,7 @@ let posts;
 
 async function getAllPosts() {
     const RESPONSE = await fetch(
-        `https://jsonplaceholder.typicode.com/posts/?_page=${initialPosts}&_limit=${limit}`
+        `https://jsonplaceholder.typicode.com/posts/?_start=${initialPosts}&_limit=${limit}`
     );
     const DATA = await RESPONSE.json();
     return DATA;
@@ -29,12 +29,11 @@ async function getAllPosts() {
 async function showAllPosts() {
     const POSTS = await getAllPosts();
     POSTS.forEach((post) => {
-        let eachPost = $(`<div class="col">
-                <div class="card h-100">
+        let eachPost = $(`<div class="col cardElement">
+                <div id="postsmodal" class="card h-100">
                     <img src="assets/img/mjackson.jpg" class="card-img-top" alt="..." />
                     <div class="card-body bg-dark">
-                        <p data-id="${post.id}" class="card-title text-white" id="${post.id}" data-body="${post.body}" data-bs-toggle="modal" data-bs-target="#exampleModal" data-userid="${post.userId}">${post.id}&#160;&#160;${post.title}</p>
-                        </div>
+                        <p data-id="${post.id}"  data-bs-toggle="modal" data-bs-target="#exampleModal" class="card-title text-white" id="${post.id}" data-body="${post.body}" data-userid="${post.userId}">${post.id}&#160;&#160;${post.title}</p>
                         </div>
                         </div>)`);
         postsContainer.append(eachPost);
@@ -50,19 +49,23 @@ showAllPosts();
 // });
 
 $("#loadmore").on("click", function() {
-    limit++;
+    initialPosts += 20;
     showAllPosts();
 });
 
+$(".card").on("click", function() {
+    $("#postsmodal").css("display", "block");
+    $("#postsmodal").css("opacity", "1");
+});
+
 $(document).on("click", function(element) {
-    if (element.target.matches(".card")) {
+    if (element.target.matches(".card-title")) {
         let getElements = {
             url: `https://jsonplaceholder.typicode.com/users/${element.target.dataset.userid}`,
             method: "GET",
         };
         $.ajax(getElements).document(function(response) {
             post = element.target.id;
-            // console.log(post);
             $("#bodypost").text(element.target.dataset.body);
             $("#username").text(response.username);
             $("#emailuser").text(response.email);
