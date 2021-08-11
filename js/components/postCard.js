@@ -18,8 +18,11 @@ export function postCardListener() {
 	});
 }
 
-export async function insertPostCards(start, limit) {
+export async function insertPostCards() {
 	const grid = document.querySelector("#post-card-grid");
+	const start = sessionStorage.start;
+	const limit = sessionStorage.limit;
+
 	const posts = await getPostsByLimit(start, limit);
 
 	posts.forEach(async (post) => {
@@ -51,7 +54,7 @@ function createPostCard(post, user) {
 					<p class="card-body-paragraph-height fs-6 m-0">${post.body}</p>
 				</div>
 				<div class="card-footer p-3">
-					<p class="card-body-author-height fs-7 text-black-50 text-end m-0">Author: <span class="fw-bold">${user.name}</span>, <span class="fst-italic">${user.email}</span></p>
+					<p class=" fs-7 text-black-50 text-end m-0">Author: <span class="fw-bold">${user.name}</span>, <span class="fst-italic">${user.email}</span></p>
 				</div>
 			</article>
 		</div>

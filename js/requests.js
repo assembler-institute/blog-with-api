@@ -36,5 +36,7 @@ export async function updatePost(id, data) {
 		},
 	};
 
-	await fetch(url, options).then((response) => console.log(response.status));
+	const response = await fetch(url, options);
+
+	return response;
 }

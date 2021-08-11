@@ -20,7 +20,7 @@ async function goNextPage(navButtons) {
 	sessionStorage.start = parseInt(sessionStorage.start) + POST_CARDS_PER_PAGE;
 
 	clearPostCards();
-	await insertPostCards(sessionStorage.start, sessionStorage.limit);
+	await insertPostCards();
 	updatePrevPageButton(navButtons[0]);
 	updateNextPageButton(navButtons[2]);
 	updateCurrentPageIndex(navButtons[1], 1);
@@ -32,7 +32,7 @@ async function goPrevPage(navButtons) {
 	sessionStorage.start = parseInt(sessionStorage.start) - POST_CARDS_PER_PAGE;
 
 	clearPostCards();
-	await insertPostCards(sessionStorage.start, sessionStorage.limit);
+	await insertPostCards();
 	updatePrevPageButton(navButtons[0]);
 	updateNextPageButton(navButtons[2]);
 	updateCurrentPageIndex(navButtons[1], -1);

@@ -32,8 +32,17 @@ export function modalListener() {
 				body: form.elements["content"].value,
 			};
 
-			await updatePost(id, data);
-			updatePostCard(id, data);
+			const response = await updatePost(id, data);
+
+			if (response.ok) {
+				updatePostCard(id, data);
+
+				const message = modal.querySelector("#post-editor-ok");
+				const messageBs = new bootstrap.Collapse(message);
+
+				messageBs.show();
+				setTimeout(() => messageBs.hide(), 4000);
+			}
 		}
 	});
 }
@@ -71,7 +80,7 @@ function loadModalContentPost(post, user) {
 				<button type="button" class="btn btn-sm btn-outline-dark" data-action="load-editor"><i class="bi bi-pen-fill"></i></button>
 			</div>
 			<p>${post.body}</p>
-			<p class="card-body-author-height fs-7 text-black-50 text-end m-0"><span class="fw-bold">${user.name}</span>, <span class="fst-italic">${user.email}</span></p>
+			<p class=" fs-7 text-black-50 text-end m-0"><span class="fw-bold">${user.name}</span>, <span class="fst-italic">${user.email}</span></p>
 		</div>
 		<div class="modal-footer">
 			<div class="accordion w-100" id="post-comments-accordion">
@@ -92,27 +101,35 @@ function loadModalContentPost(post, user) {
 
 function loadModalContentEditor(post) {
 	const template = `
-		<div class="modal-content">
-			<div class="modal-header bg-dark text-white">
-				<h5 class="modal-title" id="post-editor-modal-label"><i class="bi bi-pen-fill"></i> Edit Post</h5>
-				<button type="button" class="btn-close btn-close-white" data-action="load-post" aria-label="Close"></button>
+		<div class="modal-header bg-dark text-white">
+			<h5 class="modal-title" id="post-editor-modal-label"><i class="bi bi-pen-fill"></i> Edit Post</h5>
+			<button type="button" class="btn-close btn-close-white" data-action="load-post load-pepe" aria-label="Close"></button>
+		</div>
+		<div class="modal-body">
+			<form id="post-editor-form">
+				<label for="input-title">Title</label>
+				<div class="input-group mb-3">
+					<span class="input-group-text">Title</span>
+					<input type="text" name="title" class="form-control" placeholder="Insert a fancy title..." aria-label="title" minlength="8" value="${post.title}"/>
+				</div>
+				<label for="input-content">Content</label>
+				<div class="input-group">
+					<textarea name="content" class="form-control" fs-7 p-2" rows="5" aria-label="content">${post.body}</textarea>
+				</div>
+			</form>
+		</div>
+		<div class="modal-footer justify-content-center">
+			<button type="button" class="btn btn-secondary" data-action="load-post">Go Back</button>
+			<button type="button" class="btn btn-primary" data-action="save-post">Save</button>
+		</div>
+		<div class="collapse" id="post-editor-ok">
+			<div class="card card-body w-100 bg-success text-white">
+				Message has been updated succesfully!
 			</div>
-			<div class="modal-body">
-				<form id="post-editor-form">
-					<label for="input-title">Title</label>
-					<div class="input-group mb-3">
-						<span class="input-group-text">Title</span>
-						<input type="text" name="title" class="form-control" placeholder="Insert a fancy title..." aria-label="title" minlength="8" value="${post.title}"/>
-					</div>
-					<label for="input-content">Content</label>
-					<div class="input-group">
-						<textarea name="content" class="form-control" fs-7 p-2" rows="5" aria-label="content">${post.body}</textarea>
-					</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-action="load-post">Close</button>
-				<button type="button" class="btn btn-primary" data-action="save-post">Save changes</button>
+		</div>
+		<div class="collapse" id="post-editor-err">
+			<div class="card card-body w-100 bg-danger text-white">
+				Something has gone wrong :(
 			</div>
 		</div>
 	`;
