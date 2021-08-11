@@ -65,3 +65,22 @@
 .bg-cyan {
   background-color: #0dcaf0;
 }
+
+.header {
+  z-index: 2;
+  padding: 2rem 4rem;
+}
+
+.bi {
+  font-size: 4rem;
+  /* border: solid black 1px;
+  border-radius: 50%;
+  padding: 0.25em 0.5em; */
+}
+
+.big {
+  font-size: 8rem;
+  /*  border: solid black 2px;
+  border-radius: 50%;
+  padding: 0.25em 0.5em; */
+}
