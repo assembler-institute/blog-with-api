@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--JS link -->
     <script src="assets/js/main.js" type="module" defer async></script>
+    <script src="assets/js/modals.js" type="module" defer async></script>
+
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
     <!-- Bootstrap Icons -->
@@ -114,7 +116,7 @@
                         <button type="button" class="btn btn-primary" id="btn__showcomments" data-bs-toggle="collapse" data-bs-target="#modal-for-comments">
                 Show comments
               </button>
-                        <button type="button" class="btn btn-warning" id="btn__editpost" data-bs-toggle="modal" data-bs-target="#modal-for-edit" data-bs-dismiss="modal">
+                        <button type="button" id="editModalBtn" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal-for-edit" data-bs-dismiss="modal">
                 Edit post
               </button>
                         <button type="button" class="btn btn-danger" id="btn__deletepost" data-bs-toggle="modal" data-bs-target="#modal-confirm-delete" data-bs-dismiss="modal">
@@ -135,7 +137,89 @@
                 </div>
             </div>
         </div>
-    </main>
-</body>
+        <!-- Modal -->
+        <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" id="cancelEditModalBtn1"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Post title</label
+                >
+                <input class="form-control form-control-lg" type="text" />
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea" class="form-label"
+                  >Post body</label
+                >
+                <textarea
+                  class="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                ></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-danger rounded-pill"
+                id="cancelEditModalBtn2"
+              >
+                Back to post
+              </button>
+              <button
+                type="button"
+                class="btn btn-info rounded-pill"
+                id="confirmModalBtn"
+              >
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal 2-->
 
+      <div
+        class="modal fade"
+        id="confirmModal"
+        tabindex="-1"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="confirmModalLabel">
+                Confirmation to save
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                id="cancelConfirmModalBtn1"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <p>Are you sure to save the changes?</p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                id="cancelConfirmModalBtn2"
+                id="editModalBtn"
+              >
+                Back to edit
+              </button>
+              <button type="button" class="btn btn-primary">
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
