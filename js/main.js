@@ -60,8 +60,8 @@ function loadPostInfo(e) {
   document.querySelector(".modal-content").dataset.blogId = postNumber;
 
   $.get(`http://localhost:3000/posts/${postNumber}`, function (post) {
-    $(".modal-title").text(post.title);
-    $(".modal-body").text(post.body);
+    $("#post-modal .modal-title").text(post.title);
+    $("#post-modal .modal-body").text(post.body);
   });
 
   $.get(`http://localhost:3000/users/${userId}`, function (jsonUser) {
