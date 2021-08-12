@@ -45,7 +45,7 @@ async function fillMainPost(mainPost = 0) {
 
   const templateCard = `
     <template id="mainTemplate">
-      <div class="post-main__content post-main__content d-flex flex-column h-100" id="post-main-${id}">
+      <article class="post-main__content d-flex flex-column h-100" id="post-main-${id}">
         <p class="post-main__author">${name}</p>
         <div class="headline-card__line"></div>
         <h2 class="post-main__title text-capitalize">${title}</h2>
@@ -62,7 +62,7 @@ async function fillMainPost(mainPost = 0) {
             Read more
           </button>
         </div>
-      </div>
+      </article>
     </template>
   `;
 
@@ -73,6 +73,7 @@ async function fillMainPost(mainPost = 0) {
   const copyContent = document.importNode(contentTemplate, true);
   postMain.innerHTML = "";
   postMain.appendChild(copyContent);
+
   document.getElementById("readBtn").addEventListener("click", function () {
     fillModal(id, "main");
   });
@@ -255,17 +256,19 @@ async function fillModal(modalId, section) {
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             <div class="post__content col-8 col-md-9">
-              <div class="post__header row modal-header">
+              <header class="post__header row modal-header">
                 <h3 class="post__title text-capitalize" id="postModalLabel">
                   ${title}
                 </h3>
-              </div>
+              </header>
               <div class="post__body modal-body">
                 <div class="post__text">
                   <em>${body}</em>
                 </div>
                 <div class="comments">
-                  <div class="comments__total col 12" id="totalComments">N comments</div>
+                  <div class="comments__total col 12" id="totalComments">
+                    N comments
+                  </div>
                   <ul class="comments__list" id="comments-list">
                   </ul>
                 </div>
