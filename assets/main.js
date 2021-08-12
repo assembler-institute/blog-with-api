@@ -12,36 +12,58 @@ const editModal = document.getElementById("edit-Modal");
 const alertSuccess = document.querySelector(".alert-success")
 const alertDanger = document.querySelector(".alert-danger")
 
-// Images 
+// Variable scroll content
+let listElm = document.querySelector('#infinite-list');
+let maximum = 20;
+let i = 0;
+
+// Images
 const images = ["levitan1.jpg", "levitan2.jpg", "levitan3.jpg", "levitan4.jpg", "levitan5.jpg", "levitan6.jpg", 
-                "levitan7.jpg", "levitan8.jpg", "levitan9.jpg", "levitan10.jpg", "levitan11.jpg", "levitan12.jpg", 
-                "levitan13.jpg", "levitan14.jpg", "levitan15.jpg"];
+"levitan7.jpg", "levitan8.jpg", "levitan9.jpg", "levitan10.jpg", "levitan11.jpg", "levitan12.jpg", 
+"levitan13.jpg", "levitan14.jpg", "levitan15.jpg"];
 
-// Template
-fetch("http://localhost:3000/posts")
+
+function loadContent() {
+  // Template
+  fetch("http://localhost:3000/posts")
   .then((res) => res.json())
-  .then((data) => {
+  .then(function loadPost (data)  {
+    console.log(data[3].userId);
     //console.log(data.length);
-    data.forEach((ele) => {
-
+    // Detect when scrolled to bottom.
+    while (i<maximum) {
+      console.log("hola");
       // Choose images randomly
       let random = Math.floor(Math.random() * images.length);
       template.querySelector(".card-img-top").setAttribute("src", `../assets/img/levitan${random+1}.jpg`)
-
+      
       // Set data attributes to button of info modal
-      template.querySelector(".btn-info").setAttribute("data-id", `${ele.id}`)
-      template.querySelector(".btn-info").setAttribute("data-userid", `${ele.userId}`)
-
+      template.querySelector(".btn-info").setAttribute("data-id", `${data[i].id}`)
+      template.querySelector(".btn-info").setAttribute("data-userid", `${data[i].userId}`)
+      
       // Set data attributes to button of edit modal
-      template.querySelector(".btn-edit").setAttribute("data-id", `${ele.id}`)
-
+      template.querySelector(".btn-edit").setAttribute("data-id", `${data[i].id}`)
+      
       // Add content to card
-      template.querySelector(".card-title").textContent = ele.id + ". " + ele.title;
-
+      template.querySelector(".card-title").textContent = data[i].id + ". " + data[i].title;
+      
       let clone = document.importNode(template, true);
       fragment.appendChild(clone);    
-    });
-    cards.appendChild(fragment);
+      i++;
+      cards.appendChild(fragment);
+    }
+    maximum += 20;
+  });
+  
+}
+loadContent();
+
+listElm.addEventListener('scroll', function() {
+  if (listElm.scrollTop + listElm.clientHeight >= listElm.scrollHeight) {
+    loadContent();
+  }
+});
+
 
     const listBtn = document.querySelectorAll(".btn-info");
     const modalTitle = document.querySelector(".modal-title");
@@ -138,7 +160,7 @@ fetch("http://localhost:3000/posts")
     // Change data
     let editFormModal = document.querySelector("#edit-form-modal")
     editFormModal.addEventListener("submit", () => {
-      fetch("http://localhost:3000/posts/${id}", {
+      fetch("https://jsonplaceholder.typicode.com/posts/${id}", {
         method: "PATCH",
         body: JSON.stringify({
           title: formTitle.value, 
@@ -155,9 +177,7 @@ fetch("http://localhost:3000/posts")
       .catch((error) => {
         alertDanger.classList.remove("visually-hidden")
       })
-    })
-    
-  });
+    });
 
 btnClose.addEventListener("click", closeModal);
 
@@ -204,3 +224,10 @@ function starryNight() {
 
 starryNight()
 
+
+
+
+
+
+// //Initially load some items.
+// loadMore();

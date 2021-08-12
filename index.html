@@ -18,6 +18,12 @@
     ></script>
     <script src="./assets/main.js" defer></script>
     <link rel="stylesheet" href="assets/css/styles.css">
+    <style>#infinite-list {
+      /* We need to limit the height and show a scrollbar */
+      width: 100wh;
+      height: 100vh;
+      overflow: auto;}
+      </style>
   </head>
   <body class="body">
     <!-- Navbar -->
@@ -188,9 +194,9 @@
     </div>
       </div>
   
-      <!-- Card -->
+      <!-- Card posts -->
       <div class="container-sm">
-    <section class="row row-cols-auto cards"></section>
+    <section class="row row-cols-auto cards" id="infinite-list"></section>
       </div><!-- Card -->
     </div><!-- Container -->
 
