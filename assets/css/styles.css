@@ -19,6 +19,7 @@
 @import "MODULE/post-block.css";
 @import "MODULE/blockquote.css";
 @import "MODULE/modal.css";
+@import "MODULE/comments.css";
 
 /* STATUS FOLDER */
 @import "STATUS/dark-mode.css";

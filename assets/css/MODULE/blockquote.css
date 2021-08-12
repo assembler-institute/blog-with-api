@@ -6,6 +6,19 @@
   margin-left: 1.5rem;
 }
 
-.blockquote__text{
+.blockquote__body{
   font-size: 1.2rem;
+}
+
+.blockquote__header{
+  color: var(--darkGrey);
+  padding-bottom: 0.5rem;
+}
+
+.blockquote__name{
+  font-weight: 600;
+}
+
+.blockquote__company-name{
+  font-weight: 300;  
 }

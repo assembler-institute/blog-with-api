@@ -8,6 +8,7 @@
 
 .modal-header .btn-close {
   transform: scale(1.5);
+  z-index: 1100;
 }
 
 @media (min-width: 576px) {

@@ -138,6 +138,7 @@ async function fillTinderSection() {
     const users = await fetchData("users", userId - 1, 1);
 
     const { name } = { ...users[0] };
+
     const templateCard = `
       <template id="tinder-template-${id}">
         <div class="post__card col-md-4 hoverable" id="card-${id}">
@@ -189,22 +190,19 @@ async function fillModal(modalId) {
         <div class="modal-content p-4">
           <div class="post row">
             <div class="post__user col-4 col-md-3 d-flex flex-column align-items-stretch justify-content-start p-4">
-              <div class="">
+              <div class="post__avatar">
                 <i class="bi bi-emoji-sunglasses big"></i>
               </div>
               <div class="">
-                <h6><strong>By</strong> ${name}</h6>
-                <h6><strong>From</strong> ${company.name}</h6>
-                <hr />
-                <p>
-                  <small> ${company.catchPhrase}</small>
-                </p>
+                <h6 class="post__name"><strong>By</strong> ${name}</h6>
+                <h6 class="post__company-name"><strong>From</strong> ${company.name}</h6>
+                <p class="post__company-catch-phrase"> ${company.catchPhrase}</p>
               </div>
             </div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             <div class="post__content col-8 col-md-9">
               <div class="post__header row modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                <h3 class="post__title" id="postModalLabel">
+                <h3 class="post__title text-capitalize" id="postModalLabel">
                   ${title}
                 </h3>
               </div>
@@ -212,22 +210,10 @@ async function fillModal(modalId) {
                 <div class="post__text">
                   <em>${body}</em>
                 </div>
-                <hr />
-                <div class="comments col 12" id="totalComments">N comments</div>
-                <hr />
-                <div id="commentsArea" class="comments-area">
-                  <div class="d-flex p-4">
-                    <i class="bi bi-emoji-sunglasses pr-4"></i>
-                    <blockquote class="blockquote">
-                      <p class="blockquote__text">
-                        comment text
-                      </p>
-                      <footer class="blockquote__footer">
-                        comment author
-                        <cite title="Source Title">comment author company name </cite>
-                      </footer>
-                    </blockquote>
-                  </div>
+                <div class="comments">
+                  <div class="comments__total col 12" id="totalComments">N comments</div>
+                  <ul class="comments__list" id="commentsArea">
+                  </ul>
                 </div>
               </div>
             </div>
@@ -251,26 +237,36 @@ async function fillModal(modalId) {
  * Fill modal´s comments
  */
 async function fillModalComments(modalId, companyName) {
+
   const comments = await fetchData("comments", 0, 500);
-  let commentsCounter = 0;
+
+  let counter = 0;
+
   const commentArea = document.getElementById("commentsArea");
+
   commentArea.innerHTML = "";
+
   for (const comment of comments) {
-    const { postId, id, name, email, body } = { ...comment };
+
+    const { postId, id, name, body } = { ...comment };
+
     if (postId === modalId) {
-      commentsCounter++;
+
+      counter++;
+
       const templateModalComment = `
         <template id="comment-template-${id}">
-          <div class="d-flex p-4">
+          <li class="comments__item d-flex">
             <i class="bi bi-emoji-sunglasses pr-4"></i>
             <blockquote class="blockquote">
-              <p class="blockquote__text">${body} </p>
-              <footer class="blockquote__footer">
-                ${name}
-                <cite title="Source Title">${companyName} </cite>
-              </footer>
+              <div class="blockquote__header">
+                <p class="blockquote__name d-inline">${name}</p>
+                <span class="blockquote__dot"> · </span>
+                <cite title="Source Title" class="blockquote__company-name">${companyName}</cite>
+              </div>
+              <p class="blockquote__body">${body}</p>
             </blockquote>
-          </div>
+          </li>
         </template>
       `;
 
@@ -282,9 +278,8 @@ async function fillModalComments(modalId, companyName) {
       commentArea.appendChild(copyContent);
     }
   }
-  document.getElementById(
-    "totalComments"
-  ).innerHTML = `${commentsCounter} comments`;
+
+  document.getElementById("totalComments").innerHTML = `${counter} comments`;
 }
 
 /**
