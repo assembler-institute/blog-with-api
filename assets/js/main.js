@@ -464,7 +464,6 @@ function recountComments(){
  * 
  * @param {String} name name of user or company 
  */
-
 async function userIcon(name){
   const users=await fetch("https://jsonplaceholder.typicode.com/users") //id del comentario
     .then(response => response.json())
