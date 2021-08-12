@@ -11,6 +11,7 @@
 			integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
 			crossorigin="anonymous"
 		/>
+		<link rel="stylesheet" href="/assets/css/styles.css">
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
@@ -23,25 +24,24 @@
 	<body>
 		<header>
 			<nav class="navbar navbar-light bg-light">
-				<div class="container-fluid">
+				<div class="container d-flex">
 					<a class="navbar-brand" href="/">
 						<img
-							src="/assets/img/image-(1).jpg"
-							alt=""
-							width="30"
-							height="24"
-							class="d-inline-block align-text-top"
+							src="/assets/img/logo.svg"
+							alt="Logo"
+							class="d-inline-block logo"
 						/>
-						API blog
+						<span>API blog</span>
 					</a>
 					<form class="d-flex">
 						<input
+							id="searchValue"
 							class="form-control me-2"
 							type="search"
 							placeholder="Search"
 							aria-label="Search"
 						/>
-						<button class="btn btn-outline-success" type="submit">
+						<button id="searchButton" class="btn btn-outline-success">
 							Search
 						</button>
 					</form>
@@ -80,9 +80,9 @@
 				<div class="carousel-inner">
 					<div class="carousel-item active">
 						<img
-							src="./assets/img/paisaje-test.jpg"
+							src="https://picsum.photos/1400/200?random=101"
 							class="d-block w-100"
-							alt="..."
+							alt="Carousel picture 1"
 						/>
 						<div class="carousel-caption d-none d-md-block">
 							<h5>First slide label</h5>
@@ -93,9 +93,9 @@
 					</div>
 					<div class="carousel-item">
 						<img
-							src="./assets/img/paisaje-test.jpg"
+							src="https://picsum.photos/1400/200?random=102"
 							class="d-block w-100"
-							alt="..."
+							alt="Carousel picture 2"
 						/>
 						<div class="carousel-caption d-none d-md-block">
 							<h5>Second slide label</h5>
@@ -106,9 +106,9 @@
 					</div>
 					<div class="carousel-item">
 						<img
-							src="./assets/img/paisaje-test.jpg"
+							src="https://picsum.photos/1400/200?random=103"
 							class="d-block w-100"
-							alt="..."
+							alt="Carousel picture 3"
 						/>
 						<div class="carousel-caption d-none d-md-block">
 							<h5>Third slide label</h5>
@@ -138,27 +138,69 @@
 				</button>
 			</section>
 
-			<section class="container">
-				<div id="postFeed" class="row justify-content-start gx-1 gy-3"></div>
+			<section class="container my-4">
+				<div id="postFeed" class="row justify-content-start gy-3"></div>
 			</section>
+
 		</main>
 
-		<footer></footer>
-
-		<!-- Modal -->
+		<!-- Modal post-->
 		<article>
 			<div
-				class="modal fade"
+				class="modal fade "
 				id="modalTemplate"
 				tabindex="-1"
 				aria-labelledby="exampleModalLabel"
 				aria-hidden="true"
 			>
-				<div class="modal-dialog">
+				<div class="modal-dialog modal-lg modal-dialog-centered">
 					<div id="myModal" class="modal-content">
 					</div>
 				</div>
 			</div>
 		</article>
+
+		<!-- Modal edit post-->
+		<article>
+			<div
+				class="modal fade"
+				id="exampleModal2"
+				tabindex="-1"
+				aria-labelledby="exampleModalLabel"
+				aria-hidden="true"
+			>
+				<div class="modal-dialog">
+					<div id="myModal2" class="modal-content">
+						<div class="modal-header">
+							<h2 class="modal-title" id="modalFormTitle">Edit post</h2>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							></button>
+						</div>
+						<div id="modalFormBody" class="modal-body">
+						</div>
+					</div>
+				</div>
+			</div>
+		</article>
+		<aside class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+			<div id="liveToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+				<div class="d-flex">
+					<div class="toast-body">Your post has been edited succesfully</div>
+					<button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+				</div>
+			</div>
+		</aside>
+		<aside class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+			<div id="liveToastDelete" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+				<div class="d-flex">
+					<div class="toast-body">Your post has been deleted succesfully</div>
+					<button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+				</div>
+			</div>
+		</aside>
 	</body>
 </html>

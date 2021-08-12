@@ -1,0 +1,7 @@
+.logo {
+  width: 3rem;
+}
+
+.capitalize-text::first-letter {
+  text-transform: capitalize;
+}
