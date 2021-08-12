@@ -95,16 +95,20 @@ function fillingModal(e) {
           user_info.remove();
           list_comments.remove();
         }
+        let footer = document.querySelector(".modal-footer");
+        if (footer.classList.contains("d-none"))
+          footer.classList.remove("d-none");
 
+        //if (!modalFooter) modal.appendChild(cloneFooter);
         //Then we create a new section with the user's info and insert it dynamically in the modal-content div
 
         userInfo.id = "user-info";
         userInfo.className = "modal-body";
         userInfo.style.borderTop = "1px solid lightgrey";
         let username = document.createElement("p");
-        username.innerHTML = `<b>Author</b>: ${response.name}`;
+        username.innerHTML = `<b>${response.name}</b>`;
         let mail = document.createElement("p");
-        mail.innerHTML = `<b>Email</b>: ${response.email}`;
+        mail.innerHTML = response.email;
         userInfo.appendChild(username);
         userInfo.appendChild(mail);
         modal.insertBefore(userInfo, modal.children[2]); //As we do not want it appended as the last child, we use the insertBefore method to add it after the third element of the div
@@ -121,21 +125,20 @@ function fillingModal(e) {
         return response.json();
       })
       .then((response) => {
-        userInfo.lastChild.remove();
-
+        document.querySelector(".modal-footer").classList.add("d-none");
         listComments.id = "list-comments";
-        listComments.style.borderTop = "1px solid lightgrey";
         for (let comment of response) {
           let commentDiv = document.createElement("div");
           commentDiv.className = "modal-body";
+          commentDiv.style.borderTop = "1px solid lightgrey";
           let commentUserName = document.createElement("p");
-          commentUserName.innerHTML = `<b>Author</b>: ${comment.name}`;
+          commentUserName.innerHTML = `<b>${comment.name}</b>`;
           let commentMail = document.createElement("p");
-          commentMail.innerHTML = `<b>Email</b>: ${comment.email}`;
+          commentMail.innerHTML = `<b>${comment.email}</b>`;
           let commentBody = document.createElement("p");
-          commentBody.innerHTML = `<b>Comment</b>: ${comment.body}`;
-          commentDiv.appendChild(commentBody);
+          commentBody.innerHTML = comment.body;
           commentDiv.appendChild(commentUserName);
+          commentDiv.appendChild(commentBody);
           commentDiv.appendChild(commentMail);
           listComments.appendChild(commentDiv);
           modal.insertBefore(listComments, modal.children[3]);
