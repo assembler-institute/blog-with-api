@@ -15,6 +15,16 @@ function switchStyles() {
 }
 
 /**
+ * Initialize the blog
+ */
+(function initialize() {
+  fillMainPost();
+  fillLinesSection();
+  fillTinderSection();
+  fillInlineSection()
+})()
+
+/**
  * Fetch data
  *
  * @param {Number} from
@@ -33,8 +43,8 @@ async function fetchData(section = "posts", from = 0, limit = 10) {
 
 /**
  * Fill main post
- * 
-* @param {String} mainPost begining post
+ *
+ * @param {String} mainPost begining post
  */
 async function fillMainPost(mainPost = 0) {
   let cards = await fetchData("posts", mainPost, 1);
@@ -83,9 +93,9 @@ async function fillMainPost(mainPost = 0) {
 
 /**
  * Fill post of line Section
- * 
+ *
  *  @param {Number} linePost begining post
- *  @param {Number} lineLimit number of post to fetch 
+ *  @param {Number} lineLimit number of post to fetch
  */
 async function fillLinesSection(linePost = 1, lineLimit = 6) {
   let cards = await fetchData("posts", linePost, lineLimit);
@@ -126,13 +136,12 @@ async function fillLinesSection(linePost = 1, lineLimit = 6) {
 
       modal.show();
     });
-
   }
 }
 
 /**
  * Fill post of tinder Section
- * 
+ *
  *  @param {Number} tinderPost begining post
  *  @param {Number} tinderLimit number of post to fetch
  */
@@ -185,7 +194,7 @@ async function fillTinderSection(tinderPost = 7, tinderLimit = 6) {
 
 /**
  * Fill post of line Section
- * 
+ *
  *  @param {Number} inlinePost begining post
  *  @param {Number} inlineLimit number of post to fetch
  */
@@ -235,7 +244,7 @@ async function fillInlineSection(inlinePost = 13, inlineLimit = 10) {
 
 /**
  * Fill the modal when read more is clicked
- * 
+ *
  *  @param {Number} modalId id of  modal
  */
 async function fillModal(modalId) {
@@ -305,9 +314,9 @@ async function fillModal(modalId) {
 
 /**
  * Fill modal´s comments
- * 
+ *
  *  @param {Number} modalId id of  modal
- *  @param {String} companyName name of user company 
+ *  @param {String} companyName name of user company
  */
 async function fillModalComments(modalId, companyName) {
 
@@ -317,7 +326,7 @@ async function fillModalComments(modalId, companyName) {
 
   commentArea.innerHTML = "";
 
-  for (let index = comments.length; index > 0 ; index--) {
+  for (let index = comments.length; index > 0; index--) {
 
     const { postId, id, name, body, } = { ...comments[index] };
 
@@ -352,6 +361,7 @@ async function fillModalComments(modalId, companyName) {
       const copyContent = document.importNode(contentTemplate, true);
       document.getElementById(`comment-template-${id}`).remove();
       commentArea.appendChild(copyContent);
+
       document.getElementById(`comment-delete-${id}`).addEventListener("click", deleteComment)
       document.getElementById(`comment-edit-${id}`).addEventListener("click", editComment)
     }
@@ -361,19 +371,9 @@ async function fillModalComments(modalId, companyName) {
 }
 
 /**
- * Initialize the blog
- */
-(function initialize() {
-  fillMainPost();
-  fillLinesSection();
-  fillTinderSection();
-  fillInlineSection()
-})()
-
-/**
  * Delete comment of post
- * 
- * @param {Object} e event 
+ *
+ * @param {Object} e event
  */
 async function deleteComment(e) {
   const id = e.target.parentElement.dataset.id;
@@ -392,27 +392,27 @@ async function deleteComment(e) {
 
 /**
  * Edit comment of post
- * 
- * @param {Object} e event 
+ *
+ * @param {Object} e event
  */
- function editComment(e) {
+function editComment(e) {
   const id = e.target.parentElement.dataset.id;
 
-  let nameContainer=document.getElementById(`blockquote__name-${id}`);
-  let prevName=nameContainer.innerHTML;
+  let nameContainer = document.getElementById(`blockquote__name-${id}`);
+  let prevName = nameContainer.innerHTML;
 
-  nameContainer.innerHTML=`
+  nameContainer.innerHTML = `
     <textarea name="textareaName" rows="3" cols="40" id="name-text-area-${id}">
       ${prevName}
-    </textarea> 
+    </textarea>
     `
-  let textContainer=document.getElementById(`blockquote__body-${id}`);
-  let prevText= textContainer.innerHTML;
+  let textContainer = document.getElementById(`blockquote__body-${id}`);
+  let prevText = textContainer.innerHTML;
 
-  textContainer.innerHTML=`
+  textContainer.innerHTML = `
     <textarea name="textareaBody" rows="5" cols="40" id="body-text-area-${id}">
       ${prevText}
-    </textarea> 
+    </textarea>
     <button type="button" class="comments__save" id="comments__save-${id}">
       save
     </button>
@@ -424,37 +424,37 @@ async function deleteComment(e) {
 
 /**
  * Saves comment after edit
- * 
- * @param {Number} id id of comment 
+ *
+ * @param {Number} id id of comment
  */
-async function saveEditComment(id){
+async function saveEditComment(id) {
   const baseUrl = "https://jsonplaceholder.typicode.com";
-  let finalName= document.getElementById(`name-text-area-${id}`).value;
-  document.getElementById(`blockquote__name-${id}`).innerHTML=finalName;
+  let finalName = document.getElementById(`name-text-area-${id}`).value;
+  document.getElementById(`blockquote__name-${id}`).innerHTML = finalName;
 
-  let finalText= document.getElementById(`body-text-area-${id}`).value;
-  document.getElementById(`blockquote__body-${id}`).innerHTML=finalText;
+  let finalText = document.getElementById(`body-text-area-${id}`).value;
+  document.getElementById(`blockquote__body-${id}`).innerHTML = finalText;
 
-    let response = await fetch(`${baseUrl}/comments/${id}`, {
-      method: 'PATCH',
-      body: JSON.stringify({
-        name: finalName,
-        body: finalText,
-      }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    });
-    if (response.status === 200) {
-      console.log("El comentario se ha editado");
-    }
-    return response
+  let response = await fetch(`${baseUrl}/comments/${id}`, {
+    method: 'PATCH',
+    body: JSON.stringify({
+      name: finalName,
+      body: finalText,
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  });
+  if (response.status === 200) {
+    console.log("El comentario se ha editado");
+  }
+  return response
 }
 
 /**
  * Recount and modify total comments
  */
-function recountComments(){
-  const counter =document.getElementById("comments-list").children.length
+function recountComments() {
+  const counter = document.getElementById("comments-list").children.length
   document.getElementById("totalComments").innerHTML = `${counter} comments`;
 }
