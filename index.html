@@ -10,9 +10,12 @@
   <!-- jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
   <!-- Custom JS files -->
+  <script src='assets/js/darkMode.js' defer></script>
+  <script src='assets/js/posts.js' defer></script>
+  <script src='assets/js/comments.js' defer></script>
+  <script src='assets/js/icons.js' defer></script>
   <script src='assets/js/main.js' defer></script>
   <script src='assets/js/tinder.js' defer></script>
-  <!-- <script src='assets/js/cursor.js' defer></script> -->
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,21 +39,6 @@
 
 <body>
 
-  <!-- Cursor -->
-  <!-- <div class="cursor">
-    <div class="cursor__ball cursor__ball--big ">
-      <svg>
-        <circle cx="15" cy="15" r="12" stroke-width="0"></circle>
-      </svg>
-    </div>
-    <div class="cursor__ball cursor__ball--small">
-      <svg>
-        <circle cx="5" cy="5" r="4" stroke-width="0"></circle>
-      </svg>
-    </div>
-  </div> -->
-  <!-- Cursor -->
-
   <!-- Main -->
   <main class="main">
 
@@ -60,7 +48,7 @@
 
       <!-- Toggle -->
       <div class="toggle__wrapper hoverable">
-        <div class="toggle" id="toggle">
+        <label class="toggle" id="toggle" htmlFor="toggle">
           <div class="toggle_icons">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -76,7 +64,7 @@
             </svg><!-- Moon -->
           </div>
           <input class="toggle__input" id="toggle__input" name="toggle" type="checkbox" />
-        </div>
+        </label>
       </div><!-- Toggle -->
     </header><!-- Header -->
 
