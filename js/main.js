@@ -1,5 +1,6 @@
 import { templateHeader, templateCard } from "./templates.js";
 
+// Print header template
 function printHome() {
   document
     .querySelector("body")
@@ -15,6 +16,7 @@ function printHome() {
 printHome();
 printPosts();
 
+// Print blog template
 function printCard() {
   document
     .querySelector(".row-cols-1")
@@ -27,6 +29,7 @@ function printCard() {
   document.querySelector(".row-cols-1").appendChild(copyNode);
 }
 
+// Print all the posts of the blog
 function printPosts() {
   $.get("http://localhost:3000/posts", function (jsonPosts) {
     var postsLength = jsonPosts.length;
@@ -35,49 +38,39 @@ function printPosts() {
 
       document.querySelectorAll(".card-body[data-post]")[i].dataset.postNum =
         jsonPosts[i].id;
+      document.querySelectorAll(".card-body[data-post]")[i].dataset.userId =
+        jsonPosts[i].userId;
 
       document.querySelectorAll(".card-title")[i].textContent =
         jsonPosts[i].title;
     }
 
     $("[data-show]").on("click", (e) => {
-      loadPostInfo(e, jsonPosts);
+      loadPostInfo(e);
       collapseButton();
     });
   });
 }
 
-function collapseButton() {
-  let collapse = document.querySelector("#collapseExample");
-  if (collapse.classList.contains("show")) {
-    collapse.classList.remove("show");
-  }
-}
-
-function loadPostInfo(e, jsonPosts) {
+// Fill modal with post info
+function loadPostInfo(e) {
   let postNumber = e.target.parentElement.dataset.postNum;
-
-  //let parsed = parseInt(postNumber);
-  //let parsedResult = parsed + 1;
+  let userId = e.target.parentElement.dataset.userId;
 
   document.querySelector(".modal-content").dataset.blogId = postNumber;
 
-  document.querySelector(".modal-title").textContent =
-    jsonPosts[postNumber - 1].title;
-  document.querySelector(".modal-body").textContent =
-    jsonPosts[postNumber - 1].body;
+  $.get(`http://localhost:3000/posts/${postNumber}`, function (post) {
+    $(".modal-title").text(post.title);
+    $(".modal-body").text(post.body);
+  });
 
-  $.get("http://localhost:3000/users", function (jsonUsers) {
-    jsonUsers.forEach((jsonUser) => {
-      if (jsonPosts[postNumber - 1].userId == jsonUser.id) {
-        document.querySelector("[data-username]").textContent =
-          jsonUser.username;
-        document.querySelector("[data-email]").textContent = jsonUser.email;
-      }
-    });
+  $.get(`http://localhost:3000/users/${userId}`, function (jsonUser) {
+    document.querySelector("[data-username]").textContent = jsonUser.username;
+    document.querySelector("[data-email]").textContent = jsonUser.email;
   });
 }
 
+// Show post comments
 $("[data-show-comments]").on("click", () => {
   let postId = document.querySelector(".modal-content").dataset.blogId;
   $.get(
@@ -92,10 +85,20 @@ $("[data-show-comments]").on("click", () => {
   );
 });
 
+// Collapse or show comments
+function collapseButton() {
+  let collapse = document.querySelector("#collapseExample");
+  if (collapse.classList.contains("show")) {
+    collapse.classList.remove("show");
+  }
+}
+
+// RESET modal content when close
 $("[delete-content]").on("click", () => {
   $("[data-comment]").html("");
 });
 
+// Delete post -> DELETE API
 $(`[data-action="delete"]`).on("click", (e) => {
   let postId = document.querySelector(".modal-content").dataset.blogId;
   console.log(postId);
@@ -116,14 +119,15 @@ $(`[data-action="delete"]`).on("click", (e) => {
   });
 });
 
+// Fill edit modal
 $(`[data-action="edit"]`).on("click", () => {
   $("[edit-title]").val($("[title]").text());
   $("[edit-body]").val($("[body]").text());
 });
 
+// Edit post -> PATCH API
 $("[confirm-edit]").on("click", () => {
   let postId = document.querySelector(".modal-content").dataset.blogId;
-  console.log(postId);
 
   fetch(`http://localhost:3000/posts/${postId}`, {
     method: "PATCH",
