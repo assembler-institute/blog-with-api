@@ -17,7 +17,6 @@ document.addEventListener("click", (event) => {
         deletePost(event)
     } else if (event.target.matches('[data-id]')) {
         modalEdit(event)
-
     }
 })
 
@@ -30,7 +29,6 @@ function createTemplate(post) {
     template.querySelector('img').setAttribute("data-id", post.id)
     template.querySelector('#edit').setAttribute("data-id", post.id)
     template.querySelector('figcaption').setAttribute("data-id", post.id)
-
     let clone = document.importNode(template, true);
     document.getElementById("cards-container").appendChild(clone)
 }
@@ -57,12 +55,13 @@ function deletePost(event) {
 }
 
 function showSummary(event) {
+    let userIdInfo = parseInt(event.target.dataset.id)
     fetch("http://localhost:3000/posts")
         .then(response => response.json())
         .then(data => {
             data.forEach(post => {
 
-                if (post.id === parseInt(event.target.dataset.id)) {
+                if (post.id === userIdInfo) {
                     document.getElementById("post-title").innerText = post.title
                     document.getElementById("post-body").innerText = post.body
 
@@ -75,27 +74,38 @@ function showSummary(event) {
                 }
             })
         })
+    document.querySelector("#comments").addEventListener("click", () => {
+        fetch(`http://localhost:3000/comments/${userIdInfo}`)
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(post => {
+                    document.getElementById("titleComments").innerText = user.username
+                    document.getElementById("bodyComments").innerText = user.email
+                })
+            });
+    });
 }
+
 
 //--------------------------------------edit-----------------------------------------------
 
 function modalEdit(event) {
-    let userIdPrueba = parseInt(event.target.dataset.id)
+    let userIdEdit = parseInt(event.target.dataset.id)
     fetch("http://localhost:3000/posts")
         .then(response => response.json())
         .then(data => {
             data.forEach(post => {
-                if (post.id === userIdPrueba) {
+                if (post.id === userIdEdit) {
                     document.querySelector("#recipient-title").value = post.title
                     document.querySelector("#message-text").value = post.body
                 }
             })
         })
-    document.querySelector("#send").addEventListener("click", (event) => {
+    document.querySelector("#send").addEventListener("click", () => {
         let newBody = document.querySelector("#recipient-title").value
         let newTitle = document.querySelector("#message-text").value
         fetch(
-            `http://localhost:3000/posts/${userIdPrueba}`, {
+            `http://localhost:3000/posts/${userIdEdit}`, {
                 method: "PATCH",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8",
