@@ -10,7 +10,26 @@ document.getElementById("carousel-2").src =
 document.getElementById("carousel-3").src =
   "https://picsum.photos/id/55/1000/400";
 
+//---------------------------------------------------LOAD MORE POSTS
+
+
+
+
+
+
+
+// btnMore.addEventListener("click", function loadPosts() {
+//   let row1 = document.createElement("div");
+//   row1.className = "row gap-2";
+//   row1.textContent();
+//   let row2 = document.createElement("div");
+//   row2.className = "row gap-2";
+//   divCont.appendChild(row1);
+//   divCont.appendChild(row2);
+// });
+
 //---------------------------------------------------ADDING IDS TO CARDS AND MORE
+
 
 function ids() {
   let cards = document.querySelectorAll(".card");
