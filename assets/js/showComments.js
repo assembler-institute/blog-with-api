@@ -1,5 +1,5 @@
 document.addEventListener("click", function (e) {
-  if (e.target.matches("[data-comments]") || e.target.matches("[data-comments] *")) showComments(e.target.dataset.comments);
+  if (e.target.matches("[data-comments]")) showComments(e.target.dataset.comments);
 });
 
 function showComments(post) {
@@ -14,7 +14,6 @@ function showComments(post) {
 function renderComments(comments) {
   let contentDom = document.getElementById("comments");
   contentDom.innerHTML = '<h3 class="text-center">Comments</h3>';
-  console.log(comments);
   comments.forEach((comment) => {
     contentDom.innerHTML += `<div class="card card-body d-flex flex-row">
     <div>

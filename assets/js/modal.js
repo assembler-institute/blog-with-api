@@ -1,15 +1,12 @@
-//listen click to the corresponding image
+//listen click to the corresponding image post
 document.addEventListener("click", function (e) {
   if (e.target.matches("[data-id]")) getModalPost(e);
 });
 
+//verify if the edit button contains data-post
 document.addEventListener("click", function (e) {
   if (e.target.matches("[data-post]")) renderEditModal(e);
 });
-
-async function fetchGetPost(post) {
-  return await fetch(`http://localhost:3000/posts/${post}`);
-}
 
 async function renderEditModal(e) {
   const response = await fetch(`http://localhost:3000/posts/${e.target.dataset.post}`);
@@ -24,6 +21,11 @@ function fillEditModal(post) {
   document.querySelector("#edit-body").value = post.body;
 }
 
+
+async function fetchGetPost(post) {
+  return await fetch(`http://localhost:3000/posts/${post}`);
+}
+
 //get correct post for the modal
 function getModalPost(e) {
   fetchGetPost(e.target.dataset.id)
@@ -33,17 +35,22 @@ function getModalPost(e) {
 
 //add content to the modal
 function fillModalContent(post) {
-  document.querySelector("#comments").classList.remove("show");
-  document.querySelector("#edit-button").dataset.post = post.id;
-  document.querySelector("#edit-button-icon").dataset.post = post.id;
-  document.querySelector("#confirm-edit").dataset.edit = post.id;
-  document.querySelector("#confirm-edit-icon").dataset.edit = post.id;
-  document.querySelector("#confirm-delete").dataset.delete = post.id;
-  document.querySelector("#confirm-delete-icon").dataset.delete = post.id;
-  document.querySelector("#show-comments").dataset.comments = post.id;
-  document.querySelector("#show-comments-icon").dataset.comments = post.id;
+  //fill the modal with the post information
   document.querySelector(".modal-title").textContent = post.title;
   document.querySelector(".modal-body").textContent = post.body;
+  //edit post
+  document.querySelector("#edit-button").dataset.post = post.id;
+  document.querySelector("#edit-button-icon").dataset.post = post.id;
+  //confirm edit
+  document.querySelector("#confirm-edit").dataset.edit = post.id;
+  document.querySelector("#confirm-edit-icon").dataset.edit = post.id;
+  //confirm delete
+  document.querySelector("#confirm-delete").dataset.delete = post.id;
+  document.querySelector("#confirm-delete-icon").dataset.delete = post.id;
+  //comments
+  document.querySelector("#show-comments").dataset.comments = post.id;
+  document.querySelector("#show-comments-icon").dataset.comments = post.id;
+  document.querySelector("#comments").classList.remove("show");
   getUser(post);
 }
 

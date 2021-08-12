@@ -1,5 +1,5 @@
 let page = 1;
-//Get list of posts
+//Get the first nine posts
 fetch(`http://localhost:3000/posts?_page=${page}&_limit=9`)
   .then((response) => response.json())
   .then((data) => renderPosts(data));
@@ -14,7 +14,7 @@ function renderPosts(data) {
   });
 }
 
-//Render posts
+//Render post
 function renderPost(post, cont, div) {
   let main = document.getElementById("app");
   if (cont % 3 === 0) {
@@ -33,7 +33,10 @@ function renderPost(post, cont, div) {
       </div>
     `;
     main.appendChild(div);
-  } else {
+  }
+
+  else {
+    //Get the last position post
     let lastPosition = document.querySelectorAll(".row").length - 1;
     document.querySelectorAll(".row")[lastPosition].innerHTML += `
     <div class="col-lg-4 col-md-6 col-sm-12">
@@ -50,6 +53,7 @@ function renderPost(post, cont, div) {
   }
 }
 
+//infinite scroll function
 window.addEventListener("scroll", () => {
   const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
   if (clientHeight + scrollTop >= scrollHeight) {

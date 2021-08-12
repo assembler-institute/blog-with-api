@@ -1,8 +1,8 @@
-.color-border{
+.modal__color__border{
   color: white;
   border-style: none;
 }
 
-.color-border:hover{
+.modal__color-border:hover{
 color: rgb(164, 164, 164);
 }
