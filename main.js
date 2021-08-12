@@ -12,6 +12,12 @@ document.getElementById("carousel-3").src =
 
 //---------------------------------------------------LOAD MORE POSTS
 
+
+
+
+
+
+
 // btnMore.addEventListener("click", function loadPosts() {
 //   let row1 = document.createElement("div");
 //   row1.className = "row gap-2";
@@ -24,9 +30,9 @@ document.getElementById("carousel-3").src =
 
 //---------------------------------------------------ADDING IDS TO CARDS AND MORE
 
-let cards = document.querySelectorAll(".card");
 
 function ids() {
+  let cards = document.querySelectorAll(".card");
   for (let index = 0; index < cards.length; index++) {
     //We are adding ids to the cards and buttons
 
