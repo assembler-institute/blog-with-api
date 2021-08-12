@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -18,8 +17,9 @@
       crossorigin="anonymous"
     ></script>
     <script src="./assets/main.js" defer></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
   </head>
-  <body>
+  <body class="body">
     <!-- Navbar -->
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -110,87 +110,89 @@
           An example danger alert with an icon
         </div>
       </div>
-    </div>
-    <!-- Container -->
-    <!--Modal-->
-    <div
-      class="modal fade"
-      id="exampleModal"
-      tabindex="-1"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title"></h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
 
-          <div class="modal-body">
-            <h5 class="modal-body post-text"></h5>
-            <h5 class="modal-user"></h5>
-            <p class="modal-email"></p>
+      <!--Modal Info-->
+      <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"></h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
 
-            <p>
-              <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                Comments
-              </button>
-              <!-- <button class="btn btn-primary btn-edit" type="button">
-                Edit
-              </button> -->
-            </p>
-            <div class="collapse" id="collapseExample">
-              <div class="card card-body">
-                <!-- <p class="card-body-name"></p>
-                <p class="card-body-email"></p>
-                <p class="card-body-comment"></p> -->
-                <!-- Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger. -->
-              </div>
+        <div class="modal-body">
+          <h5 class="modal-body post-text"></h5>
+          <h5 class="modal-user"></h5>
+          <p class="modal-email"></p>
+
+          <p>
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              Comments
+            </button>
+            <!-- <button class="btn btn-primary btn-edit" type="button">
+              Edit
+            </button> -->
+          </p>
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+              <!-- <p class="card-body-name"></p>
+              <p class="card-body-email"></p>
+              <p class="card-body-comment"></p> -->
+              <!-- Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger. -->
             </div>
           </div>
         </div>
       </div>
     </div>
-    
-    <div class="modal fade" id="edit-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Post Edit</h5>
-            <button type="button" class="btn-close btn-close-edit" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="edit-form-modal">
-              <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">Title:</label>
-                <input type="text" class="form-control form-title" id="recipient-name" value="">
-              </div>
-              <div class="mb-3">
-                <label for="message-text" class="col-form-label">Body:</label>
-                <textarea class="form-control form-text" id="message-text" value=""></textarea>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-close-edit" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary btn-edit-submit">Save</button>
-              </div>
-            </form>
-          </div>
-          <!-- <div class="modal-footer">
-            <button type="button" class="btn btn-secondary btn-close-edit" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary btn-edit-submit">Save</button>
-          </div> -->
+      </div><!--Modal Info-->
+
+      <!-- Modal Edit -->
+      <div class="modal fade" id="edit-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Post Edit</h5>
+          <button type="button" class="btn-close btn-close-edit" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <div class="modal-body">
+          <form id="edit-form-modal">
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Title:</label>
+              <input type="text" class="form-control form-title" id="recipient-name" value="">
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Body:</label>
+              <textarea class="form-control form-text" id="message-text" value=""></textarea>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary btn-close-edit" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary btn-edit-submit">Save</button>
+            </div>
+          </form>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-close-edit" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary btn-edit-submit">Save</button>
+        </div> -->
       </div>
     </div>
-    <!-- Card -->
-    <div class="container-sm">
-      <section class="row row-cols-auto cards"></section>
-    </div>
+      </div>
+  
+      <!-- Card -->
+      <div class="container-sm">
+    <section class="row row-cols-auto cards"></section>
+      </div><!-- Card -->
+    </div><!-- Container -->
 
     <!-- Template -->
     <template id="template-card">

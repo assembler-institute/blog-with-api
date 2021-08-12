@@ -1,0 +1,9 @@
+/**
+ * MODULE MODAL
+ */
+
+.modal {
+    background: rgba(0, 0, 0, 0.9);
+    color: black;
+    transition: opacity 500ms ease-in;
+}

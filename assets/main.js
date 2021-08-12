@@ -4,16 +4,18 @@ const template = document.getElementById("template-card").content;
 const fragment = document.createDocumentFragment();
 
 // Variables of modal
-let btnClose = document.querySelector(".btn-close");
-let exampleModal = document.getElementById("exampleModal");
-let editModal = document.getElementById("edit-Modal");
+const btnClose = document.querySelector(".btn-close");
+const exampleModal = document.getElementById("exampleModal");
+const editModal = document.getElementById("edit-Modal");
 
 // Variables of alert
 const alertSuccess = document.querySelector(".alert-success")
 const alertDanger = document.querySelector(".alert-danger")
 
 // Images 
-const images = ["levitan.jpg", "levitan1.jpg", "levitan2.jpg", "levitan3.jpg", "levitan4.jpg", "levitan5.jpg"];
+const images = ["levitan1.jpg", "levitan2.jpg", "levitan3.jpg", "levitan4.jpg", "levitan5.jpg", "levitan6.jpg", 
+                "levitan7.jpg", "levitan8.jpg", "levitan9.jpg", "levitan10.jpg", "levitan11.jpg", "levitan12.jpg", 
+                "levitan13.jpg", "levitan14.jpg", "levitan15.jpg"];
 
 // Template
 fetch("http://localhost:3000/posts")
@@ -48,10 +50,6 @@ fetch("http://localhost:3000/posts")
     const modalEmail = document.querySelector(".modal-email");
     const cardBody = document.querySelector(".card-body");
 
-    // const modalCommentName = document.querySelector(".card-body-name");
-    // const modalCommentEmail = document.querySelector(".card-body-email");
-    // const modalComments = document.querySelector(".card-body-comment");
-
     // Modal to display info
     listBtn.forEach((element) => {
       element.addEventListener("click", event => {
@@ -81,7 +79,6 @@ fetch("http://localhost:3000/posts")
       fetch("http://localhost:3000/users")
         .then((res) => res.json())
         .then((data) => {
-          // console.log(data[id-1])
           modalUser.textContent = data[userId-1].name
           modalEmail.textContent = data[userId-1].email
         })
@@ -91,10 +88,9 @@ fetch("http://localhost:3000/posts")
       fetch(`http://localhost:3000/comments/?postId=${id}`)
         .then((res) => res.json())
         .then((data) => {
-          // console.log(data)
-          var html = ``;
+          let html = ``;
           data.forEach((element) => {
-            // console.log(element)
+            console.log(element)
             html += `
             <p class="card-body-name" style="font-weight:bold;">${element.name}</p>
             <p class="card-body-email">${element.email}</p>
@@ -119,8 +115,8 @@ fetch("http://localhost:3000/posts")
     function displayModalEdit(id) {
       editModal.style.display = "block";
       editModal.classList.add("show");
-          // console.log(id)
-          displayModalEditInfo(id)
+      
+      displayModalEditInfo(id)
     };
 
     function displayModalEditInfo(id) {
@@ -142,7 +138,6 @@ fetch("http://localhost:3000/posts")
     // Change data
     let editFormModal = document.querySelector("#edit-form-modal")
     editFormModal.addEventListener("submit", () => {
-      // console.log(formTitle.value)
       fetch("http://localhost:3000/posts/${id}", {
         method: "PATCH",
         body: JSON.stringify({
@@ -176,4 +171,36 @@ window.onclick = function (event) {
     closeModal();
   }
 };
+
+
+// Create starry night effect
+function starryNight() {
+  let count = 300;
+  let background = document.querySelector(".container");
+  let backgroundModal = document.querySelector(".modal")
+  let i = 0;
+
+  while (i < count) {
+    const star = document.createElement("i");
+    
+    let x = Math.round(Math.random() * window.innerWidth);
+    let y = Math.round(Math.random() * window.innerHeight);
+
+    let duration = Math.random() * 10;
+    let size = Math.random() * 2;
+
+    star.style.left = x+'px';
+    star.style.top = y+'px';
+    star.style.width = 1+size+'px';
+    star.style.height = 1+size+'px';
+
+    star.style.animationDuration = 5+duration+'s';
+    star.style.animationDelay = duration+'s';
+
+    background.appendChild(star);
+    i++;
+  }
+} 
+
+starryNight()
 
