@@ -12,13 +12,13 @@ $(window).on("resize", function () {
  */
 function swipeCard() {
   if ($(window).width() < 768) {
-    var animating = false;
-    var cardsCounter = 0;
-    var numOfCards = 6;
-    var decisionVal = 80;
-    var pullDeltaX = 0;
-    var deg = 0;
-    var $card, $cardReject, $cardLike;
+    let animating = false;
+    let cardsCounter = 0;
+    let numOfCards = 6;
+    let decisionVal = 80;
+    let pullDeltaX = 0;
+    let deg = 0;
+    let $card;
 
     function pullChange() {
       animating = true;
@@ -64,28 +64,24 @@ function swipeCard() {
       }, 300);
     }
 
-    $(document).on(
-      "mousedown touchstart",
-      ".post-card:not(.inactive)",
-      function (e) {
-        if (animating) return;
+    $(document).on("mousedown touchstart", ".post-card:not(.inactive)", function (e) {
+      if (animating) return;
 
-        $card = $(this);
-        var startX = e.pageX || e.originalEvent.touches[0].pageX;
+      $card = $(this);
+      let startX = e.pageX || e.originalEvent.touches[0].pageX;
 
-        $(document).on("mousemove touchmove", function (e) {
-          var x = e.pageX || e.originalEvent.touches[0].pageX;
-          pullDeltaX = x - startX;
-          if (!pullDeltaX) return;
-          pullChange();
-        });
+      $(document).on("mousemove touchmove", function (e) {
+        let x = e.pageX || e.originalEvent.touches[0].pageX;
+        pullDeltaX = x - startX;
+        if (!pullDeltaX) return;
+        pullChange();
+      });
 
-        $(document).on("mouseup touchend", function () {
-          $(document).off("mousemove touchmove mouseup touchend");
-          if (!pullDeltaX) return; // prevents from rapid click events
-          release();
-        });
-      }
-    );
+      $(document).on("mouseup touchend", function () {
+        $(document).off("mousemove touchmove mouseup touchend");
+        if (!pullDeltaX) return; // prevents from rapid click events
+        release();
+      });
+    });
   }
 }
