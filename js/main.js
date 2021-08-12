@@ -133,7 +133,7 @@ function alertDeleteVisibility(response) {
       $("[confirming]").modal("hide");
     }, 4000);
   }
-  printPosts();
+  window.location = window.location;
 }
 
 // Fill edit modal
@@ -181,5 +181,5 @@ function alertEditVisibility(response) {
       $("#editModal").modal("hide");
     }, 4000);
   }
-  printPosts();
+  window.location = window.location;
 }
