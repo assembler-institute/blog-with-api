@@ -10,26 +10,7 @@ document.getElementById("carousel-2").src =
 document.getElementById("carousel-3").src =
   "https://picsum.photos/id/55/1000/400";
 
-//---------------------------------------------------LOAD MORE POSTS
-
-
-
-
-
-
-
-// btnMore.addEventListener("click", function loadPosts() {
-//   let row1 = document.createElement("div");
-//   row1.className = "row gap-2";
-//   row1.textContent();
-//   let row2 = document.createElement("div");
-//   row2.className = "row gap-2";
-//   divCont.appendChild(row1);
-//   divCont.appendChild(row2);
-// });
-
 //---------------------------------------------------ADDING IDS TO CARDS AND MORE
-
 
 function ids() {
   let cards = document.querySelectorAll(".card");
@@ -78,10 +59,12 @@ function fillingModal(e) {
   let btnID = parseInt(e.target.id.slice(4, e.target.id.length));
   let modal = document.querySelector("#modal-content");
   let modalTitle = document.getElementById("modal_title");
-  let modalBody = document.getElementById("modal_body");
   let userInfo = document.createElement("section");
   let listComments = document.createElement("section");
   let btnComments = document.querySelector("#btn-comments");
+  let btnEdit = document.querySelector("#btn-edit");
+  let modalBody = document.getElementById("modal_body");
+  console.log();
 
   //We search inside the API for the post with the btnID + 1 id
 
@@ -90,7 +73,7 @@ function fillingModal(e) {
       return response.json();
     })
     .then((response) => {
-      modalTitle.textContent = response.title;
+      modalTitle.innerHTML = `${response.id} - <span id="title-post">${response.title}</span>`;
       modalBody.textContent = response.body;
 
       //Whenever you call a function with a local parameter like userID (myFunct(parameter)), you pass the value of the parameter to the second function
@@ -147,24 +130,63 @@ function fillingModal(e) {
         document.querySelector(".modal-footer").classList.add("d-none");
         listComments.id = "list-comments";
         for (let comment of response) {
-          let commentDiv = document.createElement("div");
-          commentDiv.className = "modal-body";
-          commentDiv.style.borderTop = "1px solid lightgrey";
-          let commentUserName = document.createElement("p");
-          commentUserName.innerHTML = `<b>${comment.name}</b>`;
-          let commentMail = document.createElement("p");
-          commentMail.innerHTML = `<b>${comment.email}</b>`;
-          let commentBody = document.createElement("p");
-          commentBody.innerHTML = comment.body;
-          commentDiv.appendChild(commentUserName);
-          commentDiv.appendChild(commentBody);
-          commentDiv.appendChild(commentMail);
-          listComments.appendChild(commentDiv);
+          listComments.innerHTML += `
+          <div class="modal-body d-flex" style="border-top: 1px solid lightgrey;">
+            <div class="flex-grow-1">
+              <p><b>${comment.name}</b></p>
+              <p>${comment.body}</p>
+              <p><b>${comment.email}</b></p>
+            </div>
+            <div class="d-flex flex-column align-items-start gap-2" id="icons-div">
+              <a href="">
+                <img src="./img/writing.svg" style="width: 2rem">
+              </a>
+              <a href="">
+                <img src="./img/eraser.svg" style="width: 2rem">
+              </a>
+            </div>
+          </div>
+          `;
           modal.insertBefore(listComments, modal.children[3]);
         }
       });
     //! Very important: if we do not delete the event listener, the user may click again and there are bugs
     //! It also gets duplicated the next time we load other comments if we do not remove it here!
     btnComments.removeEventListener("click", myComments);
+  });
+
+  btnEdit.addEventListener("click", editPost);
+}
+
+//---------------------------------------------------EDIT POST
+
+function editPost(btnID) {
+  document.querySelector(".modal-footer").classList.add("d-none");
+
+  document.getElementById("modal_body").innerHTML = `
+  <textarea name="textarea" id="textarea-body" class="w-100" style="height: 8rem">${
+    document.getElementById("modal_body").textContent
+  }</textarea>`;
+
+  document.getElementById("title-post").innerHTML = `
+  <textarea name="textarea" id="textarea-body" class="w-100" style="height: 2.5rem">${
+    document.getElementById("title-post").textContent
+  }</textarea>`;
+
+  document.getElementById("user-info").innerHTML = `
+  <div class="modal-body d-flex">
+            <div class="flex-grow-1">
+              ${document.getElementById("user-info").innerHTML}
+            </div>
+            <div class="d-flex align-items-center">
+            <button type="button" id="btn-confirm" class="btn btn-warning">
+            Edit
+          </button>
+            </div>
+          </div>
+  `;
+  document.querySelector("#btn-edit").removeEventListener("click", editPost);
+  document.querySelector("#btn-confirm").addEventListener("click", () => {
+    console.log("hi");
   });
 }
