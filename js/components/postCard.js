@@ -1,7 +1,7 @@
 import searchParentTarget from "../utils/searchParentTarget.js";
 import { getPostsByLimit, getUser } from "../requests.js";
 import { insertPostComments } from "./postComment.js";
-import { clearModalContent, updateModalContentPost } from "./modal.js";
+import { updateModalPostContent } from "./modal.js";
 
 export function postCardListener() {
 	document.addEventListener("click", async function (event) {
@@ -11,8 +11,7 @@ export function postCardListener() {
 			sessionStorage.postId = target.dataset.postId;
 			const id = sessionStorage.postId;
 
-			clearModalContent();
-			await updateModalContentPost(id);
+			await updateModalPostContent(id);
 			await insertPostComments(id);
 		}
 	});
@@ -30,18 +29,12 @@ export async function insertPostCards() {
 		const postCard = createPostCard(post, user);
 		grid.insertAdjacentHTML("beforeend", postCard);
 	});
+
+	return posts;
 }
 
 export function clearPostCards() {
 	document.querySelector("#post-card-grid").innerHTML = null;
-}
-
-export function updatePostCard(id, data) {
-	const postCard = document.querySelector(`[data-post-id='${id}']`);
-	const postCardBody = postCard.querySelector(".card-body");
-
-	postCardBody.children[0].textContent = data.title;
-	postCardBody.children[1].textContent = data.body;
 }
 
 function createPostCard(post, user) {

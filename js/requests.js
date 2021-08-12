@@ -40,3 +40,14 @@ export async function updatePost(id, data) {
 
 	return response;
 }
+
+export async function deletePost(id) {
+	const url = `http://localhost:3000/posts/${id}`;
+	const options = {
+		method: "DELETE",
+	};
+
+	const response = await fetch(url, options);
+
+	return response;
+}

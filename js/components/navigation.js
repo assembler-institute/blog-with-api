@@ -1,47 +1,46 @@
 import { insertPostCards } from "./postCard.js";
 import { clearPostCards } from "./postCard.js";
 
-const POST_CARDS_PER_PAGE = parseInt(sessionStorage.limit);
-
 export function navigationListener() {
-	document.querySelector("#navigation").addEventListener("click", function (event) {
+	document.querySelector("#navigation").addEventListener("click", async function (event) {
 		const navButtons = this.querySelectorAll(".page-link");
 		const prevButton = navButtons[0];
 		const nextButton = navButtons[2];
 
-		if (event.target === prevButton) return goPrevPage(navButtons);
-		if (event.target === nextButton) return goNextPage(navButtons);
+		if (event.target === prevButton) {
+			await goPrevPage(navButtons);
+		} else if (event.target === nextButton) {
+			await goNextPage(navButtons);
+		}
 	});
 }
 
 async function goNextPage(navButtons) {
 	if (navButtons[2].disabled) return;
 
-	sessionStorage.start = parseInt(sessionStorage.start) + POST_CARDS_PER_PAGE;
+	sessionStorage.start = parseInt(sessionStorage.start) + parseInt(sessionStorage.limit);
 
 	clearPostCards();
-	await insertPostCards();
+	const posts = await insertPostCards();
 	updatePrevPageButton(navButtons[0]);
-	updateNextPageButton(navButtons[2]);
+	updateNextPageButton(navButtons[2], posts);
 	updateCurrentPageIndex(navButtons[1], 1);
 }
 
 async function goPrevPage(navButtons) {
 	if (navButtons[0].disabled) return;
 
-	sessionStorage.start = parseInt(sessionStorage.start) - POST_CARDS_PER_PAGE;
+	sessionStorage.start = parseInt(sessionStorage.start) - parseInt(sessionStorage.limit);
 
 	clearPostCards();
-	await insertPostCards();
+	const posts = await insertPostCards();
 	updatePrevPageButton(navButtons[0]);
-	updateNextPageButton(navButtons[2]);
+	updateNextPageButton(navButtons[2], posts);
 	updateCurrentPageIndex(navButtons[1], -1);
 }
 
-function updateNextPageButton(nextButton) {
-	const postCardNum = document.querySelectorAll("[data-component='post-card']").length;
-
-	if (postCardNum < POST_CARDS_PER_PAGE) {
+function updateNextPageButton(nextButton, posts) {
+	if (posts.length < parseInt(sessionStorage.limit)) {
 		nextButton.parentElement.classList.add("disabled");
 		nextButton.disabled = true;
 	} else {

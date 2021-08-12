@@ -1,138 +1,124 @@
-import { getPost, getUser, updatePost } from "../requests.js";
-import { updatePostCard } from "./postCard.js";
+import { getPost, getUser, updatePost, deletePost } from "../requests.js";
+import { insertPostCards, clearPostCards } from "./postCard.js";
 import { insertPostComments } from "./postComment.js";
 
-export function modalListener() {
-	const modal = document.querySelector("#modal-content");
+export function modalPostListener() {
+	const modal = document.querySelector("#modal");
 
 	modal.addEventListener("click", async function (event) {
 		const target = event.target;
+		const id = sessionStorage.postId;
 
 		if (target.matches("[data-action~='load-editor']") || target.matches("[data-action~='load-editor'] *")) {
-			const id = sessionStorage.postId;
-			clearModalContent();
-			await updateModalContentEditor(id);
-			return;
-		}
-
-		if (target.matches("[data-action~='load-post']") || target.matches("[data-action~='load-post'] *")) {
-			const id = sessionStorage.postId;
-			clearModalContent();
-			await updateModalContentPost(id);
+			await updateModalEditorContent(id);
+		} else if (target.matches("[data-action~='load-post']") || target.matches("[data-action~='load-post'] *")) {
+			await updateModalPostContent(id);
 			await insertPostComments(id);
-			return;
-		}
-
-		if (target.matches("[data-action~='save-post']") || target.matches("[data-action~='save-post'] *")) {
+		} else if (target.matches("[data-action~='close-modal']") || target.matches("[data-action~='close-modal'] *")) {
+			closeModal();
+		} else if (target.matches("[data-action~='save-post']") || target.matches("[data-action~='save-post'] *")) {
 			const form = document.forms["post-editor-form"];
-
-			const id = sessionStorage.postId;
-			const data = {
-				title: form.elements["title"].value,
-				body: form.elements["content"].value,
-			};
-
-			const response = await updatePost(id, data);
+			const response = await updatePost(id, {
+				title: form.elements["post-title"].value,
+				body: form.elements["post-content"].value,
+			});
 
 			if (response.ok) {
-				updatePostCard(id, data);
-
-				const message = modal.querySelector("#post-editor-ok");
-				const messageBs = new bootstrap.Collapse(message);
-
-				messageBs.show();
-				setTimeout(() => messageBs.hide(), 4000);
+				clearPostCards();
+				await insertPostCards();
 			}
+			displayEditPostMessage(response);
+		} else if (target.matches("[data-action~='delete-post']") || target.matches("[data-action~='delete-post'] *")) {
+			const response = await deletePost(id);
+
+			if (response.ok) {
+				clearPostCards();
+				await insertPostCards();
+			}
+
+			displayRemovePostMessage(response);
 		}
 	});
 }
 
-export async function updateModalContentPost(id) {
-	const modal = document.querySelector("#modal-content");
+function displayEditPostMessage(response) {
+	const modal = document.querySelector("#modal");
+
+	if (response.ok) {
+		const message = modal.querySelector("#post-editor-ok");
+		const messageBs = new bootstrap.Collapse(message);
+
+		messageBs.show();
+		setTimeout(() => messageBs.hide(), 4000);
+	} else {
+		const message = modal.querySelector("#post-editor-error");
+		const messageBs = new bootstrap.Collapse(message);
+
+		messageBs.show();
+		setTimeout(() => messageBs.hide(), 4000);
+	}
+}
+
+function displayRemovePostMessage(response) {
+	const modal = document.querySelector("#modal");
+
+	if (response.ok) {
+		const message = modal.querySelector("#post-delete-ok");
+		const messageBs = new bootstrap.Collapse(message);
+		const buttons = modal.querySelector("#modal-delete .modal-footer");
+		const buttonsBs = new bootstrap.Collapse(buttons);
+
+		messageBs.show();
+		buttonsBs.hide();
+
+		setTimeout(() => {
+			messageBs.hide();
+			buttonsBs.show();
+
+			closeModal();
+		}, 4000);
+	} else {
+		const message = modal.querySelector("#post-delete-error");
+		const messageBs = new bootstrap.Collapse(message);
+
+		messageBs.show();
+		setTimeout(() => messageBs.hide(), 4000);
+	}
+}
+
+function closeModal() {
+	const modal = document.querySelector("#modal");
+	const modalBs = bootstrap.Modal.getInstance(modal);
+
+	modalBs.hide();
+
+	const postSectionBs = new bootstrap.Collapse(modal.querySelector("#modal-post"), { toggle: false });
+	const editSectionBs = new bootstrap.Collapse(modal.querySelector("#modal-editor"), { toggle: false });
+	const deleteSectionBs = new bootstrap.Collapse(modal.querySelector("#modal-delete"), { toggle: false });
+
+	postSectionBs.show();
+	editSectionBs.hide();
+	deleteSectionBs.hide();
+}
+
+export async function updateModalPostContent(id) {
+	const modal = document.querySelector("#modal-post");
 	const post = await getPost(id);
 	const user = await getUser(post.userId);
 
-	modal.insertAdjacentHTML("beforeend", loadModalContentPost(post, user));
+	modal.querySelector("#post-image").src = `https://picsum.photos/400/600?random=${post.id}`;
+	modal.querySelector("#post-title").textContent = post.title;
+	modal.querySelector("#post-content").textContent = post.body;
+	modal.querySelector("#user-name").textContent = user.name;
+	modal.querySelector("#user-email").textContent = user.email;
+
 	sessionStorage.postId = id;
 }
 
-export async function updateModalContentEditor(id) {
-	const modal = document.querySelector("#modal-content");
+export async function updateModalEditorContent(id) {
 	const post = await getPost(id);
+	const form = document.forms["post-editor-form"];
 
-	modal.insertAdjacentHTML("beforeend", loadModalContentEditor(post));
-}
-
-export function clearModalContent() {
-	document.querySelector("#modal-content").innerHTML = null;
-}
-
-function loadModalContentPost(post, user) {
-	const template = `
-		<div class="modal-header bg-dark text-white">
-			<h5 class="modal-title" id="modal-label">Blog Post</h5>
-			<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-		</div>
-		<img class="modal-img-height" src="https://picsum.photos/400/600?random=${post.id}" alt="preview" />
-		<div class="modal-body">
-			<div class="d-flex justify-content-between gap-3 align-items-start">
-				<h4 class="mb-3">${post.title}</h4>
-				<button type="button" class="btn btn-sm btn-outline-dark" data-action="load-editor"><i class="bi bi-pen-fill"></i></button>
-			</div>
-			<p>${post.body}</p>
-			<p class=" fs-7 text-black-50 text-end m-0"><span class="fw-bold">${user.name}</span>, <span class="fst-italic">${user.email}</span></p>
-		</div>
-		<div class="modal-footer">
-			<div class="accordion w-100" id="post-comments-accordion">
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="post-comments-header">
-						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#post-comments-section" aria-expanded="true" aria-controls="post-comments-section">Load Comments</button>
-					</h2>
-					<div id="post-comments-section" class="accordion-collapse collapse" aria-labelledby="post-comments-header" data-bs-parent="#post-comments-accordion">
-						<div class="accordion-body" style="overflow-y: scroll; max-height: 30rem"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	`;
-
-	return template;
-}
-
-function loadModalContentEditor(post) {
-	const template = `
-		<div class="modal-header bg-dark text-white">
-			<h5 class="modal-title" id="post-editor-modal-label"><i class="bi bi-pen-fill"></i> Edit Post</h5>
-			<button type="button" class="btn-close btn-close-white" data-action="load-post load-pepe" aria-label="Close"></button>
-		</div>
-		<div class="modal-body">
-			<form id="post-editor-form">
-				<label for="input-title">Title</label>
-				<div class="input-group mb-3">
-					<span class="input-group-text">Title</span>
-					<input type="text" name="title" class="form-control" placeholder="Insert a fancy title..." aria-label="title" minlength="8" value="${post.title}"/>
-				</div>
-				<label for="input-content">Content</label>
-				<div class="input-group">
-					<textarea name="content" class="form-control" fs-7 p-2" rows="5" aria-label="content">${post.body}</textarea>
-				</div>
-			</form>
-		</div>
-		<div class="modal-footer justify-content-center">
-			<button type="button" class="btn btn-secondary" data-action="load-post">Go Back</button>
-			<button type="button" class="btn btn-primary" data-action="save-post">Save</button>
-		</div>
-		<div class="collapse" id="post-editor-ok">
-			<div class="card card-body w-100 bg-success text-white">
-				Message has been updated succesfully!
-			</div>
-		</div>
-		<div class="collapse" id="post-editor-err">
-			<div class="card card-body w-100 bg-danger text-white">
-				Something has gone wrong :(
-			</div>
-		</div>
-	`;
-
-	return template;
+	form.elements["post-title"].value = post.title;
+	form.elements["post-content"].textContent = post.body;
 }
