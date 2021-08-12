@@ -10,6 +10,13 @@ navbar.addEventListener("click", (event) => {
                 createBlogs();
                 document.getElementById("prev-li").classList.add("disabled");
                 document.getElementById("next-li").classList.remove("disabled");
+                event.target.parentNode.classList.add("new-tile");
+                document
+                    .getElementById("page-2")
+                    .parentNode.classList.remove("new-tile");
+                document
+                    .getElementById("page-3")
+                    .parentNode.classList.remove("new-tile");
 
                 break;
 
@@ -18,6 +25,14 @@ navbar.addEventListener("click", (event) => {
                 h = 9;
                 j = 18;
                 createBlogs();
+
+                event.target.parentNode.classList.add("new-tile");
+                document
+                    .getElementById("page-1")
+                    .parentNode.classList.remove("new-tile");
+                document
+                    .getElementById("page-3")
+                    .parentNode.classList.remove("new-tile");
 
                 document.getElementById("prev-li").classList.remove("disabled");
                 document.getElementById("next-li").classList.remove("disabled");
@@ -31,6 +46,13 @@ navbar.addEventListener("click", (event) => {
                 createBlogs();
                 document.getElementById("prev-li").classList.remove("disabled");
                 document.getElementById("next-li").classList.remove("disabled");
+                event.target.parentNode.classList.add("new-tile");
+                document
+                    .getElementById("page-1")
+                    .parentNode.classList.remove("new-tile");
+                document
+                    .getElementById("page-2")
+                    .parentNode.classList.remove("new-tile");
 
                 break;
 
@@ -52,7 +74,7 @@ navbar.addEventListener("click", (event) => {
                     document.getElementById("new-tile").remove();
                 }
                 if ((h + 9) / 9 > 3) {
-                    let newTile = `<li class="page-item" id = "new-tile">
+                    let newTile = `<li class="page-item new-tile" id = "new-tile">
                     <button class="page-link" id="page-${(h + 9) / 9}">....  ${
             (h + 9) / 9
           }</button>
@@ -85,7 +107,7 @@ navbar.addEventListener("click", (event) => {
                     if (document.getElementById("new-tile") !== null) {
                         document.getElementById("new-tile").remove();
                     }
-                    let newTile = `<li class="page-item" id = "new-tile">
+                    let newTile = `<li class="page-item new-tile" id = "new-tile">
                     <button class="page-link" id="page-${(h + 9) / 9}">....  ${
             (h + 9) / 9
           }</button>

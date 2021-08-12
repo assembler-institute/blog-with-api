@@ -22,8 +22,12 @@ function deleteBlog() {
             let newPostId = numberArray[0];
             data.forEach((post) => {
                 if (post.id === newPostId) {
-                    blogGrid.innerHTML += `<div class="card" id="${post.id}" data-id = "${post.userId}">
-    <img src="./assets/images/bg-img.jfif" class="card-img-top" alt="..." />
+                    blogGrid.innerHTML += `<div class="card" id="${post.id}" data-id = "${
+            post.userId
+          }">
+    <img src="./assets/images/img-0${Math.floor(
+      Math.random() * 8
+    )}.jfif" class="card-img-top" alt="..." />
     <div class="card-body">
         <h5 class="card-title" id="blog-title-${post.id}">${post.title}</h5>
         <p class="card-text" id="blog-body-${post.id}">
