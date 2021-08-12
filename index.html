@@ -31,8 +31,25 @@
         </div>
     </header>
     <main class="container p-0" id="main">
-        <div class="container-fluid row row-cols-4 justify-content-md-center" id="cards-container">
-        </div>
+      <div class="container-fluid row row-cols-4 justify-content-md-center" id="cards-container">
+      </div>
+      <nav>
+        <ul class="pagination pagination-lg justify-content-center">
+          <li class="page-item" id="prev-btn"><a class="page-link">Previous</a></li>
+          <li class="page-item"><a class="page-link" data-page="0">1</a></li>
+          <li class="page-item"><a class="page-link" data-page="1">2</a></li>
+          <li class="page-item"><a class="page-link" data-page="2">3</a></li>
+          <li class="page-item"><a class="page-link" data-page="3">4</a></li>
+          <li class="page-item"><a class="page-link" data-page="4">5</a></li>
+          <li class="page-item"><a class="page-link" data-page="5">6</a></li>
+          <li class="page-item"><a class="page-link" data-page="6">7</a></li>
+          <li class="page-item"><a class="page-link" data-page="7">8</a></li>
+          <li class="page-item"><a class="page-link" data-page="8">9</a></li>
+          <li class="page-item"><a class="page-link" data-page="9">10</a></li>
+          <li class="page-item"><a class="page-link" data-page="10">11</a></li>
+          <li class="page-item" id="next-btn"><a class="page-link">Next</a></li>
+        </ul>
+      </nav>
     </main>
     <!--------------------------------------------------------- Modal info------------------------------------------->
     <div class="modal fade" id="summary-modal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
@@ -123,7 +140,7 @@
         </div>
     </div>
     <template id="card-temp">
-  <div class="container-md m-4 p-0 shadow hover" data-bs-toggle="modal" data-bs-target="#summary-modal" data-set="card-cont">
+  <div class="container-md m-4 p-0 shadow hover" data-bs-toggle="modal" data-bs-target="#summary-modal" data-set="card-cont" id="card-content">
     <figure class="figure" data-bs-toggle="modal" data-bs-target="#summary-modal">
       <img src="https://dmagazine.com.ar/wp-content/uploads/2017/11/rick.png" class="figure-img img-fluid rounded" data-bs-toggle="modal" data-bs-target="#summary-modal" alt="rick and morty">
       <figcaption class="m-1 ms-4" data-bs-toggle="modal" data-bs-target="#summary-modal"></figcaption>

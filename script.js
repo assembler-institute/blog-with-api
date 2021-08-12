@@ -1,7 +1,9 @@
+let start=0
+let limit=9
+
 document.addEventListener('DOMContentLoaded', (event) => {
 
-
-    fetch("http://localhost:3000/posts")
+    fetch(`http://localhost:3000/posts?_start=${start}&_limit=${limit}`)
         .then(response => response.json())
         .then(data => {
             data.forEach(post => {
@@ -117,3 +119,45 @@ function modalEdit(event) {
             })
     })
 }
+// ------------------------------------PAGING
+document.getElementById("next-btn").addEventListener("click", function(){
+    if(start<99){
+    document.getElementById("cards-container").innerHTML=""
+    fetch(`http://localhost:3000/posts?_start=${start+=9}&_limit=${limit}`)
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(post => {
+                createTemplate(post);
+            })
+        })
+    }
+})
+
+document.getElementById("prev-btn").addEventListener("click", function(){
+    if(start!=0){
+    document.getElementById("cards-container").innerHTML=""
+    fetch(`http://localhost:3000/posts?_start=${start-=9}&_limit=${limit}`)
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(post => {
+                createTemplate(post);
+            })
+        })
+    }
+})
+
+document.addEventListener("click",function(event){
+    if(event.target.matches('[data-page]')){
+        let page = parseInt(event.target.getAttribute("data-page"))
+        start=9*page
+        console.log(start)
+        document.getElementById("cards-container").innerHTML=""
+        fetch(`http://localhost:3000/posts?_start=${start}&_limit=${limit}`)
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(post => {
+                createTemplate(post);
+            })
+        })
+    }
+})
