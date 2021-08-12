@@ -1,4 +1,5 @@
 import { templateHeader, templateCard } from "./templates.js";
+
 function printHome() {
   document
     .querySelector("body")
@@ -83,6 +84,7 @@ $("[data-show-comments]").on("click", () => {
     `http://localhost:3000/posts/${postId}/comments`,
     function (jsonComments) {
       $("[data-comment]").html("");
+
       jsonComments.forEach((comment) => {
         $("[data-comment]").append(`<p>${comment.body}</p>`);
       });
@@ -94,7 +96,7 @@ $("[delete-content]").on("click", () => {
   $("[data-comment]").html("");
 });
 
-$(`[data-action="delete"]`).on("click", () => {
+$(`[data-action="delete"]`).on("click", (e) => {
   let postId = document.querySelector(".modal-content").dataset.blogId;
   console.log(postId);
   fetch(`http://localhost:3000/posts/${postId}`, {
@@ -102,15 +104,19 @@ $(`[data-action="delete"]`).on("click", () => {
   }).then((response) => {
     if (response.ok) {
       console.log("It's Ok");
+      e.preventDefault();
+      $("[data-success]").removeClass("visually-hidden");
+
+      setTimeout(() => {
+        $("[data-success]").addClass("visually-hidden");
+      }, 3000);
     } else {
       console.log("Te troleo");
     }
   });
 });
 
-// [15:38] Antonio Copete
-// fetch('https://example.com/delete-item/' + id, {
-//   method: 'DELETE',
-// })
-// .then(res => res.text()) // or res.json()
-// .then(res => console.log(res))
+$(`[data-action="edit"]`).on("click", () => {
+  $("[edit-title]").val($("[title]").text());
+  $("[edit-body]").val($("[body]").text());
+});
