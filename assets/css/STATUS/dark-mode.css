@@ -2,11 +2,6 @@
  * STATUS - DARK
  */
 
-/* .dark-mode {
-  color: #FAFAFA;
-  background: #000000;
-} */
-
 .dark-mode::before {
   transform: translateX(0);
 }

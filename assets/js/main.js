@@ -324,10 +324,10 @@ async function fillModalComments(modalId, companyName) {
               <p class="blockquote__body">${body}</p>
             </blockquote>
             <div class="comments__buttons d-flex flex-column">
-              <button type="button" class="btn-modal btn-danger" data-id="${id}" id="comment-delete-${id}">
+              <button type="button" class="comments__delete" data-id="${id}" id="comment-delete-${id}">
                 <i class="bi bi-trash"></i>
               </button>
-              <button type="button" class="btn-modal btn-success" data-id="${id}" id="comment-edit-${id}">
+              <button type="button" class="comments__edit" data-id="${id}" id="comment-edit-${id}">
                 <i class="bi bi-pencil"></i>
               </button>
             </div>
