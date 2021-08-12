@@ -45,7 +45,7 @@ async function fillMainPost(mainPost=0) {
 
   const templateCard = `
     <template id="mainTemplate">
-      <article class="post-main" id="post-main">
+      <div class="post-main" id="post-main">
         <p class="post-main__author">${name}</p>
         <div class="headline-card__line"></div>
         <h2 class="post-main__title text-capitalize">${title}</h2>
@@ -62,7 +62,7 @@ async function fillMainPost(mainPost=0) {
             Read more
           </button>
         </div>
-      </article>
+      </div>
     </template>
   `;
 
@@ -357,16 +357,15 @@ async function fillModalComments(modalId, companyName) {
 })()
 
 async function deleteComment(e){
-  const id=e.target.parentElement.dataset.id; 
+  const id=e.target.parentElement.dataset.id;
   const baseUrl = "https://jsonplaceholder.typicode.com";
 
   let response = await fetch(
-    `${baseUrl}/comments/${id}`, { method: 'DELETE',
+    `${baseUrl}/comments/${id}`, { method: 'DELETE'
     });
   if (response.status===200) {
     console.log("El comentario se ha borrado");
     document.getElementById(`comment-${id}`).remove();
-    
   }
   return response
 }
