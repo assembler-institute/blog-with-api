@@ -44,7 +44,9 @@ function getModalPost(e) {
 function fillModalContent(post) {
   document.querySelector("#comments").classList.remove("show");
   document.querySelector("#edit-button").dataset.post = post.id;
+  document.querySelector("#edit-button-icon").dataset.post = post.id;
   document.querySelector("#confirm-edit").dataset.edit = post.id;
+  document.querySelector("#confirm-edit-icon").dataset.edit = post.id;
   document.querySelector("#confirm-delete").dataset.delete = post.id;
   document.querySelector("#show-comments").dataset.comments = post.id;
   document.querySelector(".modal-title").textContent = post.title;
