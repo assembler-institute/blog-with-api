@@ -19,38 +19,41 @@
 <body>
     <header id="header">
         <div class="container-xxl">
-            <nav class="nav nav-pills nav-fill bg-dark bg-gradient">
-                <a class="navbar-brand" href="#">
+            <nav class="nav nav-pills nav-fill bg-info">
+                <a class="navbar-brand text-dark" href="#">
                     <img src="https://www.penguinrandomhousegrupoeditorial.com/wp-content/uploads/2017/07/B_PRHGE_negro.png" width="40" height="40" class="d-inline-block align-top" alt="logo B"> Blog with Api
                 </a>
-                <a class="nav-item nav-link btn-outline-success" href="#">Active</a>
-                <a class="nav-item nav-link btn-outline-success" href="#">Link</a>
-                <a class="nav-item nav-link btn-outline-success" href="#">Link</a>
-                <a class="nav-item nav-link btn-outline-success" href="#">Disabled</a>
+                <a class="nav-item nav-link btn-outline-success text-dark" href="#">Active</a>
+                <a class="nav-item nav-link btn-outline-success text-dark" href="#">Link</a>
+                <a class="nav-item nav-link btn-outline-success text-dark" href="#">Link</a>
+                <a class="nav-item nav-link btn-outline-success text-dark" href="#">Another Link</a>
             </nav>
         </div>
     </header>
-    <main class="container p-0" id="main">
-      <div class="container-fluid row row-cols-4 justify-content-md-center" id="cards-container">
-      </div>
-      <nav>
+<main class="container p-0" id="main">
+    <div class="container text-center">
+        <img class="mb-5 w-75 "src="https://occ-0-1723-92.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABcb0yL8KdS3lxlB7w7kD6GfBTivnVVTfpiW0ZQTi6nvwWZIEpS5rU5iFeO_kJxGzEDnOaLx7iq0zM3FJc5e1gGqEGcaCkNotiOAl.png?r=d7f" alt="rick_and_morty">
+    </div>
+    <div class="container-fluid row row-cols-4 justify-content-md-center" id="cards-container">
+    </div>
+    <nav class="mt-5">
         <ul class="pagination pagination-lg justify-content-center">
-          <li class="page-item" id="prev-btn"><a class="page-link">Previous</a></li>
-          <li class="page-item"><a class="page-link" data-page="0">1</a></li>
-          <li class="page-item"><a class="page-link" data-page="1">2</a></li>
-          <li class="page-item"><a class="page-link" data-page="2">3</a></li>
-          <li class="page-item"><a class="page-link" data-page="3">4</a></li>
-          <li class="page-item"><a class="page-link" data-page="4">5</a></li>
-          <li class="page-item"><a class="page-link" data-page="5">6</a></li>
-          <li class="page-item"><a class="page-link" data-page="6">7</a></li>
-          <li class="page-item"><a class="page-link" data-page="7">8</a></li>
-          <li class="page-item"><a class="page-link" data-page="8">9</a></li>
-          <li class="page-item"><a class="page-link" data-page="9">10</a></li>
-          <li class="page-item"><a class="page-link" data-page="10">11</a></li>
-          <li class="page-item" id="next-btn"><a class="page-link">Next</a></li>
-        </ul>
-      </nav>
-    </main>
+            <li class="page-item" id="prev-btn"><a class="page-link">Previous</a></li>
+            <li class="page-item"><a class="page-link" data-page="0">1</a></li>
+            <li class="page-item"><a class="page-link" data-page="1">2</a></li>
+            <li class="page-item"><a class="page-link" data-page="2">3</a></li>
+            <li class="page-item"><a class="page-link" data-page="3">4</a></li>
+            <li class="page-item"><a class="page-link" data-page="4">5</a></li>
+            <li class="page-item"><a class="page-link" data-page="5">6</a></li>
+            <li class="page-item"><a class="page-link" data-page="6">7</a></li>
+            <li class="page-item"><a class="page-link" data-page="7">8</a></li>
+            <li class="page-item"><a class="page-link" data-page="8">9</a></li>
+            <li class="page-item"><a class="page-link" data-page="9">10</a></li>
+            <li class="page-item"><a class="page-link" data-page="10">11</a></li>
+            <li class="page-item" id="next-btn"><a class="page-link">Next</a></li>
+        </ul>   
+    </nav>
+</main>
     <!--------------------------------------------------------- Modal info------------------------------------------->
     <div class="modal fade" id="summary-modal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -141,7 +144,7 @@
     </div>
 
 
-    
+
 <template id="card-temp">
   <div class="container-md m-4 p-0 shadow hover" data-bs-toggle="modal" data-bs-target="#summary-modal" data-set="card-cont" id="card-content">
     <figure class="figure" data-bs-toggle="modal" data-bs-target="#summary-modal">
@@ -149,7 +152,7 @@
       <figcaption class="m-1 ms-4" data-bs-toggle="modal" data-bs-target="#summary-modal"></figcaption>
     </figure>
     <button data-bs-toggle="modal" data-bs-target="#edit-modal"type="button" class="btn btn-secondary" id="edit">EDIT</button>
-    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-modal" id="delete">DELETE</button>
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-modal" id="delete-btn">DELETE</button>
   </div>
  </template>
 

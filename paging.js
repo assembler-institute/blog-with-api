@@ -16,7 +16,7 @@ export function createTemplate(post) {
     let template = document.getElementById("card-temp").content;
     template.querySelector("figcaption").textContent = post.title
     template.querySelector('[data-set="card-cont"]').setAttribute("data-id", post.id)
-    template.getElementById("delete").setAttribute("data-delete", post.id)
+    template.getElementById("delete-btn").setAttribute("data-delete", post.id)
     template.querySelector('figure').setAttribute("data-id", post.id)
     template.querySelector('img').setAttribute("data-id", post.id)
     template.querySelector('#edit').setAttribute("data-id", post.id)
