@@ -61,8 +61,107 @@ function ids() {
 
     cards[index].querySelector("img").src = `https://picsum.photos/id/${
       index + 10 + index
-    }/200`;
+    }/300`;
+
+    //We add the event listener to each button
+
+    btnModal.addEventListener("click", fillingModal);
   }
 }
 
 ids();
+
+//---------------------------------------------------FILLING THE MODAL'S CONTENT
+
+function fillingModal(e) {
+  //We are getting the button's id ("btn-x") and slicing only the number. It comes as string so we parse it
+  let btnID = parseInt(e.target.id.slice(4, e.target.id.length));
+  let modal = document.querySelector("#modal-content");
+  let modalTitle = document.getElementById("modal_title");
+  let modalBody = document.getElementById("modal_body");
+  let userInfo = document.createElement("section");
+  let listComments = document.createElement("section");
+  let btnComments = document.querySelector("#btn-comments");
+
+  //We search inside the API for the post with the btnID + 1 id
+
+  fetch(`https://jsonplaceholder.typicode.com/posts/${btnID + 1}`)
+    .then((response) => {
+      return response.json();
+    })
+    .then((response) => {
+      modalTitle.textContent = response.title;
+      modalBody.textContent = response.body;
+
+      //Whenever you call a function with a local parameter like userID (myFunct(parameter)), you pass the value of the parameter to the second function
+      let userID = response.userId;
+      userData(userID);
+    });
+
+  //We need the user's information to fill the modal
+
+  function userData(userID) {
+    fetch(`https://jsonplaceholder.typicode.com/users/${userID}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        //First of all, we erase any other possible user's info and comments
+        let list_comments = document.getElementById("list-comments");
+        let user_info = document.getElementById("user-info");
+
+        if (user_info || list_comments) {
+          user_info.remove();
+          list_comments.remove();
+        }
+
+        //Then we create a new section with the user's info and insert it dynamically in the modal-content div
+
+        userInfo.id = "user-info";
+        userInfo.className = "modal-body";
+        userInfo.style.borderTop = "1px solid lightgrey";
+        let username = document.createElement("p");
+        username.innerHTML = `<b>Author</b>: ${response.name}`;
+        let mail = document.createElement("p");
+        mail.innerHTML = `<b>Email</b>: ${response.email}`;
+        userInfo.appendChild(username);
+        userInfo.appendChild(mail);
+        modal.insertBefore(userInfo, modal.children[2]); //As we do not want it appended as the last child, we use the insertBefore method to add it after the third element of the div
+      });
+  }
+
+  btnComments.addEventListener("click", function myComments() {
+    fetch(
+      `https://jsonplaceholder.typicode.com/comments?postId=${
+        btnID + 1
+      }&_limit=2`
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        userInfo.lastChild.remove();
+
+        listComments.id = "list-comments";
+        listComments.style.borderTop = "1px solid lightgrey";
+        for (let comment of response) {
+          let commentDiv = document.createElement("div");
+          commentDiv.className = "modal-body";
+          let commentUserName = document.createElement("p");
+          commentUserName.innerHTML = `<b>Author</b>: ${comment.name}`;
+          let commentMail = document.createElement("p");
+          commentMail.innerHTML = `<b>Email</b>: ${comment.email}`;
+          let commentBody = document.createElement("p");
+          commentBody.innerHTML = `<b>Comment</b>: ${comment.body}`;
+          commentDiv.appendChild(commentBody);
+          commentDiv.appendChild(commentUserName);
+          commentDiv.appendChild(commentMail);
+          listComments.appendChild(commentDiv);
+          modal.insertBefore(listComments, modal.children[3]);
+        }
+      });
+    //! Very important: if we do not delete the event listener, the user may click again and there are bugs
+    //! It also gets duplicated the next time we load other comments if we do not remove it here!
+    btnComments.removeEventListener("click", myComments);
+  });
+}
