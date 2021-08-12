@@ -129,19 +129,21 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body-edit">
-                            <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Title</label>
-                                <input type="email" class="form-control" id="titleInput" placeholder="name@example.com">
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleFormControlTextarea1" class="form-label">Body</label>
-                                <textarea class="form-control" id="bodyInput" rows="3"></textarea>
-                            </div>
+                            <form id="form-edit">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Title</label>
+                                    <textarea type="text" class="form-control" id="titleInput" placeholder="This is the post title"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Body</label>
+                                    <textarea type="text" class="form-control" id="bodyInput" rows="5" placeholder="This is the post body"></textarea>
+                                </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" data-edit="0" id="confirmEdit" class="btn btn-warning">Confirm</button>
+                            <input type="button" data-edit="0" id="confirmEdit" class="btn btn-warning" value="Confirm">
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
