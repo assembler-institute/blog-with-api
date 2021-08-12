@@ -429,3 +429,12 @@ document.addEventListener("click", (event) => {
 });
 
 //------------------DELETE BLOG END------------------//
+
+//-------------------HOME BUTTON---------------------//
+
+document.getElementById("page-home").addEventListener("click", () => {
+    blogGrid.innerHTML = "";
+    createBlogs();
+});
+
+//-------------------END HOME BUTTON---------------------//

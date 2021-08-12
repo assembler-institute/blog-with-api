@@ -364,7 +364,6 @@ document
     .getElementById("search__blog__button")
     .addEventListener("click", (event) => {
         event.preventDefault();
-
         retrieveData.forEach((post) => {
             if (post.title.includes(document.getElementById("search__blog").value)) {
                 blogGrid.innerHTML = "";
@@ -429,3 +428,12 @@ document.addEventListener("click", (event) => {
 });
 
 //------------------DELETE BLOG END------------------//
+
+//-------------------HOME BUTTON---------------------//
+
+document.getElementById("page-home").addEventListener("click", () => {
+    blogGrid.innerHTML = "";
+    createBlogs();
+});
+
+//-------------------END HOME BUTTON---------------------//

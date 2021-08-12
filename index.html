@@ -24,82 +24,66 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" id="page-">Home</a
-                >
-              </li>
-            </ul>
-            <form class="d-flex">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-                id="search__blog"
-                
-              />
-              <button class="btn btn-outline-success" id="search__blog__button" >
+                            <button class="btn btn-light" aria-current="page" id="page-home">Home</button>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search Blog" aria-label="Search" id="search__blog" />
+                        <button class="btn btn-outline-success" id="search__blog__button">
                 Search
               </button>
-            </form>
-          </div>
-        </div>
-      </nav>
+                    </form>
+                </div>
+            </div>
+        </nav>
     </header>
     <main role="main">
-      <section class="container-fluid bg-light" id="blog-container">
-        <!---------------------------- BLOG CARDS---------------------------------->
-        <div
-          class="row col-sm-4 col-md-6 col-lg-12 blog-grid"
-          id="blog-grid"
-        ></div>
-        <!--------------------END BLOG CARD---------------------->
-      </section>
+        <section class="container-fluid bg-light" id="blog-container">
+            <!---------------------------- BLOG CARDS---------------------------------->
+            <div class="row col-sm-4 col-md-6 col-lg-12 blog-grid" id="blog-grid"></div>
+            <!--------------------END BLOG CARD---------------------->
+        </section>
 
-      <!-------------------------Modal------------------------------------->
-      <section>
-        <div
-          class="modal fade"
-          id="exampleModal"
-          tabindex="-1"
-          aria-labelledby="ModalLabel"
-          aria-hidden="false"
-        >
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" id="modal__content">
-             
-                
-              </div>
+        <!-------------------------Modal------------------------------------->
+        <section>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="false">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content" id="modal__content">
 
+
+                    </div>
+
+                </div>
             </div>
-          </div>
-        </div>
-      </section>
-      <!-----------------------END--Modal------------------------------------->
+            </div>
+        </section>
+        <!-----------------------END--Modal------------------------------------->
 
-      <!-----------------------NAVIGATION------------------------------------->
-      <section>
-        <nav aria-label="Page navigation example" id="nav-bar">
-          <ul class="pagination justify-content-center">
-            <li class="page-item disabled" id="prev-li">
-              <button class="page-link" id="page-previous">Previous</button>
-            </li>
-            <li class="page-item">
-              <button class="page-link" id="page-1">1</button>
-            </li>
-            <li class="page-item">
-              <button class="page-link" id="page-2">2</button>
-            </li>
-            <li class="page-item">
-              <button class="page-link" id="page-3">3</button>
-            </li>
-            <li class="page-item" id="next-li">
-              <button class="page-link" id="page-next">Next</button>
-            </li>
-          </ul>
-        </nav>
-      </section>
+        <!-----------------------NAVIGATION------------------------------------->
+        <section>
+            <nav aria-label="Page navigation example" id="nav-bar">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled" id="prev-li">
+                        <button class="page-link" id="page-previous">Previous</button>
+                    </li>
+                    <li class="page-item">
+                        <button class="page-link" id="page-1">1</button>
+                    </li>
+                    <li class="page-item">
+                        <button class="page-link" id="page-2">2</button>
+                    </li>
+                    <li class="page-item">
+                        <button class="page-link" id="page-3">3</button>
+                    </li>
+                    <li class="page-item" id="next-li">
+                        <button class="page-link" id="page-next">Next</button>
+                    </li>
+                </ul>
+            </nav>
+        </section>
 
-      <!-----------------------END--NAVIGATION------------------------------------->
+        <!-----------------------END--NAVIGATION------------------------------------->
     </main>
-  </body>
+</body>
+
 </html>
