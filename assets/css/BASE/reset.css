@@ -26,7 +26,7 @@ html {
   color: var(--foreground);
   transition: color var(--transition);
   background-blend-mode: multiply;
-  cursor: none;
+  /* cursor: none; */
 }
 
 html::before {
@@ -51,9 +51,9 @@ ul {
   padding-left: 0;
 }
 
-button{
+/* button{
   cursor: none !important;
-}
+} */
 
 code{
   display: block;

@@ -264,7 +264,7 @@ async function fillModal(modalId) {
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content p-4">
           <div class="post row">
-            <div class="post__user col-4 col-md-3 d-flex flex-column align-items-stretch justify-content-start p-4">
+            <div class="post__user col-sm-4 col-md-3 d-flex flex-column align-items-stretch justify-content-start p-4">
               <div class="post__avatar">
                 <i class="bi bi-emoji-sunglasses big"></i>
               </div>
@@ -275,7 +275,7 @@ async function fillModal(modalId) {
               </div>
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            <div class="post__content col-8 col-md-9">
+            <div class="post__content col-sm-8 col-md-9">
               <header class="post__header row modal-header">
                 <h3 class="post__title text-capitalize" id="postModalLabel">
                   ${title}
@@ -334,9 +334,9 @@ async function fillModalComments(modalId, companyName) {
         <template id="comment-template-${id}">
           <li class="comments__item d-flex" id="comment-${id}">
             <i class="bi bi-emoji-sunglasses pr-4"></i>
-            <blockquote class="blockquote">
-              <div class="blockquote__header">
-                <p id="blockquote__name-${id}" class="blockquote__name d-inline">${name}</p>
+            <blockquote class="blockquote w-100">
+              <div class="blockquote__header d-flex justify-content-start">
+                <p id="blockquote__name-${id}" class="blockquote__name d-flex justify-content-start">${name}</p>
                 <span class="blockquote__dot"> · </span>
                 <cite title="Source Title" class="blockquote__company-name">${companyName}</cite>
               </div>
@@ -400,21 +400,20 @@ function editComment(e) {
   let prevName = nameContainer.innerHTML;
 
   nameContainer.innerHTML = `
-    <textarea name="textareaName" rows="3" cols="40" id="name-text-area-${id}">
-      ${prevName}
-    </textarea>
-    `
+    <textarea class="w-100 border border-secondary p-3" name="textareaName" rows="1" cols="80" id="name-text-area-${id}">${prevName}</textarea>
+  `
   let textContainer = document.getElementById(`blockquote__body-${id}`);
   let prevText = textContainer.innerHTML;
 
   textContainer.innerHTML = `
-    <textarea name="textareaBody" rows="5" cols="40" id="body-text-area-${id}">
-      ${prevText}
-    </textarea>
-    <button type="button" class="comments__save" id="comments__save-${id}">
-      save
-    </button>
+    <textarea class="w-100 border border-secondary p-3" name="textareaBody" rows="4" cols="80" id="body-text-area-${id}">${prevText}</textarea>
+    <button type="button" class="comments__save btn btn-dark" id="comments__save-${id}">Save</button>
   `
+
+  document.querySelector(`#comment-${id} .comments__buttons`).classList.add('d-none');
+  document.querySelector(`#comment-${id} .blockquote__dot`).classList.add('d-none');
+  document.querySelector(`#comment-${id} .blockquote__company-name`).classList.add('d-none');
+
   document.getElementById(`comments__save-${id}`).addEventListener("click", function () {
     saveEditComment(id)
   })
@@ -432,6 +431,10 @@ async function saveEditComment(id) {
 
   let finalText = document.getElementById(`body-text-area-${id}`).value;
   document.getElementById(`blockquote__body-${id}`).innerHTML = finalText;
+
+  document.querySelector(`#comment-${id} .comments__buttons`).classList.toggle('d-none');
+  document.querySelector(`#comment-${id} .blockquote__dot`).classList.toggle('d-none');
+  document.querySelector(`#comment-${id} .blockquote__company-name`).classList.toggle('d-none');
 
   let response = await fetch(`${baseUrl}/comments/${id}`, {
     method: 'PATCH',

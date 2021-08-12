@@ -12,11 +12,15 @@
 
 .blockquote__header{
   color: var(--darkGrey);
-  padding-bottom: 0.5rem;
 }
 
 .blockquote__name{
   font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.blockquote__dot{
+  margin: 0 0.5rem;
 }
 
 .blockquote__company-name{

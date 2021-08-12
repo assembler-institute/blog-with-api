@@ -14,10 +14,8 @@
   background: #F8F9FA;
 }
 
-.grid {
-  height: calc(100vh - 4rem);
-  max-height: calc(100vh - 4rem);
-  margin: 2rem;
+.footer{
+  padding: 2rem 2rem 0;
 }
 
 .headline-card__line {

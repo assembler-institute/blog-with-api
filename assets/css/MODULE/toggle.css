@@ -15,6 +15,7 @@
   padding: 4px;
   position: relative;
   transition: background var(--transition);
+  cursor: pointer;
 }
 
 .toggle::before {
