@@ -20,7 +20,7 @@ export function createTemplate(post) {
     template.querySelector('figure').setAttribute("data-id", post.id)
     template.querySelector('img').setAttribute("data-id", post.id)
     template.querySelector('#edit').setAttribute("data-id", post.id)
-    template.querySelector('figcaption').setAttribute("data-id", post.id)
+    template.querySelector('figcaption').setAttribute("data-edit", post.id)
     let clone = document.importNode(template, true);
     document.getElementById("cards-container").appendChild(clone)
 }
