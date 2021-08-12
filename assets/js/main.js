@@ -8,7 +8,7 @@ let body;
 let userId;
 let id;
 let cards;
-let postid;
+let post;
 let posts;
 // Declaring events
 
@@ -71,7 +71,7 @@ $(document).on("click", function(element) {
         $("#btn__showcomments").on("click", function() {
             $(this).addClass("d-none");
 
-            var getComments = {
+            let getComments = {
                 url: `https://jsonplaceholder.typicode.com/posts/${element.target.id}/comments`,
                 method: "GET",
             };
@@ -97,26 +97,22 @@ $(document).on("click", function(element) {
     }
 });
 
-// $("#btn__showcomments").on("click", function() {
-//     $(this).addClass("d-none");
-
-//     var getComments = {
-//         url: `https://jsonplaceholder.typicode.com/posts/${element.target.id}/comments`,
-//         method: "GET",
-//     };
-
-//     $.ajax(getComments).done(function(reviews) {
-//         const displaycmmts = $(".modal-content");
-//         reviews.forEach((review) => {
-//             let eachComment = $(`<div class="modal-body2">
-//         <strong class="fs-4">${review.name}</strong>
-//         <span class="mt-2">${review.body}</span>
-//         <span class="text-muted mt-3">${review.email}</span>
-//         </div>`);
-//             displaycmmts.append(eachComment);
-
-// $("#exampleModal").on("hide.bs.modal", function() {
-//     $("#btn__showcomments").removeClass("d-none");
-//     $(".modal-body2").remove();
-//     $("#load-comments").off();
-// });
+function deletePost() {
+    $("#btn__deletepost").on("click", function() {
+        let deleteButton = {
+            url: `https://jsonplaceholder.typicode.com/posts/${post}`,
+            method: "DELETE",
+            timeout: 0,
+        };
+        $.ajax(deleteButton).done(function() {
+            const div = $(`div[id="${post}"]`);
+            div.remove();
+            $("#exampleModal").modal("hide");
+            $("#modaldelete").modal("show");
+            $("#close-btn").on("click", function() {
+                $("#modaldelete").modal("hide");
+            });
+        });
+    });
+}
+deletePost();
