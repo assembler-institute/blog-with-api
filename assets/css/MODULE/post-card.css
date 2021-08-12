@@ -13,41 +13,41 @@
   width: 100%;
 }
 
-.post__card-cont {
+.post-card-cont {
   height: 100%;
   width: 100%;
 }
-.post__card:nth-child(1),
-.post__card:nth-child(2),
-.post__card:nth-child(3) {
+.post-card:nth-child(1),
+.post-card:nth-child(2),
+.post-card:nth-child(3) {
   padding-bottom: 0.75rem;
 }
-.post__card:nth-child(4),
-.post__card:nth-child(5),
-.post__card:nth-child(6) {
+.post-card:nth-child(4),
+.post-card:nth-child(5),
+.post-card:nth-child(6) {
   padding-top: 0.75rem;
 }
-.post__card.reset {
+.post-card.reset {
   transition: transform 0.3s;
   transform: translateX(0) !important;
 }
-.post__card.inactive {
+.post-card.inactive {
   transition: transform 0.3s;
 }
-.post__card.to-left {
+.post-card.to-left {
   transform: translateX(-30rem) rotate(-30deg) !important;
 }
-.post__card.to-right {
+.post-card.to-right {
   transform: translate(30rem) rotate(30deg) !important;
 }
-.post__card.below {
+.post-card.below {
   z-index: 1;
 }
-.post__card__top {
+.post-card__top {
   height: 100%;
   padding: 2rem;
 }
-.post__card__name {
+.post-card__name {
   line-height: 1.25;
   text-align: center;
   font-size: 2rem;
@@ -56,14 +56,14 @@
   padding: 1rem;
   margin: 0;
 }
-.post__card__author {
+.post-card__author {
   color: #fff;
   text-align: center;
   font-size: 1.4rem;
   padding: 1rem;
   margin: 0;
 }
-.post__card__content {
+.post-card__content {
   cursor: pointer;
 }
 
@@ -72,7 +72,7 @@
     padding: 4rem 1rem;
     background-color: transparent;
   }
-  .post__card-cont {
+  .post-card-cont {
     position: relative;
     width: 24rem;
     min-width: 24rem;
@@ -80,7 +80,7 @@
     min-height: 32rem;
     margin: 0 auto;
   }
-  .post__card {
+  .post-card {
     z-index: 2;
     position: absolute;
     left: 0;
@@ -90,10 +90,10 @@
     transform-origin: 50% 100%;
     padding: 0;
   }
-  .post__card:nth-child(n) {
+  .post-card:nth-child(n) {
     padding: 0;
   }
-  .post__card__drag {
+  .post-card__drag {
     position: block;
     z-index: 5;
     position: absolute;

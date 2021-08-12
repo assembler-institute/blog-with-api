@@ -44,7 +44,7 @@ function swipeCard() {
           cardsCounter++;
           if (cardsCounter === numOfCards) {
             cardsCounter = 0;
-            $(".post__card").removeClass("below");
+            $(".post-card").removeClass("below");
           }
         }, 300);
       }
@@ -66,7 +66,7 @@ function swipeCard() {
 
     $(document).on(
       "mousedown touchstart",
-      ".post__card:not(.inactive)",
+      ".post-card:not(.inactive)",
       function (e) {
         if (animating) return;
 

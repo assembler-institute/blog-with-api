@@ -141,13 +141,13 @@ async function fillTinderSection() {
 
     const templateCard = `
       <template id="tinder-template-${id}">
-        <div class="post__card col-md-4 hoverable" id="card-${id}">
-          <div class="post__card__content outside">
-            <div class="post__card__top inside d-flex flex-column align-items-center justify-content-center bg-black">
-            <p class="post__card__author">${name}</p>
-            <h2 class="post__card__name text-capitalize">${title}</h2>
+        <div class="post-card col-md-4 hoverable" id="card-${id}">
+          <div class="post-card__content outside">
+            <div class="post-card__top inside d-flex flex-column align-items-center justify-content-center bg-black">
+            <p class="post-card__author">${name}</p>
+            <h2 class="post-card__name text-capitalize">${title}</h2>
             </div>
-            <div class="post__card__drag"></div>
+            <div class="post-card__drag"></div>
           </div>
         </div>
       </template>
@@ -212,7 +212,7 @@ async function fillModal(modalId) {
                 </div>
                 <div class="comments">
                   <div class="comments__total col 12" id="totalComments">N comments</div>
-                  <ul class="comments__list" id="commentsArea">
+                  <ul class="comments__list" id="comments-list">
                   </ul>
                 </div>
               </div>
@@ -242,7 +242,7 @@ async function fillModalComments(modalId, companyName) {
 
   let counter = 0;
 
-  const commentArea = document.getElementById("commentsArea");
+  const commentArea = document.getElementById("comments-list");
 
   commentArea.innerHTML = "";
 
