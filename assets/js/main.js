@@ -45,7 +45,7 @@ async function fillMainPost() {
 
   const templateCard = `
     <template id="mainTemplate">
-      <div class="post-main__content" id="post-main-${id}">
+      <div class="post-main__content post-main__content d-flex flex-column h-100" id="post-main-${id}">
         <p class="post-main__author">${name}</p>
         <div class="headline-card__line"></div>
         <h2 class="post-main__title text-capitalize">${title}</h2>
