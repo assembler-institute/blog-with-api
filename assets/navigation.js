@@ -10,7 +10,7 @@ navbar.addEventListener("click", (event) => {
                 createBlogs();
                 document.getElementById("prev-li").classList.add("disabled");
                 document.getElementById("next-li").classList.remove("disabled");
-                event.target.parentNode.classList.add("new-tile");
+
                 document
                     .getElementById("page-2")
                     .parentNode.classList.remove("new-tile");
@@ -83,6 +83,15 @@ navbar.addEventListener("click", (event) => {
                         .getElementById("next-li")
                         .insertAdjacentHTML("beforebegin", newTile);
                 }
+                document
+                    .getElementById("page-2")
+                    .parentNode.classList.remove("new-tile");
+                document
+                    .getElementById("page-3")
+                    .parentNode.classList.remove("new-tile");
+                document
+                    .getElementById("page-1")
+                    .parentNode.classList.remove("new-tile");
 
                 break;
 
@@ -116,6 +125,15 @@ navbar.addEventListener("click", (event) => {
                         .getElementById("next-li")
                         .insertAdjacentHTML("beforebegin", newTile);
                 }
+                document
+                    .getElementById("page-2")
+                    .parentNode.classList.remove("new-tile");
+                document
+                    .getElementById("page-3")
+                    .parentNode.classList.remove("new-tile");
+                document
+                    .getElementById("page-1")
+                    .parentNode.classList.remove("new-tile");
 
                 break;
             default:

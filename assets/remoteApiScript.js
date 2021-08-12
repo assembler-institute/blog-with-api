@@ -42,6 +42,8 @@ function createBlogs() {
             }
             retrieveData = data;
         });
+
+    document.getElementById("page-1").parentNode.classList.add("new-tile");
 }
 
 createBlogs();
