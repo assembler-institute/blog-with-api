@@ -38,8 +38,9 @@ function loadContent() {
       template.querySelector(".card-img-top").setAttribute("src", `../assets/img/levitan${random+1}.jpg`)
       
       // Set data attributes to button of info modal
-      template.querySelector(".btn-info").setAttribute("data-id", `${data[i].id}`)
-      template.querySelector(".btn-info").setAttribute("data-userid", `${data[i].userId}`)
+      template.querySelector(".btn-delete").setAttribute("data-id", `${data[i].id}`)
+      template.querySelector(".btn-read").setAttribute("data-id", `${data[i].id}`)
+      template.querySelector(".btn-read").setAttribute("data-userid", `${data[i].userId}`)
       
       // Set data attributes to button of edit modal
       template.querySelector(".btn-edit").setAttribute("data-id", `${data[i].id}`)
@@ -64,13 +65,14 @@ listElm.addEventListener('scroll', function() {
   }
 });
 
-
-    const listBtn = document.querySelectorAll(".btn-info");
+    const btnDelete = document.querySelectorAll(".btn-delete");
+    const listBtn = document.querySelectorAll(".btn-read");
     const modalTitle = document.querySelector(".modal-title");
     const modalBody = document.querySelector(".post-text");
     const modalUser = document.querySelector(".modal-user");
     const modalEmail = document.querySelector(".modal-email");
     const cardBody = document.querySelector(".card-body");
+    const cardContainer = document.querySelectorAll(".card")
 
     // Modal to display info
     listBtn.forEach((element) => {
@@ -178,6 +180,27 @@ listElm.addEventListener('scroll', function() {
         alertDanger.classList.remove("visually-hidden")
       })
     });
+
+    //DELETE BUTTON
+btnDelete.forEach(element => {
+  element.addEventListener("click", ()=> {
+    fetch("https://jsonplaceholder.typicode.com/posts?id=${id}", {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: null  //if you do not want to send any addional data,  replace the complete JSON.stringify(YOUR_ADDITIONAL_DATA) with null
+    })
+    .then((res) => res.json())
+        .then((data) => {
+          alert("delete?")//alertSuccess.classList.remove("visually-hidden")
+        })
+        .catch((error) => {
+          alert("ErrorDelete?")//alertDanger.classList.remove("visually-hidden")
+        })
+  })
+
+});
 
 btnClose.addEventListener("click", closeModal);
 
