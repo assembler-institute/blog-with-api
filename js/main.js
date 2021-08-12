@@ -105,14 +105,13 @@ $(`[data-action="delete"]`).on("click", () => {
   fetch(`http://localhost:3000/posts/${postId}`, {
     method: "DELETE",
   }).then((response) => {
-    alertVisibility(response);
+    alertDeleteVisibility(response);
   });
 });
 
 // Manage alerts and modal visibility
-function alertVisibility(response) {
+function alertDeleteVisibility(response) {
   if (response.ok) {
-    alert("It's Ok");
     setTimeout(() => {
       $("[delete-success]").removeClass("visually-hidden");
     }, 1000);
@@ -124,7 +123,6 @@ function alertVisibility(response) {
       $("[confirming]").modal("hide");
     }, 4000);
   } else {
-    alert("Te troleo");
     setTimeout(() => {
       $("[delete-error]").removeClass("visually-hidden");
     }, 1000);
@@ -156,17 +154,32 @@ $("[confirm-edit]").on("click", () => {
       body: $("[edit-body]").val(),
     }),
   }).then((response) => {
-    if (response.ok) {
-      alert("Te saliste por toda la banda");
-      $("[edit-success]").removeClass("visually-hidden");
-      console.log($("[confirming]"));
-
-      setTimeout(() => {
-        $("[edit-success]").addClass("visually-hidden");
-        $("[confirming]").removeClass("fade");
-      }, 3000);
-    } else {
-      alert("Te troleo muy fuerte");
-    }
+    alertEditVisibility(response);
   });
 });
+
+function alertEditVisibility(response) {
+  if (response.ok) {
+    setTimeout(() => {
+      $("[edit-success]").removeClass("visually-hidden");
+    }, 1000);
+
+    setTimeout(() => {
+      $("[edit-success]").addClass("visually-hidden");
+      $("[post-modal]").modal("hide");
+
+      $("[confirming]").modal("hide");
+    }, 4000);
+  } else {
+    setTimeout(() => {
+      $("[edit-error]").removeClass("visually-hidden");
+    }, 1000);
+    setTimeout(() => {
+      $("[edit-error]").addClass("visually-hidden");
+      $("[post-modal]").modal("hide");
+
+      $("[confirming]").modal("hide");
+    }, 4000);
+  }
+  printPosts();
+}

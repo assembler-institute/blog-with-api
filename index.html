@@ -109,7 +109,7 @@
             </h5>
           </div>
           <div class="modal-body">
-            <!-- ----------- DELETED POST SUCCESFUL LABEL ----------- -->
+            <!-- ----------- DELETED POST LABELS ----------- -->
             <div
               class="
                 alert alert-danger
@@ -180,6 +180,23 @@
 
     <!-- ------- EDIT POST SUCCESFUL LABEL-------- -->
     <div
+      class="alert alert-danger d-flex align-items-center visually-hidden"
+      role="alert"
+      edit-error
+    >
+      <svg
+        class="bi flex-shrink-0 me-2"
+        width="24"
+        height="24"
+        role="img"
+        aria-label="Danger:"
+      >
+        <use xlink:href="#exclamation-triangle-fill" />
+      </svg>
+      <div>Edit failed</div>
+    </div>
+
+    <div
       class="alert alert-success d-flex align-items-center visually-hidden"
       style="display: none"
       role="alert"
@@ -240,6 +257,71 @@
                 ></textarea>
               </div>
             </form>
+          </div>
+          <div
+            class="modal fade"
+            id="confirmationModal"
+            aria-hidden="true"
+            aria-labelledby="exampleModalToggleLabel"
+            tabindex="-1"
+            confirming
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalToggleLabel">
+                    We are deleting this post...
+                  </h5>
+                </div>
+                <div class="modal-body">
+                  <!-- ----------- EDIT POST LABELS ----------- -->
+                  <div
+                    class="
+                      alert alert-danger
+                      d-flex
+                      align-items-center
+                      visually-hidden
+                    "
+                    role="alert"
+                    edit-error
+                  >
+                    <svg
+                      class="bi flex-shrink-0 me-2"
+                      width="24"
+                      height="24"
+                      role="img"
+                      aria-label="Danger:"
+                    >
+                      <use xlink:href="#exclamation-triangle-fill" />
+                    </svg>
+                    <div>Edit failed</div>
+                  </div>
+
+                  <div
+                    class="
+                      alert alert-success
+                      d-flex
+                      align-items-center
+                      visually-hidden
+                    "
+                    style="display: none"
+                    role="alert"
+                    edit-success
+                  >
+                    <svg
+                      class="bi flex-shrink-0 me-2"
+                      width="24"
+                      height="24"
+                      role="img"
+                      aria-label="Success:"
+                    >
+                      <use xlink:href="#check-circle-fill" />
+                    </svg>
+                    <div>Edit succesful</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-success" confirm-edit>
