@@ -1,4 +1,4 @@
-import { getPost, getUser, updatePost, deletePost } from "../requests.js";
+import { getPost, getUser, updatePost, deletePost, getPostImage } from "../requests.js";
 import { insertPostCards, clearPostCards } from "./postCard.js";
 import { insertPostComments } from "./postComment.js";
 
@@ -105,8 +105,9 @@ export async function updateModalPostContent(id) {
 	const modal = document.querySelector("#modal-post");
 	const post = await getPost(id);
 	const user = await getUser(post.userId);
+	const img = await getPostImage(post.id);
 
-	modal.querySelector("#post-image").src = `https://picsum.photos/400/600?random=${post.id}`;
+	modal.querySelector("#post-image").src = img.download_url;
 	modal.querySelector("#post-title").textContent = post.title;
 	modal.querySelector("#post-content").textContent = post.body;
 	modal.querySelector("#user-name").textContent = user.name;

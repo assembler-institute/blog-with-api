@@ -1,15 +1,17 @@
 export async function getPostsByLimit(start, limit) {
 	const url = `${sessionStorage.url}/posts?_start=${start}&_limit=${limit}`;
-	const posts = await fetch(url).then((response) => response.json());
+	const response = await fetch(url);
+	const posts = await response.json();
 
 	return posts;
 }
 
 export async function getPost(id) {
 	const url = `${sessionStorage.url}/posts/${id}`;
-	const posts = await fetch(url).then((response) => response.json());
+	const response = await fetch(url);
+	const post = await response.json();
 
-	return posts;
+	return post;
 }
 
 export async function getPostImage(id) {
@@ -18,14 +20,16 @@ export async function getPostImage(id) {
 
 export async function getPostComments(id) {
 	const url = `${sessionStorage.url}/posts/${id}/comments`;
-	const comments = await fetch(url).then((response) => response.json());
+	const response = await fetch(url);
+	const comments = await response.json();
 
 	return comments;
 }
 
 export async function getUser(id) {
 	const url = `${sessionStorage.url}/users/${id}`;
-	const user = await fetch(url).then((response) => response.json());
+	const response = await fetch(url);
+	const user = await response.json();
 
 	return user;
 }
