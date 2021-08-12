@@ -9,5 +9,5 @@
   --darkGrey: #424242;
   --background: var(--black);
   --foreground: var(--white);
-  --transition: 0.2s ease;
+  --transition: 0.35s ease;
 }

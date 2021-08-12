@@ -45,7 +45,7 @@ async function fillMainPost() {
 
   const templateCard = `
     <template id="mainTemplate">
-      <article class="post-main" id="post-main">
+      <div class="post-main__content" id="post-main-${id}">
         <p class="post-main__author">${name}</p>
         <div class="headline-card__line"></div>
         <h2 class="post-main__title text-capitalize">${title}</h2>
@@ -62,7 +62,7 @@ async function fillMainPost() {
             Read more
           </button>
         </div>
-      </article>
+      </div>
     </template>
   `;
 

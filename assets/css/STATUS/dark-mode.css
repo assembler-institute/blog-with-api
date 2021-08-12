@@ -2,26 +2,11 @@
  * STATUS - DARK
  */
 
-.dark-mode {
+/* .dark-mode {
   color: #FAFAFA;
-}
+  background: #000000;
+} */
 
 .dark-mode::before {
   transform: translateX(0);
 }
-
-/* .dark-mode .toggle {
-  background: var(--white);
-}
-
-.dark-mode .toggle::before  {
-  background: var(--black);
-}
-
-.dark-mode .toggle_icons svg {
-  fill: var(--black);
-}
-
-.dark-mode .exercise__code{
-  color: var(--black);
-} */
