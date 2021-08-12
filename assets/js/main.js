@@ -8,7 +8,7 @@ let body;
 let userId;
 let id;
 let cards;
-let post;
+let postElement;
 let posts;
 // Declaring events
 
@@ -29,11 +29,11 @@ async function showAllPosts() {
     const POSTS = await getAllPosts();
     POSTS.forEach((post) => {
         let eachPost =
-            $(`<div class="col" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            $(`<div class="col rounded" id="${post.id}" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <div id="postsmodal" class="card h-100">
-                    <img src="assets/img/mjackson.jpg" class="card-img-top" alt="..." />
+                    <img src="assets/img/${post.id}.jpg" class=" card-img-top" alt="..."/>
                     <div class="card-body background-color: var(--bs-white)">
-                        <p class="title" data-id="${post.id}" style="color: var(--bs-gray-900);" data-userid="${post.userId}" id="${post.id}" data-body="${post.body}">${post.id}&#160;&#160;${post.title}</p>
+                        <p class="title fs-7" data-id="${post.id}" style="color: var(--bs-gray-900);" data-userid="${post.userId}" id="${post.id}" data-body="${post.body}">${post.id}&#160;&#160;${post.title}</p>
                     </div> 
                 </div>
             </div)`);
@@ -61,7 +61,7 @@ $(document).on("click", function(element) {
             method: "GET",
         };
         $.ajax(getElements).done(function(ALLPOSTS) {
-            post = element.target.id;
+            postElement = element.target.id;
             $("#username").text(ALLPOSTS.username);
             $("#emailuser").text(ALLPOSTS.email);
             $("#bodypost").text(element.target.dataset.body);
@@ -100,19 +100,42 @@ $(document).on("click", function(element) {
 function deletePost() {
     $("#btn__deletepost").on("click", function() {
         let deleteButton = {
-            url: `https://jsonplaceholder.typicode.com/posts/${post}`,
+            url: `https://jsonplaceholder.typicode.com/posts/${postElement}`,
             method: "DELETE",
             timeout: 0,
         };
         $.ajax(deleteButton).done(function() {
-            const div = $(`div[id="${post}"]`);
-            div.remove();
-            $("#exampleModal").modal("hide");
+            const deleteMe = $(`[id="${postElement}"]`);
+            deleteMe.remove();
             $("#modaldelete").modal("show");
             $("#close-btn").on("click", function() {
                 $("#modaldelete").modal("hide");
             });
+        })
+    })
+}
+deletePost();
+
+
+function editPost() {
+    $("#editModalBtn").on("click", function() {
+        var editPost = {
+            url: `https://jsonplaceholder.typicode.com/posts/${postElement}`,
+            method: "PATCH",
+            timeout: 0,
+            data: {
+                title: $("#edittitle").val(),
+                body: $("#bodyContent").val(),
+            },
+        };
+
+        $.ajax(editPost).done(function() {
+            $("input").val("");
+            $("#editModal").modal("show");
+            $("#confirmModalBtn").on("click", function() {
+                $("#editModal").modal("hide");
+            });
         });
     });
 }
-deletePost();
+editPost();
