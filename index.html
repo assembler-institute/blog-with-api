@@ -59,7 +59,7 @@
       <h1 class="header__title">Blog</h1>
 
       <!-- Toggle -->
-      <label class="toggle__wrapper hoverable" htmlFor="toggle">
+      <div class="toggle__wrapper hoverable">
         <div class="toggle" id="toggle">
           <div class="toggle_icons">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -77,7 +77,7 @@
           </div>
           <input class="toggle__input" id="toggle__input" name="toggle" type="checkbox" />
         </div>
-      </label><!-- Toggle -->
+      </div><!-- Toggle -->
     </header><!-- Header -->
 
     <!-- Post main -->
@@ -116,11 +116,11 @@
     <footer class="footer">
       <div class="creators">
         <p class="creators__love text-center">Created by</p>
-        <ul class="creators__list d-flex justify-content-center">
-          <li class="creators__item text-uppercase mr-4">Pere Serra</li>
-          <span>&nbsp;and&nbsp;</span>
-          <li class="creators__item text-uppercase">Paris Arcos</li>
-        </ul>
+        <p class="creators__list text-center">
+          <span class="text-uppercase">Pere Serra</span>
+          and
+          <span class="text-uppercase">Paris Arcos</span>
+        </p>
       </div>
     </footer><!-- Footer -->
 

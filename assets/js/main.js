@@ -114,7 +114,7 @@ async function fillLinesSection(linePost = 1, lineLimit = 6) {
           <div class="post-block__content d-block" id="post-block-${id}">
             <div class="post-block__img d-block"></div>
             <p class="post-block__name d-block text-uppercase">${name}</p>
-            <p class="post-block__title d-block text-capitalize">${title}</p>
+            <h2 class="post-block__title d-block text-capitalize">${title}</>
           </div>
         </div>
       </template>
@@ -179,8 +179,12 @@ async function fillTinderSection(tinderPost = 7, tinderLimit = 6) {
     tinderContent.appendChild(copyContent);
 
     document.getElementById(`card-${id}`).addEventListener("click", function () {
+      let card = document.getElementById(`card-${id}`);
+
+      if (card.classList.contains('inactive')) return;
 
       fillModal(id, "tinder");
+
       let modal = new bootstrap.Modal(document.getElementById('postModal'), {
         keyboard: false
       })
@@ -216,7 +220,7 @@ async function fillInlineSection(inlinePost = 13, inlineLimit = 10) {
           <div class="post-inline__content d-inline">
             <div class="post-inline__img d-inline"></div>
             <p class="post-inline__name d-inline text-uppercase">${name}</p>
-            <p class="post-inline__title d-inline text-capitalize">${title}</p>
+            <h2 class="post-inline__title d-inline text-capitalize">${title}</h2>
           </div>
         </div>
       </template>
