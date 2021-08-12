@@ -34,8 +34,8 @@ async function fetchData(section = "posts", from = 0, limit = 10) {
 /**
  * Fill main post
  */
-async function fillMainPost() {
-  let cards = await fetchData("posts", 0, 1);
+async function fillMainPost(mainPost = 0) {
+  let cards = await fetchData("posts", mainPost, 1);
 
   const { userId, id, title } = { ...cards[0] };
 
@@ -51,8 +51,8 @@ async function fillMainPost() {
         <h2 class="post-main__title text-capitalize">${title}</h2>
         <div class="headline-card__line"></div>
         <div class="post-main__button">
-          <button 
-            type="button" 
+          <button
+            type="button"
             class="btn btn-dark text-uppercase hoverable"
             data-bs-toggle="modal"
             data-bs-target="#postModal"
@@ -74,15 +74,15 @@ async function fillMainPost() {
   postMain.innerHTML = "";
   postMain.appendChild(copyContent);
   document.getElementById("readBtn").addEventListener("click", function () {
-    fillModal(id);
+    fillModal(id, "main");
   });
 }
 
 /**
  * Fill post of line Section
  */
-async function fillLinesSection() {
-  let cards = await fetchData("posts", 1, 6);
+async function fillLinesSection(linePost = 1, lineLimit = 6) {
+  let cards = await fetchData("posts", linePost, lineLimit);
 
   const postsContent = document.getElementById("lines-content");
 
@@ -112,7 +112,7 @@ async function fillLinesSection() {
     document.getElementById(`lines-template-${id}`).remove();
     postsContent.appendChild(copyContent);
     document.getElementById(`post-block-${id}`).addEventListener("click", function () {
-      fillModal(id);
+      fillModal(id, "line");
 
       let modal = new bootstrap.Modal(document.getElementById('postModal'), {
         keyboard: false
@@ -127,8 +127,9 @@ async function fillLinesSection() {
 /**
  * Fill post of tinder Section
  */
-async function fillTinderSection() {
-  let cards = await fetchData("posts", 7, 6);
+async function fillTinderSection(tinderPost = 7, tinderLimit = 6) {
+
+  let cards = await fetchData("posts", tinderPost, tinderLimit);
 
   const tinderContent = document.getElementById("tinder-content");
 
@@ -159,24 +160,77 @@ async function fillTinderSection() {
 
     document.getElementById(`tinder-template-${id}`).remove();
     tinderContent.appendChild(copyContent);
-    document
-      .getElementById(`card-${id}`)
-      .addEventListener("click", function () {
-        fillModal(id);
-      });
+
+    document.getElementById(`card-${id}`).addEventListener("click", function () {
+
+      fillModal(id, "tinder");
+      let modal = new bootstrap.Modal(document.getElementById('postModal'), {
+        keyboard: false
+      })
+
+      modal.show();
+    });
+
   }
 }
 
 /**
+ * Fill post of line Section
+ */
+async function fillInlineSection(inlinePost = 13, inlineLimit = 10) {
+
+  let cards = await fetchData("posts", inlinePost, inlineLimit);
+
+  const postsContent = document.getElementById("inline-content");
+
+  for (const card of cards) {
+    const { userId, id, title } = { ...card };
+
+    const users = await fetchData("users", userId - 1, userId);
+
+    const { name } = { ...users[0] };
+
+    const templateCard = `
+      <template id="lines-template-${id}">
+        <div class="post-inline d-inline" id="post-inline-${id}">
+          <div class="post-inline__content d-inline">
+            <div class="post-inline__img d-inline"></div>
+            <p class="post-inline__name d-inline text-uppercase">${name}</p>
+            <p class="post-inline__title d-inline text-capitalize">${title}</p>
+          </div>
+        </div>
+      </template>
+    `;
+
+    postsContent.insertAdjacentHTML("beforeend", templateCard);
+    const contentTemplate = document.getElementById(`lines-template-${id}`).content;
+    const copyContent = document.importNode(contentTemplate, true);
+    document.getElementById(`lines-template-${id}`).remove();
+    postsContent.appendChild(copyContent);
+
+    document.getElementById(`post-inline-${id}`).addEventListener("click", function () {
+      fillModal(id, "inline");
+
+      let modal = new bootstrap.Modal(document.getElementById('postModal'), {
+        keyboard: false
+      })
+
+      modal.show();
+    });
+  }
+}
+
+
+/**
  * Fill the modal when read more is clicked
  */
-async function fillModal(modalId) {
+async function fillModal(modalId, section) {
 
   const post = await fetchData("posts", modalId - 1, 1);
 
   const { userId, id, title, body } = { ...post[0] };
 
-  const user = await fetchData("users", userId, 1);
+  const user = await fetchData("users", userId - 1, 1);
 
   const { name, company } = { ...user[0] };
 
@@ -256,7 +310,7 @@ async function fillModalComments(modalId, companyName) {
 
       const templateModalComment = `
         <template id="comment-template-${id}">
-          <li class="comments__item d-flex">
+          <li class="comments__item d-flex" id="comment-${id}">
             <i class="bi bi-emoji-sunglasses pr-4"></i>
             <blockquote class="blockquote">
               <div class="blockquote__header">
@@ -266,56 +320,29 @@ async function fillModalComments(modalId, companyName) {
               </div>
               <p class="blockquote__body">${body}</p>
             </blockquote>
+            <div class="comments__buttons d-flex flex-column">
+              <button type="button" class="btn-modal btn-danger" data-id="${id}" id="comment-delete-${id}">
+                <i class="bi bi-trash"></i>
+              </button>
+              <button type="button" class="btn-modal btn-success" data-id="${id}" id="comment-edit-${id}">
+                <i class="bi bi-pencil"></i>
+              </button>
+            </div>
           </li>
         </template>
       `;
 
       commentArea.insertAdjacentHTML("beforeend", templateModalComment);
       const contentTemplate = document.getElementById(`comment-template-${id}`).content;
-
       const copyContent = document.importNode(contentTemplate, true);
       document.getElementById(`comment-template-${id}`).remove();
       commentArea.appendChild(copyContent);
+      document.getElementById(`comment-delete-${id}`).addEventListener("click", deleteComment)
+      document.getElementById(`comment-edit-${id}`).addEventListener("click", editComment)
     }
   }
 
   document.getElementById("totalComments").innerHTML = `${counter} comments`;
-}
-
-/**
- * Fill post of line Section
- */
-async function fillInlineSection() {
-  let cards = await fetchData("posts", 13, 10);
-
-  const postsContent = document.getElementById("inline-content");
-
-  for (const card of cards) {
-    const { userId, id, title } = { ...card };
-
-    const users = await fetchData("users", userId - 1, userId);
-
-    const { name } = { ...users[0] };
-
-    const templateCard = `
-      <template id="lines-template-${id}">
-        <div class="post-inline d-inline">
-          <div class="post-inline__content d-inline">
-            <div class="post-inline__img d-inline"></div>
-            <p class="post-inline__name d-inline text-uppercase">${name}</p>
-            <p class="post-inline__title d-inline text-capitalize">${title}</p>
-          </div>
-        </div>
-      </template>
-    `;
-
-    postsContent.insertAdjacentHTML("beforeend", templateCard);
-    const contentTemplate = document.getElementById(`lines-template-${id}`).content;
-    const copyContent = document.importNode(contentTemplate, true);
-
-    document.getElementById(`lines-template-${id}`).remove();
-    postsContent.appendChild(copyContent);
-  }
 }
 
 /**
@@ -327,3 +354,31 @@ async function fillInlineSection() {
   fillTinderSection();
   fillInlineSection()
 })()
+
+async function deleteComment(e) {
+  const id = e.target.parentElement.dataset.id;
+  const baseUrl = "https://jsonplaceholder.typicode.com";
+
+  let response = await fetch(`${baseUrl}/comments/${id}`, { method: 'DELETE' });
+
+  if (response.status === 200) {
+    console.log("El comentario se ha borrado");
+    document.getElementById(`comment-${id}`).remove();
+  }
+
+  return response
+}
+
+async function editComment(e) {
+  const id = e.target.parentElement.dataset.id;
+  const baseUrl = "https://jsonplaceholder.typicode.com";
+  let prevText = document.getElementById(`comment-body-${id}`).innerHTML
+
+  let response = await fetch(`${baseUrl}/comments/${id}`, { method: 'PUT' });
+
+  if (response.status === 200) {
+    console.log("El comentario se ha editado");
+  }
+
+  return response
+}
