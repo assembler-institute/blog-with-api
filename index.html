@@ -63,7 +63,7 @@
               class="btn btn-danger"
               data-bs-toggle="modal"
               data-action="delete"
-              href="#exampleModalToggle"
+              href="#confirmationModal"
               role="button"
               >Delete</a
             >
@@ -94,10 +94,11 @@
     <!-- ------- MODAL ARE YOU SURE? -------- -->
     <div
       class="modal fade"
-      id="exampleModalToggle"
+      id="confirmationModal"
       aria-hidden="true"
       aria-labelledby="exampleModalToggleLabel"
       tabindex="-1"
+      confirming
     >
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -159,7 +160,7 @@
       >
         <use xlink:href="#check-circle-fill" />
       </svg>
-      <div>Edited Succesful</div>
+      <div>Edited Succes</div>
     </div>
 
     <!-- ------- MODAL EDIT? -------- -->

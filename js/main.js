@@ -111,7 +111,9 @@ $(`[data-action="delete"]`).on("click", (e) => {
       alert("It's Ok");
       $("[delete-success]").removeClass("visually-hidden");
 
-      // $("[delete-success]").addClass("visually-hidden");
+      setTimeout(() => {
+        $("[delete-success]").addClass("visually-hidden");
+      }, 3000);
     } else {
       alert("Te troleo");
     }
@@ -139,6 +141,12 @@ $("[confirm-edit]").on("click", () => {
     if (response.ok) {
       alert("Te saliste por toda la banda");
       $("[edit-success]").removeClass("visually-hidden");
+      console.log($("[confirming]"));
+
+      setTimeout(() => {
+        $("[edit-success]").addClass("visually-hidden");
+        $("[confirming]").removeClass("fade");
+      }, 3000);
     } else {
       alert("Te troleo muy fuerte");
     }
