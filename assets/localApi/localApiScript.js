@@ -258,6 +258,7 @@ window.addEventListener("click", (event) => {
         let header = document.getElementById("modal__header");
         let footer = document.getElementById("modal__footer");
         let authorDetails = document.getElementById("author__details");
+        let comments = document.getElementById("comment__section");
 
         header.innerHTML = `<h5>Title:</h5>
         <textarea   cols="60"  style = "resize: none" id="edit__title">${title}
@@ -274,6 +275,9 @@ window.addEventListener("click", (event) => {
         <button type="button" class="btn btn-primary" id="save-blog">Save Changes</button>`;
 
         authorDetails.remove();
+        if (comments !== null) {
+            comments.remove();
+        }
     }
 });
 
