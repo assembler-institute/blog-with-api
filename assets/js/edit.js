@@ -1,9 +1,8 @@
 document.addEventListener("click", function (e) {
-  if (e.target.matches("[data-edit]")) editPost(e, e.target.dataset.edit);
+  if (e.target.matches("[data-edit]")) editPost(e.target.dataset.edit);
 });
 
-function editPost(e, post) {
-  e.preventDefault();
+function editPost(post) {
   let title = document.querySelector("#edit-title").value;
   let body = document.querySelector("#edit-body").value;
 
@@ -16,5 +15,5 @@ function editPost(e, post) {
     .then(() => {
       location.reload();
     })
-    .catch((err) => console.log(err));
+    .catch((err) => console.log(err)); 
 }

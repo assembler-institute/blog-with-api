@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog with API</title>
+    <link rel="icon" type="image/png" href="./assets/images/favicon.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -29,18 +30,26 @@
   </head>
 
   <body>
-    <header>
-      <div class="socialMedia">
+    <header class="header d-flex justify-content-between">
+      <section class="socialMedia">
         <i class="fab fa-facebook socialMedia__icon"></i>
         <i class="fab fa-instagram socialMedia__icon"></i>
         <i class="fab fa-twitter socialMedia__icon"></i>
-      </div>
-      <nav class="navbar navbar-light bg-white">
-        <div class="container-fluid">
-          <a class="navbar-brand text-center navbar__title" href="#">Blog with API</a>
-        </div>
+      </section>
+      <nav class="menu">
+        <ul class="d-flex">
+          <li class="menu__item"><i class="fas fa-home px-2"></i>Home</li>
+          <li class="menu__item"><i class="fas fa-info px-2"></i>About us</li>
+          <li class="menu__item"><i class="fas fa-address-card px-2"></i>Contact</li>
+        </ul>
       </nav>
-    </header>
+     
+    </header> 
+
+    <section class="navbar navbar-light bg-white d-flex justify-content-center pt-3">
+      <img src="https://fontmeme.com/permalink/210812/8535871b620910dc18050f5b64d61fd1.png" alt="cursive-fonts" class="w-40">
+    </section>
+
     <main id="app" class="container-fluid"></main>
     <div id="container" class="d-flex justify-content-center pb-3 pt-3">
       <div class="spinner-border " role="status">
