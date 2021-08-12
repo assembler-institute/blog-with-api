@@ -99,26 +99,44 @@ $("[delete-content]").on("click", () => {
 });
 
 // Delete post -> DELETE API
-$(`[data-action="delete"]`).on("click", (e) => {
+$(`[data-action="delete"]`).on("click", () => {
   let postId = document.querySelector(".modal-content").dataset.blogId;
-  console.log(postId);
-  // e.preventDefault();
-  // e.stopPropagation();
+
   fetch(`http://localhost:3000/posts/${postId}`, {
     method: "DELETE",
   }).then((response) => {
-    if (response.ok) {
-      alert("It's Ok");
-      $("[delete-success]").removeClass("visually-hidden");
-
-      setTimeout(() => {
-        $("[delete-success]").addClass("visually-hidden");
-      }, 3000);
-    } else {
-      alert("Te troleo");
-    }
+    alertVisibility(response);
   });
 });
+
+// Manage alerts and modal visibility
+function alertVisibility(response) {
+  if (response.ok) {
+    alert("It's Ok");
+    setTimeout(() => {
+      $("[delete-success]").removeClass("visually-hidden");
+    }, 1000);
+
+    setTimeout(() => {
+      $("[delete-success]").addClass("visually-hidden");
+      $("[post-modal]").modal("hide");
+
+      $("[confirming]").modal("hide");
+    }, 4000);
+  } else {
+    alert("Te troleo");
+    setTimeout(() => {
+      $("[delete-error]").removeClass("visually-hidden");
+    }, 1000);
+    setTimeout(() => {
+      $("[delete-error]").addClass("visually-hidden");
+      $("[post-modal]").modal("hide");
+
+      $("[confirming]").modal("hide");
+    }, 4000);
+  }
+  printPosts();
+}
 
 // Fill edit modal
 $(`[data-action="edit"]`).on("click", () => {
