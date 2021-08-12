@@ -10,18 +10,6 @@ document.getElementById("carousel-2").src =
 document.getElementById("carousel-3").src =
   "https://picsum.photos/id/55/1000/400";
 
-//---------------------------------------------------LOAD MORE POSTS
-
-// btnMore.addEventListener("click", function loadPosts() {
-//   let row1 = document.createElement("div");
-//   row1.className = "row gap-2";
-//   row1.textContent();
-//   let row2 = document.createElement("div");
-//   row2.className = "row gap-2";
-//   divCont.appendChild(row1);
-//   divCont.appendChild(row2);
-// });
-
 //---------------------------------------------------ADDING IDS TO CARDS AND MORE
 
 function ids() {
@@ -54,7 +42,7 @@ function ids() {
 
     cards[index].querySelector("img").src = `https://picsum.photos/id/${
       index + 10 + index
-    }/200`;
+    }/300`;
 
     //We add the event listener to each button
 
@@ -68,13 +56,15 @@ ids();
 
 function fillingModal(e) {
   //We are getting the button's id ("btn-x") and slicing only the number. It comes as string so we parse it
-  let id = e.target.id;
   let btnID = parseInt(e.target.id.slice(4, e.target.id.length));
   let modal = document.querySelector("#modal-content");
   let modalTitle = document.getElementById("modal_title");
   let modalBody = document.getElementById("modal_body");
+  let userInfo = document.createElement("section");
+  let listComments = document.createElement("section");
+  let btnComments = document.querySelector("#btn-comments");
 
-  //We are searching inside the API for the post with the btnID + 1 id
+  //We search inside the API for the post with the btnID + 1 id
 
   fetch(`https://jsonplaceholder.typicode.com/posts/${btnID + 1}`)
     .then((response) => {
@@ -97,15 +87,17 @@ function fillingModal(e) {
         return response.json();
       })
       .then((response) => {
-        //First of all, we erase any other possible user's info
+        //First of all, we erase any other possible user's info and comments
+        let list_comments = document.getElementById("list-comments");
+        let user_info = document.getElementById("user-info");
 
-        for (let m of modal.children) {
-          if (m.id === "user-info") m.remove();
+        if (user_info || list_comments) {
+          user_info.remove();
+          list_comments.remove();
         }
 
         //Then we create a new section with the user's info and insert it dynamically in the modal-content div
 
-        let userInfo = document.createElement("section");
         userInfo.id = "user-info";
         userInfo.className = "modal-body";
         userInfo.style.borderTop = "1px solid lightgrey";
@@ -119,17 +111,18 @@ function fillingModal(e) {
       });
   }
 
-  let btnComments = document.querySelector("#btn-comments");
-  btnComments.addEventListener("click", () => {
-    fetch(`https://jsonplaceholder.typicode.com/comments?postId=${id}&_limit=2`) //!This is temporarily out of service
+  btnComments.addEventListener("click", function myComments() {
+    fetch(
+      `https://jsonplaceholder.typicode.com/comments?postId=${
+        btnID + 1
+      }&_limit=2`
+    )
       .then((response) => {
         return response.json();
       })
       .then((response) => {
-        for (let m of modal.children) {
-          if (m.id === "list-comments") m.remove();
-        }
-        let listComments = document.createElement("section");
+        userInfo.lastChild.remove();
+
         listComments.id = "list-comments";
         listComments.style.borderTop = "1px solid lightgrey";
         for (let comment of response) {
@@ -144,8 +137,12 @@ function fillingModal(e) {
           commentDiv.appendChild(commentBody);
           commentDiv.appendChild(commentUserName);
           commentDiv.appendChild(commentMail);
-          modal.insertBefore(commentDiv, modal.children[3]);
+          listComments.appendChild(commentDiv);
+          modal.insertBefore(listComments, modal.children[3]);
         }
       });
+    //! Very important: if we do not delete the event listener, the user may click again and there are bugs
+    //! It also gets duplicated the next time we load other comments if we do not remove it here!
+    btnComments.removeEventListener("click", myComments);
   });
 }
