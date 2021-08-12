@@ -3,7 +3,7 @@ import { getAllPosts } from "./posts.js"
 export const getButtonsPagination = (response, page) => {
 
   let arrayPage = response.headers.get('link').split(',')
-  console.log(arrayPage)
+
   let paginate = {
     prev: null,
     first: null,

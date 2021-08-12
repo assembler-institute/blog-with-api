@@ -30,12 +30,11 @@ export const getAllPosts = async (page = 1, limit = 9) => {
                 <span class="h5">${post.title}</span>
                 <p class="card-text">${post.body}</p>
               </div>
-              <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex flex-row-reverse justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary" data-id="${post.id}" data-action="view">View</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary" data-id="${post.id}" data-action="edit">Edit</button>
                 </div>
-                <small class="text-muted">9 mins</small>
               </div>
             </div>
           </div>
@@ -44,9 +43,13 @@ export const getAllPosts = async (page = 1, limit = 9) => {
     })
 
     // Print the posts
-    document.getElementById('blog').insertAdjacentHTML('afterbegin', allPostHTML)
-    // Print pagination
-    document.getElementById('pagination').insertAdjacentHTML('beforeend', buttons)
+    let mainContainer = document.getElementById('main-container')
+    mainContainer.querySelectorAll('*').forEach(elm => elm.remove())
+    mainContainer.insertAdjacentHTML('afterbegin', `
+      <div id="blog" class="row">${allPostHTML}</div>
+      <ul id="pagination" class="pagination">${buttons}</ul>
+    `)
+
     // Listener
     document.querySelectorAll('#next, #prev').forEach(elm => elm.addEventListener('click', event => {
       loadPage(parseInt(event.target.getAttribute('data-page')))
