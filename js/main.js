@@ -102,19 +102,18 @@ $("[delete-content]").on("click", () => {
 $(`[data-action="delete"]`).on("click", (e) => {
   let postId = document.querySelector(".modal-content").dataset.blogId;
   console.log(postId);
+  // e.preventDefault();
+  // e.stopPropagation();
   fetch(`http://localhost:3000/posts/${postId}`, {
     method: "DELETE",
   }).then((response) => {
     if (response.ok) {
-      console.log("It's Ok");
-      e.preventDefault();
-      $("[data-success]").removeClass("visually-hidden");
+      alert("It's Ok");
+      $("[delete-success]").removeClass("visually-hidden");
 
-      setTimeout(() => {
-        $("[data-success]").addClass("visually-hidden");
-      }, 3000);
+      // $("[delete-success]").addClass("visually-hidden");
     } else {
-      console.log("Te troleo");
+      alert("Te troleo");
     }
   });
 });
@@ -136,5 +135,12 @@ $("[confirm-edit]").on("click", () => {
       title: $("[edit-title]").val(),
       body: $("[edit-body]").val(),
     }),
+  }).then((response) => {
+    if (response.ok) {
+      alert("Te saliste por toda la banda");
+      $("[edit-success]").removeClass("visually-hidden");
+    } else {
+      alert("Te troleo muy fuerte");
+    }
   });
 });
