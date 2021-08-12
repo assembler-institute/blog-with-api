@@ -34,9 +34,8 @@ function switchStyles() {
 async function fetchData(section = "posts", from = 0, limit = 10) {
   const baseUrl = "https://jsonplaceholder.typicode.com";
 
-  let response = await fetch(
-    `${baseUrl}/${section}?_start=${from}&_limit=${limit}`
-  ).then((response) => response.json());
+  let response = await fetch(`${baseUrl}/${section}?_start=${from}&_limit=${limit}`)
+    .then((response) => response.json());
 
   return response;
 }
@@ -241,7 +240,6 @@ async function fillInlineSection(inlinePost = 13, inlineLimit = 10) {
   }
 }
 
-
 /**
  * Fill the modal when read more is clicked
  *
@@ -362,12 +360,12 @@ async function fillModalComments(modalId, companyName) {
       document.getElementById(`comment-template-${id}`).remove();
       commentArea.appendChild(copyContent);
 
-      document.getElementById(`comment-delete-${id}`).addEventListener("click", deleteComment)
-      document.getElementById(`comment-edit-${id}`).addEventListener("click", editComment)
+      document.getElementById(`comment-delete-${id}`).addEventListener("click", deleteComment);
+      document.getElementById(`comment-edit-${id}`).addEventListener("click", editComment);
     }
   }
 
-  recountComments()
+  recountComments();
 }
 
 /**
@@ -387,7 +385,7 @@ async function deleteComment(e) {
     recountComments();
   }
 
-  return response
+  return response;
 }
 
 /**
@@ -445,16 +443,18 @@ async function saveEditComment(id) {
       'Content-type': 'application/json; charset=UTF-8',
     },
   });
+
   if (response.status === 200) {
     console.log("El comentario se ha editado");
   }
-  return response
+
+  return response;
 }
 
 /**
  * Recount and modify total comments
  */
 function recountComments() {
-  const counter = document.getElementById("comments-list").children.length
+  const counter = document.getElementById("comments-list").children.length;
   document.getElementById("totalComments").innerHTML = `${counter} comments`;
 }
