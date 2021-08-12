@@ -168,7 +168,7 @@ function alertEditVisibility(response) {
       $("[edit-success]").addClass("visually-hidden");
       $("[post-modal]").modal("hide");
 
-      $("[confirming]").modal("hide");
+      $("#editModal").modal("hide");
     }, 4000);
   } else {
     setTimeout(() => {
@@ -178,7 +178,7 @@ function alertEditVisibility(response) {
       $("[edit-error]").addClass("visually-hidden");
       $("[post-modal]").modal("hide");
 
-      $("[confirming]").modal("hide");
+      $("#editModal").modal("hide");
     }, 4000);
   }
   printPosts();
