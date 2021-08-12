@@ -58,7 +58,7 @@ function getUser(post) {
   fetch(`http://localhost:3000/users/${post.userId}`)
     .then((response) => response.json())
     .then((user) => {
-      document.querySelector(".modal-footer__username").textContent = user.username;
-      document.querySelector(".modal-footer__email").textContent = user.email;
+      document.querySelector(".modal-footer__username").innerHTML = `<i class="fas fa-user"></i> <i>${user.username}</i>`;
+      document.querySelector(".modal-footer__email").innerHTML = `<i class="fas fa-envelope"></i> <i>${user.email}</i>`;
     });
 }

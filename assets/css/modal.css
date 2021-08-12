@@ -1,0 +1,8 @@
+.color-border{
+  color: white;
+  border-style: none;
+}
+
+.color-border:hover{
+color: rgb(164, 164, 164);
+}

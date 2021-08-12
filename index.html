@@ -20,6 +20,7 @@
       defer
     ></script>
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/modal.css">
     <link
       rel="stylesheet"
       href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -37,7 +38,7 @@
         <i class="fab fa-twitter socialMedia__icon"></i>
       </section>
       <nav class="menu">
-        <ul class="d-flex">
+        <ul class="d-flex m-0">
           <li class="menu__item"><i class="fas fa-home px-2"></i>Home</li>
           <li class="menu__item"><i class="fas fa-info px-2"></i>About us</li>
           <li class="menu__item"><i class="fas fa-address-card px-2"></i>Contact</li>
@@ -46,7 +47,7 @@
      
     </header> 
 
-    <section class="navbar navbar-light bg-white d-flex justify-content-center pt-3">
+    <section class="navbar navbar-light bg-white d-flex justify-content-center pt-5 pb-5">
       <img src="https://fontmeme.com/permalink/210812/8535871b620910dc18050f5b64d61fd1.png" alt="cursive-fonts" class="w-40">
     </section>
 
@@ -62,9 +63,9 @@
         <div class="modal-content">
           <div class="d-flex justify-content-between p-3">
             <div class="">
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#editModal" id="edit-button"><i class="fas fa-edit"></i></button>
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#deleteModal" id="delete-button"><i class="fas fa-trash"></i></button>
-              <button type="button" class="btn btn-primary position-relative" id="show-comments" type="button" data-bs-toggle="collapse" data-bs-target="#comments" aria-expanded="false" aria-controls="collapseExample">
+              <button type="button" class="btn btn-primary bg-dark color-border" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#editModal" id="edit-button"><i class="fas fa-edit"></i></button>
+              <button type="button" class="btn btn-primary bg-dark color-border" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#deleteModal" id="delete-button"><i class="fas fa-trash"></i></button>
+              <button type="button" class="btn btn-primary position-relative bg-dark color-border" id="show-comments" type="button" data-bs-toggle="collapse" data-bs-target="#comments" aria-expanded="false" aria-controls="collapseExample">
                 <i class="fas fa-comments"></i><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="counter-messages">
                   5
                   <span class="visually-hidden">unread messages</span>
@@ -80,8 +81,8 @@
           </div>
           <div class="modal-body"></div>
           <div class="modal-footer d-flex justify-content-between p-3">
-            <div class="modal-footer__username"></div>
-            <div class="modal-footer__email"></div>
+            <div class="modal-footer__username"><i></i></div>
+            <div class="modal-footer__email"><i></i></div>
           </div>
           <div class="collapse comments " id="comments">
             <h3 class="text-center">Comments</h3>
@@ -94,24 +95,24 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Edit Post</h5>
+            <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-edit"></i> Edit Post</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <form>
               <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Title:</label>
-                <input type="text" class="form-control" id="edit-title" />
+                <label for="recipient-name" class="col-form-label fw-light font-family">Title:</label>
+                <input type="text" class="form-control border-radius" id="edit-title" />
               </div>
               <div class="form-group">
-                <label for="message-text" class="col-form-label">Body:</label>
-                <textarea class="form-control" id="edit-body"></textarea>
+                <label for="message-text" class="col-form-label fw-light font-family">Body:</label>
+                <textarea class="form-control border-radius" id="edit-body"></textarea>
               </div>
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-warning" data-bs-dismiss="modal"><i class="fas fa-ban"></i></button>
-            <button type="button" class="btn btn-primary" id="confirm-edit"><i class="far fa-save"></i></button>
+            <button type="button" class="btn color-border bg-dark" data-bs-dismiss="modal"><i class="fas fa-ban"></i></button>
+            <button type="button" class="btn color-border bg-dark" id="confirm-edit"><i class="far fa-save"></i></button>
           </div>
         </div>
       </div>
@@ -121,13 +122,13 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Modal title</h5>
+            <i class="fas fa-exclamation-triangle confirm__delete__icon"></i>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">Sure you want to delete the post?</div>
+          <div class="modal-body text-center confirm__delete__font"> Sure you want to delete the post?</div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-ban"></i></button>
-            <button type="button" class="btn btn-primary" id="confirm-delete"><i class="far fa-trash"></i></button>
+            <button type="button" class="btn btn-secondary  color-border bg-dark" data-bs-dismiss="modal"><i class="fas fa-ban"></i></button>
+            <button type="button" class="btn btn-primary  color-border bg-dark" id="confirm-delete"><i class="far fa-trash"></i></button>
           </div>
         </div>
       </div>
