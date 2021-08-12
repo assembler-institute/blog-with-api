@@ -58,8 +58,7 @@ window.addEventListener("scroll", () => {
 });
 
 async function showMorePosts() {
-  if(page < 3)
-    page = 3;
+  if (page < 3) page = 3;
   page++;
   const postResponse = await fetch(`http://localhost:3000/posts?_page=${page}&_limit=3`);
   const postData = await postResponse.json();

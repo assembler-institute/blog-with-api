@@ -1,5 +1,5 @@
 document.addEventListener("click", function (e) {
-  if (e.target.matches("[data-edit]")) editPost(e.target.dataset.edit);
+  if ((e.target.matches("[data-edit]")) || (e.target.matches("[data-edit] *"))) editPost(e.target.dataset.edit);
 });
 
 function editPost(post) {
@@ -16,4 +16,8 @@ function editPost(post) {
       location.reload();
     })
     .catch((err) => console.log(err)); 
+}
+
+function parentElements(elem){
+  console.log(elem);
 }

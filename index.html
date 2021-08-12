@@ -66,7 +66,7 @@
               <button type="button" class="btn btn-primary bg-dark color-border" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#editModal" id="edit-button"><i class="fas fa-edit" id="edit-button-icon" ></i></button>
               <button type="button" class="btn btn-primary bg-dark color-border" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#deleteModal" id="delete-button"><i class="fas fa-trash"></i></button>
               <button type="button" class="btn btn-primary position-relative bg-dark color-border" id="show-comments" type="button" data-bs-toggle="collapse" data-bs-target="#comments" aria-expanded="false" aria-controls="collapseExample">
-                <i class="fas fa-comments"></i><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="counter-messages">
+                <i id="show-comments-icon" class="fas fa-comments"></i><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="counter-messages">
                   5
                   <span class="visually-hidden">unread messages</span>
                 </span>
@@ -128,7 +128,7 @@
           <div class="modal-body text-center confirm__delete__font"> Sure you want to delete the post?</div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary  color-border bg-dark" data-bs-dismiss="modal"><i class="fas fa-ban"></i></button>
-            <button type="button" class="btn btn-primary  color-border bg-dark" id="confirm-delete"><i class="far fa-trash"></i></button>
+            <button type="button" class="btn btn-primary  color-border bg-dark" id="confirm-delete"><i id="confirm-delete-icon" class="far fa-trash"></i></button>
           </div>
         </div>
       </div>

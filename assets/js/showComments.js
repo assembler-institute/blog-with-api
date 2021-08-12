@@ -1,5 +1,5 @@
 document.addEventListener("click", function (e) {
-  if (e.target.matches("[data-comments]")) showComments(e.target.dataset.comments);
+  if (e.target.matches("[data-comments]") || e.target.matches("[data-comments] *")) showComments(e.target.dataset.comments);
 });
 
 function showComments(post) {

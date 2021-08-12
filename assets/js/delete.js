@@ -1,5 +1,5 @@
 document.addEventListener("click", function (e) {
-  if (e.target.matches("[data-delete]")) deletePost(e.target.dataset.delete);
+  if ((e.target.matches("[data-delete]")) || (e.target.matches("[data-delete] *"))) deletePost(e.target.dataset.delete);
 });
 
 

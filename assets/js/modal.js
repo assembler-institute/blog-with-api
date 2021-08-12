@@ -12,18 +12,9 @@ async function fetchGetPost(post) {
 }
 
 async function renderEditModal(e) {
-  /*  const postResponse =  await fetchGetPost(e.target.dataset.post)
- const postData = await postResponse.json();  
- console.log(postData);
- fillEditModal(postData); */
   const response = await fetch(`http://localhost:3000/posts/${e.target.dataset.post}`);
   const data = await response.json();
   fillEditModal(data);
-  /* .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      fillEditModal(data);
-    }); */
 }
 
 function fillEditModal(post) {
@@ -48,10 +39,11 @@ function fillModalContent(post) {
   document.querySelector("#confirm-edit").dataset.edit = post.id;
   document.querySelector("#confirm-edit-icon").dataset.edit = post.id;
   document.querySelector("#confirm-delete").dataset.delete = post.id;
+  document.querySelector("#confirm-delete-icon").dataset.delete = post.id;
   document.querySelector("#show-comments").dataset.comments = post.id;
+  document.querySelector("#show-comments-icon").dataset.comments = post.id;
   document.querySelector(".modal-title").textContent = post.title;
   document.querySelector(".modal-body").textContent = post.body;
-
   getUser(post);
 }
 
