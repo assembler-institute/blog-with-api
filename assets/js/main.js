@@ -257,7 +257,7 @@ async function fillModal(modalId) {
 
   const user = await fetchData("users", userId - 1, 1);
 
-  const { name, company } = { ...user[0] };
+  const { name, company,address } = { ...user[0] };
 
   const icon = await userIcon(name);
 
@@ -277,7 +277,7 @@ async function fillModal(modalId) {
               <div class="">
                 <h6 class="post__name"><strong>By</strong> ${name}</h6>
                 <h6 class="post__company-name"><strong>From</strong> ${company.name}</h6>
-                <p class="post__company-catch-phrase"> ${company.catchPhrase}</p>
+                <p class="post__company-catch-phrase"> ${address.city}</p>
               </div>
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
