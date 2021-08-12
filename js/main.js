@@ -63,13 +63,13 @@ function loadPostInfo(e, jsonPosts) {
   document.querySelector(".modal-content").dataset.blogId = postNumber;
 
   document.querySelector(".modal-title").textContent =
-    jsonPosts[postNumber].title;
+    jsonPosts[postNumber - 1].title;
   document.querySelector(".modal-body").textContent =
-    jsonPosts[postNumber].body;
+    jsonPosts[postNumber - 1].body;
 
   $.get("http://localhost:3000/users", function (jsonUsers) {
     jsonUsers.forEach((jsonUser) => {
-      if (jsonPosts[postNumber].userId == jsonUser.id) {
+      if (jsonPosts[postNumber - 1].userId == jsonUser.id) {
         document.querySelector("[data-username]").textContent =
           jsonUser.username;
         document.querySelector("[data-email]").textContent = jsonUser.email;
@@ -119,4 +119,18 @@ $(`[data-action="delete"]`).on("click", (e) => {
 $(`[data-action="edit"]`).on("click", () => {
   $("[edit-title]").val($("[title]").text());
   $("[edit-body]").val($("[body]").text());
+});
+
+$("[confirm-edit]").on("click", () => {
+  let postId = document.querySelector(".modal-content").dataset.blogId;
+  console.log(postId);
+
+  fetch(`http://localhost:3000/posts/${postId}`, {
+    method: "PATCH",
+    headers: { "Content-type": "application/json" },
+    body: JSON.stringify({
+      title: $("[edit-title]").val(),
+      body: $("[edit-body]").val(),
+    }),
+  });
 });

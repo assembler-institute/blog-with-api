@@ -150,8 +150,8 @@
       aria-labelledby="editModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog" >
-        <div class="modal-content" ">
+      <div class="modal-dialog">
+        <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="editModalLabel">Edit Post</h5>
             <button
@@ -174,7 +174,7 @@
                   edit-title
                 />
               </div>
-              <div class="mb-3" >
+              <div class="mb-3">
                 <label for="message-text" class="col-form-label">Body:</label>
                 <textarea
                   class="form-control"
@@ -186,6 +186,9 @@
             </form>
           </div>
           <div class="modal-footer">
+            <button type="button" class="btn btn-success" confirm-edit>
+              Confirm
+            </button>
             <button
               type="button"
               class="btn btn-secondary"
@@ -193,7 +196,6 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary">Send message</button>
           </div>
         </div>
       </div>
