@@ -23,7 +23,6 @@ function swipeCard() {
     function pullChange() {
       animating = true;
       deg = pullDeltaX / 10;
-      $card.addClass('moving');
       $card.css(
         "transform",
         "translateX(" + pullDeltaX + "px) rotate(" + deg + "deg)"
@@ -79,7 +78,6 @@ function swipeCard() {
       });
 
       $(document).on("mouseup touchend", function () {
-        $card.removeClass('moving');
         $(document).off("mousemove touchmove mouseup touchend");
         if (!pullDeltaX) return; // prevents from rapid click events
         release();
