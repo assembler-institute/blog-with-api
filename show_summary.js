@@ -1,5 +1,7 @@
 export function showSummary(event) {
+    document.getElementById("insert-comments").classList.add("d-none")
     let userIdInfo = parseInt(event.target.dataset.id)
+    document.querySelector("#insert-comments").innerHTML=""
     fetch("http://localhost:3000/posts")
         .then(response => response.json())
         .then(data => {
@@ -18,14 +20,19 @@ export function showSummary(event) {
                 }
             })
         })
-    document.querySelector("#comments").addEventListener("click", () => {
-        fetch(`http://localhost:3000/comments/${userIdInfo}`)
+        fetch(`http://localhost:3000/posts/${userIdInfo}/comments/`)
             .then(response => response.json())
-            .then(data => {
-                data.forEach(post => {
-                    document.getElementById("titleComments").innerText = user.username
-                    document.getElementById("bodyComments").innerText = user.email
-                })
-            });
-    });
+            .then(ArrayObject => {
+                ArrayObject.forEach(comment => {
+                    let commentBlock = `<span>
+                                                <p><strong>${comment.name}</strong></p>
+                                                <p>${comment.body}</p>
+                                                </span>`
+                    document.querySelector("#insert-comments").innerHTML += commentBlock
+                })     
+    })
 }
+
+document.getElementById("comments-button").addEventListener("click", function(){
+    document.getElementById("insert-comments").classList.remove("d-none")
+})

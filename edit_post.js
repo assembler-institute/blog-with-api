@@ -26,7 +26,7 @@ export function modalEdit(event) {
             })
         .then(response => response.json())
         .then(post =>{
-            document.querySelector(`[data-edit="${event.target.dataset.id}"]`).innerHTML = post.title 
+            document.querySelector(`[data-edit="${userIdEdit}"]`).innerHTML = post.title 
         })
     })
 }
