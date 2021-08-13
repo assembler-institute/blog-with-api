@@ -257,7 +257,7 @@ async function fillModal(modalId) {
 
   const user = await fetchData("users", userId - 1, 1);
 
-  const { name, company,address } = { ...user[0] };
+  const { name, company, address } = { ...user[0] };
 
   const icon = await userIcon(name);
 
