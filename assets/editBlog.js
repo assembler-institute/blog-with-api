@@ -7,14 +7,10 @@ function editBlog() {
     let comments = document.getElementById("comment__section");
 
     header.innerHTML = `<h5>Title:</h5>
-    <textarea   cols="60"  style = "resize: none" id="edit__title">${title}
+    
+<textarea cols="60"   id="edit__title">${title}
 </textarea>
-<button
-type="button"
-class="btn-close"
-data-bs-dismiss="modal"
-aria-label="Close"
->`;
+<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">`;
 
     body.innerHTML = `<h5>Blog:</h5> <textarea rows="10" cols="60" id="edit__body">${body.textContent}</textarea > `;
     footer.innerHTML = `<div class="modal-footer"> <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button><button type="button" data-bs-dismiss="modal" class="btn btn-warning" id="delete-blog">Delete</button>

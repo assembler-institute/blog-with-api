@@ -61,3 +61,38 @@ main {
     background-color: rgb(117, 117, 190);
     color: white;
 }
+
+textarea {
+    background: center center no-repeat;
+    border: 1px solid #888;
+    resize: none;
+    overflow: auto;
+}
+
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    background: none;
+}
+
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: rgb(202, 201, 201);
+}
+
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(179, 175, 175);
+}
