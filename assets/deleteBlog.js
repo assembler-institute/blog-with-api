@@ -33,7 +33,7 @@ function deleteBlog() {
         <p class="card-text" id="blog-body-${post.id}">
            ${post.body}
         </p>
-        <button class="btn btn-primary read-blog" data-bs-toggle="modal" data-bs-target="#exampleModal">Read Blog</button>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id = "read-blog">Read Blog</button>
     </div>
     </div>`;
                 }

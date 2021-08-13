@@ -8,8 +8,8 @@ navbar.addEventListener("click", (event) => {
                 h = 0;
                 j = 9;
                 createBlogs();
-                document.getElementById("prev-li").classList.add("disabled");
-                document.getElementById("next-li").classList.remove("disabled");
+                document.getElementById("prev-li").classList.add("disabled"); // Disables the previous button as soon as you reach page 1
+                document.getElementById("next-li").classList.remove("disabled"); // Enables the next button if you're not on the last page.
 
                 document
                     .getElementById("page-2")
@@ -17,6 +17,8 @@ navbar.addEventListener("click", (event) => {
                 document
                     .getElementById("page-3")
                     .parentNode.classList.remove("new-tile");
+
+                removeNewTiles();
 
                 break;
 
@@ -37,6 +39,7 @@ navbar.addEventListener("click", (event) => {
                 document.getElementById("prev-li").classList.remove("disabled");
                 document.getElementById("next-li").classList.remove("disabled");
 
+                removeNewTiles();
                 break;
 
             case "page-3":
@@ -52,7 +55,9 @@ navbar.addEventListener("click", (event) => {
                     .parentNode.classList.remove("new-tile");
                 document
                     .getElementById("page-2")
-                    .parentNode.classList.remove("new-tile");
+                    .parentNode.classList.remove("new-tile"); // Highlights the page you are on!
+
+                removeNewTiles();
 
                 break;
 
@@ -70,9 +75,8 @@ navbar.addEventListener("click", (event) => {
 
                 //---------------Remove the Number Tiles--------------//
 
-                if (document.getElementById("new-tile") !== null) {
-                    document.getElementById("new-tile").remove();
-                }
+                removeNewTiles();
+
                 if ((h + 9) / 9 > 3) {
                     let newTile = `<li class="page-item new-tile" id = "new-tile">
                     <button class="page-link" id="page-${(h + 9) / 9}">....  ${
@@ -92,6 +96,8 @@ navbar.addEventListener("click", (event) => {
                 document
                     .getElementById("page-1")
                     .parentNode.classList.remove("new-tile");
+
+                highlight();
 
                 break;
 
@@ -113,9 +119,8 @@ navbar.addEventListener("click", (event) => {
                 }
 
                 if (j > 27) {
-                    if (document.getElementById("new-tile") !== null) {
-                        document.getElementById("new-tile").remove();
-                    }
+                    removeNewTiles();
+
                     let newTile = `<li class="page-item new-tile" id = "new-tile">
                     <button class="page-link" id="page-${(h + 9) / 9}">....  ${
             (h + 9) / 9
@@ -135,6 +140,8 @@ navbar.addEventListener("click", (event) => {
                     .getElementById("page-1")
                     .parentNode.classList.remove("new-tile");
 
+                highlight();
+
                 break;
             default:
                 break;
@@ -143,3 +150,29 @@ navbar.addEventListener("click", (event) => {
 });
 
 //--------------------END NAV BAR-----------------------//
+
+function highlight() {
+    if (h === 18) {
+        document.getElementById("page-1").parentNode.classList.remove("new-tile");
+        document.getElementById("page-2").parentNode.classList.remove("new-tile");
+        document.getElementById("page-3").parentNode.classList.add("new-tile");
+    }
+
+    if (h === 9) {
+        document.getElementById("page-2").parentNode.classList.add("new-tile");
+        document.getElementById("page-1").parentNode.classList.remove("new-tile");
+        document.getElementById("page-3").parentNode.classList.remove("new-tile");
+    }
+
+    if (h === 0) {
+        document.getElementById("page-1").parentNode.classList.add("new-tile");
+        document.getElementById("page-2").parentNode.classList.remove("new-tile");
+        document.getElementById("page-3").parentNode.classList.remove("new-tile");
+    }
+}
+
+function removeNewTiles() {
+    if (document.getElementById("new-tile") !== null) {
+        document.getElementById("new-tile").remove();
+    }
+}
