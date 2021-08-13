@@ -42,6 +42,8 @@ async function showAllPosts() {
 }
 showAllPosts();
 
+// This is the first option to display posts on scroll down with the function scrollTop()
+
 // $(window).scroll(function() {
 //     if ($(window).scrollTop() + $(window).height() == $(document).height()) {
 //         limit++;
@@ -49,10 +51,14 @@ showAllPosts();
 //     }
 // });
 
+// This is the function we use to load more posts once the button "load more" is clicked.
+
 $("#loadmore").on("click", function() {
     initialPosts += 20;
     showAllPosts();
 });
+
+// This is a function that allows both see the whole post content and the reviews.
 
 $(document).on("click", function(element) {
     if (element.target.matches(".title")) {
@@ -97,6 +103,8 @@ $(document).on("click", function(element) {
     }
 });
 
+// This is the function to delete the posts
+
 function deletePost() {
     $("#btn__deletepost").on("click", function() {
         let deleteButton = {
@@ -116,6 +124,7 @@ function deletePost() {
 }
 deletePost();
 
+// This is the function to edit the posts with the save button.
 
 function editPost() {
     $("#editModalBtn").on("click", function() {
