@@ -2,7 +2,7 @@ import { Modal } from '../layouts/modal.js'
 import { data } from './posts.js'
 
 export const getPost = async (idPost, oldURL) => {
-  
+
   let data = await fetch(`http://localhost:3000/posts/${idPost}?_embed=comments`).then(res => res.json()).then(data => data).catch(err => err)
 
   if (data.length < 0) return 'Error'
@@ -37,7 +37,7 @@ export const getPost = async (idPost, oldURL) => {
         ${userData.name} - ${userData.email}
       </figcaption>
       <section class="article-comments pt-5">
-      
+
         <div class="accordion accordion-flush" id="accordionComments">
           <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingOne">
@@ -49,7 +49,7 @@ export const getPost = async (idPost, oldURL) => {
               <div>
                 <ul class="list-group">
                   ${commentList}
-                </ul> 
+                </ul>
               </div>
             </div>
           </div>
@@ -58,7 +58,7 @@ export const getPost = async (idPost, oldURL) => {
       </section>
     </article>
   `
-  container.insertAdjacentHTML('afterbegin',postViewHTML)
+  container.insertAdjacentHTML('afterbegin', postViewHTML)
 
   document.getElementById('article-back').addEventListener('click', e => {
     e.preventDefault()
@@ -68,7 +68,7 @@ export const getPost = async (idPost, oldURL) => {
 }
 
 export const editPost = async (idPost, oldURL) => {
-  
+
   let postData;
   if (typeof data === 'undefined') {
     postData = await fetch(`http://localhost:3000/posts/${idPost}`).then(res => res.json()).then(data => data)
@@ -82,8 +82,10 @@ export const editPost = async (idPost, oldURL) => {
   document.getElementById('postDate').valueAsDate = new Date();
 
   Modal.show()
+  document.getElementById('form-buttons').classList.remove('justify-content-end')
+  document.getElementById('form-buttons').classList.add('justify-content-between')
 
-  let notification = document.getElementById('notification') 
+  let notification = document.getElementById('notification')
 
   // Add close modal listeners
   document.querySelectorAll('.modal-close').forEach(elm => {
@@ -94,7 +96,7 @@ export const editPost = async (idPost, oldURL) => {
       location.hash = oldURL
     })
   })
-  
+
   // Edit listener
   document.getElementById('form-edit-post').addEventListener('submit', submitHandler)
   function submitHandler() {
@@ -113,7 +115,7 @@ export const editPost = async (idPost, oldURL) => {
         notification.querySelector('.toast-body').classList.remove('alert-success')
       }, 3000)
     }
-    
+
   }
 
   // Delete post
@@ -137,7 +139,7 @@ export const editPost = async (idPost, oldURL) => {
   }
 
 
-  
+
 }
 
 const deletePost = async (idPost) => {
@@ -152,7 +154,7 @@ const deletePost = async (idPost) => {
       'Content-Type': 'application/json'
     }
   }).then(res => res).catch(err => err)
-  
+
   if (deletePost.ok) return true
 }
 
@@ -165,8 +167,8 @@ const updatePost = async (event, idPost) => {
 
   // Get the Form Data
   let formData = new FormData(event.target)
-  for(let pair of formData.entries()) {
-    postObj[pair[0]] = pair[1] 
+  for (let pair of formData.entries()) {
+    postObj[pair[0]] = pair[1]
   }
 
   // Update Post
@@ -174,11 +176,11 @@ const updatePost = async (event, idPost) => {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'
-    }, 
+    },
     body: JSON.stringify(postObj)
   })
-  .then(res => res)
-  .catch(err => err)
+    .then(res => res)
+    .catch(err => err)
 
   event.target.querySelector('[type="submit"]').innerHTML = `Save`
 

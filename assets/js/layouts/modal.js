@@ -6,9 +6,9 @@ export let modalHTML = `<div class="modal fade" id="modal-edit" tabindex="-1" ar
       <button type="button" class="btn-close modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
-    
+
       <form id="form-edit-post">
-        
+
         <div class="mb-3">
           <label for="postTitle" class="form-label">Post title</label>
           <input type="text" class="form-control" id="postTitle" name="title">
@@ -23,7 +23,7 @@ export let modalHTML = `<div class="modal fade" id="modal-edit" tabindex="-1" ar
           <input type="date" class="form-control" id="postDate" name="postDate">
         </div>
 
-        <div class="d-flex justify-content-between">
+        <div id="form-buttons" class="d-flex justify-content-between">
           <button id="delete-post" type="button" class="btn btn-danger">Delete</button>
           <button type="submit" class="btn btn-primary">Save</button>
         </div>

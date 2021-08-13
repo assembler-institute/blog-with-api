@@ -1,43 +1,47 @@
 import { Modal } from "../layouts/modal.js"
 
 export const addNewPost = (oldURL) => {
-  
+
   Modal.show()
 
   document.getElementById('delete-post').classList.add('d-none')
+  document.getElementById('form-buttons').classList.remove('justify-content-between')
+  document.getElementById('form-buttons').classList.add('justify-content-end')
 
-  
-    // Add close modal listeners
-    document.querySelectorAll('.modal-close').forEach(elm => {
-      elm.addEventListener('click', () => {
-        document.getElementById('form-edit-post').removeEventListener('submit', submitHandler)
-  
-        location.hash = oldURL
 
-        document.getElementById('delete-post').classList.remove('d-none')
-      })
+  // Add close modal listeners
+  document.querySelectorAll('.modal-close').forEach(elm => {
+    elm.addEventListener('click', () => {
+      document.getElementById('form-edit-post').removeEventListener('submit', submitHandler)
+
+      location.hash = oldURL
+
+      document.getElementById('delete-post').classList.remove('d-none')
     })
-    
-    // Add new listener
-    document.getElementById('form-edit-post').addEventListener('submit', submitHandler)
-    function submitHandler(event) {
-      if (addNewPostHandler(event)) {
-        document.getElementById('form-edit-post').removeEventListener('submit', submitHandler)
+  })
 
-        location.hash = oldURL
-        Modal.hide()
+  // Add new listener
+  document.getElementById('form-edit-post').addEventListener('submit', submitHandler)
+  function submitHandler(event) {
+    if (addNewPostHandler(event)) {
+      document.getElementById('form-edit-post').removeEventListener('submit', submitHandler)
 
-        document.getElementById('delete-post').classList.remove('d-none')
+      location.hash = oldURL
+      Modal.hide()
 
-        notification.classList.add('show')
-        notification.querySelector('.toast-body').textContent = 'Post created successfully'
-        notification.querySelector('.toast-body').classList.add('alert-success')
-        setTimeout(() => {
-          notification.classList.remove('show')
-          notification.querySelector('.toast-body').classList.remove('alert-success')
-        }, 3000)
-      }
+      document.getElementById('delete-post').classList.remove('d-none')
+      document.getElementById('form-buttons').classList.remove('justify-content-end')
+      document.getElementById('form-buttons').classList.add('justify-content-between')
+
+      notification.classList.add('show')
+      notification.querySelector('.toast-body').textContent = 'Post created successfully'
+      notification.querySelector('.toast-body').classList.add('alert-success')
+      setTimeout(() => {
+        notification.classList.remove('show')
+        notification.querySelector('.toast-body').classList.remove('alert-success')
+      }, 3000)
     }
+  }
 }
 
 const addNewPostHandler = async (event) => {
@@ -48,23 +52,23 @@ const addNewPostHandler = async (event) => {
 
   // Get the Form Data
   let formData = new FormData(event.target)
-  for(let pair of formData.entries()) {
-    postObj[pair[0]] = pair[1] 
+  for (let pair of formData.entries()) {
+    postObj[pair[0]] = pair[1]
   }
 
   // Add fake user
   postObj.userId = 1
-  
+
   // Update Post
   let updatePost = await fetch(`http://localhost:3000/posts`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
-    }, 
+    },
     body: JSON.stringify(postObj)
   })
-  .then(res => res)
-  .catch(err => err)
+    .then(res => res)
+    .catch(err => err)
 
   event.target.querySelector('[type="submit"]').innerHTML = `Save`
 
