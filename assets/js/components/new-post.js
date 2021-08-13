@@ -16,7 +16,7 @@ export const addNewPost = (oldURL) => {
 
       location.hash = oldURL
 
-      document.getElementById('delete-post').classList.remove('d-none')
+
     })
   })
 
@@ -28,10 +28,6 @@ export const addNewPost = (oldURL) => {
 
       location.hash = oldURL
       Modal.hide()
-
-      document.getElementById('delete-post').classList.remove('d-none')
-      document.getElementById('form-buttons').classList.remove('justify-content-end')
-      document.getElementById('form-buttons').classList.add('justify-content-between')
 
       notification.classList.add('show')
       notification.querySelector('.toast-body').textContent = 'Post created successfully'
