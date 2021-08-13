@@ -23,10 +23,16 @@ function createBlogs() {
         .then((response) => response.json())
         .then((data) => {
             for (i = h; i < j; i++) {
-                blogGrid.innerHTML += `<div class="card" id="${data[i].id}" data-id = "${data[i].userId}">
-    <img src="./assets/images/bg-img.jfif" class="card-img-top" alt="..." />
+                blogGrid.innerHTML += `<div class="card" id="${
+          data[i].id
+        }" data-id = "${data[i].userId}">
+    <img src="./assets/images/img-0${Math.floor(
+      Math.random() * 8
+    )}.jfif" class="card-img-top" alt="..." />
     <div class="card-body">
-        <h5 class="card-title" id="blog-title-${data[i].id}">${data[i].title}</h5>
+        <h5 class="card-title" id="blog-title-${data[i].id}">${
+          data[i].title
+        }</h5>
         <p class="card-text" id="blog-body-${data[i].id}">
            ${data[i].body}
         </p>
