@@ -157,12 +157,14 @@ function fillingModal(e) {
 
 //---------------------------------------------------EDIT POST
 
-function editPost(btnID) {
+function editPost() {
   let title = document.getElementById("title-post");
   let body = document.getElementById("modal_body");
 
+  //We erase here the buttons to give more space inside the modal
   document.querySelector(".modal-footer").classList.add("d-none");
 
+  //Now the title and the body of the post must appear as editable textareas
   body.innerHTML = `
   <textarea name="textarea" id="textarea-body" class="w-100" style="height: 8rem">${
     document.getElementById("modal_body").textContent
@@ -173,6 +175,7 @@ function editPost(btnID) {
     document.getElementById("title-post").textContent
   }</textarea>`;
 
+  //We reset the user-info div so that it has the new button "Edit"
   document.getElementById("user-info").innerHTML = `
   <div class="modal-body d-flex">
             <div class="flex-grow-1">
@@ -185,7 +188,10 @@ function editPost(btnID) {
             </div>
           </div>
   `;
+  //We need to remove the event listener of the button to avoid conflicts and duplications
   document.querySelector("#btn-edit").removeEventListener("click", editPost);
+
+  //And now we set the new confirm "Edit" button to patch the changes
   document
     .querySelector("#btn-confirm")
     .addEventListener("click", function confirmEdit() {
