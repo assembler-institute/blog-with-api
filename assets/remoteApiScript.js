@@ -36,7 +36,9 @@ function createBlogs() {
         <p class="card-text" id="blog-body-${data[i].id}">
            ${data[i].body}
         </p>
-        <button class="btn btn-primary" id="read-blog" data-bs-toggle="modal" data-bs-target="#exampleModal">Read Blog</button>
+        <button class="btn btn-primary" id="read-blog-${
+          data[i].id
+        }"  data-bs-toggle="modal" data-bs-target="#exampleModal">Read Blog</button>
     </div>
     </div>`;
             }
@@ -51,12 +53,13 @@ createBlogs();
 //--------------------END PRINT BLOGS-----------------------//
 
 document.addEventListener("click", (event) => {
+    let parentId = event.target.parentNode.parentNode.id;
+
     switch (event.target.id) {
         //-----------------------SHOW MODAL------------------------//
-        case "read-blog":
+        case `read-blog-${parentId}`:
             showModal(event);
             break;
-
             //--------------------Load Comments-----------------------//
         case "open__comments":
             loadComments(event);
@@ -87,3 +90,5 @@ document.addEventListener("click", (event) => {
             break;
     }
 });
+
+document.querySelectorAll(".read-blog");
