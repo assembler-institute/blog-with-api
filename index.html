@@ -30,30 +30,30 @@
             </nav>
         </div>
     </header>
-<main class="container p-0" id="main">
-    <div class="container text-center">
-        <img class="mb-5 w-75 "src="https://occ-0-1723-92.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABcb0yL8KdS3lxlB7w7kD6GfBTivnVVTfpiW0ZQTi6nvwWZIEpS5rU5iFeO_kJxGzEDnOaLx7iq0zM3FJc5e1gGqEGcaCkNotiOAl.png?r=d7f" alt="rick_and_morty">
-    </div>
-    <div class="container-fluid row row-cols-4 justify-content-md-center" id="cards-container">
-    </div>
-    <nav class="mt-5">
-        <ul class="pagination pagination-lg justify-content-center">
-            <li class="page-item" id="prev-btn"><a class="page-link">Previous</a></li>
-            <li class="page-item"><a class="page-link" data-page="0">1</a></li>
-            <li class="page-item"><a class="page-link" data-page="1">2</a></li>
-            <li class="page-item"><a class="page-link" data-page="2">3</a></li>
-            <li class="page-item"><a class="page-link" data-page="3">4</a></li>
-            <li class="page-item"><a class="page-link" data-page="4">5</a></li>
-            <li class="page-item"><a class="page-link" data-page="5">6</a></li>
-            <li class="page-item"><a class="page-link" data-page="6">7</a></li>
-            <li class="page-item"><a class="page-link" data-page="7">8</a></li>
-            <li class="page-item"><a class="page-link" data-page="8">9</a></li>
-            <li class="page-item"><a class="page-link" data-page="9">10</a></li>
-            <li class="page-item"><a class="page-link" data-page="10">11</a></li>
-            <li class="page-item" id="next-btn"><a class="page-link">Next</a></li>
-        </ul>   
-    </nav>
-</main>
+    <main class="container p-0" id="main">
+        <div class="container text-center">
+            <img class="mb-5 w-75 " src="https://occ-0-1723-92.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABcb0yL8KdS3lxlB7w7kD6GfBTivnVVTfpiW0ZQTi6nvwWZIEpS5rU5iFeO_kJxGzEDnOaLx7iq0zM3FJc5e1gGqEGcaCkNotiOAl.png?r=d7f" alt="rick_and_morty">
+        </div>
+        <div class="container-fluid row row-cols-4 justify-content-md-center" id="cards-container">
+        </div>
+        <nav class="mt-5">
+            <ul class="pagination pagination-lg justify-content-center">
+                <li class="page-item" id="prev-btn"><a class="page-link">Previous</a></li>
+                <li class="page-item"><a class="page-link" data-page="0">1</a></li>
+                <li class="page-item"><a class="page-link" data-page="1">2</a></li>
+                <li class="page-item"><a class="page-link" data-page="2">3</a></li>
+                <li class="page-item"><a class="page-link" data-page="3">4</a></li>
+                <li class="page-item"><a class="page-link" data-page="4">5</a></li>
+                <li class="page-item"><a class="page-link" data-page="5">6</a></li>
+                <li class="page-item"><a class="page-link" data-page="6">7</a></li>
+                <li class="page-item"><a class="page-link" data-page="7">8</a></li>
+                <li class="page-item"><a class="page-link" data-page="8">9</a></li>
+                <li class="page-item"><a class="page-link" data-page="9">10</a></li>
+                <li class="page-item"><a class="page-link" data-page="10">11</a></li>
+                <li class="page-item" id="next-btn"><a class="page-link">Next</a></li>
+            </ul>
+        </nav>
+    </main>
     <!--------------------------------------------------------- Modal info------------------------------------------->
     <div class="modal fade" id="summary-modal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -75,7 +75,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="comments" data-bs-toggle="modal" data-bs-target="#comments-modal">Load Comments</button>
+                    <button type="button" class="btn btn-primary" id="comments-button">Load Comments</button>
+                    <div id="insert-comments"></div>
                 </div>
             </div>
         </div>
@@ -125,27 +126,8 @@
             </div>
         </div>
     </div>
-    <!--------------------------------------------------COMMENTS MODAL ------------------------------------------->
-    <div class="modal fade" id="comments-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="">comments</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-                </div>
-                <div class="modal-body">
-                    <span id="titleComments"></span>
-                    <span id="bodyComments"></span>
-                </div>
-            </div>
-        </div>
-    </div>
 
-
-
-<template id="card-temp">
+    <template id="card-temp">
   <div class="container-md m-4 p-0 shadow hover" data-bs-toggle="modal" data-bs-target="#summary-modal" data-set="card-cont" id="card-content">
     <figure class="figure" data-bs-toggle="modal" data-bs-target="#summary-modal">
       <img src="https://dmagazine.com.ar/wp-content/uploads/2017/11/rick.png" class="figure-img img-fluid rounded" data-bs-toggle="modal" data-bs-target="#summary-modal" alt="rick and morty">
