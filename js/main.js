@@ -121,6 +121,7 @@ function alertDeleteVisibility(response) {
       $("[post-modal]").modal("hide");
 
       $("[confirming]").modal("hide");
+      window.location = window.location;
     }, 4000);
   } else {
     setTimeout(() => {
@@ -131,9 +132,9 @@ function alertDeleteVisibility(response) {
       $("[post-modal]").modal("hide");
 
       $("[confirming]").modal("hide");
+      window.location = window.location;
     }, 4000);
   }
-  window.location = window.location;
 }
 
 // Fill edit modal
@@ -169,6 +170,7 @@ function alertEditVisibility(response) {
       $("[post-modal]").modal("hide");
 
       $("#editModal").modal("hide");
+      window.location = window.location;
     }, 4000);
   } else {
     setTimeout(() => {
@@ -179,7 +181,7 @@ function alertEditVisibility(response) {
       $("[post-modal]").modal("hide");
 
       $("#editModal").modal("hide");
+      window.location = window.location;
     }, 4000);
   }
-  window.location = window.location;
 }
