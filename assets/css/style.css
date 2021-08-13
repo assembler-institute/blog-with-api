@@ -1,0 +1,65 @@
+*::-webkit-scrollbar {
+	display: none;
+}
+
+[data-component="post-card"] {
+	cursor: pointer;
+	transition: opacity 0.125s ease;
+}
+
+[data-component="post-card"]:hover {
+	opacity: 0.75;
+}
+
+.fs-7 {
+	font-size: 0.8rem;
+}
+
+.fs-8 {
+	font-size: 0.64rem;
+}
+
+.modal-img-height {
+	height: 20rem;
+	object-fit: cover;
+	object-position: center 80%;
+}
+
+.card-body-paragraph-height {
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	-moz-line-clamp: 3;
+	-moz-box-orient: vertical;
+	overflow: hidden;
+}
+
+.card-img-height {
+	height: 20rem;
+	object-fit: cover;
+	object-position: center 80%;
+}
+
+@media (min-width: 576px) {
+	.card-img-height {
+		height: 12rem;
+	}
+}
+
+@media (min-width: 768px) {
+	.card-img-height {
+		height: 16rem;
+	}
+}
+
+@media (min-width: 1200px) {
+	.card-img-height {
+		height: 20rem;
+	}
+}
+
+@media (min-width: 1400px) {
+	.card-img-height {
+		height: 24rem;
+	}
+}
