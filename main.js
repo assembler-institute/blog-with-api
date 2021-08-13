@@ -28,7 +28,7 @@ function ids() {
 
     //We get the information of each post and fill the cards with it
 
-    fetch(`https://jsonplaceholder.typicode.com/posts/${index + 1}`)
+    fetch(`http://localhost:3000/posts/${index + 1}`)
       .then((response) => {
         return response.json();
       })
@@ -63,12 +63,12 @@ function fillingModal(e) {
   let listComments = document.createElement("section");
   let btnComments = document.querySelector("#btn-comments");
   let btnEdit = document.querySelector("#btn-edit");
+  let btnDelete = document.querySelector("#btn-delete");
   let modalBody = document.getElementById("modal_body");
-  console.log();
 
   //We search inside the API for the post with the btnID + 1 id
 
-  fetch(`https://jsonplaceholder.typicode.com/posts/${btnID + 1}`)
+  fetch(`http://localhost:3000/posts/${btnID + 1}`)
     .then((response) => {
       return response.json();
     })
@@ -84,7 +84,7 @@ function fillingModal(e) {
   //We need the user's information to fill the modal
 
   function userData(userID) {
-    fetch(`https://jsonplaceholder.typicode.com/users/${userID}`)
+    fetch(`http://localhost:3000/users/${userID}`)
       .then((response) => {
         return response.json();
       })
@@ -118,11 +118,7 @@ function fillingModal(e) {
   }
 
   btnComments.addEventListener("click", function myComments() {
-    fetch(
-      `https://jsonplaceholder.typicode.com/comments?postId=${
-        btnID + 1
-      }&_limit=2`
-    )
+    fetch(`http://localhost:3000/comments?postId=${btnID + 1}&_limit=2`)
       .then((response) => {
         return response.json();
       })
@@ -156,20 +152,24 @@ function fillingModal(e) {
   });
 
   btnEdit.addEventListener("click", editPost);
+  btnDelete.addEventListener("click", deletePost);
 }
 
 //---------------------------------------------------EDIT POST
 
 function editPost(btnID) {
+  let title = document.getElementById("title-post");
+  let body = document.getElementById("modal_body");
+
   document.querySelector(".modal-footer").classList.add("d-none");
 
-  document.getElementById("modal_body").innerHTML = `
+  body.innerHTML = `
   <textarea name="textarea" id="textarea-body" class="w-100" style="height: 8rem">${
     document.getElementById("modal_body").textContent
   }</textarea>`;
 
-  document.getElementById("title-post").innerHTML = `
-  <textarea name="textarea" id="textarea-body" class="w-100" style="height: 2.5rem">${
+  title.innerHTML = `
+  <textarea name="textarea" id="textarea-title" class="w-100" style="height: 2.5rem">${
     document.getElementById("title-post").textContent
   }</textarea>`;
 
@@ -186,7 +186,45 @@ function editPost(btnID) {
           </div>
   `;
   document.querySelector("#btn-edit").removeEventListener("click", editPost);
-  document.querySelector("#btn-confirm").addEventListener("click", () => {
-    console.log("hi");
+  document
+    .querySelector("#btn-confirm")
+    .addEventListener("click", function confirmEdit() {
+      let idAgain = eval(
+        document.querySelector("#modal_title").textContent.substring(0, 2)
+      );
+      let titleArea = document.querySelector("#textarea-title").value;
+      let bodyArea = document.querySelector("#textarea-body").value;
+
+      fetch(`http://localhost:3000/posts/${idAgain}`, {
+        method: "PATCH",
+        body: JSON.stringify({ title: titleArea, body: bodyArea }),
+        headers: { "Content-type": "application/JSON; charset:UTF-8" },
+      }).then((response) => {
+        response.json();
+      });
+      document
+        .querySelector("#btn-confirm")
+        .removeEventListener("click", confirmEdit);
+    });
+}
+
+//---------------------------------------------------DELETE POST
+
+function deletePost() {
+  let idAgain2 = eval(
+    document.querySelector("#modal_title").textContent.substring(0, 2)
+  );
+  fetch(
+    `http://localhost:3000/posts/${idAgain2}`,
+    {
+      method: "DELETE",
+      headers: { "Content-type": "application/JSON; charset:UTF-8" },
+    },
+    null
+  ).then((response) => {
+    response.json();
   });
+  document
+    .querySelector("#btn-delete")
+    .removeEventListener("click", deletePost);
 }
