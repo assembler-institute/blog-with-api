@@ -20,13 +20,12 @@
 /* default */
 
 html {
-  /* font-family: 'Roboto Mono', monospace !important; */
   font-size: 62.5%;
   scroll-behavior: smooth;
   color: var(--foreground);
   transition: color var(--transition);
+  background-color: #ffffff;
   background-blend-mode: multiply;
-  /* cursor: none; */
 }
 
 html::before {
