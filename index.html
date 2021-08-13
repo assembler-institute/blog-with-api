@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="assets/remoteApiScript.js" defer></script>
+    <script src="assets/showModal.js" defer></script>
+    <script src="assets/loadComments.js" defer></script>
+    <script src="assets/hideComments.js" defer></script>
+    <script src="assets/navigation.js" defer></script>
+    <script src="assets/editBlog.js" defer></script>
+    <script src="assets/saveEditedBlog.js" defer></script>
+    <script src="assets/searchBlogs.js" defer></script>
+    <script src="assets/deleteBlog.js" defer></script>
+    <script src="assets/homeButton.js" defer></script>
+
+    <link rel="stylesheet" href="./assets/style.css" />
+    <meta name="author" content="Sergi & Haroon" />
+    <title>Blog With API</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" id="page-">BLOGS</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <button class="btn btn-light" aria-current="page" id="page-home">Home</button>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search Blog" aria-label="Search" id="search__blog" />
+                        <button class="btn btn-outline-success" id="search__blog__button">
+                Search
+              </button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main role="main">
+        <section class="container-fluid bg-light" id="blog-container">
+            <!---------------------------- BLOG CARDS---------------------------------->
+            <div class="row col-sm-4 col-md-6 col-lg-12 blog-grid" id="blog-grid"></div>
+            <!--------------------END BLOG CARD---------------------->
+        </section>
+
+        <!-------------------------Modal------------------------------------->
+        <section>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="false">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content" id="modal__content">
+
+
+                    </div>
+
+                </div>
+            </div>
+            </div>
+        </section>
+        <!-----------------------END--Modal------------------------------------->
+
+        <!-----------------------NAVIGATION------------------------------------->
+        <section>
+            <nav aria-label="Page navigation example" id="nav-bar">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled" id="prev-li">
+                        <button class="page-link" id="page-previous">Previous</button>
+                    </li>
+                    <li class="page-item">
+                        <button class="page-link" id="page-1">1</button>
+                    </li>
+                    <li class="page-item">
+                        <button class="page-link" id="page-2">2</button>
+                    </li>
+                    <li class="page-item">
+                        <button class="page-link" id="page-3">3</button>
+                    </li>
+                    <li class="page-item" id="next-li">
+                        <button class="page-link" id="page-next">Next</button>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+
+        <!-----------------------END--NAVIGATION------------------------------------->
+    </main>
+</body>
+
+</html>
