@@ -17,9 +17,9 @@
 </head>
 
 <body>
-    <header id="header">
-        <div class="container-xxl">
-            <nav class="nav nav-pills nav-fill bg-info">
+    <header id="header" style="background-color: #8afd6d;">
+        <div class="container">
+            <nav class="nav nav-pills nav-fill ">
                 <a class="navbar-brand text-dark" href="#">
                     <img src="https://www.penguinrandomhousegrupoeditorial.com/wp-content/uploads/2017/07/B_PRHGE_negro.png" width="40" height="40" class="d-inline-block align-top" alt="logo B"> Blog with Api
                 </a>
@@ -101,8 +101,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="send">Send message</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="save-btn">Save</button>
                 </div>
             </div>
         </div>
@@ -143,16 +142,17 @@
         </div>
     </div>
 
-
-
+<!-- ------------------------------------------------------TEMPLATE -->
 <template id="card-temp">
-  <div class="container-md m-4 p-0 shadow hover" data-bs-toggle="modal" data-bs-target="#summary-modal" data-set="card-cont" id="card-content">
+  <div class="container-md m-4 p-0 shadow d-flex flex-column justify-content-between bg-light" data-bs-toggle="modal" data-bs-target="#summary-modal" data-set="card-cont" id="card-content">
     <figure class="figure" data-bs-toggle="modal" data-bs-target="#summary-modal">
       <img src="https://dmagazine.com.ar/wp-content/uploads/2017/11/rick.png" class="figure-img img-fluid rounded" data-bs-toggle="modal" data-bs-target="#summary-modal" alt="rick and morty">
       <figcaption class="m-1 ms-4" data-bs-toggle="modal" data-bs-target="#summary-modal"></figcaption>
     </figure>
-    <button data-bs-toggle="modal" data-bs-target="#edit-modal"type="button" class="btn btn-secondary" id="edit">EDIT</button>
-    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-modal" id="delete-btn">DELETE</button>
+    <div class="container mb-2 text-start">
+        <button data-bs-toggle="modal" data-bs-target="#edit-modal"type="button" class="btn btn-outline-primary" id="edit">EDIT</button>
+        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete-modal" id="delete-btn">DELETE</button>
+    </div>
   </div>
  </template>
 

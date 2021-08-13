@@ -10,7 +10,7 @@ export function modalEdit(event) {
                 }
             })
         })
-    document.querySelector("#send").addEventListener("click", () => {
+    document.querySelector("#save-btn").addEventListener("click", () => {
         let newBody = document.querySelector("#recipient-title").value
         let newTitle = document.querySelector("#message-text").value
         fetch(
@@ -26,7 +26,7 @@ export function modalEdit(event) {
             })
         .then(response => response.json())
         .then(post =>{
-            document.querySelector(`[data-edit="${parseInt(event.target.dataset.id)}"]`).innerHTML = post.title 
+            document.querySelector(`[data-edit="${event.target.dataset.id}"]`).innerHTML = post.title 
         })
     })
 }
