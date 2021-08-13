@@ -1,4 +1,4 @@
-
+import { userIcon } from '/assets/js/icons.js';
 /**
  * Fill modal´s comments
  *
@@ -152,3 +152,8 @@
     const counter = document.getElementById("comments-list").children.length;
     document.getElementById("totalComments").innerHTML = `${counter} comments`;
   }
+
+
+  export {
+    fillModalComments
+  };

@@ -16,3 +16,6 @@
     toggle.classList.toggle("enabled");
     html.classList.toggle("dark-mode");
   }
+
+
+  export { switchStyles, toggleDarkMode };

@@ -1,3 +1,6 @@
+import { userIcon } from '/assets/js/icons.js';
+import {fillModalComments } from '/assets/js/comments.js';
+
 /**
  * Fill main post
  *
@@ -289,3 +292,10 @@ async function fetchData(section = "posts", from = 0, limit = 10) {
   
     return response;
   }
+
+  export { 
+    fillMainPost, 
+    fillLinesSection,
+    fillTinderSection, 
+    fillInlineSection
+  };
