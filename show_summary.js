@@ -18,14 +18,18 @@ export function showSummary(event) {
                 }
             })
         })
-    document.querySelector("#comments").addEventListener("click", () => {
-        fetch(`http://localhost:3000/comments/${userIdInfo}`)
+    document.querySelector("#comments-button").addEventListener("click", function inserComments() {
+        fetch(`http://localhost:3000/comments/?postId=${userIdInfo}`)
             .then(response => response.json())
-            .then(data => {
-                data.forEach(post => {
-                    document.getElementById("titleComments").innerText = user.username
-                    document.getElementById("bodyComments").innerText = user.email
+            .then(ArrayObject => {
+                ArrayObject.forEach(post => {
+                    let commentBlock = `<span>
+                                                <p><strong>${post.name}</strong></p>
+                                                <p>${post.body}</p>
+                                                </span>`
+                    document.querySelector("#insert-comments").innerHTML += commentBlock
                 })
             });
-    });
+        //document.querySelector("#comments").removeEventListener("click", inserComments)
+    })
 }
