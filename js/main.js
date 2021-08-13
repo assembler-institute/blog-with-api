@@ -31,6 +31,7 @@ function printCard() {
 
 // Print all the posts of the blog
 function printPosts() {
+  document.querySelector(".row-cols-1").innerHTML = "";
   $.get("http://localhost:3000/posts", function (jsonPosts) {
     var postsLength = jsonPosts.length;
     for (let i = 0; i < postsLength; i++) {
@@ -121,7 +122,7 @@ function alertDeleteVisibility(response) {
       $("[post-modal]").modal("hide");
 
       $("[confirming]").modal("hide");
-      window.location = window.location;
+      printPosts();
     }, 4000);
   } else {
     setTimeout(() => {
@@ -132,7 +133,7 @@ function alertDeleteVisibility(response) {
       $("[post-modal]").modal("hide");
 
       $("[confirming]").modal("hide");
-      window.location = window.location;
+      printPosts();
     }, 4000);
   }
 }
@@ -170,7 +171,7 @@ function alertEditVisibility(response) {
       $("[post-modal]").modal("hide");
 
       $("#editModal").modal("hide");
-      window.location = window.location;
+      printPosts();
     }, 4000);
   } else {
     setTimeout(() => {
@@ -181,7 +182,7 @@ function alertEditVisibility(response) {
       $("[post-modal]").modal("hide");
 
       $("#editModal").modal("hide");
-      window.location = window.location;
+      printPosts();
     }, 4000);
   }
 }
