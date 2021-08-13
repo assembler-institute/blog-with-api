@@ -19,9 +19,9 @@ async function fillMainPost(mainPost = 0) {
       <template id="mainTemplate">
         <div class="post-main">
           <p class="post-main__author">${name}</p>
-          <div class="headline-card__line"></div>
+          <div class="post-main__line"></div>
           <h2 class="post-main__title text-capitalize">${title}</h2>
-          <div class="headline-card__line"></div>
+          <div class="post-main__line"></div>
           <div class="post-main__button">
             <button
               type="button"

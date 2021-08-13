@@ -24,6 +24,7 @@
 }
 
 .post-block__title{
+  cursor: pointer;
   font-weight: 600;
   font-size: 2.2rem;
   margin-bottom: 1rem;
