@@ -1,5 +1,3 @@
-
-
 /**
  * Assings an icon to the user/company name
  *
@@ -51,3 +49,5 @@
   
     return userIcon;
 }
+
+export { userIcon };
