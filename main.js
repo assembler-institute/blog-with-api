@@ -204,10 +204,14 @@ function editPost() {
       fetch(`http://localhost:3000/posts/${idAgain}`, {
         method: "PATCH",
         body: JSON.stringify({ title: titleArea, body: bodyArea }),
-        headers: { "Content-type": "application/JSON; charset:UTF-8" },
-      }).then((response) => {
-        response.json();
-      });
+        headers: { "Content-type": "application/json; charset:UTF-8" },
+      })
+        .then((response) => {
+          response.json();
+        })
+        .then((json) => {
+          console.log(json);
+        });
       document
         .querySelector("#btn-confirm")
         .removeEventListener("click", confirmEdit);
