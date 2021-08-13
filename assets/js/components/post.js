@@ -82,6 +82,7 @@ export const editPost = async (idPost, oldURL) => {
   document.getElementById('postDate').valueAsDate = new Date();
 
   Modal.show()
+  document.getElementById('delete-post').classList.remove('d-none')
   document.getElementById('form-buttons').classList.remove('justify-content-end')
   document.getElementById('form-buttons').classList.add('justify-content-between')
 
