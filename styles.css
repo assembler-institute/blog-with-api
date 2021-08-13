@@ -1,0 +1,41 @@
+.title {
+    cursor: pointer;
+    width: 80%;
+    text-align: start;
+}
+
+.title:hover {
+    font-weight: bold;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.card:hover {
+    background-color: rgba(128, 128, 128, 0.226);
+    border-color: black;
+}
+
+.form-label {
+    margin-left: 2.5%;
+    font-weight: bold;
+    margin-top: 2%;
+}
+
+textarea {
+    font-family: monospace;
+    margin-top: 2%;
+}
+
+#titleInput,
+#bodyInput {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.carousel-item {
+    height: 40vh;
+}
