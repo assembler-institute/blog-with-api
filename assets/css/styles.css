@@ -1,0 +1,12 @@
+/**
+ * BASE FOLDER
+ */
+ @import "BASE/reset.css";
+
+/**
+ * MODULE FOLDER
+ */
+ @import "MODULE/card.css";
+ @import "MODULE/stars.css";
+ @import "MODULE/modal.css";
+

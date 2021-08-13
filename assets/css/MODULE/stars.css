@@ -1,0 +1,28 @@
+/**
+ * MODULE STARS
+ */
+
+i {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    animation: animate linear infinite;
+}
+
+@keyframes animate
+{
+    0%
+    {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    10%,90%
+    {
+        opacity: 1;
+    }
+    100%
+    {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+}

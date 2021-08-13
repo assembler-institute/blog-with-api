@@ -1,0 +1,15 @@
+
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+  background: linear-gradient(#111425,#3751e0);
+  background-attachment: fixed;
+}
+
+html {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: transparent;
+}
