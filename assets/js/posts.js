@@ -1,21 +1,21 @@
 import { userIcon } from '/assets/js/icons.js';
-import {fillModalComments } from '/assets/js/comments.js';
+import { fillModalComments } from '/assets/js/comments.js';
 
 /**
  * Fill main post
  *
  * @param {String} mainPost begining post
  */
- async function fillMainPost(mainPost = 0) {
-    let cards = await fetchData("posts", mainPost, 1);
-  
-    const { userId, id, title } = { ...cards[0] };
-  
-    const users = await fetchData("users", userId - 1, userId);
-  
-    const { name } = { ...users[0] };
-  
-    const templateCard = `
+async function fillMainPost(mainPost = 0) {
+  let cards = await fetchData("posts", mainPost, 1);
+
+  const { userId, id, title } = { ...cards[0] };
+
+  const users = await fetchData("users", userId - 1, userId);
+
+  const { name } = { ...users[0] };
+
+  const templateCard = `
       <template id="mainTemplate">
         <div class="post-main">
           <p class="post-main__author">${name}</p>
@@ -37,39 +37,39 @@ import {fillModalComments } from '/assets/js/comments.js';
         </div>
       </template>
     `;
-  
-    const postMain = document.getElementById("post-main");
-    postMain.insertAdjacentHTML("beforeend", templateCard);
-  
-    const contentTemplate = document.getElementById(`mainTemplate`).content;
-    const copyContent = document.importNode(contentTemplate, true);
-    postMain.innerHTML = "";
-    postMain.appendChild(copyContent);
-  
-    document.getElementById("readBtn").addEventListener("click", function () {
-      fillModal(id, "main");
-    });
-  }
-  
-  /**
-   * Fill post of line Section
-   *
-   *  @param {Number} linePost begining post
-   *  @param {Number} lineLimit number of post to fetch
-   */
-  async function fillLinesSection(linePost = 1, lineLimit = 6) {
-    let cards = await fetchData("posts", linePost, lineLimit);
-  
-    const postsContent = document.getElementById("lines-content");
-  
-    for (const card of cards) {
-      const { userId, id, title } = { ...card };
-  
-      const users = await fetchData("users", userId - 1, userId);
-  
-      const { name } = { ...users[0] };
-  
-      const templateCard = `
+
+  const postMain = document.getElementById("post-main");
+  postMain.insertAdjacentHTML("beforeend", templateCard);
+
+  const contentTemplate = document.getElementById(`mainTemplate`).content;
+  const copyContent = document.importNode(contentTemplate, true);
+  postMain.innerHTML = "";
+  postMain.appendChild(copyContent);
+
+  document.getElementById("readBtn").addEventListener("click", function () {
+    fillModal(id, "main");
+  });
+}
+
+/**
+ * Fill post of line Section
+ *
+ *  @param {Number} linePost begining post
+ *  @param {Number} lineLimit number of post to fetch
+ */
+async function fillLinesSection(linePost = 1, lineLimit = 6) {
+  let cards = await fetchData("posts", linePost, lineLimit);
+
+  const postsContent = document.getElementById("lines-content");
+
+  for (const card of cards) {
+    const { userId, id, title } = { ...card };
+
+    const users = await fetchData("users", userId - 1, userId);
+
+    const { name } = { ...users[0] };
+
+    const templateCard = `
         <template id="lines-template-${id}">
           <div class="post-block d-block">
             <div class="post-block__content d-block" id="post-block-${id}">
@@ -80,45 +80,45 @@ import {fillModalComments } from '/assets/js/comments.js';
           </div>
         </template>
       `;
-  
-      postsContent.insertAdjacentHTML("beforeend", templateCard);
-      const contentTemplate = document.getElementById(`lines-template-${id}`).content;
-      const copyContent = document.importNode(contentTemplate, true);
-  
-      document.getElementById(`lines-template-${id}`).remove();
-      postsContent.appendChild(copyContent);
-      document.getElementById(`post-block-${id}`).addEventListener("click", function () {
-        fillModal(id, "line");
-  
-        let modal = new bootstrap.Modal(document.getElementById('postModal'), {
-          keyboard: false
-        })
-  
-        modal.show();
-      });
-    }
+
+    postsContent.insertAdjacentHTML("beforeend", templateCard);
+    const contentTemplate = document.getElementById(`lines-template-${id}`).content;
+    const copyContent = document.importNode(contentTemplate, true);
+
+    document.getElementById(`lines-template-${id}`).remove();
+    postsContent.appendChild(copyContent);
+    document.getElementById(`post-block-${id}`).addEventListener("click", function () {
+      fillModal(id, "line");
+
+      let modal = new bootstrap.Modal(document.getElementById('postModal'), {
+        keyboard: false
+      })
+
+      modal.show();
+    });
   }
-  
-  /**
-   * Fill post of tinder Section
-   *
-   *  @param {Number} tinderPost begining post
-   *  @param {Number} tinderLimit number of post to fetch
-   */
-  async function fillTinderSection(tinderPost = 7, tinderLimit = 6) {
-  
-    let cards = await fetchData("posts", tinderPost, tinderLimit);
-  
-    const tinderContent = document.getElementById("tinder-content");
-  
-    for (const card of cards) {
-      const { userId, id, title } = { ...card };
-  
-      const users = await fetchData("users", userId - 1, 1);
-  
-      const { name } = { ...users[0] };
-  
-      const templateCard = `
+}
+
+/**
+ * Fill post of tinder Section
+ *
+ *  @param {Number} tinderPost begining post
+ *  @param {Number} tinderLimit number of post to fetch
+ */
+async function fillTinderSection(tinderPost = 7, tinderLimit = 6) {
+
+  let cards = await fetchData("posts", tinderPost, tinderLimit);
+
+  const tinderContent = document.getElementById("tinder-content");
+
+  for (const card of cards) {
+    const { userId, id, title } = { ...card };
+
+    const users = await fetchData("users", userId - 1, 1);
+
+    const { name } = { ...users[0] };
+
+    const templateCard = `
         <template id="tinder-template-${id}">
           <div class="post-card col-md-4 hoverable" id="card-${id}">
             <div class="post-card__content outside">
@@ -131,51 +131,51 @@ import {fillModalComments } from '/assets/js/comments.js';
           </div>
         </template>
       `;
-  
-      tinderContent.insertAdjacentHTML("beforeend", templateCard);
-      const contentTemplate = document.getElementById(`tinder-template-${id}`).content;
-      const copyContent = document.importNode(contentTemplate, true);
-  
-      document.getElementById(`tinder-template-${id}`).remove();
-      tinderContent.appendChild(copyContent);
-  
-      document.getElementById(`card-${id}`).addEventListener("click", function () {
-        let card = document.getElementById(`card-${id}`);
-  
-        if (card.classList.contains('inactive')) return;
-  
-        fillModal(id, "tinder");
-  
-        let modal = new bootstrap.Modal(document.getElementById('postModal'), {
-          keyboard: false
-        })
-  
-        modal.show();
-      });
-  
-    }
+
+    tinderContent.insertAdjacentHTML("beforeend", templateCard);
+    const contentTemplate = document.getElementById(`tinder-template-${id}`).content;
+    const copyContent = document.importNode(contentTemplate, true);
+
+    document.getElementById(`tinder-template-${id}`).remove();
+    tinderContent.appendChild(copyContent);
+
+    document.getElementById(`card-${id}`).addEventListener("click", function () {
+      let card = document.getElementById(`card-${id}`);
+
+      if (card.classList.contains('inactive')) return;
+
+      fillModal(id, "tinder");
+
+      let modal = new bootstrap.Modal(document.getElementById('postModal'), {
+        keyboard: false
+      })
+
+      modal.show();
+    });
+
   }
-  
-  /**
-   * Fill post of line Section
-   *
-   *  @param {Number} inlinePost begining post
-   *  @param {Number} inlineLimit number of post to fetch
-   */
-  async function fillInlineSection(inlinePost = 13, inlineLimit = 10) {
-  
-    let cards = await fetchData("posts", inlinePost, inlineLimit);
-  
-    const postsContent = document.getElementById("inline-content");
-  
-    for (const card of cards) {
-      const { userId, id, title } = { ...card };
-  
-      const users = await fetchData("users", userId - 1, userId);
-  
-      const { name } = { ...users[0] };
-  
-      const templateCard = `
+}
+
+/**
+ * Fill post of line Section
+ *
+ *  @param {Number} inlinePost begining post
+ *  @param {Number} inlineLimit number of post to fetch
+ */
+async function fillInlineSection(inlinePost = 13, inlineLimit = 10) {
+
+  let cards = await fetchData("posts", inlinePost, inlineLimit);
+
+  const postsContent = document.getElementById("inline-content");
+
+  for (const card of cards) {
+    const { userId, id, title } = { ...card };
+
+    const users = await fetchData("users", userId - 1, userId);
+
+    const { name } = { ...users[0] };
+
+    const templateCard = `
         <template id="lines-template-${id}">
           <div class="post-inline d-inline" id="post-inline-${id}">
             <div class="post-inline__content d-inline">
@@ -186,47 +186,47 @@ import {fillModalComments } from '/assets/js/comments.js';
           </div>
         </template>
       `;
-  
-      postsContent.insertAdjacentHTML("beforeend", templateCard);
-      const contentTemplate = document.getElementById(`lines-template-${id}`).content;
-      const copyContent = document.importNode(contentTemplate, true);
-      document.getElementById(`lines-template-${id}`).remove();
-      postsContent.appendChild(copyContent);
-  
-      document.getElementById(`post-inline-${id}`).addEventListener("click", function () {
-        fillModal(id, "inline");
-  
-        let modal = new bootstrap.Modal(document.getElementById('postModal'), {
-          keyboard: false
-        })
-  
-        modal.show();
-      });
-    }
+
+    postsContent.insertAdjacentHTML("beforeend", templateCard);
+    const contentTemplate = document.getElementById(`lines-template-${id}`).content;
+    const copyContent = document.importNode(contentTemplate, true);
+    document.getElementById(`lines-template-${id}`).remove();
+    postsContent.appendChild(copyContent);
+
+    document.getElementById(`post-inline-${id}`).addEventListener("click", function () {
+      fillModal(id, "inline");
+
+      let modal = new bootstrap.Modal(document.getElementById('postModal'), {
+        keyboard: false
+      })
+
+      modal.show();
+    });
   }
-  
-  /**
-   * Fill the modal when read more is clicked
-   *
-   *  @param {Number} modalId id of  modal
-   */
-  async function fillModal(modalId) {
-  
-    const post = await fetchData("posts", modalId - 1, 1);
-  
-    const { userId, id, title, body } = { ...post[0] };
-  
-    const user = await fetchData("users", userId - 1, 1);
-  
-    const { name, company,address } = { ...user[0] };
-  
-    const icon = await userIcon(name);
-  
-    const modalContentArea = document.getElementById("postModal");
-  
-    modalContentArea.innerHTML = "";
-  
-    const templateModal = `
+}
+
+/**
+ * Fill the modal when read more is clicked
+ *
+ *  @param {Number} modalId id of  modal
+ */
+async function fillModal(modalId) {
+
+  const post = await fetchData("posts", modalId - 1, 1);
+
+  const { userId, id, title, body } = { ...post[0] };
+
+  const user = await fetchData("users", userId - 1, 1);
+
+  const { name, company, address } = { ...user[0] };
+
+  const icon = await userIcon(name);
+
+  const modalContentArea = document.getElementById("postModal");
+
+  modalContentArea.innerHTML = "";
+
+  const templateModal = `
       <template id="modal-template-${id}">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content p-4">
@@ -266,17 +266,17 @@ import {fillModalComments } from '/assets/js/comments.js';
         </div>
       </template>
     `;
-  
-    modalContentArea.insertAdjacentHTML("beforeend", templateModal);
-    const contentTemplate = document.getElementById(`modal-template-${id}`).content;
-  
-    const copyContent = document.importNode(contentTemplate, true);
-    document.getElementById(`modal-template-${id}`).remove();
-    modalContentArea.appendChild(copyContent);
-    document.querySelector("i").classList.add("big")
-    fillModalComments(modalId, company.name);
-  }
-  
+
+  modalContentArea.insertAdjacentHTML("beforeend", templateModal);
+  const contentTemplate = document.getElementById(`modal-template-${id}`).content;
+
+  const copyContent = document.importNode(contentTemplate, true);
+  document.getElementById(`modal-template-${id}`).remove();
+  modalContentArea.appendChild(copyContent);
+  document.querySelector("i").classList.add("big")
+  fillModalComments(modalId, company.name);
+}
+
 /**
  * Fetch data
  *
@@ -285,17 +285,17 @@ import {fillModalComments } from '/assets/js/comments.js';
  * @param {String} section
  */
 async function fetchData(section = "posts", from = 0, limit = 10) {
-    const baseUrl = "https://jsonplaceholder.typicode.com";
-  
-    let response = await fetch(`${baseUrl}/${section}?_start=${from}&_limit=${limit}`)
-      .then((response) => response.json());
-  
-    return response;
-  }
+  const baseUrl = "https://jsonplaceholder.typicode.com";
 
-  export { 
-    fillMainPost, 
-    fillLinesSection,
-    fillTinderSection, 
-    fillInlineSection
-  };
+  let response = await fetch(`${baseUrl}/${section}?_start=${from}&_limit=${limit}`)
+    .then((response) => response.json());
+
+  return response;
+}
+
+export {
+  fillMainPost,
+  fillLinesSection,
+  fillTinderSection,
+  fillInlineSection
+};
