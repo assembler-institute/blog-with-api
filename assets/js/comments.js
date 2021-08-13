@@ -154,7 +154,6 @@ function recountComments() {
   document.getElementById("totalComments").innerHTML = `${counter} comments`;
 }
 
-
 export {
   fillModalComments
 };
