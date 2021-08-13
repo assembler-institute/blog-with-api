@@ -1,7 +1,11 @@
 import { loadPage } from "../index.js"
+import { Modal } from "../layouts/modal.js"
 import { getQueryPosts } from "../layouts/search.js"
 
 export const redirect = (event) => {
+
+  getRandomImage()
+  Modal.hide()
 
   let oldURL = ''
   if (typeof event === 'undefined') oldURL = ''
@@ -27,6 +31,9 @@ export const redirect = (event) => {
     else if (location.hash.includes('search')) {
       return getQueryPosts(null, getQueryFromString(location.hash))
     }
+    else if (location.hash.includes('add-new')) {
+      return loadPage(null , 'add-new', null, oldURL)
+    }
   }
 }
 
@@ -40,3 +47,14 @@ const getQueryFromString = (string) => {
   return string.split('-')[1]
 }
 
+
+const getRandomImage = () => {
+  let hero =  document.getElementById('hero')
+  hero.style.opacity = '0'
+  hero.style.backgroundImage = 'url("")'
+  hero.style.backgroundImage = 'url("https://picsum.photos/1200/500")'
+  hero.style.backgroundSize = 'cover'
+  hero.style.backgroundPosition = 'center'
+  hero.style.height = '25vh'
+  hero.style.opacity = '1'
+}

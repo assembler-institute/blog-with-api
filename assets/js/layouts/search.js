@@ -7,8 +7,8 @@ export let searchHTML = `<div class="input-group flex-nowrap w-auto">
 
 export const searchHandler = () => {
   document.getElementById('search-input').addEventListener('change', queryPostHandler)
-  function queryPostHandler (event) {
-    getQueryPosts(event.target.value)
+  async function queryPostHandler (event) {
+    await getQueryPosts(event.target.value)
     event.target.value = '' 
   }
 }

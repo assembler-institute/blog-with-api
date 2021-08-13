@@ -2,7 +2,7 @@ export let modalHTML = `<div class="modal fade" id="modal-edit" tabindex="-1" ar
 <div class="modal-dialog modal-fullscreen">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title h4" id="modalEdit">Full screen modal</h5>
+      <h5 class="modal-title h4" id="modalEdit">Post</h5>
       <button type="button" class="btn-close modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">

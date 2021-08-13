@@ -23,7 +23,7 @@ export const getAllPosts = async (page = 1, limit = 9) => {
 
     data.forEach(post => {
       allPostHTML += `
-        <div class="post col-md-4" data-id="${post.id}">
+        <div class="post col-md-4 mb-3" data-id="${post.id}">
           <div class="card shadow-sm h-100">
             <div class="card-body d-flex justify-content-between flex-column">
               <div>
@@ -32,7 +32,7 @@ export const getAllPosts = async (page = 1, limit = 9) => {
               </div>
               <div class="d-flex flex-row-reverse justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary" data-id="${post.id}" data-action="view">View</button>
+                  <button type="button" class="btn btn-sm btn-primary" data-id="${post.id}" data-action="view">View</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary" data-id="${post.id}" data-action="edit">Edit</button>
                 </div>
               </div>
@@ -47,7 +47,7 @@ export const getAllPosts = async (page = 1, limit = 9) => {
     mainContainer.querySelectorAll('*').forEach(elm => elm.remove())
     mainContainer.insertAdjacentHTML('afterbegin', `
       <div id="blog" class="row">${allPostHTML}</div>
-      <ul id="pagination" class="pagination">${buttons}</ul>
+      <ul id="pagination" class="pagination justify-content-center flex-wrap p-5">${buttons}</ul>
     `)
 
     // Listener

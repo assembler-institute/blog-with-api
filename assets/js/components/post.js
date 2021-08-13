@@ -3,7 +3,14 @@ import { data } from './posts.js'
 
 export const getPost = async (idPost, oldURL) => {
   
-  let data = await fetch(`http://localhost:3000/posts/${idPost}?_embed=comments`).then(res => res.json()).then(data => data)
+  let data = await fetch(`http://localhost:3000/posts/${idPost}?_embed=comments`).then(res => res.json()).then(data => data).catch(err => err)
+
+  if (data.length < 0) return 'Error'
+
+  let userData = await fetch(`http://localhost:3000/users/${data.userId}`).then(res => res.json()).then(data => data).catch(err => err)
+
+  if (userData.length < 0) return 'Error'
+
 
   let container = document.getElementById('main-container')
   container.querySelectorAll('*').forEach(elm => elm.remove())
@@ -26,10 +33,28 @@ export const getPost = async (idPost, oldURL) => {
       <a id="article-back" href="#"><< Back</a>
       <h1>${data.title}</h1>
       <p>${data.body}</p>
+      <figcaption class="blockquote-footer">
+        ${userData.name} - ${userData.email}
+      </figcaption>
       <section class="article-comments pt-5">
-        <ul class="list-group">
-        ${commentList}
-        </ul> 
+      
+        <div class="accordion accordion-flush" id="accordionComments">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+              <button class="accordion-button collapsed border-bottom" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                Comments
+              </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionComments">
+              <div>
+                <ul class="list-group">
+                  ${commentList}
+                </ul> 
+              </div>
+            </div>
+          </div>
+        </div>
+
       </section>
     </article>
   `
@@ -58,10 +83,14 @@ export const editPost = async (idPost, oldURL) => {
 
   Modal.show()
 
+  let notification = document.getElementById('notification') 
+
   // Add close modal listeners
   document.querySelectorAll('.modal-close').forEach(elm => {
     elm.addEventListener('click', () => {
       document.getElementById('form-edit-post').removeEventListener('submit', submitHandler)
+      document.getElementById('delete-post').removeEventListener('click', deleteHandler)
+
       location.hash = oldURL
     })
   })
@@ -71,8 +100,18 @@ export const editPost = async (idPost, oldURL) => {
   function submitHandler() {
     if (updatePost(event, idPost)) {
       document.getElementById('form-edit-post').removeEventListener('submit', submitHandler)
+      document.getElementById('delete-post').removeEventListener('click', deleteHandler)
+
       Modal.hide()
       location.hash = oldURL
+
+      notification.classList.add('show')
+      notification.querySelector('.toast-body').textContent = 'Post modified successfully'
+      notification.querySelector('.toast-body').classList.add('alert-success')
+      setTimeout(() => {
+        notification.classList.remove('show')
+        notification.querySelector('.toast-body').classList.remove('alert-success')
+      }, 3000)
     }
     
   }
@@ -81,9 +120,19 @@ export const editPost = async (idPost, oldURL) => {
   document.getElementById('delete-post').addEventListener('click', deleteHandler)
   function deleteHandler() {
     if (deletePost(idPost)) {
+      document.getElementById('form-edit-post').removeEventListener('submit', submitHandler)
       document.getElementById('delete-post').removeEventListener('click', deleteHandler)
+
       Modal.hide()
       location.hash = oldURL
+
+      notification.classList.add('show')
+      notification.querySelector('.toast-body').textContent = 'Post deleted successfully'
+      notification.querySelector('.toast-body').classList.add('alert-warning')
+      setTimeout(() => {
+        notification.classList.remove('show')
+        notification.querySelector('.toast-body').classList.remove('alert-warning')
+      }, 3000)
     }
   }
 

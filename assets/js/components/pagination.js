@@ -55,23 +55,3 @@ export const getButtonsPagination = (response, page) => {
 
   return htmlButtons
 }
-
-/*
-export const paginate = (event) => {
-
-  if (event.target.id === 'next') currentPage += 1 
-  if (event.target.id === 'next') currentPage -= 1
-
-  let response = getAllPosts(currentPage)
-
-  if (currentPage <= 1) {
-    document.querySelector('#prev').style.display = 'none'
-  } else {
-    document.querySelector('#prev').style.display = 'block'
-  }
-
-}
-
-export const nextButton = '<button id="next">Next</button>'
-export const prevButton = '<button id="prev">Prev</button>'
-*/
