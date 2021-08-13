@@ -69,3 +69,12 @@ To deliver this project you must follow the steps indicated in the document:
 ```
 npx json-server --watch data/db.json
 ```
+
+## Presentation
+
+[Slides](https://docs.google.com/presentation/d/1aWdl0bgCiyi_IkotEqH74vn7Y-jYHyq_LKxFrqcnI14/edit#slide=id.p)
+
+## Authors
+
+- [@CarlosVelilla](https://github.com/CarlosVelilla)
+- [@AranBeitia](https://github.com/AranBeitia)
