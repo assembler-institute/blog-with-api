@@ -1,24 +1,46 @@
 {
   "posts": [
+
     {
+    "userId":0,
       "id": 1,
       "title": "json-server",
-      "author": "typicode"
+      "author": "typicode",
+      "body":"contenido 1"
     },
+
     {
       "id": 2,
-      "title": "test 2",
-      "author": "typicode 2"
-    }
+      "title": "Hola 1",
+      "author": "John Doe",
+      "body":"contenido 2"
+    },
+    {
+        "id": 3,
+        "title": "Hola 2",
+        "author": "Desconocido",
+        "body":"contenido 3"
+      }
+
+
   ],
   "comments": [
+
+
     {
       "id": 1,
       "body": "some comment",
       "postId": 1
     }
+
+
   ],
-  "profile": {
+  "users":
+  
+  {
     "name": "typicode"
   }
+
+
+
 }

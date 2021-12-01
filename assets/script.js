@@ -1,26 +1,32 @@
-var myModal = document.getElementById('myModal')
-var myInput = document.getElementById('myInput')
-
-myModal.addEventListener('shown.bs.modal', function () {
-  myInput.focus()
-})
-
-
-
-
-
 
 var requestOptions = {
     method: 'GET',
     redirect: 'follow'
   };
-  let result1
+  let result1;
+
   fetch("http://localhost:3000/posts", requestOptions)
     .then(response => response.text())
     .then(result => {result1 = JSON.parse(result)
         console.log(result1)
+        updatePostsList(result1)
     })
     .catch(error => console.log('error', error));
 
+
+function updatePostsList(result1){
+    result1.forEach(item => {
+        let div1 = document.createElement("div")
+        div1.innerHTML =  `<div class="title1">
+                            `+ item.title +`
+                            </div>
+                            <div class="body1">
+                            `+ item.body +`
+                            </div>`
+        div1.setAttribute("class","User-container")
+        div1.setAttribute("id","User-container-"+item.id)
+        document.body.appendChild(div1)
+    });
+}
 
 
