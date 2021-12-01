@@ -1,0 +1,18 @@
+.navbar{
+   display: flex;
+   flex-direction: column;
+   font-size: 3em;
+   font-weight: bold;
+}
+/* .contentofBlog{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: solid 2px black;
+} */
+.contentPost{
+    border: 1px solid black;
+}
+.title{
+    font-weight: bold;
+    color: blueviolet;
+}
