@@ -4,6 +4,7 @@ const informacion= {
     userId:"",
     body:""
 }
+
 fetch("http://localhost:3000/posts")
 .then((request)=>{
 return request.json()
@@ -32,7 +33,9 @@ return request.json()
                 informacion.userId= infoPosts[0].userId
                 informacion.body=infoPosts[0].body
                 console.log(informacion)
-            // console.log(infoPosts[0].userId)
         })
     }); 
 })
+function modal(){
+    
+}
