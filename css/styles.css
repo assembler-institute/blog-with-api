@@ -1,0 +1,7 @@
+.nav-item {
+    font-size: 25px;
+    padding: 30px;
+}
+.table>:not(caption)>*>* {
+    padding: 50px !important;
+}
