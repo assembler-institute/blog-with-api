@@ -1,0 +1,15 @@
+body{
+    background-color: gray !important;
+}
+
+.postblog{
+    width: 80%;
+    margin: 2% auto ;
+}
+.postblog:hover{
+    border: 1px solid black;
+}
+.iconredy{
+    max-width: 40px;
+    max-height: 40px;
+}
