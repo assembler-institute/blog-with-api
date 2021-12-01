@@ -1,4 +1,9 @@
-
+const informacion= {
+    title:"",
+    id:"",
+    userId:"",
+    body:""
+}
 fetch("http://localhost:3000/posts")
 .then((request)=>{
 return request.json()
@@ -18,14 +23,16 @@ return request.json()
         divPost.appendChild(titleP)
         divPost.appendChild(bodyP)
         document.getElementById("contentBlog").appendChild(divPost)
-        divPost.addEventListener("click", (e)=>{
-            const infoPosts= info.filter(post=> {console.log(divPost.id); if(post.id == divPost.id) {
+        divPost.addEventListener("click", ()=>{
+            infoPosts= info.filter(post=> {if(post.id == divPost.id) {
                 return post}})
-            console.log(infoPosts)
+                // console.log(infoPosts)
+                informacion.title= infoPosts[0].title
+                informacion.id= infoPosts[0].id
+                informacion.userId= infoPosts[0].userId
+                informacion.body=infoPosts[0].body
+                console.log(informacion)
+            // console.log(infoPosts[0].userId)
         })
-    });
-
-    // addeventListener
-    //  
-    // console.log(info.map(probando=> {if(probando.userId === 1) return probando}))
+    }); 
 })
