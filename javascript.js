@@ -33,6 +33,39 @@ return request.json()
                 informacion.body=infoPosts[0].body
                 console.log(informacion)
             // console.log(infoPosts[0].userId)
+            modal()
         })
     }); 
 })
+
+function modal() {
+    document.querySelector(".main-modal")
+
+    let modalMain = `<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">`
+    modalMain += `<div class="modal-dialog modal-dialog-centered" role="document">`
+    modalMain += `<div class="modal-content">`
+    modalMain += `<div class="modal-header">`
+    modalMain += `<h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>`
+    modalMain += `<button type="button" class="close" data-dismiss="modal" aria-label="Close">`
+    modalMain += `<div class="modal-header">`
+    
+        
+            
+                
+                    
+                    
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
