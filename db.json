@@ -2,45 +2,46 @@
   "posts": [
 
     {
-    "userId":0,
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode",
-      "body":"contenido 1"
-    },
-
-    {
-      "id": 2,
-      "title": "Hola 1",
-      "author": "John Doe",
-      "body":"contenido 2"
+        "postId":1,
+        "userId":1,
+        "title": "Title of the post 1",
+        "body":"body content 1"
     },
     {
-        "id": 3,
-        "title": "Hola 2",
-        "author": "Desconocido",
-        "body":"contenido 3"
-      }
-
-
-  ],
-  "comments": [
-
-
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+        "postId":2,
+        "userId":2,
+        "title": "Title of the post 2",
+        "body":"body content 2"
     }
+],
 
 
-  ],
-  "users":
-  
-  {
-    "name": "typicode"
-  }
+"comments": [
+
+{
+"commentId": 1,
+"body": "some comment",
+"postId": 1,
+"name":"Name of the comment",
+"email": "Email of the comment@mail.com"
+}
 
 
+],
+"users":[
+
+{
+"userId": 1,
+"username": "Carla",
+"email": "Carla@mail.com"
+},
+
+{
+"userId": 2,
+"username": "Adrián",
+"email": "Adrian@mail.com"
+}
+
+]
 
 }

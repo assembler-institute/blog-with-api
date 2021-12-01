@@ -1,3 +1,33 @@
+/* MODAL */
+.modalTransparent{
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    background-color: rgb(0, 0, 0,0.5);
+}
+.modalSmall{
+    width: 65%;
+    height: 65%;
+    background-color: #cec4c1b2;
+    border-radius: 10px;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+
+
+
+
 .blog{
     background-color: white !important;
     }
