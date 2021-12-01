@@ -1,0 +1,21 @@
+.blog{
+background-color: white !important;
+}
+
+.menu_item {
+  display: flex;
+  margin-right: 10px;
+  margin-top: 10px;
+  opacity: 0.8;
+  font-weight: 600;
+  cursor: pointer;
+}
+.menu_item:hover{
+  opacity: 1;
+}
+.fas.fa-home.px-2{
+  padding: 0px 0px 0px 0px !important;
+}
+.menu{
+  list-style: none;
+}
