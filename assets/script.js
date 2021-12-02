@@ -13,6 +13,11 @@ var requestOptions = {
     })
     .catch(error => console.log('error', error));
 
+    var myModal = document.getElementById('btn btn-primary');
+    
+    myModal.addEventListener('click', function () {
+      function updatePostsList(result1)
+    })
 
 function updatePostsList(result1){
     result1.forEach(item => {
