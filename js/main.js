@@ -11,11 +11,11 @@ window.onload= printTitle();
 
 async function printTitle(){
   arrayPost = await getPosts();
-  console.log(arrayPost)
     for(var i in arrayPost)
     {
-      console.log(arrayPost[i].title);
-      $(".titlePost").eq(i).text(arrayPost[i].title)
+      $(".titlePost").eq(i).text(arrayPost[i].title);
+      $(".divPostDetail").attr("data-bs-toggle", "modal")
+      $(".divPostDetail").attr("href", "#exampleModalToggle")
     }
 }
 

@@ -27,7 +27,6 @@
 .fa-user,.fa-envelope,.fa-comments{
     margin-right:5px;
     padding:8px;
-    
 }
 #username,#email{
     color:var(--secondary-color);
@@ -50,9 +49,9 @@
     border:none;
     border-radius:10px;
     padding:10px;
-    
+
 }
-    
+
 .menuBlue{
     background-color: var(--primary-color);
     height: 5vh;
@@ -64,7 +63,9 @@ h1{
     margin: 5vh 0;
     font-weight: bold;
 }
-
+.container>.row{
+    height: 35vh;
+}
 .divPost{
     background-color: var(--details-blue);
     display: flex;
@@ -75,9 +76,10 @@ h1{
 
 .divPostDetail{
     background-color: var(--bg-color);
-    width: 90%;
-    height: 100px;
+    width:auto;
+    height: auto;
     padding: 5%;
+    cursor: pointer;
 }
 
 .titlePost{
