@@ -11,7 +11,7 @@ function getUserid(userId, postId) {
         "data": {
             id: userId,
         },
-        "timeout": 0,
+        
     };
 
     $.ajax(userSettings)
@@ -40,7 +40,7 @@ function getPost(id) {
         "data": {
             id: id,
         },
-        "timeout": 0,
+        
     };
 
     $.ajax(settings)
@@ -59,23 +59,6 @@ for (let id = 1; id < 101; id++) {
         $('#postDiv').append(post);
     };
 };
-
-/*read post hacerlo modal*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
