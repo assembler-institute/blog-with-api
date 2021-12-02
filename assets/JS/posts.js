@@ -27,7 +27,9 @@ fetch("https://jsonplaceholder.typicode.com/posts", requestOptions)
             var btnComment = document.createElement("button");
             btnComment.innerHTML = "Leave a comment";
             panel.appendChild(btnComment);
-            btnComment.addEventListener("click", function(){newComment(element.id)});
+            btnComment.addEventListener("click", function () {
+                newComment(element.id)
+            });
             var btnShowComment = document.createElement("button");
             btnShowComment.innerHTML = "Check all the comments!";
             panel.appendChild(btnShowComment);
@@ -91,16 +93,16 @@ function getComments(id) {
     }
 }
 
-function newComment(id){
-        var eventDiv = document.createElement("div")
-        eventDiv.setAttribute("id", "Mymodal");
-        eventDiv.className = "modal";
-        document.body.appendChild(eventDiv);
-        var modalContent = document.createElement("div");
-        modalContent.className = "modal-content";
-        eventDiv.appendChild(modalContent);
-        eventDiv.style.display = "block";
-        const html = `<span class="close" id="closeModal">&times;</span>
+function newComment(id) {
+    var eventDiv = document.createElement("div")
+    eventDiv.setAttribute("id", "Mymodal");
+    eventDiv.className = "modal";
+    document.body.appendChild(eventDiv);
+    var modalContent = document.createElement("div");
+    modalContent.className = "modal-content";
+    eventDiv.appendChild(modalContent);
+    eventDiv.style.display = "block";
+    const html = `<span class="close" id="closeModal">&times;</span>
         <form>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Email address</label>
@@ -119,12 +121,14 @@ function newComment(id){
             </div>
         </form>`
 
-        modalContent.innerHTML = html;
-        document.getElementById("closeModal").addEventListener("click", closeModal);
-        document.getElementById("submitComment").addEventListener("click", function(){submitForm(id)})
+    modalContent.innerHTML = html;
+    document.getElementById("closeModal").addEventListener("click", closeModal);
+    document.getElementById("submitComment").addEventListener("click", function () {
+        submitForm(id)
+    })
 }
 
-function submitForm(id){
+function submitForm(id) {
     event.preventDefault();
     var formValues = {
         "postId": id,
@@ -133,11 +137,42 @@ function submitForm(id){
     }
     formValues.name = document.getElementById("exampleFormControlInput2").value
     formValues.body = document.getElementById("exampleFormControlTextarea1").value
-    console.log(formValues);
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify(formValues);
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    fetch("https://jsonplaceholder.typicode.com/posts/" + id + "/comments", requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            console.log(result);
+            let father = document.querySelector('.comment' + id);
+            let container = document.createElement('div')
+            container.classList.add('containerComments');
+            father.appendChild(container)
+            let title = document.createElement('div')
+            title.classList.add('titleComment')
+            let description = document.createElement('p');
+            description.classList.add('bodyComment')
+            title.innerText = result.name;
+            description.innerText = result.body;
+            container.append(title)
+            title.append(description)
+        })
+        .catch(error => console.log('error', error));
+    closeModal();
 }
 
 
-function closeModal(){
+function closeModal() {
     var eventDiv = document.getElementById("Mymodal");
     eventDiv.remove();
 }
