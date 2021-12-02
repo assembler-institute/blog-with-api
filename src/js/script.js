@@ -1,7 +1,9 @@
 var allPosts
 var allusers
+var commentsByPost
 getAllUsers()
 getAllPost()
+
 
 
 function getAllPost(){
@@ -51,9 +53,8 @@ function createpost(obj){
     containerDiv.append(headerDiv,bodyDiv)
     redyBlog.append(containerDiv)
     containerDiv.on('click', (e) => {
-    openModal(e.target)
+    openModal(containerDiv)
     });
-
 }
 
 function sortPosts(arr){
@@ -61,7 +62,20 @@ function sortPosts(arr){
 }
 
 function getComments(id) {
-    return posts.filter(comment => comment.postId == id);
+    commentsByPost = []
+    let result
+    fetch(`http://localhost:3000/comments?postId=${id}`)
+    .then(response=>response.json())
+    .then(data=>{
+    commentsByPost = data.reverse()
+    console.log(data)
+    })
+}
+
+    //return posts.filter(comment => comment.postId == id);
+
+function setModalUser(user){
+    document.getElementById("modalUser").textContent = user
 }
 
 function setTitle(title){
@@ -69,9 +83,29 @@ function setTitle(title){
 }
 
 function setBody(body){
-    document.getElementById("modal-content").textContent = body
+    document.getElementById("modal-body").textContent = body
 }
 
+function getUserInfoByName(name) {
+    return allusers.filter(user => user.username == name);
+}
+
+async function openModal(e){
+    locModal.style.display = "block";
+    locModal.style.paddingRight = "17px";
+    locModal.className="modal fade show";
+    console.log(commentsByPost)
+    await getComments(1)
+    console.log(commentsByPost)
+    let modalUser = e[0].querySelector(".card-header")
+    let UserInfo = getUserInfoByName(modalUser.textContent)
+    setModalUser(`${modalUser.textContent} / ${UserInfo[0].email}`)
 
 
+    let titleDiv = e[0].querySelector(".card-title")
+    setTitle(titleDiv.textContent)
 
+    let bodyDiv = e[0].querySelector(".card-text")
+    setBody(bodyDiv.textContent)
+
+}
