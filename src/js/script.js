@@ -1,19 +1,25 @@
 var allPosts
 var allusers
+getAllUsers()
+getAllPost()
 
-fetch("https://jsonplaceholder.typicode.com/users").then(response=>response.json())
-.then(data=>{
-    allusers=sortPosts(data)
-})
 
-fetch("https://jsonplaceholder.typicode.com/posts").then(response=>response.json())
+function getAllPost(){
+fetch("http://localhost:3000/posts").then(response=>response.json())
 .then(data=>{
     allPosts=sortPosts(data)
     for (const pos of allPosts) {
         createpost(pos)
     }
 })
+}
 
+function getAllUsers(){
+    fetch("http://localhost:3000/users").then(response=>response.json())
+.then(data=>{
+    allusers=sortPosts(data)
+})
+}
 
 
 function getUserInfo(id) {
@@ -44,12 +50,28 @@ function createpost(obj){
     bodyDiv.append(titleDiv,pDiv)
     containerDiv.append(headerDiv,bodyDiv)
     redyBlog.append(containerDiv)
+    containerDiv.on('click', (e) => {
+    openModal(e.target)
+    });
+
 }
 
- function sortPosts(arr){
+function sortPosts(arr){
     return arr.reverse()
 }
 
 function getComments(id) {
     return posts.filter(comment => comment.postId == id);
 }
+
+function setTitle(title){
+    document.getElementById("modal-title").textContent = title
+}
+
+function setBody(body){
+    document.getElementById("modal-content").textContent = body
+}
+
+
+
+
