@@ -39,15 +39,16 @@ function postsFetchFun(start){
 function updatePostsList(data){
     data.forEach(post => {
         let div1 = document.createElement("div")
-        div1.innerHTML =  `<div class="title1">
-                            `+ post.title +`
-                            </div>
-                            <div class="body1">
-                            `+ post.body +`
-                            </div>`
-        div1.setAttribute("class","User-container")
+        div1.innerHTML =  `<div class="card h-100">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+        </div>`
+        div1.setAttribute("class", "col")
         div1.setAttribute("id","User-container-"+post.id)
-        document.body.appendChild(div1)
+        document.getElementById("container-card").appendChild(div1)
         div1.addEventListener("click",function (){
             console.log(post)
             findUserFetchFun(post)
