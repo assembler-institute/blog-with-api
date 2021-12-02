@@ -36,11 +36,7 @@ async function infoModal(e){
     var target=e.target.textContent
     var user;
     //GET POST
-    await fetch('../data/posts.json')
-    .then(response => response.json())
-    .then(data => {
-        return target=data.find(element=>element.title==target)
-    })
+    target=arrayPost.find(element=>element.title==target)
     console.log(target);
     //GET USER
     await fetch("../data/users.json")
