@@ -38,52 +38,47 @@
   <!-- Custom styles for this template -->
   <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
   <!-- Custom styles for this template -->
-  <link href="blog.css" rel="stylesheet">
+  <link href="/assets/CSS/blog.css" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/CSS/style.css">
 </head>
 
 <body>
-
-  <div class="container">
-    <header class="blog-header py-3">
-      <div class="row flex-nowrap justify-content-between align-items-center">
-        <div class="col-4 pt-1">
-          <a class="link-secondary" href="#">Subscribe</a>
-        </div>
-        <div class="col-4 text-center">
-          <a class="blog-header-logo text-dark" href="#">Large</a>
-        </div>
-        <div class="col-4 d-flex justify-content-end align-items-center">
-          <a class="link-secondary" href="#" aria-label="Search">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
-              stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
-              viewBox="0 0 24 24">
-              <title>Search</title>
-              <circle cx="10.5" cy="10.5" r="7.5" />
-              <path d="M21 21l-5.2-5.2" />
-            </svg>
-          </a>
-          <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
-        </div>
+  <header>
+    <nav>
+      <div class="container">
+        <h3 class="logo">Brand<span>Name</span></h3>
       </div>
-    </header>
+    </nav>
 
-    <div class="nav-scroller py-1 mb-2">
-      <nav class="nav d-flex justify-content-between">
-        <a class="p-2 link-secondary" href="#">World</a>
-        <a class="p-2 link-secondary" href="#">U.S.</a>
-        <a class="p-2 link-secondary" href="#">Technology</a>
-        <a class="p-2 link-secondary" href="#">Design</a>
-        <a class="p-2 link-secondary" href="#">Culture</a>
-        <a class="p-2 link-secondary" href="#">Business</a>
-        <a class="p-2 link-secondary" href="#">Politics</a>
-        <a class="p-2 link-secondary" href="#">Opinion</a>
-        <a class="p-2 link-secondary" href="#">Science</a>
-        <a class="p-2 link-secondary" href="#">Health</a>
-        <a class="p-2 link-secondary" href="#">Style</a>
-        <a class="p-2 link-secondary" href="#">Travel</a>
-      </nav>
+    <h1 class="big-title translate" data-speed="0.1">Discover.</h1>
+
+    <img src="/assets/IMG/person.png" class="person translate" data-speed="-0.25" alt="">
+    <img src="/assets/IMG/mountain1.png" class="mountain1 translate" data-speed="-0.2" alt="">
+    <img src="/assets/IMG/mountain2.png" class="mountain2 translate" data-speed="0.4" alt="">
+    <img src="/assets/IMG/mountain3.png" class="mountain3 translate" data-speed="0.3" alt="">
+    <img src="/assets/IMG/sky.png" class="sky translate" data-speed="0.5" alt="">
+  </header>
+
+  <section>
+    <div class="shadow"></div>
+
+    <div class="container">
+      <div class="content opacity">
+        <h3 class="title">
+          About
+          <div class="border"></div>
+        </h3>
+        <p class="text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque officiis quos expedita ipsa, a
+          quidem inventore voluptates debitis accusamus tenetur qui et voluptas dicta, culpa earum, doloribus odio
+          consectetur consequuntur soluta quasi nobis! Deserunt voluptatum reiciendis iure expedita sequi quisquam
+          laboriosam temporibus exercitationem.</p>
+      </div>
+
+      <div class="imgContainer opacity">
+        <img src="/assets/IMG/image.jpg" alt="">
+      </div>
     </div>
-  </div>
+  </section>
 
   <main class="container">
     <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
@@ -141,7 +136,7 @@
 
     <div class="row g-5">
       <div class="col-md-8">
-        <button class="accordion">Section 1 <i class="bi bi-pencil-square"></i><i class="bi bi-trash"></i></button>
+        <button class="accordion">Section 1 <i class="bi bi-pencil-square one"></i><i class="bi bi-trash"></i></button>
         <div class="panel">
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
             dolore
@@ -150,37 +145,61 @@
             consequat.</p>
           <button>Leave a comment</button>
         </div>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-          data-bs-whatever="@mdo">Open modal for @mdo</button>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-          data-bs-whatever="@fat">Open modal for @fat</button>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-          data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button>
+        <!-- Trigger/Open The Modal -->
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <form class="row g-3 needs-validation" novalidate>
+              <div class="col-md-4">
+                <label for="validationCustom01" class="form-label">First name</label>
+                <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
               </div>
-              <div class="modal-body">
-                <form>
-                  <div class="mb-3">
-                    <label for="recipient-name" class="col-form-label">Recipient:</label>
-                    <input type="text" class="form-control" id="recipient-name">
+              <div class="col-md-4">
+                <label for="validationCustom02" class="form-label">Last name</label>
+                <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label for="validationCustomUsername" class="form-label">Username</label>
+                <div class="input-group has-validation">
+                  <span class="input-group-text" id="inputGroupPrepend">@</span>
+                  <input type="text" class="form-control" id="validationCustomUsername"
+                    aria-describedby="inputGroupPrepend" required>
+                  <div class="invalid-feedback">
+                    Please choose a username.
                   </div>
-                  <div class="mb-3">
-                    <label for="message-text" class="col-form-label">Message:</label>
-                    <textarea class="form-control" id="message-text"></textarea>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="validationCustom03" class="form-label">City</label>
+                <input type="text" class="form-control" id="validationCustom03" required>
+                <div class="invalid-feedback">
+                  Please provide a valid city.
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                  <label class="form-check-label" for="invalidCheck">
+                    Agree to terms and conditions
+                  </label>
+                  <div class="invalid-feedback">
+                    You must agree before submitting.
                   </div>
-                </form>
+                </div>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Send message</button>
+              <div class="col-12">
+                <button class="btn btn-primary" type="submit">Submit form</button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
@@ -235,7 +254,15 @@
   </footer>
 
 
+
+  <!-- Parallax -->
+  <script src="/assets/JS/app.js"></script>
+  <!-- Posts -->
+  <script src='/assets/JS/posts.js'></script>
+  <!-- Modal -->
+  <script src='/assets/JS/modal.js'></script>
   <script>
+    /* ACCORDION BODY SCRIPT */
     var acc = document.getElementsByClassName("accordion");
     var i;
     for (i = 0; i < acc.length; i++) {
@@ -249,22 +276,6 @@
         }
       });
     }
-    var exampleModal = document.getElementById('exampleModal')
-    exampleModal.addEventListener('show.bs.modal', function (event) {
-      // Button that triggered the modal
-      var button = event.relatedTarget
-      // Extract info from data-bs-* attributes
-      var recipient = button.getAttribute('data-bs-whatever')
-      // If necessary, you could initiate an AJAX request here
-      // and then do the updating in a callback.
-      //
-      // Update the modal's content.
-      var modalTitle = exampleModal.querySelector('.modal-title')
-      var modalBodyInput = exampleModal.querySelector('.modal-body input')
-
-      modalTitle.textContent = 'New message to ' + recipient
-      modalBodyInput.value = recipient
-    })
   </script>
 
 </body>
