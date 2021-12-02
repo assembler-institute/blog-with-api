@@ -28,6 +28,7 @@ body{
 }
 .postblog:hover{
     box-shadow: 1px 1px 7px var(--colorletra) !important;
+    cursor: pointer;
 }
 .iconredy{
     max-width: 40px;
@@ -35,7 +36,15 @@ body{
 }
 
 .cabezeramodal{
-    background-color: var(--negroinput) !important;
+    background-color: var(--negroinput) ;
+    padding: 1rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #dee2e6;
+}
+.cabezeramodal{
+    padding-left:40%;
 }
 .cuerpomodal{
     background-color: var(--negropost) !important;
