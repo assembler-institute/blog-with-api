@@ -29,3 +29,5 @@ async function  getPosts(){
   })
   return arrayPost;
 }
+
+
