@@ -4,7 +4,7 @@ var requestOptions = {
     method: 'GET',
     redirect: 'follow'
 };
-
+let btnSubmit;
 
 fetch("https://jsonplaceholder.typicode.com/posts", requestOptions)
     .then(response => response.json())
@@ -27,6 +27,7 @@ fetch("https://jsonplaceholder.typicode.com/posts", requestOptions)
             var btnComment = document.createElement("button");
             btnComment.innerHTML = "Leave a comment";
             panel.appendChild(btnComment);
+            btnComment.addEventListener("click", function(){newComment(element.id)});
             var btnShowComment = document.createElement("button");
             btnShowComment.innerHTML = "Check all the comments!";
             panel.appendChild(btnShowComment);
@@ -88,4 +89,55 @@ function getComments(id) {
                 })
             })
     }
+}
+
+function newComment(id){
+        var eventDiv = document.createElement("div")
+        eventDiv.setAttribute("id", "Mymodal");
+        eventDiv.className = "modal";
+        document.body.appendChild(eventDiv);
+        var modalContent = document.createElement("div");
+        modalContent.className = "modal-content";
+        eventDiv.appendChild(modalContent);
+        eventDiv.style.display = "block";
+        const html = `<span class="close" id="closeModal">&times;</span>
+        <form>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Title</label>
+                <input type="title" class="form-control" id="exampleFormControlInput2" placeholder="title example..">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit" id = "submitComment">Submit form</button>
+            </div>
+        </form>`
+
+        modalContent.innerHTML = html;
+        document.getElementById("closeModal").addEventListener("click", closeModal);
+        document.getElementById("submitComment").addEventListener("click", function(){submitForm(id)})
+}
+
+function submitForm(id){
+    event.preventDefault();
+    var formValues = {
+        "postId": id,
+        "name": "",
+        "body": ""
+    }
+    formValues.name = document.getElementById("exampleFormControlInput2").value
+    formValues.body = document.getElementById("exampleFormControlTextarea1").value
+    console.log(formValues);
+}
+
+
+function closeModal(){
+    var eventDiv = document.getElementById("Mymodal");
+    eventDiv.remove();
 }
