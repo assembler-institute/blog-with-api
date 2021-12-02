@@ -5,9 +5,6 @@
     --details-blue: #BEEEE9;
     --details-orange: #FFBF69;
 }
-article{
-    float:left;
-}
 #post-header{
     background-color:var(--primary-color);
 }
@@ -19,9 +16,6 @@ article{
     cursor:pointer;
     transition:0.5s;
     color:var(--bg-color)
-}
-.head-icons:hover{
-
 }
 .head-icons:nth-child(2n){
     margin-left:10px;
@@ -59,3 +53,37 @@ article{
     
 }
     
+.menuBlue{
+    background-color: var(--primary-color);
+    height: 5vh;
+}
+
+h1{
+    color: var(--secondary-color);
+    text-align: center;
+    margin: 5vh 0;
+    font-weight: bold;
+}
+
+.divPost{
+    background-color: var(--details-blue);
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+
+.divPostDetail{
+    background-color: var(--bg-color);
+    width: 90%;
+    height: 100px;
+    padding: 5%;
+}
+
+.titlePost{
+    font-size: 18px;
+}
+
+.comment{
+    color: var(--secondary-color);
+}
