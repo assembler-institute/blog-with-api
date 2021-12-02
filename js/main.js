@@ -9,7 +9,7 @@ let arrayUsers=[];
 
 //Get Tittles
 //data[0].title
-window.onload= printTitle()
+window.onload= printTitle()&getUsers()&getComments()
 
 
 async function printTitle(){
@@ -39,7 +39,7 @@ async function getUsers(){
     .then(response=>response.json())
     .then(data=>{
       data.forEach(function(element){
-        arrayUsers,push(element)
+        arrayUsers.push(element)
       })
     })
     return arrayUsers;
@@ -49,25 +49,22 @@ async function getComments(){
   await fetch("../data/comments.json")
   .then(response=>response.json())
   .then(data =>{
-    data.forEach(function(){
+    data.forEach(function(element){
       arrayComments.push(element);
     })
   })
   return arrayComments;
 }
 
-async function infoModal(e){
+function infoModal(e){
     var target=e.target.textContent
     var user;
     //GET POST
-    target=arrayPost.find(element=>element.title==target)
+    target=arrayPosts.find(element=>element.title==target)
     console.log(target);
     //GET USER
-    await fetch("../data/users.json")
-    .then(response=>response.json())
-    .then(data=>{
-        return user=data.find(element=>element.id==target.userId)
-    })
+    user=arrayUsers.find(element=>element.id==target.userId)
+    console.log(user);
     $("#modalPost-title").text(target.title);
     $("#username").text(user.username);
     $("#email").text(user.email);
