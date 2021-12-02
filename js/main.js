@@ -2,19 +2,21 @@ var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggl
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 })
-const numPosts=[]
 
-let arrayPost=[];
+let arrayPosts=[];
+let arrayComments=[];
+let arrayUsers=[];
+
 //Get Tittles
 //data[0].title
 window.onload= printTitle()
 
 
 async function printTitle(){
-    arrayPost = await getPosts();
-    for(var i in arrayPost)
+    arrayPosts = await getPosts();
+    for(var i in arrayPosts)
     {
-        $(".titlePost").eq(i).text(arrayPost[i].title);
+        $(".titlePost").eq(i).text(arrayPosts[i].title);
         $(".titlePost").eq(i).on("click",infoModal);
     }
     $(".titlePost").attr("data-bs-toggle", "modal")
@@ -26,10 +28,32 @@ async function  getPosts(){
   .then(response => response.json())
   .then(data => {
     data.forEach(function (element){
-      arrayPost.push(element);
+      arrayPosts.push(element);
     })
   })
-  return arrayPost;
+  return arrayPosts;
+}
+
+async function getUsers(){
+  await fetch("../data/users.json")
+    .then(response=>response.json())
+    .then(data=>{
+      data.forEach(function(element){
+        arrayUsers,push(element)
+      })
+    })
+    return arrayUsers;
+}
+
+async function getComments(){
+  await fetch("../data/comments.json")
+  .then(response=>response.json())
+  .then(data =>{
+    data.forEach(function(){
+      arrayComments.push(element);
+    })
+  })
+  return arrayComments;
 }
 
 async function infoModal(e){
