@@ -21,9 +21,28 @@
           </form>
         </div>
       </nav>
-
+      <button type="button" class="btn btn-info btn-ls" data-toggle="modal" data-target="#myModal">Open Large Modal</button>
+      
     <div id="redyblog"></div>
 
-    <div class="modal-dialog modal-xl">...</div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+          <div class="modal-header cabezeramodal">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+          </div>
+          <div class="modal-body cuerpomodal">
+            <p>This is a large modal.</p>
+          </div>
+          <div class="modal-footer piemodal">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

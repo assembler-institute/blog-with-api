@@ -33,3 +33,13 @@ body{
     max-width: 40px;
     max-height: 40px;
 }
+
+.cabezeramodal{
+    background-color: var(--negroinput) !important;
+}
+.cuerpomodal{
+    background-color: var(--negropost) !important;
+}
+.piemodal{
+    background-color: var(--negroinput) !important;
+}
