@@ -16,7 +16,7 @@ function getUserid(userId, postId) {
 
     $.ajax(userSettings)
         .then(function (response) {
-            if (postId > 1) {
+            if (postId > 0) {
                 $('#userName' + postId).text(response[0].name);
             } else {
                 $('#userName').text(response[0].name);
@@ -46,7 +46,7 @@ function getPost(id) {
     $.ajax(settings)
         .done(function (response) {
             response.forEach(data => {
-                createPost(id, data);
+                //createPost(id, data);
             });
         });
 };
@@ -54,18 +54,29 @@ function getPost(id) {
 /*divs html dinamico 100users */
 for (let id = 1; id < 101; id++) {
     getPost(id);
-    if (id > 1) {
+    if (id > 0) {
         var post = $('<div class="col-md-6" id="postContainer' + id + '"><div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative post-box" id="box' + id + '"> <div class="col p-4 d-flex flex-column position-static"><h3 class="mb-3 titlePost" id="titlePost' + id + '">Featured post</h3><p class="card-text mb-auto bodyPost" id="bodyPost' + id + '"></p> <div class="post-creator"><strong class="d-inline-block mb-2 text-warning" id="userName' + id + '"></strong></div><div class="button-flex"><button type="button" class="btn btn-primary modalBtn" data-toggle="modal" data-target="#exampleModal" data-btn-id="' + id + '">Read post</button></div></div></div></div>')
         $('#postDiv').append(post);
     };
+    if(id==100){
+        getPostContent(urlPosts);
+    }
 };
 
 /*read post hacerlo modal*/
-
-
-
-
-
+function getPostContent(urlPosts){
+    $.ajax({
+        url: urlPosts,
+        success:function(response){
+            $.each(response,function(index,value){
+                var titlePost=document.getElementById("titlePost"+(index+1));
+                var bodyPost=document.getElementById("bodyPost"+(index+1));
+                titlePost.innerHTML=value.title;
+                bodyPost.innerHTML=value.body;
+            })
+        }
+    });
+}
 
 
 
