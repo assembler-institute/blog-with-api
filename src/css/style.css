@@ -48,6 +48,7 @@ body{
 }
 .cuerpomodal{
     background-color: var(--negropost) !important;
+    padding: 15px 20% !important;
 }
 .piemodal{
     background-color: var(--negroinput) !important;
