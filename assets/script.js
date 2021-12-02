@@ -1,14 +1,33 @@
 
 window.onload = init()
 function init(){
+    var start = 0;
     postsFetchFun()
 }
-function postsFetchFun(){
+const buttonNext = document.getElementsByClassName("carousel-control-next")
+const buttonPrev = document.getElementsByClassName("carousel-control-prev")
+buttonNext.addEventListener("click", nextPost)
+buttonPrev.addEventListener("click", prevPost)
+
+function nextPost(){
+    start += 6
+    postsFetchFun(start)
+
+}
+function prevPost(){
+    start -= 6
+    postsFetchFun(start)
+    
+}
+function postsFetchFun(start){
     var requestOptions = {
         method: 'GET',
         redirect: 'follow'
     };
-    fetch("http://localhost:3000/posts", requestOptions)
+    
+    var limit = 6;
+    var urlPosts = "http://localhost:3000/posts?_start=" + start + "&_limit=" + limit + ""
+    fetch(urlPosts, requestOptions)
         .then(response => response.text())
         .then(result => {let data = JSON.parse(result)
             console.log(data)
