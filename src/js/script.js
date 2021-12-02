@@ -86,6 +86,10 @@ async function openModal(e){
         var containerComments = $(`<div></div>`)
         var headerComments = $(`<div>${comment.email}</div>`)
         var bodyComments = $(`<div>${comment.body}</div>`)
+        headerComments.addClass("card-header hedermodal")
+        bodyComments.addClass("card-body bodymodal")
+        containerComments.addClass("container-comments comments")
+        
         $("#comments").append(containerComments)
         containerComments.append(headerComments, bodyComments)
 
