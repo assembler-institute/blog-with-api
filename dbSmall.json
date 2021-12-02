@@ -1,0 +1,53 @@
+{
+  "posts": [
+
+    {
+        "postId":1,
+        "userId":1,
+        "title": "Title of the post 1",
+        "body":"body content 1"
+    },
+    {
+        "postId":3,
+        "userId":3,
+        "title": "Title of the post 3",
+        "body":"body content 3"
+    },
+    {
+        "postId":2,
+        "userId":2,
+        "title": "Title of the post 2",
+        "body":"body content 2"
+    }
+],
+
+
+"comments": [
+
+{
+"commentId": 1,
+"body": "some comment",
+"postId": 1,
+"name":"Name of the comment",
+"email": "Email of the comment@mail.com"
+}
+
+
+],
+"users":[
+
+{
+"userId": 1,
+"username": "Carla",
+"email": "Carla@mail.com"
+},
+
+{
+"userId": 2,
+"username": "Adrián",
+"email": "Adrian@mail.com"
+}
+
+]
+
+}
