@@ -60,3 +60,7 @@ body{
     border-left: 1px solid var(--colorletra);
     margin: 1.5% 10%;
 }
+.imguser{
+    max-width: 40px;
+    max-height: 40px;
+}
