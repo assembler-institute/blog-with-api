@@ -5,6 +5,9 @@ const informacion= {
     body:"",
     name:"",
     email:"",
+    commentName:"",
+    commentBody:"",
+    commentEmail:""
 }
 // var probando
 
@@ -36,7 +39,7 @@ return request.json()
                 informacion.userId= infoPosts[0].userId
                 informacion.body=infoPosts[0].body
                 idaa(informacion.userId)
-                console.log(informacion)
+                comments(informacion.userId)
                 // $("#myModal").modal('show');
                 setTimeout(() => {
                     llamada()
@@ -60,6 +63,8 @@ function beginmodal(){
               <div class="modal-body" id="probando">
                 <div id="email"></div>
                 </div>
+                <div class="modal-body" id="comments">
+                </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                   <button type="button" class="btn btn-primary">Save</button>
@@ -71,6 +76,13 @@ function beginmodal(){
     document.getElementById("modalview").innerHTML= content
     document.getElementById("title").innerHTML= informacion.title
     document.getElementById("email").innerHTML= informacion.email
+    // <div id="nameComment"></div>
+    // <div id="bodyComment"></div>
+    // <div id="emailComment"></div>
+    // let nameCom=  informacion.commentName
+    // nameCom.forEach(element => {
+    //     element 
+    // });
 }
 
 function idaa(idaaa){
@@ -87,3 +99,28 @@ return request.json()
     informacion.email=probando[0].email
 })
 }
+
+function comments (postId){
+    fetch("http://localhost:3000/comments")
+    .then((request)=>{
+    return request.json()
+    })
+    .then((response)=>{
+       var postComment= response.filter((element)=>{
+        //    console.log(element)
+            if(element.postId == postId)
+            return element
+        })
+       informacion.commentName= postComment[0].name
+        informacion.commentBody= postComment[0].body
+        informacion.commentEmail= postComment[0].email 
+        console.log(postComment)
+        pl()
+    })
+    }
+    function pl(){
+        setTimeout(() => {
+            console.log(postComment)
+        }, 1000);
+    }
+
