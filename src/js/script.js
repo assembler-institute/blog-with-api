@@ -11,11 +11,11 @@ async function getOneItem(url) {
 
 function showAllPost(allPosts) {
     for (const pos of allPosts) {
-        createpost(pos)
+        createListPosts(pos)
     }
 }
 
-async function createpost(obj){
+async function createListPosts(obj){
     //Variable declaration
     var userbyid= await getOneItem(`http://localhost:3000/users/${obj.userId}`)
     var containerDiv = $("<div></div>")
@@ -35,63 +35,24 @@ async function createpost(obj){
     redyBlog.append(containerDiv)
     containerDiv.append(headerDiv,bodyDiv)
     bodyDiv.append(titleDiv,pDiv)
-    containerDiv.on('click', (e) => {
-        openModal(containerDiv)
+    containerDiv.on('click', () => {
+        createModal()
+        dataModal(containerDiv)
+        openModal()
     });
 }
 
-function setModalUser(user){
-    document.getElementById("modalUser").innerHTML = user
-}
-
-function setTitle(title){
-    document.getElementById("modal-title").textContent = title
-}
-
-function setBody(body){
-    document.getElementById("modal-body").textContent = body
-}
-
-async function openModal(e){
-    locModal = document.getElementById('myModal')
-    locModal.style.display = "block";
-    locModal.style.paddingRight = "17px";
-    locModal.className="modal fade show";
-
-    let modalUser = e[0].querySelector(".card-header")
-    let UserInfo = await getOneItem( `http://localhost:3000/users?username=${modalUser.textContent}`)
-    console.log(UserInfo[0].avatar)
-    setModalUser(`<img class="imguserbig" src="${UserInfo[0].avatar}"><div>${modalUser.textContent} <br>  ${UserInfo[0].email}</div>`)
-    let titleDiv = e[0].querySelector(".card-title")
-    setTitle(titleDiv.textContent)
-
-    let bodyDiv = e[0].querySelector(".card-text")
-    console.log(bodyDiv)
-    setBody(bodyDiv.textContent)
-
-    let commentsByPost = await getAllItems(`http://localhost:3000/comments?postId=1`)
-    createPostComment(commentsByPost)
-
-}
-
-function createPostComment(obj){
-
+function createCommentsByPost(obj){
     for (const comment of obj) {
         var containerComments = $(`<div></div>`)
         var headerComments = $(`<div>${comment.email}</div>`)
         var bodyComments = $(`<div>${comment.body}</div>`)
+
         headerComments.addClass("card-header hedermodal")
         bodyComments.addClass("card-body bodymodal")
         containerComments.addClass("container-comments comments")
         
         $("#comments").append(containerComments)
         containerComments.append(headerComments, bodyComments)
-
     }
 }
-
-
-function setComments(comments){
-    document.getElementById("comments").textContent = comments
-}
-
