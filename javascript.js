@@ -1,4 +1,4 @@
-const informacion= {
+const information= {
     title:"",
     id:"",
     userId:"",
@@ -31,18 +31,18 @@ return request.json()
             infoPosts= info.filter(post=> {if(post.id == divPost.id) {
                 return post}})
                 // console.log(infoPosts)
-                informacion.title= infoPosts[0].title
-                informacion.id= infoPosts[0].id
-                informacion.userId= infoPosts[0].userId
-                informacion.body=infoPosts[0].body
-                idaa(informacion.userId)
-                console.log(informacion)
+                information.title= infoPosts[0].title
+                information.id= infoPosts[0].id
+                information.userId= infoPosts[0].userId
+                information.body=infoPosts[0].body
+                fetchUsersInfo(information.userId)
+                console.log(information)
                 // $("#myModal").modal('show');
                 setTimeout(() => {
                     llamada()
-                }, 200);
+                }, 400);
         })
-    }); 
+    });
 })
 
 function llamada(){
@@ -57,7 +57,8 @@ function beginmodal(){
                   <h5 class="modal-title" id="title">Modal Title</h5>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-              <div class="modal-body" id="probando">
+              <div class="modal-body" id="createInfo">
+                <div id="userName"></div>
                 <div id="email"></div>
                 </div>
               <div class="modal-footer">
@@ -69,21 +70,22 @@ function beginmodal(){
           </div>
         </div>` 
     document.getElementById("modalview").innerHTML= content
-    document.getElementById("title").innerHTML= informacion.title
-    document.getElementById("email").innerHTML= informacion.email
+    document.getElementById("title").innerHTML= information.title
+    document.getElementById("email").innerHTML= information.email
+    document.getElementById("userName").innerHTML= information.name
 }
 
-function idaa(idaaa){
+function fetchUsersInfo(idposts){
 fetch("http://localhost:3000/users")
 .then((request)=>{
 return request.json()
 })
 .then((info)=>{
-    var probando= info.filter((elemento)=>{
-        if(elemento.id == idaaa)
-        return elemento
+    var infoUsers= info.filter((userFetch)=>{
+        if(userFetch.id == idposts)
+        return userFetch
     })
-    informacion.name= probando[0].name
-    informacion.email=probando[0].email
+    information.name= infoUsers[0].name
+    information.email=infoUsers[0].email
 })
 }
