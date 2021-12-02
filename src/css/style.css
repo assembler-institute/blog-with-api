@@ -37,7 +37,7 @@ body{
 
 .cabezeramodal{
     background-color: var(--negroinput) ;
-    padding: 1rem 1rem;
+    padding: 0.5%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -63,4 +63,19 @@ body{
 .imguser{
     max-width: 40px;
     max-height: 40px;
+    margin-right:5%;
+}
+.imguserbig{
+    max-width: 50px;
+    max-height: 70px;
+    margin: 0% 5%;
+    margin-right:15%;
+}
+.headerpost{
+    text-align: left;
+    padding-left:2%;
+}
+.modalUser{
+    display: flex;
+    align-items: center;
 }
