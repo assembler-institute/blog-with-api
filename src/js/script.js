@@ -24,7 +24,10 @@ async function createListPosts(obj){
     var titleDiv = $(`<h5>${obj.title}</h5>`)
     var pDiv = $(`<p>${obj.body}</p>`)
     var redyBlog=$("#redyblog")
+
     //Adding classes
+    containerDiv.data("id", obj.id);
+    // console.log(containerDiv.data("id"));
     containerDiv.addClass("card text-center postblog")
     headerDiv.addClass("card-header hedermodal headerpost")
     bodyDiv.addClass("card-body bodymodal")

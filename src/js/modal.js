@@ -25,8 +25,7 @@ async function dataModal(e) {
 
     let bodyDiv = e[0].querySelector(".card-text")
     document.getElementById("modal-body").textContent = bodyDiv.textContent;
-
-    let commentsByPost = await getAllItems(`http://localhost:3000/comments?postId=1`)
+    let commentsByPost = await getAllItems(`http://localhost:3000/comments?postId=${e.data("id")}`)
     createCommentsByPost(commentsByPost)
 }
 
