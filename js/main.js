@@ -2,11 +2,13 @@ var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggl
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 })
-
-fetch("../data/posts.json")
-.then(response=>response.json())
-.then(data=>{
-    data.forEach(element=>{
-        console.log(element.title); 
+const numPosts=[]
+function getUsers(type){
+    fetch("../data/users.json")
+    .then(response=>response.json())
+    .then(data=>{
+        data.forEach(function(element,idx){
+            return element.type; 
+        })
     })
-});
+}
