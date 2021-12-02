@@ -4,12 +4,9 @@ var modal = document.getElementById("myModal");
 // Get the button that opens the modal
 var btn = document.getElementsByClassName("bi-pencil-square");
 
-console.log(btn);
 setTimeout(() => {
     for (const iterator of btn) {
-        console.log(iterator);
         iterator.addEventListener("click", createModal);
-        
     }
 }, 1000);
 
@@ -17,7 +14,7 @@ setTimeout(() => {
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
-function createModal () {
+function createModal() {
     modal.style.display = "block";
 }
 
