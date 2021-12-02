@@ -35,30 +35,18 @@ fetch("https://jsonplaceholder.typicode.com/posts/1/comments", //id 1
 //Add Event Listeners
 function openModal(e) {
     e.stopPropagation();
+    //console.log(e.target);
     if(e.target instanceof SVGElement){
-        // console.log(e.target);
-        new Modal();
+        if(e.target instanceof SVGPathElement) {
+            new Modal(e.target.parentNode.parentNode.parentNode.children[1].textContent, e.target.parentNode.parentNode.parentNode.children[2].textContent, true);
+        }
+        else new Modal(e.target.parentNode.parentNode.children[1].textContent, e.target.parentNode.parentNode.children[2].textContent, true);
     } else {
-        new Modal(e.target.parentNode.children[1].textContent, e.target.parentNode.children[2].textContent);
+        new Modal(e.target.parentNode.children[1].textContent, e.target.parentNode.children[2].textContent, true);
     }
 }
 
-
-/*const rows = $(".mainRow");
-for(let i = 0; i < rows){
-
-}*/
 var mainRow = document.getElementsByClassName("mainRow")
 for (let i = 0; i < mainRow.length -1 ; i++) {
     mainRow[i].addEventListener("click", openModal)
 }
-/*var edit = document.getElementsByClassName("edit")
-for (let i = 0; i < edit.length; i++) {
-    edit[i].addEventListener("click", openModal)
-    edit[i].style.cursor = "pointer"
-}
-var del = document.getElementsByClassName("delete")
-for (let i = 0; i < del.length; i++) {
-    del[i].addEventListener("click", openModal)
-    del[i].style.cursor = "pointer"
-}*/
