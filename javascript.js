@@ -47,7 +47,6 @@ fetch("http://localhost:3000/users")
 return request.json()
 })
 .then((info)=>{
-    // console.log(info)
     var probando= info.filter((elemento)=>{
         if(elemento.id == idaaa)
         return elemento
