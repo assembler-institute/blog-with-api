@@ -78,10 +78,6 @@ function getPostContent(urlPosts){
     });
 }
 
-/*coger modalBtn */
-
-var modalbuttonid = document.getElementsByClassName(modalButton);
-/**coger post id  */
 
 
 
