@@ -69,6 +69,7 @@ function beginmodal(){
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                   <button type="button" class="btn btn-primary">Save</button>
+                  <button type="button" class="btn btn-success" id="comentClick">Comentarios</button>
                 </div>
               </div>
             </div>
@@ -78,6 +79,9 @@ function beginmodal(){
     document.getElementById("title").innerHTML= information.title
     document.getElementById("email").innerHTML= information.email
     document.getElementById("userName").innerHTML= information.name
+    document.getElementById("comentClick").addEventListener("click", ()=>{
+       
+    })
 }
 
 function fetchUsersInfo(idposts){
