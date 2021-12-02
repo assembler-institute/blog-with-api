@@ -5,6 +5,9 @@ const information= {
     body:"",
     name:"",
     email:"",
+    commentName:"",
+    commentBody:"",
+    commentEmail:""
 }
 // var probando
 
@@ -36,7 +39,7 @@ return request.json()
                 information.userId= infoPosts[0].userId
                 information.body=infoPosts[0].body
                 fetchUsersInfo(information.userId)
-                console.log(information)
+                comments(information.userId)
                 // $("#myModal").modal('show');
                 setTimeout(() => {
                     llamada()
@@ -60,6 +63,8 @@ function beginmodal(){
               <div class="modal-body" id="createInfo">
                 <div id="userName"></div>
                 <div id="email"></div>
+                </div>
+                <div class="modal-body" id="comments">
                 </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -89,3 +94,28 @@ return request.json()
     information.email=infoUsers[0].email
 })
 }
+
+function comments (postId){
+    fetch("http://localhost:3000/comments")
+    .then((request)=>{
+    return request.json()
+    })
+    .then((response)=>{
+       var postComment= response.filter((element)=>{
+        //    console.log(element)
+            if(element.postId == postId)
+            return element
+        })
+       information.commentName= postComment[0].name
+        information.commentBody= postComment[0].body
+        information.commentEmail= postComment[0].email 
+        console.log(postComment)
+        pl()
+    })
+    }
+    function pl(){
+        setTimeout(() => {
+            console.log(postComment)
+        }, 1000);
+    }
+
