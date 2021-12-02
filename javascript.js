@@ -5,9 +5,9 @@ const information= {
     body:"",
     name:"",
     email:"",
-    commentName:"",
-    commentBody:"",
-    commentEmail:""
+    // commentName:"",
+    // commentBody:"",
+    // commentEmail:""
 }
 // var probando
 
@@ -49,7 +49,7 @@ return request.json()
 })
 
 function llamada(){
-    beginmodal()
+    // beginmodal()
     $("#myModal").modal('show'); 
 }
 function beginmodal(){
@@ -61,6 +61,7 @@ function beginmodal(){
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
               <div class="modal-body" id="createInfo">
+                <div id="bodyFetch"></div>
                 <div id="userName"></div>
                 <div id="email"></div>
                 </div>
@@ -79,9 +80,10 @@ function beginmodal(){
     document.getElementById("title").innerHTML= information.title
     document.getElementById("email").innerHTML= information.email
     document.getElementById("userName").innerHTML= information.name
-    document.getElementById("comentClick").addEventListener("click", ()=>{
+    document.getElementById("bodyFetch").innerHTML=information.body
+    // document.getElementById("comentClick").addEventListener("click", ()=>{
        
-    })
+    // })
 }
 
 function fetchUsersInfo(idposts){
@@ -110,16 +112,32 @@ function comments (postId){
             if(element.postId == postId)
             return element
         })
-       information.commentName= postComment[0].name
-        information.commentBody= postComment[0].body
-        information.commentEmail= postComment[0].email 
-        console.log(postComment)
-        pl()
+        beginmodal()
+        postComment.forEach(element=>{
+            const{name, email, body}= element
+            let divComment = document.createElement("div")
+            divComment.setAttribute("class", "infoName")
+            divComment.innerHTML= name
+            console.log(divComment)
+            document.getElementById("comments").appendChild(divComment)
+            let divCommentEmail = document.createElement("div")
+            divCommentEmail.setAttribute("class", "infoEmail")
+            divCommentEmail.innerHTML= email
+            // console.log(divComment)
+            document.getElementById("comments").appendChild(divCommentEmail)
+            let divCommentBody = document.createElement("div")
+            divCommentBody.setAttribute("class", "infoBody")
+            divCommentBody.innerHTML= body
+            // console.log(divComment)
+            document.getElementById("comments").appendChild(divCommentBody)
+
+
+        })
+    //    information.commentName= postComment[0].name
+    //     information.commentBody= postComment[0].body
+    //     information.commentEmail= postComment[0].email 
+        // console.log(postComment)
     })
     }
-    function pl(){
-        setTimeout(() => {
-            console.log(postComment)
-        }, 1000);
-    }
+
 
