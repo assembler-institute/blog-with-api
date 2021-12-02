@@ -5,7 +5,6 @@ async function getAllItems(url){
 }
 
 async function getOneItem(url) {
-    //Ejemplo `http://localhost:3000/users/${id}`
     const response = await fetch(url)
     return response.json()
 }
@@ -25,7 +24,7 @@ async function createpost(obj){
     var titleDiv = $("<h5></h5>")
     var pDiv = $("<p></p>")
     var redyBlog=$("#redyblog")
-    // //Adding classes
+    //Adding classes
     containerDiv.addClass("card text-center postblog")
     headerDiv.addClass("card-header hedermodal")
     bodyDiv.addClass("card-body bodymodal")
@@ -60,18 +59,41 @@ async function openModal(e){
     locModal.style.display = "block";
     locModal.style.paddingRight = "17px";
     locModal.className="modal fade show";
-    let commentsByPost = await getAllItems(`http://localhost:3000/comments?postId=1`)
-    console.log(commentsByPost)
+
     let modalUser = e[0].querySelector(".card-header")
     let UserInfo = await getOneItem( `http://localhost:3000/users?username=${modalUser.textContent}`)
-    console.log(UserInfo);
+    console.log(modalUser)
     setModalUser(`${modalUser.textContent} / ${UserInfo[0].email}`)
 
 
+
+
     let titleDiv = e[0].querySelector(".card-title")
+    console.log(e)
     setTitle(titleDiv.textContent)
 
     let bodyDiv = e[0].querySelector(".card-text")
+    console.log(bodyDiv)
     setBody(bodyDiv.textContent)
+    let commentsByPost = await getAllItems(`http://localhost:3000/comments?postId=1`)
+    createPostComment(commentsByPost)
 
 }
+
+    function createPostComment(obj){
+
+    for (const comment of obj) {
+        var containerComments = $(`<div></div>`)
+        var headerComments = $(`<div>${comment.email}</div>`)
+        var bodyComments = $(`<div>${comment.body}</div>`)
+        $("#comments").append(containerComments)
+        containerComments.append(headerComments, bodyComments)
+
+    }
+}
+
+
+function setComments(comments){
+    document.getElementById("comments").textContent = comments
+}
+

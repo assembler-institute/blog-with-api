@@ -52,3 +52,11 @@ body{
     background-color: var(--negroinput) !important;
 }
 
+#comments{
+    background-color: var(--negropost);
+}
+
+.container-comments{
+    border-left: 1px solid var(--colorletra);
+    margin: 1.5% 10%;
+}
