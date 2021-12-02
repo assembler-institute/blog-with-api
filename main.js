@@ -106,4 +106,5 @@ $(document).ready(function(){
         modalBody.innerHTML=bodyPost.innerHTML;
 
     });
+    
 });
