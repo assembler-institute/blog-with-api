@@ -31,8 +31,8 @@ function createpost(obj){
     var redyBlog=$("#redyblog")
     // //Adding classes
     containerDiv.addClass("card text-center postblog")
-    headerDiv.addClass("card-header")
-    bodyDiv.addClass("card-body")
+    headerDiv.addClass("card-header hedermodal")
+    bodyDiv.addClass("card-body bodymodal")
     titleDiv.addClass("card-title")
     pDiv.addClass("card-text")
     //Taking text

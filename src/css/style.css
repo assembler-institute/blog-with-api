@@ -1,13 +1,33 @@
-body{
-    background-color: gray !important;
+:root{
+    --negrofondo:rgba(3,3,3,255);
+    --negropost:rgba(26,26,27,255);
+    --negroinput:rgba(39,39,41,255);
+    --colorletra:rgba(204,207,209,255);
 }
 
+
+
+body{
+    background-color: var(--negrofondo) !important;
+    color: var(--colorletra) !important;
+}
+.navegacion{
+    color: var(--colorletra) !important;
+    background-color:var(--negroinput) !important;
+}
 .postblog{
     width: 80%;
     margin: 2% auto ;
+    border: 0px !important;
+}
+.hedermodal{
+    background-color: var(--negroinput) !important;
+}
+.bodymodal{
+    background-color: var(--negropost) !important;
 }
 .postblog:hover{
-    border: 1px solid black;
+    box-shadow: 1px 1px 7px var(--colorletra) !important;
 }
 .iconredy{
     max-width: 40px;
