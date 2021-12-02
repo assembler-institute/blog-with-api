@@ -1,3 +1,10 @@
+/*60 - 30 - 10*/
+:root {
+  --one-color: rgb(34, 34, 59);
+  --two-color: rgb(74, 78, 105);
+  --three-color: rgb(223, 91, 20);
+  --letter-color: white;
+}
 /* MODAL */
 .modalTransparent{
     position: absolute;
@@ -30,7 +37,7 @@
   justify-content:center;
   flex-direction: row;
   align-content: space-around;
-  background-color: rgb(200, 191, 207);
+  background-color: var(--three-color);
 }
 li {
   display: inline-flex;
@@ -40,16 +47,18 @@ li {
   flex-wrap: nowrap;
   padding-left: 100px;
   font-size: 20px;
+  color:var(--letter-color);
 }
 .myBlog{
   display: flex;
   flex-direction: column;
 }
 .banner-Blog{
-  background-color:crimson;
+  background-color:var(--one-color);
   padding: 100px 70px;
   margin-bottom: 10%;
   margin-top: 5%;
+  color:var(--letter-color);
 }
 .textBlog{
   display: flex;
@@ -66,5 +75,15 @@ li {
   margin-bottom: 0%;
   padding-right: 35%;
   padding-top: 1%;
-  pa
+}
+.card{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: rgb(184, 98, 113);
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 0.25rem;
 }
