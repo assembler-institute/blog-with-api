@@ -111,26 +111,21 @@
                             this is the main description, where the post body commes
                         </section>
                         <hr>
-                        <section id="prevNext-post" class="row">
-                            <div id="prev" class="col-md-6 d-md-flex justify-content-center gap-3">
+                        <section id="prevNext-post" class="row justify-content-around">
+                            <div id="prev" class="col text-center">
                                 <img src="assets/img/prevpost.jpg" width="50" alt="previous post">
-                                <div class="arrowText">
-                                    <i class="fas fa-arrow-left"></i>
-                                    <p>Previous post</p>
-                                </div>
+                                <i class="fas fa-arrow-left" data-bs-toggle="tooltip" data-bs-placement="top"
+                                    title="Previous post"></i>
                             </div>
-                            <div id="next" class="col-md-6 d-md-flex justify-content-center gap-3">
-
-                                <div class="arrowText  d-md-flex flex-md-column justify-content-md-around">
-                                    <i class="fas fa-arrow-right d-md-flex justify-content-md-end"></i>
-                                    <p>Previous post</p>
-                                </div>
+                            <div id="next" class="col text-center">
+                                <i class="fas fa-arrow-right text-end" data-bs-toggle="tooltip" data-bs-placement="top"
+                                    title="Next post"></i>
                                 <img src="assets/img/nexpost.jpg" width="50" alt="next post">
                             </div>
                         </section>
                         <hr>
                     </main>
-                    <section class="row d-md-flex align-items-center justify-content-center" id="comments">
+                    <section class="row align-items-center justify-content-start px-5" id="comments">
                         <div class="col-md-4"><i class="fas fa-comments"></i> 10 Comments</div>
                         <button class="col-md-2 loadComments">Load comments</button>
                     </section>
