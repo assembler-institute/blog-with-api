@@ -60,7 +60,7 @@ function openModal(e) {
         }
         else new Modal(e.target.parentNode.parentNode.children[1].textContent, e.target.parentNode.parentNode.children[2].textContent, true);
     } else {
-        new Modal(e.target.parentNode.children[1].textContent, e.target.parentNode.children[2].textContent, true);
+        new Modal(e.target.parentNode.children[1].textContent, e.target.parentNode.children[2].textContent);
     }
 }
 
