@@ -1,6 +1,6 @@
 let urlPosts = 'https://jsonplaceholder.typicode.com/posts/';
 let urlUsers = 'https://jsonplaceholder.typicode.com/users';
-let imgRandom = 'https://random.imagecdn.app/500/150';
+//let imgRandom = 'https://random.imagecdn.app/500/150';
 
 /**things to do user name - divs in html bootstrap + post dataGET & get users */
 
@@ -77,14 +77,15 @@ function getPostContent(urlPosts){
         url: urlPosts,
         success:function(response){
             $.each(response,function(index,value){
+                let imgRandom='https://picsum.photos/500/150?random='+Math.floor(Math.random() * 101);
                 let titlePost=document.getElementById("titlePost"+(index+1));
                 let bodyPost=document.getElementById("bodyPost"+(index+1));
                 let imgPost=document.getElementById("imgPost"+(index+1));
-                let imgelement=document.createElement("img");
+                let imgElement=document.createElement("img");
+                imgElement.setAttribute("src",imgRandom);
                 titlePost.innerHTML=value.title;
                 bodyPost.innerHTML=value.body;
-                imgelement.setAttribute("src",'https://random.imagecdn.app/500/150');
-                imgPost.innerHTML=imgelement;
+                imgPost.appendChild(imgElement);
                 
             })
         }
