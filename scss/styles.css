@@ -25,6 +25,16 @@
   margin-bottom: 10px;
 }
 
+.modal-footer h3 h5 {
+  margin-top: 1rem;
+  margin-bottom: 0rem;
+  background-color: #7070701a;
+}
+
+.modal-footer h3 p {
+  background-color: #a3a3a31a;
+}
+
 .modal-footer button {
   margin-bottom: 100px;
 }
@@ -43,5 +53,10 @@
 
 .img-close:hover {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+p {
+  font-size: 20px;
+  font-weight: 150;
 }
 /*# sourceMappingURL=styles.css.map */
