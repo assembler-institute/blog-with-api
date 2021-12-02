@@ -1,3 +1,12 @@
+.nav-item {
+  font-size: 25px;
+  padding: 30px;
+}
+
+.table > :not(caption) > * > * {
+  padding: 50px;
+}
+
 .modal-content {
   padding: 10px;
   margin-left: 33%;
@@ -26,5 +35,9 @@
   position: absolute;
   -ms-flex-item-align: end;
       align-self: flex-end;
+}
+
+.img-close:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 /*# sourceMappingURL=styles.css.map */

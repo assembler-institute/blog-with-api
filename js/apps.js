@@ -51,15 +51,26 @@ bodyVar.appendChild(divBlogs)
 
 
 //Add Event Listeners
-function openModal() {
-    new Modal();
+function openModal(e) {
+    e.stopPropagation();
+    if(e.target instanceof SVGElement){
+        // console.log(e.target);
+        new Modal();
+    } else {
+        new Modal(e.target.parentNode.children[1].textContent, e.target.parentNode.children[2].textContent);
+    }
 }
 
+
+/*const rows = $(".mainRow");
+for(let i = 0; i < rows){
+
+}*/
 var mainRow = document.getElementsByClassName("mainRow")
-for (let i = 0; i < mainRow.length; i++) {
+for (let i = 0; i < mainRow.length -1 ; i++) {
     mainRow[i].addEventListener("click", openModal)
 }
-var edit = document.getElementsByClassName("edit")
+/*var edit = document.getElementsByClassName("edit")
 for (let i = 0; i < edit.length; i++) {
     edit[i].addEventListener("click", openModal)
     edit[i].style.cursor = "pointer"
@@ -68,4 +79,4 @@ var del = document.getElementsByClassName("delete")
 for (let i = 0; i < del.length; i++) {
     del[i].addEventListener("click", openModal)
     del[i].style.cursor = "pointer"
-}
+}*/
