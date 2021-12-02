@@ -7,7 +7,7 @@ var btnShow= document.querySelectorAll("button")[1]
 btnShow.addEventListener('click', (e) => {
     locModal.style.display = "block";
     locModal.style.paddingRight = "17px";
-    locModal.className="modal fade show"; 
+    locModal.className="modal fade show";
 });
 
 function getAvatar(userid){

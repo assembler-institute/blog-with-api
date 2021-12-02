@@ -20,9 +20,9 @@ async function createpost(obj){
     var userbyid= await getOneItem(`http://localhost:3000/users/${obj.userId}`)
     var containerDiv = $("<div></div>")
     var headerDiv = $(`<div><img class="imguser" src=${userbyid.avatar}>${userbyid.username}</div>`)
-    var bodyDiv = $(`<div></div><div>${obj.body}</div>`)
-    var titleDiv = $("<h5></h5>")
-    var pDiv = $("<p></p>")
+    var bodyDiv = $(`<div></div>`)
+    var titleDiv = $(`<h5>${obj.title}</h5>`)
+    var pDiv = $(`<p>${obj.body}</p>`)
     var redyBlog=$("#redyblog")
     //Adding classes
     containerDiv.addClass("card text-center postblog")
@@ -32,15 +32,13 @@ async function createpost(obj){
     pDiv.addClass("card-text")
 
     //Import text
-    bodyDiv.append(titleDiv,pDiv)
-    containerDiv.append(headerDiv,bodyDiv)
     redyBlog.append(containerDiv)
+    containerDiv.append(headerDiv,bodyDiv)
+    bodyDiv.append(titleDiv,pDiv)
     containerDiv.on('click', (e) => {
         openModal(containerDiv)
     });
 }
-
-    //return posts.filter(comment => comment.postId == id);
 
 function setModalUser(user){
     document.getElementById("modalUser").innerHTML = user
@@ -65,18 +63,18 @@ async function openModal(e){
     console.log(UserInfo[0].avatar)
     setModalUser(`<img class="imguserbig" src="${UserInfo[0].avatar}"><div>${modalUser.textContent} <br>  ${UserInfo[0].email}</div>`)
     let titleDiv = e[0].querySelector(".card-title")
-    console.log(e)
     setTitle(titleDiv.textContent)
 
     let bodyDiv = e[0].querySelector(".card-text")
     console.log(bodyDiv)
     setBody(bodyDiv.textContent)
+
     let commentsByPost = await getAllItems(`http://localhost:3000/comments?postId=1`)
     createPostComment(commentsByPost)
 
 }
 
-    function createPostComment(obj){
+function createPostComment(obj){
 
     for (const comment of obj) {
         var containerComments = $(`<div></div>`)
