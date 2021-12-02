@@ -37,9 +37,41 @@ return request.json()
                 informacion.body=infoPosts[0].body
                 idaa(informacion.userId)
                 console.log(informacion)
+                // $("#myModal").modal('show');
+                setTimeout(() => {
+                    llamada()
+                }, 200);
         })
     }); 
 })
+
+function llamada(){
+    beginmodal()
+    $("#myModal").modal('show'); 
+}
+function beginmodal(){
+    content=` <div id="myModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="title">Modal Title</h5>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+              <div class="modal-body" id="probando">
+                <div id="email"></div>
+                </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn btn-primary">Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>` 
+    document.getElementById("modalview").innerHTML= content
+    document.getElementById("title").innerHTML= informacion.title
+    document.getElementById("email").innerHTML= informacion.email
+}
 
 function idaa(idaaa){
 fetch("http://localhost:3000/users")
@@ -47,7 +79,6 @@ fetch("http://localhost:3000/users")
 return request.json()
 })
 .then((info)=>{
-    // console.log(info)
     var probando= info.filter((elemento)=>{
         if(elemento.id == idaaa)
         return elemento
