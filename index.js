@@ -1,16 +1,32 @@
-const displayValorAnterior = document.getElementById("valor-anterior");
-const displayValorActual= document.getElementById("valor-actual");
-const buttonNumber = document.querySelectorAll(".numero");
-const buttonOperador = document.querySelectorAll("#operador");
+// const displayValorAnterior = document.getElementById("valor-anterior");
+// const displayValorActual= document.getElementById("valor-actual");
+// const buttonNumber = document.querySelectorAll(".numero");
+// const buttonOperador = document.querySelectorAll("#operador");
 
 
-//Agregar numero//
-function agregarNumber() {
-  if (operacion == "") {
-    num1 = num1 + buttonNumber.innerHTML;
-    console.log(num1);
-    display.innerHTML = num1;
-  } else {
-    num2 = num2 + btn0.innerHTML;
-    console.log(num2);
-    display.innerHTML = num2;
+// document.addEventListener("DOMcontentLoadedr", getall)
+
+// function getall() {
+
+// }
+// (()=>{
+function getdata(){
+    const userSh = document.getElementById("userSel")
+    const bodySh = document.getElementById("bodySel")
+    const dataFragment = document.createDocumentFragment()
+
+    fetch("https://jsonplaceholder.typicode.com/users")
+        .then((res) => res.json())
+        .then(json=>{
+            console.log(json)
+            json.forEach(element => {
+                var userLi= document.createElement("li")
+                userLi.innerHTML= element.name
+                dataFragment.appendChild(userLi)
+            });
+        userSh.appendChild(dataFragment)
+        })
+}
+// })
+
+getdata ()
