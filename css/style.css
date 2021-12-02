@@ -84,11 +84,14 @@
     margin-right:5px;
     padding:8px;
 }
-#username,#email{
+#username-container,#email-container{
     color:var(--secondary-color);
 }
 #email{
     border-left: 2px solid black;
+}
+#email-container{
+    border-left:2px solid black;
 }
 
 #description{
