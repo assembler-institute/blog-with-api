@@ -12,7 +12,7 @@
     line-height: 40px;
     overflow: hidden;
     justify-content: center;
-    margin: 5vh;
+    margin: 2vh;
 }
 
 .nav-link{
@@ -87,23 +87,23 @@
     color:var(--secondary-color);
 }
 #email{
-    border-left:2px solid black;
+    border-left: 2px solid black;
 }
 
 #description{
-    margin-top:20px;
-    font-size:20px;
+    margin-top: 20px;
+    font-size: 20px;
 }
 #comments{
     color:var(--secondary-color);
-    margin-bottom:10px;
+    margin-bottom: 10px;
 }
 .loadComments{
     background-color:var(--secondary-color);
     color:white;
     border:none;
-    border-radius:10px;
-    padding:10px;
+    border-radius: 10px;
+    padding: 10px;
 
 }
 
@@ -112,9 +112,12 @@
     height: 5vh;
 }
 
+.row{
+    height: 50%;
+}
 
 .container>.row{
-    height: 35vh;
+    height: 38vh;
 }
 .divPost{
     background-color: var(--details-blue);
