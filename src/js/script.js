@@ -1,39 +1,27 @@
-var allPosts
-var allusers
-var commentsByPost
-getAllUsers()
-getAllPost()
+async function getAllItems(url){
+    const response = await fetch(url)
+    const data = await response.json()
+    return data.reverse()
+}
 
+async function getOneItem(url) {
+    //Ejemplo `http://localhost:3000/users/${id}`
+    const response = await fetch(url)
+    return response.json()
+}
 
-
-function getAllPost(){
-fetch("http://localhost:3000/posts").then(response=>response.json())
-.then(data=>{
-    allPosts=sortPosts(data)
+function showAllPost(allPosts) {
     for (const pos of allPosts) {
         createpost(pos)
     }
-})
 }
 
-function getAllUsers(){
-    fetch("http://localhost:3000/users").then(response=>response.json())
-.then(data=>{
-    allusers=sortPosts(data)
-})
-}
-
-
-function getUserInfo(id) {
-    return allusers.filter(user => user.id == id);
-}
-
-
-function createpost(obj){
+async function createpost(obj){
     //Variable declaration
+    var userbyid= await getOneItem(`http://localhost:3000/users/${obj.userId}`)
     var containerDiv = $("<div></div>")
-    var headerDiv = $("<div></div>")
-    var bodyDiv = $("<div></div>")
+    var headerDiv = $(`<div>${userbyid.username}</div>`)
+    var bodyDiv = $(`<div>${obj.body}</div>`)
     var titleDiv = $("<h5></h5>")
     var pDiv = $("<p></p>")
     var redyBlog=$("#redyblog")
@@ -43,33 +31,14 @@ function createpost(obj){
     bodyDiv.addClass("card-body bodymodal")
     titleDiv.addClass("card-title")
     pDiv.addClass("card-text")
-    //Taking text
-    var userbyid=getUserInfo(obj.userId)
-    headerDiv.text(userbyid[0].username)
-    titleDiv.text(obj.title)
-    pDiv.text(obj.body)
+
     //Import text
     bodyDiv.append(titleDiv,pDiv)
     containerDiv.append(headerDiv,bodyDiv)
     redyBlog.append(containerDiv)
     containerDiv.on('click', (e) => {
-    openModal(containerDiv)
+        openModal(containerDiv)
     });
-}
-
-function sortPosts(arr){
-    return arr.reverse()
-}
-
-function getComments(id) {
-    commentsByPost = []
-    let result
-    fetch(`http://localhost:3000/comments?postId=${id}`)
-    .then(response=>response.json())
-    .then(data=>{
-    commentsByPost = data.reverse()
-    console.log(data)
-    })
 }
 
     //return posts.filter(comment => comment.postId == id);
@@ -86,19 +55,16 @@ function setBody(body){
     document.getElementById("modal-body").textContent = body
 }
 
-function getUserInfoByName(name) {
-    return allusers.filter(user => user.username == name);
-}
-
 async function openModal(e){
+    locModal = document.getElementById('myModal')
     locModal.style.display = "block";
     locModal.style.paddingRight = "17px";
     locModal.className="modal fade show";
-    console.log(commentsByPost)
-    await getComments(1)
+    let commentsByPost = await getAllItems(`http://localhost:3000/comments?postId=1`)
     console.log(commentsByPost)
     let modalUser = e[0].querySelector(".card-header")
-    let UserInfo = getUserInfoByName(modalUser.textContent)
+    let UserInfo = await getOneItem( `http://localhost:3000/users?username=${modalUser.textContent}`)
+    console.log(UserInfo);
     setModalUser(`${modalUser.textContent} / ${UserInfo[0].email}`)
 
 
