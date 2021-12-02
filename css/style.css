@@ -1,3 +1,61 @@
+:root{
+    --bg-color: #FFFFFF;
+    --secondary-color: #E89119;
+    --primary-color: #2EC4B6;
+    --details-blue: #BEEEE9;
+    --details-orange: #FFBF69;
+}
 article{
     float:left;
 }
+#post-header{
+    background-color:var(--primary-color);
+}
+.modal-dialog{
+    max-width:920px;
+}
+.head-icons{
+    width:20px;
+    cursor:pointer;
+    transition:0.5s;
+    color:var(--bg-color)
+}
+.head-icons:hover{
+
+}
+.head-icons:nth-child(2n){
+    margin-left:10px;
+}
+#trash{
+    margin-left:20px;
+    width:16px;
+}
+.fa-user,.fa-envelope,.fa-comments{
+    margin-right:5px;
+    padding:8px;
+    
+}
+#username,#email{
+    color:var(--secondary-color);
+}
+#email{
+    border-left:2px solid black;
+}
+
+#description{
+    margin-top:20px;
+    font-size:20px;
+}
+#comments{
+    color:var(--secondary-color);
+    margin-bottom:10px;
+}
+.loadComments{
+    background-color:var(--secondary-color);
+    color:white;
+    border:none;
+    border-radius:10px;
+    padding:10px;
+    
+}
+    
