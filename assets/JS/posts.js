@@ -9,18 +9,21 @@ let btnSubmit;
 fetch("https://jsonplaceholder.typicode.com/posts", requestOptions)
     .then(response => response.json())
     .then(result => {
+        var containerChild = document.createElement('div')
+        containerChild.classList.add('postsContainer')
         result.forEach(element => {
             // console.log(element);
-            var container = document.querySelector(".col-md-8");
+            var containerFather = document.querySelector(".col-md-8");
+            containerFather.appendChild(containerChild)
             var button = document.createElement("button");
             button.setAttribute("id", element.id);
             button.classList.add("accordion");
-            button.innerHTML = `${element.title}        <i class="bi bi-pencil-square ${element.id}"></i><i class="bi bi-trash"></i>`;
-            container.appendChild(button);
+            button.innerHTML = `${element.title} <i class="bi bi-pencil-square ${element.id}"></i><i class="bi bi-trash"></i>`;
+            containerChild.appendChild(button);
             var panel = document.createElement("div");
             panel.classList.add("panel");
             panel.classList.add('comment' + element.id)
-            container.appendChild(panel);
+            containerChild.appendChild(panel);
             var parraf = document.createElement("p");
             parraf.innerHTML = element.body;
             panel.appendChild(parraf);
@@ -37,6 +40,7 @@ fetch("https://jsonplaceholder.typicode.com/posts", requestOptions)
                 getComments(element.id)
             })
         });
+        accordionDisplay()
     })
 
 // var posts = JSON.parse(localStorage.getItem('posts'))
@@ -51,21 +55,23 @@ fetch("https://jsonplaceholder.typicode.com/users", requestOptions)
 var users = JSON.parse(localStorage.getItem('users'))
 
 /* Open accordion */
-setTimeout(() => {
-    var acc = document.getElementsByClassName("accordion");
-    var i;
-    for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function () {
-            this.classList.toggle("active");
-            var panel = this.nextElementSibling;
-            if (panel.style.display === "block") {
-                panel.style.display = "none";
-            } else {
-                panel.style.display = "block";
-            }
-        });
-    }
-}, 1000);
+function accordionDisplay() {
+    setTimeout(() => {
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
+    }, 0);
+}
 
 function getComments(id) {
     console.log(id);
@@ -176,3 +182,58 @@ function closeModal() {
     var eventDiv = document.getElementById("Mymodal");
     eventDiv.remove();
 }
+
+/* FILTER POSTS */
+
+let usersCollection = document.querySelectorAll('.one')
+console.log(usersCollection);
+
+setTimeout(() => {
+    for (const iterator of usersCollection) {
+        iterator.addEventListener('click', () => {
+            var requestOptions = {
+                method: 'GET',
+                redirect: 'follow'
+            };
+            fetch("https://jsonplaceholder.typicode.com/posts?userId=" + iterator.id, requestOptions)
+                .then(response => response.json())
+                .then(result => {
+                    var containerFather = document.querySelector(".col-md-8");
+                    var containerDelete = document.querySelector('.postsContainer')
+                    containerDelete.remove()
+                    var containerChild = document.createElement('div')
+                    containerChild.classList.add('postsContainer')
+                    result.forEach(element => {
+                        // console.log(element);
+                        containerFather.appendChild(containerChild)
+                        var button = document.createElement("button");
+                        button.setAttribute("id", element.id);
+                        button.classList.add("accordion");
+                        button.innerHTML = `${element.title} <i class="bi bi-pencil-square ${element.id}"></i><i class="bi bi-trash"></i>`;
+                        containerChild.appendChild(button);
+                        var panel = document.createElement("div");
+                        panel.classList.add("panel");
+                        panel.classList.add('comment' + element.id)
+                        containerChild.appendChild(panel);
+                        var parraf = document.createElement("p");
+                        parraf.innerHTML = element.body;
+                        panel.appendChild(parraf);
+                        var btnComment = document.createElement("button");
+                        btnComment.innerHTML = "Leave a comment";
+                        panel.appendChild(btnComment);
+                        btnComment.addEventListener("click", function () {
+                            newComment(element.id)
+                        });
+                        var btnShowComment = document.createElement("button");
+                        btnShowComment.innerHTML = "Check all the comments!";
+                        panel.appendChild(btnShowComment);
+                        btnShowComment.addEventListener('click', () => {
+                            getComments(element.id)
+                        })
+                    });
+                    accordionDisplay();
+                })
+                .catch(error => console.log('error', error));
+        })
+    }
+}, 0);
