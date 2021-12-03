@@ -1,3 +1,7 @@
+
+/* .html{
+    background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+} */
 .navbar{
    display: flex;
    flex-direction: column;
@@ -10,9 +14,26 @@
     border: solid 2px black;
 } */
 .contentPost{
-    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: solid 1px;
+    /* border: solid 1px;
+   border-left: solid 1px;
+   border-right: solid 1px;
+    border-bottom: solid 1px; */
 }
 .title{
     font-weight: bold;
-    color: blueviolet;
+    color: black;
+    font-size: 2em;
+    border-right: solid 1px;
+    /* border-left: solid 1px; */
+    text-align: center;
+    font-weight: bold;
+    /* border-bottom: solid 1px;
+    border-top: solid 1px; */
 }
+/* #contentBlog{
+    border: solid 1px black;
+} */
+
