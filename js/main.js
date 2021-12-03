@@ -29,8 +29,6 @@ async function infoModal(e){
     resetModal();
     var test=$(e.target).parent().parent().css("background-image").replace(/^url\(['"](.+)['"]\)/, '$1');
     var target=e.target.textContent
-    
-    console.log(test);
     var user;
     var comments;
     //GET POST
@@ -69,10 +67,10 @@ async function loadComments(id){
         
           $("#commentSection").append(`
           <div class="row commentsContainer">
-            <div class="photoComment col">
-              <img src="">
+          <div class="row titleComment">${element.title}</div>
+            <div class="col">
+              <img src="../assets/img/prevpost.jpg" class="photoComment">
             </div>
-            <div class="row titleComment">${element.title}</div>
             <div class="bodyComment col">${element.body}</div>
             <div class="personalInfoComment row">
               <div class="col">${element.name}</div>
