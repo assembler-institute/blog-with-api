@@ -36,7 +36,6 @@ function postsFetchFun(start){
             return response.text()
         })
         .then(result => {let data = JSON.parse(result)
-            console.log(data)
             updatePostsList(data)
         })
         .catch(error => console.log('error', error));
@@ -66,9 +65,7 @@ function updatePostsList(data){
         //})
         div1.addEventListener("click",function (){
             myModal= document.getElementById("staticBackdropLabel")
-            console.log(myModal)
             findUserFetchFun(post)
-            findCommentsFetchFun(post)
         })
     });
 }
@@ -81,7 +78,6 @@ function findUserFetchFun(post){
     fetch( urlFetch, requestOptions)
     .then(response => response.text())
     .then(result => {let data = JSON.parse(result)
-        console.log(data)
         //createModal(post, data)
         modalContent(post, data)
     })
@@ -92,12 +88,8 @@ function modalContent(post, data){
     document.getElementById("staticBackdropLabel").textContent +=" "+ data.name
     document.getElementById("staticBackdropLabel").textContent +=" "+ data.email
     document.getElementById("modal-content").textContent= post.body
-
-
     button1 = document.getElementById("comments-button")
-    console.log(button1)
     button1.addEventListener("click", function (){
-        console.log(post)
         findCommentsFetchFun (post)
     })
 }
@@ -110,26 +102,36 @@ function findCommentsFetchFun(post){
     fetch( urlFetch, requestOptions)
     .then(response => response.text())
     .then(result => {let comments = JSON.parse(result)
-        console.log(comments)
         createCommentsFun(comments)
     })
     .catch(error => console.log('error', error));
 }
 function createCommentsFun(comments){
-    // if (buttonDiv.child){
-    //     buttonDiv.removeChild(child)
-    // }
-    let commentsContainer = document.createElement("div")
-    commentsContainer.innerHTML = `
-    <div id="modal-comments-a" class="modal-body">
-    </div>`
+    let commentsContainer;
     buttonDiv = document.querySelector(".modal-body")
+    if(document.getElementById("modal-comments-a")){
+        buttonDiv.removeChild(buttonDiv.lastChild)
+    }
+    commentsContainer = document.createElement("div")
+    commentsContainer.setAttribute("id","modal-comments-a")
+    commentsContainer.setAttribute("class","modal-body")
     buttonDiv.appendChild(commentsContainer)
 
     comments.forEach((comment)=>{
 
         let commentDiv = document.createElement("div")
-        commentDiv.innerHTML = comment.name
+        commentDiv.innerHTML = `
+        <div class="card">
+            <div class="card-header">
+                `+comment.name+`
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p>`+comment.body+`</p>
+                    <footer class="blockquote-footer">`+"Anonimous"+`<cite title="Source Title">`+comment.email+`</cite></footer>
+                </blockquote>
+            </div>
+        </div>`
         commentsContainer.appendChild(commentDiv)
     })
 }
