@@ -8,9 +8,29 @@ var arrayPosts=[]
 var numId=1
 //Get Tittles
 //data[0].title
-window.onload= getPosts()
+window.onload= function(){
+  getPosts(1)
+  Activatepagination()
+}
 
+function Activatepagination(){
+  $(".page-item").on("click",changePage)
+}
 
+function changePage(e){
+  console.log(e.target.textContent);
+  if(e.target.textContent=="Previous"){
+    numId--;
+    getPosts()
+  }else if(e.target.textContent=="Next"){
+    numId++;
+    getPosts();
+  }else{
+    numId=e.target.textContent;
+    getPosts();
+  }
+  
+}
 function  getPosts(){
  fetch("https://jsonplaceholder.typicode.com/posts?userId="+numId)
   .then(response => response.json())
