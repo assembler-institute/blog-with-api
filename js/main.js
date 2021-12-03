@@ -26,7 +26,11 @@ function  getPosts(){
 }
 
 async function infoModal(e){
+    resetModal();
+    var test=$(e.target).parent().parent().css("background-image").replace(/^url\(['"](.+)['"]\)/, '$1');
     var target=e.target.textContent
+    
+    console.log(test);
     var user;
     var comments;
     //GET POST
@@ -44,12 +48,15 @@ async function infoModal(e){
     })
     //GET COMMENTS
     //DISPLAY INFO
+    $("#photoTitle").attr("src",test)
+
     $("#modalPost-title").text(target.title);
     $("#username").text(user.username);
     $("#email").text(user.email);
     $("#description").text(target.body);
     $(".loadComments").eq(0).one("click",function(){
       loadComments(target.id)
+      
     });
 }
 
@@ -57,11 +64,14 @@ async function loadComments(id){
   await fetch("https://jsonplaceholder.typicode.com/comments?postId="+id)
   .then(response=>response.json())
   .then(data=>{
+    
     data.forEach(function(element,idx){
-      if (idx=0){
-          $("#comments").html(`
-          <div class="row comment">
-            <div class="photoComment col"></div>
+        
+          $("#commentSection").append(`
+          <div class="row commentsContainer">
+            <div class="photoComment col">
+              <img src="">
+            </div>
             <div class="row titleComment">${element.title}</div>
             <div class="bodyComment col">${element.body}</div>
             <div class="personalInfoComment row">
@@ -70,20 +80,12 @@ async function loadComments(id){
             </div>
           </div>
           `);
-        }else{
-          $("#comments").append(`
-          <div class="row comment">
-            <div class="photoComment col"></div>
-            <div class="row titleComment">${element.title}</div>
-            <div class="bodyComment col">${element.body}</div>
-            <div class="personalInfoComment row">
-              <div class="col">${element.name}</div>
-              <div class="col">${element.email}</div>
-            </div>
-          </div>
-          `);
-        }
+
     })
   })
+}
+
+function resetModal(){
+  $(".commentsContainer").empty();
     
 }
