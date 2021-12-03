@@ -2,22 +2,31 @@
 const templateForm= document.getElementById("valor-actual");
 const templateTitle = document.querySelector(".formtitle");
 const templateContainer = document.querySelectorAll("#operador");
-
+var initialPost =0;
+var endPost=12;
 
 const templateFragment = document.createDocumentFragment()
 
 // document.addEventListener("DOMcontentLoadedr", getdata)
 
 
-// (()=>{
-function getdata(){
+
+function  getdata(){
     const postTitle = document.querySelector(".postTitle")
     var containerGeneral=  document.querySelector(".containerGeneral")
     // const bodySh = document.getElementById("bodySel")
     const dataFragment = document.createDocumentFragment()
+    
+    console.log(initialPost)
+    console.log(endPost)
 
-    fetch("http://localhost:3000/posts?_start=0&_end=12")
-        .then((res) => res.json())
+    fetch("http://localhost:3000/posts?_start="+initialPost+"&_end="+endPost)
+        .then((res) => {
+            var totalPost = res.headers.get('X-Total-Count')
+            console.log(totalPost)
+            storeTotalPost(totalPost)
+            return res.json()
+        })
         .then(json=>{
             console.log(json)
             json.forEach(element => {
@@ -46,7 +55,9 @@ function getdata(){
                 divCarbody.appendChild(aCarbody)
                 divCardContent.appendChild(divCarbody)
                 dataFragment.appendChild(divCardContent)
+            
             });
+            
             containerGeneral.appendChild(dataFragment)
         })
 }
@@ -57,7 +68,7 @@ function deleteContent (json,element){
     var userModal= document.querySelector(".name")
     userModal.innerHTML="";
     var emailModal= document.querySelector(".email")
-    emailModal.innerHTML="";    
+    emailModal.innerHTML="";
     open(json,element, modalheader,userModal,emailModal)
 }
 
@@ -105,14 +116,77 @@ function showComents(element,url1){
     .then(json=> {
         coments.innerHTML= json[0].body
     })
-
 }
+
+
 // var modalEmail = document.createElement("p")
 // modalEmail.classList.add("card-text")
 // modalEmail.innerHTML= element.email
 
 getdata ()
-// var modalbody= document.createElement("p")
+
+// ----------botones paginacion-----------------
+
+const btnI12= document.querySelector("#btnI12")
+const btn1doc= document.querySelector("#btn1doc")
+const btn2doc= document.querySelector("#btn2doc")
+const btn3doc= document.querySelector("#btn3doc")
+const btnL12= document.querySelector("#btnL12")
+const btnLast= document.querySelector("#btnLast")
+
+btnI12.addEventListener("click", blogIni)
+btn1doc.addEventListener("click", blog1doc)
+btn2doc.addEventListener("click", blog2doc)
+btn3doc.addEventListener("click", blog3doc)
+btnL12.addEventListener("click", blogEnd)
+btnLast.addEventListener("click", blocLast)
+
+function blogIni(){
+    if(initialPost>13){
+    initialPost=initialPost-12;
+    endPost=endPost-12;
+    }
+    else{
+    initialPost=0;
+    endPost=12;
+    }
+    getdata(endPost,initialPost)
+}
+function blog1doc(){
+    initialPost=0;
+    endPost=12;
+    getdata(endPost,initialPost)
+}
+function blog2doc(){
+    initialPost=13;
+    endPost=25;
+    getdata(endPost,initialPost)
+}
+function blog3doc(){
+    initialPost=26;
+    endPost=38;
+    getdata(endPost,initialPost)
+}
+function blogEnd(){
+    initialPost=initialPost+12;
+    endPost=endPost+12;
+    getdata(endPost,initialPost)
+}
+function blocLast(){
+    storeTotalPost()
+    console.log("joder")
+    console.log(lastPost)
+    initialPost=initialPost+12;
+    endPost=endPost+12;
+    getdata(endPost,initialPost)
+    
+}
+function storeTotalPost(totalPost){
+    console.log("vuelvo")
+    var lastPost= totalPost
+    return lastPost
+}
+
 // modalbody.classList.add("card-text")
 // modalbody.innerHTML= element.body
 

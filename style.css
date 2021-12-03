@@ -7,7 +7,6 @@
 .padding50{
     padding: 50px;
 }
-
 .margin8{
     margin-bottom: 8px;
 }
@@ -17,5 +16,8 @@
     grid-template-columns: 32% 32% 32%;
     padding: 2em;
     margin: auto;
-   
+}
+.disFlex{
+    display: flex;
+    justify-content: center;
 }
