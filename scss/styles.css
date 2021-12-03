@@ -49,6 +49,8 @@
   position: absolute;
   -ms-flex-item-align: end;
       align-self: flex-end;
+  margin-top: -7px;
+  margin-right: -7px;
 }
 
 .img-close:hover {

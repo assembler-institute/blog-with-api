@@ -43,11 +43,12 @@ class Modal{
                 comments.forEach(comment => {
                     //Load comments
                     $(".btn-dark").on("click", function(){
-                            if($(".modal-footer").children().first().children().length <= 1){
+                        if($(".modal-footer").children().first().children().length <= 1){
                             posts.then(function(){
                                 $(".modal-footer").children().first().append($("<h5></h5>").text(comment.name));
                                 $(".modal-footer").children().first().append($("<p></p>").text(comment.body));
                             });
+                            $(".btn-dark").remove();
                         }
                     });
                 });
@@ -65,6 +66,39 @@ class Modal{
             $("<div></div>").append($("<input></input>").addClass("form-control").attr("placeholder", title)).addClass("form-group col-sm-8").prependTo(".modal-body");
             $("<div></div>").append($("<textarea></textarea>").addClass("form-control").attr("placeholder", body)).addClass("form-group col-sm-10").insertAfter(".img-close");
             $(".modal-footer").append($("<button></button>").addClass("btn btn-primary save-button").text("Save"));
+            
+            //Save event
+            $(".save-button").on("click", function(){ 
+                const title = $("input").val();
+                const body = $("textarea").val();
+                if(String(title).trim() != " " && String(title).trim() != "" && String(body).trim() != " " && String(body).trim() != ""){
+                    posts.then(function(post){
+                        //Edit post
+                        fetch("https://jsonplaceholder.typicode.com/posts/" + post.id,
+                        {
+                            method: "PATCH",
+                            headers: {
+                                "Content-type": "application/json; charset=UTF-8",
+                              },                           
+                            body: JSON.stringify({
+                                title: title,
+                                body: $("textarea").val(),
+                            }),
+                        })
+                        .then(function (response) {
+                            return response.json();
+                        })
+                        .then(function (json) {
+                            //Refresh data
+                            const row = $("tbody").find("scope").prevObject[(post.id - 1)];
+                            $(row).find("#postTitle")[0].textContent = json.title;
+                            $(row).find("#postBody")[0].textContent = json.body;
+                            $(".modal").remove();
+                        });
+                       
+                    });   
+                }
+            });
         }
 
     }
