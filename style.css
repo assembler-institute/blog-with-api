@@ -36,4 +36,18 @@
 /* #contentBlog{
     border: solid 1px black;
 } */
+.mb-0{
+    
+    display: flex;
+    flex-direction: column;
+}
+/* .card-body{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 
+} */
+
+.pli{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
