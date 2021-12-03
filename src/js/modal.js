@@ -9,6 +9,7 @@ function createModal() {
         </div>
         <div id="modal-body" class="modal-body cuerpomodal">
         </div>
+        
         <div id="comments">
         </div>
         </div>
@@ -25,6 +26,10 @@ async function dataModal(e) {
 
     let bodyDiv = e[0].querySelector(".card-text")
     document.getElementById("modal-body").textContent = bodyDiv.textContent;
+    let modalIconX = `<div id ="modal-icon" class= "modal-icon"><i id="delete-post" class="fas fa-times delete-post"></i></div>`
+    document.getElementById("modal-body").insertAdjacentHTML("beforeend", modalIconX);
+    let deleteP = document.getElementById("delete-post")
+    deleteP.addEventListener("click", function(){deletePost(e.data("id"))} )
     let commentsByPost = await getAllItems(`http://localhost:3000/comments?postId=${e.data("id")}`)
     createCommentsByPost(commentsByPost)
 }
