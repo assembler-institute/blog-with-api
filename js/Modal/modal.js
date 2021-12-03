@@ -57,6 +57,7 @@ class Modal{
 
         //Close button
         $("img").on("click", function(){ $(".modal").remove(); });
+        $(".modal").on("click", function(){ $(".modal").remove(); });
 
         //Only when is edit modal
         if(edit){
