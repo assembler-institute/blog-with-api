@@ -15,10 +15,21 @@ function showAllPost(allPosts) {
     }
 }
 
-async function deletePost(e){
-    await fetch(`http://localhost:3000/posts/${e}`,{method:"DELETE"})
+ function deletePost(e){
+    // let modalDelete=document.getElementById("exampleModal")
+    $('#exampleModal').css({"display":"block"}); // abrir
+    let close= document.querySelector("#closedelete")
+    let delet= document.querySelector("#postdelete")
+    close.addEventListener("click",closemodaldelete)
+    delet.addEventListener("click",async function(){
+        await fetch(`http://localhost:3000/posts/${e}`,{method:"DELETE"})
+        closemodaldelete()
+    })
+    
 }
-
+function closemodaldelete(){
+    $('#exampleModal').css({"display":"none"});
+}
 async function createListPosts(obj){
     //Variable declaration
     var userbyid= await getOneItem(`http://localhost:3000/users/${obj.userId}`)

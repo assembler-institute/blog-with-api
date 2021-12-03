@@ -75,7 +75,8 @@ input,textarea{
 
 .cuerpomodal{
     background-color: var(--negropost) !important;
-    padding: 15px 20% !important;
+    padding: 0% 20% 30% 20% !important;
+    overflow: hidden !important;
 }
 .piemodal{
     background-color: var(--negroinput) !important;
@@ -109,5 +110,8 @@ input,textarea{
 .modalUser{
     display: flex;
     align-items: center;
+}
+.modaldelete{
+    border: 1px solid white!important;
 }
 

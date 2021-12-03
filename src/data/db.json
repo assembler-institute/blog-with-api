@@ -593,12 +593,6 @@
       "id": 99,
       "title": "temporibus sit alias delectus eligendi possimus magni",
       "body": "quo deleniti praesentium dicta non quod\naut est molestias\nmolestias et officia quis nihil\nitaque dolorem quia"
-    },
-    {
-      "userId": 10,
-      "id": 100,
-      "title": "at nam consequatur ea labore ea harum",
-      "body": "cupiditate quo est a modi nesciunt soluta\nipsa voluptas error itaque dicta in\nautem qui minus magnam et distinctio eum\naccusamus ratione error aut"
     }
   ],
   "users": [
@@ -607,7 +601,7 @@
       "name": "Leanne Graham",
       "username": "Bret",
       "email": "Sincere@april.biz",
-      "avatar":"./src/img/avatar1.png",
+      "avatar": "./src/img/avatar1.png",
       "address": {
         "street": "Kulas Light",
         "suite": "Apt. 556",
@@ -631,7 +625,7 @@
       "name": "Ervin Howell",
       "username": "Antonette",
       "email": "Shanna@melissa.tv",
-      "avatar":"./src/img/avatar2.png",
+      "avatar": "./src/img/avatar2.png",
       "address": {
         "street": "Victor Plains",
         "suite": "Suite 879",
@@ -655,7 +649,7 @@
       "name": "Clementine Bauch",
       "username": "Samantha",
       "email": "Nathan@yesenia.net",
-      "avatar":"./src/img/avatar3.png",
+      "avatar": "./src/img/avatar3.png",
       "address": {
         "street": "Douglas Extension",
         "suite": "Suite 847",
@@ -679,7 +673,7 @@
       "name": "Patricia Lebsack",
       "username": "Karianne",
       "email": "Julianne.OConner@kory.org",
-      "avatar":"/src/img/avatar4.png",
+      "avatar": "/src/img/avatar4.png",
       "address": {
         "street": "Hoeger Mall",
         "suite": "Apt. 692",
@@ -703,7 +697,7 @@
       "name": "Chelsey Dietrich",
       "username": "Kamren",
       "email": "Lucio_Hettinger@annie.ca",
-      "avatar":"/src/img/avatar5.png",
+      "avatar": "/src/img/avatar5.png",
       "address": {
         "street": "Skiles Walks",
         "suite": "Suite 351",
@@ -727,7 +721,7 @@
       "name": "Mrs. Dennis Schulist",
       "username": "Leopoldo_Corkery",
       "email": "Karley_Dach@jasper.info",
-      "avatar":"/src/img/avatar6.png",
+      "avatar": "/src/img/avatar6.png",
       "address": {
         "street": "Norberto Crossing",
         "suite": "Apt. 950",
@@ -751,7 +745,7 @@
       "name": "Kurtis Weissnat",
       "username": "Elwyn.Skiles",
       "email": "Telly.Hoeger@billy.biz",
-      "avatar":"/src/img/avatar7.png",
+      "avatar": "/src/img/avatar7.png",
       "address": {
         "street": "Rex Trail",
         "suite": "Suite 280",
@@ -775,7 +769,7 @@
       "name": "Nicholas Runolfsdottir V",
       "username": "Maxime_Nienow",
       "email": "Sherwood@rosamond.me",
-      "avatar":"/src/img/avatar8.png",
+      "avatar": "/src/img/avatar8.png",
       "address": {
         "street": "Ellsworth Summit",
         "suite": "Suite 729",
@@ -799,7 +793,7 @@
       "name": "Glenna Reichert",
       "username": "Delphine",
       "email": "Chaim_McDermott@dana.io",
-      "avatar":"./src/img/avatar9.png",
+      "avatar": "./src/img/avatar9.png",
       "address": {
         "street": "Dayna Park",
         "suite": "Suite 449",
@@ -823,7 +817,7 @@
       "name": "Clementina DuBuque",
       "username": "Moriah.Stanton",
       "email": "Rey.Padberg@karina.biz",
-      "avatar":"/src/img/avatar10.png",
+      "avatar": "/src/img/avatar10.png",
       "address": {
         "street": "Kattie Turnpike",
         "suite": "Suite 198",
@@ -4308,41 +4302,6 @@
       "name": "dolor ut ut aut molestiae esse et tempora numquam",
       "email": "Alice_Considine@daren.com",
       "body": "pariatur occaecati ea autem at quis et dolorem similique\npariatur ipsa hic et saepe itaque cumque repellendus vel\net quibusdam qui aut nemo et illo\nqui non quod officiis aspernatur qui optio"
-    },
-    {
-      "postId": 100,
-      "id": 496,
-      "name": "et occaecati asperiores quas voluptas ipsam nostrum",
-      "email": "Zola@lizzie.com",
-      "body": "neque unde voluptatem iure\nodio excepturi ipsam ad id\nipsa sed expedita error quam\nvoluptatem tempora necessitatibus suscipit culpa veniam porro iste vel"
-    },
-    {
-      "postId": 100,
-      "id": 497,
-      "name": "doloribus dolores ut dolores occaecati",
-      "email": "Dolly@mandy.co.uk",
-      "body": "non dolor consequatur\nlaboriosam ut deserunt autem odit\nlibero dolore non nesciunt qui\naut est consequatur quo dolorem"
-    },
-    {
-      "postId": 100,
-      "id": 498,
-      "name": "dolores minus aut libero",
-      "email": "Davion@eldora.net",
-      "body": "aliquam pariatur suscipit fugiat eos sunt\noptio voluptatem eveniet rerum dignissimos\nquia aut beatae\nmodi consequatur qui rerum sint veritatis deserunt est"
-    },
-    {
-      "postId": 100,
-      "id": 499,
-      "name": "excepturi sunt cum a et rerum quo voluptatibus quia",
-      "email": "Wilburn_Labadie@araceli.name",
-      "body": "et necessitatibus tempora ipsum quaerat inventore est quasi quidem\nea repudiandae laborum omnis ab reprehenderit ut\nratione sit numquam culpa a rem\natque aut et"
-    },
-    {
-      "postId": 100,
-      "id": 500,
-      "name": "ex eaque eum natus",
-      "email": "Emma@joanny.ca",
-      "body": "perspiciatis quis doloremque\nveniam nisi eos velit sed\nid totam inventore voluptatem laborum et eveniet\naut aut aut maxime quia temporibus ut omnis"
     }
   ]
 }
