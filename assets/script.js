@@ -116,14 +116,20 @@ function findCommentsFetchFun(post){
     .catch(error => console.log('error', error));
 }
 function createCommentsFun(comments){
-    comments.forEach((comment)=>{
+    // if (buttonDiv.child){
+    //     buttonDiv.removeChild(child)
+    // }
+    let commentsContainer = document.createElement("div")
+    commentsContainer.innerHTML = `
+    <div id="modal-comments-a" class="modal-body">
+    </div>`
+    buttonDiv = document.querySelector(".modal-body")
+    buttonDiv.appendChild(commentsContainer)
 
-        <div id="modal-comments-a" class="modal-body">
-        </div>
+    comments.forEach((comment)=>{
 
         let commentDiv = document.createElement("div")
         commentDiv.innerHTML = comment.name
-        buttonDiv = document.querySelector("#modal-comments-a")
-        buttonDiv.appendChild(commentDiv)
+        commentsContainer.appendChild(commentDiv)
     })
 }
