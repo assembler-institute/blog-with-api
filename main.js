@@ -86,10 +86,8 @@ function getPostContent(urlPosts){
                 titlePost.innerHTML=value.title;
                 bodyPost.innerHTML=value.body;
                 imgPost.appendChild(imgElement);
-                
             })
         }
-        
     });
 }
 
@@ -103,5 +101,39 @@ $(document).ready(function(){
         var bodyPost=document.getElementById("bodyPost"+positionDiv);
         modalTitle.innerHTML=titlePost.innerHTML;
         modalBody.innerHTML=bodyPost.innerHTML;
+        getComments(positionDiv);
     });
 });
+/**getcoments falta boot in html */
+/*name id body postid*/ 
+function getComments(positionDiv) {
+
+    var comentsvalue = {
+        "url": "https://jsonplaceholder.typicode.com/posts/" + positionDiv + "/comments/",
+        "method": "GET",
+        "timeout": 0,
+        
+    };
+    $.ajax(comentsvalue).done(function (response) {
+        $('.collapse').empty();
+        response.forEach(function (data) {
+            $('.collapse').append('<div class="card card-body p-5"><p class="data-name">' + data.name + '</p><p class="data-body p-4 bg-light rounded">' + data.body + '<p><p class="data-email">' + data.email + '<img src="img/user.png"  width="20" height="20"></p></div>');
+        });
+    });
+};
+/*ver el ajax no ejecuta posid*/
+/*$(".modal-content").ready(function(){
+    console.log(postId);
+    $(".btn btn-light").on("click","button",getComments(postId));
+    
+});*/
+
+var collapseElementList = [].slice.call(document.querySelectorAll('.collapse'))
+var collapseList = collapseElementList.map(function (collapseEl) {
+  return new bootstrap.Collapse(collapseEl)
+})
+
+var myCollapse = document.getElementById('buttonComment')
+var bsCollapse = new bootstrap.Collapse(myCollapse, {
+  toggle: false
+})
