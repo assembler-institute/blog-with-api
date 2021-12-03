@@ -1,3 +1,5 @@
+//import { printImage } from "./photos"
+
 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
@@ -9,7 +11,6 @@ var numId=1
 window.onload= getPosts()
 
 
-
 function  getPosts(){
  fetch("https://jsonplaceholder.typicode.com/posts?userId="+numId)
   .then(response => response.json())
@@ -18,7 +19,6 @@ function  getPosts(){
       arrayPosts.push(element)
       $(".titlePost").eq(i).text(element.title);
     })
-    
     $(".titlePost").on("click",infoModal);
     $(".titlePost").attr("data-bs-toggle", "modal")
     $(".titlePost").attr("href", "#exampleModalToggle")
