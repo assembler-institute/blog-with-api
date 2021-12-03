@@ -115,14 +115,17 @@
     height: 50%;
 }
 
+
 .container>.row{
     height: 38vh;
 }
 .divPost{
-    background-color: var(--details-blue);
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 5px;
 }
 
 
@@ -135,7 +138,7 @@
 }
 
 .titlePost{
-    font-size: 18px;
+    font-size: 1em;
 }
 
 .comment{
