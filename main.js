@@ -100,10 +100,8 @@ $(document).ready(function(){
         var modalTitle=document.getElementById("exampleModalLabel");
         var titlePost=document.getElementById("titlePost"+positionDiv);
         var bodyPost=document.getElementById("bodyPost"+positionDiv);
-
         modalTitle.innerHTML=titlePost.innerHTML;
         modalBody.innerHTML=bodyPost.innerHTML;
-
     });
     $("#btn-edit").on("click",function(e){
         var modalBody=document.querySelector(".modal-body");
