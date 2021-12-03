@@ -19,7 +19,7 @@ async function createListPosts(obj){
     //Variable declaration
     var userbyid= await getOneItem(`http://localhost:3000/users/${obj.userId}`)
     var containerDiv = $("<div></div>")
-    var headerDiv = $(`<div><img class="imguser" src=${userbyid.avatar}>${userbyid.username}</div>`)
+    var headerDiv = $(`<div><img class="imguser" src=${userbyid.avatar}>${userbyid.username}<i class="fas fa-times"></i></div>`)
     var bodyDiv = $(`<div></div>`)
     var titleDiv = $(`<h5>${obj.title}</h5>`)
     var pDiv = $(`<p>${obj.body}</p>`)

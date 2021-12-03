@@ -15,6 +15,27 @@ body{
     color: var(--colorletra) !important;
     background-color:var(--negroinput) !important;
 }
+.poner-post{
+    text-align: center;
+    margin: 2% auto;
+    max-width: 80%;
+    padding: 0.5% 1%;
+    background-color: var(--negropost);
+    border: 1px solid var(--colorletra);
+    border-radius: 5px;
+}
+input,textarea{
+    background-color: var(--negroinput)!important;
+    color: var(--colorletra)!important;
+}
+/* .cabezeraPonerPost{
+    background-color: var(--negroinput);
+    
+} */
+.cuerpoPonerPost{
+    background-color: var(--negropost);
+    
+}
 .postblog{
     width: 80%;
     margin: 2% auto ;
@@ -22,6 +43,14 @@ body{
 }
 .hedermodal{
     background-color: var(--negroinput) !important;
+}
+.avatarTitulo{
+    display: flex;
+    align-items: center;
+}
+.avatarTitulo>img{
+    margin-right: 5%;
+    margin: 0px 2%;
 }
 .bodymodal{
     background-color: var(--negropost) !important;
@@ -63,17 +92,19 @@ body{
 .imguser{
     max-width: 40px;
     max-height: 40px;
-    margin-right:5%;
+    /* margin-right:5%; */
 }
 .imguserbig{
     max-width: 50px;
     max-height: 70px;
-    margin: 0% 5%;
+    margin: 0% 5% ;
     margin-right:15%;
 }
 .headerpost{
     text-align: left;
     padding-left:2%;
+    display: flex;
+    justify-content: space-between;
 }
 .modalUser{
     display: flex;
