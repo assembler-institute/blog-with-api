@@ -68,6 +68,6 @@ async function fetchPosts(id){
 }
 
 var mainRow = document.getElementsByClassName("mainRow")
-for (let i = 0; i < mainRow.length -1 ; i++) {
+for (let i = 0; i < mainRow.length ; i++) {
     mainRow[i].addEventListener("click", openModal)
 }

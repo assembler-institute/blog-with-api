@@ -42,11 +42,13 @@ class Modal{
             .then(function (comments) {
                 comments.forEach(comment => {
                     //Load comments
-                    $(".btn-dark").on("click", function(){ 
-                        posts.then(function(){
-                            $(".modal-footer").children().first().append($("<h5></h5>").text(comment.name));
-                            $(".modal-footer").children().first().append($("<p></p>").text(comment.body));
-                        });
+                    $(".btn-dark").on("click", function(){
+                            if($(".modal-footer").children().first().children().length <= 1){
+                            posts.then(function(){
+                                $(".modal-footer").children().first().append($("<h5></h5>").text(comment.name));
+                                $(".modal-footer").children().first().append($("<p></p>").text(comment.body));
+                            });
+                        }
                     });
                 });
             })
