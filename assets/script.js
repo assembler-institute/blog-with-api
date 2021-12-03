@@ -1,84 +1,76 @@
-
-window.onload = init()
+window.onload = init();
+var start;
+var totalPost=0;
 function init(){
-    var start = 0;
-    postsFetchFun()
+    start= 0;
+    postsFetchFun(start);
 }
-const buttonNext = document.getElementsByClassName("carousel-control-next")
-const buttonPrev = document.getElementsByClassName("carousel-control-prev")
+const buttonNext = document.getElementById("carousel-control-next-a")
+const buttonPrev = document.getElementById("carousel-control-prev-a")
 buttonNext.addEventListener("click", nextPost)
 buttonPrev.addEventListener("click", prevPost)
-
 function nextPost(){
     start += 6
     postsFetchFun(start)
-
 }
 function prevPost(){
     start -= 6
     postsFetchFun(start)
-    
 }
 function postsFetchFun(start){
     var requestOptions = {
         method: 'GET',
         redirect: 'follow'
     };
-    
     var limit = 6;
+    if(start < 0){
+        start = totalPost -6
+    }
+    if (start > totalPost){
+        start= 0
+    }
     var urlPosts = "http://localhost:3000/posts?_start=" + start + "&_limit=" + limit + ""
     fetch(urlPosts, requestOptions)
-        .then(response => response.text())
+        .then(response =>{
+            totalPost = response.headers.get('X-Total-Count')
+            return response.text()
+        })
         .then(result => {let data = JSON.parse(result)
             console.log(data)
             updatePostsList(data)
         })
         .catch(error => console.log('error', error));
-
 }
 function updatePostsList(data){
+    let parent = document.getElementById("container-card-a")
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild)
+    }
     data.forEach(post => {
         let div1 = document.createElement("div")
         div1.innerHTML =  `<div class="card h-100">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          </div>
-        </div>`
+                            <div class="card-body">
+                            <h5 class="card-title">` + post.title + `</h5>
+                            <p class="card-text">` + post.body + `</p>
+                            </div>
+                            </div>`
         div1.setAttribute("class", "col")
         div1.setAttribute("id","User-container-"+post.id)
-        document.getElementById("container-card").appendChild(div1)
-        div1.addEventListener("click",function (){
-            console.log(post)
-            findUserFetchFun(post)
+        div1.setAttribute("data-bs-toggle","modal")
+        div1.setAttribute("data-bs-target","#staticBackdrop")
+        parent.appendChild(div1)
+        //div1.addEventListener("click",function (){
+            //console.log(post)
+            //findUserFetchFun(post)
             //findCommentsFetchFun(post)
+        //})
+        div1.addEventListener("click",function (){
+            myModal= document.getElementById("staticBackdropLabel")
+            console.log(myModal)
+            findUserFetchFun(post)
+            findCommentsFetchFun(post)
         })
     });
-}
-function findCommentsFetchFun(post){
-    var requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-    };
-    var urlFetch = "http://localhost:3000/comments?postId="+post.id
-
-    fetch( urlFetch, requestOptions)
-    .then(response => response.text())
-    .then(result => {let comments = JSON.parse(result)
-        console.log(comments)
-        createCommentsFun(comments)
-    })
-    .catch(error => console.log('error', error));
-
-}
-function createCommentsFun(comments){
-    comments.forEach((comment)=>{
-        let commentDiv = document.createElement("div")
-        commentDiv.textContent = comment.name
-        buttonDiv = document.querySelector(".buttons-container")
-        buttonDiv.appendChild(commentDiv)
-    })
 }
 function findUserFetchFun(post){
     var requestOptions = {
@@ -86,71 +78,52 @@ function findUserFetchFun(post){
         redirect: 'follow'
     };
     var urlFetch = "http://localhost:3000/users/"+post.userId
-
     fetch( urlFetch, requestOptions)
     .then(response => response.text())
     .then(result => {let data = JSON.parse(result)
         console.log(data)
-        createModal(post, data)
+        //createModal(post, data)
+        modalContent(post, data)
     })
     .catch(error => console.log('error', error));
-
 }
-function createModal(post, data){
-    let bigDiv = document.createElement("div")
-    bigDiv.classList.add("modalTransparent")
-    bigDiv.setAttribute("id","modal")
-    $("body").append(bigDiv)
-
-    let smallDiv = document.createElement("div")
-    smallDiv.classList.add("modalSmall")
-    bigDiv.appendChild(smallDiv)
-
-    let titleDiv = document.createElement("div")
-    titleDiv.classList.add("title-container")
-    titleDiv.textContent = "Text title: "+ post.title + data.email;
-    smallDiv.appendChild(titleDiv)
+function modalContent(post, data){
+    document.getElementById("staticBackdropLabel").textContent= post.title
+    document.getElementById("staticBackdropLabel").textContent +=" "+ data.name
+    document.getElementById("staticBackdropLabel").textContent +=" "+ data.email
+    document.getElementById("modal-content").textContent= post.body
 
 
-
-    // let jQueryDiv = document.createElement("div")
-    // jQueryDiv.classList.add("jQuery-container")
-    // smallDiv.appendChild(jQueryDiv)
-
-    // let jScriptDiv = document.createElement("div")
-    // jScriptDiv.classList.add("javaScript-container")
-    // smallDiv.appendChild(jScriptDiv)
-
-    let buttonsDiv = document.createElement("div")
-    buttonsDiv.classList.add("buttons-container")
-    smallDiv.appendChild(buttonsDiv)
-
-    let button1 = document.createElement("button")
-    button1.classList.add("buttons-modal")
-    button1.setAttribute("id","show-solution-button")
-    button1.textContent = "Show Solution"
-    buttonsDiv.appendChild(button1)
-
+    button1 = document.getElementById("comments-button")
+    console.log(button1)
     button1.addEventListener("click", function (){
         console.log(post)
         findCommentsFetchFun (post)
     })
-
-    // let button2 = document.createElement("button")
-    // button2.classList.add("buttons-modal")
-    // button2.setAttribute("id","solution-button")
-    // button2.textContent = "Validate"
-    // buttonsDiv.appendChild(button2)
-
-    removeModal(bigDiv)
-
 }
-function removeModal(child){
-    let bigDivClose = document.getElementById("modal")
-    bigDivClose.addEventListener("click",(e)=>{
-        if(e.target.matches(".modalTransparent")){
-            document.body.removeChild(child)
-            bigDivClose.removeEventListener;
-        }
+function findCommentsFetchFun(post){
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+    };
+    var urlFetch = "http://localhost:3000/comments?postId="+post.id
+    fetch( urlFetch, requestOptions)
+    .then(response => response.text())
+    .then(result => {let comments = JSON.parse(result)
+        console.log(comments)
+        createCommentsFun(comments)
+    })
+    .catch(error => console.log('error', error));
+}
+function createCommentsFun(comments){
+    comments.forEach((comment)=>{
+
+        <div id="modal-comments-a" class="modal-body">
+        </div>
+
+        let commentDiv = document.createElement("div")
+        commentDiv.innerHTML = comment.name
+        buttonDiv = document.querySelector("#modal-comments-a")
+        buttonDiv.appendChild(commentDiv)
     })
 }
