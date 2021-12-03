@@ -282,3 +282,40 @@ section .container>* {
     text-decoration: none;
     cursor: pointer;
 }
+
+/* Accordion styles */
+
+.accordion i{
+    float: right;
+    margin-left: 5px;
+    font-size: 18px
+}
+
+.accordion {
+    border: 2px solid rgb(61, 60, 60);
+    margin-bottom: 1px;
+    border-radius: 3px;
+}
+
+.panel button{
+    margin: 0 10px 10px 0;
+    border-radius: 5px;
+    background-color: #007bff;
+    padding-right: 9px;
+    padding-left: 9px;
+}
+
+.titleComment p{
+    font-weight: lighter;
+    border-top: 1px solid black;
+}
+
+.titleComment{
+    font-weight: bold;
+}
+
+/* Main Page */
+
+.p-4{
+    margin-top: 10px;
+}

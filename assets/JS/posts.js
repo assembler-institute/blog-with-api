@@ -69,15 +69,15 @@ setTimeout(() => {
 
 function getComments(id) {
     console.log(id);
-    if (document.querySelector('.containerComments')) {
-        document.querySelector('.containerComments').remove()
+    if (document.querySelector('.containerComments' + id)) {
+        document.querySelector('.containerComments' + id).remove()
     } else {
         fetch("https://jsonplaceholder.typicode.com/posts/" + id + "/comments", requestOptions)
             .then(response => response.json())
             .then(result => {
                 let father = document.querySelector('.comment' + id);
                 let container = document.createElement('div')
-                container.classList.add('containerComments');
+                container.classList.add('containerComments' + id);
                 father.appendChild(container)
                 result.forEach(element => {
                     let title = document.createElement('div')
@@ -156,7 +156,7 @@ function submitForm(id) {
             console.log(result);
             let father = document.querySelector('.comment' + id);
             let container = document.createElement('div')
-            container.classList.add('containerComments');
+            container.classList.add('containerComments' + id);
             father.appendChild(container)
             let title = document.createElement('div')
             title.classList.add('titleComment')
