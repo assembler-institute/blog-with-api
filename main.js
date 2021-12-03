@@ -106,46 +106,55 @@ $(document).ready(function(){
     });
     $("#btn-edit").on("click",function(e){
         var modalBody=document.querySelector(".modal-body");
-        var modalTitle=document.getElementById("exampleModalLabel");
+        var modalTitle=document.querySelector(".modal-title");
+        let titlePost=document.getElementById("titlePost"+(positionDiv));
+        let bodyPost=document.getElementById("bodyPost"+(positionDiv));
+
         var buttonAcceptEdit=document.createElement("button");
         buttonAcceptEdit.setAttribute("id","changeContent")
+        buttonAcceptEdit.innerHTML="Accept";
+        var comment=document.getElementById("buttonComment");
 
         var modalBodyEdit=document.createElement("input");
         var modalTitleEdit=document.createElement("input");
-
         modalBodyEdit.setAttribute("type","textarea");
         modalTitleEdit.setAttribute("type","text");
-        modalBodyEdit.setAttribute("style","width:100%; height:200px;overflow:scroll;line-height: 18px;");
-
+        //modalBodyEdit.setAttribute("style","width:100%; height:200px;overflow:scroll;line-height: 18px;");
+        comment.append(buttonAcceptEdit);
         modalBodyEdit.value=modalBody.innerHTML;
         modalTitleEdit.value=modalTitle.innerHTML;
-
         modalTitle.innerHTM="";
         modalBody.innerHTML="";
 
         modalBody.append(modalBodyEdit);
         modalTitle.append(modalTitleEdit);
 
-        
-        $("changeContent").on("click",function(e){
-            // al pulsar el boton de editar, guardarlo  en ajax y sobreescribir los camios en bodyPost y titlePost
-            /* $.ajax({
-            url: urlPosts,
-            method:"PATCH",
-            id:positionDiv,
-            body:modalBody.innerHTML,
-            title:modalTitle.innerHTML,
-            success:function(response){
-               
+
+        $("#changeContent").on("click",function(e){
+            // al pulsar el boton de editar, guardarlo  en ajax y sobreescribir los cambios en bodyPost y titlePost
+        fetch('https://jsonplaceholder.typicode.com/posts/'+positionDiv, {
+            method: 'PUT',
+            body: JSON.stringify({
+                id:positionDiv,
+                title: modalTitleEdit.value,
+                body: modalBodyEdit.value,
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+            })
+            .then((response) => response.json())
+            .then((json) => {console.log(json);
+            modalTitle.innerHTML=json.title;
+            modalBody.innerHTML=json.body;
+            titlePost.innerHTML=json.title;
+            bodyPost.innerHTML=json.body;
             }
-        });*/
-        });
-        //console.log(positionDiv);
-        //console.log(modalTitle.innerHTML);
-       // console.log(modalBody.innerHTML);
+            );
        
     });
     
+});
 });
 /**getcoments falta boot in html */
 /*name id body postid*/ 
@@ -179,4 +188,4 @@ var collapseList = collapseElementList.map(function (collapseEl) {
 var myCollapse = document.getElementById('buttonComment')
 var bsCollapse = new bootstrap.Collapse(myCollapse, {
   toggle: false
-})
+});
