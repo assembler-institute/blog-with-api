@@ -3,75 +3,64 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 })
 
-let arrayPosts=[];
-let arrayComments=[];
-let arrayUsers=[];
+var numId=1
 
 //Get Tittles
 //data[0].title
-window.onload= printTitle()&getUsers()&getComments()
+window.onload= getPosts()
 
 
-async function printTitle(){
-    arrayPosts = await getPosts();
-    for(var i in arrayPosts)
-    {
-        $(".titlePost").eq(i).text(arrayPosts[i].title);
-        $(".titlePost").eq(i).on("click",infoModal);
-    }
-    $(".titlePost").attr("data-bs-toggle", "modal")
-    $(".titlePost").attr("href", "#exampleModalToggle")
-}
 
-async function  getPosts(){
-  await fetch('../data/posts.json')
+function  getPosts(){
+ fetch("https://jsonplaceholder.typicode.com/posts?userId="+numId)
   .then(response => response.json())
   .then(data => {
-    data.forEach(function (element){
-      arrayPosts.push(element);
+    data.forEach(function (element,i){
+      
+      $(".titlePost").eq(i).text(element.title);
     })
+    
+    $(".titlePost").on("click",infoModal);
+    $(".titlePost").attr("data-bs-toggle", "modal")
+    $(".titlePost").attr("href", "#exampleModalToggle")
   })
-  return arrayPosts;
 }
 
-async function getUsers(){
-  await fetch("../data/users.json")
-    .then(response=>response.json())
-    .then(data=>{
-      data.forEach(function(element){
-        arrayUsers.push(element)
-      })
-    })
-    return arrayUsers;
-}
-
-async function getComments(){
-  await fetch("../data/comments.json")
-  .then(response=>response.json())
-  .then(data =>{
-    data.forEach(function(element){
-      arrayComments.push(element);
-    })
-  })
-  return arrayComments;
-}
-
-function infoModal(e){
+async function infoModal(e){
     var target=e.target.textContent
     var user;
+    var comments;
     //GET POST
-    target=arrayPosts.find(element=>element.title==target)
-    console.log(target);
-    //GET USER
-    user=arrayUsers.find(element=>element.id==target.userId)
-    console.log(user);
+    await fetch("https://jsonplaceholder.typicode.com/posts?title="+target)
+    .then(response=>response.json())
+    .then(data=>{
+      return target=data[0]
+    })
+     //GET USER
+    await fetch("https://jsonplaceholder.typicode.com/users?id="+target.userId)
+    .then(response=>response.json())
+    .then(data=>{
+      return user=data[0]
+    })
+    //GET COMMENTS
+    await fetch("https://jsonplaceholder.typicode.com/comments?postId="+target.id)
+  .then(response=>response.json())
+  .then(data=>{
+    console.log(data.length);
+    return comments=data.length;
+  })
+    //DISPLAY INFO
     $("#modalPost-title").text(target.title);
     $("#username").text(user.username);
     $("#email").text(user.email);
     $("#description").text(target.body);
+    $("#comments").text(comments+" Comments")
     $(".loadComments").eq(0).on("click",loadComments);
 }
 
 function loadComments(){
 
+}
+async function getComments(num=1){
+  
 }
