@@ -93,8 +93,9 @@ function getPostContent(urlPosts){
 
 /*click button, insert in modal title and body content*/
 $(document).ready(function(){
+    var positionDiv;
     $(".col-md-6 div .col").on("click","button",function(e){
-        var positionDiv=e.currentTarget.getAttribute("data-btn-id");
+        positionDiv=e.currentTarget.getAttribute("data-btn-id");
         var modalBody=document.querySelector(".modal-body");
         var modalTitle=document.getElementById("exampleModalLabel");
         var titlePost=document.getElementById("titlePost"+positionDiv);
@@ -103,6 +104,48 @@ $(document).ready(function(){
         modalBody.innerHTML=bodyPost.innerHTML;
         getComments(positionDiv);
     });
+    $("#btn-edit").on("click",function(e){
+        var modalBody=document.querySelector(".modal-body");
+        var modalTitle=document.getElementById("exampleModalLabel");
+        var buttonAcceptEdit=document.createElement("button");
+        buttonAcceptEdit.setAttribute("id","changeContent")
+
+        var modalBodyEdit=document.createElement("input");
+        var modalTitleEdit=document.createElement("input");
+
+        modalBodyEdit.setAttribute("type","textarea");
+        modalTitleEdit.setAttribute("type","text");
+        modalBodyEdit.setAttribute("style","width:100%; height:200px;overflow:scroll;line-height: 18px;");
+
+        modalBodyEdit.value=modalBody.innerHTML;
+        modalTitleEdit.value=modalTitle.innerHTML;
+
+        modalTitle.innerHTM="";
+        modalBody.innerHTML="";
+
+        modalBody.append(modalBodyEdit);
+        modalTitle.append(modalTitleEdit);
+
+        
+        $("changeContent").on("click",function(e){
+            // al pulsar el boton de editar, guardarlo  en ajax y sobreescribir los camios en bodyPost y titlePost
+            /* $.ajax({
+            url: urlPosts,
+            method:"PATCH",
+            id:positionDiv,
+            body:modalBody.innerHTML,
+            title:modalTitle.innerHTML,
+            success:function(response){
+               
+            }
+        });*/
+        });
+        //console.log(positionDiv);
+        //console.log(modalTitle.innerHTML);
+       // console.log(modalBody.innerHTML);
+       
+    });
+    
 });
 /**getcoments falta boot in html */
 /*name id body postid*/ 
