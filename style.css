@@ -1,0 +1,21 @@
+*{
+    text-align: center;
+}
+.height100{
+    height: 100px;
+}
+.padding50{
+    padding: 50px;
+}
+
+.marginbottom20{
+    margin-bottom: 20px;
+}
+.containerGeneral{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 32% 32% 32%;
+    padding: 2em;
+    margin: auto;
+   
+}
