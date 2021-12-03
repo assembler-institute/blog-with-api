@@ -1,7 +1,7 @@
 function createModal() {
     let templateHTML = `
     <div class="modal-dialog modal-fullscreen">
-        <div class="modal-content">
+        <div class="modal-content  modalpost">
         <div class="cabezeramodal">
             <div id= "modalUser" class="modalUser"></div>
             <h4 id = "modal-title" class="modal-title"></h4>
