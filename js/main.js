@@ -18,7 +18,14 @@ function Activatepagination(){
 }
 
 function changePage(e){
-  console.log(e.target.textContent);
+  //Check if numId is higher or lower than 10-1, comeback to 1
+  if(numId>10 || numId<1){
+    numId=1;
+    //remove previous button disabled
+  }else if(numId>1){
+    $(".page-item").eq(0).removeClass("disabled")
+    $(".page-item").eq(0).css("cursor","pointer")
+  }
   if(e.target.textContent=="Previous"){
     numId--;
     getPosts()
@@ -29,10 +36,11 @@ function changePage(e){
     numId=e.target.textContent;
     getPosts();
   }
-  
+  $(".page-item").removeClass("active");
+  $(".page-item").eq(numId).addClass("active")
 }
 function  getPosts(){
- fetch("https://jsonplaceholder.typicode.com/posts?userId="+numId)
+ fetch("http://localhost:3000/posts?userId="+numId)
   .then(response => response.json())
   .then(data => {
     data.forEach(function (element,i){
@@ -45,26 +53,35 @@ function  getPosts(){
   })
 }
 
-async function infoModal(e){
+async function infoModal(e,nextPrev){
     resetModal();
-    var test=$(e.target).parent().parent().css("background-image").replace(/^url\(['"](.+)['"]\)/, '$1');
-    var target=e.target.textContent
+    var target;
+    var test;
+    if(e!=undefined){
+      test=$(e.target).parent().parent().css("background-image").replace(/^url\(['"](.+)['"]\)/, '$1');
+      target=e.target.textContent
+    }else{
+      console.log(nextPrev.textContent);
+      target=nextPrev.textContent
+      console.log(target);
+      test=$(nextPrev).parent().parent().css("background-image").replace(/^url\(['"](.+)['"]\)/, '$1');
+    }
+    
     var user;
     var comments;
+    
     //GET POST
     target=arrayPosts.find(element=>element.title==target)
-    // await fetch("https://jsonplaceholder.typicode.com/posts?title="+target)
-    // .then(response=>response.json())
-    // .then(data=>{
-    //   return target=data[0]
-    // })
      //GET USER
-    await fetch("https://jsonplaceholder.typicode.com/users?id="+target.userId)
+    await fetch("http://localhost:3000/users?id="+target.userId)
     .then(response=>response.json())
     .then(data=>{
       return user=data[0]
     })
     //GET COMMENTS
+
+    //NEXT POST AND PREV LISTENERS
+    $(".fa-arrow-right,.fa-arrow-left").on("click",previousPost)
     //DISPLAY INFO
     $("#photoTitle").attr("src",test)
 
@@ -78,8 +95,18 @@ async function infoModal(e){
     });
 }
 
+function previousPost(){
+  var numRandom=Math.floor(Math.random()*10);
+  var randomPost=($(".divPostDetail").eq(numRandom).children(".titlePost")[0])
+  infoModal(undefined,randomPost)
+  $(".fa-arrow-right,.fa-arrow-left").off("click",previousPost)
+}
+function nextPost(){
+
+}
+
 async function loadComments(id){
-  await fetch("https://jsonplaceholder.typicode.com/comments?postId="+id)
+  await fetch("http://localhost:3000/comments?postId="+id)
   .then(response=>response.json())
   .then(data=>{
     

@@ -88,6 +88,9 @@
     color:var(--secondary-color);
 }
 
+.fa-arrow-right, .fa-arrow-left{
+    cursor:pointer;
+}
 
 #description{
     margin-top: 20px;
