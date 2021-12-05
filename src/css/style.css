@@ -52,6 +52,7 @@ input,textarea{
     margin-right: 5%;
     margin: 0px 2%;
 }
+
 .bodymodal{
     background-color: var(--negropost) !important;
 }
@@ -69,7 +70,7 @@ input,textarea{
     padding: 0.5%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     border-bottom: 1px solid #dee2e6;
 }
 .modalpost{
