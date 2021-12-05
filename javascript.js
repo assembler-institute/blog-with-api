@@ -1,8 +1,7 @@
+//! Variables, const
 var ones = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
 var tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
 var teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
-
-//! Variables donde pondre cada una de los if
 var first= document.createElement("div")
 first.setAttribute("id", "contentFull")
 var second= document.createElement("div")
@@ -32,8 +31,9 @@ const information= {
     name:"",
     email:"",
 }
-// var probando
-function pr(){
+//! Functions
+// 
+function callDataFetch(){
 fetch("http://localhost:3000/posts")
 .then((request)=>{
 return request.json()
@@ -67,7 +67,7 @@ return request.json()
     });
 })
 }
-
+// to call again the btn
 function btncall(){
   fetch("http://localhost:3000/posts")
   .then((request)=>{
@@ -100,9 +100,12 @@ function btncall(){
       });
   })
   }
+
+// Modal call
 function llamada(){
     $("#myModal").modal('show'); 
 }
+
 function beginmodal(){
     content=` <div id="myModal" class="modal fade" tabindex="-1">
     <div class="modal-dialog">
@@ -132,9 +135,6 @@ function beginmodal(){
     document.getElementById("email").innerHTML= information.email
     document.getElementById("userName").innerHTML= information.name
     document.getElementById("bodyFetch").innerHTML=information.body
-    // document.getElementById("comentClick").addEventListener("click", ()=>{
-       
-    // })
 }
 
 function fetchUsersInfo(idposts){
@@ -158,7 +158,7 @@ function comments (postId){
     return request.json()
     })
     .then((response)=>{
-       var postComment= response.filter((element)=>{
+      var postComment= response.filter((element)=>{
         //    console.log(element)
             if(element.postId == postId)
             return element
@@ -181,13 +181,7 @@ function comments (postId){
             divCommentBody.innerHTML= body
             // console.log(divComment)
             document.getElementById("comments").appendChild(divCommentBody)
-
-
         })
-    //    information.commentName= postComment[0].name
-    //     information.commentBody= postComment[0].body
-    //     information.commentEmail= postComment[0].email 
-        // console.log(postComment)
     })
     }
 
@@ -208,15 +202,6 @@ function loadPage(title,id, body, idbutton){
         <button type="button" class=" prueba btn btn-info" id="${idbutton}">More</button>
         </div>
       </div>`
-    //   document.getElementById("${Fullid}").addEventListener("click", ()=>{
-    //       console.log("aknmsd faksmdf")
-    //   })
-    // $(".prueba").on("click", ()=>{
-    //     console.log("akjsdnaskj")
-    // })
-    // document.getElementById(${Fullid}).addEventListener
-    // document.getElementById("contentFull").innerHTML= contentFUll
-
 }
 
 function convert_tens_hundreds(num) {
@@ -228,16 +213,9 @@ function convert_tens_hundreds(num) {
     }
   }
 
-  // var tt= document.getElementById("contentFull").children
-  // setTimeout(() => {
-  //     console.log(tt.length)
-      
-  // }, 1000);
-// console.log(document.getElementById("contentFull").children)
-
 
 function chargeInf(data){
-  pr()
+  callDataFetch()
   document.getElementById("dataContent").appendChild(data)
   btncall()
 }
@@ -260,6 +238,9 @@ function buttons(){
   <button type="button" class="btn btn-outline-info" onclick="changeData(ten)">10</button>`
   document.getElementById("centerbtn").innerHTML = contentbtnfunc
 }
+
+
+
 window.onload = function(){
   // All code comes here 
   chargeInf(first)
