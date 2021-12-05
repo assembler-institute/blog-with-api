@@ -74,3 +74,18 @@ function createCommentsByPost(obj){
         containerComments.append(headerComments, bodyComments)
     }
 }
+
+// async function searchByTitlePosts(e) {
+//     e.preventDefault();
+//     const titlePost = document.getElementById("titleSearchPosts").value;
+//     const response = await getAllItems(`http://localhost:3000/posts?title=${titlePost}`);
+//     clearListsPosts();
+//     showAllPost(response);
+// }
+
+// function clearListsPosts() {
+//     const postsHTML = document.getElementsByClassName("postblog");
+//     for (const postHTML of postsHTML) {
+//         postHTML.remove();
+//     }
+// }

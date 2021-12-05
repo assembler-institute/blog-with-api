@@ -35,6 +35,7 @@ async function dataModal(e) {
 }
 
 async function openModal(){
+    document.getElementsByTagName("body")[0].style.overflowY = "hidden";
     locModal = document.getElementById('myModal')
     locModal.style.display = "block";
     locModal.style.paddingRight = "17px";
@@ -43,6 +44,7 @@ async function openModal(){
 }
 
 function closeModal() {
+    document.getElementsByTagName("body")[0].style.overflowY = "auto";
     locModal.className="modal fade";
     locModal.style.display = "none";
     while(locModal.firstChild) {
