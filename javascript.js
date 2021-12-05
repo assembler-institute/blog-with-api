@@ -42,21 +42,11 @@ return request.json()
     info.forEach(element => {
         const { title, body, id} = element
         const numtoletters= convert_tens_hundreds(id)
-        // const creatButton=document.createElement("button")
-        // creatButton.setAttribute("class", `btn btn-primary btn-lg`)
-        // creatButton.setAttribute("id", id)
-        // creatButton.setAttribute("value", "click")
-        // creatButton.innerHTML="Show Info"
-        // creatButton.addEventListener("click", ()=>{
-        //     console.log("kjasndkjasn")
-        // })
         loadPage(title, numtoletters, body, id)
         if(id <= 10){
           first.innerHTML += contentFUll
-          // document.getElementById("contentFull").innerHTML += contentFUll
         }else if(id > 10 && id <= 20){
           second.innerHTML += contentFUll
-          // console.log(second)
         } else if(id > 20 && id <=30){
         third.innerHTML += contentFUll
         }else if(id >30 && id <= 40){
@@ -74,45 +64,43 @@ return request.json()
         }else if(id >90 && id <=100){
           ten.innerHTML+= contentFUll
         }
-        // document.getElementById(numtoletters).appendChild(creatButton)
-        // p= document.querySelector(".prueba")
-        // p.addEventListener("click", ()=>{
-        //     console.log("kajsndkjns")
-        // })
-        // $(`#${id}`).on("click", ()=>{
-        //   console.log("toco el id")
-        // })
-        // setInterval(() => {
-          
-        // }, 00);
-        setTimeout(() => {
-          $(`#${id}`).on("click", ()=>{
-            console.log($(`#${id}`)[0].id)
-            infoPosts= info.filter(post=> {if(post.id == $(`#${id}`)[0].id) {
-                        return post}})
-            // console.log($(ostia))
-                    information.title= infoPosts[0].title
-                    information.id= infoPosts[0].id
-                    information.userId= infoPosts[0].userId
-                    information.body=infoPosts[0].body
-                    fetchUsersInfo(information.userId)
-                    comments(information.userId)
-                    // $("#myModal").modal('show');
-                    setTimeout(() => {
-                        llamada()
-                    }, 400);
-            console.log(infoPosts)
-          })
-          // console.log(document.querySelector(`.${id}`))
-          // $(`.${id}`).on("click", ()=>{
-          //   console.log("entro?")
-          // })
-        }, 00);
     });
 })
 }
+
+function btncall(){
+  fetch("http://localhost:3000/posts")
+  .then((request)=>{
+  return request.json()
+  })
+  .then((info)=>{
+      info.forEach(element => {
+          const { title, body, id} = element
+          const numtoletters= convert_tens_hundreds(id)
+          loadPage(title, numtoletters, body, id)
+          setTimeout(() => {
+            $(`#${id}`).on("click", ()=>{
+              console.log($(`#${id}`)[0].id)
+              infoPosts= info.filter(post=> {if(post.id == $(`#${id}`)[0].id) {
+                          return post}})
+              // console.log($(ostia))
+                      information.title= infoPosts[0].title
+                      information.id= infoPosts[0].id
+                      information.userId= infoPosts[0].userId
+                      information.body=infoPosts[0].body
+                      fetchUsersInfo(information.userId)
+                      comments(information.userId)
+                      // $("#myModal").modal('show');
+                      setTimeout(() => {
+                          llamada()
+                      }, 400);
+              console.log(infoPosts)
+            })
+          }, 00);
+      });
+  })
+  }
 function llamada(){
-    // beginmodal()
     $("#myModal").modal('show'); 
 }
 function beginmodal(){
@@ -251,29 +239,14 @@ function convert_tens_hundreds(num) {
 function chargeInf(data){
   pr()
   document.getElementById("dataContent").appendChild(data)
+  btncall()
 }
 
 function changeData(other){
-  // return false
-  other.innerHTML=""
   $("#contentFull").remove()
-  chargeInf(other)
+  document.getElementById("dataContent").appendChild(other)
+  btncall()
 }
-// document.getElementById("secondbtn").addEventListener("click", ()=>{
-//   second.innerHTML=""
-//   $("#contentFull").remove()
-//   chargeInf(second)
-// })
-// document.getElementById("thirdbtn").addEventListener("click", ()=>{
-//   third.innerHTML=""
-//   $("#contentFull").remove()
-//   chargeInf(third)
-// })
-// document.getElementById("onebtn").addEventListener("click", ()=>{
-//   first.innerHTML=""
-//   $("#contentFull").remove()
-//   chargeInf(first)
-// })
 function buttons(){
   contentbtnfunc= `<button type="button" class="btn btn-outline-info" onclick="changeData(first)">1</button>
   <button type="button" class="btn btn-outline-info" onclick="changeData(second)" >2</button>
