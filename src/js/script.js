@@ -53,8 +53,8 @@ async function createListPosts(obj){
     redyBlog.append(containerDiv)
     containerDiv.append(headerDiv,bodyDiv)
     bodyDiv.append(titleDiv,pDiv)
-    containerDiv.on('click', () => {
-        createModal()
+    containerDiv.on('click', async () => {
+        await createModal()
         dataModal(containerDiv)
         openModal()
     });
@@ -69,8 +69,45 @@ function createCommentsByPost(obj){
         headerComments.addClass("card-header hedermodal")
         bodyComments.addClass("card-body bodymodal")
         containerComments.addClass("container-comments comments")
-        
+
         $("#comments").append(containerComments)
         containerComments.append(headerComments, bodyComments)
     }
+}
+
+function editPost(id){
+    let modalHeader = document.getElementById("modal-header")
+    let modalContent = document.getElementById("modal-content")
+    // Taking tags from header and Body
+
+    let oldTitle = document.querySelector("#modal-title")
+    let oldBody = document.querySelector("#modal-body")
+
+    // Create new tags to change different format
+    let newTitle = document.createElement("textarea")
+    newTitle.classList.add("form-control", "form-control-sm")
+    newTitle.textContent = oldTitle.textContent
+    newTitle.setAttribute("id", "editTitle")
+
+    let newBody = document.createElement("textarea")
+    newBody.classList.add("form-control", "form-control-lg")
+    newBody.textContent = oldBody.textContent
+    newBody.setAttribute("id", "editBody")
+    modalHeader.replaceChild(newTitle, oldTitle);
+    modalContent.replaceChild(newBody, oldBody);
+
+    // Pressing Enter button to send new value
+    newBody.addEventListener("keypress", async (e) => {if (e.key === 'Enter') {
+
+        let obj = {title: newTitle.value, body: newBody.value}
+
+        await updatePost(id, obj)
+        oldTitle.textContent = obj.title
+
+    }} )
+}
+
+async function updatePost (id, obj){
+    return fetch(`http://localhost:3000/posts/${id}`,{method:"PATCH", headers:{'Content-Type': 'application/json'} , body:JSON.stringify(obj)})
+
 }

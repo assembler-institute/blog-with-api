@@ -1,15 +1,15 @@
-function createModal() {
+
+async function createModal() {
     let templateHTML = `
     <div class="modal-dialog modal-fullscreen">
-        <div class="modal-content  modalpost">
-        <div class="cabezeramodal">
+        <div id="modal-content" class="modal-content modalpost">
+        <div id = "modal-header" class="cabezeramodal">
             <div id= "modalUser" class="modalUser"></div>
             <h4 id = "modal-title" class="modal-title"></h4>
             <button id="btnCloseModal" type="button" class="btn-close btn-close-white" aria-label="Close"></button>
         </div>
         <div id="modal-body" class="modal-body cuerpomodal">
         </div>
-        
         <div id="comments">
         </div>
         </div>
@@ -26,10 +26,16 @@ async function dataModal(e) {
 
     let bodyDiv = e[0].querySelector(".card-text")
     document.getElementById("modal-body").textContent = bodyDiv.textContent;
-    let modalIconX = `<div id ="modal-icon" class= "modal-icon"><i id="delete-post" class="fas fa-trash-alt delete-post"></i></div>`
+    let modalIconX = `<div id ="modal-icon" class= "modal-icon">
+    <i id="delete-post" class="fas fa-times delete-post"></i>
+    <i id="edit-post" <i class="fas fa-edit edit-post"></i>
+    </div>`
+
     document.getElementById("modal-body").insertAdjacentHTML("beforeend", modalIconX);
     let deleteP = document.getElementById("delete-post")
     deleteP.addEventListener("click", function(){deletePost(e.data("id"))} )
+    let editP = document.getElementById("edit-post")
+    editP.addEventListener("click", function(){editPost(e.data("id"))})
     let commentsByPost = await getAllItems(`http://localhost:3000/comments?postId=${e.data("id")}`)
     createCommentsByPost(commentsByPost)
 }
