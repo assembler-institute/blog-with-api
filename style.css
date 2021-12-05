@@ -40,6 +40,7 @@
     
     display: flex;
     flex-direction: column;
+    /* font-size: 100px; */
 }
 /* .card-body{
     display: grid;
@@ -47,7 +48,15 @@
 
 } */
 
-.pli{
+/* .pli{
     display: grid;
     grid-template-columns: 1fr 1fr;
+} */
+.lp{
+    display: grid;
+   grid-template-columns: 1fr 1fr;
+}
+#centerbtn{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
