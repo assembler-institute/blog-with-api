@@ -18,12 +18,15 @@ const arrayPhotos=[
     "../assets/img/photopost/16.jpg"
 ]
 
-printImage()
+
 
 
 function printImage(){
+    let randomNumber=Math.floor(Math.random()*arrayPhotos.length)
+    console.log(randomNumber);
     arrayPhotos.forEach( function (element,i) {
-        $('.divPost').eq(i).css('background-image', 'url(' + element + ')');
+        randomNumber=Math.floor(Math.random()*arrayPhotos.length)
+        $('.divPost').eq(i).css('background-image', 'url(' + arrayPhotos[randomNumber] + ')');
     })
 }
 

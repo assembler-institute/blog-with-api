@@ -239,16 +239,31 @@
             aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalToggleLabel2">Modal 2</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
                     <div class="modal-body">
-                        Hide this modal and show the first with
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back
-                            to first</button>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h1>Are you sure?</h1>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <h4>Do you want to delete</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div clas="col">
+                                    <button id="deleteButton">Delete</button>
+                                    <button id="cancelButton" data-bs-dismiss="modal">Cancel</button>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -4,6 +4,8 @@
     --primary-color: #2EC4B6;
     --details-blue: #BEEEE9;
     --details-orange: #FFBF69;
+    --warning:#AE2012;
+    --disabled:#C4C4C4;
 }
 
 
@@ -107,6 +109,28 @@
     border-radius: 10px;
     padding: 10px;
 
+}
+
+/* DELETE MODAL */
+#exampleModalToggle3 h1{
+    color:black;
+}
+.fa-exclamation-triangle::before {
+    color:var(--warning);
+    display:block;
+    width:106px !important;
+}
+#deleteButton{
+    color:var(--bg-color);
+    background-color:var(--warning);
+    border-radius:30px;
+    width:60px;
+}
+#cancelButton{
+    background-color: var(--disabled);
+    color:var(--bg-color);
+    border-radius:30px;
+    width:60px;
 }
 
 .menuBlue{
