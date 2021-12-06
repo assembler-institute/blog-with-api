@@ -60,3 +60,13 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
+.infoName{
+    font-weight: bold;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}
+.infoBody{
+    border: 1px solid black;
+    border-radius: 1px;
+}

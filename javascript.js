@@ -119,7 +119,7 @@ function beginmodal(){
                 <div id="userName"></div>
                 <div id="email"></div>
                 </div>
-                <div class="modal-body" id="comments">
+                <div class="modal-body" id="comments"> <b>Comentarios</b>
                 </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -132,8 +132,8 @@ function beginmodal(){
         </div>` 
     document.getElementById("modalview").innerHTML= content
     document.getElementById("title").innerHTML= information.title
-    document.getElementById("email").innerHTML= information.email
-    document.getElementById("userName").innerHTML= information.name
+    document.getElementById("email").innerHTML= `<b>Email: </b> ${information.email}`
+    document.getElementById("userName").innerHTML= `<b>Name: </b>${information.name}`
     document.getElementById("bodyFetch").innerHTML=information.body
 }
 
@@ -173,14 +173,14 @@ function comments (postId){
             document.getElementById("comments").appendChild(divComment)
             let divCommentEmail = document.createElement("div")
             divCommentEmail.setAttribute("class", "infoEmail")
-            divCommentEmail.innerHTML= email
+            divCommentEmail.innerHTML= `<b>Email:</b> ${email}`
             // console.log(divComment)
-            document.getElementById("comments").appendChild(divCommentEmail)
             let divCommentBody = document.createElement("div")
             divCommentBody.setAttribute("class", "infoBody")
             divCommentBody.innerHTML= body
             // console.log(divComment)
             document.getElementById("comments").appendChild(divCommentBody)
+            document.getElementById("comments").appendChild(divCommentEmail)
         })
     })
     }
