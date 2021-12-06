@@ -62,11 +62,11 @@
 
     100%{margin-top: 0;}
 }
-
+/* MODAL POST */
 #post-header{
     background-color:var(--primary-color);
 }
-.modal-dialog{
+.modalPost{
     max-width:920px;
 }
 .head-icons{
@@ -112,6 +112,9 @@
 }
 
 /* DELETE MODAL */
+.modalDelte{
+    max-width:500px;
+}
 #exampleModalToggle3 h1{
     color:black;
 }
@@ -123,14 +126,16 @@
 #deleteButton{
     color:var(--bg-color);
     background-color:var(--warning);
-    border-radius:30px;
-    width:60px;
 }
 #cancelButton{
     background-color: var(--disabled);
     color:var(--bg-color);
+}
+#cancelButton,#deleteButton{
     border-radius:30px;
-    width:60px;
+    border:none;
+    width:80px;
+    height: 40px;
 }
 
 .menuBlue{

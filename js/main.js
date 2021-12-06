@@ -10,39 +10,61 @@ var numId=1
 //data[0].title
 window.onload= function(){
   getPosts()
+  printImage()
   Activatepagination()
 }
 //listeners to pagination
 function Activatepagination(){
   $(".page-item").on("click",changePage)
+  //if buttons are disabled, turn of event listener
+  $(".page-item").on("disabled",function(){
+    $(".page-item").off("click",changePage)
+  })
 }
 //when press pagination buttons, activate this function
 function changePage(e){
   const item=$(".page-item");
   const button=e.target.textContent
-  //Check if numId is higher or lower than 10-1, comeback to 1
-  if(numId>10 || numId<1){
-    numId=1;
-    
-  }
+  
   //sum or rest the numId while press paginate buttons
-  if(button=="Previous"){
-    numId--;
-    getPosts()
-  }else if(button=="Next"){
-    numId++;
-    getPosts();
-  }else{
+  // && Check if numId is higher or lower than 10-1, comeback to 1
+  if(numId==button){
+    return;
+  }
+  if(button>=1 && button<=10){
+    item.eq(0).css("cursor","pointer");
     numId=button;
     getPosts();
+    printImage()
+    }
+   
+//if press previous, or next, check if can change of page
+  if(button=="Previous" && numId>1){
+    numId--;
+    item.eq(11).removeClass("disabled")
+    getPosts()
+    printImage()
+  }else if(button=="Next" && numId<10){
+    numId++;
+    item.eq(0).removeClass("disabled")
+    getPosts();
+    printImage()
+    
   }
-//remove previous button disabled
-  if(numId>1){
-    item.eq(0).removeClass("disabled");
-    item.eq(0).css("cursor","pointer");
-  }else{
+//put disabled buttons
+  if(numId==1){
     item.eq(0).addClass("disabled")
+    
+  }else if(numId==10){
+    item.eq(11).addClass("disabled")
   }
+  //remove the disabled for prev and next button
+  if(numId<10 && numId>1){
+    item.eq(11).removeClass("disabled")
+    item.eq(0).removeClass("disabled");
+  }
+
+//active page
   item.removeClass("active");
   item.eq(numId).addClass("active");
 }
@@ -57,7 +79,7 @@ function  getPosts(){
     $(".titlePost").on("click",infoModal);
     $(".titlePost").attr("data-bs-toggle", "modal")
     $(".titlePost").attr("href", "#exampleModalToggle")
-    printImage()
+    
   })
 }
 
@@ -70,7 +92,6 @@ async function infoModal(e,nextPrev){
       target=e.target.textContent
     }else{
       target=nextPrev.textContent
-      console.log(target);
       test=$(nextPrev).parent().parent().css("background-image").replace(/^url\(['"](.+)['"]\)/, '$1');
     }
     

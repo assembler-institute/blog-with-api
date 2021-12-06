@@ -22,8 +22,8 @@ const arrayPhotos=[
 
 
 function printImage(){
+    //GENERATE RANDOM NUM OF THE ARRAY
     let randomNumber=Math.floor(Math.random()*arrayPhotos.length)
-    console.log(randomNumber);
     arrayPhotos.forEach( function (element,i) {
         randomNumber=Math.floor(Math.random()*arrayPhotos.length)
         $('.divPost').eq(i).css('background-image', 'url(' + arrayPhotos[randomNumber] + ')');
