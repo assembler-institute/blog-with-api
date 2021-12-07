@@ -80,10 +80,21 @@ li {
   position: relative;
   display: flex;
   flex-direction: column;
-  min-width: 0;
+  width: 95%;
   word-wrap: break-word;
   background-color: rgb(184, 98, 113);
   background-clip: border-box;
   border: 1px solid rgba(0,0,0,.125);
   border-radius: 0.25rem;
+}
+.btnPreNext{
+  display: flex;
+  justify-content: center;
+  padding-top: 1%;
+  
+}
+/*/ICONS/*/
+
+.fa-edit::before{
+  width: 100%;
 }
