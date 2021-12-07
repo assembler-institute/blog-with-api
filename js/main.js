@@ -6,6 +6,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 })
 var arrayPosts=[]
 var numId=1
+var target,postSelected;
 //Get Tittles
 //data[0].title
 window.onload= function(){
@@ -24,7 +25,7 @@ function Activatepagination(){
 //when press pagination buttons, activate this function
 function changePage(e){
   const item=$(".page-item");
-  const button=e.target.textContent
+  const button=e.target.textContent;
   
   //sum or rest the numId while press paginate buttons
   // && Check if numId is higher or lower than 10-1, comeback to 1
@@ -68,6 +69,7 @@ function changePage(e){
   item.removeClass("active");
   item.eq(numId).addClass("active");
 }
+
 function  getPosts(){
  fetch("http://localhost:3000/posts?userId="+numId)
   .then(response => response.json())
@@ -83,16 +85,51 @@ function  getPosts(){
   })
 }
 
+async function deletePost(){
+  console.log(target);
+  //spawn card to display error or success
+  $("body").append(`<div id="statusMessage"></div>`)
+//fetch with delete method
+  await fetch("https://jsonplaceholder.typicode.com/posts/"+target.id,{
+    method:"DELETE",
+  })
+  .then(response=>response.json())
+  //error msg
+  .catch(error=>{
+    $("#statusMessage").append(`
+                    <div class="alert alert-danger" role="alert">
+                      <p id="msg">Your post cannot be deleted</p>!
+                  </div>
+    `)
+  })
+  //success msg
+  .then(data=>{
+    $("#statusMessage").append(`
+              <div class="alert alert-success" role="alert">
+                <p id="msg">Your post was deleted</p>
+              </div>
+`)
+    //delete post selected
+    return $(postSelected).parent().parent().remove();
+  })
+  //hide the message with animation
+  setTimeout(function(){
+    $("#statusMessage").fadeOut()
+    $("#statusMessage").remove()
+  },3000)
+}
 
 async function infoModal(e,nextPrev){
     resetModal();
-    var target,user,test,comments;
+    var user,postImg,comments;
     if(e!=undefined){
-      test=$(e.target).parent().parent().css("background-image").replace(/^url\(['"](.+)['"]\)/, '$1');
+      postSelected=e.target
+      postImg=$(e.target).parent().parent().css("background-image").replace(/^url\(['"](.+)['"]\)/, '$1');
       target=e.target.textContent
     }else{
+      postSelected=nextPrev
       target=nextPrev.textContent
-      test=$(nextPrev).parent().parent().css("background-image").replace(/^url\(['"](.+)['"]\)/, '$1');
+      postImg=$(nextPrev).parent().parent().css("background-image").replace(/^url\(['"](.+)['"]\)/, '$1');
     }
     
     //GET POST
@@ -108,12 +145,12 @@ async function infoModal(e,nextPrev){
     //NEXT POST AND PREV LISTENERS
     $(".fa-arrow-right,.fa-arrow-left").on("click",previousPost)
     //DISPLAY INFO
-    $("#photoTitle").attr("src",test)
-
+    $("#photoTitle").attr("src",postImg)
     $("#modalPost-title").text(target.title);
     $("#username").text(user.username);
     $("#email").text(user.email);
     $("#description").text(target.body);
+    $("#deleteButton").on("click",deletePost)
     $(".loadComments").eq(0).one("click",function(){
       loadComments(target.id)
       

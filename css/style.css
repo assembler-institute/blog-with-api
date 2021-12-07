@@ -8,6 +8,18 @@
     --disabled:#C4C4C4;
 }
 
+/* if delete method commes error or success */
+body{
+    position:relative;
+}
+#statusMessage{
+    position:absolute;
+    top:100px;
+    right:20px;
+}
+.alert-success p{
+    margin:0;
+}
 
 .welcome{
     display: flex;
