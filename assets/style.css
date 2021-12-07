@@ -2,7 +2,7 @@
 :root {
   --one-color: rgb(34, 34, 59);
   --two-color: rgb(74, 78, 105);
-  --three-color: rgb(223, 91, 20);
+  --three-color: rgb(223, 92, 21);
   --letter-color: white;
 }
 /* MODAL */
@@ -55,16 +55,16 @@ li {
 }
 .banner-Blog{
   background-color:var(--one-color);
-  padding: 100px 70px;
-  margin-bottom: 10%;
-  margin-top: 5%;
+  padding: 60px 50px;
+  margin-bottom: 3%;
+  margin-top: 3%;
   color:var(--letter-color);
 }
 .textBlog{
   display: flex;
   justify-content: center;
-  font-size: 5rem;
-  padding-top: 15%;
+  font-size: 3rem;
+  padding-top: 6%;
   margin-bottom:0%;
   font-weight: 800;
 }
@@ -82,7 +82,7 @@ li {
   flex-direction: column;
   width: 95%;
   word-wrap: break-word;
-  background-color: rgb(184, 98, 113);
+  background-color: #D7915E;
   background-clip: border-box;
   border: 1px solid rgba(0,0,0,.125);
   border-radius: 0.25rem;
