@@ -1,9 +1,13 @@
 /*60 - 30 - 10*/
 :root {
-  --one-color: rgb(34, 34, 59);
-  --two-color: rgb(74, 78, 105);
-  --three-color: rgb(223, 92, 21);
-  --letter-color: white;
+  --color-ppl: #e4dfda;
+  --color-secundario: #3C7595;
+  --color-details: #4595a5;
+  --color-details2: #f89335;
+}
+body, header{
+  background-color: var(--color-ppl);
+font-family: 'Literata', serif;
 }
 /* MODAL */
 .modalTransparent{
@@ -30,14 +34,14 @@
     justify-content: center;
     align-content: center;
 }
-.navbar>.container, .navbar>.container-fluid, .navbar>.container-lg, .navbar>.container-md, .navbar>.container-sm, .navbar>.container-xl, .navbar>.container-xxl {
+.navbar>.container, .navbar>.container-fluid, .navbar>.container-lg, .navbar>.container-md, .navbar>.container-sm, .navbar>.container-xl, .navbar>.container-xxl{
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   justify-content:center;
   flex-direction: row;
   align-content: space-around;
-  background-color: var(--three-color);
+  background-color: var(--color-details2);
 }
 li {
   display: inline-flex;
@@ -47,15 +51,19 @@ li {
   flex-wrap: nowrap;
   padding-left: 100px;
   font-size: 20px;
-  color:var(--letter-color);
+  color:var(--color-ppl);
 }
 .myBlog{
   display: flex;
   flex-direction: column;
+  background-color: var(--color-secundario);
+  justify-content: center;
+  margin: 1% 3%;
+  padding: 60px 50px;
+  
 }
 .banner-Blog{
-  background-color:var(--one-color);
-  padding: 60px 50px;
+  background-color:var(--color-secundario);
   margin-bottom: 3%;
   margin-top: 3%;
   color:var(--letter-color);
@@ -63,7 +71,7 @@ li {
 .textBlog{
   display: flex;
   justify-content: center;
-  font-size: 3rem;
+  font-size: 15rem;
   padding-top: 6%;
   margin-bottom:0%;
   font-weight: 800;
@@ -71,30 +79,100 @@ li {
 .textBlog-1{
   display: flex;
   justify-content: flex-end;
-  font-size: 1.2rem;
+  font-size: 2rem;
   margin-bottom: 0%;
-  padding-right: 35%;
   padding-top: 1%;
 }
-.card{
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 95%;
-  word-wrap: break-word;
-  background-color: #D7915E;
-  background-clip: border-box;
-  border: 1px solid rgba(0,0,0,.125);
-  border-radius: 0.25rem;
-}
-.btnPreNext{
+/*/CARDS/*/
+#container-card-a{
   display: flex;
   justify-content: center;
-  padding-top: 1%;
+  align-items: center;
+  padding: 2% 3% 0% 3%;
+}
+.card{
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  margin: auto;
+  min-width: 20%;
+  padding: 3%;
+  text-align: justify;
+  word-wrap: break-word;
+  border-color: var(--color-details);
+  background-clip: border-box;
+  border-radius: 0.25rem;
+}
+.card:hover{
+  background-color: var(--color-details);
+}
+/*ICON CARD*/
+#imgUser{
+  display:block;
+  margin:auto;
+  width: 40%;
+  height: 50%;
+  border:rgb(11, 11, 12) solid;
+  border-radius: 60%;
+  padding: 5%;
+  object-fit: contain;
+  background-color: var(--color-ppl);
+}
+h5{
+  font-size: 24px;
+  font-weight: 700;
+  padding-bottom: 2%;
+}
+p{
+  font-size: 20px;
+}
+
+/*BUTTONS*/
+.btnPreNext{
+  display: flex;
+  justify-content: space-between;
+  height: 10%;
+  padding: 1% 6% 0%;
+}
+.btn-outline-primary{
+  color:var(--color-details2);
+  border-color: var(--color-details2);
+  background-color: white;
+  font-size: 150%;
+  font-weight: 800;
+  width: 10%;
+  padding: 1%;
+}
+.btn-outline-primary:hover {
+  color:var(--color-ppl);
+  background-color:var(--color-details2);
+  border-color: var(--color-details2);
+}
+/*btnDeletePost*/
+.btn-danger {
+  color: #fff;
+  width: 10%;
+  background-image: url();
+  background-color: var(--color-details2);
+  border-color: #dc3545;
+  margin-left: 4%;
+  margin-top: 3%;
+  transform: translateX(-50%);
+}
+/*btnDelete*/
+.btn-primary {
+  color: #fff;
+  width: 10%;
+  justify-content: center;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  margin-left: 45%;
+  margin-top: 3%;
+  transform: translateX(-50%);
   
 }
-/*/ICONS/*/
-
-.fa-edit::before{
-  width: 100%;
+/*ICONS DELETE / EDIT*/
+#btnIcons{
+  position: relative;
+  width: 80%;
 }
