@@ -146,9 +146,27 @@ function beginmodal() {
     
 }
 
-function deleteComment(e) {
-    let clase= document.querySelector(".prueba")
-    let deletePost = document.querySelector(".prueba").id
+function fetchPost() {
+
+    editPost = information.id
+
+    fetch(`http://localhost:3000/posts/${editPost}`, {
+        method: 'PATCH',
+        body: JSON.stringify({
+            title:` ${document.getElementById('titleEdit').value}`,
+            body: `${document.getElementById('contentEdit').value}`
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+    })
+        .then(response => response.json())
+        .then(json => console.log(json));
+}
+
+function deleteComment() {
+    let deletePost = document.querySelector('.prueba').id;
+    console.log("kajsdb")
     fetch(`http://localhost:3000/posts/${deletePost}`, {
         method: 'DELETE',
     })
