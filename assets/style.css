@@ -94,7 +94,7 @@ li {
   display: flex;
   position: relative;
   flex-direction: column;
-  margin: auto;
+  justify-content: center;
   min-width: 20%;
   padding: 3%;
   text-align: justify;
@@ -125,6 +125,11 @@ h5{
 }
 p{
   font-size: 20px;
+  white-space: nowrap; 
+  width: 750px; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  border: 1px solid #000000;
 }
 
 /*BUTTONS*/
@@ -164,12 +169,10 @@ p{
   color: #fff;
   width: 10%;
   justify-content: center;
-  background-color: #0d6efd;
   border-color: #0d6efd;
   margin-left: 45%;
   margin-top: 3%;
   transform: translateX(-50%);
-  
 }
 /*ICONS DELETE / EDIT*/
 #btnIcons{

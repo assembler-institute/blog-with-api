@@ -205,11 +205,11 @@ function deletePost(id) {
             method: "DELETE"
         })
         .catch((error) => console.log("error", error));
-    var card = document.getElementById("card" + numericId);
-    card.remove();
+    // var card = document.getElementById("card" + numericId);
+    // card.remove();
 
-    arrayIdsDelete.push(numericId);
-    console.log(arrayIdsDelete);
+    // arrayIdsDelete.push(numericId);
+    // console.log(arrayIdsDelete);
 
     // btnDeletePost1
     console.log("el id es " + id);
@@ -223,12 +223,12 @@ function deletePost(id) {
 
 function editPostModal(id) {
     var numericId = id.substring(8);
+    console.log(id)
     var title = document.getElementById("title" + numericId);
     var body = document.getElementById("body" + numericId);
     var modalTitle = document.getElementById("exampleFormControlInput1");
     var modalBody = document.getElementById("exampleFormControlTextarea1");
-    var btnSaveEdit = document.getElementById("btnSaveEdit")
-
+    var btnSaveEdit = document.getElementById("btnSaveEdit");
     btnSaveEdit.value = numericId;
     modalTitle.value = title.innerHTML;
     modalBody.value = body.innerHTML;
