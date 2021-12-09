@@ -13,6 +13,10 @@ window.onload= function(){
   getPosts()
   printImage()
   Activatepagination()
+  $('#exampleModalToggle3').on('shown.bs.modal', function () {
+    $("#deleteButton").one("click",deletePost)
+  })
+ 
 }
 //listeners to pagination
 function Activatepagination(){
@@ -68,6 +72,14 @@ function changePage(e){
 //active page
   item.removeClass("active");
   item.eq(numId).addClass("active");
+  //check if any post is deleted and toggle visible
+  $(".divPost").each(function(idx,element){
+    if($(element).css("display")=="none"){
+      $(element).show()
+    }else{
+      return;
+    }
+  })
 }
 
 function  getPosts(){
@@ -86,7 +98,6 @@ function  getPosts(){
 }
 
 async function deletePost(){
-  console.log(target);
   //spawn card to display error or success
   $("body").append(`<div id="statusMessage"></div>`)
 //fetch with delete method
@@ -110,7 +121,7 @@ async function deletePost(){
               </div>
 `)
     //delete post selected
-    return $(postSelected).parent().parent().remove();
+    return $(postSelected).parent().parent().hide();
   })
   //hide the message with animation
   setTimeout(function(){
@@ -150,7 +161,6 @@ async function infoModal(e,nextPrev){
     $("#username").text(user.username);
     $("#email").text(user.email);
     $("#description").text(target.body);
-    $("#deleteButton").on("click",deletePost)
     $(".loadComments").eq(0).one("click",function(){
       loadComments(target.id)
       
