@@ -107,6 +107,23 @@ function editPost(id){
     }} )
 }
 
+async function likeDislike(e,id){
+    var postobj= await getOneItem(`http://localhost:3000/posts/${id}`)
+    var parent =e.srcElement.parentElement;
+    var lik=parent.querySelector(".numerolike")
+    if(e.srcElement.id=="like"){
+        console.log(postobj);
+        postobj.like++
+        updatePost(id,postobj)
+        lik.textContent=postobj.like
+    }
+    else if(e.srcElement.id=="dislike"){
+        postobj.dislike++
+        updatePost(id,postobj)
+        lik.textContent=postobj.dislike
+    }
+}
+
 async function updatePost (id, obj){
     return fetch(`http://localhost:3000/posts/${id}`,{method:"PATCH", headers:{'Content-Type': 'application/json'} , body:JSON.stringify(obj)})
 

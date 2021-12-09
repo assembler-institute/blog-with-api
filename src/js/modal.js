@@ -17,22 +17,23 @@ async function createModal() {
     document.getElementById("myModal").insertAdjacentHTML("beforeend", templateHTML);
 }
 
-async function dataModal(e) {
-    let modalUser = e[0].querySelector(".card-header")
+async function dataModal(divPost) {
+    var postobj= await getOneItem(`http://localhost:3000/posts/${divPost.data("id")}`)
+    let modalUser = divPost[0].querySelector(".card-header")
     let UserInfo = await getOneItem(`http://localhost:3000/users?username=${modalUser.textContent}`)
     document.getElementById("modalUser").innerHTML = `<img class="imguserbig" src="${UserInfo[0].avatar}"><div>${modalUser.textContent} <br>  ${UserInfo[0].email}</div>`;
-    let titleDiv = e[0].querySelector(".card-title")
+    let titleDiv = divPost[0].querySelector(".card-title")
     document.getElementById("modal-title").textContent = titleDiv.textContent;
 
-    let bodyDiv = e[0].querySelector(".card-text")
+    let bodyDiv = divPost[0].querySelector(".card-text")
     document.getElementById("modal-body").textContent = bodyDiv.textContent;
     let modalIconX = `<div id ="modal-icon" class= "modal-icon">
-    <span class="like-dislike">
-    <div class="numerolike" id="numerolike">0</div>
+    <span class="like-dislike like">
+    <div class="numerolike"></div>
     <i class="fas fa-thumbs-up like" id="like"></i>
     </span>
-    <span class="like-dislike">
-    <div class="numerolike" id="numerodislike">0</div>
+    <span class="like-dislike dislike">
+    <div class="numerolike"></div>
     <i class="fas fa-thumbs-down dislike" id="dislike"></i>
     </span>
     <i id="edit-post" <i class="fas fa-edit edit-post"></i>
@@ -40,11 +41,17 @@ async function dataModal(e) {
     </div>`
 
     document.getElementById("modal-body").insertAdjacentHTML("beforeend", modalIconX);
+    document.querySelector(".like>div").textContent=postobj.like
+    document.querySelector(".dislike>div").textContent=postobj.dislike
     let deleteP = document.getElementById("delete-post")
-    deleteP.addEventListener("click", function(){deletePost(e.data("id"))} )
+    deleteP.addEventListener("click", function(){deletePost(divPost.data("id"))} )
     let editP = document.getElementById("edit-post")
-    editP.addEventListener("click", function(){editPost(e.data("id"))})
-    let commentsByPost = await getAllItems(`http://localhost:3000/comments?postId=${e.data("id")}`)
+    editP.addEventListener("click", function(){editPost(divPost.data("id"))})
+    let commentsByPost = await getAllItems(`http://localhost:3000/comments?postId=${divPost.data("id")}`)
+    let dislike= document.getElementById("dislike")
+    dislike.addEventListener("click",function(e){likeDislike(e,divPost.data("id"))})
+    let like= document.getElementById("like")
+    like.addEventListener("click",function(e){likeDislike(e,divPost.data("id"))})
     createCommentsByPost(commentsByPost)
 }
 

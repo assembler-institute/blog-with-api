@@ -102,8 +102,16 @@ i{
 
 .numerolike{
     width: 50px;
-    background-color: var(--negroinput);
     text-align: center;
+}
+.like:hover{
+    color:rgb(0, 204, 0);
+}
+.dislike:hover{
+    color:rgb(255, 64, 64);
+}
+i:hover{
+    color: rgb(98, 98, 250);
 }
 
 .textareatitulo{
