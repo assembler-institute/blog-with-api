@@ -139,10 +139,10 @@ h5{
   font-weight: 700;
   padding-bottom: 2%;
 }
-p{
+.pCard{
   font-size: 20px;
   white-space: nowrap; 
-  width: 750px; 
+  width: 150px; 
   overflow: hidden;
   text-overflow: ellipsis; 
   border: 1px solid #000000;
