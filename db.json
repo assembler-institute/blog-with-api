@@ -5,43 +5,46 @@
       "id": 1,
       "title": "Esto es un titulo en condiciones",
       "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
-      "img":"post-img-1.jpeg"
+      "img": "post-img-1.jpeg"
     },
     {
       "userId": 1,
       "id": 5,
       "title": "Titulo con sentido",
       "body": "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque",
-      "img":"post-img-2.jpeg"
-      
+      "img": "post-img-2.jpeg"
     },
     {
       "userId": 1,
       "id": 6,
       "title": "Enunciados con ganas",
       "body": "ut aspernatur corporis harum nihil quis provident sequi\nmollitia nobis aliquid molestiae\nperspiciatis et ea nemo ab reprehenderit accusantium quas\nvoluptate dolores velit et doloremque molestiae",
-      "img":"post-img-3.jpeg"
+      "img": "post-img-3.jpeg"
     },
     {
       "userId": 1,
       "id": 7,
       "title": "magnam facilis autem",
       "body": "dolore placeat quibusdam ea quo vitae\nmagni quis enim qui quis quo nemo aut saepe\nquidem repellat excepturi ut quia\nsunt ut sequi eos ea sed quas",
+<<<<<<< HEAD
       "img":"post-img-2.jpeg"
+=======
+      "img": "post-img-2.jpeg"
+>>>>>>> 5273169b09ab530749a37665b2e8dbdcfda5d5ad
     },
     {
       "userId": 1,
       "id": 8,
-      "title": "dolorem dolore est ipsam",
+      "title": "Enunciado en condiciones",
       "body": "dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae",
-      "img":"post-img-3.jpeg"
+      "img": "post-img-3.jpeg"
     },
     {
       "userId": 1,
       "id": 10,
       "title": "optio molestias id quia eum",
       "body": "quo et expedita modi cum officia vel magni\ndoloribus qui repudiandae\nvero nisi sit\nquos veniam quod sed accusamus veritatis error",
-      "img":"post-img-1.jpeg"
+      "img": "post-img-1.jpeg"
     },
     {
       "userId": 2,
@@ -114,6 +117,12 @@
       "id": 22,
       "title": "dolor sint quo a velit explicabo quia nam",
       "body": "eos qui et ipsum ipsam suscipit aut\nsed omnis non odio\nexpedita earum mollitia molestiae aut atque rem suscipit\nnam impedit esse"
+    },
+    {
+      "userId": 3,
+      "id": 23,
+      "title": "maxime id vitae nihil numquam",
+      "body": "veritatis unde neque eligendi\nquae quod architecto quo neque vitae\nest illo sit tempora doloremque fugit quod\net et vel beatae sequi ullam sed tenetur perspiciatis"
     },
     {
       "userId": 3,
@@ -572,7 +581,7 @@
       "name": "Leanne Graham",
       "username": "Bret",
       "email": "Sincere@april.biz",
-      "img":"user1(1).jpg",
+      "img": "user1(1).jpg",
       "address": {
         "street": "Kulas Light",
         "suite": "Apt. 556",
@@ -596,7 +605,7 @@
       "name": "Ervin Howell",
       "username": "Antonette",
       "email": "Shanna@melissa.tv",
-      "img":"user1(2).jpg",
+      "img": "user1(2).jpg",
       "address": {
         "street": "Victor Plains",
         "suite": "Suite 879",
@@ -620,7 +629,7 @@
       "name": "Clementine Bauch",
       "username": "Samantha",
       "email": "Nathan@yesenia.net",
-      "img":"user1(3).jpg",
+      "img": "user1(3).jpg",
       "address": {
         "street": "Douglas Extension",
         "suite": "Suite 847",
@@ -1424,6 +1433,41 @@
       "name": "sint est odit officiis similique aut corrupti quas autem",
       "email": "Cassidy@maribel.io",
       "body": "cum sequi in eligendi id eaque\ndolores accusamus dolorem eum est voluptatem quisquam tempore\nin voluptas enim voluptatem asperiores voluptatibus\neius quo quos quasi voluptas earum ut necessitatibus"
+    },
+    {
+      "postId": 23,
+      "id": 111,
+      "name": "possimus facilis deleniti nemo atque voluptate",
+      "email": "Stefan.Crist@duane.ca",
+      "body": "ullam autem et\naccusantium quod sequi similique soluta explicabo ipsa\neius ratione quisquam sed et excepturi occaecati pariatur\nmolestiae ut reiciendis eum voluptatem sed"
+    },
+    {
+      "postId": 23,
+      "id": 112,
+      "name": "dolore aut aspernatur est voluptate quia ipsam",
+      "email": "Aniyah.Ortiz@monte.me",
+      "body": "ut tempora deleniti quo molestiae eveniet provident earum occaecati\nest nesciunt ut pariatur ipsa voluptas voluptatem aperiam\nqui deleniti quibusdam voluptas molestiae facilis id iusto similique\ntempora aut qui"
+    },
+    {
+      "postId": 23,
+      "id": 113,
+      "name": "sint quo debitis deleniti repellat",
+      "email": "Laverna@rico.biz",
+      "body": "voluptatem sint quia modi accusantium alias\nrecusandae rerum voluptatem aut sit et ut magnam\nvoluptas rerum odio quo labore voluptatem facere consequuntur\nut sit voluptatum hic distinctio"
+    },
+    {
+      "postId": 23,
+      "id": 114,
+      "name": "optio et sunt non",
+      "email": "Derek@hildegard.net",
+      "body": "nihil labore qui\nquis dolor eveniet iste numquam\nporro velit incidunt\nlaboriosam asperiores aliquam facilis in et voluptas eveniet quasi"
+    },
+    {
+      "postId": 23,
+      "id": 115,
+      "name": "occaecati dolorem eum in veniam quia quo reiciendis",
+      "email": "Tyrell@abdullah.ca",
+      "body": "laudantium tempore aut\nmaiores laborum fugit qui suscipit hic sint officiis corrupti\nofficiis eum optio cumque fuga sed voluptatibus similique\nsit consequuntur rerum commodi"
     },
     {
       "postId": 24,
