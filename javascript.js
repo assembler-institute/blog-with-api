@@ -83,20 +83,18 @@ function btncall(){
               console.log($(`#${id}`)[0].id)
               infoPosts= info.filter(post=> {if(post.id == $(`#${id}`)[0].id) {
                           return post}})
-              // console.log($(ostia))
                       information.title= infoPosts[0].title
                       information.id= infoPosts[0].id
                       information.userId= infoPosts[0].userId
                       information.body=infoPosts[0].body
                       fetchUsersInfo(information.userId)
                       comments(information.userId)
-                      // $("#myModal").modal('show');
                       setTimeout(() => {
                           llamada()
                       }, 400);
               console.log(infoPosts)
             })
-          }, 00);
+          }, 10);
       });
   })
   }
@@ -119,13 +117,13 @@ function beginmodal() {
                 <div id="userName"></div>
                 <div id="email"></div>
                 </div>
-                <div class="modal-body" id="comments"> <b>Comentarios</b>
-                </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-danger"  id='deleteBtn'>Delete</button>
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                  <button type="button" class="btn btn-primary">Save</button>
-                  <button type="button" class="btn btn-success" id="comentClick">Comentarios</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger"  id='deleteBtn'>Delete</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-success" id="comentClick"  type="button" data-toggle="collapse" data-target="#comments" aria-expanded="false" aria-controls="comments">Comments</button>
+                  </div>
+                <div class="modal-body collapse multi-collapse" id="comments">
                 </div>
               </div>
             </div>
@@ -142,11 +140,15 @@ function beginmodal() {
     document.getElementById('bodyFetch').innerHTML = information.body;
     const deleteBtn = document.getElementById('deleteBtn');
     deleteBtn.addEventListener('click', deleteComment);
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+    
 }
 
-function deleteComment() {
+function deleteComment(e) {
+    let clase= document.querySelector(".prueba")
     let deletePost = document.querySelector(".prueba").id
-    
     fetch(`http://localhost:3000/posts/${deletePost}`, {
         method: 'DELETE',
     })
@@ -154,7 +156,8 @@ function deleteComment() {
         return request.json();
     })
     .then(response => {
-        alert(`Post ID ${deletePost} deleted`)
+      clase.innerHTML=`${response} `
+        // alert(`Post ID ${deletePost} deleted`)
     });
 
     
@@ -196,11 +199,14 @@ function comments (postId){
             document.getElementById("comments").appendChild(divComment)
             let divCommentEmail = document.createElement("div")
             divCommentEmail.setAttribute("class", "infoEmail")
-            divCommentEmail.innerHTML= `<b>Email:</b> ${email}`
+            // divCommentEmail.innerHTML= `<b>Email:</b> ${email}`
             // console.log(divComment)
             let divCommentBody = document.createElement("div")
             divCommentBody.setAttribute("class", "infoBody")
-            divCommentBody.innerHTML= body
+            divCommentBody.innerHTML= `<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title=${email}>
+            ${body}
+          </button>
+        `
             // console.log(divComment)
             document.getElementById("comments").appendChild(divCommentBody)
             document.getElementById("comments").appendChild(divCommentEmail)
@@ -268,4 +274,5 @@ window.onload = function(){
   // All code comes here 
   chargeInf(first)
   buttons()
+  
 }
