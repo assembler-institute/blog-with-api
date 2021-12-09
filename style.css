@@ -1,66 +1,7 @@
-
-/* .html{
-    background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
-} */
 .navbar{
-   display: flex;
-   flex-direction: column;
-   font-size: 5em;
-   font-weight: bold;
-}
-/* .contentofBlog{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border: solid 2px black;
-} */
-.contentPost{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border: solid 1px;
-    /* border: solid 1px;
-   border-left: solid 1px;
-   border-right: solid 1px;
-    border-bottom: solid 1px; */
-}
-.title{
-    font-weight: bold;
-    color: black;
-    font-size: 2em;
-    border-right: solid 1px;
-    /* border-left: solid 1px; */
-    text-align: center;
-    font-weight: bold;
-    /* border-bottom: solid 1px;
-    border-top: solid 1px; */
-}
-/* #contentBlog{
-    border: solid 1px black;
-} */
-.mb-0{
-    
     display: flex;
     flex-direction: column;
-    /* font-size: 100px; */
-}
-/* .card-body{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-} */
-
-/* .pli{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-} */
-.lp{
-    display: grid;
-   grid-template-columns: 1fr 1fr;
-}
-#centerbtn{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-}
-.infoName{
+    font-size: 5em;
     font-weight: bold;
     align-items: center;
     align-content: center;
@@ -75,3 +16,20 @@
     align-self: center;
     text-align: center;
 }
+ 
+ /* .contentofBlog{
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     border: solid 2px black;
+ } */
+ .contentPost{
+     border: 1px solid black;
+ }
+ .title{
+     font-weight: bold;
+     color: blueviolet;
+ }
+ /* #contentFull{
+     display: grid;
+     grid
+ } */

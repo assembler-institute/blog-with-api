@@ -126,7 +126,6 @@ function beginmodal() {
                     <button type="button" class="btn btn-success" id="comentClick">Comentarios</button>
                   </div>
                 <div class="modal-body" id="comments" style="display: none;"> <b>Comentarios</b>
-                <div class="modal-body" id="comments"> <b>Comentarios</b>
                 </div>
 
               </div>
