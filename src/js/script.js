@@ -85,12 +85,12 @@ function editPost(id){
 
     // Create new tags to change different format
     let newTitle = document.createElement("textarea")
-    newTitle.classList.add("form-control", "form-control-sm")
+    newTitle.classList.add("form-control", "form-control-sm", "textareatitulo")
     newTitle.textContent = oldTitle.textContent
     newTitle.setAttribute("id", "editTitle")
 
     let newBody = document.createElement("textarea")
-    newBody.classList.add("form-control", "form-control-lg")
+    newBody.classList.add("textareacuerpo")
     newBody.textContent = oldBody.textContent
     newBody.setAttribute("id", "editBody")
     modalHeader.replaceChild(newTitle, oldTitle);

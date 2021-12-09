@@ -27,7 +27,7 @@ async function dataModal(e) {
     let bodyDiv = e[0].querySelector(".card-text")
     document.getElementById("modal-body").textContent = bodyDiv.textContent;
     let modalIconX = `<div id ="modal-icon" class= "modal-icon">
-    <i id="delete-post" class="fas fa-times delete-post"></i>
+    <i id="delete-post" class="fas fa-trash-alt delete-post"></i>
     <i id="edit-post" <i class="fas fa-edit edit-post"></i>
     </div>`
 
