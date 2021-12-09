@@ -106,8 +106,8 @@ function llamada(){
     $("#myModal").modal('show'); 
 }
 
-function beginmodal(){
-    content=` <div id="myModal" class="modal fade" tabindex="-1">
+function beginmodal() {
+    content = ` <div id="myModal" class="modal fade" tabindex="-1">
     <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
@@ -122,6 +122,7 @@ function beginmodal(){
                 <div class="modal-body" id="comments"> <b>Comentarios</b>
                 </div>
               <div class="modal-footer">
+                  <button type="button" class="btn btn-danger"  id='deleteBtn'>Delete</button>
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                   <button type="button" class="btn btn-primary">Save</button>
                   <button type="button" class="btn btn-success" id="comentClick">Comentarios</button>
@@ -129,12 +130,34 @@ function beginmodal(){
               </div>
             </div>
           </div>
-        </div>` 
-    document.getElementById("modalview").innerHTML= content
-    document.getElementById("title").innerHTML= information.title
-    document.getElementById("email").innerHTML= `<b>Email: </b> ${information.email}`
-    document.getElementById("userName").innerHTML= `<b>Name: </b>${information.name}`
-    document.getElementById("bodyFetch").innerHTML=information.body
+        </div>`;
+    document.getElementById('modalview').innerHTML = content;
+    document.getElementById('title').innerHTML = information.title;
+    document.getElementById(
+        'email'
+    ).innerHTML = `<b>Email: </b> ${information.email}`;
+    document.getElementById(
+        'userName'
+    ).innerHTML = `<b>Name: </b>${information.name}`;
+    document.getElementById('bodyFetch').innerHTML = information.body;
+    const deleteBtn = document.getElementById('deleteBtn');
+    deleteBtn.addEventListener('click', deleteComment);
+}
+
+function deleteComment() {
+    let deletePost = document.querySelector(".prueba").id
+    
+    fetch(`http://localhost:3000/posts/${deletePost}`, {
+        method: 'DELETE',
+    })
+    .then(request => {
+        return request.json();
+    })
+    .then(response => {
+        alert(`Post ID ${deletePost} deleted`)
+    });
+
+    
 }
 
 function fetchUsersInfo(idposts){
