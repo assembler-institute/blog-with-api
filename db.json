@@ -3,50 +3,45 @@
     {
       "userId": 1,
       "id": 1,
-      "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-      "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-    },
-    {
-      "userId": 1,
-      "id": 3,
-      "title": "tu qea molestias quasi exercitationem repellat qui ipsa sit aut",
-      "body": "wrsdfsg et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut"
+      "title": "Esto es un titulo en condiciones",
+      "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
+      "img":"post-img-1.jpeg"
     },
     {
       "userId": 1,
       "id": 5,
-      "title": "nesciunt quas odio",
-      "body": "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque"
+      "title": "Titulo con sentido",
+      "body": "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque",
+      "img":"post-img-2.jpeg"
+      
     },
     {
       "userId": 1,
       "id": 6,
-      "title": "dolorem eum magni eos aperiam quia",
-      "body": "ut aspernatur corporis harum nihil quis provident sequi\nmollitia nobis aliquid molestiae\nperspiciatis et ea nemo ab reprehenderit accusantium quas\nvoluptate dolores velit et doloremque molestiae"
+      "title": "Enunciados con ganas",
+      "body": "ut aspernatur corporis harum nihil quis provident sequi\nmollitia nobis aliquid molestiae\nperspiciatis et ea nemo ab reprehenderit accusantium quas\nvoluptate dolores velit et doloremque molestiae",
+      "img":"post-img-3.jpeg"
     },
     {
       "userId": 1,
       "id": 7,
       "title": "magnam facilis autem",
-      "body": "dolore placeat quibusdam ea quo vitae\nmagni quis enim qui quis quo nemo aut saepe\nquidem repellat excepturi ut quia\nsunt ut sequi eos ea sed quas"
+      "body": "dolore placeat quibusdam ea quo vitae\nmagni quis enim qui quis quo nemo aut saepe\nquidem repellat excepturi ut quia\nsunt ut sequi eos ea sed quas",
+      "img":"post-img-2.jpeg"
     },
     {
       "userId": 1,
       "id": 8,
       "title": "dolorem dolore est ipsam",
-      "body": "dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae"
-    },
-    {
-      "userId": 1,
-      "id": 9,
-      "title": "nesciunt iure omnis dolorem tempora et accusantium",
-      "body": "consectetur animi nesciunt iure dolore\nenim quia ad\nveniam autem ut quam aut nobis\net est aut quod aut provident voluptas autem voluptas"
+      "body": "dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae",
+      "img":"post-img-3.jpeg"
     },
     {
       "userId": 1,
       "id": 10,
       "title": "optio molestias id quia eum",
-      "body": "quo et expedita modi cum officia vel magni\ndoloribus qui repudiandae\nvero nisi sit\nquos veniam quod sed accusamus veritatis error"
+      "body": "quo et expedita modi cum officia vel magni\ndoloribus qui repudiandae\nvero nisi sit\nquos veniam quod sed accusamus veritatis error",
+      "img":"post-img-1.jpeg"
     },
     {
       "userId": 2,
@@ -293,12 +288,6 @@
       "id": 51,
       "title": "soluta aliquam aperiam consequatur illo quis voluptas",
       "body": "sunt dolores aut doloribus\ndolore doloribus voluptates tempora et\ndoloremque et quo\ncum asperiores sit consectetur dolorem"
-    },
-    {
-      "userId": 6,
-      "id": 52,
-      "title": "qui enim et consequuntur quia animi quis voluptate quibusdam",
-      "body": "iusto est quibusdam fuga quas quaerat molestias\na enim ut sit accusamus enim\ntemporibus iusto accusantium provident architecto\nsoluta esse reprehenderit qui laborum"
     },
     {
       "userId": 6,
@@ -589,6 +578,7 @@
       "name": "Leanne Graham",
       "username": "Bret",
       "email": "Sincere@april.biz",
+      "img":"user-icon.png",
       "address": {
         "street": "Kulas Light",
         "suite": "Apt. 556",
@@ -845,41 +835,6 @@
       "body": "harum non quasi et ratione\ntempore iure ex voluptates in ratione\nharum architecto fugit inventore cupiditate\nvoluptates magni quo et"
     },
     {
-      "postId": 3,
-      "id": 11,
-      "name": "fugit labore quia mollitia quas deserunt nostrum sunt",
-      "email": "Veronica_Goodwin@timmothy.net",
-      "body": "ut dolorum nostrum id quia aut est\nfuga est inventore vel eligendi explicabo quis consectetur\naut occaecati repellat id natus quo est\nut blanditiis quia ut vel ut maiores ea"
-    },
-    {
-      "postId": 3,
-      "id": 12,
-      "name": "modi ut eos dolores illum nam dolor",
-      "email": "Oswald.Vandervort@leanne.org",
-      "body": "expedita maiores dignissimos facilis\nipsum est rem est fugit velit sequi\neum odio dolores dolor totam\noccaecati ratione eius rem velit"
-    },
-    {
-      "postId": 3,
-      "id": 13,
-      "name": "aut inventore non pariatur sit vitae voluptatem sapiente",
-      "email": "Kariane@jadyn.tv",
-      "body": "fuga eos qui dolor rerum\ninventore corporis exercitationem\ncorporis cupiditate et deserunt recusandae est sed quis culpa\neum maiores corporis et"
-    },
-    {
-      "postId": 3,
-      "id": 14,
-      "name": "et officiis id praesentium hic aut ipsa dolorem repudiandae",
-      "email": "Nathan@solon.io",
-      "body": "vel quae voluptas qui exercitationem\nvoluptatibus unde sed\nminima et qui ipsam aspernatur\nexpedita magnam laudantium et et quaerat ut qui dolorum"
-    },
-    {
-      "postId": 3,
-      "id": 15,
-      "name": "debitis magnam hic odit aut ullam nostrum tenetur",
-      "email": "Maynard.Hodkiewicz@roberta.com",
-      "body": "nihil ut voluptates blanditiis autem odio dicta rerum\nquisquam saepe et est\nsunt quasi nemo laudantium deserunt\nmolestias tempora quo quia"
-    },
-    {
       "postId": 5,
       "id": 21,
       "name": "aliquid rerum mollitia qui a consectetur eum sed",
@@ -1018,41 +973,6 @@
       "name": "non minima omnis deleniti pariatur facere quibusdam at",
       "email": "Clare.Aufderhar@nicole.ca",
       "body": "quod minus alias quos\nperferendis labore molestias quae ut ut corporis deserunt vitae\net quaerat ut et ullam unde asperiores\ncum voluptatem cumque"
-    },
-    {
-      "postId": 9,
-      "id": 41,
-      "name": "voluptas deleniti ut",
-      "email": "Lucio@gladys.tv",
-      "body": "facere repudiandae vitae ea aut sed quo ut et\nfacere nihil ut voluptates in\nsaepe cupiditate accusantium numquam dolores\ninventore sint mollitia provident"
-    },
-    {
-      "postId": 9,
-      "id": 42,
-      "name": "nam qui et",
-      "email": "Shemar@ewell.name",
-      "body": "aut culpa quaerat veritatis eos debitis\naut repellat eius explicabo et\nofficiis quo sint at magni ratione et iure\nincidunt quo sequi quia dolorum beatae qui"
-    },
-    {
-      "postId": 9,
-      "id": 43,
-      "name": "molestias sint est voluptatem modi",
-      "email": "Jackeline@eva.tv",
-      "body": "voluptatem ut possimus laborum quae ut commodi delectus\nin et consequatur\nin voluptas beatae molestiae\nest rerum laborum et et velit sint ipsum dolorem"
-    },
-    {
-      "postId": 9,
-      "id": 44,
-      "name": "hic molestiae et fuga ea maxime quod",
-      "email": "Marianna_Wilkinson@rupert.io",
-      "body": "qui sunt commodi\nsint vel optio vitae quis qui non distinctio\nid quasi modi dicta\neos nihil sit inventore est numquam officiis"
-    },
-    {
-      "postId": 9,
-      "id": 45,
-      "name": "autem illo facilis",
-      "email": "Marcia@name.biz",
-      "body": "ipsum odio harum voluptatem sunt cumque et dolores\nnihil laboriosam neque commodi qui est\nquos numquam voluptatum\ncorporis quo in vitae similique cumque tempore"
     },
     {
       "postId": 10,
@@ -2523,41 +2443,6 @@
       "name": "impedit et sapiente et tempore repellendus",
       "email": "Delta_Welch@carleton.tv",
       "body": "nihil esse aut\ndebitis nostrum mollitia similique minus aspernatur possimus\nomnis eaque non eveniet\nrerum qui iure laboriosam"
-    },
-    {
-      "postId": 52,
-      "id": 256,
-      "name": "tempore distinctio quam",
-      "email": "Carlee_Heathcote@harley.tv",
-      "body": "nemo deleniti sunt praesentium quis quam repellendus\nconsequatur non est ex fugiat distinctio aliquam explicabo\naspernatur omnis debitis sint consequatur\nquo autem natus veritatis"
-    },
-    {
-      "postId": 52,
-      "id": 257,
-      "name": "illum non quod vel voluptas quos",
-      "email": "Delpha_Cormier@raymond.org",
-      "body": "facere at voluptatem\nrepellendus omnis perspiciatis placeat aspernatur nobis blanditiis ut deleniti\nquis non cumque laborum sit id ratione vel sequi\nfacere doloremque beatae aut maxime non"
-    },
-    {
-      "postId": 52,
-      "id": 258,
-      "name": "omnis quia fugit nisi officiis aspernatur occaecati et",
-      "email": "Glenna@caesar.org",
-      "body": "aut cum sint qui facere blanditiis magnam consequuntur perspiciatis\nharum impedit reprehenderit iste doloribus quia quo facere\net explicabo aut voluptate modi dolorem\nrem aut nobis ut ad voluptatum ipsum eos maxime"
-    },
-    {
-      "postId": 52,
-      "id": 259,
-      "name": "animi minima ducimus tempore officiis qui",
-      "email": "Hoyt_Dickens@napoleon.ca",
-      "body": "itaque occaecati non aspernatur\nvelit repudiandae sit rerum esse quibusdam unde molestias\nexplicabo dolorem vero consequatur quis et libero\nvoluptatem totam vel sapiente autem dolorum consequuntur"
-    },
-    {
-      "postId": 52,
-      "id": 260,
-      "name": "qui dolore delectus et omnis quia",
-      "email": "Wendell.Marvin@maegan.net",
-      "body": "aliquid molestias nemo aut est maxime\nlaboriosam et consequatur laudantium\ncommodi et corrupti\nharum quasi minima ratione sint magni sapiente ut"
     },
     {
       "postId": 53,

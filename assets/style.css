@@ -6,6 +6,8 @@
   --color-details2: #f89335;
 }
 body, header{
+  margin: auto;
+  max-width: 1000px;
   background-color: var(--color-ppl);
 font-family: 'Literata', serif;
 }
@@ -91,6 +93,7 @@ li {
   padding: 2% 3% 0% 3%;
 }
 .card{
+  height: 200px;
   display: flex;
   position: relative;
   flex-direction: column;
@@ -103,28 +106,43 @@ li {
   background-clip: border-box;
   border-radius: 0.25rem;
 }
-.card:hover{
+.h-100:hover{
   background-color: var(--color-details);
 }
 /*ICON CARD*/
 #imgUser{
   display:block;
   margin:auto;
-  width: 40%;
-  height: 50%;
-  border:rgb(11, 11, 12) solid;
+  width: 100%;
+  /* height: 100%; */
+  border: 1px solid rgb(11, 11, 12) ;
   border-radius: 60%;
   padding: 5%;
-  object-fit: contain;
+  object-fit: cover ;
+  background-color: var(--color-ppl);
+}
+#imgPost{
+  display:block;
+  margin:auto;
+  width: 100%;
+  /* height: 100%; */
+  /* border: 1px solid rgb(11, 11, 12) ; */
+  border-radius: 5%;
+  /* padding: 5%; */
+  object-fit: cover ;
   background-color: var(--color-ppl);
 }
 h5{
+  height: 60px;
+  overflow: hidden;
   font-size: 24px;
   font-weight: 700;
   padding-bottom: 2%;
 }
 p{
-  font-size: 20px;
+  height: 50px;
+   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /*BUTTONS*/
@@ -151,22 +169,21 @@ p{
 /*btnDeletePost*/
 .btn-danger {
   color: #fff;
-  width: 10%;
   background-image: url();
   background-color: var(--color-details2);
   border-color: #dc3545;
-  margin-left: 4%;
+  margin-left: 1%;
   margin-top: 3%;
   transform: translateX(-50%);
 }
 /*btnDelete*/
 .btn-primary {
   color: #fff;
-  width: 10%;
   justify-content: center;
   background-color: #0d6efd;
   border-color: #0d6efd;
-  margin-left: 45%;
+  margin-left: 5%;
+
   margin-top: 3%;
   transform: translateX(-50%);
   
@@ -174,5 +191,5 @@ p{
 /*ICONS DELETE / EDIT*/
 #btnIcons{
   position: relative;
-  width: 80%;
+  width: 25px;
 }
