@@ -106,8 +106,8 @@ function llamada(){
     $("#myModal").modal('show'); 
 }
 
-function beginmodal(){
-    content=` <div id="myModal" class="modal fade" tabindex="-1">
+function beginmodal() {
+    content = ` <div id="myModal" class="modal fade" tabindex="-1">
     <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
@@ -120,12 +120,15 @@ function beginmodal(){
                 <div id="email"></div>
                 </div>
                 <div class="modal-footer">
+                <button type="button" class="btn btn-danger"  id='deleteBtn'>Delete</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     <button type="button" class="btn btn-primary">Save</button>
                     <button type="button" class="btn btn-success" id="comentClick">Comentarios</button>
                   </div>
                 <div class="modal-body" id="comments" style="display: none;"> <b>Comentarios</b>
+                <div class="modal-body" id="comments"> <b>Comentarios</b>
                 </div>
+
               </div>
             </div>
           </div>
@@ -144,6 +147,24 @@ function beginmodal(){
         display.style.display="none"
       }
     })
+    const deleteBtn = document.getElementById('deleteBtn');
+    deleteBtn.addEventListener('click', deleteComment);
+}
+
+function deleteComment() {
+    let deletePost = document.querySelector(".prueba").id
+    
+    fetch(`http://localhost:3000/posts/${deletePost}`, {
+        method: 'DELETE',
+    })
+    .then(request => {
+        return request.json();
+    })
+    .then(response => {
+        alert(`Post ID ${deletePost} deleted`)
+    });
+
+    
 }
 
 function fetchUsersInfo(idposts){
