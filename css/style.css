@@ -21,6 +21,7 @@ body{
     margin:0;
 }
 
+/*NavBar*/
 .welcome{
     display: flex;
     height: 40px;
@@ -29,8 +30,31 @@ body{
     justify-content: center;
     margin: 2vh;
 }
+picture{
+    display: flex;
+    align-items: center;
+position: absolute;
+margin-left: 50px;
+}
+
+#logoImg{
+    width: 45px;
+    border-radius: 50px;
+    margin: 15px;
+}
+#logoP{
+    color: var(--bg-color);
+    font-weight: bold;
+    font-size: 2em;
+    margin-top: 1.5vh;
+}
+.menuBlue{
+    background-color: var(--primary-color);
+    height: 7vh;
+}
 
 .nav-link{
+    margin-top: 2.7vh;
     color: var(--bg-color);
 }
 
@@ -150,10 +174,7 @@ body{
     height: 40px;
 }
 
-.menuBlue{
-    background-color: var(--primary-color);
-    height: 5vh;
-}
+
 
 .row{
     height: 50%;

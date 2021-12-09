@@ -30,7 +30,7 @@ function Activatepagination(){
 function changePage(e){
   const item=$(".page-item");
   const button=e.target.textContent;
-  
+
   //sum or rest the numId while press paginate buttons
   // && Check if numId is higher or lower than 10-1, comeback to 1
   if(numId==button){
@@ -42,7 +42,7 @@ function changePage(e){
     getPosts();
     printImage()
     }
-   
+
 //if press previous, or next, check if can change of page
   if(button=="Previous" && numId>1){
     numId--;
@@ -54,12 +54,12 @@ function changePage(e){
     item.eq(0).removeClass("disabled")
     getPosts();
     printImage()
-    
+
   }
 //put disabled buttons
   if(numId==1){
     item.eq(0).addClass("disabled")
-    
+
   }else if(numId==10){
     item.eq(11).addClass("disabled")
   }
@@ -142,7 +142,7 @@ async function infoModal(e,nextPrev){
       target=nextPrev.textContent
       postImg=$(nextPrev).parent().parent().css("background-image").replace(/^url\(['"](.+)['"]\)/, '$1');
     }
-    
+
     //GET POST
     target=arrayPosts.find(element=>element.title==target)
      //GET USER
@@ -161,10 +161,8 @@ async function infoModal(e,nextPrev){
     $("#username").text(user.username);
     $("#email").text(user.email);
     $("#description").text(target.body);
-    $(".loadComments").eq(0).one("click",function(){
-      loadComments(target.id)
-      
-    });
+    $("#deleteButton").on("click",deletePost)
+    $(".loadComments").eq(0).one("click", loadComments)
 }
 
 function previousPost(){
@@ -177,13 +175,13 @@ function nextPost(){
 
 }
 
-async function loadComments(id){
-  await fetch("http://localhost:3000/comments?postId="+id)
+async function loadComments(){
+  await fetch("http://localhost:3000/comments?postId="+target.id)
   .then(response=>response.json())
   .then(data=>{
-    
+
     data.forEach(function(element,idx){
-        
+
           $("#commentSection").append(`
           <div class="row commentsContainer">
           <div class="row titleComment">${element.title}</div>
@@ -204,5 +202,6 @@ async function loadComments(id){
 
 function resetModal(){
   $(".commentsContainer").empty();
-    
+    $(".loadComments").off("click", loadComments);
+    $(".fa-arrow-right,.fa-arrow-left").off("click",previousPost);
 }
