@@ -2,7 +2,7 @@ let urlPosts = 'https://jsonplaceholder.typicode.com/posts/';
 let urlUsers = 'https://jsonplaceholder.typicode.com/users';
 //let imgRandom = 'https://random.imagecdn.app/500/150';
 
-/**things to do user name - divs in html bootstrap + post dataGET & get users */
+
 
 /*user*/
 function getUserid(userId, postId) {
@@ -104,9 +104,10 @@ $(document).ready(function(){
         modalBody.innerHTML=bodyPost.innerHTML;
         getComments(positionDiv);
     });
+    //show inputs to edit content
     $("#btn-edit").on("click",function(e){
         var modalBody=document.querySelector(".modal-body");
-        var modalTitle=document.querySelector(".modal-title");
+        var modalTitle=document.getElementById("exampleModalLabel");
         let titlePost=document.getElementById("titlePost"+(positionDiv));
         let bodyPost=document.getElementById("bodyPost"+(positionDiv));
 
@@ -123,15 +124,14 @@ $(document).ready(function(){
         comment.append(buttonAcceptEdit);
         modalBodyEdit.value=modalBody.innerHTML;
         modalTitleEdit.value=modalTitle.innerHTML;
-        modalTitle.innerHTM="";
+        modalTitle.innerHTML="";
         modalBody.innerHTML="";
 
         modalBody.append(modalBodyEdit);
         modalTitle.append(modalTitleEdit);
 
-
+        //edit content
         $("#changeContent").on("click",function(e){
-            // al pulsar el boton de editar, guardarlo  en ajax y sobreescribir los cambios en bodyPost y titlePost
         fetch('https://jsonplaceholder.typicode.com/posts/'+positionDiv, {
             method: 'PUT',
             body: JSON.stringify({
