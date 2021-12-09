@@ -124,8 +124,7 @@ picture{
     
 }
 #photoTitle{
-    width:450px;
-    height: 300px;
+    object-fit: fill;
 }
 .fa-user,.fa-envelope,.fa-comments{
     margin-right:5px;
@@ -209,6 +208,7 @@ picture{
     height: auto;
     padding: 5%;
     cursor: pointer;
+    opacity: 0.8;
 }
 
 .titlePost{

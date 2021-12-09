@@ -21,12 +21,20 @@ const arrayPhotos=[
 
 
 
+// function printImage3(){
+//     //GENERATE RANDOM NUM OF THE ARRAY
+//     let randomNumber=Math.floor(Math.random()*arrayPhotos.length)
+//     arrayPhotos.forEach( function (element,i) {
+//         randomNumber=Math.floor(Math.random()*arrayPhotos.length)
+//         $('.divPost').eq(i).css('background-image', 'url(' + arrayPhotos[randomNumber] + ')');
+//     })
+
+// }
 function printImage(){
-    //GENERATE RANDOM NUM OF THE ARRAY
-    let randomNumber=Math.floor(Math.random()*arrayPhotos.length)
-    arrayPhotos.forEach( function (element,i) {
-        randomNumber=Math.floor(Math.random()*arrayPhotos.length)
-        $('.divPost').eq(i).css('background-image', 'url(' + arrayPhotos[randomNumber] + ')');
+    let randomNumber=Math.floor(Math.random()*300)
+    $('.divPost').each(function(idx,element){
+        let randomNumber=Math.floor(Math.random()*300)
+        $(element).css('background-image', `url(https://picsum.photos/500/?${randomNumber})`)
     })
 }
 
