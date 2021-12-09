@@ -215,6 +215,16 @@ picture{
     font-size: 1em;
 }
 
+/*Comments style*/
+.commentsContainer{
+    text-align: justify;
+    margin-top: 2vh;
+}
+.titleComment{
+    font-weight: bold;
+    text-transform: capitalize;
+    margin-bottom: 1vh;
+}
 .comment{
     color: var(--secondary-color);
 }
@@ -222,4 +232,11 @@ picture{
     width:60px;
     height:60px;
     border-radius:50px;
+    object-fit: cover;
+}
+
+/*Modal Edit*/
+#aceptEditBtn{
+    background-color: var(--secondary-color);
+    border: none;
 }

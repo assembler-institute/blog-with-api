@@ -26,7 +26,7 @@ window.onload= function(){
   $('#exampleModalToggle').on('hide.bs.modal', function () {
     resetModal()
   })
- 
+
 }
 //listeners to pagination
 function Activatepagination(){
@@ -189,15 +189,15 @@ async function loadComments(){
 
           $("#commentSection").append(`
           <div class="row commentsContainer">
-          <div class="row titleComment">${element.title}</div>
-            <div class="col">
+          <div class="titleComment row">
+              <div >${element.name}</div>
+              <div>${element.email}</div>
+            </div>
+            <div class="col-2">
               <img src="../assets/img/prevpost.jpg" class="photoComment">
             </div>
-            <div class="bodyComment col">${element.body}</div>
-            <div class="personalInfoComment row">
-              <div class="col">${element.name}</div>
-              <div class="col">${element.email}</div>
-            </div>
+            <div class="bodyComment col-10">${element.body}</div>
+            <hr>
           </div>
           `);
 
@@ -212,4 +212,40 @@ function resetModal(){
   $(".loadComments").off("click", loadComments);
   //TURN OFF PREVIOUS AND NEXT POST
   $(".fa-arrow-right,.fa-arrow-left").off("click",previousPost);
+}
+
+
+
+//function to edit the post
+function editPost(){
+
+    $("#titleEditPost").val(target.title ); //input title
+    $("#bodyEditPost").val(target.body) //input body
+
+  $("#aceptEditBtn").on("click", aceptEdit)
+}
+
+async function aceptEdit(){
+  console.log("acept")
+
+    await fetch("http://localhost:3000/posts/"+target.id,
+    {
+      method: "PATCH",
+      body: JSON.stringify({
+        title: $("#titleEditPost").val(),
+        body:$("#bodyEditPost").val()
+      }),
+      headers:{
+        "Accept":"*/*",
+        "Access-Control-Allow-Origin":"*",
+        'Content-type': 'application/json; charset=UTF-8'
+      }
+    })
+    .then(response => response.json())
+    .then(data =>{
+      $("#modalPost-title").text(data.title)
+      $("#description").text(data.body)
+    })
+
+
 }
