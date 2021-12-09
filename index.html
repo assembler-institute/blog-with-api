@@ -229,11 +229,17 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        Hide this modal and show the first with the button below.
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Title</label>
+                            <input class="form-control" id="exampleFormControlInput1" >
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Body</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                          </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back
-                            to first</button>
+                        <button id="aceptEdit" class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Acept</button>
                     </div>
                 </div>
             </div>

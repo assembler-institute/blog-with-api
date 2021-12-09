@@ -16,7 +16,7 @@ window.onload= function(){
   $('#exampleModalToggle3').on('shown.bs.modal', function () {
     $("#deleteButton").one("click",deletePost)
   })
- 
+
 }
 //listeners to pagination
 function Activatepagination(){
@@ -184,15 +184,15 @@ async function loadComments(){
 
           $("#commentSection").append(`
           <div class="row commentsContainer">
-          <div class="row titleComment">${element.title}</div>
-            <div class="col">
+            <div class="col-2">
               <img src="../assets/img/prevpost.jpg" class="photoComment">
             </div>
-            <div class="bodyComment col">${element.body}</div>
+            <div class="bodyComment col-10">${element.body}</div>
             <div class="personalInfoComment row">
               <div class="col">${element.name}</div>
               <div class="col">${element.email}</div>
             </div>
+            <hr>
           </div>
           `);
 
