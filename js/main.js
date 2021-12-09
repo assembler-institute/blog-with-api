@@ -172,6 +172,7 @@ async function infoModal(e,nextPrev){
     $("#username").text(user.username);
     $("#email").text(user.email);
     $("#description").text(target.body);
+    $("#openEditModal").on("click", editPost)
 }
 
 function previousPost(){
@@ -246,6 +247,7 @@ async function aceptEdit(){
       $("#modalPost-title").text(data.title)
       $("#description").text(data.body)
     })
+    .then(e=> e.preventDefault())
 
 
 }

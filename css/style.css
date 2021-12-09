@@ -97,6 +97,15 @@ picture{
 
     100%{margin-top: 0;}
 }
+
+/*Container body posts main*/
+/* @media only screen and (max-width: 600px) {
+
+    .sectionMain > .row {
+        background-color: var(--secondary-color);
+    }
+} */
+
 /* MODAL POST */
 #post-header{
     background-color:var(--primary-color);
@@ -183,15 +192,14 @@ picture{
 }
 
 
-
 .row{
     height: 50%;
 }
 
-
-.container>.row{
+.container-fluid>.row{
     height: 38vh;
 }
+
 .divPost{
     display: flex;
     align-items: flex-end;
