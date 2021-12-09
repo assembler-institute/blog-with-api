@@ -247,7 +247,8 @@ async function aceptEdit(){
       $("#modalPost-title").text(data.title)
       $("#description").text(data.body)
     })
-    .then(e=> e.preventDefault())
+    // e.stopPropagation()
+    // e.preventDefault()
 
 
 }
