@@ -12,13 +12,13 @@ fetch("http://localhost:3000/posts", requestOptions)
         var containerChild = document.createElement('div')
         containerChild.classList.add('postsContainer')
         result.forEach(element => {
-            // console.log(element);
+            //console.log(element);
             var containerFather = document.querySelector(".col-md-8");
             containerFather.appendChild(containerChild)
             var button = document.createElement("button");
             button.setAttribute("id", element.id);
             button.classList.add("accordion");
-            button.innerHTML = `${element.title} <i class="bi bi-pencil-square ${element.id}"></i><i class="bi bi-trash"></i>`;
+            button.innerHTML = `${element.title} <i class="bi bi-pencil-square ${element.id}" id='editPost${element.id}'></i><i class="bi bi-trash"></i>`;
             containerChild.appendChild(button);
             var panel = document.createElement("div");
             panel.classList.add("panel");
@@ -33,6 +33,11 @@ fetch("http://localhost:3000/posts", requestOptions)
             btnComment.addEventListener("click", function () {
                 newComment(element.id)
             });
+            var btnEditPost = document.getElementById('editPost' + element.id);
+            btnEditPost.addEventListener('click', function () {
+                editPost(element.userId, element.body, element.title)
+
+            })
             var btnShowComment = document.createElement("button");
             btnShowComment.innerHTML = "Check all the comments!";
             panel.appendChild(btnShowComment);
@@ -45,14 +50,26 @@ fetch("http://localhost:3000/posts", requestOptions)
 
 // var posts = JSON.parse(localStorage.getItem('posts'))
 
-/* Get Users */
+/* Get Users Info*/
 
-fetch("http://localhost:3000/users", requestOptions)
-    .then(responseUsers => responseUsers.json())
-    .then(resultUsers => localStorage.setItem("users", JSON.stringify(resultUsers)))
-    .catch(error => console.log('error', error));
+function getUserInfo(userId) {
+    let name;
+    let username;
+    fetch("http://localhost:3000/users?id=" + userId, requestOptions)
+        .then(responseUsers => responseUsers.json())
+        .then(resultUsers => {
+            name = resultUsers.name
+            username = resultUsers.username
+        })
+        .catch(error => console.log('error', error));
+    return {
+        name,
+        username
+    };
+}
 
-var users = JSON.parse(localStorage.getItem('users'))
+
+
 
 /* Open accordion */
 function accordionDisplay() {
@@ -223,3 +240,70 @@ setTimeout(() => {
         })
     }
 }, 0);
+
+/* CREATE MODAL */
+
+function editPost(id, body, title) {
+    console.log('a');
+    var fatherModal = document.querySelector('.modal');
+    const html = `<div class="modal-content">
+            <span class = "close"
+            id = "closeModal"> </span>
+            <form class="row g-3 needs-validation" novalidate>
+              <div class="col-md-4">
+                <label for="validationCustom01" class="form-label">First name</label>
+                <input type="text" class="form-control" id="validationCustom01" value="" required>
+                <div class="valid-feedback">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label for="validationCustom02" class="form-label">Last name</label>
+                <input type="text" class="form-control" id="validationCustom02" value="" required>
+                <div class="valid-feedback">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label for="validationCustomUsername" class="form-label">Username</label>
+                <div class="input-group has-validation">
+                  <span class="input-group-text" id="inputGroupPrepend">@</span>
+                  <input type="text" class="form-control" id="validationCustomUsername"
+                    aria-describedby="inputGroupPrepend" required>
+                  <div class="invalid-feedback">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="validationCustom03" class="form-label">Title</label>
+                <input type="text" class="form-control" id="validationCustom03" required>
+                <div class="invalid-feedback">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="validationCustom03" class="form-label">Body</label>
+                <input type="text" class="form-control" id="validationCustom03" required>
+                <div class="invalid-feedback">
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                  <label class="form-check-label" for="invalidCheck">
+                    Agree to terms and conditions
+                  </label>
+                  <div class="invalid-feedback">
+                    You must agree before submitting.
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <button class="btn btn-primary" type="submit" id='submitEdit'>Submit form</button>
+              </div>
+            </form>
+          </div>`
+    fatherModal.innerHTML = html;
+    fatherModal.style.display = 'block';
+    document.getElementById("closeModal").addEventListener("click", closeModal);
+    document.getElementById("submitEdit").addEventListener("click", function () {
+        submitPostEdit()
+    })
+}
