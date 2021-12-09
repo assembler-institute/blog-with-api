@@ -75,17 +75,18 @@ function createCommentsByPost(obj){
     }
 }
 
-// async function searchByTitlePosts(e) {
-//     e.preventDefault();
-//     const titlePost = document.getElementById("titleSearchPosts").value;
-//     const response = await getAllItems(`http://localhost:3000/posts?title=${titlePost}`);
-//     clearListsPosts();
-//     showAllPost(response);
-// }
+async function searchByTitlePosts(e) {
+    e.preventDefault();
+    const titlePost = document.getElementById("titleSearchPosts").value;
+    const response = await getAllItems(`http://localhost:3000/posts?title_like=${titlePost}`);
+    clearListsPosts();
+    showAllPost(response);
+}
 
-// function clearListsPosts() {
-//     const postsHTML = document.getElementsByClassName("postblog");
-//     for (const postHTML of postsHTML) {
-//         postHTML.remove();
-//     }
-// }
+function clearListsPosts() {
+    const redyblog = document.getElementById("redyblog");
+
+    while (redyblog.children.length != 1) {
+        redyblog.removeChild(redyblog.lastChild);
+    }
+}
