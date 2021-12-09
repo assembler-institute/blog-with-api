@@ -70,7 +70,7 @@ function updatePostsList(data) {
             `<div class="card h-100" id="card${post.id}">
                             <div class="card-body">
                             <img src="assets/img/postImg/${post.img}" id="imgPost">
-                              <div class="card-body">
+                            <div class="card-body">
                             <div id="showDescriptionModal${post.id}">
                             <h5 class="card-title" id="title${post.id}">` +
             post.title +
@@ -79,7 +79,7 @@ function updatePostsList(data) {
             post.body +
             `</p>
                             </div>
-                            <button id="editPost${post.id}" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalEdit" data-edit="${post.id}"><img id="btnIcons" src="assets/img/pen.png"></button>
+                            <button id="editPost${post.id}" type="button" class="btn btn-primary btnEdit" data-bs-toggle="modal" data-bs-target="#exampleModalEdit" data-edit="${post.id}"><img id="btnIcons" src="assets/img/pen.png"></button>
                             <button id="btnDeletePost${post.id}" class="btn btn-danger icon-bin" data-delete="${post.id}">
                             <img id="btnIcons" src="assets/img/cross-delete-or-close-circular-button-interface-symbol.png"></button>
                             </div>
@@ -124,22 +124,22 @@ function findUserFetchFun(post) {
         .catch((error) => console.log("error", error));
 }
 function modalContent(post, data) {
-    
+
 
     document.getElementById("staticBackdropLabel").innerHTML = `
     <div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
+<div class="row g-0">
     <div class="col-md-4">
-      <img src="assets/img/user imgs/${data.img}" id="imgUser" alt="...">
+    <img src="assets/img/user imgs/${data.img}" id="imgUser" alt="...">
     </div>
     <div class="col-md-8">
-      <div class="card-body">
+    <div class="card-body">
         <h5 class="card-title">${post.title}</h5>
         <p class="card-text">${data.name}</p>
         <p class="card-text"><small class="text-muted">${data.email}</small></p>
-      </div>
     </div>
-  </div>
+    </div>
+</div>
 </div>`
     // document.getElementById("staticBackdropLabel").textContent = post.title;
     // document.getElementById("staticBackdropLabel").textContent += " " + data.name;

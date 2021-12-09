@@ -7,7 +7,7 @@
 }
 body, header{
   margin: auto;
-  max-width: 1000px;
+  max-width: 100vh;
   background-color: var(--color-ppl);
 font-family: 'Literata', serif;
 }
@@ -62,7 +62,6 @@ li {
   justify-content: center;
   margin: 1% 3%;
   padding: 60px 50px;
-  
 }
 .banner-Blog{
   background-color:var(--color-secundario);
@@ -93,7 +92,7 @@ li {
   padding: 2% 3% 0% 3%;
 }
 .card{
-  height: 200px;
+  height: 300px;
   display: flex;
   position: relative;
   flex-direction: column;
@@ -108,6 +107,13 @@ li {
 }
 .h-100:hover{
   background-color: var(--color-details);
+}
+.card-header {
+  padding: 0.5rem 1rem;
+  font-size: ;
+  margin-bottom: 0;
+  background-color: rgba(0,0,0,.03);
+  border-bottom: 1px solid rgba(0,0,0,.125);
 }
 /*ICON CARD*/
 #imgUser{
@@ -142,7 +148,7 @@ h5{
 .pCard{
   font-size: 20px;
   white-space: nowrap; 
-  width: 150px; 
+  width: 350px;
   overflow: hidden;
   text-overflow: ellipsis; 
   border: 1px solid #000000;
@@ -161,7 +167,7 @@ h5{
   background-color: white;
   font-size: 150%;
   font-weight: 800;
-  width: 10%;
+  width: 15%;
   padding: 1%;
 }
 .btn-outline-primary:hover {
@@ -175,7 +181,7 @@ h5{
   background-image: url();
   background-color: var(--color-details2);
   border-color: #dc3545;
-  margin-left: 1%;
+  margin-left: 62%;
   margin-top: 3%;
   transform: translateX(-50%);
 }
@@ -184,13 +190,15 @@ h5{
   color: #fff;
   justify-content: center;
   border-color: #0d6efd;
-  margin-left: 5%;
-
-  margin-top: 3%;
   transform: translateX(-50%);
+}
+/*btnEdit*/
+.btnEdit{
+  margin-left: 6%;
 }
 /*ICONS DELETE / EDIT*/
 #btnIcons{
   position: relative;
+  display: flex;
   width: 25px;
 }

@@ -48,6 +48,18 @@ font-family: 'Literata', serif;
 .btn-primary-com{
   vertical-align: text-bottom;  
   color:var(--color-ppl);
-  background-color: var(--color-details2);
+  background-color: var(--color-secundario);
   text-align: center;
+}
+
+/*MODAL EDIT*/
+#footerCard{
+display: inline-flex;
+flex-direction: row;
+}
+.btn-secondary, .btnCloseEdit{
+  color: #fff;
+  background-color:var(--color-details2);
+  border-color: #6c757d;
+  margin-right: 15%;
 }

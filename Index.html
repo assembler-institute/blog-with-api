@@ -17,6 +17,7 @@
   <title>Blog Api</title>
 </head>
 <body>
+  <!--HEADER-->
 <header class="header">
   <div class="menu">
     <nav class="navbar navbar-light bg-light">
@@ -32,6 +33,7 @@
     </nav>
   </div>
 </header>
+<!--BLOG SECTION-->
 <section class="myBlog">
   <div class="container">
     <div class="banner-Blog">
@@ -76,7 +78,7 @@
       </div>
       <div class="modal-footer">
         <h3 id="text-com">Comments</h3>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" id="closeCard" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button id="comments-button" type="button" class="btn btn-primary-com">Load Comments</button>
       </div>
     </div>
@@ -102,8 +104,8 @@
           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" id="btnCloseEdit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <div class="modal-footer" id="footerCard">
+        <button type="button" id="btnCloseEdit" class="btn btn-secondary btnCloseEdit" data-bs-dismiss="modal">Close</button>
         <button type="button" id="btnSaveEdit" value="" class="btn btn-primary">Save changes</button>
       </div>
     </div>
