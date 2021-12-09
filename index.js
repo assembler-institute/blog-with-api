@@ -4,7 +4,7 @@ const templateTitle = document.querySelector(".formtitle");
 const templateContainer = document.querySelectorAll("#operador");
 var initialPost =0;
 var endPost=12;
-
+var totalPost;
 const templateFragment = document.createDocumentFragment()
 
 // document.addEventListener("DOMcontentLoadedr", getdata)
@@ -22,9 +22,8 @@ function  getdata(){
 
     fetch("http://localhost:3000/posts?_start="+initialPost+"&_end="+endPost)
         .then((res) => {
-            var totalPost = res.headers.get('X-Total-Count')
+            totalPost = res.headers.get('X-Total-Count')
             console.log(totalPost)
-            storeTotalPost(totalPost)
             return res.json()
         })
         .then(json=>{
@@ -173,19 +172,15 @@ function blogEnd(){
     getdata(endPost,initialPost)
 }
 function blocLast(){
-    storeTotalPost()
+    console.log(totalPost)
     console.log("joder")
-    console.log(lastPost)
-    initialPost=initialPost+12;
-    endPost=endPost+12;
+    
+    initialPost=totalPost-12;
+    endPost=totalPost
     getdata(endPost,initialPost)
     
 }
-function storeTotalPost(totalPost){
-    console.log("vuelvo")
-    var lastPost= totalPost
-    return lastPost
-}
+
 
 // modalbody.classList.add("card-text")
 // modalbody.innerHTML= element.body
