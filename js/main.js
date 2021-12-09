@@ -210,49 +210,35 @@ function resetModal(){
 
 
 //function to edit the post
-async function editPost(){
-  await fetch("http://localhost:3000/posts/"+target.id)
-  .then(response => response.json())
-  .then(data =>{
-    $("#titleEditPost").attr("placeholder", data.title ); //input title
-    $("#bodyEditPost").attr("placeholder", data.body) //input body
-  })
+function editPost(){
+
+    $("#titleEditPost").val(target.title ); //input title
+    $("#bodyEditPost").val(target.body) //input body
 
   $("#aceptEditBtn").on("click", aceptEdit)
 }
 
 async function aceptEdit(){
   console.log("acept")
-  await fetch("https://jsonplaceholder.typicode.com/posts/"+target.id,
-  {
-    method: "PATCH",
-    body: JSON.stringify({
-      title: $("#titleEditPost").val(),
-      body:$("#bodyEditPost").val()
+
+    await fetch("http://localhost:3000/posts/"+target.id,
+    {
+      method: "PATCH",
+      body: JSON.stringify({
+        title: $("#titleEditPost").val(),
+        body:$("#bodyEditPost").val()
       }),
       headers:{
         "Accept":"*/*",
         "Access-Control-Allow-Origin":"*",
         'Content-type': 'application/json; charset=UTF-8'
       }
-  })
-  .then(response => response.json())
-  .then(data =>{
-  $("#modalPost-title").text(data.title)
-  $("#description").text(data.body)
-  })
+    })
+    .then(response => response.json())
+    .then(data =>{
+      $("#modalPost-title").text(data.title)
+      $("#description").text(data.body)
+    })
 
 
 }
-
-// {
-//   method:"Patch",
-//   body: JSON.stringify({
-//     title: target.title,
-//     body: target.body
-//   }),
-//   headers:{
-//     "Accept":"*/*",
-//     "Access-Control-Allow-Origin":"*"
-//   }
-// })
