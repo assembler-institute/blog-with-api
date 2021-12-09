@@ -3,10 +3,6 @@
     {
       "userId": 1,
       "id": 1,
-<<<<<<< HEAD
-      "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-      "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-=======
       "title": "Esto es un titulo en condiciones",
       "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
       "img":"post-img-1.jpeg"
@@ -32,7 +28,6 @@
       "title": "magnam facilis autem",
       "body": "dolore placeat quibusdam ea quo vitae\nmagni quis enim qui quis quo nemo aut saepe\nquidem repellat excepturi ut quia\nsunt ut sequi eos ea sed quas",
       "img":"post-img-2.jpeg"
->>>>>>> 8d5f26a3d6cae86611df982891ed29c74e043a52
     },
     {
       "userId": 1,
@@ -836,8 +831,6 @@
       "body": "harum non quasi et ratione\ntempore iure ex voluptates in ratione\nharum architecto fugit inventore cupiditate\nvoluptates magni quo et"
     },
     {
-<<<<<<< HEAD
-=======
       "postId": 5,
       "id": 21,
       "name": "aliquid rerum mollitia qui a consectetur eum sed",
@@ -943,7 +936,6 @@
       "body": "dolor mollitia quidem facere et\nvel est ut\nut repudiandae est quidem dolorem sed atque\nrem quia aut adipisci sunt"
     },
     {
->>>>>>> 8d5f26a3d6cae86611df982891ed29c74e043a52
       "postId": 8,
       "id": 36,
       "name": "sit et quis",
