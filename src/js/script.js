@@ -15,6 +15,24 @@ function showAllPost(allPosts) {
     }
 }
 
+
+async function newPost(e) {
+    const obj = {
+        userId: 1,
+        avatar: "./src/img/avatar1.png",
+        title: document.getElementById("createTitlePost").value,
+        body: document.getElementById("createBodyPost").value,
+    };
+    if(e.key === 'Enter') {
+        console.log();
+        await fetch("http://localhost:3000/posts", {
+            method: "POST",
+            headers:{ 'Content-Type': 'application/json' },
+            body: JSON.stringify(obj)
+        });
+    }
+}
+
  function deletePost(e){
     // let modalDelete=document.getElementById("exampleModal")
     $('#exampleModal').css({"display":"block"}); // abrir
