@@ -20,7 +20,6 @@ window.onload= function(){
   //post modal
   $('#exampleModalToggle').on('shown.bs.modal', function () {
     $(".fa-arrow-right,.fa-arrow-left").on("click",previousPost)
-    $(".loadComments").eq(0).one("click", loadComments)
     $("#openEditModal").on("click",editPost)
     $("#deleteButton").off("click",deletePost)
   })
@@ -105,6 +104,7 @@ async function infoModal(e,nextPrev){
     //NEXT POST AND PREV LISTENERS
     
     //DISPLAY INFO
+    $(".loadComments").eq(0).one("click", loadComments)
     $("#photoTitle").attr("src",postImg)
     $("#modalPost-title").text(target.title);
     $("#username").text(user.username);
@@ -115,6 +115,8 @@ async function infoModal(e,nextPrev){
 function previousPost(){
   var numRandom=Math.floor(Math.random()*10);
   var randomPost=($(".divPostDetail").eq(numRandom).children(".titlePost")[0])
+  $(".commentsContainer").remove();
+  $(".loadComments").off("click", loadComments);
   infoModal(undefined,randomPost)
 }
 
@@ -127,7 +129,7 @@ async function loadComments(){
 
           $("#commentSection").append(`
           <div class="row commentsContainer">
-          <div class="titleComment row">
+            <div class="titleComment row">
               <div >${element.name}</div>
               <div>${element.email}</div>
             </div>
@@ -144,7 +146,7 @@ async function loadComments(){
 }
 
 function resetModal(){
-  $(".commentsContainer").empty();
+  $(".commentsContainer").remove();
   //TURN OFF LISTENER TO DELETE
   //TURN OFF LOAD COMMENTS
   $(".loadComments").off("click", loadComments);
