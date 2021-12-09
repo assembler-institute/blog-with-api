@@ -75,7 +75,7 @@ function updatePostsList(data) {
                             <h5 class="card-title" id="title${post.id}">` +
             post.title +
             `</h5>
-                            <p class="card-text" id="body${post.id}">` +
+                            <p class="card-text pCard" id="body${post.id}">` +
             post.body +
             `</p>
                             </div>

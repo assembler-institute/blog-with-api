@@ -97,7 +97,7 @@ li {
   display: flex;
   position: relative;
   flex-direction: column;
-  margin: auto;
+  justify-content: center;
   min-width: 20%;
   padding: 3%;
   text-align: justify;
@@ -139,10 +139,13 @@ h5{
   font-weight: 700;
   padding-bottom: 2%;
 }
-p{
-  height: 50px;
-   overflow: hidden;
-  text-overflow: ellipsis;
+.pCard{
+  font-size: 20px;
+  white-space: nowrap; 
+  width: 150px; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  border: 1px solid #000000;
 }
 
 /*BUTTONS*/
@@ -180,13 +183,11 @@ p{
 .btn-primary {
   color: #fff;
   justify-content: center;
-  background-color: #0d6efd;
   border-color: #0d6efd;
   margin-left: 5%;
 
   margin-top: 3%;
   transform: translateX(-50%);
-  
 }
 /*ICONS DELETE / EDIT*/
 #btnIcons{
