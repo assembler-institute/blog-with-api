@@ -6,7 +6,7 @@ var requestOptions = {
 };
 let btnSubmit;
 
-fetch("https://jsonplaceholder.typicode.com/posts", requestOptions)
+fetch("http://localhost:3000/posts", requestOptions)
     .then(response => response.json())
     .then(result => {
         var containerChild = document.createElement('div')
@@ -47,7 +47,7 @@ fetch("https://jsonplaceholder.typicode.com/posts", requestOptions)
 
 /* Get Users */
 
-fetch("https://jsonplaceholder.typicode.com/users", requestOptions)
+fetch("http://localhost:3000/users", requestOptions)
     .then(responseUsers => responseUsers.json())
     .then(resultUsers => localStorage.setItem("users", JSON.stringify(resultUsers)))
     .catch(error => console.log('error', error));
@@ -78,7 +78,7 @@ function getComments(id) {
     if (document.querySelector('.containerComments' + id)) {
         document.querySelector('.containerComments' + id).remove()
     } else {
-        fetch("https://jsonplaceholder.typicode.com/posts/" + id + "/comments", requestOptions)
+        fetch("http://localhost:3000/comments?postId=" + id, requestOptions)
             .then(response => response.json())
             .then(result => {
                 let father = document.querySelector('.comment' + id);
@@ -156,25 +156,11 @@ function submitForm(id) {
         redirect: 'follow'
     };
 
-    fetch("https://jsonplaceholder.typicode.com/posts/" + id + "/comments", requestOptions)
+    fetch("http://localhost:3000/comments?postId=" + id, requestOptions)
         .then(response => response.json())
-        .then(result => {
-            console.log(result);
-            let father = document.querySelector('.comment' + id);
-            let container = document.createElement('div')
-            container.classList.add('containerComments' + id);
-            father.appendChild(container)
-            let title = document.createElement('div')
-            title.classList.add('titleComment')
-            let description = document.createElement('p');
-            description.classList.add('bodyComment')
-            title.innerText = result.name;
-            description.innerText = result.body;
-            container.append(title)
-            title.append(description)
-        })
         .catch(error => console.log('error', error));
     closeModal();
+    getComments(id)
 }
 
 
