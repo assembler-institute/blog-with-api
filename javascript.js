@@ -156,14 +156,13 @@ function beginmodal() {
                 <div id="userName"></div>
                 <div id="email"></div>
                 </div>
-                <div class="modal-body" id="comments"> <b>Comentarios</b>
-                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal" id='deleteBtn'>Delete</button>
                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">Edit</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Save</button>
-                    <button type="button" class="btn btn-success" id="comentClick">Comentarios</button>
+                    <button type="button" class="btn btn-success" id="comentClick"  type="button" data-toggle="collapse" data-target="#comments" aria-expanded="false" aria-controls="comments">Comments</button>
+                </div>
+                <div class="modal-body collapse multi-collapse" id="comments"> <b>Comentarios</b>
                 </div>
               </div>
             </div>
@@ -254,38 +253,42 @@ function fetchUsersInfo(idposts) {
         });
 }
 
-function comments(postId) {
-    fetch('http://localhost:3000/comments')
-        .then(request => {
-            return request.json();
-        })
-        .then(response => {
-            var postComment = response.filter(element => {
-                //    console.log(element)
-                if (element.postId == postId) return element;
-            });
-            beginmodal();
-            postComment.forEach(element => {
-                const { name, email, body } = element;
-                let divComment = document.createElement('div');
-                divComment.setAttribute('class', 'infoName');
-                divComment.innerHTML = name;
-                document.getElementById('comments').appendChild(divComment);
-                let divCommentEmail = document.createElement('div');
-                divCommentEmail.setAttribute('class', 'infoEmail');
-                divCommentEmail.innerHTML = `<b>Email:</b> ${email}`;
-                // console.log(divComment)
-                let divCommentBody = document.createElement('div');
-                divCommentBody.setAttribute('class', 'infoBody');
-                divCommentBody.innerHTML = body;
-                // console.log(divComment)
-                document.getElementById('comments').appendChild(divCommentBody);
-                document
-                    .getElementById('comments')
-                    .appendChild(divCommentEmail);
-            });
-        });
-}
+function comments (postId){
+  fetch("http://localhost:3000/comments")
+  .then((request)=>{
+  return request.json()
+  })
+  .then((response)=>{
+    var postComment= response.filter((element)=>{
+      //    console.log(element)
+          if(element.postId == postId)
+          return element
+      })
+      beginmodal()
+      postComment.forEach(element=>{
+          const{name, email, body}= element
+          let divComment = document.createElement("div")
+          divComment.setAttribute("class", "infoName")
+          divComment.innerHTML= name
+          console.log(divComment)
+          document.getElementById("comments").appendChild(divComment)
+          let divCommentEmail = document.createElement("div")
+          divCommentEmail.setAttribute("class", "infoEmail")
+          // divCommentEmail.innerHTML= `<b>Email:</b> ${email}`
+          // console.log(divComment)
+          let divCommentBody = document.createElement("div")
+          divCommentBody.setAttribute("class", "infoBody")
+          divCommentBody.innerHTML= `<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title=${email}>
+          ${body}
+        </button>
+      `
+          // console.log(divComment)
+          document.getElementById("comments").appendChild(divCommentBody)
+          document.getElementById("comments").appendChild(divCommentEmail)
+      })
+  })
+  }
+
 
 function loadPage(title, id, body, idbutton) {
     contentFUll = `
