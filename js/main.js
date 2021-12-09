@@ -11,8 +11,8 @@ var target,postSelected;
 //data[0].title
 window.onload= function(){
   getPosts()
+  makePagination()
   printImage()
-  Activatepagination()
   //delete modal
   $('#exampleModalToggle3').on('shown.bs.modal', function () {
     $("#deleteButton").one("click",deletePost)
@@ -21,75 +21,13 @@ window.onload= function(){
   $('#exampleModalToggle').on('shown.bs.modal', function () {
     $(".fa-arrow-right,.fa-arrow-left").on("click",previousPost)
     $(".loadComments").eq(0).one("click", loadComments)
+    $("#openEditModal").on("click",editPost)
     $("#deleteButton").off("click",deletePost)
   })
   $('#exampleModalToggle').on('hide.bs.modal', function () {
     resetModal()
   })
 
-}
-//listeners to pagination
-function Activatepagination(){
-  $(".page-item").on("click",changePage)
-  //if buttons are disabled, turn of event listener
-  $(".page-item").on("disabled",function(){
-    $(".page-item").off("click",changePage)
-  })
-}
-//when press pagination buttons, activate this function
-function changePage(e){
-  const item=$(".page-item");
-  const button=e.target.textContent;
-
-  //sum or rest the numId while press paginate buttons
-  // && Check if numId is higher or lower than 10-1, comeback to 1
-  if(numId==button){
-    return;
-  }
-  if(button>=1 && button<=10){
-    item.eq(0).css("cursor","pointer");
-    numId=button;
-    getPosts();
-    printImage()
-    }
-
-//if press previous, or next, check if can change of page
-  if(button=="Previous" && numId>1){
-    numId--;
-    item.eq(11).removeClass("disabled")
-    getPosts()
-    printImage()
-  }else if(button=="Next" && numId<10){
-    numId++;
-    item.eq(0).removeClass("disabled")
-    getPosts();
-    printImage()
-
-  }
-//put disabled buttons
-  if(numId==1){
-    item.eq(0).addClass("disabled")
-
-  }else if(numId==10){
-    item.eq(11).addClass("disabled")
-  }
-  //remove the disabled for prev and next button
-  if(numId<10 && numId>1){
-    item.eq(11).removeClass("disabled")
-    item.eq(0).removeClass("disabled");
-  }
-
-//active page
-  item.removeClass("active");
-  item.eq(numId).addClass("active");
-  //check if any post is deleted and toggle visible
-  $(".divPost").each(function(idx,element){
-    if($(element).css("display")=="none"){
-      $(element).show()
-    }else{
-      return;
-    }
-  })
 }
 
 function  getPosts(){
@@ -213,13 +151,14 @@ function resetModal(){
   $(".loadComments").off("click", loadComments);
   //TURN OFF PREVIOUS AND NEXT POST
   $(".fa-arrow-right,.fa-arrow-left").off("click",previousPost);
+  //turn off edit
+  //$("#openEditModal").off("click",editPost)
 }
 
 
 
 //function to edit the post
 function editPost(){
-
     $("#titleEditPost").val(target.title ); //input title
     $("#bodyEditPost").val(target.body) //input body
 
