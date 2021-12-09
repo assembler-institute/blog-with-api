@@ -1,12 +1,6 @@
 let urlPosts = 'https://jsonplaceholder.typicode.com/posts/';
 let urlUsers = 'https://jsonplaceholder.typicode.com/users';
 
-
-
-//let imgRandom = 'https://random.imagecdn.app/500/150';
-
-
-
 /*user*/
 function getUserid(userId, postId) {
     var userSettings = {
@@ -116,18 +110,22 @@ $(document).ready(function(){
         var modalTitle=document.getElementById("exampleModalLabel");
         let titlePost=document.getElementById("titlePost"+(positionDiv));
         let bodyPost=document.getElementById("bodyPost"+(positionDiv));
-
-        var buttonAcceptEdit=document.createElement("button");
-        buttonAcceptEdit.setAttribute("id","changeContent")
-        buttonAcceptEdit.innerHTML="Accept";
-        var comment=document.getElementById("buttonComment");
-
-        var modalBodyEdit=document.createElement("input");
+        let btnEdit=document.getElementById("btn-edit");
+        let btnAccept=document.createElement("button");
+        let comment = document.getElementById("buttonComment");
+        
+        btnAccept.setAttribute("id","changeEdit");
+        btnAccept.setAttribute("class","btn btn-primary");
+        btnAccept.innerHTML="Accept";
+        comment.append(btnAccept);
+        
+        var modalBodyEdit=document.createElement("textarea");
         var modalTitleEdit=document.createElement("input");
-        modalBodyEdit.setAttribute("type","textarea");
+        modalBodyEdit.setAttribute("cols","40");
+        modalBodyEdit.setAttribute("rows","5");
         modalTitleEdit.setAttribute("type","text");
-        //modalBodyEdit.setAttribute("style","width:100%; height:200px;overflow:scroll;line-height: 18px;");
-        comment.append(buttonAcceptEdit);
+        //modalBodyEdit.setAttribute("style","width:100%; height:200px;overflow:scroll;line-height:18px;");
+        //modalBodyEdit.setAttribute("style","width:100%;height:200px;text-align:center;overflow:scroll");
         modalBodyEdit.value=modalBody.innerHTML;
         modalTitleEdit.value=modalTitle.innerHTML;
         modalTitle.innerHTML="";
@@ -135,9 +133,11 @@ $(document).ready(function(){
 
         modalBody.append(modalBodyEdit);
         modalTitle.append(modalTitleEdit);
-
+        $(".btn-close").on("click",function(e){
+            btnAccept.remove();
+        });
         //edit content
-        $("#changeContent").on("click",function(e){
+        $("#changeEdit").on("click",function(e){
         fetch('https://jsonplaceholder.typicode.com/posts/'+positionDiv, {
             method: 'PUT',
             body: JSON.stringify({
@@ -151,12 +151,13 @@ $(document).ready(function(){
             })
             .then((response) => response.json())
             .then((json) => {console.log(json);
+
             modalTitle.innerHTML=json.title;
             modalBody.innerHTML=json.body;
             titlePost.innerHTML=json.title;
             bodyPost.innerHTML=json.body;
-            }
-            );
+            btnAccept.remove();
+            });
     });
 });
 });
