@@ -1,5 +1,6 @@
 let usernameInfo;
 let nameInfo;
+let emailInfo;
 
 /* Get posts */
 
@@ -14,14 +15,14 @@ fetch("http://localhost:3000/posts", requestOptions)
     .then(result => {
         var containerChild = document.createElement('div')
         containerChild.classList.add('postsContainer')
-        result.forEach(element => {
-            //console.log(element);
+        result.forEach(async function (element) {
+            console.log(element.userId);
             var containerFather = document.querySelector(".col-md-8");
             containerFather.appendChild(containerChild)
             var button = document.createElement("button");
             button.setAttribute("id", element.id);
             button.classList.add("accordion");
-            button.innerHTML = `${element.title} <i class="bi bi-pencil-square ${element.id}" id='editPost${element.id}'></i><i class="bi bi-trash" id='removePost${element.id}'></i>`;
+            button.innerHTML = `${element.title} <i class="bi bi-pencil-square ${element.id}" id='editPost${element.id}'></i><i class="bi bi-trash" id='removePost${element.id}'></i><i class="bi bi-card-text" id='contactPost${element.id}'></i>`;
             containerChild.appendChild(button);
             var panel = document.createElement("div");
             panel.classList.add("panel");
@@ -39,7 +40,10 @@ fetch("http://localhost:3000/posts", requestOptions)
             var btnEditPost = document.getElementById('editPost' + element.id);
             btnEditPost.addEventListener('click', function () {
                 editPost(element.userId, element.body, element.title, element.id)
-
+            })
+            var btnShowContact = document.getElementById('contactPost' + element.id);
+            btnShowContact.addEventListener('click', function () {
+                showContact(element.userId)
             })
             let btnDeletePost = document.getElementById('removePost' + element.id);
             btnDeletePost.addEventListener("click", function () {
@@ -51,8 +55,8 @@ fetch("http://localhost:3000/posts", requestOptions)
             btnShowComment.addEventListener('click', () => {
                 getComments(element.id)
             })
+            accordionDisplay(element.userId)
         });
-        accordionDisplay()
     })
 
 // var posts = JSON.parse(localStorage.getItem('posts'))
@@ -60,7 +64,6 @@ fetch("http://localhost:3000/posts", requestOptions)
 /* Get Users Info*/
 
 function getUserInfo(userId) {
-    console.log(userId);
     var requestOptions = {
         method: 'GET',
         redirect: 'follow'
@@ -70,16 +73,13 @@ function getUserInfo(userId) {
         .then(result => {
             nameInfo = result[0].name
             usernameInfo = result[0].username
-            console.log(usernameInfo);
+            emailInfo = result[0].email
         })
         .catch(error => console.log('error', error));
 }
 
-
-
-
 /* Open accordion */
-function accordionDisplay() {
+function accordionDisplay(id) {
     setTimeout(() => {
         var acc = document.getElementsByClassName("accordion");
         var i;
@@ -360,4 +360,51 @@ function deletePost(id) {
         .then(response => response.json())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
+}
+
+/* CREATE CONTACT MODAL */
+
+function showContact(id) {
+    getUserInfo(id)
+    var fatherModal = document.querySelector('.modal');
+    const html = `<div class="modal-content">
+            <span class = "close"
+            id = "closeModal"> </span>
+            <form class="row g-3 needs-validation" novalidate>
+              <div class="col-md-4">
+                <label for="validationCustom01" class="form-label">Name</label>
+                <p type="text" class="form-control" id="validationCustom01" value="" required></p>
+                <div class="valid-feedback">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label for="validationCustomUsername" class="form-label">Username</label>
+                <div class="input-group has-validation">
+                  
+                  <p type="text" class="form-control" id="validationCustomUsername"
+                    aria-describedby="inputGroupPrepend" required></p>
+                  <div class="invalid-feedback">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="validationCustom03" class="form-label">Email</label>
+                <p type="text" class="form-control" id="email" required></p>
+                <div class="invalid-feedback">
+                </div>
+              </div>
+            </form>
+          </div>`
+    fatherModal.innerHTML = html;
+    setTimeout(() => {
+        document.getElementById('validationCustomUsername').innerText = usernameInfo
+    }, 100);
+    setTimeout(() => {
+        document.getElementById('validationCustom01').innerText = nameInfo
+    }, 100);
+    setTimeout(() => {
+        document.getElementById('email').innerText = emailInfo
+    }, 100);
+    fatherModal.style.display = 'block';
+    document.getElementById("closeModal").addEventListener("click", closeModal);
 }
