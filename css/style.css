@@ -118,11 +118,21 @@ margin-left: 50px;
     margin-left:20px;
     width:16px;
 }
+.photoPostContainer{
+    max-width:450px;
+    max-height: 300px;
+    overflow: hidden;
+    
+}
+#photoTitle{
+    width:450px;
+    height: 300px;
+}
 .fa-user,.fa-envelope,.fa-comments{
     margin-right:5px;
     padding:8px;
 }
-#username-container,#email-container{
+#infoUser{
     color:var(--secondary-color);
 }
 

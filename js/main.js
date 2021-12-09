@@ -13,8 +13,18 @@ window.onload= function(){
   getPosts()
   printImage()
   Activatepagination()
+  //delete modal
   $('#exampleModalToggle3').on('shown.bs.modal', function () {
     $("#deleteButton").one("click",deletePost)
+  })
+  //post modal
+  $('#exampleModalToggle').on('shown.bs.modal', function () {
+    $(".fa-arrow-right,.fa-arrow-left").on("click",previousPost)
+    $(".loadComments").eq(0).one("click", loadComments)
+    $("#deleteButton").off("click",deletePost)
+  })
+  $('#exampleModalToggle').on('hide.bs.modal', function () {
+    resetModal()
   })
 
 }
@@ -121,6 +131,7 @@ async function deletePost(){
               </div>
 `)
     //delete post selected
+    
     return $(postSelected).parent().parent().hide();
   })
   //hide the message with animation
@@ -131,7 +142,7 @@ async function deletePost(){
 }
 
 async function infoModal(e,nextPrev){
-    resetModal();
+    
     var user,postImg,comments;
     if(e!=undefined){
       postSelected=e.target
@@ -154,26 +165,19 @@ async function infoModal(e,nextPrev){
     //GET COMMENTS
 
     //NEXT POST AND PREV LISTENERS
-    $(".fa-arrow-right,.fa-arrow-left").on("click",previousPost)
+    
     //DISPLAY INFO
     $("#photoTitle").attr("src",postImg)
     $("#modalPost-title").text(target.title);
     $("#username").text(user.username);
     $("#email").text(user.email);
     $("#description").text(target.body);
-    $("#deleteButton").on("click",deletePost)
-    $(".loadComments").eq(0).one("click", loadComments);
-  $("#openEditModal").on("click", editPost);
 }
 
 function previousPost(){
   var numRandom=Math.floor(Math.random()*10);
   var randomPost=($(".divPostDetail").eq(numRandom).children(".titlePost")[0])
   infoModal(undefined,randomPost)
-  $(".fa-arrow-right,.fa-arrow-left").off("click",previousPost)
-}
-function nextPost(){
-
 }
 
 async function loadComments(){
@@ -203,8 +207,11 @@ async function loadComments(){
 
 function resetModal(){
   $(".commentsContainer").empty();
-    $(".loadComments").off("click", loadComments);
-    $(".fa-arrow-right,.fa-arrow-left").off("click",previousPost);
+  //TURN OFF LISTENER TO DELETE
+  //TURN OFF LOAD COMMENTS
+  $(".loadComments").off("click", loadComments);
+  //TURN OFF PREVIOUS AND NEXT POST
+  $(".fa-arrow-right,.fa-arrow-left").off("click",previousPost);
 }
 
 
