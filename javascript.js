@@ -226,7 +226,7 @@ function fetchPost() {
 
 function deleteComment() {
     let deletePost = document.querySelector('.prueba').id;
-
+    console.log("kajsdb")
     fetch(`http://localhost:3000/posts/${deletePost}`, {
         method: 'DELETE'
     })
