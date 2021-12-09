@@ -1,5 +1,8 @@
 let urlPosts = 'https://jsonplaceholder.typicode.com/posts/';
 let urlUsers = 'https://jsonplaceholder.typicode.com/users';
+
+
+
 //let imgRandom = 'https://random.imagecdn.app/500/150';
 
 
@@ -66,6 +69,7 @@ for (let id = 1; id < 101; id++) {
         '<button type="button" class="btn btn-primary modalBtn"data-bs-toggle="modal" data-bs-target="#exampleModal" data-btn-id="' + id + '">Read post</button></div></div></div></div>')
         $('#postDiv').append(post);
     };
+
     if(id==100){
         getPostContent(urlPosts);
     }
@@ -103,6 +107,8 @@ $(document).ready(function(){
         modalTitle.innerHTML=titlePost.innerHTML;
         modalBody.innerHTML=bodyPost.innerHTML;
         getComments(positionDiv);
+        deletePost(positionDiv);
+
     });
     //show inputs to edit content
     $("#btn-edit").on("click",function(e){
@@ -151,9 +157,7 @@ $(document).ready(function(){
             bodyPost.innerHTML=json.body;
             }
             );
-       
     });
-    
 });
 });
 /**getcoments falta boot in html */
@@ -189,3 +193,20 @@ var myCollapse = document.getElementById('buttonComment')
 var bsCollapse = new bootstrap.Collapse(myCollapse, {
   toggle: false
 });
+
+function deletePost(positionDiv) {
+    $("#btn-delete").on("click", function() {
+        var deleteButton = {
+            "url": "https://jsonplaceholder.typicode.com/posts/" + positionDiv,
+        "method": "DELETE",
+        "timeout": 0,
+        };
+        $.ajax(deleteButton).done(function() {
+            $("#modaldelete").modal("show");
+            $("#postContainer" + positionDiv).remove();
+            $("#close-btn").on("click", function() {
+                $("#modaldelete").modal("hide");
+            });
+        })
+    })
+}
