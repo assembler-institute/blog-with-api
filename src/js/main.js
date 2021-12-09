@@ -5,5 +5,5 @@ $(async () => {
     let allPosts = await getAllItems("http://localhost:3000/posts");
     showAllPost(allPosts);
 
-    // btnSearch.addEventListener("click", searchByTitlePosts);
+    btnSearch.addEventListener("click", searchByTitlePosts);
 });
