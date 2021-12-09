@@ -27,8 +27,16 @@ async function dataModal(e) {
     let bodyDiv = e[0].querySelector(".card-text")
     document.getElementById("modal-body").textContent = bodyDiv.textContent;
     let modalIconX = `<div id ="modal-icon" class= "modal-icon">
-    <i id="delete-post" class="fas fa-trash-alt delete-post"></i>
+    <span class="like-dislike">
+    <div class="numerolike" id="numerolike">0</div>
+    <i class="fas fa-thumbs-up like" id="like"></i>
+    </span>
+    <span class="like-dislike">
+    <div class="numerolike" id="numerodislike">0</div>
+    <i class="fas fa-thumbs-down dislike" id="dislike"></i>
+    </span>
     <i id="edit-post" <i class="fas fa-edit edit-post"></i>
+    <i id="delete-post" class="fas fa-trash-alt delete-post"></i>
     </div>`
 
     document.getElementById("modal-body").insertAdjacentHTML("beforeend", modalIconX);

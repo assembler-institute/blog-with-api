@@ -91,9 +91,21 @@ input,textarea{
     justify-content:space-around;
     align-items: flex-end;
 }
+
 i{
     cursor: pointer;
 }
+.like-dislike{
+    display: flex;
+    align-items: center;
+}
+
+.numerolike{
+    width: 50px;
+    background-color: var(--negroinput);
+    text-align: center;
+}
+
 .textareatitulo{
     max-width: 50%;
     font-size: 1.2em !important;
