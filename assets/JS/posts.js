@@ -1,3 +1,6 @@
+let usernameInfo;
+let nameInfo;
+
 /* Get posts */
 
 var requestOptions = {
@@ -18,7 +21,7 @@ fetch("http://localhost:3000/posts", requestOptions)
             var button = document.createElement("button");
             button.setAttribute("id", element.id);
             button.classList.add("accordion");
-            button.innerHTML = `${element.title} <i class="bi bi-pencil-square ${element.id}" id='editPost${element.id}'></i><i class="bi bi-trash"></i>`;
+            button.innerHTML = `${element.title} <i class="bi bi-pencil-square ${element.id}" id='editPost${element.id}'></i><i class="bi bi-trash" id='removePost${element.id}'></i>`;
             containerChild.appendChild(button);
             var panel = document.createElement("div");
             panel.classList.add("panel");
@@ -35,9 +38,13 @@ fetch("http://localhost:3000/posts", requestOptions)
             });
             var btnEditPost = document.getElementById('editPost' + element.id);
             btnEditPost.addEventListener('click', function () {
-                editPost(element.userId, element.body, element.title)
+                editPost(element.userId, element.body, element.title, element.id)
 
             })
+            let btnDeletePost = document.getElementById('removePost' + element.id);
+            btnDeletePost.addEventListener("click", function () {
+                deletePost(element.id)
+            });
             var btnShowComment = document.createElement("button");
             btnShowComment.innerHTML = "Check all the comments!";
             panel.appendChild(btnShowComment);
@@ -53,19 +60,19 @@ fetch("http://localhost:3000/posts", requestOptions)
 /* Get Users Info*/
 
 function getUserInfo(userId) {
-    let name;
-    let username;
+    console.log(userId);
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+    };
     fetch("http://localhost:3000/users?id=" + userId, requestOptions)
         .then(responseUsers => responseUsers.json())
-        .then(resultUsers => {
-            name = resultUsers.name
-            username = resultUsers.username
+        .then(result => {
+            nameInfo = result[0].name
+            usernameInfo = result[0].username
+            console.log(usernameInfo);
         })
         .catch(error => console.log('error', error));
-    return {
-        name,
-        username
-    };
 }
 
 
@@ -243,22 +250,17 @@ setTimeout(() => {
 
 /* CREATE MODAL */
 
-function editPost(id, body, title) {
-    console.log('a');
+
+function editPost(id, body, title, postId) {
+    getUserInfo(id)
     var fatherModal = document.querySelector('.modal');
     const html = `<div class="modal-content">
             <span class = "close"
             id = "closeModal"> </span>
             <form class="row g-3 needs-validation" novalidate>
               <div class="col-md-4">
-                <label for="validationCustom01" class="form-label">First name</label>
+                <label for="validationCustom01" class="form-label">Name</label>
                 <input type="text" class="form-control" id="validationCustom01" value="" required>
-                <div class="valid-feedback">
-                </div>
-              </div>
-              <div class="col-md-4">
-                <label for="validationCustom02" class="form-label">Last name</label>
-                <input type="text" class="form-control" id="validationCustom02" value="" required>
                 <div class="valid-feedback">
                 </div>
               </div>
@@ -274,13 +276,13 @@ function editPost(id, body, title) {
               </div>
               <div class="col-md-6">
                 <label for="validationCustom03" class="form-label">Title</label>
-                <input type="text" class="form-control" id="validationCustom03" required>
+                <input type="text" class="form-control" id="title" required>
                 <div class="invalid-feedback">
                 </div>
               </div>
               <div class="col-md-6">
                 <label for="validationCustom03" class="form-label">Body</label>
-                <input type="text" class="form-control" id="validationCustom03" required>
+                <input type="text" class="form-control" id="body" required>
                 <div class="invalid-feedback">
                 </div>
               </div>
@@ -301,9 +303,61 @@ function editPost(id, body, title) {
             </form>
           </div>`
     fatherModal.innerHTML = html;
+    document.getElementById('body').value = body
+    document.getElementById('title').value = title
+    setTimeout(() => {
+        document.getElementById('validationCustomUsername').value = usernameInfo
+    }, 100);
+    setTimeout(() => {
+        document.getElementById('validationCustom01').value = nameInfo
+    }, 100);
     fatherModal.style.display = 'block';
     document.getElementById("closeModal").addEventListener("click", closeModal);
     document.getElementById("submitEdit").addEventListener("click", function () {
-        submitPostEdit()
+        submitPostEdit(postId)
     })
+}
+
+function submitPostEdit(id) {
+    event.preventDefault();
+    var formValues = {
+        "id": id,
+        "title": document.getElementById('title').value,
+        "body": document.getElementById('body').value
+    }
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+        "title": formValues.title,
+        "body": formValues.body
+    });
+
+    var requestOptions = {
+        method: 'PATCH',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    fetch("http://localhost:3000/posts/" + id, requestOptions)
+        .then(response => response.json())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+}
+
+function deletePost(id) {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var requestOptions = {
+        method: 'DELETE',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
+
+    fetch("http://localhost:3000/posts/" + id, requestOptions)
+        .then(response => response.json())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
 }
