@@ -1,13 +1,15 @@
 var btnDeletePost = undefined;
 arrayIdsDelete = [];
+let start;
 
 window.onload = init();
-var start;
 var totalPost = 0;
 
 
 function init() {
-    start = 0;
+    if (start == undefined){
+        start = 0;
+    }
     postsFetchFun(start);
 }
 const buttonNext = document.getElementById("carousel-control-next-a");
@@ -16,12 +18,19 @@ buttonNext.addEventListener("click", nextPost);
 buttonPrev.addEventListener("click", prevPost);
 
 function nextPost() {
-    start += 6;
+    start = start + 6;
+    if (start > totalPost) {
+        start = 0;
+    }
     postsFetchFun(start);
 }
 
 function prevPost() {
-    start -= 6;
+    start = start - 6;
+    if (start < 0) {
+        start = totalPost -6;
+    }
+    console.log(start)
     postsFetchFun(start);
 }
 
@@ -30,13 +39,9 @@ function postsFetchFun(start) {
         method: "GET",
         redirect: "follow",
     };
+    console.log(start)
+    console.log(totalPost)
     var limit = 6;
-    if (start < 0) {
-        start = totalPost - 6;
-    }
-    if (start > totalPost) {
-        start = 0;
-    }
     var urlPosts =
         "http://localhost:3000/posts?_start=" + start + "&_limit=" + limit + "";
     fetch(urlPosts, requestOptions)
@@ -45,6 +50,8 @@ function postsFetchFun(start) {
             return response.text();
         })
         .then((result) => {
+            console.log(start)
+            console.log(totalPost)
             let data = JSON.parse(result);
             updatePostsList(data);
         })
@@ -62,6 +69,8 @@ function updatePostsList(data) {
         parent.removeChild(parent.firstChild);
     }
     data.forEach((post) => {
+        var irandom = Math.floor(Math.random()*imagesArr.length);
+        console.log(irandom)
         if (arrayIdsDelete.includes(post.id + "")) {
             return;
         }
@@ -69,7 +78,7 @@ function updatePostsList(data) {
         div1.innerHTML =
             `<div class="card h-100" id="card${post.id}">
                             <div class="card-body">
-                            <img src="assets/img/postImg/${post.img}" id="imgPost">
+                            <img src="assets/img/postImg/`+imagesArr[irandom]+`" id="imgPost">
                               <div class="card-body">
                             <div id="showDescriptionModal${post.id}">
                             <h5 class="card-title" id="title${post.id}">` +
@@ -261,3 +270,5 @@ btnSaveEdit.addEventListener("click", function () {
 //     var i = Math.floor(Math.random()*imagenes.length);
 //     document.getElementById("photo").innerHTML = "<img src='' alt=''>";
 //     });
+
+imagesArr = ["post-img-1.jpeg","post-img-2.jpeg","post-img-3.jpeg","post-img-4.jpeg","post-img-5.jpeg","post-img-6.jpeg","post-img-7.jpeg","post-img-8.jpeg","post-img-9.jpeg","post-img-10.jpeg","post-img-11.jpeg","post-img-12.jpeg"]
