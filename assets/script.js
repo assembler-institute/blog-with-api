@@ -69,7 +69,7 @@ function updatePostsList(data) {
         div1.innerHTML =
             `<div class="card h-100" id="card${post.id}">
                             <div class="card-body">
-                            <img src="assets/img/user-icon.png" id="imgUser">
+                            <img src="assets/img/postImg/${post.img}" id="imgPost">
                               <div class="card-body">
                             <div id="showDescriptionModal${post.id}">
                             <h5 class="card-title" id="title${post.id}">` +
@@ -91,21 +91,14 @@ function updatePostsList(data) {
         parent.appendChild(div1);
 
         btnDeletePost = document.getElementById("btnDeletePost" + post.id);
-        btnDeletePost.addEventListener("click", function (e) {
-            console.log(12);
-            deletePost(this.id);
+        btnDeletePost.addEventListener("click", function () {
+            deletePost(post.id);
         });
         var editPost = document.getElementById("editPost" + post.id);
         editPost.addEventListener("click", function () {
-            console.log(12);
-            editPostModal(this.id);
+            editPostModal(post.id);
         })
 
-        //div1.addEventListener("click",function (){
-        //console.log(post)
-        //findUserFetchFun(post)
-        //findCommentsFetchFun(post)
-        //})
         modalEvent = document.getElementById("showDescriptionModal" + post.id);
         modalEvent.addEventListener("click", function () {
             myModal = document.getElementById("staticBackdropLabel");
@@ -114,7 +107,6 @@ function updatePostsList(data) {
         });
     });
 }
-
 function findUserFetchFun(post) {
     var requestOptions = {
         method: "GET",
@@ -131,20 +123,33 @@ function findUserFetchFun(post) {
         })
         .catch((error) => console.log("error", error));
 }
-
 function modalContent(post, data) {
-    document.getElementById("staticBackdropLabel").textContent = post.title;
-    document.getElementById("staticBackdropLabel").textContent += " " + data.name;
-    document.getElementById("staticBackdropLabel").textContent +=
-        " " + data.email;
-    document.getElementById("modal-content").textContent = post.body;
+    
 
+    document.getElementById("staticBackdropLabel").innerHTML = `
+    <div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="assets/img/user imgs/${data.img}" id="imgUser" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">${post.title}</h5>
+        <p class="card-text">${data.name}</p>
+        <p class="card-text"><small class="text-muted">${data.email}</small></p>
+      </div>
+    </div>
+  </div>
+</div>`
+    // document.getElementById("staticBackdropLabel").textContent = post.title;
+    // document.getElementById("staticBackdropLabel").textContent += " " + data.name;
+    // document.getElementById("staticBackdropLabel").textContent +=" " + data.email;
+    document.getElementById("modal-content").textContent = post.body;
     button1 = document.getElementById("comments-button");
     button1.addEventListener("click", function () {
         findCommentsFetchFun(post);
     });
 }
-
 function findCommentsFetchFun(post) {
     var requestOptions = {
         method: "GET",
@@ -159,7 +164,6 @@ function findCommentsFetchFun(post) {
         })
         .catch((error) => console.log("error", error));
 }
-
 function createCommentsFun(comments) {
     let commentsContainer;
     buttonDiv = document.querySelector(".modal-body");
@@ -197,39 +201,35 @@ function createCommentsFun(comments) {
         commentsContainer.appendChild(commentDiv);
     });
 }
-
 function deletePost(id) {
-    var numericId = id.substring(13);
-    var urlFetch = "http://localhost:3000/posts/" + numericId;
+    var urlFetch = "http://localhost:3000/posts/" + id;
     fetch(urlFetch, {
             method: "DELETE"
         })
         .catch((error) => console.log("error", error));
-    // var card = document.getElementById("card" + numericId);
+    // var card = document.getElementById("card" + id);
     // card.remove();
 
-    // arrayIdsDelete.push(numericId);
+    // arrayIdsDelete.push(id);
     // console.log(arrayIdsDelete);
 
     // btnDeletePost1
-    console.log("el id es " + id);
-    console.log("el id numerico es " + numericId);
+    // console.log("el id es " + id);
+    // console.log("el id numerico es " + id);
     // document.querySelector(post.title)
     // fetch("http://localhost:3000/post/", {
     //     method: "DELETE",
 
     // })
 }
-
 function editPostModal(id) {
-    var numericId = id.substring(8);
-    console.log(id)
-    var title = document.getElementById("title" + numericId);
-    var body = document.getElementById("body" + numericId);
+    var title = document.getElementById("title" + id);
+    var body = document.getElementById("body" + id);
     var modalTitle = document.getElementById("exampleFormControlInput1");
     var modalBody = document.getElementById("exampleFormControlTextarea1");
-    var btnSaveEdit = document.getElementById("btnSaveEdit");
-    btnSaveEdit.value = numericId;
+    var btnSaveEdit = document.getElementById("btnSaveEdit")
+
+    btnSaveEdit.value = id;
     modalTitle.value = title.innerHTML;
     modalBody.value = body.innerHTML;
 
