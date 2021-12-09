@@ -16,3 +16,7 @@
      font-weight: bold;
      color: blueviolet;
  }
+
+ .modalEdit {
+     display: none;
+ }
