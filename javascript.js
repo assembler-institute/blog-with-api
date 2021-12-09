@@ -119,12 +119,12 @@ function beginmodal(){
                 <div id="userName"></div>
                 <div id="email"></div>
                 </div>
-                <div class="modal-body" id="comments"> <b>Comentarios</b>
-                </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                  <button type="button" class="btn btn-primary">Save</button>
-                  <button type="button" class="btn btn-success" id="comentClick">Comentarios</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-success" id="comentClick">Comentarios</button>
+                  </div>
+                <div class="modal-body" id="comments" style="display: none;"> <b>Comentarios</b>
                 </div>
               </div>
             </div>
@@ -135,6 +135,15 @@ function beginmodal(){
     document.getElementById("email").innerHTML= `<b>Email: </b> ${information.email}`
     document.getElementById("userName").innerHTML= `<b>Name: </b>${information.name}`
     document.getElementById("bodyFetch").innerHTML=information.body
+    document.getElementById("comentClick").addEventListener("click", ()=>{
+      let display= document.getElementById("comments")
+      console.log(display.style.display)
+      if(display.style.display == "none"){
+        display.style.display="block"
+      }else{
+        display.style.display="none"
+      }
+    })
 }
 
 function fetchUsersInfo(idposts){
