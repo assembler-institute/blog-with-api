@@ -164,7 +164,7 @@
             <div class="modal-dialog modal-dialog-centered modalPost">
                 <div class="modal-content" id="post-modal">
                     <header class="modal-header" id="post-header">
-                        <i class="fas fa-edit head-icons" data-bs-toggle="modal" href="#exampleModalToggle2"></i>
+                        <i id="openEditModal" class="fas fa-edit head-icons" data-bs-toggle="modal" href="#editPostModal"></i>
                         <i class="fas fa-trash-alt head-icons" data-bs-toggle="modal" href="#exampleModalToggle3"></i>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </header>
@@ -220,26 +220,26 @@
             </div>
         </section>
         <!-- Modal 2 -->
-        <section class="modal fade" id="exampleModalToggle2" aria-hidden="true"
+        <section class="modal fade" id="editPostModal" aria-hidden="true"
             aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered ">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalToggleLabel2">Modal 2</h5>
+                        <h5 class="modal-title" id="exampleModalToggleLabel2">Edit Post</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Title</label>
-                            <input class="form-control" id="exampleFormControlInput1" >
+                            <label for="titleEditPost" class="form-label">Title</label>
+                            <input class="form-control" id="titleEditPost" >
                           </div>
                           <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">Body</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <label for="bodyEditPost" class="form-label">Body</label>
+                            <textarea class="form-control" id="bodyEditPost" rows="3"></textarea>
                           </div>
                     </div>
                     <div class="modal-footer">
-                        <button id="aceptEdit" class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Acept</button>
+                        <button id="aceptEditBtn" class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Acept</button>
                     </div>
                 </div>
             </div>

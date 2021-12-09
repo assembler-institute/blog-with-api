@@ -211,9 +211,10 @@ margin-left: 50px;
     text-align: justify;
     margin-top: 2vh;
 }
-
 .titleComment{
-    text-transform: uppercase;
+    font-weight: bold;
+    text-transform: capitalize;
+    margin-bottom: 1vh;
 }
 .comment{
     color: var(--secondary-color);
@@ -224,13 +225,9 @@ margin-left: 50px;
     border-radius:50px;
     object-fit: cover;
 }
-.personalInfoComment{
-    border-bottom: var(--details-orange);
-    font-weight: bold;
-}
 
 /*Modal Edit*/
-#aceptEdit{
+#aceptEditBtn{
     background-color: var(--secondary-color);
     border: none;
 }
