@@ -578,7 +578,7 @@
       "name": "Leanne Graham",
       "username": "Bret",
       "email": "Sincere@april.biz",
-      "img":"user-icon.png",
+      "img":"user1(1).jpg",
       "address": {
         "street": "Kulas Light",
         "suite": "Apt. 556",
@@ -602,6 +602,7 @@
       "name": "Ervin Howell",
       "username": "Antonette",
       "email": "Shanna@melissa.tv",
+      "img":"user1(2).jpg",
       "address": {
         "street": "Victor Plains",
         "suite": "Suite 879",
@@ -625,6 +626,7 @@
       "name": "Clementine Bauch",
       "username": "Samantha",
       "email": "Nathan@yesenia.net",
+      "img":"user1(3).jpg",
       "address": {
         "street": "Douglas Extension",
         "suite": "Suite 847",
