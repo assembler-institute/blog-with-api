@@ -20,13 +20,13 @@ function  getdata(){
     // const bodySh = document.getElementById("bodySel")
     const dataFragment = document.createDocumentFragment()
     
-    console.log(initialPost)
-    console.log(endPost)
+    console.log("inital post " +initialPost)
+    console.log("end post " + endPost)
 
     fetch("http://localhost:3000/posts?_start="+initialPost+"&_end="+endPost)
         .then((res) => {
             totalPost = res.headers.get('X-Total-Count')
-            console.log(totalPost)
+            console.log("total post " + totalPost)
             return res.json()
         })
         .then(json=>{
@@ -44,17 +44,42 @@ function  getdata(){
                 var pCarbody= document.createElement("p")
                 pCarbody.classList.add("card-text")
                 pCarbody.innerHTML= element.body
+                
                 var aCarbody= document.createElement("button")
                 aCarbody.classList.add("btn-primary")
                 aCarbody.classList.add("btn")
+                aCarbody.classList.add("btnMargin")
                 aCarbody.setAttribute("data-bs-toggle","modal" )
                 aCarbody.setAttribute("data-bs-target","#exampleModal" )
                 aCarbody.innerHTML= "open"
                 aCarbody.addEventListener("click",()=>deleteContent(json,element))
+
+                
+                var deleteBtn= document.createElement("button")
+                deleteBtn.classList.add("btn-primary")
+                deleteBtn.classList.add("btn")
+                deleteBtn.setAttribute("data-bs-toggle","modal" )
+                deleteBtn.setAttribute("data-bs-target","#exampleModal" )
+                deleteBtn.classList.add("btnMargin")
+                deleteBtn.innerHTML= "delete"
+                deleteBtn.addEventListener("click",()=>deleteContent(json,element))
+
+                
+                var editBtn= document.createElement("button")
+                editBtn.classList.add("btn-primary")
+                editBtn.classList.add("btn")
+                editBtn.classList.add("btnMargin")
+                editBtn.setAttribute("data-bs-toggle","modal" )
+                editBtn.setAttribute("data-bs-target","#exampleModal" )
+                editBtn.innerHTML= "edit"
+                editBtn.addEventListener("click",()=>deleteContent(json,element))
+
                 
                 divCarbody.appendChild(titteCarbody)
                 divCarbody.appendChild(pCarbody)
                 divCarbody.appendChild(aCarbody)
+                divCarbody.appendChild(deleteBtn)
+                divCarbody.appendChild(editBtn)
                 divCardContent.appendChild(divCarbody)
                 dataFragment.appendChild(divCardContent)
             
@@ -74,7 +99,8 @@ function deleteContent (json,element){
     open(json,element, modalheader,userModal,emailModal)
 }
 
-function open(json1,element,modalheader,userModal,emailModal){
+function open(json,element,modalheader,userModal,emailModal){
+    // deleteContent (json,element)
     const modalContent=  document.querySelector(".modal-body")
     const modalFragment = document.createDocumentFragment()
 
@@ -101,50 +127,63 @@ function open(json1,element,modalheader,userModal,emailModal){
 }
 
 function showComents(element,url1,btnShowComents){
+
     var modalContent2 = document.querySelector("#modalContent2")
-    var coments= document.createElement("p")
-    coments.classList.add("card-title")
-    var comentsTitle= document.createElement("h5")
-    comentsTitle.classList.add("card-title")
-    comentsTitle.innerHTML="Comments"
-   
-    var editbtn= document.createElement("button")
-    editbtn.classList.add("btn")
-    editbtn.classList.add("btn-primary")
-    editbtn.innerHTML="edit comment"
+  
 
-
-    modalContent2.appendChild(comentsTitle)
-    modalContent2.appendChild(coments)
-    modalContent2.appendChild(editbtn)
-
-    var url1 = " http://localhost:3000/comments?id="+element.userId
+    var url1 = " http://localhost:3000/comments?postId="+element.id
+  
     fetch(url1)
     .then((res) => res.json())
     .then(json=> {
-        coments.innerHTML= json[0].body
+        console.log(json)
+        console.log(element)
+        json.forEach(function ( ele,index)  {
+           
+            
+            var coments= document.createElement("p")
+            coments.classList.add("card-title")
+            coments.setAttribute("id", "comentSelector-"+element.id)
+
+            var emailComents= document.createElement("p")
+            emailComents.classList.add("card-title")
+            emailComents.setAttribute("id", "comentSelector-"+element.id)
+            emailComents.innerHTML= json[index].email
+        
+            var comentsTitle= document.createElement("h5")
+            comentsTitle.classList.add("card-title")
+            comentsTitle.innerHTML= json[index].name
+           
+            modalContent2.appendChild(comentsTitle)
+            modalContent2.appendChild(coments)
+            modalContent2.appendChild(emailComents)
+            // modalContent2.appendChild(editbtn)
+
+            coments.innerHTML= json[index].body
+        });
+        
     })
-    console.log("joder show")
-    console.log(btnShowComents)
     btnShowComents.classList="hide";
-    editbtn.addEventListener("click",()=>editComment(coments,comentsTitle,btnShowComents,editbtn))
+    
 }
 
-function editComment(coments,comentsTitle,btnShowComents,editbtn){
-    coments.contentEditable=true
-    coments.classList.add("green")
-    console.log("joder show 23sdf")
-    var btnclose = document.querySelector("#btnclose")
-    btnclose.addEventListener("click",()=>closecoments(coments,comentsTitle,btnShowComents,editbtn))
-    var btnsaveChanges = document.querySelector("#saveChanges")
-    btnsaveChanges.addEventListener("click",()=>saveChanges(coments,comentsTitle,btnShowComents,editbtn))
-}
-function saveChanges(coments,comentsTitle,btnShowComents,editbtn){
+// function editComment(coments,comentsTitle,btnShowComents,editbtn){
+//     coments.contentEditable=true
+//     coments.classList.add("green")
+//     var btnclose = document.querySelector("#btnclose")
+//     btnclose.addEventListener("click",()=>closecoments(coments,comentsTitle,btnShowComents,editbtn))
+    
+// }
+// function saveChanges(coments,comentsTitle,btnShowComents,editbtn){
+//     coments.contentEditable=false
+//     var newComment = document.querySelector(".card-title")
+//     var addComment;
+//     addComment.innerHTML =newComment.textContent
+//     console.log(addComment)
 
-    closecoments(coments,comentsTitle,btnShowComents,editbtn)
-}
+//     closecoments(coments,comentsTitle,btnShowComents,editbtn)
+// }
 function closecoments(coments,comentsTitle,btnShowComents,editbtn){
-    console.log("joder show 23")
     coments.remove()
     comentsTitle.remove()
     editbtn.remove()
