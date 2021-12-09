@@ -21,3 +21,11 @@
     display: flex;
     justify-content: center;
 }
+
+.hide{
+    display: none;
+}
+
+.green{
+    background-color: rgb(233, 245, 216);
+}

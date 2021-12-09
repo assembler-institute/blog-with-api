@@ -2,9 +2,12 @@
 const templateForm= document.getElementById("valor-actual");
 const templateTitle = document.querySelector(".formtitle");
 const templateContainer = document.querySelectorAll("#operador");
+var divCarbody;
 var initialPost =0;
 var endPost=12;
 var totalPost;
+var divCardContent;
+var divGeneral =document.querySelector(".divGeneral");
 const templateFragment = document.createDocumentFragment()
 
 // document.addEventListener("DOMcontentLoadedr", getdata)
@@ -29,11 +32,11 @@ function  getdata(){
         .then(json=>{
             console.log(json)
             json.forEach(element => {
-                var divCardContent= document.createElement("div")
+                divCardContent= document.createElement("div")
                 divCardContent.classList.add("card")
                 divCardContent.classList.add("col-4")
                 divCardContent.style.width= "100%"
-                var divCarbody= document.createElement("div")
+                divCarbody= document.createElement("div")
                 divCarbody.classList.add("card-body")
                 var titteCarbody= document.createElement("h5")
                 titteCarbody.classList.add("card-title")
@@ -94,20 +97,26 @@ function open(json1,element,modalheader,userModal,emailModal){
         emailModal.innerHTML= json[0].email
     })
     const btnShowComents=  document.querySelector("#showComents")
-    btnShowComents.addEventListener("click",()=>showComents(element,url1))
+    btnShowComents.addEventListener("click",()=>showComents(element,url1,btnShowComents))
 }
 
-function showComents(element,url1){
+function showComents(element,url1,btnShowComents){
     var modalContent2 = document.querySelector("#modalContent2")
-   
-    console.log("joder")
     var coments= document.createElement("p")
     coments.classList.add("card-title")
     var comentsTitle= document.createElement("h5")
     comentsTitle.classList.add("card-title")
     comentsTitle.innerHTML="Comments"
+   
+    var editbtn= document.createElement("button")
+    editbtn.classList.add("btn")
+    editbtn.classList.add("btn-primary")
+    editbtn.innerHTML="edit comment"
+
+
     modalContent2.appendChild(comentsTitle)
     modalContent2.appendChild(coments)
+    modalContent2.appendChild(editbtn)
 
     var url1 = " http://localhost:3000/comments?id="+element.userId
     fetch(url1)
@@ -115,8 +124,33 @@ function showComents(element,url1){
     .then(json=> {
         coments.innerHTML= json[0].body
     })
+    console.log("joder show")
+    console.log(btnShowComents)
+    btnShowComents.classList="hide";
+    editbtn.addEventListener("click",()=>editComment(coments,comentsTitle,btnShowComents,editbtn))
 }
 
+function editComment(coments,comentsTitle,btnShowComents,editbtn){
+    coments.contentEditable=true
+    coments.classList.add("green")
+    console.log("joder show 23sdf")
+    var btnclose = document.querySelector("#btnclose")
+    btnclose.addEventListener("click",()=>closecoments(coments,comentsTitle,btnShowComents,editbtn))
+    var btnsaveChanges = document.querySelector("#saveChanges")
+    btnsaveChanges.addEventListener("click",()=>saveChanges(coments,comentsTitle,btnShowComents,editbtn))
+}
+function saveChanges(coments,comentsTitle,btnShowComents,editbtn){
+
+    closecoments(coments,comentsTitle,btnShowComents,editbtn)
+}
+function closecoments(coments,comentsTitle,btnShowComents,editbtn){
+    console.log("joder show 23")
+    coments.remove()
+    comentsTitle.remove()
+    editbtn.remove()
+    btnShowComents.classList="btn btn-primary";
+    coments.classList="card-title"
+}
 
 // var modalEmail = document.createElement("p")
 // modalEmail.classList.add("card-text")
@@ -125,61 +159,6 @@ function showComents(element,url1){
 getdata ()
 
 // ----------botones paginacion-----------------
-
-const btnI12= document.querySelector("#btnI12")
-const btn1doc= document.querySelector("#btn1doc")
-const btn2doc= document.querySelector("#btn2doc")
-const btn3doc= document.querySelector("#btn3doc")
-const btnL12= document.querySelector("#btnL12")
-const btnLast= document.querySelector("#btnLast")
-
-btnI12.addEventListener("click", blogIni)
-btn1doc.addEventListener("click", blog1doc)
-btn2doc.addEventListener("click", blog2doc)
-btn3doc.addEventListener("click", blog3doc)
-btnL12.addEventListener("click", blogEnd)
-btnLast.addEventListener("click", blocLast)
-
-function blogIni(){
-    if(initialPost>13){
-    initialPost=initialPost-12;
-    endPost=endPost-12;
-    }
-    else{
-    initialPost=0;
-    endPost=12;
-    }
-    getdata(endPost,initialPost)
-}
-function blog1doc(){
-    initialPost=0;
-    endPost=12;
-    getdata(endPost,initialPost)
-}
-function blog2doc(){
-    initialPost=13;
-    endPost=25;
-    getdata(endPost,initialPost)
-}
-function blog3doc(){
-    initialPost=26;
-    endPost=38;
-    getdata(endPost,initialPost)
-}
-function blogEnd(){
-    initialPost=initialPost+12;
-    endPost=endPost+12;
-    getdata(endPost,initialPost)
-}
-function blocLast(){
-    console.log(totalPost)
-    console.log("joder")
-    
-    initialPost=totalPost-12;
-    endPost=totalPost
-    getdata(endPost,initialPost)
-    
-}
 
 
 // modalbody.classList.add("card-text")
