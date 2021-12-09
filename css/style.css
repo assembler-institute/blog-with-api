@@ -228,3 +228,9 @@ margin-left: 50px;
     border-bottom: var(--details-orange);
     font-weight: bold;
 }
+
+/*Modal Edit*/
+#aceptEdit{
+    background-color: var(--secondary-color);
+    border: none;
+}
