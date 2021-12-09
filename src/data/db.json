@@ -74,7 +74,7 @@
     },
     {
       "userId": 1,
-      "like": 0,
+      "like": 1,
       "dislike": 0,
       "id": 10,
       "title": "optio molestias id quia eum",
@@ -298,7 +298,7 @@
     },
     {
       "userId": 4,
-      "like": 0,
+      "like": 1,
       "dislike": 0,
       "id": 38,
       "title": "explicabo et eos deleniti nostrum ab id repellendus",
@@ -634,7 +634,7 @@
     },
     {
       "userId": 8,
-      "like": 0,
+      "like": 2,
       "dislike": 0,
       "id": 80,
       "title": "labore in ex et explicabo corporis aut quas",
@@ -714,8 +714,8 @@
     },
     {
       "userId": 9,
-      "like": 1,
-      "dislike": 0,
+      "like": 4,
+      "dislike": 1,
       "id": 90,
       "title": "ad iusto omnis odit dolor voluptatibus",
       "body": "minus omnis soluta quia\nqui sed adipisci voluptates illum ipsam voluptatem\neligendi officia ut in\neos soluta similique molestias praesentium blanditiis"
@@ -778,7 +778,7 @@
     },
     {
       "userId": 10,
-      "like": 0,
+      "like": 2,
       "dislike": 0,
       "id": 98,
       "title": "laboriosam dolor voluptates",
@@ -786,11 +786,11 @@
     },
     {
       "userId": 10,
-      "like": 9,
-      "dislike": 3,
+      "like": 13,
+      "dislike": 5,
       "id": 99,
       "title": "temporibus sit alias delectus eligendi possimus magni",
-      "body": "quo deleniti praesentium dicta non quod\naut est molestias\nmolestias et officia quis nihil\nitaque dolorem quia\n    \n    \n    "
+      "body": "    \n            quo deleniti praesentium dicta non quod\naut est molestias\nmolestias et officia quis nihil\nitaque dolorem quia addsfo`jkfñaslmnfñamsngdpojads"
     }
   ],
   "users": [

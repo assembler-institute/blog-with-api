@@ -9,6 +9,8 @@ async function createModal() {
             <button id="btnCloseModal" type="button" class="btn-close btn-close-white" aria-label="Close"></button>
         </div>
         <div id="modal-body" class="modal-body cuerpomodal">
+            <div class="contenidomodal">
+            </div>
         </div>
         <div id="comments">
         </div>
@@ -26,7 +28,7 @@ async function dataModal(divPost) {
     document.getElementById("modal-title").textContent = titleDiv.textContent;
 
     let bodyDiv = divPost[0].querySelector(".card-text")
-    document.getElementById("modal-body").textContent = bodyDiv.textContent;
+    document.getElementsByClassName("contenidomodal")[0].textContent = bodyDiv.textContent;
     let modalIconX = `<div id ="modal-icon" class= "modal-icon">
     <span class="like-dislike like">
     <div class="numerolike"></div>

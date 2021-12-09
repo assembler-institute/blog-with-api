@@ -84,9 +84,13 @@ input,textarea{
     overflow: hidden !important;
     width: 80%;
     margin: 1% auto;
+    text-align: center;
+}
+.contenidomodal{
+    height: 80%;
 }
 .modal-icon{
-    height: 85%;
+    height: 20%;
     display: flex;
     justify-content:space-around;
     align-items: flex-end;

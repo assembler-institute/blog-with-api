@@ -81,7 +81,7 @@ function editPost(id){
     // Taking tags from header and Body
 
     let oldTitle = document.querySelector("#modal-title")
-    let oldBody = document.querySelector("#modal-body")
+    let oldBody = document.getElementsByClassName("contenidomodal")[0]
 
     // Create new tags to change different format
     let newTitle = document.createElement("textarea")
@@ -94,7 +94,7 @@ function editPost(id){
     newBody.textContent = oldBody.textContent
     newBody.setAttribute("id", "editBody")
     modalHeader.replaceChild(newTitle, oldTitle);
-    modalContent.replaceChild(newBody, oldBody);
+    modalContent.replaceChild(newBody, oldBody.parentElement);
 
     // Pressing Enter button to send new value
     newBody.addEventListener("keypress", async (e) => {if (e.key === 'Enter') {
