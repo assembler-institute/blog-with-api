@@ -20,14 +20,20 @@ window.onload= function(){
   //post modal
   $('#exampleModalToggle').on('shown.bs.modal', function () {
     $(".fa-arrow-right,.fa-arrow-left").on("click",previousPost)
-    $(".loadComments").eq(0).one("click", loadComments)
-    $("#openEditModal").on("click",editPost)
     $("#deleteButton").off("click",deletePost)
   })
   $('#exampleModalToggle').on('hide.bs.modal', function () {
     resetModal()
   })
-
+  //EDIT MODAL
+  $('#exampleModalToggle2').on('shown.bs.modal', function () {
+    $(".fa-arrow-right,.fa-arrow-left").on("click",previousPost)
+    $("#openEditModal").on("click",editPost)
+  })
+  $("#openEditModal").on("click",editPost)
+  $('#exampleModalToggle2').on('hide.bs.modal', function () {
+    $("#openEditModal").off("click",editPost)
+  })
 }
 
 function  getPosts(){
@@ -105,6 +111,7 @@ async function infoModal(e,nextPrev){
     //NEXT POST AND PREV LISTENERS
     
     //DISPLAY INFO
+    $(".loadComments").eq(0).one("click", loadComments)
     $("#photoTitle").attr("src",postImg)
     $("#modalPost-title").text(target.title);
     $("#username").text(user.username);
@@ -115,6 +122,8 @@ async function infoModal(e,nextPrev){
 function previousPost(){
   var numRandom=Math.floor(Math.random()*10);
   var randomPost=($(".divPostDetail").eq(numRandom).children(".titlePost")[0])
+  $(".commentsContainer").remove();
+  $(".loadComments").off("click", loadComments);
   infoModal(undefined,randomPost)
 }
 
@@ -127,7 +136,7 @@ async function loadComments(){
 
           $("#commentSection").append(`
           <div class="row commentsContainer">
-          <div class="titleComment row">
+            <div class="titleComment row">
               <div >${element.name}</div>
               <div>${element.email}</div>
             </div>
@@ -144,14 +153,14 @@ async function loadComments(){
 }
 
 function resetModal(){
-  $(".commentsContainer").empty();
+  $(".commentsContainer").remove();
   //TURN OFF LISTENER TO DELETE
   //TURN OFF LOAD COMMENTS
   $(".loadComments").off("click", loadComments);
   //TURN OFF PREVIOUS AND NEXT POST
   $(".fa-arrow-right,.fa-arrow-left").off("click",previousPost);
   //turn off edit
-  $("#openEditModal").off("click",editPost)
+  
 }
 
 
@@ -185,6 +194,8 @@ async function aceptEdit(){
       $("#modalPost-title").text(data.title)
       $("#description").text(data.body)
     })
+    // e.stopPropagation()
+    // e.preventDefault()
 
 
 }

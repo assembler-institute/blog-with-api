@@ -1,14 +1,16 @@
 const arrUsers=[]
-let prevId=-1
+var cont=0;
 async function makePagination(){
      await fetch("http://localhost:3000/posts/")
     .then(response=>response.json())
     .then(data=>{
-        data.forEach(element=>{
-            if(element.userId!=prevId){
-                arrUsers.push(element)
+        data.forEach(function(element,idx){
+          cont++;
+            if(cont==10){
+              arrUsers.push(element)
+              cont=0
             }
-            prevId=element.userId
+            
         })
     })
     createPage()
