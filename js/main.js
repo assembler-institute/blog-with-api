@@ -20,13 +20,20 @@ window.onload= function(){
   //post modal
   $('#exampleModalToggle').on('shown.bs.modal', function () {
     $(".fa-arrow-right,.fa-arrow-left").on("click",previousPost)
-    $("#openEditModal").on("click",editPost)
     $("#deleteButton").off("click",deletePost)
   })
   $('#exampleModalToggle').on('hide.bs.modal', function () {
     resetModal()
   })
-
+  //EDIT MODAL
+  $('#exampleModalToggle2').on('shown.bs.modal', function () {
+    $(".fa-arrow-right,.fa-arrow-left").on("click",previousPost)
+    $("#openEditModal").on("click",editPost)
+  })
+  $("#openEditModal").on("click",editPost)
+  $('#exampleModalToggle2').on('hide.bs.modal', function () {
+    $("#openEditModal").off("click",editPost)
+  })
 }
 
 function  getPosts(){
@@ -110,7 +117,6 @@ async function infoModal(e,nextPrev){
     $("#username").text(user.username);
     $("#email").text(user.email);
     $("#description").text(target.body);
-    $("#openEditModal").on("click", editPost)
 }
 
 function previousPost(){
@@ -154,7 +160,7 @@ function resetModal(){
   //TURN OFF PREVIOUS AND NEXT POST
   $(".fa-arrow-right,.fa-arrow-left").off("click",previousPost);
   //turn off edit
-  //$("#openEditModal").off("click",editPost)
+  
 }
 
 
