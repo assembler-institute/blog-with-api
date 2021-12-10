@@ -1,4 +1,3 @@
-//import { printImage } from "./photos"
 
 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -7,8 +6,6 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 var arrayPosts=[]
 var numId=1
 var target,postSelected;
-//Get Tittles
-//data[0].title
 window.onload= function(){
   getPosts()
   makePagination()
@@ -22,6 +19,7 @@ window.onload= function(){
     $(".fa-arrow-right,.fa-arrow-left").on("click",previousPost)
     $("#deleteButton").off("click",deletePost)
   })
+  //when post modal exit, reset all information
   $('#exampleModalToggle').on('hide.bs.modal', function () {
     resetModal()
   })
@@ -30,7 +28,6 @@ window.onload= function(){
     $(".fa-arrow-right,.fa-arrow-left").on("click",previousPost)
     $("#openEditModal").on("click",editPost)
   })
-  $("#openEditModal").on("click",editPost)
   $('#exampleModalToggle2').on('hide.bs.modal', function () {
     $("#openEditModal").off("click",editPost)
   })
@@ -106,9 +103,6 @@ async function infoModal(e,nextPrev){
     .then(data=>{
       return user=data[0]
     })
-    //GET COMMENTS
-
-    //NEXT POST AND PREV LISTENERS
     
     //DISPLAY INFO
     $(".loadComments").eq(0).one("click", loadComments)
@@ -154,13 +148,10 @@ async function loadComments(){
 
 function resetModal(){
   $(".commentsContainer").remove();
-  //TURN OFF LISTENER TO DELETE
   //TURN OFF LOAD COMMENTS
   $(".loadComments").off("click", loadComments);
   //TURN OFF PREVIOUS AND NEXT POST
   $(".fa-arrow-right,.fa-arrow-left").off("click",previousPost);
-  //turn off edit
-  
 }
 
 
@@ -194,8 +185,4 @@ async function aceptEdit(){
       $("#modalPost-title").text(data.title)
       $("#description").text(data.body)
     })
-    // e.stopPropagation()
-    // e.preventDefault()
-
-
 }
