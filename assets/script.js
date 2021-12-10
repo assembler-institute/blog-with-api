@@ -5,9 +5,8 @@ let start;
 window.onload = init();
 var totalPost = 0;
 
-
 function init() {
-    if (start == undefined){
+    if (start == undefined) {
         start = 0;
     }
     postsFetchFun(start);
@@ -28,9 +27,9 @@ function nextPost() {
 function prevPost() {
     start = start - 6;
     if (start < 0) {
-        start = totalPost -6;
+        start = totalPost - 6;
     }
-    console.log(start)
+    console.log(start);
     postsFetchFun(start);
 }
 
@@ -39,8 +38,8 @@ function postsFetchFun(start) {
         method: "GET",
         redirect: "follow",
     };
-    console.log(start)
-    console.log(totalPost)
+    console.log(start);
+    console.log(totalPost);
     var limit = 6;
     var urlPosts =
         "http://localhost:3000/posts?_start=" + start + "&_limit=" + limit + "";
@@ -50,8 +49,8 @@ function postsFetchFun(start) {
             return response.text();
         })
         .then((result) => {
-            console.log(start)
-            console.log(totalPost)
+            console.log(start);
+            console.log(totalPost);
             let data = JSON.parse(result);
             updatePostsList(data);
         })
@@ -69,8 +68,8 @@ function updatePostsList(data) {
         parent.removeChild(parent.firstChild);
     }
     data.forEach((post) => {
-        var irandom = Math.floor(Math.random()*imagesArr.length);
-        console.log(irandom)
+        var irandom = Math.floor(Math.random() * imagesArr.length);
+        console.log(irandom);
         if (arrayIdsDelete.includes(post.id + "")) {
             return;
         }
@@ -78,8 +77,10 @@ function updatePostsList(data) {
         div1.innerHTML =
             `<div class="card h-100" id="card${post.id}">
                             <div class="card-body">
-                            <img src="assets/img/postImg/`+imagesArr[irandom]+`" id="imgPost">
-                              <div class="card-body">
+                            <img src="assets/img/postImg/` +
+            imagesArr[irandom] +
+            `" id="imgPost">
+                            <div class="card-body">
                             <div id="showDescriptionModal${post.id}">
                             <h5 class="card-title" id="title${post.id}">` +
             post.title +
@@ -106,7 +107,7 @@ function updatePostsList(data) {
         var editPost = document.getElementById("editPost" + post.id);
         editPost.addEventListener("click", function () {
             editPostModal(post.id);
-        })
+        });
 
         modalEvent = document.getElementById("showDescriptionModal" + post.id);
         modalEvent.addEventListener("click", function () {
@@ -116,6 +117,7 @@ function updatePostsList(data) {
         });
     });
 }
+
 function findUserFetchFun(post) {
     var requestOptions = {
         method: "GET",
@@ -132,9 +134,8 @@ function findUserFetchFun(post) {
         })
         .catch((error) => console.log("error", error));
 }
+
 function modalContent(post, data) {
-
-
     document.getElementById("staticBackdropLabel").innerHTML = `
     <div class="card mb-3" style="max-width: 540px;">
 <div class="row g-0">
@@ -149,7 +150,7 @@ function modalContent(post, data) {
     </div>
     </div>
 </div>
-</div>`
+</div>`;
     // document.getElementById("staticBackdropLabel").textContent = post.title;
     // document.getElementById("staticBackdropLabel").textContent += " " + data.name;
     // document.getElementById("staticBackdropLabel").textContent +=" " + data.email;
@@ -159,6 +160,7 @@ function modalContent(post, data) {
         findCommentsFetchFun(post);
     });
 }
+
 function findCommentsFetchFun(post) {
     var requestOptions = {
         method: "GET",
@@ -173,6 +175,7 @@ function findCommentsFetchFun(post) {
         })
         .catch((error) => console.log("error", error));
 }
+
 function createCommentsFun(comments) {
     let commentsContainer;
     buttonDiv = document.querySelector(".modal-body");
@@ -210,12 +213,12 @@ function createCommentsFun(comments) {
         commentsContainer.appendChild(commentDiv);
     });
 }
+
 function deletePost(id) {
     var urlFetch = "http://localhost:3000/posts/" + id;
     fetch(urlFetch, {
-            method: "DELETE"
-        })
-        .catch((error) => console.log("error", error));
+        method: "DELETE",
+    }).catch((error) => console.log("error", error));
     // var card = document.getElementById("card" + id);
     // card.remove();
 
@@ -231,17 +234,17 @@ function deletePost(id) {
 
     // })
 }
+
 function editPostModal(id) {
     var title = document.getElementById("title" + id);
     var body = document.getElementById("body" + id);
     var modalTitle = document.getElementById("exampleFormControlInput1");
     var modalBody = document.getElementById("exampleFormControlTextarea1");
-    var btnSaveEdit = document.getElementById("btnSaveEdit")
+    var btnSaveEdit = document.getElementById("btnSaveEdit");
 
     btnSaveEdit.value = id;
     modalTitle.value = title.innerHTML;
     modalBody.value = body.innerHTML;
-
 }
 
 btnSaveEdit.addEventListener("click", function () {
@@ -252,13 +255,13 @@ btnSaveEdit.addEventListener("click", function () {
         method: "PATCH",
         body: JSON.stringify({
             title: modalTitle.value,
-            body: modalBody.value
+            body: modalBody.value,
         }),
         headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        }
+            "Content-type": "application/json; charset=UTF-8",
+        },
     });
-})
+});
 
 // let photo = card[index].queryselector("img").src =`https://picsum.photos/id/${index+10+index}/300`
 // let arrayImg=[
@@ -271,4 +274,17 @@ btnSaveEdit.addEventListener("click", function () {
 //     document.getElementById("photo").innerHTML = "<img src='' alt=''>";
 //     });
 
-imagesArr = ["post-img-1.jpeg","post-img-2.jpeg","post-img-3.jpeg","post-img-4.jpeg","post-img-5.jpeg","post-img-6.jpeg","post-img-7.jpeg","post-img-8.jpeg","post-img-9.jpeg","post-img-10.jpeg","post-img-11.jpeg","post-img-12.jpeg"]
+imagesArr = [
+    "post-img-1.jpeg",
+    "post-img-2.jpeg",
+    "post-img-3.jpeg",
+    "post-img-4.jpeg",
+    "post-img-5.jpeg",
+    "post-img-6.jpeg",
+    "post-img-7.jpeg",
+    "post-img-8.jpeg",
+    "post-img-9.jpeg",
+    "post-img-10.jpeg",
+    "post-img-11.jpeg",
+    "post-img-12.jpeg",
+];
