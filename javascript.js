@@ -178,8 +178,9 @@ function beginmodal() {
         'userName'
     ).innerHTML = `<b>Name: </b>${information.name}`;
     document.getElementById('bodyFetch').innerHTML = information.body;
-    const deleteBtn = document.getElementById('deleteBtn');
-    deleteBtn.addEventListener('click', deleteComment);
+    document.getElementById('deleteBtn').addEventListener('click', ()=>{
+        deleteComment()
+    });
     editPost();
 }
 
@@ -227,8 +228,7 @@ function fetchPost() {
 }
 
 function deleteComment() {
-    let deletePost = document.querySelector('.prueba').id;
-
+    deletePost = information.id
     fetch(`http://localhost:3000/posts/${deletePost}`, {
         method: 'DELETE'
     })
