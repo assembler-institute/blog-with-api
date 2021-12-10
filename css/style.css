@@ -1,3 +1,6 @@
+/* Font family */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 :root{
     --bg-color: #FFFFFF;
     --secondary-color: #E89119;
@@ -11,6 +14,7 @@
 /* if delete method commes error or success */
 body{
     position:relative;
+    font-family: 'Roboto', sans-serif;
 }
 #statusMessage{
     position:absolute;
@@ -151,6 +155,7 @@ picture{
     margin-top: 20px;
     font-size: 20px;
 }
+/* COMMENTS */
 #commentSection{
     color:var(--secondary-color);
     margin-bottom: 10px;
@@ -163,7 +168,10 @@ picture{
     padding: 10px;
 
 }
-
+.bodyComment{
+    color:black;
+    border-left:2px solid black;
+}
 /* DELETE MODAL */
 .modalDelte{
     max-width:500px;
