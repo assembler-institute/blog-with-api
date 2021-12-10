@@ -1,4 +1,5 @@
 
+//! Json to onload the server in local-Host
 // json-server --watch data/db.json
 
 ///! Variables, const
@@ -121,7 +122,6 @@ function btncall() {
                                 return post;
                             }
                         });
-                        // console.log($(ostia))
                         information.title = infoPosts[0].title;
                         information.id = infoPosts[0].id;
                         information.userId = infoPosts[0].userId;
@@ -163,7 +163,7 @@ function beginmodal() {
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     <button type="button" class="btn btn-success" id="comentClick"  type="button" data-toggle="collapse" data-target="#comments" aria-expanded="false" aria-controls="comments">Comments</button>
                 </div>
-                <div class="modal-body collapse multi-collapse" id="comments"> <b>Comentarios</b>
+                <div class="modal-body collapse multi-collapse" id="comments">
                 </div>
               </div>
             </div>
@@ -261,7 +261,6 @@ function comments (postId){
   })
   .then((response)=>{
     var postComment= response.filter((element)=>{
-      //    console.log(element)
           if(element.postId == postId)
           return element
       })
@@ -271,19 +270,17 @@ function comments (postId){
           let divComment = document.createElement("div")
           divComment.setAttribute("class", "infoName")
           divComment.innerHTML= name
-          console.log(divComment)
           document.getElementById("comments").appendChild(divComment)
           let divCommentEmail = document.createElement("div")
           divCommentEmail.setAttribute("class", "infoEmail")
-          // divCommentEmail.innerHTML= `<b>Email:</b> ${email}`
-          // console.log(divComment)
           let divCommentBody = document.createElement("div")
           divCommentBody.setAttribute("class", "infoBody")
-          divCommentBody.innerHTML= `<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title=${email}>
+          divCommentBody.innerHTML= `<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title=${email} >
           ${body}
-        </button>
-      `
-          // console.log(divComment)
+        </button>`
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+          })
           document.getElementById("comments").appendChild(divCommentBody)
           document.getElementById("comments").appendChild(divCommentEmail)
       })
