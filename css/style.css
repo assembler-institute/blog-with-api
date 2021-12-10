@@ -1,3 +1,6 @@
+/* Font family */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 :root{
     --bg-color: #FFFFFF;
     --secondary-color: #E89119;
@@ -11,6 +14,7 @@
 /* if delete method commes error or success */
 body{
     position:relative;
+    font-family: 'Roboto', sans-serif;
 }
 #statusMessage{
     position:absolute;
