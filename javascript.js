@@ -1,4 +1,5 @@
 
+// json-server --watch data/db.json
 
 ///! Variables, const
 var ones = [
