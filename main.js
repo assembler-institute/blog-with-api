@@ -124,8 +124,6 @@ $(document).ready(function(){
         modalBodyEdit.setAttribute("cols","40");
         modalBodyEdit.setAttribute("rows","5");
         modalTitleEdit.setAttribute("type","text");
-        //modalBodyEdit.setAttribute("style","width:100%; height:200px;overflow:scroll;line-height:18px;");
-        //modalBodyEdit.setAttribute("style","width:100%;height:200px;text-align:center;overflow:scroll");
         modalBodyEdit.value=modalBody.innerHTML;
         modalTitleEdit.value=modalTitle.innerHTML;
         modalTitle.innerHTML="";
@@ -151,7 +149,6 @@ $(document).ready(function(){
             })
             .then((response) => response.json())
             .then((json) => {console.log(json);
-
             modalTitle.innerHTML=json.title;
             modalBody.innerHTML=json.body;
             titlePost.innerHTML=json.title;
