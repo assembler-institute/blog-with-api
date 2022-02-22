@@ -1,11 +1,20 @@
-`#html` `#css` `#js` `#dom` `#JSON` `#HTTP` `#API` `#Bootstrap` `#master-in-software-engineering`
 
-# Blog With API
+# 📰 Blog with API
 
-This is a blog designed with Boostrap 5, support by jSON server and made with love.
+This is a blog designed with Boostrap 5, support by jSON server and made for Assembler Institue of Technology as a school project.
+## 💻 Tech Stack
 
+HTML5, CSS3, JavaScript, Boostrap 5, JSON server.
 
-## Features
+  
+## 👤 Authors
+
+- [@SalvaBandicoot](https://github.com/SalvaBandicoot)
+- [@tamtran2885](https://github.com/tamtran2885)
+- [@Joelmarfas](https://github.com/Joelmarfas)
+
+  
+## ⚡ Features
 
 - It loads post contained in a database.
 - You can read, edit or delete posts.
@@ -14,20 +23,18 @@ This is a blog designed with Boostrap 5, support by jSON server and made with lo
 - Responsive design for small devices.
 
   
-## Demo
+## 📚 Lessons Learned
 
-[Demo](https://salvabandicoot.github.io/blog-with-api/)
-
-Note: I wont work without jSON server. :)
-
+In this project, we have practiced DOM and javascript and
+their integration with HTML. Also we learned about JSON servers and the use of Boostrap 5.
   
-## Authors
-
-- [@tamtran2885](https://github.com/tamtran2885)
-- [@Joelmarfas](https://github.com/Joelmarfas)
-- [@SalvaBandicoot](https://github.com/SalvaBandicoot)
-
-  
-## Screenshots
+## 📷 Screenshots
 
 ![Screenshot](https://i.ibb.co/vvH0dQM/screencapture-127-0-0-1-5500-index-html-2021-08-13-10-23-14.png)
+
+  
+## 🔍 Demo
+
+[Click here](https://salvabandicoot-apiblog.netlify.app/) to see  a demo of the project.
+
+Note: I wont work without jSON server. :)
