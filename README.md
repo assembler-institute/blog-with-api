@@ -2,9 +2,9 @@
 
 # Blog with API <!-- omit in toc -->
 
-<p>
+<span>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
-</p>
+</span>
 
 > In this pill you will put into practice the knowledge learned about making HTTP requests to create a blog consuming the information from a third-party API. You will also learn how to use Bootstrap Framework for the layout.
 
