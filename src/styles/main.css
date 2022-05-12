@@ -1,12 +1,8 @@
   /*POSTS CONTAINERS*/
-  .post__title{
-    border: 1px solid red;
-}
 
-
-.blog__postTitle--listContainer{
-  list-style: none;
-}
+  .blog__header__title {
+    text-align: center;
+  }
 
 .list-group-item:hover{
   cursor: pointer;
