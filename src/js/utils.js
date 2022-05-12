@@ -1,8 +1,5 @@
 import { getPosts, postList } from "./main.js";
 const paginatorNumbers = document.querySelectorAll("[data-type]");
-const modalWindow = document.getElementById("modalWindow");
-
-
 
 const createPost = (userId, id, title, body, index) => {
   const liElement = document.createElement("li");
@@ -27,21 +24,12 @@ const createPost = (userId, id, title, body, index) => {
   iconDelete.classList.add("bi", "bi-file-x");
 
   postTitle.textContent = `${id}: ${title}`;
-  postList.setAttribute("data-id", id);
-  postList.setAttribute("data-userId", userId);
+  postTitle.setAttribute("data-id", id);
+  postTitle.setAttribute("data-userId", userId);
 
   postTitle.setAttribute("data-bs-toggle", "modal");
   postTitle.setAttribute("data-bs-target", "#modalWindow");
-  postList.addEventListener("click", multi);
-  
-  function multi(){
-    openModal();
-    function modalTitle(){
-      const modalTitle = document.getElementById("modalTitle");
-      modalTitle.textContent = `${postList}`;
-    }
-    modalTitle();
-  }
+
   postBody.textContent = body;
   deleteButton.setAttribute("data-id", id);
   deleteButton.textContent = "Delete";
@@ -78,10 +66,4 @@ const addPaginators = () => {
   });
 };
 
-const openModal = (e) => {
-  modalWindow.modal("show");
-};
-
-
-export { createPost, addPaginators, updatePostsDisplay};
-
+export { createPost, addPaginators, updatePostsDisplay };
