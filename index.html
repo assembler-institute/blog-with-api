@@ -23,61 +23,61 @@
             <img src="./src/assets/bloglogo.png" alt="logo" srcset="">
         </div>
     </nav>
-    <main data-bs-spy="scroll">
+    <main>
         <h2>Feel free to share your opinions</h2>
         <ul id="postList">
-            <li class="article__post">
-                <img class="img__avatar" src="https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/03/GettyImages-1092658864_hero-1024x575.jpg?w=1155&h=1528" alt="">
-                <div>
-                <h3>sunt aut facere repellat provident occaecati excepturi optio reprehenderit</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime nesciunt fugiat magni itaque quae,
-                    rem minus inventore distinctio commodi quod fuga hic voluptate ipsa vero amet porro fugit eius
-                    incidunt!
-                    Quas eius obcaecati libero, provident fugiat atque amet expedita velit neque voluptatibus laboriosam
-                    optio pariatur repudiandae odit et ipsam corporis ducimus. Ullam, saepe maiores! Adipisci, assumenda
-                    quam! Fuga, porro dolorem.
-                    Repudiandae eius tempore recusandae laborum nobis error necessitatibus veritatis officiis doloribus
-                    excepturi temporibus, libero, fugit perspiciatis, cum impedit numquam atque sapiente sint iusto
-                    dolorem fuga soluta? Ullam accusamus quidem unde?
-                    Laboriosam, odit? Error dolorem debitis rerum sapiente, exercitationem quisquam, quas temporibus
-                    delectus autem magni quibusdam vel aut expedita quaerat perferendis blanditiis fugiat magnam in
-                    nihil iste illo officiis! Modi, ipsa!
-                    Ut ipsam sit ad, sint veritatis atque numquam deleniti qui nostrum, sed, explicabo commodi
-                    voluptates a pariatur reprehenderit dignissimos repudiandae rerum? Ut accusamus nihil quae libero
-                    dolorum possimus optio ducimus.</p>
-                <div>
-                    <button type="button" class="btn btn-primary">Modify<i class="bi bi-bookmark-check"></i></button>
-                    <button type="button" class="btn btn-danger">Delete<i class="bi bi-file-x"></i></button>
-                </div>
-            </div>
-            </li>
-            <li class="article__post">
-                <img class="img__avatar" src="https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/03/GettyImages-1092658864_hero-1024x575.jpg?w=1155&h=1528" alt="">
-                <div>
-                <h3>sunt aut facere repellat provident occaecati excepturi optio reprehenderit</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime nesciunt fugiat magni itaque quae,
-                    rem minus inventore distinctio commodi quod fuga hic voluptate ipsa vero amet porro fugit eius
-                    incidunt!
-                    Quas eius obcaecati libero, provident fugiat atque amet expedita velit neque voluptatibus laboriosam
-                    optio pariatur repudiandae odit et ipsam corporis ducimus. Ullam, saepe maiores! Adipisci, assumenda
-                    quam! Fuga, porro dolorem.
-                    Repudiandae eius tempore recusandae laborum nobis error necessitatibus veritatis officiis doloribus
-                    excepturi temporibus, libero, fugit perspiciatis, cum impedit numquam atque sapiente sint iusto
-                    dolorem fuga soluta? Ullam accusamus quidem unde?
-                    Laboriosam, odit? Error dolorem debitis rerum sapiente, exercitationem quisquam, quas temporibus
-                    delectus autem magni quibusdam vel aut expedita quaerat perferendis blanditiis fugiat magnam in
-                    nihil iste illo officiis! Modi, ipsa!
-                    Ut ipsam sit ad, sint veritatis atque numquam deleniti qui nostrum, sed, explicabo commodi
-                    voluptates a pariatur reprehenderit dignissimos repudiandae rerum? Ut accusamus nihil quae libero
-                    dolorum possimus optio ducimus.</p>
-                <div>
-                    <button type="button" class="btn btn-primary">Modify<i class="bi bi-bookmark-check"></i></button>
-                    <button type="button" class="btn btn-danger">Delete<i class="bi bi-file-x"></i></button>
-                </div>
-            </div>
-            </li>
+
         </ul>
+
+        <nav>
+            <ul class="pagination">
+                <li class="page-item">
+                    <a id="previous-page" class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li data-type="paginator" class="page-item"><a value="1" class="page-link" href="#">1</a></li>
+                <li data-type="paginator" class="page-item"><a value="2" class="page-link" href="#">2</a></li>
+                <li data-type="paginator" class="page-item"><a value="3" class="page-link" href="#">3</a></li>
+                <li data-type="paginator" class="page-item"><a value="4" class="page-link" href="#">4</a></li>
+                <li data-type="paginator" class="page-item"><a value="5" class="page-link" href="#">5</a></li>
+                <li data-type="paginator" class="page-item"><a value="6" class="page-link" href="#">6</a></li>
+                <li data-type="paginator" class="page-item"><a value="7" class="page-link" href="#">7</a></li>
+                <li data-type="paginator" class="page-item"><a value="8" class="page-link" href="#">8</a></li>
+                <li data-type="paginator" class="page-item"><a value="9" class="page-link" href="#">9</a></li>
+                <li data-type="paginator" class="page-item"><a value="10" class="page-link" href="#">10</a></li>
+                <li class="page-item">
+                    <a id="next-page" class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </main>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modalTitle">Modal Title</h3>
+                </div>
+                <div class="modal-body">
+                    <p id="modal__post_body">asdasdasdasda</p>
+                    <hr>
+                    <h4>User</h4>
+                    <p id="user_name">123</p>
+                    <p id="user_email">123@123</p>
+                    <hr>
+                    <h4>Comments</h4>
+                    <button type="button" class="btn btn-info">Show Comments</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>
