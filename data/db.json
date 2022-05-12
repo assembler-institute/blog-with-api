@@ -1,4 +1,25 @@
 {
+  "name": "blog-with-api",
+  "version": "1.0.0",
+  "description": "`#html` `#css` `#js` `#dom` `#JSON` `#HTTP` `#API` `#Bootstrap` `#master-in-software-development`",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DogSoulDev/blog-with-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DogSoulDev/blog-with-api/issues"
+  },
+  "homepage": "https://github.com/DogSoulDev/blog-with-api#readme",
+  "dependencies": {
+    "json-server": "^0.17.0"
+  },
   "posts": [
     {
       "userId": 1,
