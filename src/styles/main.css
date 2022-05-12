@@ -7,3 +7,8 @@
 .blog__postTitle--listContainer{
   list-style: none;
 }
+
+.list-group-item:hover{
+  cursor: pointer;
+  background-color: #f8f9fa;
+}
