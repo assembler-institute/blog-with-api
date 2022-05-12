@@ -1,5 +1,3 @@
-
-
 const postsCont = document.getElementById('posts')
 const commentsCont = document.getElementById('comments')
 const usersCont = document.getElementById('users')
@@ -43,6 +41,7 @@ const displayComments = (postId, postContainer) => {
     })
         .then(response => response.json())
         .then(data => data.map(commentsData => {
+            
             if (parseInt(postId) === commentsData.postId){
                 const comment = document.createElement('article')
                 comment.setAttribute('class', 'comments__article')
@@ -57,6 +56,7 @@ const displayComments = (postId, postContainer) => {
                 comment.append(name,body)
                 postContainer.append(comment)
             }
+
         }))
         .catch(err => console.warn(err))
 }
