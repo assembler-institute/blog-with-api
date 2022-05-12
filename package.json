@@ -4,12 +4,12 @@
   "description": "`#html` `#css` `#js` `#dom` `#JSON` `#HTTP` `#API` `#Bootstrap` `#master-in-software-development`",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "json-server --watch ./src/data/db.json"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RogerOliveDelgado/blog-with-api.git",
-    "server": "json-server --watch ./src/data/db.json"
+    "url": "git+https://github.com/RogerOliveDelgado/blog-with-api.git"
   },
   "author": "",
   "license": "ISC",

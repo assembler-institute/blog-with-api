@@ -1,2 +1,8 @@
 /*RESET*/
-@import url(normalize.css)
+@import url(normalize.css);
+
+article {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid rgb(242, 9, 9);
+}
