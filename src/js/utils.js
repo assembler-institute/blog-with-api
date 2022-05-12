@@ -1,6 +1,8 @@
 import { getPosts, postList } from "./main.js";
 const paginatorNumbers = document.querySelectorAll("[data-type]");
-const exampleModal = document.getElementById("exampleModal");
+const modalWindow = document.getElementById("modalWindow");
+
+
 
 const createPost = (userId, id, title, body, index) => {
   const liElement = document.createElement("li");
@@ -16,21 +18,30 @@ const createPost = (userId, id, title, body, index) => {
   const buttonsContainer = document.createElement("div");
   buttonsContainer.classList.add("buttons__container");
   const modifyButton = document.createElement("button");
-  modifyButton.classList.add("btn", "btn-primary", "btn__modify");
+  modifyButton.classList.add("btn", "btn-secondary", "btn__modify");
   const iconModify = document.createElement("i");
   iconModify.classList.add("bi", "bi-bookmark-check");
   const deleteButton = document.createElement("button");
-  deleteButton.classList.add("btn", "btn-danger", "btn__delete");
+  deleteButton.classList.add("btn", "btn-warning", "btn__delete");
   const iconDelete = document.createElement("i");
   iconDelete.classList.add("bi", "bi-file-x");
 
-  postTitle.textContent = `${id} ${title}`;
+  postTitle.textContent = `${id}: ${title}`;
   postList.setAttribute("data-id", id);
   postList.setAttribute("data-userId", userId);
 
   postTitle.setAttribute("data-bs-toggle", "modal");
-  postTitle.setAttribute("data-bs-target", "#exampleModal");
-  postList.addEventListener("click", openModal);
+  postTitle.setAttribute("data-bs-target", "#modalWindow");
+  postList.addEventListener("click", multi);
+  
+  function multi(){
+    openModal();
+    function modalTitle(){
+      const modalTitle = document.getElementById("modalTitle");
+      modalTitle.textContent = `${postList}`;
+    }
+    modalTitle();
+  }
   postBody.textContent = body;
   deleteButton.setAttribute("data-id", id);
   deleteButton.textContent = "Delete";
@@ -68,7 +79,9 @@ const addPaginators = () => {
 };
 
 const openModal = (e) => {
-  exampleModal.modal("show");
+  modalWindow.modal("show");
 };
 
-export { createPost, addPaginators, updatePostsDisplay };
+
+export { createPost, addPaginators, updatePostsDisplay};
+

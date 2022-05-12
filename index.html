@@ -18,14 +18,14 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
         <div class="container-fluid">
             <img src="./src/assets/bloglogo.png" alt="logo" srcset="">
         </div>
     </nav>
     <main>
-        <h2>Feel free to share your opinions</h2>
-        <ul id="postList">
+        <h2 class ="subTitle">Feel free to share your opinions</h2>
+        <ul id="postList" class="postList">
 
         </ul>
 
@@ -54,12 +54,12 @@
             </ul>
         </nav>
     </main>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="modalWindow" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="modalTitle">Modal Title</h3>
+                    <h3 class="modal-title" id="modalTitle"></h3>
                 </div>
                 <div class="modal-body">
                     <p id="modal__post_body">asdasdasdasda</p>
@@ -69,7 +69,7 @@
                     <p id="user_email">123@123</p>
                     <hr>
                     <h4>Comments</h4>
-                    <button type="button" class="btn btn-info">Show Comments</button>
+                    <button type="button" class="btn btn-light">Show Comments</button>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

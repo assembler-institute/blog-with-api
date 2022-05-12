@@ -44,4 +44,6 @@ nextPage.addEventListener("click", (e) => {
 getPosts(0, 10);
 addPaginators();
 
+
+
 export { getPosts, postList };
