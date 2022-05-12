@@ -719,6 +719,9 @@
       "id": 758847,
       "title": "this is a test",
       "body": "i am a new post created form the function createPost"
+    },
+    {
+      "id": 758848
     }
   ],
   "users": [

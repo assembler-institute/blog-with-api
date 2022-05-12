@@ -1,17 +1,16 @@
-
+const url = fetch('http://localhost:3000/posts');
+console.log(url);
 
 const getPosts = async () => {
   const response = await fetch('http://localhost:3000/posts')
-  const posts  =  await response.json()
+  const posts = await response.json()
   return posts
 }
-
-
 
 const createPost = async () => {
   const newPost = {
     "userId": 11,
-    "id": 1,
+    "id": 501,
     "title": "this is a test",
     "body": "i am a new post created form the function createPost"
   }
@@ -23,9 +22,31 @@ const createPost = async () => {
     },
     body: JSON.stringify(newPost)
   }
-  const response = await fetch('http://localhost:3000/posts', settings)
-  
+
+  console.log(newPost);
+  const response = fetch('http://localhost:3000/posts', settings)
   console.log(response)
 }
+// createPost();
 
-createPost()
+
+
+
+
+
+
+function newPost() {
+  const newPost = {
+    "userId": 11,
+    "id": 501,
+    "title": "this is a test",
+    "body": "i am a new post created form the function createPost"
+  }
+
+  fetch("http://localhost:3000/posts", {
+    method: "POST",
+    body: newPost
+  });
+}
+
+// newPost();
