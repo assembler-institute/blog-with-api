@@ -707,21 +707,6 @@
     },
     {
       "id": 136
-    },
-    {
-      "userId": 10,
-      "id": 1000,
-      "title": "this is a test",
-      "body": "i am a new post created form the function createPost"
-    },
-    {
-      "userId": 11,
-      "id": 758847,
-      "title": "this is a test",
-      "body": "i am a new post created form the function createPost"
-    },
-    {
-      "id": 758848
     }
   ],
   "users": [
