@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog</title>
+  </head>
+  <body>
+    <!-- main  -->
+    <header id="titleBlog">
+      <a href="index.html"><h2>My blog</h2></a>
+    </header>
+    <!-- main content -->
+    <main id="mainContent">
+      <article id="postDisplay"></article>
+      <!-- modal -->
+      <dialog id="modal" class="modal">
+        <!-- modal content -->
+        <article id="modalContent" class="modal__content">
+          <header id="modalContent" class="modal__header">
+              <!-- title of the modal -->
+            <h3 id="modalTitle" class="modal__title"></h3>
+            <!-- btn to close the modal -->
+            <button class="modal__close" data-dismiss="modal" type="button">
+              X
+            </button>
+          </header>
+          <section id="modalBody" class="modal__body">
+            <p>Some text in the modal.</p>
+          </section>
+        </article>
+      </dialog>
+    </main>
+  </body>
+</html>
