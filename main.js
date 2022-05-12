@@ -1,11 +1,17 @@
 const url = fetch('http://localhost:3000/posts');
-console.log(url);
+
 
 const getPosts = async () => {
-  const response = await fetch('http://localhost:3000/posts')
+  const response = await fetch('https://jsonplaceholder.typicode.com/posts')
   const posts = await response.json()
-  return posts
+  posts.forEach(post => {
+    const h2El = document.createElement('h2')
+    h2El.innerText = post.title
+    
+    document.body.appendChild(h2El)
+  })
 }
+// getPosts()
 
 const createPost = async () => {
   const newPost = {
@@ -28,11 +34,6 @@ const createPost = async () => {
   console.log(response)
 }
 // createPost();
-
-
-
-
-
 
 
 function newPost() {
