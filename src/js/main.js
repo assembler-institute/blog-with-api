@@ -1,3 +1,7 @@
+import loginUser from "./login.js"
+
+loginUser()
+
 const postsCont = document.getElementById('posts')
 const commentsCont = document.getElementById('comments')
 const usersCont = document.getElementById('users')

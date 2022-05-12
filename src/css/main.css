@@ -1,5 +1,6 @@
 /*RESET*/
 @import url(normalize.css);
+@import url(loginModal.css);
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
 
 .main__container{
@@ -18,7 +19,6 @@
 .img__userProfile{
     width: 2rem;
     height: 2rem;
-    margin-right: 2rem;
     cursor: pointer;
 }
 
