@@ -6,20 +6,29 @@ fetch(postUrl)
   .then((response) => response.json())
   .then((data) => {
     data.forEach((element) => {
-      let div = document.createElement('div');
+      let template = document.getElementById('post');
 
-      //   Post title
-      let title = document.createElement('h3');
-      title.classList.add('section__post--title');
-      title.textContent = element.title;
-      div.appendChild(title);
-      //   post body
-      let body = document.createElement('p');
-      body.textContent = element.body;
-      div.appendChild(body);
-      console.log(body);
+      const h3 = template.content.querySelector('h3');
+      h3.textContent = element.title;
 
-      container.classList.add('flex-column');
-      container.appendChild(div);
+      const p = template.content.querySelector('p');
+      p.textContent = element.body;
+
+      const deleteBtn = template.content.querySelector('[role="button"]');
+      deleteBtn.dataset.id = element.id;
+
+      const clone = document.importNode(template.content, true);
+      container.appendChild(clone);
+    });
+
+    const deleteButtons = document.querySelectorAll('[role="button"]');
+
+    deleteButtons.forEach((element) => {
+      element.addEventListener('click', () => {
+        // element.parentNode.parentNode.remove()}
+        fetch('http://localhost:3000/posts/' + element.dataset.id, {
+          method: 'DELETE',
+        });
+      });
     });
   });
