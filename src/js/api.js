@@ -8,8 +8,12 @@ const fetchUser = async (userId) => {
   return await fetch(`http://localhost:3000/users?id=${userId}`)
     .then((response) => response.json())
     .then((data) => data);
-  //   const data = await response.json();
-  //   return data;
 };
 
-export { fetchPosts, fetchUser };
+const fetchComments = async (postId) => {
+  return await fetch(`http://localhost:3000/comments?postId=${postId}`)
+    .then((response) => response.json())
+    .then((data) => data);
+};
+
+export { fetchPosts, fetchUser, fetchComments };
