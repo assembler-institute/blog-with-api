@@ -1,8 +1,17 @@
-import { createPost } from "./src/js/utility.js";
+import { createPost, handleModal } from "./src/js/utility.js";
 
 const urlPosts = "http://localhost:3000/posts";
 const urlUsers = "http://localhost:3000/users";
 const urlComments = "http://localhost:3000/comments";
+
+const getUsers = async () => {
+  const response = await fetch(urlUsers)
+  const users = await response.json()
+  return users
+}
+
+const allUsers = await getUsers()
+
 
 const getPosts = () => {
   fetch(urlPosts)
@@ -11,6 +20,7 @@ const getPosts = () => {
       posts.forEach(post => {
         if(post.title)
         createPost(post);
+        handleModal(post, allUsers)
       });
     })
 }
