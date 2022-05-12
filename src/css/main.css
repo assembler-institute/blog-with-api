@@ -1,41 +1,11 @@
 /*RESET*/
 @import url(normalize.css);
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
 
-.main__container{
-    font-family: 'Rubik', sans-serif;
-}
+/*FONTS*/
+@import url(fonts.css);
 
-.main__header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+/*MAIN LAYOUT*/
+@import url(main-layout.css);
 
-.header__title{
-    margin-left: 2rem;
-}
-.img__userProfile{
-    width: 2rem;
-    height: 2rem;
-    margin-right: 2rem;
-    cursor: pointer;
-}
-
-.posts__article {
-    display: flex;
-    flex-direction: column;
-    border: 3px solid rgb(242, 9, 9);
-    margin-bottom: 0.5rem;
-    padding-top: 0.3rem;
-    padding-left: 0.3rem;
-}
-
-.comments__article{
-    display: flex;
-    flex-direction: column;
-    border: 3px solid rgb(10, 10, 10);
-    margin-bottom: 0.3rem;
-    padding-left: 0.3rem;
-    margin-left: 0.3rem;
-}
+/*CREATE POST*/
+@import url(createPost.css);
