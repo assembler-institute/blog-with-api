@@ -1,5 +1,5 @@
 function createPost(post) {
-
+    
     let cardContainer = document.getElementById("card-container");
     let template = document.getElementById("cardTemplate");
     let cardPost = template.cloneNode(true);
@@ -9,7 +9,7 @@ function createPost(post) {
     let cardText = document.getElementById("cardText");
     let cardComments = document.getElementById("cardComments");
 
-    cardIMG.src = "./src/assets/card03.jpg";
+    cardIMG.src = `https://picsum.photos/200/300?random=${post.id}`;
     cardTitle.innerText = post.title;
     cardText.innerText = post.body;
     cardComments.innerText = post.id;

@@ -1,6 +1,8 @@
 import { createPost } from "./src/js/utility.js";
 
 const urlPosts = "http://localhost:3000/posts";
+const urlUsers = "http://localhost:3000/users";
+const urlComments = "http://localhost:3000/comments";
 
 const getPosts = () => {
   fetch(urlPosts)
