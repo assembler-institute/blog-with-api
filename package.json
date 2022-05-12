@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "json-server --watch ./data/index.js"
+    "server": "json-server --watch ./data/db.json"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,6 @@
   },
   "homepage": "https://github.com/alejandroaperez1994g/blog-with-api#readme",
   "dependencies": {
-    "json-server": "^0.17.0"
+    "json-server": "0.17.0"
   }
 }
