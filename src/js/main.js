@@ -24,18 +24,29 @@ function printPostTitle(postTitle) {
     let titleContainer = document.createElement("li");
     titleContainer.className = "post__title";
     titleContainer.textContent = post.title;
-    titleContainer.id = post.id;
+    titleContainer.dataset.postId = post.id;
     titleContainer.dataset.user = post.userId;
     listContainer.append(titleContainer);
   });
- getUserId();
-}
-function getUserId(){
-    let title = document.querySelectorAll("[data-user]");
-    console.log(title);
-    title.addEventListener("click", (e) => {
-        console.log(e.target);
 
+  getUserId(postTitle, );
+}
+
+function getUserId(postTitle) {
+  let title = document.querySelectorAll("[data-user]");
+
+  title.forEach((e) => {
+    e.addEventListener("click", () => {
+      let postId = e.dataset.postId;
+       //showModal(postTitle[postId].body)
+      console.log(postTitle[postId].body);
     });
+  });
+
 }
 
+function showModal(data) {
+  const firstModal = document.getElementById("postDialog");
+  firstModal.textContent = data;
+  firstModal.showModal();
+}
