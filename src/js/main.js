@@ -1,4 +1,4 @@
-import createPost from './post.js'
+
 
 const postsCont = document.getElementById('posts')
 const commentsCont = document.getElementById('comments')
@@ -20,6 +20,7 @@ const displayPosts = () => {
     .then(response => response.json())
     .then(data => data.map(postsData => {
         const post = document.createElement('article')
+        post.setAttribute('class', 'posts__article')
         const title = document.createElement('span')
         const body = document.createElement('span')
         const userId = document.createElement('span')
@@ -44,6 +45,7 @@ const displayComments = (postId, postContainer) => {
         .then(data => data.map(commentsData => {
             if (parseInt(postId) === commentsData.postId){
                 const comment = document.createElement('article')
+                comment.setAttribute('class', 'comments__article')
                 const name = document.createElement('span')
                 const body = document.createElement('span')
                 
