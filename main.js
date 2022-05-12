@@ -30,11 +30,6 @@ const createPost = async () => {
 // createPost();
 
 
-
-
-
-
-
 function newPost() {
   const newPost = {
     "userId": 11,
