@@ -2,3 +2,8 @@
   .post__title{
     border: 1px solid red;
 }
+
+
+.blog__postTitle--listContainer{
+  list-style: none;
+}
