@@ -4,4 +4,16 @@ const fetchPosts = async () => {
   return data;
 };
 
-export { fetchPosts };
+const fetchUser = async (userId) => {
+  return await fetch(`http://localhost:3000/users?id=${userId}`)
+    .then((response) => response.json())
+    .then((data) => data);
+};
+
+const fetchComments = async (postId) => {
+  return await fetch(`http://localhost:3000/comments?postId=${postId}`)
+    .then((response) => response.json())
+    .then((data) => data);
+};
+
+export { fetchPosts, fetchUser, fetchComments };
