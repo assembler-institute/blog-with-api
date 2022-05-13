@@ -86,7 +86,7 @@ function addUsers(user) {
 
 function addComments(user) {
     let commentContainer = document.getElementById("commentContainer");
-    commentContainer.textContent="";
+    commentContainer.textContent = "";
     // let idComment = postsComments.
     // console.log(postsComments);
     // let postId= user.dataset.postId;
@@ -100,14 +100,14 @@ function addComments(user) {
         if (comment.postId == user.dataset.postId) {
             let commentWrapper = document.createElement("div");
             commentWrapper.className = "commentWrapper";
-            
+
 
             let commentName = document.createElement("p");
             let commentBody = document.createElement("p");
             let email = document.createElement("p");
-            commentName.textContent= comment.name;
-            commentBody.textContent= comment.body;
-            email.textContent= comment.email;
+            commentName.textContent = comment.name;
+            commentBody.textContent = comment.body;
+            email.textContent = comment.email;
             commentContainer.append(commentWrapper);
             commentWrapper.append(commentName, commentBody, email);
             console.log(commentName);
