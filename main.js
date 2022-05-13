@@ -7,7 +7,7 @@ const urlPosts = "http://localhost:3000/posts";
 const urlUsers = "http://localhost:3000/users";
 const urlComments = "http://localhost:3000/comments";
 
-
+document.getElementById("blog-container").scrollIntoView();
 
 const getPosts = async () => {
   const response = await fetch(urlPosts)
@@ -38,6 +38,16 @@ modalTemplate.addEventListener('show.bs.modal', e => {
 
   handleModal(allPosts, postId, allUsers);
 })
+
+
+// window.addEventListener('scroll', () => {
+//   console.log(window.scrollY) //scrolled from top
+//   console.log(window.innerHeight) //visible part of screen
+//   if (window.scrollY + window.innerHeight >=
+//     document.documentElement.scrollHeight) {
+//     onLoad();
+//   }
+// })
 
 window.onload = onLoad();
 

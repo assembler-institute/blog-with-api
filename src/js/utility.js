@@ -26,14 +26,18 @@ function handleModal(allPosts, postId, users) {
     const modalTemplate = document.getElementById('staticBackdrop')
     const cardModal = modalTemplate.cloneNode(true)
     const modalTitle = document.getElementById('staticBackdropLabel')
+    const modalUser = document.getElementById('modal-user')
+    const modalBody = document.getElementById('modal-body');
+    const modalUserImg = document.getElementById("userImg");
     cardModal.id = postId;
 
     allPosts.forEach(post => {
         if (post.title && post.id == postId) {
             const userByPost = users.filter(user => user.id == post.userId)[0].name
-            // console.log(userByPost)
-            modalTitle.textContent = `A post  by ${userByPost}`
-            // console.log(post);
+            modalTitle.textContent = post.title
+            modalUser.textContent = `A post  by ${userByPost}`
+            modalUserImg.src =`https://randomuser.me/api/portraits/men/${post.userId}.jpg`;
+            modalBody.textContent = post.body;
         }
     });
 
