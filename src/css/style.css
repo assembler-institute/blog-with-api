@@ -1,14 +1,17 @@
 *{
-    background-color: aquamarine;
     margin: 0;
     padding: 0;
     font-style: none;
 }
+.blog__header--title{
+    text-decoration: none;
+    color: black;
+}
 .blog__header{
-    border: 1px solid black;
-    margin: 20px;
+    background-color: #817d7d;
+    text-align: center;
 }
 .main__content{
-    border: 1px solid rgb(246, 4, 4);
+    background-color: #f2ddc3;
     overflow: hidden;
 }

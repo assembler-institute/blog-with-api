@@ -10,43 +10,74 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tinos&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./src/css/style.css" />
     <script src="./src/js/main.js" type="module"></script>
     <title>The Dispatch</title>
   </head>
   <body>
     <!-- main  -->
-    <header id="blogHeader" class="blog__header container-lg-8">
-      <a href="index.html"><h2>The Dispatch</h2></a>
+    <header
+      id="blogHeader"
+      class="blog__header container-fluid position-sticky fixed-top"
+    >
+      <a href="index.html" class="blog__header--title"><h2>The Dispatch</h2></a>
     </header>
     <!-- main content -->
-    <main id="mainContent" class="main__content">
+    <main id="mainContent" class="main__content container-fluid">
       <article id="postDisplay">
         <!-- post content -->
       </article>
       <!-- modal -->
-      <dialog id="modal" class="modal">
+      <dialog id="modal" class="modal fade">
         <!-- modal content -->
-        <article id="modalContent" class="modal__content">
-          <header id="modalContent" class="modal__header">
-            <!-- title of the modal -->
-            <h3 id="modalTitle" class="modal__title"></h3>
-            <!-- btn to close the modal -->
-            <button class="modal__close" data-dismiss="modal" type="button">
-              X
-            </button>
-          </header>
-          <section id="modalBody" class="modal__body">
-            <p>Some text in the modal.</p>
-          </section>
-          <section id="modalComments" class="modal__comments">
-            <button
-              type="button"
-              id="btnComments"
-              class="modal__btn--comments"
-            ></button>
-            <div id="commentsContent" class="modal__comments--content"></div>
-          </section>
+        <article id="modalContent" class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <header id="modalContent" class="modal-header">
+              <!-- title of the modal -->
+              <h3 id="modalTitle" class="modal-title"></h3>
+              <!-- btn to close the modal -->
+              <button
+                class="btn-close"
+                data-bs-dismiss="modal"
+                type="button"
+              ></button>
+            </header>
+            <section id="modalBody" class="modal-body">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Tempore, inventore repellendus doloribus voluptates molestiae
+                maxime maiores consectetur ad repellat amet sequi fuga
+                blanditiis accusantium expedita eos veniam! Tempora, quod
+                laudantium! Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Tempore, inventore repellendus doloribus voluptates
+                molestiae maxime maiores consectetur ad repellat amet sequi fuga
+                blanditiis accusantium expedita eos veniam! Tempora, quod
+                laudantium! Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Tempore, inventore repellendus doloribus voluptates
+                molestiae maxime maiores consectetur ad repellat amet sequi fuga
+                blanditiis accusantium expedita eos veniam! Tempora, quod
+                laudantium!
+              </p>
+            </section>
+            <section id="modalComments" class="modal-footer">
+              <button type="button" id="btnComments" class="btn btn-secondary">
+                Close
+              </button>
+              <button
+                type="button"
+                id="commentsContent"
+                class="btn btn-primary"
+              >
+                Load comments
+              </button>
+            </section>
+          </div>
         </article>
       </dialog>
     </main>
