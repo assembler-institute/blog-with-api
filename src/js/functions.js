@@ -10,7 +10,7 @@ function printPostTitle(postTitle) {
         let titleContainer = document.createElement("li");
         titleContainer.className = "list-group-item";
         titleContainer.textContent = post.title;
-        titleContainer.dataset.postId = post.id;
+        titleContainer.dataset.postId = post.id - 1;
         titleContainer.dataset.user = post.userId;
         listContainer.append(titleContainer);
     });
@@ -32,7 +32,7 @@ function getUserId(postTitle) {
             let postId = e.dataset.postId;
 
             modalTitle.textContent = e.textContent;
-            modalBody.textContent = postTitle[postId - 1].body;
+            modalBody.textContent = postTitle[postId].body;
 
         });
     });
