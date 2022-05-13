@@ -17,8 +17,8 @@
         <h1 class="blog__header__title">BLOG WITH API</h1>
     </header>
     <main>
-        <section id="postsTitlesContainer" class="blog__postTitle--container">
 
+        <section id="postsTitlesContainer" class="blog__postTitle--container">
         </section>
 
 
@@ -34,9 +34,31 @@
                     <div id="bodyContent" class="modal-body">
                         ...
                     </div>
+                    <div id="userName" class="modal-body modal-body-name"></div>
 
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                              COMMENTS
+                            </button>
+                          </h2>
+                          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div id="commentContainer" class="accordion-body">
+                            
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    <div class="modal-footer modal-footer-flex">
+
+                        <div>
+                            
+                        </div>
+
+                        
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>

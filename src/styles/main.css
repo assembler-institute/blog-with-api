@@ -8,3 +8,16 @@
   cursor: pointer;
   background-color: #f8f9fa;
 }
+
+.modal-body-name{
+  display: flex;
+  flex-direction: column;
+}
+
+.accordion-button{
+  font-weight: bold;
+}
+
+.commentWrapper {
+  border: 1px solid red;
+}
