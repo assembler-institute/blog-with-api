@@ -6,12 +6,18 @@ const postMain = document.getElementById("postMain");
 
 const postModal = document.getElementById("postModal");
 
-// console.log(postMain);
-
 // -----------------
 // Global Arrays from fecth
+// let usersArray = [];
+// let usersArray = fetchUsers();
+
+// fetchUsers();
+
 let postsArray = [];
-let usersArray = [];
+
+// usersArray.forEach((user) => {
+//   console.log(user);
+// });
 
 const fetchPosts = fetch("http://localhost:3000/posts");
 fetchPosts
@@ -26,8 +32,6 @@ fetchPosts
       postsArray.push(post);
       const title = post.title;
       const body = post.body;
-      //   console.log(title);
-      //   console.log(body);
 
       const postTitle = document.createElement("h2");
       postTitle.setAttribute("id", `${post.id}`);
@@ -51,42 +55,36 @@ const modalPosts = document.getElementById("modalPosts");
 postMain.addEventListener("click", function (e) {
   console.log(e.target.id);
   modalPosts.show();
-  //   if (e.target.id) {
-  //     console.log(e.target.id, `${usersArray[e.target.id]}`);
-  //   }
+
+  let user = fetchUsers(e.target.id);
+  console.log(user);
+  // user.then((data) => console.log(data));
 
   //
 });
-
-console.log(postsArray);
-console.log(usersArray);
 
 // ------------------------------
 // ------------------------------
 // Functions
 
-function fetchUsers() {
-  const fetchUsers = fetch("http://localhost:3000/users");
-  fetchUsers
+async function fetchUsers(userId) {
+  const fetchUsers = await fetch(`http://localhost:3000/users/${userId}`)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      //   console.log(data);
-      data.map((user) => {
-        usersArray.push(user);
-      });
+      // console.log(data);
+      return data;
     });
 }
-fetchUsers();
 
-function comparePostUser() {
-  //
-  postsArray.map((post) => {
-    usersArray.map((user) => {
-      if (post.id === user.id) {
-        console.log("asasa");
-      }
-    });
-  });
-}
+// function comparePostUser() {
+//   //
+//   postsArray.map((post) => {
+//     usersArray.map((user) => {
+//       if (post.id === user.id) {
+//         console.log("asasa");
+//       }
+//     });
+//   });
+// }
