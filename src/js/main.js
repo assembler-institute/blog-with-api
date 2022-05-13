@@ -25,7 +25,7 @@ function displayPosts(data) {
         const blogTitle = document.createElement('h3');
         const blogPost = document.createElement('p');
 
-        postContainer.classList.add('post__container');
+        postContainer.classList.add('post__container', 'container', 'col-8', 'bg-light', 'shadow-sm', 'p-3', 'mb-5', 'rounded');
         blogTitle.classList.add('post__title')
         blogPost.classList.add('post__blog--post');
         blogTitle.textContent = post.title;
