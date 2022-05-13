@@ -56,8 +56,9 @@ postMain.addEventListener("click", function (e) {
   console.log(e.target.id);
   modalPosts.show();
 
-  let user = fetchUsers(e.target.id);
-  console.log(user);
+  // let user = fetchUsers(e.target.id);
+  fetchUsers(e.target.id);
+  // console.log(user);
   // user.then((data) => console.log(data));
 
   //
@@ -68,23 +69,17 @@ postMain.addEventListener("click", function (e) {
 // Functions
 
 async function fetchUsers(userId) {
-  const fetchUsers = await fetch(`http://localhost:3000/users/${userId}`)
+  const userPromise = await fetch(`http://localhost:3000/users/${userId}`)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      // console.log(data);
-      return data;
+      console.log(data);
+      // return data;
+      createPost(data);
     });
 }
 
-// function comparePostUser() {
-//   //
-//   postsArray.map((post) => {
-//     usersArray.map((user) => {
-//       if (post.id === user.id) {
-//         console.log("asasa");
-//       }
-//     });
-//   });
-// }
+function createPost(obj) {
+  console.log(obj.email);
+}
