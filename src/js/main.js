@@ -20,18 +20,22 @@ fetch("http://localhost:3000/posts", {
         let index = 0;
         postArray.map(function () {
 
+            let postDiv = document.createElement("div");
             let postTitle = document.createElement("div");
             let postBody = document.createElement("div");
 
-            postTitle.setAttribute("id", index++);
+            postDiv.setAttribute("id", index++);
+            postDiv.classList.add("col");
 
-            const postData = data[postTitle.id];
+            const postData = data[postDiv.id];
             console.log(postData);
 
             postTitle.textContent = postData["title"];
-            postContainer.appendChild(postTitle);
+            postDiv.appendChild(postTitle);
 
             postBody.textContent = postData["body"];
-            postContainer.appendChild(postBody);
+            postDiv.appendChild(postBody);
+
+            postContainer.appendChild(postDiv);
         });
     })
