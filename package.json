@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Dejahar/blog-with-api#readme",
   "dependencies": {
+    "@popperjs/core": "^2.11.5",
     "json-server": "^0.17.0"
   }
 }

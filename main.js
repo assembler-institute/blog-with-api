@@ -1,8 +1,24 @@
-import { createPost, handleModal } from "./src/js/utility.js";
+import {
+  createPost,
+  handleModal
+} from "./src/js/utility.js";
 
 const urlPosts = "http://localhost:3000/posts";
 const urlUsers = "http://localhost:3000/users";
 const urlComments = "http://localhost:3000/comments";
+
+
+// const cardButton = document.getElementById("modalPost");
+// cardButton.addEventListener('show.bs.modal', e => {
+//   let recipient = button.getAttribute('data-bs-postID');
+//   console.log(recipient);
+// })
+
+const getPosts = async () => {
+  const response = await fetch(urlPosts)
+  const posts = await response.json()
+  return posts
+}
 
 const getUsers = async () => {
   const response = await fetch(urlUsers)
@@ -10,22 +26,19 @@ const getUsers = async () => {
   return users
 }
 
-const allUsers = await getUsers()
+const allUsers = await getUsers();
+const allPosts = await getPosts();
 
-
-const getPosts = () => {
-  fetch(urlPosts)
-    .then(data => data.json())
-    .then(posts => {
-      posts.forEach(post => {
-        if(post.title)
-        createPost(post);
-        handleModal(post, allUsers)
-      });
-    })
+const onLoad = () => {
+  allPosts.forEach(post => {
+    if (post.title)
+      createPost(post);
+    // handleModal(post, allUsers);
+  });
 }
 
-window.onload = getPosts;
+onLoad();
+// window.onload = onLoad;
 
 /*TESTS FUNCTIONS*/
 /*****************/
