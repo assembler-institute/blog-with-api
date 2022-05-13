@@ -30,6 +30,7 @@ fetchPosts
       //   console.log(body);
 
       const postTitle = document.createElement("h2");
+      postTitle.setAttribute("id", `${post.id}`);
       const postBody = document.createElement("p");
 
       postTitle.textContent = title;
@@ -48,13 +49,13 @@ fetchPosts
 const modalPosts = document.getElementById("modalPosts");
 
 postMain.addEventListener("click", function (e) {
-  console.log(e.target);
+  console.log(e.target.id);
   modalPosts.show();
+  //   if (e.target.id) {
+  //     console.log(e.target.id, `${usersArray[e.target.id]}`);
+  //   }
 
-  //   fetchUsers();
-  //   console.log(usersArray);
-  //   console.log(postsArray[1].title);
-  //   comparePostUser();
+  //
 });
 
 console.log(postsArray);
