@@ -4546,6 +4546,9 @@ textarea.form-control-lg {
 
 .card-title {
   margin-bottom: 0.5rem;
+  font-weight: strong;
+  font-size: 2.5rem;
+  margin: 1rem;
 }
 
 .card-subtitle {
@@ -4553,8 +4556,9 @@ textarea.form-control-lg {
   margin-bottom: 0;
 }
 
-.card-text:last-child {
-  margin-bottom: 0;
+.card-text{
+  margin: 1rem;
+  font-size: 1rem;
 }
 
 .card-link + .card-link {
