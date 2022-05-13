@@ -13,7 +13,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
-
+  <link rel="icon" href="./src/assets/icon/blog.png">
   <title>Blog</title>
 </head>
 
@@ -29,7 +29,7 @@
 
     </ul>
 
-    <nav class="footer__nav">
+    <nav class="footer ">
       <ul class="pagination">
         <li class="page-item">
           <a id="previous-page" class="page-link" href="#" aria-label="Previous">
@@ -89,31 +89,36 @@
         <div class="modal-body">
           <label for="modifyTitle">Edit title:</label>
           <input type="text" name="modifyTitle" id="modifyTitle">
-          <h5>Edit body:</h5>
-          <textarea name="modifyBody" id="modifyBody" cols="30" rows="10"></textarea>
+          <label for="modifyBody">Edit body:</label>
+          <textarea name="modifyBody" class="modifyBody" style="resize:none" id="modifyBody" cols="30"
+            rows="10"></textarea>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="saveBtn">Save</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="saveBtn">Save <i
+              class="bi bi-cloud-check"></i></button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close <i
+              class="bi bi-x-square"></i></button>
         </div>
       </div>
     </div>
   </div>
   <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title">Are you sure you want to delete this post?</h3>
-      </div>
-      
-      <div class="modal-footer">
-        <button type="button" class="btn btn-warning" data-bs-dismiss="modal" id="deleteButton">Yes</button>
-        <button type="button" class="btn btn-succes" data-bs-dismiss="modal">No</button>
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Are you sure you want to delete this post?</h3>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" data-bs-dismiss="modal" id="deleteButton">Yes <i
+              class="bi bi-check-square"></i></button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No <i
+              class="bi bi-x-square"></i></button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 </body>
 
