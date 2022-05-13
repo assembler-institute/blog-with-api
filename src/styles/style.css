@@ -24,9 +24,15 @@
   z-index: 1;
 }
 .subTitle {
-  padding-top: 20px;
-  margin: 20px 15%;
+  padding: 20px ;
+  margin: 0 15%;
   font-weight: 700;
+  border-radius: 10px;
+  border-top: 3px solid rgb(194, 194, 194);
+  background-color: black;
+  color: white;
+  opacity: 0.7;
+  text-align: center;
 }
 main {
   position: relative;
@@ -54,7 +60,11 @@ main {
   cursor: pointer;
 }
 main {
-  background-color: rgb(192, 191, 191);
+  /* background-color: rgb(192, 191, 191); */
+  background-image: url("../assets/Aablog.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 .pagination {
   display: flex;
@@ -62,7 +72,15 @@ main {
   margin-top: 20px;
   /* margin-right: 15%; */
 }
-
+.comments__li{
+  list-style-type: none;
+  box-shadow: 2px 2px 2px 2px rgb(199, 199, 199);
+  padding: 2%;
+  margin: 20px 0;
+}
+.comments__li:hover{
+  background-color: beige;
+}
 .hide{
     display: none !important;
 }

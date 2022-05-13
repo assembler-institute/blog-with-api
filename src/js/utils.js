@@ -1,5 +1,6 @@
-import { getPosts, postList } from "./main.js";
+import { getPosts, postList, commentsUl} from "./main.js";
 const paginatorNumbers = document.querySelectorAll("[data-type]");
+
 
 const createPost = (userId, id, title, body, index) => {
   const liElement = document.createElement("li");
@@ -52,6 +53,12 @@ const updatePostsDisplay = () => {
   }
 };
 
+const updateDisplay = () =>{
+  while(commentsUl.firstChild){
+    commentsUl.removeChild(commentsUl.lastChild)
+  }
+}
+
 const addPaginators = () => {
   Array.from(paginatorNumbers).map((number) => {
     number.addEventListener("click", (e) => {
@@ -66,4 +73,4 @@ const addPaginators = () => {
   });
 };
 
-export { createPost, addPaginators, updatePostsDisplay };
+export { createPost, addPaginators, updatePostsDisplay, updateDisplay};
