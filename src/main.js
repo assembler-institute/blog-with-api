@@ -21,6 +21,16 @@ fetch(postUrl)
       container.appendChild(clone);
     });
 
+    // BUTTON EDIT
+    let editButton = document.querySelectorAll('[role="btn-edit"]');
+    editButton.forEach((element) => {
+      element.addEventListener('click', () => {
+        fetch('http://localhost:3000/posts/' + element.dataset.id, {
+          method: 'PATCH',
+        });
+      });
+    });
+
     const deleteButtons = document.querySelectorAll('[role="button"]');
 
     deleteButtons.forEach((element) => {
