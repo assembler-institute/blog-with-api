@@ -1,3 +1,5 @@
+import { updatePosts } from "./main.js";
+
 const fetchPosts = async () => {
   const response = await fetch("http://localhost:3000/posts?limit=10");
   const data = await response.json();
@@ -15,39 +17,31 @@ const fetchComments = async (postId) => {
     .then((response) => response.json())
     .then((data) => data);
 };
-const modifyPost = (postId, postTitle, postBody) => {
-  fetch(`http://localhost:3000/posts/${postId}`, {
-  
-  method: "PATCH",
-  
-  headers: {
-  
-  "Content-Type": "application/json",
-  
-  },
-  
-  body: JSON.stringify({title:postTitle, body:postBody}),
-  
+const modifyPost = async (postId, postTitle, postBody) => {
+  return await fetch(`http://localhost:3000/posts/${postId}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ title: postTitle, body: postBody }),
   }).then((response) =>
-  response.json().then((data) => {
-  console.log(data);
-  })
-  );};
+    response.json().then((data) => {
+      updatePosts();
+    })
+  );
+};
 
-const deletePost = (postId) => {
+const deletePost = async (postId) => {
   fetch(`http://localhost:3000/posts/${postId}`, {
-  
-  method: "DELETE",
-  
-  headers: {
-  
-  "Content-Type": "application/json",
-  
-  },
-  
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
   }).then((response) =>
-  response.json().then((data) => {
-  })
-  );};
+    response.json().then((data) => {
+      updatePosts();
+    })
+  );
+};
 
-export { fetchPosts, fetchUser, fetchComments, modifyPost, deletePost};
+export { fetchPosts, fetchUser, fetchComments, modifyPost, deletePost };
