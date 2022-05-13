@@ -3,6 +3,7 @@
     padding: 0;
     font-style: none;
 }
+<<<<<<< HEAD
 .blog__header--title{
     text-decoration: none;
     color: black;
@@ -10,8 +11,16 @@
 .blog__header{
     background-color: #817d7d;
     text-align: center;
+=======
+
+:root {
+    --bg-custom: #f2ddc3;
+>>>>>>> feature-style-main
 }
+
+
 .main__content{
     background-color: #f2ddc3;
     overflow: hidden;
+    background-color: var(--bg-custom);
 }
