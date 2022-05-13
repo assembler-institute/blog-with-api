@@ -49,7 +49,6 @@ function printPostTitle(postData) {
         titleContainer.dataset.user = post.userId;
         listContainer.append(titleContainer);
     });
-
     displayModal(postData);
 }
 
@@ -85,51 +84,28 @@ function addUsers(user) {
 }
 
 function addComments(user) {
-   
-    let commentsContainer = document.getElementById("collapseTwo");
-    commentsContainer.textContent = "";
+    let commentContainer = document.getElementById("commentContainer");
+    commentContainer.textContent = "";
 
     postsComments.map((comment) => {
-
         if (comment.postId == user.dataset.postId) {
-            let accordionItem = document.createElement("div");
-            let accordionHeader = document.createElement("h2");
-            let accordionButton = document.createElement("button");
-            accordionItem.className = "accordion-item";
-            accordionHeader.className = "accordion-header";
-            accordionButton.className = "accordion-button collapsed";
-            accordionButton.setAttribute("data-bs-toggle", "collapse");
-            accordionButton.setAttribute("data-bs-target", "#flush-collapseThree");
-            accordionButton.setAttribute("aria-expanded", "false");
-            accordionButton.setAttribute("aria-controls", "flush-collapseThree")
-            accordionButton.textContent = comment.name;
+            let commentWrapper = document.createElement("div");
+            commentWrapper.className = "commentWrapper";
 
-            let commentBodyContainer = document.createElement("div");
-            commentBodyContainer.className = "accordion-collapse collapse";
-            commentBodyContainer.id = "flush-collapseThree";
-            commentBodyContainer.setAttribute("aria-labelledby", "flush-headingThree");
-            commentBodyContainer.setAttribute("data-bs-parent", "#accordionFlushExample");
-            let commentBodyWrapper = document.createElement("div");
-            commentBodyWrapper.className = "accordion-body";
-
-            
-            
-            commentsContainer.append(accordionItem);
-            accordionItem.append(accordionHeader);
-            accordionHeader.append(accordionButton);
-            
-            commentBodyContainer.append(commentBodyWrapper);
-            commentBodyContainer.textContent = comment.body;
-        
-
+            let commentName = document.createElement("p");
+            let commentBody = document.createElement("p");
+            let email = document.createElement("p");
+            commentName.textContent = comment.name;
+            commentBody.textContent = comment.body;
+            commentName.className = "commentName";
+            email.className = "commentEmail";
+            email.textContent = comment.email;
+            commentContainer.append(commentWrapper);
+            commentWrapper.append(commentName, commentBody, email);
         }
 
     });
 }
-
-
-
-
 
 export {
     getData

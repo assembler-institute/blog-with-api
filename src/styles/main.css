@@ -19,5 +19,15 @@
 }
 
 .commentWrapper {
-  border: 1px solid red;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  background-color: #f8f8f8;
+  box-shadow: 0px 74px 34.2px 3.8px rgb(0 0 0 / 10%);
+  padding: 20px 0px 10px 10px;
+  border: 4px #bcbcbc29;
+  border-style: double;
+}
+
+.commentName, .commentEmail {
+  font-weight: bold;
 }
