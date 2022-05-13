@@ -7,6 +7,25 @@ const nextPage = document.getElementById("next-page");
 let startNumberPagination = 0;
 let endNumberPagination = 0;
 
+.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const getPosts = (startNumber, endNumber) => {
   startNumberPagination = startNumber;
   endNumberPagination = endNumber;

@@ -73,6 +73,9 @@ main{
         text-align: center;
         justify-content: center;
     }
+    h2{
+        text-align: center;
+    }
     .article__post{
         display: flex;
         flex-direction: column;
@@ -84,7 +87,7 @@ main{
     }
     .postList{
         background-color: aliceblue;
-        margin: 0 2%;
+        margin: 0 1.5%;
         padding-top: 2rem;
         padding-bottom: 5rem;
         border-radius: 10px;
