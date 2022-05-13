@@ -1,6 +1,6 @@
 /*IMPORTS*/
 import loginUser from "./login.js"
-
+import patchComment from "./editComment.js"
 
 /*VARIABLES*/
 const postsCont = document.getElementById('posts')
@@ -49,7 +49,7 @@ const displayPosts = () => {
                 userId.textContent = `userNameId: ${postsData.userId}`
                 post.append(title, body)
 
-                if (postsData.userId === parseInt(localStorage.getItem("idUser"))) {
+                if (postsData.userId === parseInt(sessionStorage.getItem("userId"))) {
                     post.append(editButton, deleteButton)
                 }
                 postsCont.append(post)
@@ -78,6 +78,9 @@ const displayComments = (postId, postContainer) => {
                 editButton.textContent = "EDIT";
                 deleteButton.textContent = "DELETE";
 
+                editButton.setAttribute('data-edit-comment', commentsData.id)
+                deleteButton.setAttribute('data-delete-comment', commentsData.id)
+
                 comment.setAttribute('data-comment-id', commentsData.id)
                 comment.setAttribute('data-post-id', commentsData.postId)
                 name.textContent = `userName: ${commentsData.name}`
@@ -85,7 +88,7 @@ const displayComments = (postId, postContainer) => {
 
                 comment.append(name, body)
 
-                if (commentsData.userId === parseInt(localStorage.getItem("idUser"))) {
+                if (commentsData.userId === parseInt(sessionStorage.getItem("userId"))) {
                     comment.append(editButton, deleteButton)
                 }
 
@@ -119,4 +122,3 @@ const displayUsers = () => {
 //     .then(response => response.json())
 //     .then(data => console.log(data))
 //     .catch(err => console.warn(err))
-
