@@ -29,7 +29,7 @@
 
     </ul>
 
-    <nav>
+    <nav class="footer__nav">
       <ul class="pagination">
         <li class="page-item">
           <a id="previous-page" class="page-link" href="#" aria-label="Previous">
@@ -74,6 +74,26 @@
           </ul>
         </div>
         <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="modalModify" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Modify Post</h3>
+        </div>
+        <div class="modal-body">
+          <label for="modifyTitle">Edit title:</label>
+          <input type="text" name="modifyTitle" id="modifyTitle">
+          <h5>Edit body:</h5>
+          <textarea name="modifyBody" id="modifyBody" cols="30" rows="10"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="saveBtn">Save</button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>

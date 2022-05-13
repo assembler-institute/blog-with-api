@@ -1,6 +1,27 @@
 import { getPosts, postList, commentsUl} from "./main.js";
 const paginatorNumbers = document.querySelectorAll("[data-type]");
+const previousPage = document.getElementById("previous-page");
+const nextPage = document.getElementById("next-page");
+let startNumberPagination = 0;
+let endNumberPagination = 10;
 
+previousPage.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (startNumberPagination < 10) return;
+  startNumberPagination -= 10;
+  endNumberPagination -= 10;
+  updatePostsDisplay();
+  getPosts(startNumberPagination, endNumberPagination);
+});
+
+nextPage.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (endNumberPagination > 90) return;
+  startNumberPagination += 10;
+  endNumberPagination +=10;
+  updatePostsDisplay();
+  getPosts(startNumberPagination, endNumberPagination);
+});
 
 const createPost = (userId, id, title, body, index) => {
   const liElement = document.createElement("li");
@@ -30,12 +51,15 @@ const createPost = (userId, id, title, body, index) => {
 
   postTitle.setAttribute("data-bs-toggle", "modal");
   postTitle.setAttribute("data-bs-target", "#modalWindow");
-
+  modifyButton.setAttribute("data-bs-toggle", "modal")
   postBody.textContent = body;
   deleteButton.setAttribute("data-id", id);
   deleteButton.textContent = "Delete";
   modifyButton.setAttribute("data-id", id);
+  modifyButton.setAttribute("data-bs-target", "#modalModify")
+  modifyButton.setAttribute("data-modify", true)
   modifyButton.textContent = "Modify";
+  deleteButton.setAttribute("data-delete", true)
   avatarImg.src = `https://source.unsplash.com/16${index}x9${index}/?profile picture?orientation=portrait`;
 
   deleteButton.append(iconDelete);
@@ -64,6 +88,8 @@ const addPaginators = () => {
     number.addEventListener("click", (e) => {
       e.preventDefault();
       updatePostsDisplay();
+      startNumberPagination = (e.target.getAttribute("value") -1) *10;
+      endNumberPagination = e.target.getAttribute("value") * 10;
       getPosts(
         (e.target.getAttribute("value") - 1) * 10,
         e.target.getAttribute("value") * 10
@@ -73,4 +99,4 @@ const addPaginators = () => {
   });
 };
 
-export { createPost, addPaginators, updatePostsDisplay, updateDisplay};
+export { createPost, addPaginators, updatePostsDisplay, updateDisplay, startNumberPagination, endNumberPagination};

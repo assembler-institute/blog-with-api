@@ -69,7 +69,9 @@ main {
 .pagination {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  padding: 30px 0;
+  background-color: black;
+  opacity: 0.9;
   /* margin-right: 15%; */
 }
 .comments__li{
@@ -81,6 +83,7 @@ main {
 .comments__li:hover{
   background-color: beige;
 }
+
 .hide{
     display: none !important;
 }

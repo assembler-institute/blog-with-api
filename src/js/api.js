@@ -15,5 +15,22 @@ const fetchComments = async (postId) => {
     .then((response) => response.json())
     .then((data) => data);
 };
-
-export { fetchPosts, fetchUser, fetchComments };
+const modifyPost = (postId, postTitle, postBody) => {
+  fetch(`http://localhost:3000/posts/${postId}`, {
+  
+  method: "PATCH",
+  
+  headers: {
+  
+  "Content-Type": "application/json",
+  
+  },
+  
+  body: JSON.stringify({title:postTitle, body:postBody}),
+  
+  }).then((response) =>
+  response.json().then((data) => {
+  console.log(data);
+  })
+  );};
+export { fetchPosts, fetchUser, fetchComments, modifyPost};
