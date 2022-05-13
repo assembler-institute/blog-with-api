@@ -32,6 +32,7 @@ async function loginUser(username, email) {
     const userPos = registeredUsernames.indexOf(username)
     if(userPos !== -1){
         sessionStorage.setItem('userId', registeredUsers[userPos].id)
+        sessionStorage.setItem('username', registeredUsers[userPos].username)
     } //write else to register new user
 }
 

@@ -4,6 +4,11 @@ import editComment from "./editComment.js"
 import editPost from "./editPosts.js"
 import deleteComment_Post from "./deleteComment.js"
 import deletePost_Comments from "./deletePost.js"
+import createPost from "./createPost.js"
+import createComment from "./createComment.js"
+
+
+// createComment("hola", 1)
 
 /*VARIABLES*/
 const postsCont = document.getElementById('main__posts')
@@ -12,6 +17,14 @@ const usersCont = document.getElementById('users')
 const loginBtn = document.getElementById('loginButton')
 const saveComment = document.getElementById('editModal__save')
 const deleteComment = document.getElementById('deleteModal__delete');
+const createPostButton = document.getElementById('create-post__buton');
+
+
+//Create Post
+createPostButton.addEventListener('click', ()=>{
+    const textPost = document.getElementById('create-post__text').value;
+    createPost(textPost)
+})
 
 //Login
 loginBtn.addEventListener('click', () => {
@@ -74,6 +87,7 @@ const displayPosts = () => {
                 const editButton = document.createElement('button')
                 const deleteButton = document.createElement('button')
                 const showComments = document.createElement('button')
+                const createCommentButton = document.createElement('button');
 
                 title.classList.add('post__title')
                 body.classList.add('post__body')
@@ -102,12 +116,22 @@ const displayPosts = () => {
                 showComments.textContent = "SHOW COMMENTS"
                 showComments.setAttribute('data-show-comments', postsData.id)
 
+                createCommentButton.textContent = "CREATE COMMENT"
+                createCommentButton.setAttribute('data-create-comment', postsData.id)
+
+                createCommentButton.addEventListener('click', ()=>{
+                    const idPost = createCommentButton.getAttribute('data-create-comment');
+                    const textPost = document.getElementById('create-post__text').value;
+                    createComment(textPost, parseInt(idPost))
+                    location.reload();
+                })
+
                 post.setAttribute('data-post-id', postsData.id)
                 post.setAttribute('data-user-id', postsData.userId)
                 title.textContent = `Title: ${postsData.title}`
                 body.textContent = `Body: ${postsData.body}`
                 userId.textContent = `userNameId: ${postsData.userId}`
-                post.append(title, body, showComments)
+                post.append(title, body, showComments, createCommentButton)
 
                 if (postsData.userId === parseInt(sessionStorage.getItem("userId"))) {
                     post.append(editButton, deleteButton)
