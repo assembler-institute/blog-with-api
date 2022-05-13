@@ -1,10 +1,7 @@
-// AddEventListener Button
-// call editComment async function
+//not used
+const url = 'http://localhost:3000/posts'
 
-const url = 'http://localhost:3000/comments'
-
-//need to write async/await??
-function editComment(id, edittedBody){
+function editPost(id, edittedBody){
     try{
         fetch(`${url}/${id}`, {
         method: 'PATCH',
@@ -16,4 +13,4 @@ function editComment(id, edittedBody){
     }
 }
 
-export default editComment
+export default editPost
