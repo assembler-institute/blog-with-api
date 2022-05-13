@@ -23,28 +23,37 @@ fetchData
 gridContainer.map(function(row) {
     let postsRow = document.createElement("div");
     postsRow.setAttribute("id","postBox");
-    postsRow.classList.add("col-lg-6","mb-4");
+    postsRow.classList.add("col-lg-6");
 
-    row.map(function () {
-        let readMoreBtn = document.createElement("button");
-        let titlePost = document.createElement("div")
-        let bodyPost = document.createElement("div")
+    row.map(function (content) {
+        let postContent = document.createElement("div");
+        postContent.setAttribute("id","postContent");
+        postContent.classList.add("card","mb-4");
 
-        titlePost.setAttribute("id","titlePost");
-        titlePost.classList.add("card-title");
-        titlePost.textContent = title;
+        content.map(function () {
+            let readMoreBtn = document.createElement("button");
+            let titlePost = document.createElement("div")
+            let bodyPost = document.createElement("div")
 
-        bodyPost.setAttribute("id","bodyPost");
-        bodyPost.classList.add("card-text");
-        bodyPost.textContent = body;
+            titlePost.setAttribute("id","titlePost");
+            titlePost.classList.add("card-title");
+            titlePost.textContent = title;
 
-        readMoreBtn.classList.add("btn","btn-primary");
-        readMoreBtn.textContent = "read more"
+            bodyPost.setAttribute("id","bodyPost");
+            bodyPost.classList.add("card-text");
+            bodyPost.textContent = body;
 
-        postsRow.appendChild(titlePost);
-        postsRow.appendChild(bodyPost);
-        postsRow.appendChild(readMoreBtn);
-    })
+            readMoreBtn.classList.add("btn","btn-primary");
+            readMoreBtn.textContent = "read more"
+
+            postContent.appendChild(titlePost);
+            postContent.appendChild(bodyPost);
+            postContent.appendChild(readMoreBtn);
+        })
+
+        postsRow.appendChild(postContent);
+    });
+
 
     postsContainer.appendChild(postsRow);
 })
