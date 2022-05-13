@@ -2,6 +2,8 @@
 import loginUser from "./login.js"
 import editComment from "./editComment.js"
 import editPost from "./editPosts.js"
+import deleteComment_Post from "./deleteComment.js"
+import deletePost_Comments from "./deletePost.js"
 
 /*VARIABLES*/
 const postsCont = document.getElementById('main__posts')
@@ -9,6 +11,7 @@ const commentsCont = document.getElementById('comments')
 const usersCont = document.getElementById('users')
 const loginBtn = document.getElementById('loginButton')
 const saveComment = document.getElementById('editModal__save')
+const deleteComment = document.getElementById('deleteModal__delete');
 
 //Login
 loginBtn.addEventListener('click', () => {
@@ -40,6 +43,17 @@ saveComment.addEventListener('click', ()=> {
     }
     location.reload()
     newText = ''
+})
+
+deleteComment.addEventListener('click', ()=> {
+    const deleteAttrb = deleteComment.getAttribute('data-delete')
+    const id = deleteComment.getAttribute('data-id')
+    if(deleteAttrb === 'post'){
+        deletePost_Comments(id)
+    } else if (deleteAttrb === 'comment'){
+        deleteComment_Post(id)
+    }
+    location.reload()
 })
 
 //Delete post comments
@@ -74,6 +88,15 @@ const displayPosts = () => {
                     const saveComment = document.getElementById('editModal__save')
                     saveComment.setAttribute('data-edit', "post");
                     saveComment.setAttribute('data-id', postsData.id);
+                })
+
+                deleteButton.setAttribute('data-bs-toggle', "modal")
+                deleteButton.setAttribute('data-bs-target', "#deleteModal")
+
+                deleteButton.addEventListener('click', ()=>{
+                    const deleteComment = document.getElementById('deleteModal__delete')
+                    deleteComment.setAttribute('data-delete', "post");
+                    deleteComment.setAttribute('data-id', postsData.id);
                 })
 
                 showComments.textContent = "SHOW COMMENTS"
@@ -124,6 +147,12 @@ const displayComments = (postId, postContainer) => {
                     const saveComment = document.getElementById('editModal__save')
                     saveComment.setAttribute("data-edit", "comment");
                     saveComment.setAttribute('data-id', commentsData.id);
+                })
+
+                deleteButton.addEventListener('click', ()=>{
+                    const deleteComment = document.getElementById('deleteModal__delete')
+                    deleteComment.setAttribute('data-delete', "comment");
+                    deleteComment.setAttribute('data-id', commentsData.id);
                 })
 
                 comment.setAttribute('data-comment-id', commentsData.id)
