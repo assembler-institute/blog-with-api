@@ -1,6 +1,7 @@
 import {
   createPost,
-  handleModal
+  handleModal,
+  handleComments
 } from "./src/js/utility.js";
 
 const urlPosts = "http://localhost:3000/posts";
@@ -21,8 +22,16 @@ const getUsers = async () => {
   return users
 }
 
+const getComments = async () => {
+  const response = await fetch(urlComments)
+  const comments = await response.json()
+  return comments
+}
+
 const allUsers = await getUsers();
 const allPosts = await getPosts();
+const allComments = await getComments()
+
 
 const onLoad = () => {
   allPosts.forEach(post => {
@@ -37,6 +46,7 @@ modalTemplate.addEventListener('show.bs.modal', e => {
   let postId = button.getAttribute('data-bs-postID');
 
   handleModal(allPosts, postId, allUsers);
+  handleComments(allPosts, postId, allComments)
 })
 
 

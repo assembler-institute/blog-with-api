@@ -35,7 +35,7 @@ function handleModal(allPosts, postId, users) {
         if (post.title && post.id == postId) {
             const userByPost = users.filter(user => user.id == post.userId)[0].name
             modalTitle.textContent = post.title
-            modalUser.textContent = `A post  by ${userByPost}`
+            modalUser.textContent = `By ${userByPost}`
             modalUserImg.src =`https://randomuser.me/api/portraits/men/${post.userId}.jpg`;
             modalBody.textContent = post.body;
         }
@@ -43,7 +43,31 @@ function handleModal(allPosts, postId, users) {
 
 }
 
+const handleComments = (allPosts, postId, allComments) => {
+    const commentWarpperEl = document.getElementById('comments-wrapper')
+    const postComments = allComments.filter(comment => comment.postId == postId)
+
+    postComments.map(comment => {
+        console.log(comment)
+        const commentCardEl = document.createElement('div')
+        commentCardEl.className = 'card card-body mb-3'
+
+        const newCommentEl = document.createElement('p')
+        newCommentEl.textContent = comment.body
+        commentCardEl.appendChild(newCommentEl)
+
+        const commentUser = document.createElement('p')
+        commentUser.className = 'fw-bolder font-italic fs-6 text'
+        commentUser.textContent = `Written by ${comment.name}`
+        commentCardEl.appendChild(commentUser)
+
+        commentWarpperEl.appendChild(commentCardEl)
+    })
+    
+}
+
 export {
     createPost,
-    handleModal
+    handleModal,
+    handleComments
 };
