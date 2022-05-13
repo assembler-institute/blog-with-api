@@ -4,6 +4,9 @@
 /*FONTS*/
 @import url(fonts.css);
 
+/*MODAL*/
+@import url(loginModal.css);
+
 /*MAIN LAYOUT*/
 @import url(main-layout.css);
 
