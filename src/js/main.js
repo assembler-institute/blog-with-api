@@ -30,20 +30,8 @@ function displayPosts(data) {
     blogTitle.textContent = post.title;
     blogPost.textContent = post.body;
 
-<<<<<<< HEAD
     postContainer.append(blogTitle, blogPost);
     dataContainer.append(postContainer);
     postContainer.addEventListener("click", openPost);
   });
-=======
-        postContainer.classList.add('post__container', 'container', 'col-8', 'bg-light', 'shadow-sm', 'p-3', 'mb-5', 'rounded');
-        blogTitle.classList.add('post__title')
-        blogPost.classList.add('post__blog--post');
-        blogTitle.textContent = post.title;
-        blogPost.textContent = post.body;
-
-        postContainer.append(blogTitle, blogPost);
-        dataContainer.append(postContainer);
-    })
->>>>>>> feature-style-main
 }
