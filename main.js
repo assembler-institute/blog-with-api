@@ -8,11 +8,6 @@ const urlUsers = "http://localhost:3000/users";
 const urlComments = "http://localhost:3000/comments";
 
 
-// const cardButton = document.getElementById("modalPost");
-// cardButton.addEventListener('show.bs.modal', e => {
-//   let recipient = button.getAttribute('data-bs-postID');
-//   console.log(recipient);
-// })
 
 const getPosts = async () => {
   const response = await fetch(urlPosts)
@@ -33,12 +28,18 @@ const onLoad = () => {
   allPosts.forEach(post => {
     if (post.title)
       createPost(post);
-    // handleModal(post, allUsers);
   });
 }
 
-onLoad();
-// window.onload = onLoad;
+const modalTemplate = document.getElementById('staticBackdrop');
+modalTemplate.addEventListener('show.bs.modal', e => {
+  let button = e.relatedTarget;
+  let postId = button.getAttribute('data-bs-postID');
+
+  handleModal(allPosts, postId, allUsers);
+})
+
+window.onload = onLoad();
 
 /*TESTS FUNCTIONS*/
 /*****************/
