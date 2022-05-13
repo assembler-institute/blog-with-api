@@ -45,7 +45,7 @@ const createPost = (userId, id, title, body, index) => {
   const iconDelete = document.createElement("i");
   iconDelete.classList.add("bi", "bi-file-x");
 
-  postTitle.textContent = `${id}: ${title}`;
+  postTitle.textContent = `${title}`;
   postTitle.setAttribute("data-id", id);
   postTitle.setAttribute("data-userId", userId);
 
@@ -54,12 +54,16 @@ const createPost = (userId, id, title, body, index) => {
   modifyButton.setAttribute("data-bs-toggle", "modal")
   postBody.textContent = body;
   deleteButton.setAttribute("data-id", id);
+  deleteButton.setAttribute("data-bs-toggle", "modal")
+  deleteButton.setAttribute("data-bs-target", "#modalDelete")
+
   deleteButton.textContent = "Delete";
   modifyButton.setAttribute("data-id", id);
   modifyButton.setAttribute("data-bs-target", "#modalModify")
   modifyButton.setAttribute("data-modify", true)
   modifyButton.textContent = "Modify";
   deleteButton.setAttribute("data-delete", true)
+  
   avatarImg.src = `https://source.unsplash.com/16${index}x9${index}/?profile picture?orientation=portrait`;
 
   deleteButton.append(iconDelete);

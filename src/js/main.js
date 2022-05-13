@@ -1,4 +1,4 @@
-import { fetchPosts, fetchUser, fetchComments, modifyPost} from "./api.js";
+import { fetchPosts, fetchUser, fetchComments, modifyPost, deletePost} from "./api.js";
 import { createPost, addPaginators, updatePostsDisplay, updateDisplay, startNumberPagination, endNumberPagination } from "./utils.js";
 
 const postList = document.getElementById("postList");
@@ -7,6 +7,7 @@ const commentsUl = document.getElementById("modal__comments");
 const saveBtn = document.getElementById("saveBtn");
 const modifyTitle = document.getElementById("modifyTitle");
 const modifyBody = document.getElementById("modifyBody");
+const deleteBtn = document.getElementById("deleteButton");
 
 const getPosts = (startNumber, endNumber) => {
   fetchPosts().then((data) => {
@@ -48,7 +49,12 @@ function addMultiEvents() {
       modifyTitle.setAttribute("data-id", id);
     });
 
-
+    const deleteButton = post.querySelector("[data-delete]");
+    deleteButton.addEventListener("click", (e)=>{
+      const dataId = e.target.getAttribute("data-id");
+      deleteBtn.setAttribute("data-id", dataId);
+      
+    })
 
     title.addEventListener("click", (e) => {
       
@@ -112,6 +118,14 @@ btnComments.addEventListener("click", (e) => {
 
   });
 })
+deleteBtn.addEventListener("click", (e) =>{
+  const dataId = e.target.getAttribute("data-id")
+  console.log(dataId);
+  deletePost(dataId);
+  updatePostsDisplay();
+  getPosts(startNumberPagination, endNumberPagination);
+})
+
 
 getPosts(0, 10);
 addPaginators();

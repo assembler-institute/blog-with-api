@@ -33,4 +33,21 @@ const modifyPost = (postId, postTitle, postBody) => {
   console.log(data);
   })
   );};
-export { fetchPosts, fetchUser, fetchComments, modifyPost};
+
+const deletePost = (postId) => {
+  fetch(`http://localhost:3000/posts/${postId}`, {
+  
+  method: "DELETE",
+  
+  headers: {
+  
+  "Content-Type": "application/json",
+  
+  },
+  
+  }).then((response) =>
+  response.json().then((data) => {
+  })
+  );};
+
+export { fetchPosts, fetchUser, fetchComments, modifyPost, deletePost};
