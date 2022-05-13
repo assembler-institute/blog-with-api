@@ -29,12 +29,15 @@ fetchPosts
     // console.log(data);
     data.map((post) => {
       //   console.log(post);
-      postsArray.push(post);
+      // postsArray.push(post);
       const title = post.title;
       const body = post.body;
+      const postId = post.userId;
+      // console.log(postId);
 
       const postTitle = document.createElement("h2");
-      postTitle.setAttribute("id", `${post.id}`);
+      postTitle.setAttribute("id", `${postId}`);
+      // console.log(postTitle);
       const postBody = document.createElement("p");
 
       postTitle.textContent = title;
