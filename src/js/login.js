@@ -1,24 +1,43 @@
+const url = 'http://localhost:3000/users'
 
-const loginUser = () => {
-    fetch('http://localhost:3000/users', {
-        method: 'GET'
-    })
-        .then(response => response.json())
-        .then(data => data.map(userData => {
+//THIS FUNCTION IS NOT USED BUT COULD BE USED IN SOME OTHER PARTS OF THE CODE!!!
+// async function fetchUser(id){
+//     try {
+//         const response = await fetch(`${url}/${id}`, {
+//             method: 'GET'
+//         })
+//         const user = await response.json()
+//         return user
+//     } catch (error) {
+//         console.error(error)
+//     }
+// }
 
-            document.getElementById('loginbutton').addEventListener('click', function () {
-                const userName = document.getElementById('login__Username');
-                const email = document.getElementById('login__Email');
-
-                if(userName.value === userData.username && email.value === userData.email){
-                    localStorage.setItem('idUser', userData.id);
-                }
-            });
-            
-        }))
-        .catch(err => console.warn(err));
-
-
+async function fetchUsers(){
+    try{
+        const response = await fetch(`${url}`, {
+            method : 'GET'
+        })
+        const users = await response.json()
+        return users
+    } catch(error) {
+        console.error(error)
+    }
 }
 
-export default loginUser;
+//Username & Email
+async function loginUser(username, email) {
+    const registeredUsers = await fetchUsers()
+    const registeredUsernames = registeredUsers.map(user => user.username)
+    const userPos = registeredUsernames.indexOf(username)
+    if(userPos !== -1){
+        sessionStorage.setItem('userId', registeredUsers[userPos].id)
+    } //write else to register new user
+}
+
+// async function registerUser(...params){
+//     const [id, username, email] = params
+
+// }
+
+export default loginUser

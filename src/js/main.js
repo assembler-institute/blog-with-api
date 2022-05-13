@@ -1,10 +1,19 @@
+/*IMPORTS*/
 import loginUser from "./login.js"
 
-loginUser()
 
+/*VARIABLES*/
 const postsCont = document.getElementById('posts')
 const commentsCont = document.getElementById('comments')
 const usersCont = document.getElementById('users')
+const loginBtn = document.getElementById('loginButton')
+
+//Login
+loginBtn.addEventListener('click', () => {
+    const userName = document.getElementById('login__Username');
+    const email = document.getElementById('login__Email');
+    loginUser(userName.value, email.value)
+})
 
 //Show post comments
 postsCont.addEventListener('click', (e) => {
@@ -13,7 +22,6 @@ postsCont.addEventListener('click', (e) => {
 })
 
 //Delete post comments
-
 
 const displayPosts = () => {
     fetch('http://localhost:3000/posts', {
@@ -111,3 +119,4 @@ const displayUsers = () => {
 //     .then(response => response.json())
 //     .then(data => console.log(data))
 //     .catch(err => console.warn(err))
+
