@@ -1,7 +1,7 @@
 import { updatePosts } from "./main.js";
 
 const fetchPosts = async () => {
-  return await fetch("http://localhost:3000/posts?limit=10")
+  return await fetch("http://localhost:3000/posts")
     .then((response) => response.json())
     .then((data) => data)
     .catch((e) => console.error(e));
