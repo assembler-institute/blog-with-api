@@ -36,9 +36,9 @@
                         <p id="userName">alex123</p>
                         <p id="email">alex@mail.com</p>
                     </div>
-                    <div class="border border-1 border-end-0 border-bottom-0 my-1 ">
+                    <div id="commentModal" class="border border-1 border-end-0 border-bottom-0 my-1">
                         <h5 class="ms-3 my-2">Comments</h5>
-                        <button type="button" class="btn btn-dark my-2 ms-3">Load comments</button>
+                        <button type="button" class="btn btn-dark my-2 ms-3" id="btnLoadComments" >Load comments</button>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -50,27 +50,28 @@
 
 
     </div>
-    <header class="header__title">
-        <h1 class="header__title--h1">Pet Blog</h1>
+    <header class="header__title text-center bg-light">
+        <h1 class="header__title--h1 mb-3">The Blog</h1>
     </header>
     <article class="article__container">
         <section class="article__section d-flex flex-column ">
             <div class="article__section--posts d-flex flex-column justify-content-between">
-                
         </section>
     </article>
     <template id="post">
         <div class="article__section--post mb-2 mx-5 px-4 py-2 border border-3 border-end-0 border-start-0 ">
             <h3 class="">Title post 1</h3>
-            <div class="d-flex">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore fuga modi obcaecati, in eveniet
                     dolorem non? Veritatis est, excepturi consectetur expedita id sit, officia cupiditate aspernatur
                     velit eum ipsa rem.</p>
+                <div class="">
+            <div class="d-flex colum justify-content-end">
                 <button role="button" class="btn btn-primary me-1 my-auto">X</button>
-                <button class="btn btn-secondary my-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+                <button id="btnLoadComments" class="btn btn-secondary my-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+                </div>
             </div>
         </div>
     </template>
-    <script src="/src/main.js"> </script> 
-</body> 
+    <script src="/src/main.js"> </script>
+</body>
 </html>
