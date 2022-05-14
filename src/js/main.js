@@ -38,11 +38,11 @@ function displayPosts(data) {
     postContainer.setAttribute("data-post-id", `${post.id}`);
     postContainer.setAttribute("data-user-id", `${post.userId}`);
     
-    blogTitle.classList.add("post__title");
+    blogTitle.classList.add("post__title", "fw-bolder","font-monospace", "text-sm-start");
     blogTitle.setAttribute("data-post-id", `${post.id}`);
     blogTitle.setAttribute("data-user-id", `${post.userId}`);
     
-    blogPost.classList.add("post__blog--post");
+    blogPost.classList.add("post__blog--post", "font-monospace");
     blogPost.setAttribute("data-post-id", `${post.id}`);
     blogPost.setAttribute("data-user-id", `${post.userId}`);
     blogTitle.textContent = post.title;
