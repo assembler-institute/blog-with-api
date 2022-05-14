@@ -1,21 +1,24 @@
 import { updatePosts } from "./main.js";
 
 const fetchPosts = async () => {
-  const response = await fetch("http://localhost:3000/posts?limit=10");
-  const data = await response.json();
-  return data;
+  return await fetch("http://localhost:3000/posts?limit=10")
+    .then((response) => response.json())
+    .then((data) => data)
+    .catch((e) => console.error(e));
 };
 
 const fetchUser = async (userId) => {
   return await fetch(`http://localhost:3000/users?id=${userId}`)
     .then((response) => response.json())
-    .then((data) => data);
+    .then((data) => data)
+    .catch((e) => console.error(e));
 };
 
 const fetchComments = async (postId) => {
   return await fetch(`http://localhost:3000/comments?postId=${postId}`)
     .then((response) => response.json())
-    .then((data) => data);
+    .then((data) => data)
+    .catch((e) => console.error(e));
 };
 const modifyPost = async (postId, postTitle, postBody) => {
   return await fetch(`http://localhost:3000/posts/${postId}`, {
@@ -24,11 +27,13 @@ const modifyPost = async (postId, postTitle, postBody) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ title: postTitle, body: postBody }),
-  }).then((response) =>
-    response.json().then((data) => {
-      updatePosts();
-    })
-  );
+  })
+    .then((response) =>
+      response.json().then((data) => {
+        updatePosts();
+      })
+    )
+    .catch((e) => console.error(e));
 };
 
 const deletePost = async (postId) => {
@@ -37,11 +42,13 @@ const deletePost = async (postId) => {
     headers: {
       "Content-Type": "application/json",
     },
-  }).then((response) =>
-    response.json().then((data) => {
-      updatePosts();
-    })
-  );
+  })
+    .then((response) =>
+      response.json().then((data) => {
+        updatePosts();
+      })
+    )
+    .catch((e) => console.error(e));
 };
 
 export { fetchPosts, fetchUser, fetchComments, modifyPost, deletePost };
