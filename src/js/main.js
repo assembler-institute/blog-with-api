@@ -9,32 +9,37 @@ fetch("http://localhost:3000/posts", {
         return response.json();
     })
     .then(function (data) {
-        // Select the title/body form the html
-        /* let postTitle = document.querySelectorAll("#postTitle")
-        let postBody = document.querySelectorAll("#postBody")
-        for (let i = 0; i < 10; i++) {
-            const titleApi = data[i];
-            postTitle[i].textContent = titleApi["title"]
-            postBody[i].textContent = titleApi["body"]
-        } */
-        let index = 0;
-        postArray.map(function () {
+        postArray.map(function (blank, index, array) {
+
+            console.log(blank);
+            console.log(index);
+            console.log(array);
 
             let postDiv = document.createElement("div");
-            let postTitle = document.createElement("div");
-            let postBody = document.createElement("div");
-
-            postDiv.setAttribute("id", index++);
-            postDiv.classList.add("col");
+            postDiv.setAttribute("id", index);
+            postDiv.classList.add("col", "card");
 
             const postData = data[postDiv.id];
-            console.log(postData);
+            /* console.log(postData); */
 
+            let postTitle = document.createElement("h5");
+            postTitle.classList.add("card-title");
             postTitle.textContent = postData["title"];
             postDiv.appendChild(postTitle);
 
+
+            let postBody = document.createElement("p");
+            postBody.classList.add("card-text");
             postBody.textContent = postData["body"];
             postDiv.appendChild(postBody);
+
+
+            let postBtn = document.createElement("button");
+            postBtn.textContent = "Open post"
+            postBtn.classList.add("btn", "btn-primary");
+            postDiv.appendChild(postBtn);
+
+
 
             postContainer.appendChild(postDiv);
         });
