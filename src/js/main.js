@@ -104,7 +104,6 @@ btnComments.addEventListener("click", (e) => {
   btnComments.classList.toggle("hide");
   let postId = e.target.getAttribute("data-postId");
   fetchComments(postId).then((data) => {
-    console.log(data);
     updateDisplay();
     data.forEach((dataComment) => {
       const commentsLi = document.createElement("li");
