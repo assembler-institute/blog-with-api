@@ -1,11 +1,7 @@
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-}
-
-.main__header{
-    display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
@@ -14,6 +10,16 @@ body {
     flex-direction: column;
     align-items: center;
     width: 50%;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+
+.main__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2rem;
 }
 
 .header__title{
@@ -29,17 +35,65 @@ body {
 .posts__article {
     display: flex;
     flex-direction: column;
-    border: 3px solid rgb(242, 9, 9);
+    border-bottom: 1px solid #ccc;
     margin-bottom: 0.5rem;
-    padding-top: 0.3rem;
-    padding-left: 0.3rem;
+    padding: 0.5rem;
+    position: relative;
+}
+
+.post__title, .article__span--username{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.post__body, .article__span--comment{
+    margin-left: 0.3rem;
+    margin-bottom: 5rem;
+}
+
+.article__button--showComments{
+    background: url('../img/1737374_comment_comments_description_note_notice_icon.png') center no-repeat;
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 75%;
+    left: 1%;
+    border: none;
+}
+
+.article__button--createComments{
+    background: url('../img/8664940_comments_message_chat_icon.png') center no-repeat;
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 75%;
+    left: 9%;
+    border: none;
+}
+
+.article__button--editButton{
+    background: url('../img/352547_edit_mode_icon.png') center no-repeat;
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 75%;
+    left: 17%;
+    border: none;
+}
+
+.article__button--deleteButton{
+    background: url('../img/3669361_delete_ic_icon.png') center no-repeat;
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 75%;
+    left: 25%;
+    border: none;
 }
 
 .comments__article{
     display: flex;
     flex-direction: column;
-    border: 3px solid rgb(10, 10, 10);
-    margin-bottom: 0.3rem;
-    padding-left: 0.3rem;
-    margin-left: 0.3rem;
+    border: 1px solid rgb(10, 10, 10);
+    padding: 0.3rem;
 }

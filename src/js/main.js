@@ -92,9 +92,8 @@ const displayPosts = () => {
                 title.classList.add('post__title')
                 body.classList.add('post__body')
 
-                editButton.textContent = "EDIT"
-                deleteButton.textContent = "DELETE"
-
+                
+                editButton.classList.add('article__button--editButton')
                 editButton.setAttribute('data-bs-toggle', "modal")
                 editButton.setAttribute('data-bs-target', "#editModal")
 
@@ -104,6 +103,7 @@ const displayPosts = () => {
                     saveComment.setAttribute('data-id', postsData.id);
                 })
 
+                deleteButton.classList.add('article__button--deleteButton')
                 deleteButton.setAttribute('data-bs-toggle', "modal")
                 deleteButton.setAttribute('data-bs-target', "#deleteModal")
 
@@ -113,11 +113,12 @@ const displayPosts = () => {
                     deleteComment.setAttribute('data-id', postsData.id);
                 })
 
-                showComments.textContent = "SHOW COMMENTS"
+                
                 showComments.setAttribute('data-show-comments', postsData.id)
+                showComments.classList.add('article__button--showComments')
 
-                createCommentButton.textContent = "CREATE COMMENT"
                 createCommentButton.setAttribute('data-create-comment', postsData.id)
+                createCommentButton.classList.add('article__button--createComments')
 
                 createCommentButton.addEventListener('click', ()=>{
                     const idPost = createCommentButton.getAttribute('data-create-comment');
@@ -128,8 +129,8 @@ const displayPosts = () => {
 
                 post.setAttribute('data-post-id', postsData.id)
                 post.setAttribute('data-user-id', postsData.userId)
-                title.textContent = `Title: ${postsData.title}`
-                body.textContent = `Body: ${postsData.body}`
+                title.textContent = `@${postsData.title}`
+                body.textContent = postsData.body
                 userId.textContent = `userNameId: ${postsData.userId}`
                 post.append(title, body, showComments, createCommentButton)
 
@@ -181,8 +182,11 @@ const displayComments = (postId, postContainer) => {
 
                 comment.setAttribute('data-comment-id', commentsData.id)
                 comment.setAttribute('data-post-id', commentsData.postId)
-                name.textContent = `userName: ${commentsData.name}`
-                body.textContent = `Body: ${commentsData.body}`
+
+                name.classList.add('article__span--username');
+                body.classList.add('article__span--comment');
+                name.textContent = `@${commentsData.name}`
+                body.textContent = commentsData.body
 
                 comment.append(name, body)
 
