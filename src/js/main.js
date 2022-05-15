@@ -31,8 +31,7 @@ function displayPosts(data) {
       "col-3",
       "p-3",
       "mb-5",
-      "bg-body",
-      "rounded",
+      "bg-body",      
       "container-xxl"
     );
     postContainer.setAttribute("data-post-id", `${post.id}`);
