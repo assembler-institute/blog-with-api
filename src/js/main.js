@@ -1,7 +1,7 @@
 /*IMPORTS*/
 import loginUser from "./login.js"
 import {createComment, editComment, deleteComments_Post} from './api-communication.js'
-import {createPost, editPost, deletePost_Comments} from './api-communication.js'
+import {getPosts, createPost, editPost, deletePost_Comments} from './api-communication.js'
 import {getUser, getUsers} from './api-communication.js'
 
 // createComment("hola", 1)
@@ -66,6 +66,8 @@ deleteComment.addEventListener('click', ()=> {
 })
 
 //Delete post comments
+
+getPosts()
 
 const displayPosts = () => {
     fetch('http://localhost:3000/posts', {
@@ -152,12 +154,11 @@ const displayComments = (postId, postContainer) => {
                 comment.setAttribute('class', 'comments__article')
                 const name = document.createElement('span')
                 const body = document.createElement('span');
-                
-                
+
                 const deleteButton = document.createElement('button');
                 deleteButton.textContent = "DELETE";
                 deleteButton.setAttribute('data-delete-comment', commentsData.id)
-                
+
                 const editButton = document.createElement('button');
                 editButton.textContent = "EDIT";
                 editButton.setAttribute('data-edit-comment', commentsData.id)

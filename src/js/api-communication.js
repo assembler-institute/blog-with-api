@@ -1,12 +1,12 @@
 //API url path
-const comments = 'http://localhost:3000/comments'
-const posts = 'http://localhost:3000/posts'
-const users = 'http://localhost:3000/users'
+const commentsPath = 'http://localhost:3000/comments'
+const postsPath = 'http://localhost:3000/posts'
+const usersPath = 'http://localhost:3000/users'
 
 // Comments
-function createComment(body, postId){
+async function createComment(body, postId){
     try {
-        fetch(`${comments}`, {
+        fetch(`${commentsPath}`, {
         method: "POST",
         headers: {"Content-type": "application/json; charset=UTF-8"},
         body: JSON.stringify({
@@ -22,9 +22,9 @@ function createComment(body, postId){
     }
 }
 
-function editComment(id, edittedBody){
+async function editComment(id, edittedBody){
     try{
-        fetch(`${comments}/${id}`, {
+        fetch(`${commentsPath}/${id}`, {
             method: 'PATCH',
             headers: {"Content-type": "application/json; charset= UTF-8"},
             body: JSON.stringify({body: edittedBody})
@@ -34,9 +34,9 @@ function editComment(id, edittedBody){
     }
 }
 
-function deleteComments_Post(id){
+async function deleteComments_Post(id){
     try{
-        fetch(`${commentsUrl}/${id}`, {
+        fetch(`${commentsPath}/${id}`, {
             method: 'DELETE',
             headers: {"Content-type": "application/json; charset= UTF-8"},
         });
@@ -46,9 +46,35 @@ function deleteComments_Post(id){
     }
 }
 //Posts
-function createPost(body){
+
+async function getPost(id){
     try {
-        fetch(`${posts}`, {
+        fetch(`${postsPath}/${id}`,{
+            method:'GET'
+        })
+        const post = await response.json()
+        return post
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+async function getPosts(){
+    try {
+        const response = await fetch(`${postsPath}`, {
+            method: 'GET'
+        })
+        const posts = await response.json()
+        console.log(posts);
+        return posts
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+async function createPost(body){
+    try {
+        fetch(`${postsPath}`, {
         method: "POST",
         headers: {"Content-type": "application/json; charset=UTF-8"},
         body: JSON.stringify({
@@ -63,9 +89,9 @@ function createPost(body){
     }
 }
 
-function deletePost_Comments(id){
+async function deletePost_Comments(id){
     try{
-        fetch(`${posts}/${id}`, {
+        fetch(`${postsPath}/${id}`, {
             method: 'DELETE',
             headers: {"Content-type": "application/json; charset= UTF-8"},
         });
@@ -76,9 +102,9 @@ function deletePost_Comments(id){
 }
 
 
-function editPost(id, edittedBody){
+async function editPost(id, edittedBody){
     try{
-        fetch(`${posts}/${id}`, {
+        fetch(`${postsPath}/${id}`, {
         method: 'PATCH',
         headers: {"Content-type": "application/json; charset= UTF-8"},
         body: JSON.stringify({body: edittedBody})
@@ -91,7 +117,7 @@ function editPost(id, edittedBody){
 //Users
 async function getUser(id){
     try{
-        const response = await fetch(`${url}/${id}`, {
+        const response = await fetch(`${usersPath}/${id}`, {
             method : 'GET'
         })
         const user = await response.json()
@@ -103,7 +129,7 @@ async function getUser(id){
 
 async function getUsers(){
     try{
-        const response = await fetch(`${users}`, {
+        const response = await fetch(`${usersPath}`, {
             method : 'GET'
         })
         const users = await response.json()
@@ -114,5 +140,5 @@ async function getUsers(){
 }
 
 export {createComment, editComment, deleteComments_Post}
-export {createPost, editPost, deletePost_Comments}
+export {getPost, getPosts, createPost, editPost, deletePost_Comments}
 export {getUser, getUsers}
