@@ -14,15 +14,53 @@
 <body>
   <header>
     <nav class="navbar navbar-light bg-light d-flex">
-      <div class="container-fluid justify-content-center">
-        <span class="navbar-brand mb-0 h1">Blog name </span>
+      <div class="container-fluid justify-content-center navbar fixed-top navbar-light bg-light">
+        <span class="navbar-brand mb-0 h1">Blog-erino</span>
       </div>
     </nav>
   </header>
   <article>
-    <div class="container" id="blog-container">
+    <div class="container mt-md-5" id="blog-container">
       <div class="row border border-primary " id="posts-container">
         <div class="row d-flex justify-content-center" id='card-container'>
+
+          <!-- <div class="card mb-3 " style="max-width: 540px;" id="card">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="https://picsum.photos/200" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                    additional content. This content is a little bit longer.</p>
+                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <!-- </div> -->
+          <!-- <div class="row d-flex justify-content-center"> -->
+          <!-- <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="https://picsum.photos/200" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                    additional content. This content is a little bit longer.</p>
+                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Launch static backdrop modal
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- posts main view -->
           <div class="card mb-3 " style="max-width: 540px;" id="cardTemplate" hidden>
             <div class="row g-0">
               <div class="col-md-4">
@@ -33,10 +71,18 @@
                   <h5 class="card-title" id="cardTitle"></h5>
                   <p class="card-text" id="cardText"></p>
                   <p class="card-text"><small class="text-muted" id="cardComments"></small></p>
-                  <button type="button" id="modalButton" class="btn btn-primary" data-bs-postID=""
+                  <button type="button" id="modalButton" class="btn btn-primary position-absolute bottom-0 end-1 m-1" data-bs-postID=""
                     data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Check Post
                   </button>
+                  <div class="position-absolute bottom-0 end-0 p-1">
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                      <img src="./src/assets/icons/icons8-delete-100.png" width="20" />
+                    </button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                      <img src="./src/assets/icons/icons8-edit-50.png" width="20" />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -51,7 +97,7 @@
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header p-3 mb-2 bg-primary text-white ">
-            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body" id="modal-body">
@@ -73,12 +119,46 @@
             </div>
           </div>
         </div>
+        <div class="modal-body" id="modal-body">
+          ...
+        </div>
+        <div class="container mb-2">
+          <button class="btn btn-primary mb-2" id="commentsBtn" type="button" data-bs-toggle="collapse"
+            data-bs-target="#comments-wrapper" aria-expanded="false" aria-controls="collapseExample">
+            Comments
+          </button>
+          <div class="collapse" id="comments-wrapper">
+          </div>
+        </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- deleting modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
   </script>
