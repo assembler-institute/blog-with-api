@@ -10,6 +10,7 @@ body {
     flex-direction: column;
     align-items: center;
     width: 50%;
+    min-width: 30rem;
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
 }

@@ -4,7 +4,7 @@
       "userId": 1,
       "id": 2,
       "title": "qui est esse",
-      "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
+      "body": "fsfsdfggdf hgsdfhsdhrgdf"
     },
     {
       "userId": 1,
@@ -101,6 +101,18 @@
       "id": 21,
       "username": "Bret",
       "body": "tus muelas toas"
+    },
+    {
+      "userId": null,
+      "id": 22,
+      "username": null,
+      "body": "Hola, amigo, Esto es un blog de primera categoria. Mai friend"
+    },
+    {
+      "userId": "1",
+      "id": 23,
+      "username": "Bret",
+      "body": "Buenos días amigo,\n\nYo creo que esto que estás haciendo no es nada adecuado."
     }
   ],
   "users": [
@@ -287,6 +299,27 @@
       "id": 25,
       "postId": 2,
       "name": "Bret",
+      "body": ""
+    },
+    {
+      "userId": null,
+      "id": 26,
+      "postId": 2,
+      "name": null,
+      "body": ""
+    },
+    {
+      "userId": null,
+      "id": 27,
+      "postId": 2,
+      "name": null,
+      "body": ""
+    },
+    {
+      "userId": null,
+      "id": 28,
+      "postId": 2,
+      "name": null,
       "body": ""
     }
   ]

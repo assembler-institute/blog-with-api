@@ -1,14 +1,14 @@
 /*RESET*/
-@import url(normalize.css);
+@import url(./reset/normalize.css);
 
 /*FONTS*/
-@import url(fonts.css);
+@import url(./fonts/fonts.css);
 
 /*MODAL*/
-@import url(loginModal.css);
+@import url(./modal/loginModal.css);
 
 /*MAIN LAYOUT*/
-@import url(main-layout.css);
+@import url(./layout/main-layout.css);
 
 /*CREATE POST*/
-@import url(createPost.css);
+@import url(./create-post/createPost.css);
