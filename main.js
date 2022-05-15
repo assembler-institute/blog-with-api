@@ -50,13 +50,8 @@ modalTemplate.addEventListener('show.bs.modal', e => {
 })
 
 modalTemplate.addEventListener('hidden.bs.modal', function () {
-  document.getElementById("commentsBtn").collapse;
+  document.getElementById("comments-wrapper").setAttribute("class", "collapse");
 })
-
-// $('#').on('hidden.bs.modal', function () {
-//   document.getElementById("commentsBtn").setAttribute("aria-expanded", "false");
-// })
-
 
 // window.addEventListener('scroll', () => {
 //   console.log(window.scrollY) //scrolled from top
