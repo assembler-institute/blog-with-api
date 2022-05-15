@@ -79,6 +79,10 @@ main {
 }
 
 .container__card--post {
+    border: none;
     border-radius: 0.6rem;
     margin-bottom: 0.7rem;
+    -webkit-box-shadow: 6px 6px 16px -5px rgba(41, 13, 121, 0.2);
+    -moz-box-shadow: 6px 6px 16px -5px rgba(41, 13, 121, 0.2);
+    box-shadow: 6px 6px 16px -5px rgba(41, 13, 121, 0.2);    
 }
