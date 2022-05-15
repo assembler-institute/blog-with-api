@@ -53,7 +53,7 @@ body {
 }
 
 .article__button--showComments{
-    background: url('../img/1737374_comment_comments_description_note_notice_icon.png') center no-repeat;
+    background: url('../../img/1737374_comment_comments_description_note_notice_icon.png') center no-repeat;
     width: 3rem;
     height: 3rem;
     position: absolute;
@@ -63,7 +63,7 @@ body {
 }
 
 .article__button--createComments{
-    background: url('../img/8664940_comments_message_chat_icon.png') center no-repeat;
+    background: url('../../img/8664940_comments_message_chat_icon.png') center no-repeat;
     width: 3rem;
     height: 3rem;
     position: absolute;
@@ -73,7 +73,7 @@ body {
 }
 
 .article__button--editButton{
-    background: url('../img/352547_edit_mode_icon.png') center no-repeat;
+    background: url('../../img/352547_edit_mode_icon.png') center no-repeat;
     width: 3rem;
     height: 3rem;
     position: absolute;
@@ -83,7 +83,7 @@ body {
 }
 
 .article__button--deleteButton{
-    background: url('../img/3669361_delete_ic_icon.png') center no-repeat;
+    background: url('../../img/3669361_delete_ic_icon.png') center no-repeat;
     width: 3rem;
     height: 3rem;
     position: absolute;

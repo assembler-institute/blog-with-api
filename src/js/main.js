@@ -1,12 +1,8 @@
 /*IMPORTS*/
 import loginUser from "./login.js"
-import editComment from "./editComment.js"
-import editPost from "./editPosts.js"
-import deleteComment_Post from "./deleteComment.js"
-import deletePost_Comments from "./deletePost.js"
-import createPost from "./createPost.js"
-import createComment from "./createComment.js"
-
+import {createComment, editComment, deleteComments_Post} from './api-communication.js'
+import {createPost, editPost, deletePost_Comments} from './api-communication.js'
+import {getUser, getUsers} from './api-communication.js'
 
 // createComment("hola", 1)
 
@@ -16,8 +12,8 @@ const commentsCont = document.getElementById('comments')
 const usersCont = document.getElementById('users')
 const loginBtn = document.getElementById('loginButton')
 const saveComment = document.getElementById('editModal__save')
-const deleteComment = document.getElementById('deleteModal__delete');
-const createPostButton = document.getElementById('create-post__buton');
+const deleteComment = document.getElementById('deleteModalBtn');
+const createPostButton = document.getElementById('createPostButton');
 
 
 //Create Post
@@ -108,7 +104,7 @@ const displayPosts = () => {
                 deleteButton.setAttribute('data-bs-target', "#deleteModal")
 
                 deleteButton.addEventListener('click', ()=>{
-                    const deleteComment = document.getElementById('deleteModal__delete')
+                    const deleteComment = document.getElementById('deleteModalBtn')
                     deleteComment.setAttribute('data-delete', "post");
                     deleteComment.setAttribute('data-id', postsData.id);
                 })
@@ -175,7 +171,7 @@ const displayComments = (postId, postContainer) => {
                 })
 
                 deleteButton.addEventListener('click', ()=>{
-                    const deleteComment = document.getElementById('deleteModal__delete')
+                    const deleteComment = document.getElementById('deleteModalBtn')
                     deleteComment.setAttribute('data-delete', "comment");
                     deleteComment.setAttribute('data-id', commentsData.id);
                 })
@@ -214,13 +210,3 @@ const displayUsers = () => {
             const email = document.createElement('span')
         }))
 }
-
-// commentsData
-//     .then(response => response.json())
-//     .then(data => console.log(data))
-//     .catch(err => console.warn(err))
-
-// usersData
-//     .then(response => response.json())
-//     .then(data => console.log(data))
-//     .catch(err => console.warn(err))

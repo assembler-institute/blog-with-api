@@ -113,6 +113,12 @@
       "id": 23,
       "username": "Bret",
       "body": "Buenos días amigo,\n\nYo creo que esto que estás haciendo no es nada adecuado."
+    },
+    {
+      "userId": null,
+      "id": 24,
+      "username": null,
+      "body": "Hola amigo posteo"
     }
   ],
   "users": [
