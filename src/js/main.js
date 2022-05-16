@@ -1,9 +1,6 @@
-window.addEventListener('load', (event) => {
-    console.log('page is fully loaded');
-    postArray.push("", "", "", "", "", "", "", "", "", "");
-});
 const postContainer = document.querySelector("#postContainer");
 const postArray = ["", "", "", "", "", "", "", "", "", ""];
+let url = "http://localhost:3000"
 
 // Get the API data
 fetch("http://localhost:3000/posts", {
@@ -13,11 +10,11 @@ fetch("http://localhost:3000/posts", {
         return response.json();
     })
     .then(function (data) {
+        console.log(data);
         let observer = new IntersectionObserver((posts) => {
             posts.map(posts => {
                 if (posts.isIntersecting) {
-                    postArray.push("", "", "", "", "", "", "", "", "", "");
-
+                    makePost();
                 }
             })
             console.log(posts);
@@ -26,43 +23,40 @@ fetch("http://localhost:3000/posts", {
             rootMargin: "0px 0px 0px 0px",
             threshold: 1.0
         });
-        postArray.map(function (blank, index, array) {
+        const makePost = () => {
+            postArray.map(function (blank, index) {
 
-            /* console.log(blank);
-            console.log(index);
-            console.log(array); */
+                let postDiv = document.createElement("div");
+                postDiv.setAttribute("id", index);
+                postDiv.classList.add("posts", "col", "card");
 
-            let postDiv = document.createElement("div");
-            postDiv.setAttribute("id", index);
-            postDiv.classList.add("posts", "col", "card");
+                const postData = data[postDiv.id];
 
-            const postData = data[postDiv.id];
-            /* console.log(postData); */
-
-            let postTitle = document.createElement("h5");
-            postTitle.classList.add("card-title");
-            postTitle.textContent = postData["title"];
-            postDiv.appendChild(postTitle);
+                let postTitle = document.createElement("h5");
+                postTitle.classList.add("card-title");
+                postTitle.textContent = postData["title"];
+                postDiv.appendChild(postTitle);
 
 
-            let postBody = document.createElement("p");
-            postBody.classList.add("card-text");
-            postBody.textContent = postData["body"];
-            postDiv.appendChild(postBody);
+                let postBody = document.createElement("p");
+                postBody.classList.add("card-text");
+                postBody.textContent = postData["body"];
+                postDiv.appendChild(postBody);
 
 
-            let postBtn = document.createElement("button");
-            postBtn.textContent = "Open post"
-            postBtn.classList.add("btn", "btn-primary");
-            postDiv.appendChild(postBtn);
+                let postBtn = document.createElement("button");
+                postBtn.textContent = "Open post"
+                postBtn.classList.add("btn", "btn-primary");
+                postDiv.appendChild(postBtn);
 
 
 
-            postContainer.appendChild(postDiv);
-        });
+                postContainer.appendChild(postDiv);
+            });
+        }
+        makePost();
 
-        const postsInScreen = document.querySelectorAll(".post-container .posts");
-        let lastPost = postsInScreen[postsInScreen.length - 1];
+        let lastPost = document.getElementById("lastDiv");
         console.log(lastPost);
         observer.observe(lastPost);
     })
