@@ -17,20 +17,16 @@
 	--bg-custom-brown: #b85a5b;
 }
 
-.navbar__logo-letters {
-    margin-right: -1rem;
-    
-}
 
 .navbar__logo-img {
     transform: rotate(-45deg);
-    margin-left: -4.5rem;
-    margin-right: 2rem;
+    /* margin-left: -4.5rem; */
+    /* margin-right: 1rem; */
 }
 
 .blog__header--title{
     text-decoration: none;
-    margin: 0 3rem;
+    margin: 0 2rem;
     font-family: 'old london';
     font-size: 3.5rem;
 }
