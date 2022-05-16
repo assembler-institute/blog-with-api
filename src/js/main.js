@@ -1,6 +1,7 @@
 import { openPost, showTitleBody, showUserEmail } from "./info-modal.js";
 import { getSearchResults, displaySearchResults } from "./search.js";
 
+// Variable and listener for searchbar functions
 const searchBtn = document.getElementById('headerSearchBtn');
 searchBtn.addEventListener('click', function () {
   getSearchResults()
@@ -18,6 +19,7 @@ async function getPostData() {
   }
 }
 
+// Call function to define data for window onload
 async function manageData () {
   const data = await getPostData();
   displayPosts(data)
@@ -25,7 +27,7 @@ async function manageData () {
 
 window.onload = manageData;
 
-
+// Get Comments from json server
 async function getComments () {
   try {
     const response = await fetch('http://localhost:3000/comments');
@@ -35,9 +37,6 @@ async function getComments () {
     console.log(error);
   }
 }
-
-// Loads the blog posts when site is opened.
-
 
 // Shows the blog posts with title and body on the main page
 function displayPosts(data) {
