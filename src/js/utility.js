@@ -52,10 +52,6 @@ const handleComments = (postId, allComments) => {
         const commentCardEl = document.createElement('div')
         commentCardEl.className = 'card card-body mb-3'
 
-        const newCommentId = document.createElement('p')
-        newCommentId.textContent = comment.postId
-        commentCardEl.appendChild(newCommentId)
-
         const newCommentEl = document.createElement('p')
         newCommentEl.textContent = comment.body
         commentCardEl.appendChild(newCommentEl)
@@ -88,9 +84,6 @@ const handleSubmit = async () => {
     let body = formSubmit.editBody.value;
     const id = editPostID.value;
     const url = `http://localhost:3000/posts/${id}`;
-
-    console.log(title);
-    console.log(body);
 
     const updatePost = {
         "title": title,
