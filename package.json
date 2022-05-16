@@ -1,0 +1,25 @@
+{
+  "name": "blog-with-api",
+  "version": "1.0.0",
+  "description": "`#html` `#css` `#js` `#dom` `#JSON` `#HTTP` `#API` `#Bootstrap` `#master-in-software-development`",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "json-server --watch ./src/data/db.json",
+    "start": "concurrently \"npm run json_server\" \"npm run server\" "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victor-gv/blog-with-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/victor-gv/blog-with-api/issues"
+  },
+  "homepage": "https://github.com/victor-gv/blog-with-api#readme",
+  "dependencies": {
+    "json-server": "^0.17.0"
+  }
+}
