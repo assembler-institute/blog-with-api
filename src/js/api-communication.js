@@ -127,6 +127,18 @@ async function getUser(id){
     }
 }
 
+async function getUserName(name){
+    try{
+        const response = await fetch(`${usersPath}/?pokemonName=${name}`, {
+            method : 'GET'
+        })
+        const user = await response.json()
+        return user
+    } catch(error) {
+        console.error(error)
+    }
+}
+
 async function getUsers(){
     try{
         const response = await fetch(`${usersPath}`, {
@@ -139,6 +151,24 @@ async function getUsers(){
     }
 }
 
+async function postUser(userId, userName, pokemonImg){
+    try {
+        await fetch(`${usersPath}`, {
+            method: 'POST',
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+            },
+            body: JSON.stringify({
+                    id: userId,
+                    pokemonName: `${userName}`,
+                    pokemonImg: `${pokemonImg}`
+            })
+        })
+    } catch (err) {
+        console.error(err)
+    }
+}
+
 export {createComment, editComment, deleteComments_Post}
 export {getPost, getPosts, createPost, editPost, deletePost_Comments}
-export {getUser, getUsers}
+export {getUser, getUserName, getUsers, postUser}

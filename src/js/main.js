@@ -5,6 +5,18 @@ import {getPosts, createPost, editPost, deletePost_Comments} from './api-communi
 import {getUser, getUsers} from './api-communication.js'
 import {createPostCard} from './post.js'
 
+// import getPokemon from "./poke-api-communication.js"
+// getPokemon()
+
+const getUserLoginImg = () =>{
+    const userDiv = document.getElementById('dropdownMenuLink')
+    const createPostAvatar = document.getElementById('createPostAvatar')
+    userDiv.textContent = sessionStorage.getItem('username')
+    createPostAvatar.src = sessionStorage.getItem('avatarimg')
+}
+
+getUserLoginImg()
+
 /*VARIABLES*/
 const postsCont = document.getElementById('main__posts')
 const commentsCont = document.getElementById('comments')
@@ -26,8 +38,7 @@ createPostButton.addEventListener('click', ()=>{
 //Login
 loginBtn.addEventListener('click', () => {
     const userName = document.getElementById('login__Username');
-    const email = document.getElementById('login__Email');
-    loginUser(userName.value, email.value)
+    loginUser(userName.value)
 })
 
 //Show post comments

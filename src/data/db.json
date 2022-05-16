@@ -147,54 +147,104 @@
   ],
   "users": [
     {
-      "id": 1,
-      "username": "Bret",
-      "email": "Sincere@april.biz"
+      "id": 2,
+      "pokemonName": "ivysaur",
+      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png"
     },
     {
-      "id": 2,
-      "username": "Antonette",
-      "email": "Shanna@melissa.tv"
+      "id": 1,
+      "pokemonName": "bulbasaur",
+      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
     },
     {
       "id": 3,
-      "username": "Samantha",
-      "email": "Nathan@yesenia.net"
+      "pokemonName": "venusaur",
+      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png"
     },
     {
       "id": 4,
-      "username": "Karianne",
-      "email": "Julianne.OConner@kory.org"
+      "pokemonName": "charmander",
+      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
     },
     {
       "id": 5,
-      "username": "Kamren",
-      "email": "Lucio_Hettinger@annie.ca"
+      "pokemonName": "charmeleon",
+      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png"
     },
     {
       "id": 6,
-      "username": "Leopoldo_Corkery",
-      "email": "Karley_Dach@jasper.info"
+      "pokemonName": "charizard",
+      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
     },
     {
       "id": 7,
-      "username": "Elwyn.Skiles",
-      "email": "Telly.Hoeger@billy.biz"
+      "pokemonName": "squirtle",
+      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
     },
     {
       "id": 8,
-      "username": "Maxime_Nienow",
-      "email": "Sherwood@rosamond.me"
+      "pokemonName": "wartortle",
+      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png"
     },
     {
       "id": 9,
-      "username": "Delphine",
-      "email": "Chaim_McDermott@dana.io"
+      "pokemonName": "blastoise",
+      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png"
     },
     {
       "id": 10,
-      "username": "Moriah.Stanton",
-      "email": "Rey.Padberg@karina.biz"
+      "pokemonName": "caterpie",
+      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png"
+    },
+    {
+      "id": 11,
+      "pokemonName": "metapod",
+      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/11.png"
+    },
+    {
+      "id": 12,
+      "pokemonName": "butterfree",
+      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/12.png"
+    },
+    {
+      "id": 13,
+      "pokemonName": "weedle",
+      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/13.png"
+    },
+    {
+      "id": 14,
+      "pokemonName": "kakuna",
+      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/14.png"
+    },
+    {
+      "id": 15,
+      "pokemonName": "beedrill",
+      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/15.png"
+    },
+    {
+      "id": 17,
+      "pokemonName": "pidgeotto",
+      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/17.png"
+    },
+    {
+      "id": 16,
+      "pokemonName": "pidgey",
+      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/16.png"
+    },
+    {
+      "id": 18,
+      "pokemonName": "pidgeot",
+      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/18.png"
+    },
+    {
+      "id": 19,
+      "pokemonName": "rattata",
+      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/19.png"
+    },
+    {
+      "id": 20,
+      "pokemonName": "raticate",
+      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/20.png"
     }
   ],
   "comments": [
