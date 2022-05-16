@@ -23,7 +23,6 @@ fetch(postUrl)
 
       const clone = document.importNode(template.content, true);
       container.appendChild(clone);
-      // template.append(divContainer);
     });
 
     // BUTTON EDIT
@@ -80,79 +79,9 @@ fetch(postUrl)
 
     deleteButtons.forEach((element) => {
       element.addEventListener('click', () => {
-        // element.parentNode.parentNode.remove()}
         fetch('http://localhost:3000/posts/' + element.dataset.id, {
           method: 'DELETE',
         });
       });
     });
   });
-
-//REMOVE BTN AFTER CLICK
-// BUTTON DELETE
-
-//** FUNCTION THAT GET POSTID AND ID FROM DATA BASE **//
-// let idNumber = [];
-// let postIdNumber = [];
-
-//This function get ID from current post comment
-// function getId() {
-//   fetch(postUrl)
-//     .then((response) => response.json())
-//     .then((data) => {
-//       data.forEach((idValue) => idNumber.push(idValue.id));
-//     });
-// }
-
-//This function get postID from the user which comment the post
-// function getPostId() {
-//     fetch(commentUrl)
-//         .then((response) => response.json())
-//         .then((data) => {
-//             data.map((item) => {
-//                 postIdNumber.push(item.postId)
-//             })
-//         })
-// }
-
-// const btnLoadComments = document.getElementById('btnLoadComments');
-// btnLoadComments.addEventListener('click', loadComment);
-
-// function loadComment() {
-//     getId();
-//     // getPostId();
-//     const commentModal = document.getElementById("commentModal");
-//     const divCommentModal = document.createElement('div');
-//     divCommentModal.className = ('modal__comment', 'ps-4');
-//     commentModal.appendChild(divCommentModal);
-//     const commentName = document.createElement('h6');
-//     commentName.textContent = "Comment Name";
-
-//     const commentBody = document.createElement('p');
-//     commentBody.textContent = "comment body";
-
-//     const commentEmail = document.createElement('p');
-//     commentEmail.textContent = "userEmail";
-
-//     divCommentModal.append(commentName, commentBody, commentEmail);
-//     btnLoadComments.className = 'd-none';
-
-//     console.log(idNumber);
-//     fetch(commentUrl)
-//         .then((response) => response.json())
-//         .then((data) => {
-//             data.map((item) => {
-//                 // postIdNumber.push(item.postId)
-//                 if(item.postId === 30) {
-//                     commentName.textContent = item.name,
-//                     commentEmail.textContent = item.email,
-//                     commentBody.textContent = item.body
-//                 }
-//             })
-//         })
-// }
-
-// console.log(postIdNumber === idNumber.length);
-// function compareId() {
-//     idNumber.filter((element) =>postIdNumber.includes(console.log(element)));
-// }
