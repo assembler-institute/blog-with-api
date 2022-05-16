@@ -1,4 +1,4 @@
-const usersURL = fetch("https://jsonplaceholder.typicode.com/users/");
+
 const postsURL = fetch("https://jsonplaceholder.typicode.com/posts/");
 const commentsURL = fetch("https://jsonplaceholder.typicode.com/comments/");
 const contentBody = document.getElementById('modal__body-content');
@@ -27,15 +27,24 @@ function loadPosts(){
             const btnDel = document.createElement('button');
             const addIcon = document.createElement('i');
             const delIcon = document.createElement('i');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.createElement('p');
+            const modalUser = document.createElement('p');
+            titleLink.setAttribute('id', post.userId);
+
             addIcon.classList.add('bi', 'bi-pen');
             delIcon.classList.add('bi', 'bi-trash3-fill');
             btnAdd.classList.add('btn', 'btn-success');
             btnDel.classList.add('btn', 'btn-outline-danger');
 
             cardTitle.addEventListener('click', () =>{
-              contentBody.textContent = (post.body.charAt(0).toUpperCase() + post.body.slice(1));
+                modalBody.textContent = (post.body.charAt(0).toUpperCase() + post.body.slice(1));
+                modalTitle.textContent = (post.title.charAt(0).toUpperCase() + post.title.slice(1));
+                modalUser.textContent = getUser(titleLink.getAttribute('id'));
+                //console.log(titleLink.getAttribute('id'));
+                contentBody.append(modalBody, modalUser);
             });
-            
+
             cardTitle.append(titleLink)
             btnDel.append(delIcon);
             btnAdd.append(addIcon);
@@ -45,8 +54,24 @@ function loadPosts(){
         });
     })
     .catch(error => {
-        return error
+        console.log(error);
     });
 }
+
+function getUser(idUser){
+    fetch(`http://localhost:3000/users?id=${idUser}`)
+    .then(response => response.json())
+    .then(data => {
+        //return data.id;
+        data.forEach(element => {
+            console.log(element.name);
+            //return element.name;
+        });
+    })
+    .catch(error => {
+        console.log(error);
+    });
+};
+//getUser(3);
 
 loadPosts();
