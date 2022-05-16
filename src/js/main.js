@@ -1,13 +1,13 @@
-
+//Execute getData on window load
 window.onload = () => {
-        getData();
+  getData();
 };
-
-//Get the container from html
+//Global variables stored data from fetch
 let usersData;
 let postsComments;
 let apiImages;
 
+//Fetch all data from json & pixabay API
 function getData() {
   let url = "http://localhost:3000";
   const Comments = fetch(`${url}/comments`);
@@ -40,10 +40,10 @@ function getData() {
     .catch((error) => console.error(error));
 }
 
+//Set data to global Variables
 const getUsers = (users) => {
   usersData = users;
 };
-
 const getComments = (comments) => {
   postsComments = comments;
 };
@@ -51,18 +51,18 @@ const getImages = (images) => {
   apiImages = images;
 };
 
-
+//Render images & post title to the main page
 function renderPostTitle(postData) {
   const postsTitlesContainer = getElement("postsTitlesContainer");
 
   //Iterate each post in posts.json
   postData.map((post) => {
-    const listElement = creatPostTitleElement(post, postsTitlesContainer);
-    listElementAddEvent(post, listElement);
+    const postElement = creatPostTitleElement(post, postsTitlesContainer);
+    listElementAddEvent(post, postElement);
   });
 }
 
-//Create a Li element for each "Post Title" & append it to the list
+//Create a div element for each "Post Title" & append it to the section in html
 const creatPostTitleElement = (post, postsTitlesContainer) => {
   let elementContainer = createElement("div");
   elementContainer.classList.add("col", "card");
@@ -80,13 +80,13 @@ const creatPostTitleElement = (post, postsTitlesContainer) => {
   let buttonContainer = createElement("div");
   buttonContainer.className = "buttonContainer";
 
-
   elementContainer.append(img, postTitleElement, buttonContainer);
   buttonContainer.append(editBtn, removeBtn);
 
   return postTitleElement;
 };
 
+//Create bootstrapImg with each post
 const creatBootstrapImg = () => {
   let i = Math.round(Math.random() * (19 - 1) + 1);
   let imgUrl = apiImages.hits[i].webformatURL;
@@ -97,6 +97,7 @@ const creatBootstrapImg = () => {
   return img;
 };
 
+//Create delete & remove buttons
 const createButton = (element, id) => {
   let btn = createElement("button");
   btn.textContent = element;
@@ -110,15 +111,16 @@ const createButton = (element, id) => {
   return btn;
 };
 
-//Add click event to every list element
-const listElementAddEvent = (post, listElement) => {
-  listElement.addEventListener("click", () => {
+//Add click event to every  post element
+const listElementAddEvent = (post, postElement) => {
+  postElement.addEventListener("click", () => {
     setModalTitle(post);
     setPostUser(post);
     setPostComments(post);
   });
 };
 
+//Set title & body to the modal
 const setModalTitle = (post) => {
   let modalTitle = getElement("exampleModalLabel");
   let modalBody = getElement("bodyContent");
@@ -126,6 +128,7 @@ const setModalTitle = (post) => {
   modalBody.textContent = post.body;
 };
 
+//Set user name & email to each post when modal displays
 const setPostUser = (post) => {
   let userId = post.userId;
   let userName = getElement("userName");
@@ -139,6 +142,7 @@ const setPostUser = (post) => {
   userName.append(email);
 };
 
+//Set comments to each post when modal displays
 const setPostComments = (post) => {
   let commentContainer = getElement("commentContainer");
   commentContainer.textContent = "";
@@ -154,14 +158,14 @@ const setPostComments = (post) => {
     }
   });
 };
-
+//Creates paraghrpah for each comment item "user, comment, email"
 const createCommentItem = (comment, key) => {
   let item = createElement("p");
   item.textContent = comment[key];
   item.classList = `comment__${key}`;
   return item;
 };
-
+//create comment container
 const createCommentWrapper = () => {
   let commentWrapper = createElement("div");
   commentWrapper.className = "commentWrapper";
@@ -174,14 +178,3 @@ const getElement = (element) => {
 const createElement = (element) => {
   return document.createElement(element);
 };
-
-
-
-
-  
-
-
-
-
-
-
