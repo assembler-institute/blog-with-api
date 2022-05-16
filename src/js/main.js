@@ -43,10 +43,12 @@ function displayPosts(data) {
       "post__container",
       "shadow-sm",
       "mx-1",
-      "col-3",
+      "col-sm-12",
+      "col-md-6",
+      "col-xxl-3",
       "p-3",
       "mb-5",
-      "bg-body",      
+      "bg-body",
       "container-xxl"
     );
     postContainer.setAttribute("data-post-id", `${post.id}`);
