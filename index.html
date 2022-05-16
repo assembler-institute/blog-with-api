@@ -11,9 +11,9 @@
   </head>
   <body>
     <!-- main  -->
-    <nav id="blogHeader" class="blog__header navbar container-fluid p-4 d-flex align-items-center">
+    <nav id="blogHeader" class="blog__header navbar sticky-top container-fluid p-5 d-flex align-items-center">
       <div class="blog__logo d-flex">
-        <a href="./index.html" class="navbar__logo-letters navbar-brand text-dark"><h3>PD</h3></a>
+        <a href="./index.html" class="blog__header--title navbar__logo-letters navbar-brand text-dark"><h3>PD</h3></a>
         <img src="./assets/icons8-bugle-50.png" class="navbar__logo-img" alt="bugle icon">
         <a href="index.html" class="blog__header--title navbar-brand text-dark"><h3>The Post Dispatch</h3></a>
       </div>
@@ -23,29 +23,6 @@
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
       </div>
-      <nav class="navbar navbar-light">      
-        <div class="container-fluid p-0">
-          <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link text-capitalize" href="https://jsonplaceholder.typicode.com/posts">posts</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-capitalize" href="https://jsonplaceholder.typicode.com/users">users</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-capitalize" href="https://jsonplaceholder.typicode.com/comments">comments</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled text-capitalize" href="https://jsonplaceholder.typicode.com/comments" tabindex="-1" aria-disabled="true">Disabled</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
     </nav>
     <!-- main content -->
     <main id="mainContent" class="main__content container-fluid d-flex align-items-center pt-5">

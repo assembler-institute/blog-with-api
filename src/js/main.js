@@ -21,7 +21,7 @@ function displayPosts(data) {
 
   data.map((post) => {
     const postContainer = document.createElement("div");
-    const blogTitle = document.createElement("h3");
+    const blogTitle = document.createElement("h4");
     const blogPost = document.createElement("p");
 
     postContainer.classList.add(

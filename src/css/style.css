@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;0,6..72,800;1,6..72,300;1,6..72,400;1,6..72,500;1,6..72,600;1,6..72,700;1,6..72,800&display=swap');
-
-*{
-    /* margin: 0;
-    padding: 0; */
-    /* font-family: 'Noticia Text', serif; */
-    font-family: 'Newsreader', serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Diplomata+SC&family=Tinos&display=swap');
 
 :root {
     --bg-custom: #f2ddc3;
@@ -18,23 +12,24 @@
 }
 
 .navbar__logo-letters {
-    margin-right: -.25rem;
-    margin-left: 1rem ;
+    margin-right: -1rem;
+    
 }
 
 .navbar__logo-img {
     transform: rotate(-45deg);
+    margin-left: -3rem;
+    margin-right: 3rem;
 }
 
 .blog__header--title {
     text-decoration: none;
     margin: 0 3rem;
-    
+    font-family: 'Diplomata SC', cursive;
 }
 
 .blog__header{
     background-color: var(--bg-header-custom);
-    
 }
 
 
@@ -47,10 +42,9 @@
 .post__container {
     border-bottom: solid .5rem var(--bg-header-custom);
     border-radius: 1rem 1rem 0 0;
-
+    font-family: 'Newsreader', serif;
 }
 
 .modal__dialog {
     background-color: hsla(0, 0%, 100%, .25);
-    
 }
