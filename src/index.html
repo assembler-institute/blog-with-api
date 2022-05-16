@@ -52,6 +52,28 @@
                 </div>
             </div>
         </div>
+        <!-- Modal -->
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body ps-4">
+                        <form id="edit-form">
+                            <label for="edit-title">Title</label><br>
+                            <input id="edit-title" type="text">
+                        </form>
+                    </div>
+                    <!-- </div> -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button id="saveFetch" type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
     </div>
@@ -65,7 +87,7 @@
         </section>
     </article>
     <template id="post">
-        <div class="article__section--post mb-2 mx-5 px-4 py-2 border border-3 border-end-0 border-start-0 ">
+        <div id="load-Posts" class="article__section--post mb-2 mx-5 px-4 py-2 border border-3 border-end-0 border-start-0 ">
             <h3 class="">Title post 1</h3>
             <div class="d-flex">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore fuga modi obcaecati, in eveniet
@@ -73,9 +95,13 @@
                     velit eum ipsa rem.</p>
                 <button role="button" class="btn btn-primary me-1 my-auto">X</button>
                 <button role="btn-edit" class="btn btn-secondary my-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+                <button role="modal-edit" class="btn btn-secondary my-auto" data-bs-toggle="modal" data-bs-target="#editModal">Editar</button>
             </div>
         </div>
     </template>
+    <div class="load-btn d-flex justify-content-center my-2">
+        <button>Load More</button>
+    </div>
     <script src="/src/main.js"> </script> 
 </body> 
 </html>

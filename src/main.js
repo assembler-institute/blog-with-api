@@ -1,6 +1,6 @@
 const container = document.querySelector('.article__section--posts');
 
-const postUrl = 'http://localhost:3000/posts';
+const postUrl = 'http://localhost:3000/posts?_page=1&_limit=9';
 
 fetch(postUrl)
   .then((response) => response.json())
@@ -18,14 +18,52 @@ fetch(postUrl)
 
       template.content.querySelector('[role="btn-edit"]').dataset.id = post.id;
 
+      template.content.querySelector('[role="modal-edit"]').dataset.id =
+        post.id;
+
       const clone = document.importNode(template.content, true);
       container.appendChild(clone);
     });
 
+    // Editar New btn
+    const editModalNew = document.querySelectorAll('[role="modal-edit"]');
+    const saveFetch = document.querySelector('#saveFetch');
+    const titleModal = document.querySelector('#edit-title');
+    let postId;
+
+    console.log(editModalNew);
+    editModalNew.forEach((button) => {
+      button.addEventListener('click', () => {
+        fetch('http://localhost:3000/posts/' + button.dataset.id)
+          .then((res) => res.json())
+          .then((post) => {
+            titleModal.value = post.title;
+            postId = post.id;
+          });
+      });
+    });
+
+    saveFetch.addEventListener('click', () => {
+      // fetch('http://localhost:3000/posts/' + button.dataset.id)
+
+      fetch('http://localhost:3000/posts/' + postId, {
+        method: 'PATCH',
+        body: JSON.stringify({
+          title: titleModal.value,
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      });
+    });
+
     // BUTTON EDIT
     let editButton = document.querySelectorAll('[role="btn-edit"]');
+    const cmtBtn = document.getElementById('comments');
+
     editButton.forEach((button) => {
       button.addEventListener('click', () => {
+        cmtBtn.style.display = 'block';
         // remove cooments
         const commentsDivs = document.querySelectorAll('.test');
         commentsDivs.forEach((element) => element.remove());
@@ -47,7 +85,7 @@ fetch(postUrl)
                 modalEmail.textContent = user.email;
               });
             // Button comments
-            const cmtBtn = document.getElementById('comments');
+
             cmtBtn.addEventListener('click', () => {
               fetch('http://localhost:3000/comments?postId=' + post.id)
                 .then((res) => res.json())
@@ -67,7 +105,7 @@ fetch(postUrl)
                     commentsContainer.appendChild(commentsBody);
                     commentsContainer.appendChild(commentsEmail);
                     cmtBtn.insertAdjacentElement('afterend', commentsContainer);
-                    cmtBtn.style.display = false;
+                    cmtBtn.style.display = 'none';
                   });
                 });
             });
@@ -85,3 +123,33 @@ fetch(postUrl)
       });
     });
   });
+
+const loadMore = document.querySelector('.load-btn');
+const divsLoad = document.querySelectorAll('#load-Posts');
+
+let currentPage = 0;
+loadMore.addEventListener('click', () => {
+  currentPage += 1;
+
+  fetch(`http://localhost:3000/posts?_limit=9&_page=${currentPage}`)
+    .then((res) => res.json())
+    .then((nextPage) => {
+      nextPage.forEach((post) => {
+        let template = document.getElementById('post');
+
+        const h3 = template.content.querySelector('h3');
+        h3.textContent = post.title;
+
+        const p = template.content.querySelector('p');
+        p.textContent = post.body;
+
+        template.content.querySelector('[role="button"]').dataset.id = post.id;
+
+        template.content.querySelector('[role="btn-edit"]').dataset.id =
+          post.id;
+
+        const clone = document.importNode(template.content, true);
+        container.appendChild(clone);
+      });
+    });
+});
