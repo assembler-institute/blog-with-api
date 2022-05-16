@@ -47,7 +47,9 @@ function renderPostTitle(postData) {
 
 //Create a Li element for each "Post Title" & append it to the list
 const creatPostTitleElement = (post, postsTitlesContainer) => {
-  let elementcontainer = createElement("div");
+  let elementContainer = createElement("div");
+  postsTitlesContainer.classList.add("row");
+  elementContainer.classList.add("col-sm-4");
   let postTitleElement = createElement("div");
   let img = creatBootstrapImg();
   let editBtn = createButton("edit", post.id);
@@ -57,9 +59,9 @@ const creatPostTitleElement = (post, postsTitlesContainer) => {
   postTitleElement.setAttribute("data-bs-toggle", "modal");
   postTitleElement.setAttribute("data-bs-target", "#staticBackdrop");
   postTitleElement.textContent = post.title;
-  postsTitlesContainer.append(elementcontainer);
+  postsTitlesContainer.append(elementContainer);
 
-  elementcontainer.append(img, postTitleElement, editBtn, removeBtn);
+  elementContainer.append(img, postTitleElement, editBtn, removeBtn);
   return postTitleElement;
 };
 
@@ -86,7 +88,7 @@ const createButton = (element, id) => {
 
 //Add click event to every list element
 const listElementAddEvent = (post, listElement) => {
-  listElement.addEventListener("click", (e) => {
+  listElement.addEventListener("click", () => {
     setModalTitle(post);
     setPostUser(post);
     setPostComments(post);

@@ -33,14 +33,5 @@
 .comment__email {
   font-weight: bold;
 }
-/*TEST*/
-.blog__postTitle--container {
-  padding: 10rem;
-  background-color: var(--blue-secondary);
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(4, 1fr);
-  color: white;
-  margin-bottom: 1rem;
-  gap: 1rem;
-}
+
+
