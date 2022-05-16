@@ -1,7 +1,7 @@
 # News Blog with API 
 Our blog adopts a design inspired by well-known newspapers and news websites, such as The Guardian, The Washington  Post, The New York Times. Our goal for the design focused on simplicity and functionality for the user.
 
-It was important for us to be able to access different endpoints for the json.placeholder API. Although we did not incorporate POST and DELETE functions for the blog posts, the code is scalable and this implementation is planned for future versions.
+It was important for us to be able to access different endpoints for the {JSON}Placeholder API. Although we did not incorporate POST and DELETE functions for the blog posts, the code is scalable and this implementation is planned for future versions.
 
 ![img of our blog header](./assets/header_img.png)
 
@@ -27,7 +27,7 @@ On Day 4, the design and visual aspect was improved by further integrating Boots
 
 ## Requirements
 
-*Use json.placeholder API with endpoints for users, comments, and posts. 
+*Use {JSON}Placeholder API with endpoints for users, comments, and posts. 
 *Use fetch method for HTTP requests.
 *Use Bootstrap to add style to the website.
 
