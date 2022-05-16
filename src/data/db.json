@@ -34,88 +34,102 @@
       "username": "beedrill",
       "body": "Abejita",
       "commentsQty": 1
+    },
+    {
+      "userId": "144",
+      "id": 6,
+      "username": "articuno",
+      "body": "Buenos días, \n\nQue frío hace!",
+      "commentsQty": 0
+    },
+    {
+      "userId": "151",
+      "id": 7,
+      "username": "mew",
+      "body": "Mew Mew Mew",
+      "commentsQty": 0
     }
   ],
   "users": [
     {
       "id": 1,
       "username": "bulbasaur",
-      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif"
     },
     {
       "id": 2,
       "username": "ivysaur",
-      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png"
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/2.gif"
     },
     {
       "id": 3,
       "username": "venusaur",
-      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png"
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/3.gif"
     },
     {
       "id": 4,
       "username": "charmander",
-      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/4.gif"
     },
     {
       "id": 5,
       "username": "charmeleon",
-      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png"
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/5.gif"
     },
     {
       "id": 6,
       "username": "charizard",
-      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/6.gif"
     },
     {
       "id": 7,
       "username": "squirtle",
-      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/7.gif"
     },
     {
       "id": 8,
       "username": "wartortle",
-      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png"
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/8.gif"
     },
     {
       "id": 9,
       "username": "blastoise",
-      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png"
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/9.gif"
     },
     {
       "id": 10,
       "username": "caterpie",
-      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png"
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/10.gif"
     },
     {
       "id": 11,
       "username": "metapod",
-      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/11.png"
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/11.gif"
     },
     {
       "id": 12,
       "username": "butterfree",
-      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/12.png"
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/12.gif"
     },
     {
       "id": 13,
       "username": "weedle",
-      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/13.png"
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/13.gif"
     },
     {
       "id": 14,
       "username": "kakuna",
-      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/14.png"
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/14.gif"
     },
     {
       "id": 15,
       "username": "beedrill",
-      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/15.png"
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/15.gif"
     },
     {
       "id": 22,
       "username": "fearow",
-      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/22.png"
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/22.gif"
     },
     {
       "id": 23,
@@ -130,7 +144,7 @@
     {
       "id": 25,
       "username": "pikachu",
-      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/25.gif"
     },
     {
       "id": 27,
@@ -145,7 +159,7 @@
     {
       "id": 26,
       "username": "raichu",
-      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/26.png"
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/26.gif"
     },
     {
       "id": 29,
@@ -163,9 +177,44 @@
       "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/31.png"
     },
     {
+      "id": 144,
+      "username": "articuno",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/144.gif"
+    },
+    {
+      "id": 145,
+      "username": "zapdos",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/145.gif"
+    },
+    {
+      "id": 146,
+      "username": "moltres",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/146.gif"
+    },
+    {
+      "id": 147,
+      "username": "datrini",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/147.gif"
+    },
+    {
+      "id": 148,
+      "username": "dagronair",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/148.gif"
+    },
+    {
+      "id": 149,
+      "username": "dragonite",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/149.gif"
+    },
+    {
       "id": 150,
       "username": "mewtwo",
-      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png"
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/150.gif"
+    },
+    {
+      "id": 151,
+      "username": "mew",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/151.gif"
     }
   ],
   "comments": [

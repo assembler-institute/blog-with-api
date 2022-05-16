@@ -56,6 +56,7 @@ const modifyCard = postId => {
     deleteBtn.classList.add('post__delete-btn')
     deleteBtn.setAttribute('data-bs-toggle', "modal")
     deleteBtn.setAttribute('data-bs-target', "#deleteModal")
+
     editBtn.addEventListener('click', () => {
         const saveComment = document.getElementById('editModal__save')
         saveComment.setAttribute('data-edit', "post");
@@ -77,7 +78,7 @@ function createPostCard (params){
     const content = document.createElement('div')
     const header = document.createElement('div')
     const text = document.createElement('p')
-    const imgSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${params.userId}.png`
+    const imgSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${params.userId}.gif`
     const avatar = avatarCard({src: imgSrc, alt: params.username, name: params.username})
     const postDescription = postStatusCard(params.id, params.commentsQty)
     const modify = modifyCard(params.id)

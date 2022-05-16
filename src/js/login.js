@@ -2,9 +2,8 @@ import {getUserName} from './api-communication.js'
 
 //Username & Email
 async function loginUser(username) {
-    console.log(username)
+    
     const registeredUsers = await getUserName(username)
-    console.log(registeredUsers)
 
     if(registeredUsers.length !== 0){
         sessionStorage.setItem('userId', registeredUsers[0].id)
