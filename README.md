@@ -14,13 +14,17 @@
 - [Getting Started](#starting)
 - [Technologies used](#technologies-used)
 - [Live Demo](#live-demo)
-- [Preview](#preview)
 - [Work Log](#work-log)
 
 ## Install
 
-- Install json-server
+- Download repository
+```javascript
+  git clone git@github.com:alejandroaperez1994g/blog-with-api.git
+  cd blog-with-api
+```
 
+- Install json-server
 ```javascript
   npm install
 ```
@@ -44,10 +48,6 @@ This is a project that simulates the display of posts brought from an API, being
 - HTTP Requests
 - JSON
 - API
-
-## Live Demo
-
-[Github Pages](https://alejandroaperez1994g.github.io/blog-with-api/)
 
 ## Preview
 
