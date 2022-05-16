@@ -12,7 +12,7 @@ function getData() {
   const Images = fetch(
     "https://pixabay.com/api/?key=27437216-9ddae61d97237ec9e5fc37f36&q=nature&image_type=photo&category=nature"
   );
- 
+
   Posts.then((response) => response.json())
     .then((data) => {
       renderPostTitle(data);
@@ -23,7 +23,7 @@ function getData() {
       getComments(data);
     })
     .catch((error) => console.error(error));
- 
+
   Users.then((response) => response.json())
     .then((data) => {
       getUsers(data);
@@ -39,7 +39,7 @@ function getData() {
 const getUsers = (users) => {
   usersData = users;
 };
- 
+
 const getComments = (comments) => {
   postsComments = comments;
 };
@@ -61,7 +61,6 @@ function renderPostTitle(postData) {
 //Create a Li element for each "Post Title" & append it to the list
 const creatPostTitleElement = (post, postsTitlesContainer) => {
   let elementContainer = createElement("div");
-  postsTitlesContainer.classList.add("row", "row-cols-1", "row-cols-lg-3", "g-lg-2");
   elementContainer.classList.add("col", "card");
   let postTitleElement = createElement("div");
   let img = creatBootstrapImg();
@@ -153,7 +152,6 @@ const setPostComments = (post) => {
 };
 
 const createCommentItem = (comment, key) => {
-  console.log(comment.name);
   let item = createElement("p");
   item.textContent = comment[key];
   item.classList = `comment__${key}`;
@@ -174,5 +172,5 @@ const createElement = (element) => {
 };
 
 export {
-    getData
+  getData
 };
