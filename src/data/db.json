@@ -4,7 +4,7 @@
       "userId": 1,
       "id": 2,
       "title": "qui est esse",
-      "body": "fsfsdfggdf hgsdfhsdhrgdf"
+      "body": "Buenas noches,\n\nSoy Mewtwo."
     },
     {
       "userId": 1,
@@ -119,6 +119,30 @@
       "id": 24,
       "username": null,
       "body": "Hola amigo posteo"
+    },
+    {
+      "userId": null,
+      "id": 25,
+      "username": null,
+      "body": ""
+    },
+    {
+      "userId": null,
+      "id": 26,
+      "username": null,
+      "body": "Hola amigo, tienes algun problema conmigo?"
+    },
+    {
+      "userId": null,
+      "id": 27,
+      "username": null,
+      "body": "Hola amigo que es lo que estás haciendo??"
+    },
+    {
+      "userId": null,
+      "id": 28,
+      "username": null,
+      "body": ""
     }
   ],
   "users": [
@@ -325,6 +349,27 @@
       "userId": null,
       "id": 28,
       "postId": 2,
+      "name": null,
+      "body": ""
+    },
+    {
+      "userId": null,
+      "id": 29,
+      "postId": 2,
+      "name": null,
+      "body": ""
+    },
+    {
+      "userId": null,
+      "id": 30,
+      "postId": 3,
+      "name": null,
+      "body": ""
+    },
+    {
+      "userId": null,
+      "id": 31,
+      "postId": 3,
       "name": null,
       "body": ""
     }

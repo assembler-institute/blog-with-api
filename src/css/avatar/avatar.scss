@@ -1,0 +1,19 @@
+.avatar{
+    display: flex;
+    flex-direction: row;
+  
+    &__image{
+        width:4rem;
+        height: 4rem;
+        margin-left: 0.5rem;
+        padding: 0.3rem;
+        background-color: black;
+        border: 1px solid black;
+        border-radius: 50%;
+    }
+
+    &__user{
+        margin-left: 0.5rem;
+    }
+
+}

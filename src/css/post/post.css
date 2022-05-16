@@ -1,0 +1,74 @@
+.post__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.post__text {
+  width: 90%;
+  margin-top: 1rem;
+  margin-left: 5%;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  text-align: center;
+}
+
+.post__comments-status {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.post__comments-btn {
+  background: url("../../img/icon/edit-icon.png") center no-repeat;
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+}
+
+.post__comments-counter {
+  padding-top: 0.8rem;
+}
+
+.post__modify-cont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.post__delete-btn {
+  background: url("../../img/icon/delete-icon.png") center no-repeat;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+}
+
+.post__edit-btn {
+  background: url("../../img/icon/edit-icon.png") center no-repeat;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+}
+/*# sourceMappingURL=post.css.map */

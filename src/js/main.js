@@ -3,8 +3,7 @@ import loginUser from "./login.js"
 import {createComment, editComment, deleteComments_Post} from './api-communication.js'
 import {getPosts, createPost, editPost, deletePost_Comments} from './api-communication.js'
 import {getUser, getUsers} from './api-communication.js'
-
-// createComment("hola", 1)
+import {createPostCard} from './post.js'
 
 /*VARIABLES*/
 const postsCont = document.getElementById('main__posts')
@@ -15,6 +14,8 @@ const saveComment = document.getElementById('editModal__save')
 const deleteComment = document.getElementById('deleteModalBtn');
 const createPostButton = document.getElementById('createPostButton');
 
+const pokemon = createPostCard()
+postsCont.append(pokemon)
 
 //Create Post
 createPostButton.addEventListener('click', ()=>{
@@ -67,78 +68,78 @@ deleteComment.addEventListener('click', ()=> {
 
 //Delete post comments
 
-getPosts()
 
-const displayPosts = () => {
-    fetch('http://localhost:3000/posts', {
-        method: 'GET'
+
+async function displayPosts() {
+    const postList = await getPosts()
+    postList.map(postsData => {
+
+        const post = document.createElement('article')//refactored
+        post.setAttribute('class', 'posts__article')//refactored
+        const title = document.createElement('span')
+        const body = document.createElement('span')
+        const userId = document.createElement('span')
+        const editButton = document.createElement('button')
+        const deleteButton = document.createElement('button')
+        const showComments = document.createElement('button') //refactored
+        const createCommentButton = document.createElement('button');
+
+        title.classList.add('post__title')
+        body.classList.add('post__body')
+        
+        //refactored until
+        editButton.classList.add('article__button--editButton')
+        editButton.setAttribute('data-bs-toggle', "modal")
+        editButton.setAttribute('data-bs-target', "#editModal")
+
+        editButton.addEventListener('click', () => {
+            const saveComment = document.getElementById('editModal__save')
+            saveComment.setAttribute('data-edit', "post");
+            saveComment.setAttribute('data-id', postsData.id);
+        })
+
+        deleteButton.classList.add('article__button--deleteButton')
+        deleteButton.setAttribute('data-bs-toggle', "modal")
+        deleteButton.setAttribute('data-bs-target', "#deleteModal")
+
+        deleteButton.addEventListener('click', ()=>{
+            const deleteComment = document.getElementById('deleteModalBtn')
+            deleteComment.setAttribute('data-delete', "post");
+            deleteComment.setAttribute('data-id', postsData.id);
+        })
+
+        //here
+
+        
+        showComments.setAttribute('data-show-comments', postsData.id) // refactored
+        showComments.classList.add('article__button--showComments') //refactored
+
+        createCommentButton.setAttribute('data-create-comment', postsData.id)
+        createCommentButton.classList.add('article__button--createComments')
+
+        //this next lines are going to be refactored
+        createCommentButton.addEventListener('click', ()=>{
+            const idPost = createCommentButton.getAttribute('data-create-comment');
+            const textPost = document.getElementById('create-post__text').value;
+            createComment(textPost, parseInt(idPost))
+            location.reload();
+        })
+
+        post.setAttribute('data-post-id', postsData.id)
+        post.setAttribute('data-user-id', postsData.userId)
+        title.textContent = `@${postsData.title}`
+        body.textContent = postsData.body
+        userId.textContent = `userNameId: ${postsData.userId}`
+        post.append(title, body, showComments, createCommentButton)
+
+        if (postsData.userId === parseInt(sessionStorage.getItem("userId"))) {
+            post.append(editButton, deleteButton)
+        }
+        postsCont.append(post)
     })
-        .then(response => response.json())
-        .then(data => 
-            data.map(postsData => {
 
-                const post = document.createElement('article')
-                post.setAttribute('class', 'posts__article')
-                const title = document.createElement('span')
-                const body = document.createElement('span')
-                const userId = document.createElement('span')
-                const editButton = document.createElement('button')
-                const deleteButton = document.createElement('button')
-                const showComments = document.createElement('button')
-                const createCommentButton = document.createElement('button');
-
-                title.classList.add('post__title')
-                body.classList.add('post__body')
-
-                
-                editButton.classList.add('article__button--editButton')
-                editButton.setAttribute('data-bs-toggle', "modal")
-                editButton.setAttribute('data-bs-target', "#editModal")
-
-                editButton.addEventListener('click', () => {
-                    const saveComment = document.getElementById('editModal__save')
-                    saveComment.setAttribute('data-edit', "post");
-                    saveComment.setAttribute('data-id', postsData.id);
-                })
-
-                deleteButton.classList.add('article__button--deleteButton')
-                deleteButton.setAttribute('data-bs-toggle', "modal")
-                deleteButton.setAttribute('data-bs-target', "#deleteModal")
-
-                deleteButton.addEventListener('click', ()=>{
-                    const deleteComment = document.getElementById('deleteModalBtn')
-                    deleteComment.setAttribute('data-delete', "post");
-                    deleteComment.setAttribute('data-id', postsData.id);
-                })
-
-                
-                showComments.setAttribute('data-show-comments', postsData.id)
-                showComments.classList.add('article__button--showComments')
-
-                createCommentButton.setAttribute('data-create-comment', postsData.id)
-                createCommentButton.classList.add('article__button--createComments')
-
-                createCommentButton.addEventListener('click', ()=>{
-                    const idPost = createCommentButton.getAttribute('data-create-comment');
-                    const textPost = document.getElementById('create-post__text').value;
-                    createComment(textPost, parseInt(idPost))
-                    location.reload();
-                })
-
-                post.setAttribute('data-post-id', postsData.id)
-                post.setAttribute('data-user-id', postsData.userId)
-                title.textContent = `@${postsData.title}`
-                body.textContent = postsData.body
-                userId.textContent = `userNameId: ${postsData.userId}`
-                post.append(title, body, showComments, createCommentButton)
-
-                if (postsData.userId === parseInt(sessionStorage.getItem("userId"))) {
-                    post.append(editButton, deleteButton)
-                }
-                postsCont.append(post)
-            }))
-        .catch(err => console.warn(err))
 }
+            
 
 displayPosts()
 
@@ -196,18 +197,4 @@ const displayComments = (postId, postContainer) => {
 
         }))
         .catch(err => console.warn(err))
-}
-
-const displayUsers = () => {
-    fetch('http://localhost:3000/users', {
-        method: 'GET'
-    })
-        .then(response => response.json())
-        .then(data => data.map(usersData => {
-            `id email name username`
-            const users = document.createElement('article')
-            const name = document.createElement('span')
-            const userName = document.createElement('span')
-            const email = document.createElement('span')
-        }))
 }
