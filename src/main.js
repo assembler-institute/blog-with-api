@@ -56,7 +56,7 @@ fetch(postUrl)
               fetch('http://localhost:3000/comments?postId=' + post.id)
                 .then((res) => res.json())
                 .then((comments) => {
-                  comments.forEach((comment) => {
+                    comments.forEach((comment) => {
                     const commentsContainer = document.createElement('div');
                     commentsContainer.classList.add('test', 'p-3');
                     console.log(commentsContainer);

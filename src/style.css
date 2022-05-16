@@ -1,19 +1,19 @@
 /* IMPORT FONT OF TITTLE */
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Libre+Franklin:wght@700&family=Work+Sans&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Libre+Franklin:wght@700&family=Open+Sans&family=Work+Sans&display=swap');
 
 /* RESET */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
 }
 
 
 /* STYLE TITLE */
 .header__title{
     color:#fff;
-    font-family: 'Bangers', cursive;
     background: #00c6ff;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to top, #0072ff, #00c6ff);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to top, #0072ff, #00c6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -21,8 +21,9 @@
 }
 h1{
     color:#fff;
-    font-family: 'Bangers', cursive;
-    font-size: 6rem;
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: 600;
+    font-size: 7rem;
 }
 
 
@@ -64,7 +65,7 @@ body{
 .article__section--posts {
     justify-content: space-around;
     background-color: rgb(207, 207, 207);
-    grid-column-gap: 11.5rem;
+    grid-column-gap: 3.5rem;
     grid-row-gap: 6rem;
 }
 
