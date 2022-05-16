@@ -51,7 +51,7 @@ This is a project that simulates the display of posts brought from an API, being
 
 ## Preview
 
-<img height="200" alt="image" src="https://user-images.githubusercontent.com/43146182/168497062-3e3549bc-87c0-4226-a4be-afd31a4b4598.png"> <img height="200" alt="image" src="./src/assets/images/demo.gif">
+<img height="200" alt="image" src="./src/assets/images/demo-mobile.gif"> <img height="200" alt="image" src="./src/assets/images/demo.gif">
 
 ## Work Log
 
