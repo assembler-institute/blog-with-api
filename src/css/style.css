@@ -1,0 +1,10 @@
+.dialog__modal {
+  position: absolute;
+  z-index: 1;
+}
+
+.dialog__btn {
+  border-radius: 50%;
+  display: flex;
+  justify-content: right;
+}

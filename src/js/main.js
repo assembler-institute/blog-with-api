@@ -57,11 +57,22 @@ fetchPosts
         // console.log(e.target.id, e.target.data - post);
 
         modalPosts.show();
+        mainContainer.style.display = "none";
 
         fetchUsers(e.target.id, e.target.dataset.post);
       });
     });
   });
+
+// Close modal post
+
+const closeBtn = document.getElementById("closeBtn");
+// console.log(closeBtn);
+closeBtn.addEventListener("click", function () {
+  console.log("workrss");
+  modalPosts.close();
+  mainContainer.style.display = "block";
+});
 
 // ------------------------------
 // ------------------------------
