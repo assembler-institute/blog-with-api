@@ -80,10 +80,11 @@ function createPostCard (params){
     const header = document.createElement('div')
     const text = document.createElement('p')
     const avatar = avatarCard({src:"./src/img/150.gif", alt: params.name, name: params.name})
-    const postDescription = postStatusCard({postId: 1, commentQty: 14})
+    const postDescription = postStatusCard({postId: params.postId, commentQty: params.postCommentsQty})
     const modify = modifyCard({postId: 1})
+    const activeUserId = sessionStorage.getItem('')
 
-    text.textContent = "Buenos días amigos míos, he venido aquí para colonizar la tierra"
+    text.textContent = params.body
 
     content.setAttribute('data-post-id', params.id)
     content.setAttribute('data-user-id', params.userId)
