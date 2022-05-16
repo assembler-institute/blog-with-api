@@ -3,7 +3,8 @@ import {
   handleModal,
   handleComments,
   handleEdit,
-  handleSubmit
+  handleSubmit,
+  handleDelete
 } from "./src/js/utility.js";
 
 const urlPosts = "http://localhost:3000/posts";//limit of posts
@@ -66,6 +67,14 @@ editModal.addEventListener('show.bs.modal', e => {
 const submitEdit = document.getElementById("submitEdit");
 submitEdit.addEventListener("click", () => {
   handleSubmit();
+})
+
+const deleteModal = document.getElementById("deleteModal");
+deleteModal.addEventListener('show.bs.modal', e => {
+  let button = e.relatedTarget;
+  let postId = button.getAttribute('data-bs-postID');
+
+  handleDelete(postId, allPosts);
 })
 
 // window.addEventListener('scroll', () => {

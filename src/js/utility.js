@@ -8,12 +8,14 @@ function createPost(post, users) {
     let cardComments = document.getElementById("cardComments");
     let modalButton = document.getElementById("modalButton");
     let editBtn = document.getElementById("editBtn");
+    let deleteBtn = document.getElementById("deleteBtn");
 
     cardIMG.src = `https://picsum.photos/200/300?1random=${post.id}`;
     cardTitle.innerText = post.title;
     cardComments.innerText = users.filter(user => user.id == post.userId)[0].name;
     modalButton.setAttribute("data-bs-postID", post.id);
     editBtn.setAttribute("data-bs-postID", post.id);
+    deleteBtn.setAttribute("data-bs-postID", post.id);
     template.hidden = false;
 
     cardContainer.appendChild(cardPost);
@@ -81,9 +83,9 @@ const handleEdit = (postId, allPosts) => {
 
 const handleSubmit = async () => {
     const editPostID = document.getElementById("editPostID");
-    const formProfile = document.getElementById("editForm");
-    let title = formProfile.editTitle.value;
-    let body = formProfile.editBody.value;
+    const formSubmit = document.getElementById("editForm");
+    let title = formSubmit.editTitle.value;
+    let body = formSubmit.editBody.value;
     const id = editPostID.value;
     const url = `http://localhost:3000/posts/${id}`;
 
@@ -103,10 +105,29 @@ const handleSubmit = async () => {
     });
 }
 
+const handleDelete = async (postId, allPosts) => {
+    const post = allPosts.find(element => element.id == postId);
+    const submitDelete = document.getElementById("submitDelete");
+    submitDelete.addEventListener("click", () => {
+
+        console.log(post);
+        console.log(post.id);
+
+        const url = `http://localhost:3000/posts/${post.id}`;
+        fetch(url, {
+            method: "DELETE",
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        });
+    })
+}
+
 export {
     createPost,
     handleModal,
     handleComments,
     handleEdit,
-    handleSubmit
+    handleSubmit,
+    handleDelete
 };
