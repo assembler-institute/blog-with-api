@@ -22,7 +22,7 @@ To get our project, you can clone it and do npm install to get the dependencies
 
 ## Team Members
 
-[Markdown Live Preview](https://github.com/RogerOliveDelgado).
-[Markdown Live Preview](https://github.com/juliomc23).
+[Roger Olive Delgado](https://github.com/RogerOliveDelgado).
+[Julio Macias Caldera](https://github.com/juliomc23).
 
 
