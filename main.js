@@ -4,7 +4,7 @@ import {
   handleComments
 } from "./src/js/utility.js";
 
-const urlPosts = "http://localhost:3000/posts";
+const urlPosts = "http://localhost:3000/posts";//limit of posts
 const urlUsers = "http://localhost:3000/users";
 const urlComments = "http://localhost:3000/comments";
 
@@ -34,7 +34,7 @@ const allComments = await getComments()
 
 
 const onLoad = () => {
-  allPosts.forEach(post => {
+  allPosts.map(post => {
     if (post.title)
       createPost(post, allUsers);
   });
@@ -52,6 +52,14 @@ modalTemplate.addEventListener('show.bs.modal', e => {
 modalTemplate.addEventListener('hidden.bs.modal', function () {
   document.getElementById("comments-wrapper").setAttribute("class", "collapse");
 })
+
+// const editModal = document.getElementById("editModal");
+// const editBtn = document.getElementById("editBtn");
+// editBtn.addEventListener("click", () => {
+//   editModal.setAttribute('class', 'edit fade show');
+//   editModal.setAttribute('aria-hidden', 'true');
+  
+// });
 
 // window.addEventListener('scroll', () => {
 //   console.log(window.scrollY) //scrolled from top

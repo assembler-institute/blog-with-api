@@ -27,7 +27,7 @@ function handleModal(allPosts, postId, users) {
     const modalUserImg = document.getElementById("userImg");
     cardModal.id = postId;
 
-    allPosts.forEach(post => {
+    allPosts.map(post => {
         if (post.title && post.id == postId) {
             const userByPost = users.filter(user => user.id == post.userId)[0]
             modalTitle.textContent = post.title
@@ -42,9 +42,9 @@ function handleModal(allPosts, postId, users) {
 const handleComments = (postId, allComments) => {
     const commentWarpperEl = document.getElementById('comments-wrapper')
     const postComments = allComments.filter(comment => comment.postId == postId)
+    commentWarpperEl.innerHTML = "";
 
     postComments.map(comment => {
-        console.log(comment)
         const commentCardEl = document.createElement('div')
         commentCardEl.className = 'card card-body mb-3'
 
