@@ -67,7 +67,7 @@ const creatPostTitleElement = (post, postsTitlesContainer) => {
 
   postTitleElement.className = "list-group-item";
   postTitleElement.setAttribute("data-bs-toggle", "modal");
-  postTitleElement.setAttribute("data-bs-target", "#staticBackdrop");
+  postTitleElement.setAttribute("data-bs-target", "#exampleModal");
   postTitleElement.textContent = post.title;
   postsTitlesContainer.append(elementcontainer);
 
@@ -108,7 +108,7 @@ const listElementAddEvent = (post, listElement) => {
 };
 
 const setModalTitle = (post) => {
-  let modalTitle = getElement("staticBackdropLabel");
+  let modalTitle = getElement("userName");
   let modalBody = getElement("bodyContent");
   modalTitle.textContent = post.title;
   modalBody.textContent = post.body;
