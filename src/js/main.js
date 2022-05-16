@@ -1,3 +1,7 @@
+window.addEventListener('load', (event) => {
+    console.log('page is fully loaded');
+    postArray.push("", "", "", "", "", "", "", "", "", "");
+});
 const postContainer = document.querySelector("#postContainer");
 const postArray = ["", "", "", "", "", "", "", "", "", ""];
 
@@ -9,15 +13,28 @@ fetch("http://localhost:3000/posts", {
         return response.json();
     })
     .then(function (data) {
+        let observer = new IntersectionObserver((posts) => {
+            posts.map(posts => {
+                if (posts.isIntersecting) {
+                    postArray.push("", "", "", "", "", "", "", "", "", "");
+
+                }
+            })
+            console.log(posts);
+            console.log(postArray);
+        }, {
+            rootMargin: "0px 0px 0px 0px",
+            threshold: 1.0
+        });
         postArray.map(function (blank, index, array) {
 
-            console.log(blank);
+            /* console.log(blank);
             console.log(index);
-            console.log(array);
+            console.log(array); */
 
             let postDiv = document.createElement("div");
             postDiv.setAttribute("id", index);
-            postDiv.classList.add("col", "card");
+            postDiv.classList.add("posts", "col", "card");
 
             const postData = data[postDiv.id];
             /* console.log(postData); */
@@ -43,4 +60,9 @@ fetch("http://localhost:3000/posts", {
 
             postContainer.appendChild(postDiv);
         });
+
+        const postsInScreen = document.querySelectorAll(".post-container .posts");
+        let lastPost = postsInScreen[postsInScreen.length - 1];
+        console.log(lastPost);
+        observer.observe(lastPost);
     })
