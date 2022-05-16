@@ -52,7 +52,18 @@ fetch(url + "/posts")
                 postBtn.textContent = "Open post"
                 postBtn.classList.add("btn", "btn-primary");
                 postDiv.appendChild(postBtn);
-
+                let modal = document.getElementById('postModal');
+                // Close modal button
+                let closeModal = document.getElementById('closeModal');
+                // Open modal event listener
+                postBtn.addEventListener('click', function(){
+                    modal.classList.toggle('visible');
+                
+                });
+                // Close modal event listener
+                closeModal.addEventListener('click', function(){
+                    modal.classList.remove('visible');
+                });
 
 
                 postContainer.appendChild(postDiv);
@@ -64,3 +75,5 @@ fetch(url + "/posts")
         console.log(lastPost);
         observer.observe(lastPost);
     })
+    
+         
