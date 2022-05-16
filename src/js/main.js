@@ -57,15 +57,13 @@ function loadPosts(){
                 userBodyPost.textContent = (post.body.charAt(0).toUpperCase() + post.body.slice(1));
                 contentTitle.textContent = (post.title.charAt(0).toUpperCase() + post.title.slice(1));
                 let titleLinkId = titleLink.getAttribute('id')
-                userNamePost.textContent = getUser(titleLinkId);
-                userEmailPost.textContent = getUser(titleLinkId);
-                paraTitle.textContent = getComments(titleLinkId);
-                paraBody.textContent = getComments(titleLinkId);
-                paraEmail.textContent = getComments(titleLinkId);
                 
                 contentBody.append(userBodyPost, userNamePost, userEmailPost);
                 boxUserComment.append(paraTitle, paraBody, paraEmail);
                 collapseWidthExample.append(boxUserComment);
+                
+                getUser(titleLinkId);
+                getComments(titleLinkId);
             });
 
             cardTitle.append(titleLink)
@@ -100,11 +98,11 @@ function getComments(idPost){
     .then(response => response.json())
     .then(data => {
         data.forEach(comment => {
+            console.log(comment);
             //console.log('Title: ' + comment.name + ' ----- Comment: ' + comment.body + ' ------- Email: ' + comment.email);
-            paraTitle.textContent = comment.name;
-            paraBody.textContent = comment.body;
+            paraTitle.textContent = comment.name.charAt(0).toUpperCase() + comment.name.slice(1);
+            paraBody.textContent = comment.body.charAt(0).toUpperCase() + comment.body.slice(1);
             paraEmail.textContent = comment.email;
-            //comment.name.toUpperCase();
         });
     })
     .catch(error => {
@@ -112,19 +110,6 @@ function getComments(idPost){
     });
 }
 //getComments(1);
-
-/*
-async function loadComments(idPost){
-    const response = await fetch(`http://localhost:3000/comments?postId=${idPost}`);
-    const comments = await response.json();
-    comments.forEach(comment => {
-        paraTitle.textContent = comment.name;
-        paraBody.textContent = comment.body;
-        paraEmail.textContent = comment.email;
-    });
-} 
-*/
-//loadComments(1);
 
 
 loadPosts();
