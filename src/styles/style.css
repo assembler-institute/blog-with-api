@@ -1,0 +1,220 @@
+@import url(./reset.css);
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+* {
+  font-family: "Nunito", sans-serif;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../assets/Aablog.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 90vw;
+}
+
+.article__post {
+  display: flex;
+  padding: 2%;
+  margin: 20px 10%;
+  border-radius: 5px;
+  box-shadow: 4px 4px 4px 4px rgb(199, 199, 199);
+}
+.post__container {
+  width: 100%;
+}
+
+.postList {
+  background-color: aliceblue;
+  height: 70vh;
+  width: 75%;
+  margin: 0 15%;
+  padding-top: 2rem;
+  padding-bottom: 5rem;
+  overflow: overlay;
+  background-color: #fff6ea;
+}
+
+.navbar {
+  position: sticky !important;
+  padding: 15%;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+.subTitle {
+  width: 75%;
+  padding: 20px;
+  margin: 0 15%;
+  font-weight: 700;
+  border-radius: 10px 10px 0 0;
+  margin-top: 2rem;
+  background-color: #fff6ea;
+  color: black;
+  text-align: center;
+}
+
+.img__avatar {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.buttons__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.btn__delete {
+  margin-left: 2rem;
+}
+
+.openModal:hover {
+  color: rgb(224, 89, 89);
+  cursor: pointer;
+}
+
+.footer {
+  width: 75%;
+  margin-bottom: 0;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  background-color: aliceblue;
+  border-radius: 0 0 10px 10px;
+  background-color: #fff6ea;
+}
+.comments__li {
+  list-style-type: none;
+  box-shadow: 2px 2px 2px 2px rgb(199, 199, 199);
+  padding: 2%;
+  margin: 20px 0;
+}
+.comments__li:hover {
+  background-color: beige;
+}
+.modify__title{
+  width: 100%;
+  border: 1.5px solid black;
+  border-radius: 5px;
+  margin: 10px 0 20px 0;
+  box-shadow: 2px 2px 2px 2px rgb(199, 199, 199);
+}
+.modifyBody {
+  resize: none;
+  width: 100%;
+  border: 1.5px solid black;
+  border-radius: 5px;
+  margin: 10px 0 20px 0;
+  box-shadow: 2px 2px 2px 2px rgb(199, 199, 199);
+}
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.modal__comments {
+  overflow-y: overlay;
+  height: 70vh;
+}
+.hide {
+  display: none !important;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #9f9d9d #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #fff6ea;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #9f9d9d;
+  border-radius: 10px;
+  border: 3px solid #ffffff;
+}
+
+@media (max-width: 700px) {
+  .navbar img {
+    margin: 0 auto;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+  .article__post {
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    margin: 20px 0%;
+    border-radius: 5px;
+    box-shadow: 4px 4px 4px 4px rgb(199, 199, 199);
+  }
+  .postList {
+    margin: 0 2%;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+  }
+  .btn__modify {
+    margin-top: 0.7rem;
+    width: 100%;
+  }
+  .btn__delete {
+    margin-top: 0.7rem;
+    margin-left: 0;
+  }
+  .img__avatar {
+    margin: 10px auto;
+    width: 9rem;
+    height: 9rem;
+  }
+  .buttons__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+  ul#postList.postList {
+    padding-left: 0;
+  }
+  .postList{
+    overflow: initial;
+    height: 100%;
+    width: 100%;
+    margin: 0 0;
+  }
+  .subTitle {
+    width: 100%;
+    padding: 20px;
+    margin: 0 15%;
+    font-weight: 700;
+    border-radius: 10px 10px 0 0;
+    margin-top: 2rem;
+    background-color: #fff6ea;
+    color: black;
+    text-align: center;
+  }
+}
