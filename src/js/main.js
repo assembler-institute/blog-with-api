@@ -15,7 +15,7 @@ async function getPostData() {
     const postData = response.json();
     return postData;
   } catch(error) {
-    console.log(error)
+    alert('Error Data');
   }
 }
 
@@ -34,7 +34,7 @@ async function getComments () {
     const commentsData = await response.json();
     return commentsData;
   } catch(error) {
-    console.log(error);
+    alert('Error Data');
   }
 }
 
