@@ -8,6 +8,10 @@ const userNamePost = document.getElementById('user__name--post');
 const userEmailPost = document.getElementById('user__email--post');
 /*  */
 const commentBox = document.getElementById('collapseWidthExample');
+
+const paraTitle = document.createElement('p');
+const paraBody = document.createElement('p');
+const paraEmail = document.createElement('p');
 /*  */
 const collapseWidthExample = document.getElementById('collapseWidthExample'); //cajita pal comentario
 
@@ -38,9 +42,6 @@ function loadPosts(){
             const boxUserComment = document.createElement('div');
             boxUserComment.classList.add('card', 'card-body', 'toggle__comment--box');
             
-            const paraTitle = document.createElement('p');
-            const paraBody = document.createElement('p');
-            const paraEmail = document.createElement('p');
             paraTitle.classList.add('toggle__comment--para');
             paraBody.classList.add('toggle__comment--para');
             paraEmail.classList.add('toggle__comment--para');
@@ -64,8 +65,8 @@ function loadPosts(){
                 
                 contentBody.append(userBodyPost, userNamePost, userEmailPost);
                 boxUserComment.append(paraTitle, paraBody, paraEmail);
+                collapseWidthExample.append(boxUserComment);
             });
-
 
             cardTitle.append(titleLink)
             btnDel.append(delIcon);
@@ -117,10 +118,9 @@ async function loadComments(idPost){
     const response = await fetch(`http://localhost:3000/comments?postId=${idPost}`);
     const comments = await response.json();
     comments.forEach(comment => {
-        //console.log(comment.body);
-        //commentTitle.textContent = comment.title;
-        //commentBody.textContent = comment.body;
-        //commentUser.textContent = comment.email;
+        paraTitle.textContent = comment.name;
+        paraBody.textContent = comment.body;
+        paraEmail.textContent = comment.email;
     });
 } 
 */
