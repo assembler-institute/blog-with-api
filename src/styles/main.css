@@ -5,6 +5,10 @@
     text-align: center;
   }
 
+.list-group-item {
+  border: none;
+}
+
 .list-group-item:hover{
   cursor: pointer;
   background-color: #f8f9fa;
@@ -17,6 +21,19 @@
 
 .accordion-button{
   font-weight: bold;
+}
+
+
+.blog__postTitle--container{
+  margin: 0 1rem;
+}
+
+.elementContainer {
+  padding: 0;
+  background-color: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, .12);
 }
 
 .commentWrapper {
@@ -35,3 +52,22 @@
 }
 
 
+/* Buttons */
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin: .5rem 0;
+}
+
+.blog__post__remove__btn{
+  margin-left: .3rem;
+}
+
+
+/* IMG */
+.img-thumbnail{
+  padding: 0;
+  border: none;
+  width: 100%;
+  height: min-content;
+}

@@ -2,13 +2,17 @@
 //Get the container from html
 let usersData;
 let postsComments;
+let apiImages;
 
 function getData() {
   let url = "http://localhost:3000";
   const Comments = fetch(`${url}/comments`);
   const Posts = fetch(`${url}/posts`);
   const Users = fetch(`${url}/users`);
-
+  const Images = fetch(
+    "https://pixabay.com/api/?key=27437216-9ddae61d97237ec9e5fc37f36&q=nature&image_type=photo&category=nature"
+  );
+ 
   Posts.then((response) => response.json())
     .then((data) => {
       renderPostTitle(data);
@@ -19,10 +23,15 @@ function getData() {
       getComments(data);
     })
     .catch((error) => console.error(error));
-
+ 
   Users.then((response) => response.json())
     .then((data) => {
       getUsers(data);
+    })
+    .catch((error) => console.error(error));
+  Images.then((response) => response.json())
+    .then((data) => {
+      getImages(data);
     })
     .catch((error) => console.error(error));
 }
@@ -30,10 +39,14 @@ function getData() {
 const getUsers = (users) => {
   usersData = users;
 };
-
+ 
 const getComments = (comments) => {
   postsComments = comments;
 };
+const getImages = (images) => {
+  apiImages = images;
+};
+
 
 function renderPostTitle(postData) {
   const postsTitlesContainer = getElement("postsTitlesContainer");
@@ -50,10 +63,11 @@ const creatPostTitleElement = (post, postsTitlesContainer) => {
   let elementContainer = createElement("div");
   postsTitlesContainer.classList.add("row");
   elementContainer.classList.add("col-sm-4");
+  elementContainer.classList.add("elementContainer");
   let postTitleElement = createElement("div");
   let img = creatBootstrapImg();
-  let editBtn = createButton("edit", post.id);
-  let removeBtn = createButton("remove", post.id);
+  let editBtn = createButton("Edit", post.id);
+  let removeBtn = createButton("Remove", post.id);
 
   postTitleElement.className = "list-group-item";
   postTitleElement.setAttribute("data-bs-toggle", "modal");
@@ -61,13 +75,20 @@ const creatPostTitleElement = (post, postsTitlesContainer) => {
   postTitleElement.textContent = post.title;
   postsTitlesContainer.append(elementContainer);
 
-  elementContainer.append(img, postTitleElement, editBtn, removeBtn);
+  let buttonContainer = createElement("div");
+  buttonContainer.className = "buttonContainer";
+
+  elementContainer.append(img, postTitleElement, buttonContainer);
+  buttonContainer.append(editBtn, removeBtn);
+
   return postTitleElement;
 };
 
 const creatBootstrapImg = () => {
+  let i = Math.round(Math.random() * (19 - 1) + 1);
+  let imgUrl = apiImages.hits[i].webformatURL;
   let img = createElement("img");
-  img.src = "...";
+  img.src = `${imgUrl}`;
   img.classList = "img-thumbnail";
   img.alt = "...";
   return img;
@@ -76,10 +97,10 @@ const creatBootstrapImg = () => {
 const createButton = (element, id) => {
   let btn = createElement("button");
   btn.textContent = element;
-  if (element == "remove") {
+  if (element == "Remove") {
     btn.classList = `btn btn-danger blog__post__${element}__btn`;
   } else {
-    btn.classList = `btn btn-light blog__post__${element}__btn`;
+    btn.classList = `btn btn-primary blog__post__${element}__btn`;
   }
   btn.id = `${element}Btn${id}`;
   btn.dataset[element] = "button";
