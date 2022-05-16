@@ -2,6 +2,7 @@
 const postsURL = fetch("https://jsonplaceholder.typicode.com/posts/");
 const commentsURL = fetch("https://jsonplaceholder.typicode.com/comments/");
 const contentBody = document.getElementById('modal__body-content');
+const contenTitle = document.getElementById('modal__title-content');
 
 function loadPosts(){
     postsURL
@@ -27,7 +28,7 @@ function loadPosts(){
             const btnDel = document.createElement('button');
             const addIcon = document.createElement('i');
             const delIcon = document.createElement('i');
-            const modalTitle = document.getElementById('modalTitle');
+            // const modalTitle = document.getElementById('modalTitle');
             const modalBody = document.createElement('p');
             const modalUser = document.createElement('p');
             titleLink.setAttribute('id', post.userId);
@@ -38,8 +39,8 @@ function loadPosts(){
             btnDel.classList.add('btn', 'btn-outline-danger');
 
             cardTitle.addEventListener('click', () =>{
-                modalBody.textContent = (post.body.charAt(0).toUpperCase() + post.body.slice(1));
-                modalTitle.textContent = (post.title.charAt(0).toUpperCase() + post.title.slice(1));
+                contentBody.textContent = (post.body.charAt(0).toUpperCase() + post.body.slice(1));
+                contenTitle.textContent = (post.title.charAt(0).toUpperCase() + post.title.slice(1));
                 modalUser.textContent = getUser(titleLink.getAttribute('id'));
                 //console.log(titleLink.getAttribute('id'));
                 contentBody.append(modalBody, modalUser);
