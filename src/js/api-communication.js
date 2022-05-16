@@ -34,7 +34,7 @@ async function editComment(id, edittedBody){
     }
 }
 
-async function deleteComments_Post(id){
+async function deleteComment(id){
     try{
         fetch(`${commentsPath}/${id}`, {
             method: 'DELETE',
@@ -45,6 +45,7 @@ async function deleteComments_Post(id){
         console.error(error)
     }
 }
+
 //Posts
 
 async function getPost(id){
@@ -65,8 +66,19 @@ async function getPosts(){
             method: 'GET'
         })
         const posts = await response.json()
-        console.log(posts);
         return posts
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+async function getPostsCommentsQty (postId){
+    try{
+        const response = await fetch(`${commentsPath}/?postId=${postId}`, {
+            method: 'GET'
+        })
+        const posts = await response.json()
+        return posts.length
     } catch (error) {
         console.error(error)
     }
@@ -81,7 +93,8 @@ async function createPost(body){
             userId: sessionStorage.getItem("userId"),
             id: "",
             username: sessionStorage.getItem("username"),
-            body: body
+            body: body,
+            commentsQty: 0
         })
     })
     } catch (error) {
@@ -89,7 +102,7 @@ async function createPost(body){
     }
 }
 
-async function deletePost_Comments(id){
+async function deletePost(id){
     try{
         fetch(`${postsPath}/${id}`, {
             method: 'DELETE',
@@ -100,7 +113,6 @@ async function deletePost_Comments(id){
         console.error(error)
     }
 }
-
 
 async function editPost(id, edittedBody){
     try{
@@ -129,7 +141,7 @@ async function getUser(id){
 
 async function getUserName(name){
     try{
-        const response = await fetch(`${usersPath}/?pokemonName=${name}`, {
+        const response = await fetch(`${usersPath}/?username=${name}`, {
             method : 'GET'
         })
         const user = await response.json()
@@ -160,8 +172,8 @@ async function postUser(userId, userName, pokemonImg){
             },
             body: JSON.stringify({
                     id: userId,
-                    pokemonName: `${userName}`,
-                    pokemonImg: `${pokemonImg}`
+                    username: `${userName}`,
+                    imgSrc: `${pokemonImg}`
             })
         })
     } catch (err) {
@@ -169,6 +181,6 @@ async function postUser(userId, userName, pokemonImg){
     }
 }
 
-export {createComment, editComment, deleteComments_Post}
-export {getPost, getPosts, createPost, editPost, deletePost_Comments}
+export {createComment, editComment, deleteComment}
+export {getPost, getPosts, createPost, editPost, deletePost, getPostsCommentsQty}
 export {getUser, getUserName, getUsers, postUser}

@@ -1,319 +1,257 @@
 {
   "posts": [
     {
-      "userId": 1,
+      "userId": "6",
+      "id": 1,
+      "username": "charizard",
+      "body": "Soy un poquito chulillo",
+      "commentsQty": 3
+    },
+    {
+      "userId": "3",
       "id": 2,
-      "name": "Venusaur",
-      "body": "Buenas noches,\n Soy Mewtwo."
+      "username": "venusaur",
+      "body": "Ataque rayo solar!",
+      "commentsQty": 2
     },
     {
-      "userId": 2,
+      "userId": "25",
       "id": 3,
-      "name": "Pikachu",
-      "body": "et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut"
+      "username": "pikachu",
+      "body": "Bon dia nois!",
+      "commentsQty": 4
     },
     {
-      "userId": 2,
+      "userId": "1",
       "id": 4,
-      "name": "Pikachu",
-      "body": "ullam et saepe reiciendis voluptatem adipisci\nsit amet autem assumenda provident rerum culpa\nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit"
+      "username": "bulbasaur",
+      "body": "What happens?",
+      "commentsQty": 2
     },
     {
-      "userId": 1,
+      "userId": "15",
       "id": 5,
-      "name": "Bulbasaur",
-      "body": "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque"
-    },
-    {
-      "userId": 1,
-      "id": 6,
-      "name": "Mew",
-      "body": "ut aspernatur corporis harum nihil quis provident sequi\nmollitia nobis aliquid molestiae\nperspiciatis et ea nemo ab reprehenderit accusantium quas\nvoluptate dolores velit et doloremque molestiae"
-    },
-    {
-      "userId": "2",
-      "id": 7,
-      "username": null,
-      "body": "Hola, amigo. Bienvenido a mi dictadura"
+      "username": "beedrill",
+      "body": "Abejita",
+      "commentsQty": 1
     }
   ],
   "users": [
     {
-      "id": 2,
-      "pokemonName": "ivysaur",
-      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png"
+      "id": 1,
+      "username": "bulbasaur",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
     },
     {
-      "id": 1,
-      "pokemonName": "bulbasaur",
-      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+      "id": 2,
+      "username": "ivysaur",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png"
     },
     {
       "id": 3,
-      "pokemonName": "venusaur",
-      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png"
+      "username": "venusaur",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png"
     },
     {
       "id": 4,
-      "pokemonName": "charmander",
-      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
+      "username": "charmander",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
     },
     {
       "id": 5,
-      "pokemonName": "charmeleon",
-      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png"
+      "username": "charmeleon",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png"
     },
     {
       "id": 6,
-      "pokemonName": "charizard",
-      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
+      "username": "charizard",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
     },
     {
       "id": 7,
-      "pokemonName": "squirtle",
-      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
+      "username": "squirtle",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
     },
     {
       "id": 8,
-      "pokemonName": "wartortle",
-      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png"
+      "username": "wartortle",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png"
     },
     {
       "id": 9,
-      "pokemonName": "blastoise",
-      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png"
+      "username": "blastoise",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png"
     },
     {
       "id": 10,
-      "pokemonName": "caterpie",
-      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png"
+      "username": "caterpie",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png"
     },
     {
       "id": 11,
-      "pokemonName": "metapod",
-      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/11.png"
+      "username": "metapod",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/11.png"
     },
     {
       "id": 12,
-      "pokemonName": "butterfree",
-      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/12.png"
+      "username": "butterfree",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/12.png"
     },
     {
       "id": 13,
-      "pokemonName": "weedle",
-      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/13.png"
+      "username": "weedle",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/13.png"
     },
     {
       "id": 14,
-      "pokemonName": "kakuna",
-      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/14.png"
+      "username": "kakuna",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/14.png"
     },
     {
       "id": 15,
-      "pokemonName": "beedrill",
-      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/15.png"
+      "username": "beedrill",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/15.png"
     },
     {
-      "id": 17,
-      "pokemonName": "pidgeotto",
-      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/17.png"
+      "id": 22,
+      "username": "fearow",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/22.png"
     },
     {
-      "id": 16,
-      "pokemonName": "pidgey",
-      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/16.png"
+      "id": 23,
+      "username": "ekans",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/23.png"
     },
     {
-      "id": 18,
-      "pokemonName": "pidgeot",
-      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/18.png"
+      "id": 24,
+      "username": "arbok",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/24.png"
     },
     {
-      "id": 19,
-      "pokemonName": "rattata",
-      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/19.png"
+      "id": 25,
+      "username": "pikachu",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
     },
     {
-      "id": 20,
-      "pokemonName": "raticate",
-      "pokemonImg": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/20.png"
+      "id": 27,
+      "username": "sandshrew",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png"
+    },
+    {
+      "id": 28,
+      "username": "sandslash",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/28.png"
+    },
+    {
+      "id": 26,
+      "username": "raichu",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/26.png"
+    },
+    {
+      "id": 29,
+      "username": "nidoran-f",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/29.png"
+    },
+    {
+      "id": 30,
+      "username": "nidorina",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/30.png"
+    },
+    {
+      "id": 31,
+      "username": "nidoqueen",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/31.png"
+    },
+    {
+      "id": 150,
+      "username": "mewtwo",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png"
     }
   ],
   "comments": [
     {
+      "postId": 1,
+      "userId": 3,
+      "id": 1,
+      "name": "venusaur",
+      "body": "bvvbdbdf"
+    },
+    {
+      "postId": 1,
+      "userId": 9,
+      "id": 2,
+      "name": "blastoise",
+      "body": "Si te quema, yo te tiro un poco de agua"
+    },
+    {
+      "postId": 1,
+      "userId": 150,
+      "id": 3,
+      "name": "mewtwo",
+      "body": "Como no paréis, os paro yo"
+    },
+    {
       "postId": 2,
       "userId": 3,
+      "id": 4,
+      "name": "venusaur",
+      "body": "No me quemes, por favor"
+    },
+    {
+      "postId": 2,
+      "userId": 9,
+      "id": 5,
+      "name": "blastoise",
+      "body": "Si te quema, yo te tiro un poco de agua"
+    },
+    {
+      "postId": 3,
+      "userId": 150,
       "id": 6,
-      "name": "et fugit eligendi deleniti quidem qui sint nihil autem",
-      "email": "Presley.Mueller@myrl.com",
-      "body": "doloribus at sed quis culpa deserunt consectetur qui praesentium\naccusamus fugiat dicta\nvoluptatem rerum ut voluptate autem\nvoluptatem repellendus aspernatur dolorem in"
+      "name": "mewtwo",
+      "body": "Como no paréis, os paro yo"
     },
     {
-      "postId": 2,
-      "userId": 4,
+      "postId": 3,
+      "userId": 3,
       "id": 7,
-      "name": "repellat consequatur praesentium vel minus molestias voluptatum",
-      "email": "Dallas@ole.me",
-      "body": "maiores sed dolores similique labore et inventore et\nquasi temporibus esse sunt id et\neos voluptatem aliquam\naliquid ratione corporis molestiae mollitia quia et magnam dolor"
+      "name": "venusaur",
+      "body": "No me quemes, por favor"
     },
     {
-      "postId": 2,
-      "userId": 4,
+      "postId": 3,
+      "userId": 9,
       "id": 8,
-      "name": "et omnis dolorem",
-      "email": "Mallory_Kunze@marie.org",
-      "body": "ut voluptatem corrupti velit\nad voluptatem maiores\net nisi velit vero accusamus maiores\nvoluptates quia aliquid ullam eaque"
+      "name": "blastoise",
+      "body": "Si te quema, yo te tiro un poco de agua"
     },
     {
-      "postId": 2,
-      "userId": 5,
+      "postId": 3,
+      "userId": 150,
       "id": 9,
-      "name": "provident id voluptas",
-      "email": "Meghan_Littel@rene.us",
-      "body": "sapiente assumenda molestiae atque\nadipisci laborum distinctio aperiam et ab ut omnis\net occaecati aspernatur odit sit rem expedita\nquas enim ipsam minus"
+      "name": "mewtwo",
+      "body": "Como no paréis, os paro yo"
     },
     {
-      "postId": 2,
-      "userId": 6,
+      "postId": 4,
+      "userId": 3,
       "id": 10,
-      "name": "eaque et deleniti atque tenetur ut quo ut",
-      "email": "Carmen_Keeling@caroline.name",
-      "body": "voluptate iusto quis nobis reprehenderit ipsum amet nulla\nquia quas dolores velit et non\naut quia necessitatibus\nnostrum quaerat nulla et accusamus nisi facilis"
+      "name": "venusaur",
+      "body": "No me quemes, por favor"
     },
     {
-      "postId": 3,
-      "userId": 6,
+      "postId": 4,
+      "userId": 9,
       "id": 11,
-      "name": "fugit labore quia mollitia quas deserunt nostrum sunt",
-      "email": "Veronica_Goodwin@timmothy.net",
-      "body": "ut dolorum nostrum id quia aut est\nfuga est inventore vel eligendi explicabo quis consectetur\naut occaecati repellat id natus quo est\nut blanditiis quia ut vel ut maiores ea"
+      "name": "blastoise",
+      "body": "Si te quema, yo te tiro un poco de agua"
     },
     {
-      "postId": 3,
-      "userId": 6,
+      "postId": 5,
+      "userId": 150,
       "id": 12,
-      "name": "modi ut eos dolores illum nam dolor",
-      "email": "Oswald.Vandervort@leanne.org",
-      "body": "expedita maiores dignissimos facilis\nipsum est rem est fugit velit sequi\neum odio dolores dolor totam\noccaecati ratione eius rem velit"
-    },
-    {
-      "postId": 3,
-      "userId": 7,
-      "id": 13,
-      "name": "aut inventore non pariatur sit vitae voluptatem sapiente",
-      "email": "Kariane@jadyn.tv",
-      "body": "fuga eos qui dolor rerum\ninventore corporis exercitationem\ncorporis cupiditate et deserunt recusandae est sed quis culpa\neum maiores corporis et"
-    },
-    {
-      "postId": 3,
-      "userId": 7,
-      "id": 14,
-      "name": "et officiis id praesentium hic aut ipsa dolorem repudiandae",
-      "email": "Nathan@solon.io",
-      "body": "vel quae voluptas qui exercitationem\nvoluptatibus unde sed\nminima et qui ipsam aspernatur\nexpedita magnam laudantium et et quaerat ut qui dolorum"
-    },
-    {
-      "postId": 3,
-      "userId": 8,
-      "id": 15,
-      "name": "debitis magnam hic odit aut ullam nostrum tenetur",
-      "email": "Maynard.Hodkiewicz@roberta.com",
-      "body": "nihil ut voluptates blanditiis autem odio dicta rerum\nquisquam saepe et est\nsunt quasi nemo laudantium deserunt\nmolestias tempora quo quia"
-    },
-    {
-      "postId": 4,
-      "userId": 9,
-      "id": 16,
-      "name": "perferendis temporibus delectus optio ea eum ratione dolorum",
-      "email": "Christine@ayana.info",
-      "body": "iste ut laborum aliquid velit facere itaque\nquo ut soluta dicta voluptate\nerror tempore aut et\nsequi reiciendis dignissimos expedita consequuntur libero sed fugiat facilis"
-    },
-    {
-      "postId": 4,
-      "userId": 9,
-      "id": 17,
-      "name": "eos est animi quis",
-      "email": "Preston_Hudson@blaise.tv",
-      "body": "consequatur necessitatibus totam sed sit dolorum\nrecusandae quae odio excepturi voluptatum harum voluptas\nquisquam sit ad eveniet delectus\ndoloribus odio qui non labore"
-    },
-    {
-      "postId": 4,
-      "userId": 10,
-      "id": 18,
-      "name": "aut et tenetur ducimus illum aut nulla ab",
-      "email": "Vincenza_Klocko@albertha.name",
-      "body": "veritatis voluptates necessitatibus maiores corrupti\nneque et exercitationem amet sit et\nullam velit sit magnam laborum\nmagni ut molestias"
-    },
-    {
-      "postId": 3,
-      "userId": 1,
-      "name": "id labore ex et quam laborum",
-      "email": "Eliseo@gardner.biz",
-      "body": "Spaguettiis",
-      "id": 22
-    },
-    {
-      "userId": 1,
-      "id": 23,
-      "postId": 2,
-      "name": "Bret",
-      "body": ""
-    },
-    {
-      "userId": 1,
-      "id": 24,
-      "postId": 2,
-      "name": "Bret",
-      "body": ""
-    },
-    {
-      "userId": 1,
-      "id": 25,
-      "postId": 2,
-      "name": "Bret",
-      "body": ""
-    },
-    {
-      "userId": null,
-      "id": 26,
-      "postId": 2,
-      "name": null,
-      "body": ""
-    },
-    {
-      "userId": null,
-      "id": 27,
-      "postId": 2,
-      "name": null,
-      "body": ""
-    },
-    {
-      "userId": null,
-      "id": 28,
-      "postId": 2,
-      "name": null,
-      "body": ""
-    },
-    {
-      "userId": null,
-      "id": 29,
-      "postId": 2,
-      "name": null,
-      "body": ""
-    },
-    {
-      "userId": null,
-      "id": 30,
-      "postId": 3,
-      "name": null,
-      "body": ""
-    },
-    {
-      "userId": null,
-      "id": 31,
-      "postId": 3,
-      "name": null,
-      "body": ""
+      "name": "mewtwo",
+      "body": "Como no paréis, os paro yo"
     }
   ]
 }

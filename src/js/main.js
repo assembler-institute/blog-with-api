@@ -1,21 +1,8 @@
 /*IMPORTS*/
 import loginUser from "./login.js"
-import {createComment, editComment, deleteComments_Post} from './api-communication.js'
-import {getPosts, createPost, editPost, deletePost_Comments} from './api-communication.js'
-import {getUser, getUsers} from './api-communication.js'
+import {createComment, editComment, deleteComment} from './api-communication.js'
+import {getPosts, createPost, editPost, deletePost} from './api-communication.js'
 import {createPostCard} from './post.js'
-
-// import getPokemon from "./poke-api-communication.js"
-// getPokemon()
-
-const getUserLoginImg = () =>{
-    const userDiv = document.getElementById('dropdownMenuLink')
-    const createPostAvatar = document.getElementById('createPostAvatar')
-    userDiv.textContent = sessionStorage.getItem('username')
-    createPostAvatar.src = sessionStorage.getItem('avatarimg')
-}
-
-getUserLoginImg()
 
 /*VARIABLES*/
 const postsCont = document.getElementById('main__posts')
@@ -23,17 +10,37 @@ const commentsCont = document.getElementById('comments')
 const usersCont = document.getElementById('users')
 const loginBtn = document.getElementById('loginButton')
 const saveComment = document.getElementById('editModal__save')
-const deleteComment = document.getElementById('deleteModalBtn');
+const deleteCommentBtn = document.getElementById('deleteModalBtn');
 const createPostButton = document.getElementById('createPostButton');
 
 window.onload = function (){
+    if (!sessionStorage.getItem('userId')){
+        defaultUser()
+    }
     displayPosts()
+    getUserLoginImg()
+}
+
+//Default user
+const defaultUser = () => {
+    sessionStorage.setItem('username', "pikachu")
+    sessionStorage.setItem('userId', 25)
+    sessionStorage.setItem('avatarimg', "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png")
+}
+
+//Load userInfo from sessionStorage
+const getUserLoginImg = () =>{
+    const userDiv = document.getElementById('dropdownMenuLink')
+    const createPostAvatar = document.getElementById('createPostAvatar')
+    userDiv.textContent = sessionStorage.getItem('username')
+    createPostAvatar.src = sessionStorage.getItem('avatarimg')
 }
 
 //Create Post
-createPostButton.addEventListener('click', ()=>{
+createPostButton.addEventListener('click', async () => {
     const textPost = document.getElementById('create-post__text').value;
-    createPost(textPost)
+    const response = await createPost(textPost)
+    location.reload()
 })
 
 //Login
@@ -44,43 +51,44 @@ loginBtn.addEventListener('click', () => {
 
 //Show post comments
 postsCont.addEventListener('click', (e) => {
-
     if(e.target.hasAttribute('data-show-comments')){
         displayComments(e.target.getAttribute('data-show-comments'), e.target.parentNode)
         e.target.disabled = true
-    }
-    // const postId = e.target.parentNode.getAttribute('data-post-id')
-    // displayComments(postId, e.target.parentNode)
+    } 
 })
 
 //SaveComment
-saveComment.addEventListener('click', ()=> {
-    let newText = document.getElementById('editModal__text').value //puede dar problemas
+saveComment.addEventListener('click', async () => {
+    let newText = document.getElementById('editModal__text').value
     const saveAttrb = saveComment.getAttribute('data-edit')
     const id = saveComment.getAttribute('data-id')
+
     if(saveAttrb === 'post'){
-        editPost(id, newText)
+        await editPost(id, newText)
     } else if (saveAttrb === 'comment'){
-        editComment(id, newText)
+        await editComment(id, newText)
     }
+
     location.reload()
     newText = ''
 })
 
-deleteComment.addEventListener('click', ()=> {
-    const deleteAttrb = deleteComment.getAttribute('data-delete')
-    const id = deleteComment.getAttribute('data-id')
+deleteCommentBtn.addEventListener('click', async ()=> {
+    const deleteAttrb = deleteCommentBtn.getAttribute('data-delete')
+    const id = deleteCommentBtn.getAttribute('data-id')
     if(deleteAttrb === 'post'){
-        deletePost_Comments(id)
+        await deletePost(id)
     } else if (deleteAttrb === 'comment'){
-        deleteComment_Post(id)
+        await deleteComment(id)
     }
     location.reload()
 })
 
 async function displayPosts() {
     const postList = await getPosts()
-    postList.map(post => postsCont.append(createPostCard(post)))
+    postList.map(post => {
+        postsCont.append(createPostCard(post))
+})
 }
 
 const displayComments = (postId, postContainer) => {

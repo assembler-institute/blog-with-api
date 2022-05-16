@@ -16,14 +16,13 @@ const avatarCard = params => {
     return avatar
 }
 
-const postStatusCard = params => {
+const postStatusCard = (postId, commentQty) => {
     const comments = document.createElement('div')
     const commentsCounter = document.createElement('p')
     const commentsBtn = document.createElement('button')
     const createCommentBtn = document.createElement('p')
 
-    createCommentBtn.textContent = '+++++'
-    createCommentBtn.setAttribute('data-create-comment', params.postId)
+    createCommentBtn.setAttribute('data-create-comment', postId)
     createCommentBtn.classList.add('post__comment-create')
 
     //this next lines are going to be refactored
@@ -33,20 +32,19 @@ const postStatusCard = params => {
         createComment(textPost, parseInt(idPost))
         location.reload();
     })
-
-    commentsCounter.textContent = params.commentQty
+    commentsCounter.textContent = commentQty
     
     comments.classList.add('post__comments-status')
     commentsCounter.classList.add('post__comments-counter')
     commentsBtn.classList.add('article__button--showComments')
-    commentsBtn.setAttribute('data-show-comments', params.postId)
+    commentsBtn.setAttribute('data-show-comments', postId)
 
     comments.append(commentsBtn, commentsCounter, createCommentBtn)
     
     return comments
 }
 
-const modifyCard = params => {
+const modifyCard = postId => {
     const modifyCont = document.createElement('div')
     const editBtn = document.createElement('button')
     const deleteBtn = document.createElement('button')
@@ -58,16 +56,15 @@ const modifyCard = params => {
     deleteBtn.classList.add('post__delete-btn')
     deleteBtn.setAttribute('data-bs-toggle', "modal")
     deleteBtn.setAttribute('data-bs-target', "#deleteModal")
-    
     editBtn.addEventListener('click', () => {
         const saveComment = document.getElementById('editModal__save')
         saveComment.setAttribute('data-edit', "post");
-        saveComment.setAttribute('data-id', params.postId);
+        saveComment.setAttribute('data-id', postId);
     })
     deleteBtn.addEventListener('click', ()=>{
         const deleteComment = document.getElementById('deleteModalBtn')
         deleteComment.setAttribute('data-delete', "post");
-        deleteComment.setAttribute('data-id', params.postId);
+        deleteComment.setAttribute('data-id', postId);
     })
 
     modifyCont.append(editBtn, deleteBtn)
@@ -75,14 +72,16 @@ const modifyCard = params => {
     return modifyCont
 }
 
+//params is post information {userId, id, username, body}
 function createPostCard (params){
     const content = document.createElement('div')
     const header = document.createElement('div')
     const text = document.createElement('p')
-    const avatar = avatarCard({src:"./src/img/150.gif", alt: params.name, name: params.name})
-    const postDescription = postStatusCard({postId: params.postId, commentQty: params.postCommentsQty})
-    const modify = modifyCard({postId: 1})
-    const activeUserId = sessionStorage.getItem('')
+    const imgSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${params.userId}.png`
+    const avatar = avatarCard({src: imgSrc, alt: params.username, name: params.username})
+    const postDescription = postStatusCard(params.id, params.commentsQty)
+    const modify = modifyCard(params.id)
+    const activeUserId = sessionStorage.getItem('userId')
 
     text.textContent = params.body
 
@@ -92,7 +91,12 @@ function createPostCard (params){
     text.classList.add('post__text')
     header.classList.add('post__header')
 
-    header.append(avatar, modify)
+    if (params.userId === activeUserId){
+        header.append(avatar, modify)
+    } else {
+        header.append(avatar)
+    }
+    
     content.append(header,text,postDescription)
 
     return content

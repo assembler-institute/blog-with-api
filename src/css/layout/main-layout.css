@@ -63,7 +63,7 @@ body {
 }
 
 .article__button--createComments{
-    background: url('../../img/icon/comment-icon.png') center no-repeat;
+    background: url('../../img/icon/create-comment-icon.png') center no-repeat;
     width: 3rem;
     height: 3rem;
     position: absolute;
