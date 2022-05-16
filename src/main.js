@@ -29,6 +29,7 @@ fetch(postUrl)
     const editModalNew = document.querySelectorAll('[role="modal-edit"]');
     const saveFetch = document.querySelector('#saveFetch');
     const titleModal = document.querySelector('#edit-title');
+    const bodyModal = document.querySelector('.bodyArea');
     let postId;
 
     editModalNew.forEach((button) => {
@@ -37,6 +38,7 @@ fetch(postUrl)
           .then((res) => res.json())
           .then((post) => {
             titleModal.value = post.title;
+            bodyModal.value = post.body;
             postId = post.id;
           });
       });
@@ -47,6 +49,7 @@ fetch(postUrl)
         method: 'PATCH',
         body: JSON.stringify({
           title: titleModal.value,
+          body: bodyModal.value,
         }),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
@@ -82,12 +85,10 @@ fetch(postUrl)
                 modalEmail.textContent = user.email;
               });
             // Button comments
-
             cmtBtn.addEventListener('click', () => {
               fetch('http://localhost:3000/comments?postId=' + post.id)
                 .then((res) => res.json())
                 .then((comments) => {
-                  console.log(comments);
                   // Every comment setting
                   comments.forEach((comment) => {
                     const commentsContainer = document.createElement('div');
