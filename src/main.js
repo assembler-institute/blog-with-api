@@ -8,6 +8,7 @@ fetch(postUrl)
     .then((data) => {
         data.forEach((element) => {
             let template = document.getElementById('post');
+            let divContainer =document.createElement('div');
 
             const h3 = template.content.querySelector('h3');
             h3.textContent = element.title;
@@ -21,6 +22,7 @@ fetch(postUrl)
 
             const clone = document.importNode(template.content, true);
             container.appendChild(clone);
+            // template.append(divContainer);
 
 
         });
@@ -35,7 +37,7 @@ fetch(postUrl)
                     comment.remove();
                 })
                 fetch('http://localhost:3000/posts/' + button.dataset.id)
-                    .then((res) => res.json())
+                .then((res) => res.json())
                     .then((post) => {
                         const title = document.querySelector('.modal-title')
                         const body = document.querySelector('.modal-body')
@@ -57,7 +59,7 @@ fetch(postUrl)
                             .then((comments) => {
                             comments.forEach((comment) => {
                                 const commentsContainer = document.createElement('div');
-                                commentsContainer.classList.add("test");
+                                commentsContainer.classList.add("test", "p-3");
                                 console.log(commentsContainer);
                                 const commentsBody = document.createElement('p');
                                 const commentsName = document.createElement('h6');
@@ -69,21 +71,24 @@ fetch(postUrl)
                                 commentsContainer.appendChild(commentsBody);
                                 commentsContainer.appendChild(commentsEmail);
                                 btnCmt.insertAdjacentElement('afterEnd', commentsContainer);
-
-                                //REMOVE BTN AFTER CLICK
-                                const btnRemove = document.getElementById('btnLoadComments');
                             })
-                            })
-                            }
-                        )
-                    })
+                        })
+                    }
+                    )
+                })
             });
 
         });
     });
 
+//REMOVE BTN AFTER CLICK
+const btnRemove = document.getElementById('btnLoadComments');
+
+
 // BUTTON DELETE
 const deleteButtons = document.querySelectorAll('[role="button"]');
+// const deleteButtons = document.getElementById('buttonDelete');
+console.log(deleteButtons);
 
 deleteButtons.forEach((element) => {
     element.addEventListener('click', () => {
@@ -122,7 +127,7 @@ function getId() {
 //         })
 // }
 
-//** BUTTON ONLOAD **//
+
 // const btnLoadComments = document.getElementById('btnLoadComments');
 // btnLoadComments.addEventListener('click', loadComment);
 
