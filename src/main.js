@@ -124,7 +124,7 @@ fetch(postUrl)
 const loadMore = document.querySelector('.load-btn');
 const divsLoad = document.querySelectorAll('#load-Posts');
 
-let currentPage = 0;
+let currentPage = 1;
 loadMore.addEventListener('click', () => {
   currentPage += 1;
 
