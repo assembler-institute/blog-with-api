@@ -1,11 +1,32 @@
-const dataContainer = document.getElementById("data");
-const url = "http://localhost:3000/";
+const postTitle = document.getElementById("post__title");
+const postContent = document.getElementById('post__content');
 
-fetchData
-.then(response => response.json())
-.then(data => {
-    const dataContainer = document.getElementById("data");
-    const title = data[1].title;
-    dataContainer.append(title);
-    console.log(dataContainer)
-});
+// fetch("https://eonet.gsfc.nasa.gov/api/v2.1/events")
+//   .then(response => response.json())
+//   .then(function getdata(data) {
+//     console.log(data);
+
+//     let x = Math.floor(Math.random() * (99 - 0 + 1));
+//     postTitle.textContent = data.events[x].title;
+
+//   })
+
+
+const editorBtn = document.getElementById('post__edit__btn')
+  
+editorBtn.addEventListener("click", function (){
+  
+    const modalOpen = new bootstrap.Modal(document.getElementById("editor__wrapper"));
+    console.log(modalOpen);
+    modalOpen.show();
+
+  
+})
+
+fetch("http://localhost:3000")
+.then(res => res.json())
+.then(function getPost(data){
+  console.log(data);
+
+
+})
