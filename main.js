@@ -2,7 +2,8 @@ import {
   createPost,
   handleModal,
   handleComments,
-  handleEdit
+  handleEdit,
+  handleSubmit
 } from "./src/js/utility.js";
 
 const urlPosts = "http://localhost:3000/posts";//limit of posts
@@ -63,8 +64,8 @@ editModal.addEventListener('show.bs.modal', e => {
 })
 
 const submitEdit = document.getElementById("submitEdit");
-submitEdit.addEventListener("submit", e => {
-  handleEdit();
+submitEdit.addEventListener("click", () => {
+  handleSubmit();
 })
 
 // window.addEventListener('scroll', () => {
@@ -77,3 +78,58 @@ submitEdit.addEventListener("submit", e => {
 // })
 
 window.onload = onLoad();
+
+
+/*TESTS FUNCTIONS*/
+/*****************/
+
+// const getPosts = async () => {
+//   const response = await fetch('https://jsonplaceholder.typicode.com/posts')
+//   const posts = await response.json()
+//   posts.forEach(post => {
+//     const h2El = document.createElement('h2')
+//     h2El.innerText = post.title
+
+//     document.body.appendChild(h2El)
+//   })
+// }
+// getPosts()
+
+// const createPost = async () => {
+//   const newPost = {
+//     "userId": 11,
+//     "id": 501,
+//     "title": "this is a test",
+//     "body": "i am a new post created form the function createPost"
+//   }
+//   const settings = {
+//     method: 'POST',
+//     headers: {
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(newPost)
+//   }
+
+//   console.log(newPost);
+//   const response = fetch('http://localhost:3000/posts', settings)
+//   console.log(response)
+// }
+// createPost();
+
+
+// function newPost() {
+//   const newPost = {
+//     "userId": 11,
+//     "id": 501,
+//     "title": "this is a test",
+//     "body": "i am a new post created form the function createPost"
+//   }
+
+//   fetch("http://localhost:3000/posts", {
+//     method: "POST",
+//     body: newPost
+//   });
+// }
+
+// newPost();

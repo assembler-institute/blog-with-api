@@ -72,14 +72,41 @@ const handleEdit = (postId, allPosts) => {
 
     const editTitle = document.getElementById("editTitle");
     const editBody = document.getElementById("editBody");
+    const editPostID = document.getElementById("editPostID");
 
     editTitle.value = post.title;
     editBody.value = post.body;
+    editPostID.value = post.id;
+}
+
+const handleSubmit = async () => {
+    const editPostID = document.getElementById("editPostID");
+    const formProfile = document.getElementById("editForm");
+    let title = formProfile.editTitle.value;
+    let body = formProfile.editBody.value;
+    const id = editPostID.value;
+    const url = `http://localhost:3000/posts/${id}`;
+
+    console.log(title);
+    console.log(body);
+
+    const updatePost = {
+        "title": title,
+        "body": body
+    }
+    fetch(url, {
+        method: "PATCH",
+        body: JSON.stringify(updatePost),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    });
 }
 
 export {
     createPost,
     handleModal,
     handleComments,
-    handleEdit
+    handleEdit,
+    handleSubmit
 };
