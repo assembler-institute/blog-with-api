@@ -16,6 +16,7 @@
   margin-left: 1rem;
   border: 1px solid black;
   border-radius: 50%;
+  background-color: #f56161;
 }
 
 .create-post__text {
@@ -23,7 +24,8 @@
   margin-left: 1rem;
   padding-top: 2.0rem;
   font-size: 1.5rem;
-  border: none;
+  border: 1px solid #688a95;
+  border-radius: 0.5rem;
   outline: none;
   resize: none;
 }
@@ -39,7 +41,7 @@
   height: fit-content;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
-  background-color: transparent;
+  background-color: #57a0a1;
   color: black;
   font-weight: bold;
   border-color: #ccc;

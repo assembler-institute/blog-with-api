@@ -18,15 +18,8 @@
       "userId": "25",
       "id": 3,
       "username": "pikachu",
-      "body": "Bon dia nois!",
+      "body": "Bon dia nois!\n\nComencem PHP!",
       "commentsQty": 4
-    },
-    {
-      "userId": "1",
-      "id": 4,
-      "username": "bulbasaur",
-      "body": "What happens?",
-      "commentsQty": 2
     },
     {
       "userId": "15",
@@ -124,6 +117,20 @@
       "id": 19,
       "username": "zapdos",
       "body": "dda dfjnadf\nafjadfkmaf\nadfikadmfoadksifmqawe,f\nweiof\nwefkowek\nfwefko\nwekfo\nwefwe",
+      "commentsQty": 0
+    },
+    {
+      "userId": "3",
+      "id": 20,
+      "username": "venusaur",
+      "body": "dad",
+      "commentsQty": 0
+    },
+    {
+      "userId": "6",
+      "id": 21,
+      "username": "charizard",
+      "body": "Fire\n\nfire \n\nfire",
       "commentsQty": 0
     }
   ],
@@ -357,20 +364,6 @@
       "id": 9,
       "name": "mewtwo",
       "body": "Como no paréis, os paro yo"
-    },
-    {
-      "postId": 4,
-      "userId": 3,
-      "id": 10,
-      "name": "venusaur",
-      "body": "No me quemes, por favor"
-    },
-    {
-      "postId": 4,
-      "userId": 9,
-      "id": 11,
-      "name": "blastoise",
-      "body": "Si te quema, yo te tiro un poco de agua"
     },
     {
       "postId": 5,

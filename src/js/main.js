@@ -6,8 +6,6 @@ import {createPostCard} from './post.js'
 
 /*VARIABLES*/
 const postsCont = document.getElementById('main__posts')
-const commentsCont = document.getElementById('comments')
-const usersCont = document.getElementById('users')
 const loginBtn = document.getElementById('loginButton')
 const saveComment = document.getElementById('editModal__save')
 const deleteCommentBtn = document.getElementById('deleteModalBtn');
@@ -49,11 +47,29 @@ loginBtn.addEventListener('click', () => {
     loginUser(userName.value)
 })
 
-//Show post comments
+//Show/hide post comments
 postsCont.addEventListener('click', (e) => {
-    if(e.target.hasAttribute('data-show-comments')){
-        displayComments(e.target.getAttribute('data-show-comments'), e.target.parentNode)
-        e.target.disabled = true
+
+    if (e.target.hasAttribute('data-hide-comments')){
+        const postId = e.target.getAttribute('data-show-comments')
+        e.target.removeAttribute('data-hide-comments')
+        const postContainer =document.querySelector(`[data-post-comments="${postId}"]`)
+        postContainer.remove()
+
+    } else if (e.target.hasAttribute('data-show-comments')){
+
+        e.target.setAttribute('data-hide-comments', '')
+
+        const postId = e.target.getAttribute('data-show-comments')
+        const postContainer = document.querySelector(`[data-post-id="${postId}"]`)
+        const commentsContainer = document.createElement(`div`)
+
+        commentsContainer.setAttribute(`data-post-comments`, postId )
+        postContainer.append(commentsContainer)
+        
+        displayComments(postId, commentsContainer)
+        
+        // e.target.disabled = true
     } 
 })
 
@@ -103,6 +119,9 @@ const displayComments = async (postId, postContainer) => {
                 comment.setAttribute('class', 'comments__article')
                 const name = document.createElement('span')
                 const body = document.createElement('span');
+                const avatarImage = document.createElement('img')
+                avatarImage.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${commentsData.userId}.gif`
+                avatarImage.classList.add('comment__avatar')
 
                 const deleteButton = document.createElement('button');
                 deleteButton.textContent = "DELETE";
@@ -134,7 +153,7 @@ const displayComments = async (postId, postContainer) => {
                 name.textContent = `@${commentsData.name}`
                 body.textContent = commentsData.body
 
-                comment.append(name, body)
+                comment.append(avatarImage, name, body)
 
                 if (commentsData.userId === parseInt(sessionStorage.getItem("userId"))) {
                     comment.append(editButton, deleteButton)

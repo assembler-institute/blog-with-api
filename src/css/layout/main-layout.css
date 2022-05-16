@@ -3,6 +3,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: url(../../img/pokemon-background.jpg) center repeat;
 }
 
 .main__posts{
@@ -17,6 +18,7 @@ body {
     min-width: 30rem;
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
+    background: rgb(179, 219, 248);
 }
 
 .main__header{
@@ -100,4 +102,13 @@ body {
     flex-direction: column;
     border: 1px solid rgb(10, 10, 10);
     padding: 0.3rem;
+}
+
+.comment__avatar{
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid black;
+    border-radius: 50%;
+    padding: 0.25rem;
+    background: lightcyan; 
 }
