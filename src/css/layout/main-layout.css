@@ -1,0 +1,114 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url(../../img/pokemon-background.jpg) center repeat;
+}
+
+.main__posts{
+    display: flex;
+    flex-direction: column;
+}
+
+.main__container{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    min-width: 30rem;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    background: rgb(179, 219, 248);
+}
+
+.main__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.header__title{
+    margin-left: 2rem;
+}
+.img__userProfile{
+    width: 2rem;
+    height: 2rem;
+    margin-right: 2rem;
+    cursor: pointer;
+}
+
+.posts__article {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+}
+
+.post__title, .article__span--username{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.post__body, .article__span--comment{
+    margin-left: 0.3rem;
+    margin-bottom: 5rem;
+}
+
+.article__button--showComments{
+    background: url('../../img/icon/comment-icon.png') center no-repeat;
+    width: 3rem;
+    height: 3rem;
+    /* position: absolute; */
+    /* top: 75%; */
+    /* left: 1%; */
+    border: none;
+}
+
+.article__button--createComments{
+    background: url('../../img/icon/create-comment-icon.png') center no-repeat;
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 75%;
+    left: 9%;
+    border: none;
+}
+
+.article__button--editButton{
+    background: url('../../img/icon/edit-icon.png') center no-repeat;
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 75%;
+    left: 17%;
+    border: none;
+}
+
+.article__button--deleteButton{
+    background: url('../../img/icon/delete-icon.png') center no-repeat;
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 75%;
+    left: 25%;
+    border: none;
+}
+
+.comments__article{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(10, 10, 10);
+    padding: 0.3rem;
+}
+
+.comment__avatar{
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid black;
+    border-radius: 50%;
+    padding: 0.25rem;
+    background: lightcyan; 
+}

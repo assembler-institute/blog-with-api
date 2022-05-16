@@ -1,0 +1,383 @@
+{
+  "posts": [
+    {
+      "userId": "6",
+      "id": 1,
+      "username": "charizard",
+      "body": "Soy un poquito chulillo",
+      "commentsQty": 3
+    },
+    {
+      "userId": "3",
+      "id": 2,
+      "username": "venusaur",
+      "body": "Ataque rayo solar!",
+      "commentsQty": 2
+    },
+    {
+      "userId": "25",
+      "id": 3,
+      "username": "pikachu",
+      "body": "Bon dia nois!\n\nComencem PHP!",
+      "commentsQty": 4
+    },
+    {
+      "userId": "15",
+      "id": 5,
+      "username": "beedrill",
+      "body": "Abejita",
+      "commentsQty": 1
+    },
+    {
+      "userId": "144",
+      "id": 6,
+      "username": "articuno",
+      "body": "Buenos días, \n\nQue frío hace!",
+      "commentsQty": 0
+    },
+    {
+      "userId": "151",
+      "id": 7,
+      "username": "mew",
+      "body": "Mew Mew Mew",
+      "commentsQty": 0
+    },
+    {
+      "userId": "150",
+      "id": 8,
+      "username": "mewtwo",
+      "body": "He venido a colonizar la tierra!\n\nTodos tranquilitos.\n\n;)",
+      "commentsQty": 0
+    },
+    {
+      "userId": "9",
+      "id": 10,
+      "username": "blastoise",
+      "body": "Blastoise!\n\nBlastoise\n\nBlastoise",
+      "commentsQty": 0
+    },
+    {
+      "userId": "145",
+      "id": 11,
+      "username": "zapdos",
+      "body": "Assembler School!",
+      "commentsQty": 0
+    },
+    {
+      "userId": "145",
+      "id": 12,
+      "username": "zapdos",
+      "body": "Zapdos dos dos",
+      "commentsQty": 0
+    },
+    {
+      "userId": "145",
+      "id": 13,
+      "username": "zapdos",
+      "body": "Zapdos dos dos",
+      "commentsQty": 0
+    },
+    {
+      "userId": "145",
+      "id": 14,
+      "username": "zapdos",
+      "body": "Zapdos dos dos dos",
+      "commentsQty": 0
+    },
+    {
+      "userId": "145",
+      "id": 15,
+      "username": "zapdos",
+      "body": "d asjdfn ajf asdhfbsdnfhudsbfhijsd",
+      "commentsQty": 0
+    },
+    {
+      "userId": "145",
+      "id": 16,
+      "username": "zapdos",
+      "body": "wwwwwwwww",
+      "commentsQty": 0
+    },
+    {
+      "userId": "145",
+      "id": 17,
+      "username": "zapdos",
+      "body": "dadfjqdnuqwndfq\ndfjneqjdfnq\ndfqjwedfnqjdfnq+\ndfmqd",
+      "commentsQty": 0
+    },
+    {
+      "userId": "145",
+      "id": 18,
+      "username": "zapdos",
+      "body": "dadasd",
+      "commentsQty": 0
+    },
+    {
+      "userId": "145",
+      "id": 19,
+      "username": "zapdos",
+      "body": "dda dfjnadf\nafjadfkmaf\nadfikadmfoadksifmqawe,f\nweiof\nwefkowek\nfwefko\nwekfo\nwefwe",
+      "commentsQty": 0
+    },
+    {
+      "userId": "3",
+      "id": 20,
+      "username": "venusaur",
+      "body": "dad",
+      "commentsQty": 0
+    },
+    {
+      "userId": "6",
+      "id": 21,
+      "username": "charizard",
+      "body": "Fire\n\nfire \n\nfire",
+      "commentsQty": 0
+    },
+    {
+      "userId": "25",
+      "id": 22,
+      "username": "pikachu",
+      "body": "dadsdadad",
+      "commentsQty": 0
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "bulbasaur",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif"
+    },
+    {
+      "id": 2,
+      "username": "ivysaur",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/2.gif"
+    },
+    {
+      "id": 3,
+      "username": "venusaur",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/3.gif"
+    },
+    {
+      "id": 4,
+      "username": "charmander",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/4.gif"
+    },
+    {
+      "id": 5,
+      "username": "charmeleon",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/5.gif"
+    },
+    {
+      "id": 6,
+      "username": "charizard",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/6.gif"
+    },
+    {
+      "id": 7,
+      "username": "squirtle",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/7.gif"
+    },
+    {
+      "id": 8,
+      "username": "wartortle",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/8.gif"
+    },
+    {
+      "id": 9,
+      "username": "blastoise",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/9.gif"
+    },
+    {
+      "id": 10,
+      "username": "caterpie",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/10.gif"
+    },
+    {
+      "id": 11,
+      "username": "metapod",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/11.gif"
+    },
+    {
+      "id": 12,
+      "username": "butterfree",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/12.gif"
+    },
+    {
+      "id": 13,
+      "username": "weedle",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/13.gif"
+    },
+    {
+      "id": 14,
+      "username": "kakuna",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/14.gif"
+    },
+    {
+      "id": 15,
+      "username": "beedrill",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/15.gif"
+    },
+    {
+      "id": 22,
+      "username": "fearow",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/22.gif"
+    },
+    {
+      "id": 23,
+      "username": "ekans",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/23.png"
+    },
+    {
+      "id": 24,
+      "username": "arbok",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/24.png"
+    },
+    {
+      "id": 25,
+      "username": "pikachu",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/25.gif"
+    },
+    {
+      "id": 27,
+      "username": "sandshrew",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png"
+    },
+    {
+      "id": 28,
+      "username": "sandslash",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/28.png"
+    },
+    {
+      "id": 26,
+      "username": "raichu",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/26.gif"
+    },
+    {
+      "id": 29,
+      "username": "nidoran-f",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/29.png"
+    },
+    {
+      "id": 30,
+      "username": "nidorina",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/30.png"
+    },
+    {
+      "id": 31,
+      "username": "nidoqueen",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/31.png"
+    },
+    {
+      "id": 144,
+      "username": "articuno",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/144.gif"
+    },
+    {
+      "id": 145,
+      "username": "zapdos",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/145.gif"
+    },
+    {
+      "id": 146,
+      "username": "moltres",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/146.gif"
+    },
+    {
+      "id": 147,
+      "username": "datrini",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/147.gif"
+    },
+    {
+      "id": 148,
+      "username": "dagronair",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/148.gif"
+    },
+    {
+      "id": 149,
+      "username": "dragonite",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/149.gif"
+    },
+    {
+      "id": 150,
+      "username": "mewtwo",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/150.gif"
+    },
+    {
+      "id": 151,
+      "username": "mew",
+      "imgSrc": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/151.gif"
+    }
+  ],
+  "comments": [
+    {
+      "postId": 1,
+      "userId": 3,
+      "id": 1,
+      "name": "venusaur",
+      "body": "Tranquilo amigo, que nosotros también estamos aquí!"
+    },
+    {
+      "postId": 1,
+      "userId": 9,
+      "id": 2,
+      "name": "blastoise",
+      "body": "Si te quema, yo te tiro un poco de agua"
+    },
+    {
+      "postId": 1,
+      "userId": 150,
+      "id": 3,
+      "name": "mewtwo",
+      "body": "Como no paréis, os paro yo"
+    },
+    {
+      "postId": 2,
+      "userId": 3,
+      "id": 4,
+      "name": "venusaur",
+      "body": "No me quemes, por favor"
+    },
+    {
+      "postId": 2,
+      "userId": 9,
+      "id": 5,
+      "name": "blastoise",
+      "body": "Si te quema, yo te tiro un poco de agua"
+    },
+    {
+      "postId": 3,
+      "userId": 150,
+      "id": 6,
+      "name": "mewtwo",
+      "body": "Como no paréis, os paro yo"
+    },
+    {
+      "postId": 3,
+      "userId": 3,
+      "id": 7,
+      "name": "venusaur",
+      "body": "No me quemes, por favor"
+    },
+    {
+      "postId": 3,
+      "userId": 9,
+      "id": 8,
+      "name": "blastoise",
+      "body": "Si te quema, yo te tiro un poco de agua"
+    },
+    {
+      "postId": 3,
+      "userId": 150,
+      "id": 9,
+      "name": "mewtwo",
+      "body": "Como no paréis, os paro yo"
+    },
+    {
+      "postId": 5,
+      "userId": 150,
+      "id": 12,
+      "name": "mewtwo",
+      "body": "Como no paréis, os paro yo"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+.post{
+    &__header{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    &__text{
+        width: 90%;
+        padding-left: 0.5rem;
+        margin-top: 1rem;
+        margin-left: 5%;
+        border: 1px solid black;
+        border-radius: 0.25rem;
+    }
+
+    &__comments{
+        &-status{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        &-btn{
+            background: url('../../img/icon/edit-icon.png') center no-repeat;
+            position: absolute;
+            width: 3rem;
+            height: 3rem;
+            border: none;
+        }
+        &-counter{
+            padding-top: 0.8rem;
+        }
+    }
+
+    &__modify-cont{
+        display:flex;
+        flex-direction: row;
+    }
+
+    &__delete-btn{
+        background: url('../../img/icon/delete-icon.png') center no-repeat;
+        width: 3rem;
+        height: 3rem;
+        border: none;
+    }
+
+    &__edit-btn{
+        background: url('../../img/icon/edit-icon.png') center no-repeat;
+        width: 3rem;
+        height: 3rem;
+        border: none;
+    }
+}

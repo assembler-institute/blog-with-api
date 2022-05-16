@@ -2,59 +2,27 @@
 
 # Blog with API <!-- omit in toc -->
 
-<p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
-</p>
+> In this pill we have learned how to create a blog with an API serving the necessary data to create it. 
+> We have used:
+* HTML: skeleton of the project
+* CSS: styles of our page
+* Bootstrap and SASS: as css framework
+* JS Vanilla: project logic
+* PokeAPI and JSON Server: get data and send data to create our own API.
 
-> In this pill you will put into practice the knowledge learned about making HTTP requests to create a blog consuming the information from a third-party API. You will also learn how to use Bootstrap Framework for the layout.
 
-## Index <!-- omit in toc -->
-
-- [Requirements](#requirements)
-- [Repository](#repository)
-- [Technologies used](#technologies-used)
-- [Project delivery](#project-delivery)
-- [Resources](#resources)
-
-## Requirements
-
-- You must use semantic HTML5 elements for all the contents of the application
-- You must use JSON server library to create your own local repository
-- You must use fecth to do the requests
-- You have to use Bootstrap Framework for the Layout and the styles
+## Project Img <!-- omit in toc -->
+![This is a alt text.](./src/img/Project%20IMG.png "This is our project img.")
 
 
 ## Repository
 
-First of all you must fork this project into your GitHub account.
+To get our project, you can clone it and do npm install to get the dependencies
 
-To create a fork on GitHub is as easy as clicking the “fork” button on the repository page.
 
-<img src="https://docs.github.com/assets/images/help/repository/fork_button.jpg" alt="Fork on GitHub" width='450'>
+## Team Members
 
-## Technologies used
+[Roger Olive Delgado](https://github.com/RogerOliveDelgado).
+[Julio Macias Caldera](https://github.com/juliomc23).
 
-\* HTML
 
-\* CSS
-
-\* JS
-
-\* Bootstrap
-
-\* HTTP Requests
-
-\* JSON
-
-\* API
-
-## Project delivery
-
-To deliver this project you must follow the steps indicated in the document:
-
-- [Submitting a solution](https://www.notion.so/Submitting-a-solution-524dab1a71dd4b96903f26385e24cdb6)
-
-## Resources
-
-- [JSON server](https://github.com/typicode/json-server)
-- [Official Bootstrap](https://getbootstrap.com/)

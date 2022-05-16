@@ -1,0 +1,20 @@
+/*RESET*/
+@import url(./reset/normalize.css);
+
+/*FONTS*/
+@import url(./fonts/fonts.css);
+
+/*MODAL*/
+@import url(./modal/loginModal.css);
+
+/*MAIN LAYOUT*/
+@import url(./layout/main-layout.css);
+
+/*CREATE POST*/
+@import url(./create-post/createPost.css);
+
+/*AVATAR*/
+@import url(./avatar/avatar.css);
+
+/*POST*/
+@import url(./post/post.css)

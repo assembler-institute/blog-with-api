@@ -1,0 +1,25 @@
+.btn__openModal{
+    background-color: transparent;
+    border: none;
+    margin-right: 2rem;
+}
+
+.modal-body{
+    display: flex;
+    flex-direction: column;
+}
+
+.register__form{
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.hide{
+    display: none;
+}
+
+.wrong{
+    border: 1px solid red;
+}
