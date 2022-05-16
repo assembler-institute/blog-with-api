@@ -1,38 +1,56 @@
-/!* LOCALHOST JSON */
- 
- const localUsers = "http://localhost:3000/users";
- const localPosts = "http://localhost:3000/posts";
- const localComments= "http://localhost:3000/comments";
+import {getPost} from "./api"
 
-
-let theUsers = async() => {
-  let response = await fetch(localUsers)
-  let users = await response.json()
-  return users
+function displayPost() {
+  getPost().then(dataPost => {
+    console.log(dataPost)
+  })
 }
-
-let thePosts = async() =>{
-let response = await fetch(localPosts)
-let posts = await response.json()
-return posts
-}
-
-let theComments= async() =>{
-  let response = await fetch(localComments)
-  let comments = await response.json()
-  return comments
-  }
+displayPost();
 
 
 
 
 
+/* 
+
+fetch('https://jsonplaceholder.typicode.com/posts/')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .then(response => console.log('Success:', JSON.stringify(response)))
+  .catch(error => console.error('Error:', error));
 
 
-/!*  PLACEHOLDER API JSON */
+fetch('https://jsonplaceholder.typicode.com/users/')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .then(response => console.log('Success:', JSON.stringify(response)))
+  .catch(error => console.error('Error:', error));
 
 
-fetch('https://jsonplaceholder.typicode.com/posts',{
+fetch('https://jsonplaceholder.typicode.com/comments')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .then(response => console.log('Success:', JSON.stringify(response)))
+  .catch(error => console.error('Error:', error));
+
+
+ */
+
+
+/*   Probando cosas , un listado y luego comprimo con parse */
+/*   let baul = '{"students": [' +
+    '{"name": "Javier" , "age": 19 , "year": 1},' +
+    '{"name": "Pepe", "age": 56, "year": 1},' +
+		'{"name": "Adria", "age": 20, "year": 1},' +
+    '{"name": "Raro", "age": 4, "year": 3},' +
+    '{"name": "King", "age": 18, "year": 1}]}';
+
+
+    /* Convertir el JSON a string */
+/* let data = JSON.stringify(baul);
+console.log(baul);
+ */ 
+/* fetch('https://jsonplaceholder.typicode.com/posts',{
   method:'POST',
  headers:{
     'Content-Type': 'application/json'
@@ -48,65 +66,4 @@ fetch('https://jsonplaceholder.typicode.com/posts',{
   return res.json()
 })
 .then(data => console.log(data))
-.catch(error => console.log('ERROR'));
-
-
-fetch('https://jsonplaceholder.typicode.com/posts/')
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .then(response => console.log('Success:', JSON.stringify(response)))
-  .catch(error => console.error('Error:', error));
-
-
-
-
-fetch('https://jsonplaceholder.typicode.com/users',{
-  method:'POST',
- headers:{
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    'id': "2",
-    'username':'Javier',
-    'email':'dogsouldev@gmail.com',
-  })
-}).then(res =>{
-  return res.json()
-})
-.then(data => console.log(data))
-.catch(error => console.log('ERROR'));
-
-fetch('https://jsonplaceholder.typicode.com/users/')
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .then(response => console.log('Success:', JSON.stringify(response)))
-  .catch(error => console.error('Error:', error));
-
-
-
-
-fetch('https://jsonplaceholder.typicode.com/posts/1/comments',{
-  method:'POST',
- headers:{
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    'postId': "2",
-    'id':'Javier',
-    'name':'Adding new things',
-    'email':'dogsouldev@gmail.com',
-    'body':'this is the body of the comment',
-  })
-}).then(res =>{
-  return res.json()
-})
-.then(data => console.log(data))
-.catch(error => console.log('ERROR'));
-
-
-
-fetch('https://jsonplaceholder.typicode.com/posts/1/comments')
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .then(response => console.log('Success:', JSON.stringify(response)))
-  .catch(error => console.error('Error:', error));
+.catch(error => console.log('ERROR')); */
