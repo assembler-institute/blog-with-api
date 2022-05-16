@@ -3,7 +3,7 @@ Our blog adopts a design inspired by well-known newspapers and news websites, su
 
 It was important for us to be able to access different endpoints for the json.placeholder API. Although we did not incorporate POST and DELETE functions for the blog posts, the code is scalable and this implementation is planned for future versions.
 
-![img of our blog header](./assets/headr_img.png)
+![img of our blog header](./assets/header_img.png)
 
 
 ## Planning
