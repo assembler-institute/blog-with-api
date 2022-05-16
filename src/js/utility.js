@@ -7,11 +7,13 @@ function createPost(post, users) {
     let cardTitle = document.getElementById("cardTitle");
     let cardComments = document.getElementById("cardComments");
     let modalButton = document.getElementById("modalButton");
+    let editBtn = document.getElementById("editBtn");
 
     cardIMG.src = `https://picsum.photos/200/300?1random=${post.id}`;
     cardTitle.innerText = post.title;
     cardComments.innerText = users.filter(user => user.id == post.userId)[0].name;
     modalButton.setAttribute("data-bs-postID", post.id);
+    editBtn.setAttribute("data-bs-postID", post.id);
     template.hidden = false;
 
     cardContainer.appendChild(cardPost);
@@ -65,8 +67,19 @@ const handleComments = (postId, allComments) => {
     })
 }
 
+const handleEdit = (postId, allPosts) => {
+    const post = allPosts.find(element => element.id == postId);
+
+    const editTitle = document.getElementById("editTitle");
+    const editBody = document.getElementById("editBody");
+
+    editTitle.value = post.title;
+    editBody.value = post.body;
+}
+
 export {
     createPost,
     handleModal,
-    handleComments
+    handleComments,
+    handleEdit
 };

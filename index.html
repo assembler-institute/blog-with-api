@@ -133,15 +133,19 @@
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
-        <form>
-          <label for="editTitle"></label>
-          <input type="text" name="editTitle">
+        <div class="modal-header p-3 mb-2 bg-primary text-white ">
+          <h5 class="modal-title" id="staticBackdropLabel">Post Edit</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form class="row d-flex">
+          <label for="editTitle"> Title </label>
+          <input type="text" name="editTitle" id="editTitle">
 
-          <label for="editBody"></label>
-          <input type="text" name="editBody">
+          <label for="editBody"> Main text </label>
+          <input type="text" name="editBody" id="editBody">
         </form>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Edit</button>
+          <button type="submit" id="submitEdit"   class="btn btn-secondary" data-bs-dismiss="modal">Edit</button>
         </div>
       </div>
     </div>
