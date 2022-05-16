@@ -1,5 +1,4 @@
 function createPost(post, users) {
-
     let cardContainer = document.getElementById("card-container");
     let template = document.getElementById("cardTemplate");
     let cardPost = template.cloneNode(true);
