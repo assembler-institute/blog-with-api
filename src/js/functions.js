@@ -1,111 +1,154 @@
 //Global variables
+//Get the container from html
 let usersData;
 let postsComments;
 
 function getData() {
-    let url = "http://localhost:3000/";
-    const fetchedComments = fetch(`${url}comments`);
-    const fetchedPosts = fetch(`${url}posts`);
-    const fetchedUsers = fetch(`${url}users`);
+  let url = "http://localhost:3000";
+  const Comments = fetch(`${url}/comments`);
+  const Posts = fetch(`${url}/posts`);
+  const Users = fetch(`${url}/users`);
 
-    fetchedPosts
-        .then((response) => response.json())
-        .then((data) => {
-            printPostTitle(data);
-        });
-    fetchedComments
-        .then((response) => response.json())
-        .then((data) => {
-            getComments(data);
-        });
-    fetchedUsers
-        .then((response) => response.json())
-        .then((data) => {
-            getUsers(data);
-        });
+  Posts.then((response) => response.json())
+    .then((data) => {
+      renderPostTitle(data);
+    })
+    .catch((error) => console.error(error));
+  Comments.then((response) => response.json())
+    .then((data) => {
+      getComments(data);
+    })
+    .catch((error) => console.error(error));
+
+  Users.then((response) => response.json())
+    .then((data) => {
+      getUsers(data);
+    })
+    .catch((error) => console.error(error));
 }
 
-function getUsers(users) {
-    usersData = users;
+const getUsers = (users) => {
+  usersData = users;
+};
+
+const getComments = (comments) => {
+  postsComments = comments;
+};
+
+function renderPostTitle(postData) {
+  const postsTitlesContainer = getElement("postsTitlesContainer");
+
+  //Iterate each post in posts.json
+  postData.map((post) => {
+    const listElement = creatPostTitleElement(post, postsTitlesContainer);
+    listElementAddEvent(post, listElement);
+  });
 }
 
-function getComments(comments) {
-    postsComments = comments;
-}
+//Create a Li element for each "Post Title" & append it to the list
+const creatPostTitleElement = (post, postsTitlesContainer) => {
+  let elementcontainer = createElement("div");
+  let postTitleElement = createElement("div");
+  let img = creatBootstrapImg();
+  let editBtn = createButton("edit", post.id);
+  let removeBtn = createButton("remove", post.id);
 
-function printPostTitle(postData) {
-    //Get the container from html
-    const postsTitlesContainer = document.getElementById("postsTitlesContainer");
-    //Create a list for the titles & append it to the container
-    const listContainer = document.createElement("ul");
-    listContainer.className = "list-group";
-    postsTitlesContainer.append(listContainer);
-    //Iterate each post in posts.json
-    postData.map((post) => {
-        let titleContainer = document.createElement("li");
-        titleContainer.className = "list-group-item";
-        titleContainer.textContent = post.title;
-        titleContainer.dataset.postId = post.id;
-        titleContainer.dataset.user = post.userId;
-        listContainer.append(titleContainer);
-    });
-    displayModal(postData);
-}
+  postTitleElement.className = "list-group-item";
+  postTitleElement.setAttribute("data-bs-toggle", "modal");
+  postTitleElement.setAttribute("data-bs-target", "#staticBackdrop");
+  postTitleElement.textContent = post.title;
+  postsTitlesContainer.append(elementcontainer);
 
-function displayModal(postData) {
-    let userData = document.querySelectorAll("[data-user]");
-    userData.forEach((user) => {
-        user.setAttribute("data-bs-toggle", "modal");
-        user.setAttribute("data-bs-target", "#staticBackdrop");
+  elementcontainer.append(img, postTitleElement, editBtn, removeBtn);
+  return postTitleElement;
+};
 
-        user.addEventListener("click", () => {
-            addTitle(user, postData);
-            addUsers(user);
-            addComments(user);
-        });
-    });
-}
+const creatBootstrapImg = () => {
+  let img = createElement("img");
+  img.src = "...";
+  img.classList = "img-thumbnail";
+  img.alt = "...";
+  return img;
+};
 
-function addTitle(user, postData) {
-    let modalTitle = document.getElementById("staticBackdropLabel");
-    let modalBody = document.getElementById("bodyContent");
-    let postId = user.dataset.postId;
-    modalTitle.textContent = user.textContent;
-    modalBody.textContent = postData[postId - 1].body;
-}
+const createButton = (element, id) => {
+  let btn = createElement("button");
+  btn.textContent = element;
+  if (element == "remove") {
+    btn.classList = `btn btn-danger blog__post__${element}__btn`;
+  } else {
+    btn.classList = `btn btn-light blog__post__${element}__btn`;
+  }
+  btn.id = `${element}Btn${id}`;
+  btn.dataset[element] = "button";
+  return btn;
+};
 
-function addUsers(user) {
-    let userId = user.dataset.user;
-    let userName = document.getElementById("userName");
-    let email = document.createElement("p");
-    userName.textContent = `${usersData[userId - 1].name}`;
-    email.textContent = usersData[userId - 1].email;
-    userName.append(email);
-}
+//Add click event to every list element
+const listElementAddEvent = (post, listElement) => {
+  listElement.addEventListener("click", (e) => {
+    setModalTitle(post);
+    setPostUser(post);
+    setPostComments(post);
+  });
+};
 
-function addComments(user) {
-    let commentContainer = document.getElementById("commentContainer");
-    commentContainer.textContent = "";
+const setModalTitle = (post) => {
+  let modalTitle = getElement("staticBackdropLabel");
+  let modalBody = getElement("bodyContent");
+  modalTitle.textContent = post.title;
+  modalBody.textContent = post.body;
+};
 
-    postsComments.map((comment) => {
-        if (comment.postId == user.dataset.postId) {
-            let commentWrapper = document.createElement("div");
-            commentWrapper.className = "commentWrapper";
+const setPostUser = (post) => {
+  let userId = post.userId;
+  let userName = getElement("userName");
+  let email = createElement("p");
+  usersData.map((user) => {
+    if (user.id == userId) {
+      userName.textContent = user.name;
+      email.textContent = user.email;
+    }
+  });
+  userName.append(email);
+};
 
-            let commentName = document.createElement("p");
-            let commentBody = document.createElement("p");
-            let email = document.createElement("p");
-            commentName.textContent = comment.name;
-            commentBody.textContent = comment.body;
-            commentName.className = "commentName";
-            email.className = "commentEmail";
-            email.textContent = comment.email;
-            commentContainer.append(commentWrapper);
-            commentWrapper.append(commentName, commentBody, email);
-        }
+const setPostComments = (post) => {
+  let commentContainer = getElement("commentContainer");
+  commentContainer.textContent = "";
 
-    });
-}
+  postsComments.map((comment) => {
+    if (comment.postId == post.id) {
+      let commentWrapper = createCommentWrapper();
+      let commentName = createCommentItem(comment, "name");
+      let commentBody = createCommentItem(comment, "body");
+      let email = createCommentItem(comment, "email");
+      commentContainer.append(commentWrapper);
+      commentWrapper.append(commentName, commentBody, email);
+    }
+  });
+};
+
+const createCommentItem = (comment, key) => {
+  console.log(comment.name);
+  let item = createElement("p");
+  item.textContent = comment[key];
+  item.classList = `comment__${key}`;
+  return item;
+};
+
+const createCommentWrapper = () => {
+  let commentWrapper = createElement("div");
+  commentWrapper.className = "commentWrapper";
+  return commentWrapper;
+};
+const getElement = (element) => {
+  return document.getElementById(element);
+};
+
+const createElement = (element) => {
+  return document.createElement(element);
+};
 
 export {
     getData
