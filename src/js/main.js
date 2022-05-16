@@ -1,21 +1,24 @@
 import { openPost, showTitleBody, showUserEmail } from "./info-modal.js";
 
+const searchBtn = document.getElementById('headerSearchBtn');
+searchBtn.addEventListener('click', getSearchResults);
 
 // Fetch posts from api for posts, return as .json data, and pass to displayPosts function.
-function getPostData() {
-  const fetchPosts = fetch("http://localhost:3000/posts");
+async function getPostData() {
   try {
-    fetchPosts
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      displayPosts(data);
-    });
+    const response = await fetch("http://localhost:3000/posts");
+    const postData = response.json();
+    return postData;
   } catch(error) {
     console.log(error)
   }
 }
+
+async function manageData () {
+  const data = await getPostData();
+  displayPosts(data)
+}
+
 
 async function getComments () {
   try {
@@ -28,7 +31,7 @@ async function getComments () {
 }
 
 // Loads the blog posts when site is opened.
-window.onload = getPostData();
+window.onload = manageData;
 
 // Shows the blog posts with title and body on the main page
 function displayPosts(data) {
@@ -71,6 +74,18 @@ function displayPosts(data) {
     });
   });
 }
+
+async function getSearchResults () {
+  const searchString = document.getElementById('headerSearch').value;
+  console.log(searchString)
+  const posts = await getPostData();
+  console.log(posts);
+
+  const searchResults = posts.filter((post) => {
+    return post.title.includes(searchString);
+  })
+  console.log(searchResults)
+} 
 
 
 export { getComments };
