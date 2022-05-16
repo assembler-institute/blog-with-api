@@ -1,37 +1,17 @@
-/!* LOCALHOST JSON */
- 
- const localUsers = "http://localhost:3000/users";
- const localPosts = "http://localhost:3000/posts";
- const localComments= "http://localhost:3000/comments";
+import {getPost} from "./api"
 
-
-let theUsers = async() => {
-  let response = await fetch(localUsers)
-  let users = await response.json()
-  return users
+function displayPost() {
+  getPost().then(dataPost => {
+    console.log(dataPost)
+  })
 }
-
-let thePosts = async() =>{
-let response = await fetch(localPosts)
-let posts = await response.json()
-return posts
-}
-
-let theComments= async() =>{
-  let response = await fetch(localComments)
-  let comments = await response.json()
-  return comments
-  }
+displayPost();
 
 
 
 
 
-
-
-
-/!*  PLACEHOLDER API JSON */
-
+/* 
 
 // fetch('https://jsonplaceholder.typicode.com/posts/')
 //   .then(response => response.json())
@@ -46,7 +26,37 @@ let theComments= async() =>{
   
 
 
-fetch('https://jsonplaceholder.typicode.com/posts',{
+fetch('https://jsonplaceholder.typicode.com/users/')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .then(response => console.log('Success:', JSON.stringify(response)))
+  .catch(error => console.error('Error:', error));
+
+
+fetch('https://jsonplaceholder.typicode.com/comments')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .then(response => console.log('Success:', JSON.stringify(response)))
+  .catch(error => console.error('Error:', error));
+
+
+ */
+
+
+/*   Probando cosas , un listado y luego comprimo con parse */
+/*   let baul = '{"students": [' +
+    '{"name": "Javier" , "age": 19 , "year": 1},' +
+    '{"name": "Pepe", "age": 56, "year": 1},' +
+		'{"name": "Adria", "age": 20, "year": 1},' +
+    '{"name": "Raro", "age": 4, "year": 3},' +
+    '{"name": "King", "age": 18, "year": 1}]}';
+
+
+    /* Convertir el JSON a string */
+/* let data = JSON.stringify(baul);
+console.log(baul);
+ */ 
+/* fetch('https://jsonplaceholder.typicode.com/posts',{
   method:'POST',
  headers:{
     'Content-Type': 'application/json'
