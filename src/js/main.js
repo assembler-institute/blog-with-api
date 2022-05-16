@@ -24,7 +24,7 @@ fetchPosts
       // console.log(postUserId);
 
       const articlePost = document.createElement("article");+
-      articlePost.classList.add("test");
+      articlePost.classList.add("postBox");
       const postTitle = document.createElement("h2");
       const postBody = document.createElement("p");
 
@@ -59,7 +59,7 @@ fetchPosts
 
         modalPosts.show();
         mainContainer.style.display = "none";
-
+        updateModal();
         fetchUsers(e.target.id, e.target.dataset.post);
       });
     });
@@ -72,9 +72,9 @@ const closeBtn = document.getElementById("closeBtn");
 closeBtn.addEventListener("click", function () {
   const commentsContainer = document.getElementById(`commentsContainer`)
   const commentsBtn = document.getElementById("commentsBtn");
-  
-  commentsContainer.textContent = ""
-  commentsBtn.style.display = `block`
+
+  commentsContainer.textContent = "";
+  commentsBtn.style.display = "block";
   modalPosts.close();
   mainContainer.style.display = "block";
 });
@@ -102,7 +102,7 @@ function createPost(obj, postId) {
   console.log(obj);
   // console.log(userId);
 
-  const postTitle = document.createElement("p");
+  const postTitle = document.createElement("h4");
   postTitle.style.fontWeight = "bold";
   const postBody = document.createElement("p");
   // console.log(postId);
@@ -124,7 +124,7 @@ function createPost(obj, postId) {
 
   //
   //
-  const userName = document.createElement("p");
+  const userName = document.createElement("h4");
   const userEmail = document.createElement("p");
   userName.textContent = obj.username;
   userEmail.textContent = obj.email;
@@ -164,10 +164,10 @@ function createComments(userId) {
       data.map((comment) => {
         // console.log(comment);
 
-        const commentName = document.createElement("p");
+        const commentName = document.createElement("h3");
         const commentBody = document.createElement("p");
         const userEmail = document.createElement("p");
-        commentName.style.fontSize = "1rem";
+        commentName.style.fontSize = "2rem";
         commentBody.style.fontSize = "1rem";
         userEmail.style.fontSize = "1rem";
 
@@ -183,4 +183,18 @@ function createComments(userId) {
         commentsBtn.style.display = "none";
       });
     });
+}
+
+function updateModal(){
+  
+  while(commentsContainer.firstChild){
+    commentsContainer.removeChild(commentsContainer.lastChild)
+  }
+  while(userModal.firstChild){
+    userModal.removeChild(userModal.lastChild)
+  }
+  while(postModal.firstChild){
+    postModal.removeChild(postModal.lastChild)
+  }
+
 }
