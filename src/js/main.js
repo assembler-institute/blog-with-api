@@ -1,15 +1,30 @@
 import { openPost, showTitleBody, showUserEmail } from "./info-modal.js";
 
+
 // Fetch posts from api for posts, return as .json data, and pass to displayPosts function.
 function getPostData() {
   const fetchPosts = fetch("http://localhost:3000/posts");
-  fetchPosts
+  try {
+    fetchPosts
     .then((response) => {
       return response.json();
     })
     .then((data) => {
       displayPosts(data);
     });
+  } catch(error) {
+    console.log(error)
+  }
+}
+
+async function getComments () {
+  try {
+    const response = await fetch('http://localhost:3000/comments');
+    const commentsData = await response.json();
+    return commentsData;
+  } catch(error) {
+    console.log(error);
+  }
 }
 
 // Loads the blog posts when site is opened.
@@ -56,3 +71,6 @@ function displayPosts(data) {
     });
   });
 }
+
+
+export { getComments };

@@ -52,6 +52,10 @@
     font-family: 'Newsreader', serif;
 }
 
+.modal {
+    font-family: 'Newsreader', serif;
+}
+
 .modal__dialog {
     background-color: hsla(0, 0%, 100%, .25);
 }
