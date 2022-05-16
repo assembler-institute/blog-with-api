@@ -23,7 +23,8 @@ fetchPosts
       // console.log(postNumId);
       // console.log(postUserId);
 
-      const articlePost = document.createElement("article");
+      const articlePost = document.createElement("article");+
+      articlePost.classList.add("test");
       const postTitle = document.createElement("h2");
       const postBody = document.createElement("p");
 
@@ -69,7 +70,11 @@ fetchPosts
 const closeBtn = document.getElementById("closeBtn");
 // console.log(closeBtn);
 closeBtn.addEventListener("click", function () {
-  console.log("workrss");
+  const commentsContainer = document.getElementById(`commentsContainer`)
+  const commentsBtn = document.getElementById("commentsBtn");
+  
+  commentsContainer.textContent = ""
+  commentsBtn.style.display = `block`
   modalPosts.close();
   mainContainer.style.display = "block";
 });
