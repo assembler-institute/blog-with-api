@@ -39,85 +39,92 @@ fetch('https://eonet.gsfc.nasa.gov/api/v2.1/events?source=InciWeb', {
 .catch((error) => {
   console.error('Error:', error);
 }); */
+const postContent1 = document.getElementById('post__content1');
+
 fetch('https://jsonplaceholder.typicode.com/posts/')
   .then(response => response.json())
-  .then(data => console.log(data))
+  .then(data => {
+    console.log(data);
+    postContent1.textContent = data[1].body
+
+    
+    })
   .then(response => console.log('Success:', JSON.stringify(response)))
-  .catch(error => console.error('Error:', error));
+  
+  
 
-
-fetch('https://jsonplaceholder.typicode.com/posts',{
-  method:'POST',
- headers:{
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    'name': 'Javier',
-    'userId': "One",
-    'id':'1',
-    'title':'New project',
-    'body':'Things to storage'
-  })
-}).then(res =>{
-  return res.json()
-})
-.then(data => console.log(data))
-.catch(error => console.log('ERROR'))
-
-
-
-
-
-fetch('https://jsonplaceholder.typicode.com/users/')
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .then(response => console.log('Success:', JSON.stringify(response)))
-  .catch(error => console.error('Error:', error));
-
-fetch('https://jsonplaceholder.typicode.com/users',{
-  method:'POST',
- headers:{
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    'id': "2",
-    'username':'Javier',
-    'email':'dogsouldev@gmail.com',
-  })
-}).then(res =>{
-  return res.json()
-})
-.then(data => console.log(data))
-.catch(error => console.log('ERROR'))
+// fetch('https://jsonplaceholder.typicode.com/posts',{
+//   method:'POST',
+//  headers:{
+//     'Content-Type': 'application/json'
+//   },
+//   body: JSON.stringify({
+//     'name': 'Javier',
+//     'userId': "One",
+//     'id':'1',
+//     'title':'New project',
+//     'body':'Things to storage'
+//   })
+// }).then(res =>{
+//   return res.json()
+// })
+// .then(data => console.log(data))
+// .catch(error => console.log('ERROR'))
 
 
 
 
-fetch('https://jsonplaceholder.typicode.com/posts/1/comments')
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .then(response => console.log('Success:', JSON.stringify(response)))
-  .catch(error => console.error('Error:', error));
+
+// fetch('https://jsonplaceholder.typicode.com/users/')
+//   .then(response => response.json())
+//   .then(data => console.log(data))
+//   .then(response => console.log('Success:', JSON.stringify(response)))
+//   .catch(error => console.error('Error:', error));
+
+// fetch('https://jsonplaceholder.typicode.com/users',{
+//   method:'POST',
+//  headers:{
+//     'Content-Type': 'application/json'
+//   },
+//   body: JSON.stringify({
+//     'id': "2",
+//     'username':'Javier',
+//     'email':'dogsouldev@gmail.com',
+//   })
+// }).then(res =>{
+//   return res.json()
+// })
+// .then(data => console.log(data))
+// .catch(error => console.log('ERROR'))
 
 
 
-fetch('https://jsonplaceholder.typicode.com/posts/1/comments',{
-  method:'POST',
- headers:{
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    'postId': "2",
-    'id':'Javier',
-    'name':'Adding new things',
-    'email':'dogsouldev@gmail.com',
-    'body':'this is the body of the comment',
-  })
-}).then(res =>{
-  return res.json()
-})
-.then(data => console.log(data))
-.catch(error => console.log('ERROR'))
+
+// fetch('https://jsonplaceholder.typicode.com/posts/1/comments')
+//   .then(response => response.json())
+//   .then(data => console.log(data))
+//   .then(response => console.log('Success:', JSON.stringify(response)))
+//   .catch(error => console.error('Error:', error));
+
+
+
+// fetch('https://jsonplaceholder.typicode.com/posts/1/comments',{
+//   method:'POST',
+//  headers:{
+//     'Content-Type': 'application/json'
+//   },
+//   body: JSON.stringify({
+//     'postId': "2",
+//     'id':'Javier',
+//     'name':'Adding new things',
+//     'email':'dogsouldev@gmail.com',
+//     'body':'this is the body of the comment',
+//   })
+// }).then(res =>{
+//   return res.json()
+// })
+// .then(data => console.log(data))
+// .catch(error => console.log('ERROR'))
 
 /* 
 https://jsonplaceholder.typicode.com/posts/?_start=${initialPosts}&_limit=${limit
@@ -220,3 +227,4 @@ fetch("https://jsonplaceholder.typicode.com/users/-1")
     })
     .then(res => res.json())
   } */
+
