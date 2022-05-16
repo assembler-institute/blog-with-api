@@ -2,12 +2,16 @@
 //Get the container from html
 let usersData;
 let postsComments;
+let apiImages;
 
 function getData() {
   let url = "http://localhost:3000";
   const Comments = fetch(`${url}/comments`);
   const Posts = fetch(`${url}/posts`);
   const Users = fetch(`${url}/users`);
+  const Images = fetch(
+    "https://pixabay.com/api/?key=27437216-9ddae61d97237ec9e5fc37f36&q=nature&image_type=photo&category=nature"
+  );
 
   Posts.then((response) => response.json())
     .then((data) => {
@@ -25,6 +29,11 @@ function getData() {
       getUsers(data);
     })
     .catch((error) => console.error(error));
+  Images.then((response) => response.json())
+    .then((data) => {
+      getImages(data);
+    })
+    .catch((error) => console.error(error));
 }
 
 const getUsers = (users) => {
@@ -33,6 +42,9 @@ const getUsers = (users) => {
 
 const getComments = (comments) => {
   postsComments = comments;
+};
+const getImages = (images) => {
+  apiImages = images;
 };
 
 function renderPostTitle(postData) {
@@ -49,7 +61,7 @@ function renderPostTitle(postData) {
 const creatPostTitleElement = (post, postsTitlesContainer) => {
   let elementcontainer = createElement("div");
   let postTitleElement = createElement("div");
-  let img = creatBootstrapImg();
+  let img = creatBootstrapImg(post.id);
   let editBtn = createButton("edit", post.id);
   let removeBtn = createButton("remove", post.id);
 
@@ -64,8 +76,10 @@ const creatPostTitleElement = (post, postsTitlesContainer) => {
 };
 
 const creatBootstrapImg = () => {
+  let i = Math.round(Math.random() * (19 - 0) + 0);
+  let imgUrl = apiImages.hits[i].webformatURL;
   let img = createElement("img");
-  img.src = "...";
+  img.src = `${imgUrl}`;
   img.classList = "img-thumbnail";
   img.alt = "...";
   return img;
@@ -129,6 +143,16 @@ const setPostComments = (post) => {
   });
 };
 
+const removeEvent = (post) => {
+  let removeBtn = document.querySelectorAll("[data-remove]");
+  Array.from(removeBtn).map((element) => {
+    element.addEventListener("click", () => {
+      console.log("SS");
+      console.log(post.id);
+    });
+  });
+};
+
 const createCommentItem = (comment, key) => {
   console.log(comment.name);
   let item = createElement("p");
@@ -150,6 +174,4 @@ const createElement = (element) => {
   return document.createElement(element);
 };
 
-export {
-    getData
-};
+export { getData };
