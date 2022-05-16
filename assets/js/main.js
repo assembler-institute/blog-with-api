@@ -114,7 +114,7 @@ return postContainer;
 //Eliminamos comentarios del modal
 function clearComments(){
   while(commentsList.firstChild){
-    console.log('entro')
+    
     commentsList.removeChild(commentsList.lastChild)
   }
 }
@@ -122,6 +122,7 @@ function clearComments(){
 // Conseguimos los comentarios de cada usuario 
 loadCommentsBtn.addEventListener("click", (e)=>{
   let postId = e.target.getAttribute("data-postid");
+  
   
   //obtenemos el response de traer los comentarios usando el fetch
   let  allComments = getComments(postId)
