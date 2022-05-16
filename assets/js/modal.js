@@ -24,3 +24,5 @@ const modalPost = new bootstrap.Modal(document.getElementById("modal__wrapp"));
 modalPost.show();
 
 } */
+
+
