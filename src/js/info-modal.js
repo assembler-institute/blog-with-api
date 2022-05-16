@@ -14,7 +14,7 @@ function showTitleBody(event) {
   const postId = event.target.getAttribute("data-post-id");
   const modalTitle = document.getElementById("modalTitle");
   const modalBody = document.getElementById("modalText");
-  const postData = fetch("http://localhost:3000/posts");
+  const postData = fetch("https://jsonplaceholder.typicode.com/posts/");
   try {
     postData
       .then((response) => {
@@ -36,7 +36,7 @@ function showUserEmail(event) {
   const userId = event.target.getAttribute("data-user-id");
   const modalUser = document.getElementById("modalUsername");
   const modalEmail = document.getElementById("modalEmail");
-  const userData = fetch("http://localhost:3000/users");
+  const userData = fetch("https://jsonplaceholder.typicode.com/users");
   try {
     userData
       .then((response) => {

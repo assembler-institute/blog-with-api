@@ -11,7 +11,7 @@ searchBtn.addEventListener('click', function () {
 // Fetch posts from api for posts, return as .json data, and pass to displayPosts function.
 async function getPostData() {
   try {
-    const response = await fetch("http://localhost:3000/posts");
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts/");
     const postData = response.json();
     return postData;
   } catch(error) {
@@ -30,7 +30,7 @@ window.onload = manageData;
 // Get Comments from json server
 async function getComments () {
   try {
-    const response = await fetch('http://localhost:3000/comments');
+    const response = await fetch('https://jsonplaceholder.typicode.com/comments');
     const commentsData = await response.json();
     return commentsData;
   } catch(error) {
