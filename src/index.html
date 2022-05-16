@@ -28,7 +28,6 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body ps-4">
-                        <!-- div post -->
                         <p>post body</p>
                     </div>
                     <div class="ps-4">
@@ -39,11 +38,6 @@
                     <div class="border border-1 border-end-0 border-bottom-0 my-1 ">
                         <h5 class="ms-3 my-2">Comments</h5>
                         <button type="button" id="comments" class="btn btn-dark my-2 ms-3">Load comments</button>
-                        <!-- <div class="test">
-                            <p>name</p>
-                            <p>nbody</p>
-                            <p>email</p>
-                        </div> -->
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -61,9 +55,11 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body ps-4">
-                        <form id="edit-form">
-                            <label for="edit-title">Title</label><br>
-                            <input id="edit-title" type="text">
+                        <form class="mx-2 my-2" id="edit-form">
+                            <label for="edit-title">Title :</label><br>
+                            <input id="edit-title" type="text"><br>
+                            <label class="mt-1" for="body">Body :</label><br>
+                            <textarea class="" name="body" id="body" cols="30" rows="10"></textarea>
                         </form>
                     </div>
                     <!-- </div> -->
@@ -94,8 +90,8 @@
                     dolorem non? Veritatis est, excepturi consectetur expedita id sit, officia cupiditate aspernatur
                     velit eum ipsa rem.</p>
                 <button role="button" class="btn btn-primary me-1 my-auto">X</button>
-                <button role="btn-edit" class="btn btn-secondary my-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
-                <button role="modal-edit" class="btn btn-secondary my-auto" data-bs-toggle="modal" data-bs-target="#editModal">Editar</button>
+                <button role="btn-edit" class="btn btn-secondary my-auto me-1" data-bs-toggle="modal" data-bs-target="#exampleModal">View</button>
+                <button role="modal-edit" class="btn btn-secondary my-auto" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
             </div>
         </div>
     </template>

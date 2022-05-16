@@ -31,7 +31,6 @@ fetch(postUrl)
     const titleModal = document.querySelector('#edit-title');
     let postId;
 
-    console.log(editModalNew);
     editModalNew.forEach((button) => {
       button.addEventListener('click', () => {
         fetch('http://localhost:3000/posts/' + button.dataset.id)
@@ -44,8 +43,6 @@ fetch(postUrl)
     });
 
     saveFetch.addEventListener('click', () => {
-      // fetch('http://localhost:3000/posts/' + button.dataset.id)
-
       fetch('http://localhost:3000/posts/' + postId, {
         method: 'PATCH',
         body: JSON.stringify({
@@ -57,7 +54,7 @@ fetch(postUrl)
       });
     });
 
-    // BUTTON EDIT
+    // Button view
     let editButton = document.querySelectorAll('[role="btn-edit"]');
     const cmtBtn = document.getElementById('comments');
 
@@ -116,7 +113,6 @@ fetch(postUrl)
     const deleteButtons = document.querySelectorAll('[role="button"]');
     deleteButtons.forEach((element) => {
       element.addEventListener('click', () => {
-        // element.parentNode.parentNode.remove()}
         fetch('http://localhost:3000/posts/' + element.dataset.id, {
           method: 'DELETE',
         });
