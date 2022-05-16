@@ -75,7 +75,7 @@ const modifyCard = postId => {
 
 //params is post information {userId, id, username, body}
 function createPostCard (params){
-    const content = document.createElement('div')
+    const content = document.createElement('article')
     const header = document.createElement('div')
     const text = document.createElement('p')
     const imgSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${params.userId}.gif`
@@ -84,10 +84,11 @@ function createPostCard (params){
     const modify = modifyCard(params.id)
     const activeUserId = sessionStorage.getItem('userId')
 
-    text.textContent = params.body
+    text.innerText = params.body
 
     content.setAttribute('data-post-id', params.id)
     content.setAttribute('data-user-id', params.userId)
+    content.classList.add('posts__article')
 
     text.classList.add('post__text')
     header.classList.add('post__header')

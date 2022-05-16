@@ -5,10 +5,14 @@ body {
     align-items: center;
 }
 
+.main__posts{
+    display: flex;
+    flex-direction: column;
+}
+
 .main__container{
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 50%;
     min-width: 30rem;
     border-left: 1px solid #ccc;
@@ -39,7 +43,6 @@ body {
     border-bottom: 1px solid #ccc;
     margin-bottom: 0.5rem;
     padding: 0.5rem;
-    position: relative;
 }
 
 .post__title, .article__span--username{

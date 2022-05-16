@@ -13,11 +13,11 @@ const saveComment = document.getElementById('editModal__save')
 const deleteCommentBtn = document.getElementById('deleteModalBtn');
 const createPostButton = document.getElementById('createPostButton');
 
-window.onload = function (){
+window.onload = async function (){
     if (!sessionStorage.getItem('userId')){
         defaultUser()
     }
-    displayPosts()
+    await displayPosts()
     getUserLoginImg()
 }
 
@@ -91,7 +91,7 @@ async function displayPosts() {
 })
 }
 
-const displayComments = (postId, postContainer) => {
+const displayComments = async (postId, postContainer) => {
     fetch('http://localhost:3000/comments', {
         method: 'GET'
     })
