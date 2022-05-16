@@ -1,8 +1,13 @@
   /*POSTS CONTAINERS*/
   
 
+
   .blog__header__title {
-    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .navbar {
+    height: 5rem;
   }
 
 .list-group-item {
@@ -28,12 +33,17 @@
   margin: 0 1rem;
 }
 
-.elementContainer {
-  padding: 0;
+/* .elementContainer {
+  margin-bottom: 30px;
+  padding: 10px;
   background-color: #fff;
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, .12);
+} */
+
+.card {
+  padding: 0;
 }
 
 .commentWrapper {
@@ -63,11 +73,20 @@
   margin-left: .3rem;
 }
 
+.btn-outline-success{
+  background-color: #fff;
+  color: #212529;
+}
+
+.btn-outline-success:hover {
+  background-color: #fff;
+  color: #212529;
+}
+
 
 /* IMG */
 .img-thumbnail{
   padding: 0;
   border: none;
   width: 100%;
-  height: min-content;
 }

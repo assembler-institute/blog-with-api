@@ -61,9 +61,8 @@ function renderPostTitle(postData) {
 //Create a Li element for each "Post Title" & append it to the list
 const creatPostTitleElement = (post, postsTitlesContainer) => {
   let elementContainer = createElement("div");
-  postsTitlesContainer.classList.add("row");
-  elementContainer.classList.add("col-sm-4");
-  elementContainer.classList.add("elementContainer");
+  postsTitlesContainer.classList.add("row", "row-cols-1", "row-cols-lg-3", "g-lg-2");
+  elementContainer.classList.add("col", "card");
   let postTitleElement = createElement("div");
   let img = creatBootstrapImg();
   let editBtn = createButton("Edit", post.id);
@@ -77,6 +76,7 @@ const creatPostTitleElement = (post, postsTitlesContainer) => {
 
   let buttonContainer = createElement("div");
   buttonContainer.className = "buttonContainer";
+
 
   elementContainer.append(img, postTitleElement, buttonContainer);
   buttonContainer.append(editBtn, removeBtn);
