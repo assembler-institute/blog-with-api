@@ -108,7 +108,7 @@ const listElementAddEvent = (post, listElement) => {
 };
 
 const setModalTitle = (post) => {
-  let modalTitle = getElement("userName");
+  let modalTitle = getElement("exampleModalLabel");
   let modalBody = getElement("bodyContent");
   modalTitle.textContent = post.title;
   modalBody.textContent = post.body;
