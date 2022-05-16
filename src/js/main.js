@@ -46,8 +46,7 @@ function loadPosts(){
                 contenTitle.textContent = (post.title.charAt(0).toUpperCase() + post.title.slice(1));
                 userNamePost.textContent = getUser(titleLink.getAttribute('id'));
                 userEmailPost.textContent = getUser(titleLink.getAttribute('id'));
-                //console.log(titleLink.getAttribute('id'));
-                contentBody.append(userBodyPost, userNamePost);
+                contentBody.append(userBodyPost, userNamePost, userEmailPost);
             });
 
             cardTitle.append(titleLink)
@@ -67,19 +66,15 @@ function getUser(idUser){
     fetch(`http://localhost:3000/users?id=${idUser}`)
     .then(response => response.json())
     .then(data => {
-        //return data.id;
         data.forEach(user => {
-            userNamePost.textContent = user.name;
-            userEmailPost.textContent = user.email;
-            // contentBody.textContent = element.name;
-            console.log(user.name, user.email);
-            //return element.name;
+            userNamePost.textContent = 'Written by: ' + user.name;
+            userEmailPost.textContent = 'Email: ' + user.email;
+            //console.log(user.name, user.email);
         });
     })
     .catch(error => {
         console.log(error);
     });
 };
-//getUser(3);
 
 loadPosts();
