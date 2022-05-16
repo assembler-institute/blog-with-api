@@ -5,7 +5,13 @@
     src: url("/src/fonts/old_london/OldLondon.ttf");
 }
 
-
+.main__content{
+    background-image: url("/assets/undraw_news_re_6uub_tall_fit.svg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 55vh;
+    background-position: left;
+}
 
 :root {
     --bg-custom: #f2ddc3;
