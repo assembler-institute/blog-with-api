@@ -4,6 +4,10 @@ const commentsURL = fetch("https://jsonplaceholder.typicode.com/comments/");
 const contentBody = document.getElementById('modal__body-content');
 const contenTitle = document.getElementById('modal__title-content');
 
+const userBodyPost = document.getElementById('user__body--post');
+const userNamePost = document.getElementById('user__name--post');
+const userEmailPost = document.getElementById('user__email--post');
+
 function loadPosts(){
     postsURL
     .then(response => response.json())
@@ -29,8 +33,7 @@ function loadPosts(){
             const addIcon = document.createElement('i');
             const delIcon = document.createElement('i');
             // const modalTitle = document.getElementById('modalTitle');
-            const modalBody = document.createElement('p');
-            const modalUser = document.createElement('p');
+            
             titleLink.setAttribute('id', post.userId);
 
             addIcon.classList.add('bi', 'bi-pen');
@@ -39,11 +42,12 @@ function loadPosts(){
             btnDel.classList.add('btn', 'btn-outline-danger');
 
             cardTitle.addEventListener('click', () =>{
-                contentBody.textContent = (post.body.charAt(0).toUpperCase() + post.body.slice(1));
+                userBodyPost.textContent = (post.body.charAt(0).toUpperCase() + post.body.slice(1));
                 contenTitle.textContent = (post.title.charAt(0).toUpperCase() + post.title.slice(1));
-                modalUser.textContent = getUser(titleLink.getAttribute('id'));
+                userNamePost.textContent = getUser(titleLink.getAttribute('id'));
+                userEmailPost.textContent = getUser(titleLink.getAttribute('id'));
                 //console.log(titleLink.getAttribute('id'));
-                contentBody.append(modalBody, modalUser);
+                contentBody.append(userBodyPost, userNamePost);
             });
 
             cardTitle.append(titleLink)
@@ -64,8 +68,11 @@ function getUser(idUser){
     .then(response => response.json())
     .then(data => {
         //return data.id;
-        data.forEach(element => {
-            console.log(element.name);
+        data.forEach(user => {
+            userNamePost.textContent = user.name;
+            userEmailPost.textContent = user.email;
+            // contentBody.textContent = element.name;
+            console.log(user.name, user.email);
             //return element.name;
         });
     })
