@@ -29,15 +29,7 @@ let theComments= async() =>{
 
 
 
-
 /!*  PLACEHOLDER API JSON */
-
-
-fetch('https://jsonplaceholder.typicode.com/posts/')
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .then(response => console.log('Success:', JSON.stringify(response)))
-  .catch(error => console.error('Error:', error));
 
 
 fetch('https://jsonplaceholder.typicode.com/posts',{
@@ -59,14 +51,14 @@ fetch('https://jsonplaceholder.typicode.com/posts',{
 .catch(error => console.log('ERROR'));
 
 
-
-
-
-fetch('https://jsonplaceholder.typicode.com/users/')
+fetch('https://jsonplaceholder.typicode.com/posts/')
   .then(response => response.json())
   .then(data => console.log(data))
   .then(response => console.log('Success:', JSON.stringify(response)))
   .catch(error => console.error('Error:', error));
+
+
+
 
 fetch('https://jsonplaceholder.typicode.com/users',{
   method:'POST',
@@ -84,14 +76,12 @@ fetch('https://jsonplaceholder.typicode.com/users',{
 .then(data => console.log(data))
 .catch(error => console.log('ERROR'));
 
-
-
-
-fetch('https://jsonplaceholder.typicode.com/posts/1/comments')
+fetch('https://jsonplaceholder.typicode.com/users/')
   .then(response => response.json())
   .then(data => console.log(data))
   .then(response => console.log('Success:', JSON.stringify(response)))
   .catch(error => console.error('Error:', error));
+
 
 
 
@@ -112,3 +102,11 @@ fetch('https://jsonplaceholder.typicode.com/posts/1/comments',{
 })
 .then(data => console.log(data))
 .catch(error => console.log('ERROR'));
+
+
+
+fetch('https://jsonplaceholder.typicode.com/posts/1/comments')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .then(response => console.log('Success:', JSON.stringify(response)))
+  .catch(error => console.error('Error:', error));
