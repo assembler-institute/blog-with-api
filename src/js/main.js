@@ -3,9 +3,7 @@ const postArray = ["", "", "", "", "", "", "", "", "", ""];
 let url = "http://localhost:3000"
 
 // Get the API data
-fetch("http://localhost:3000/posts", {
-        method: "GET",
-    })
+fetch(url + "/posts")
     .then(function (response) {
         return response.json();
     })
@@ -31,6 +29,12 @@ fetch("http://localhost:3000/posts", {
                 postDiv.classList.add("posts", "col", "card");
 
                 const postData = data[postDiv.id];
+
+                let postImg = document.createElement("img");
+                postImg.setAttribute("src", "https://images2.alphacoders.com/941/thumb-1920-941898.jpg");
+                postImg.classList.add("card-img-top");
+                postDiv.appendChild(postImg);
+
 
                 let postTitle = document.createElement("h5");
                 postTitle.classList.add("card-title");
