@@ -20,6 +20,19 @@ const postStatusCard = params => {
     const comments = document.createElement('div')
     const commentsCounter = document.createElement('p')
     const commentsBtn = document.createElement('button')
+    const createCommentBtn = document.createElement('p')
+
+    createCommentBtn.textContent = '+++++'
+    createCommentBtn.setAttribute('data-create-comment', params.postId)
+    createCommentBtn.classList.add('post__comment-create')
+
+    //this next lines are going to be refactored
+    createCommentBtn.addEventListener('click', ()=>{
+        const idPost = createCommentButton.getAttribute('data-create-comment');
+        const textPost = document.getElementById('create-post__text').value;
+        createComment(textPost, parseInt(idPost))
+        location.reload();
+    })
 
     commentsCounter.textContent = params.commentQty
     
@@ -28,7 +41,7 @@ const postStatusCard = params => {
     commentsBtn.classList.add('article__button--showComments')
     commentsBtn.setAttribute('data-show-comments', params.postId)
 
-    comments.append(commentsBtn, commentsCounter)
+    comments.append(commentsBtn, commentsCounter, createCommentBtn)
     
     return comments
 }
@@ -66,16 +79,15 @@ function createPostCard (params){
     const content = document.createElement('div')
     const header = document.createElement('div')
     const text = document.createElement('p')
-    const avatar = avatarCard({src:"./src/img/150.gif", alt:"Mewtwo", name:"Mewtwo"})
-    const postDescription = postStatusCard({postId: 1, commentQty: 14})
+    const avatar = avatarCard({src:"./src/img/150.gif", alt: params.name, name: params.name})
+    const postDescription = postStatusCard({postId: params.postId, commentQty: params.postCommentsQty})
     const modify = modifyCard({postId: 1})
+    const activeUserId = sessionStorage.getItem('')
 
-    text.textContent = "Buenos días amigos míos, he venido aquí para colonizar la tierra"
+    text.textContent = params.body
 
-    // content.setAttribute('data-post-id', params.postId)
-    // content.setAttribute('data-user-id', params.userId)
-    content.setAttribute('data-post-id', 1)
-    content.setAttribute('data-user-id', 1)
+    content.setAttribute('data-post-id', params.id)
+    content.setAttribute('data-user-id', params.userId)
 
     text.classList.add('post__text')
     header.classList.add('post__header')
