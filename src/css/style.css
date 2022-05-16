@@ -20,7 +20,7 @@
 
 .navbar__logo-img {
     transform: rotate(-45deg);
-    /* margin-left: -4.5rem; */
+    margin: 0 2rem;
     /* margin-right: 1rem; */
 }
 

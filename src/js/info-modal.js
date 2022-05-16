@@ -28,6 +28,8 @@ function showTitleBody(event) {
     });
     setCommentsId(postId)
 }
+
+// Show the email and user in post modal
 function showUserEmail(event) {
   const userId = event.target.getAttribute("data-user-id");
   const modalUser = document.getElementById("modalUsername");
@@ -44,11 +46,14 @@ function showUserEmail(event) {
     });
 }
 
+// Gives comments section a data attribute, to match with the id from the comments json data.
 function setCommentsId(postId) {
   const commentsContent = document.getElementById('commentsContentBody');
   commentsContent.setAttribute('data-post-id', `${postId}`);
 }
 
+
+// Removes comments before displaying more comments
 function removeComments () {
   const commentsBody = document.getElementById('commentsContentBody'); 
   while (commentsBody.firstElementChild) {
@@ -57,6 +62,7 @@ function removeComments () {
     }
 }
 
+// Loads comments into the bottom of the modal, adds comments formatting
 async function loadComments () {  
   const commentsContent = document.getElementById('commentsContentBody'); 
   const commentsTitle = document.createElement('h4');
@@ -68,7 +74,6 @@ async function loadComments () {
   const commentsSet = commentsData.filter(comment => {
     return comment.postId == modalPostId;
   })
-  removeComments();
   commentsContent.append(commentsTitle)
   commentsSet.map((comment) => {
     const commentName = document.createElement('h5');
