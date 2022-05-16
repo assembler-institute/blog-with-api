@@ -7,14 +7,22 @@ const gridContainer = [
     [[""]],[[""]],
     [[""]],[[""]]];
 
+const container = document.getElementById('container');
 let index = 0;
+let myInput = document.getElementById('myInput');
+let myModal = document.getElementById("myModal");
+let modalTitle = document.getElementById('modalTitle');
+let modalBody = document.getElementById('modalBody');
 
 fetchData // Get data from Json server
 .then(response => response.json())
 .then(data => {
-    displayPosts(gridContainer, data); 
-
+    displayPosts(gridContainer, data);
+    modalTitle.textContent = data[index].title;
+    modalBody.textContent = data[index].title;
 })
+
+
 
 function displayPosts(container,data) {
     let index = 0;
@@ -39,15 +47,19 @@ function displayPosts(container,data) {
     
                 titlePost.setAttribute("id","titlePost");
                 titlePost.classList.add("card-title");
-                titlePost.textContent = data[index].title;
+                titlePost.textContent = data[index].title;;
     
                 bodyPost.setAttribute("id","bodyPost");
                 bodyPost.classList.add("card-text");
                 bodyPost.textContent = data[index].body;
     
+                readMoreBtn.setAttribute("id","myModal");
+                readMoreBtn.setAttribute("type","button");
+                readMoreBtn.setAttribute("data-bs-toggle","modal");
+                readMoreBtn.setAttribute("data-bs-target","#staticBackdrop");
                 readMoreBtn.classList.add("btn","btn-primary");
                 readMoreBtn.textContent = "Read more →"
-    
+
                 postContent.appendChild(titlePost);
                 postContent.appendChild(bodyPost);
                 postContent.appendChild(readMoreBtn);
@@ -63,4 +75,8 @@ function displayPosts(container,data) {
     })
 }
 
+container.addEventListener("click" , modalContent);
+function modalContent (e){
+
+}
 
