@@ -1,0 +1,13 @@
+/**
+ * THEME - VARS
+ */
+
+:root {
+  --black: #121212;
+  --white: #f5f5f5;
+  --grey: #d8d8d8;
+  --darkGrey: #424242;
+  --background: var(--black);
+  --foreground: var(--white);
+  --transition: 0.35s ease;
+}

@@ -1,0 +1,37 @@
+/**
+ * MODULE - COMMENTS
+ */
+
+.comments{
+  padding: 3rem 0 6rem;
+}
+
+.comments__total{
+  border-top: 1px solid var(--grey);
+  border-bottom: 1px solid var(--grey);
+  padding: 2rem 0;
+  margin-bottom: 1rem;
+}
+
+.comments__item {
+  padding-top: 2rem;
+}
+
+.comments__buttons{
+  margin-left: 1rem;
+}
+
+.comments__buttons button{
+  background-color: transparent;
+}
+
+.comments__buttons button i {
+  color: var(--darkGrey);
+  height: 20px;
+  width: 20px;
+  font-size: 1.8rem;
+}
+
+.comments__buttons button:hover i {
+  color: var(--black);
+}
