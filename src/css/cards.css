@@ -1,0 +1,28 @@
+.body__card--post {
+    display: flex;
+    flex-direction: column;
+    width: 50rem;
+    height: auto;
+}
+
+.container__card--post {
+    height: 6.7rem;
+    border: none;
+    border-radius: 0.6rem;
+    margin-bottom: 0.7rem;
+    -webkit-box-shadow: 6px 6px 16px -5px rgba(41, 13, 121, 0.2);
+    -moz-box-shadow: 6px 6px 16px -5px rgba(41, 13, 121, 0.2);
+    box-shadow: 6px 6px 16px -5px rgba(41, 13, 121, 0.2);    
+}
+
+.card__title--post {
+
+    font-family: var(--space-font);
+    font-weight: 600;
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.card__title--post:hover {
+    color: var(--tertiary-color);
+}

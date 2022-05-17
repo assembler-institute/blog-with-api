@@ -1,0 +1,75 @@
+.modal-content {
+    width: 40rem;
+    height: auto;
+    background: #141E30;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+
+.space__modal--hero--content{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -5rem;
+}
+
+.space__modal--hero {
+    height: 20rem;
+    padding: 0 3rem 2rem 0;
+}
+
+.modal-body {
+    color: #fff;
+    font-family: var(--body-font);
+    font-weight: 300;
+    font-size: 1.2rem;
+}
+
+.modal-title {
+    font-family: var(--space-font);
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.user__name--post {
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: -0.2rem;
+}
+
+.user__email--post {
+    font-weight: 200;
+    font-size: 1.1rem;
+}
+
+.btn__comments--users {
+    width: 12rem;
+    margin: 0 auto;
+    background-color: #c5367d;
+    border: none;
+    animation: boom 1s infinite;
+    color: rgb(255, 255, 255);
+}
+
+@keyframes boom {
+    0% {
+        box-shadow: #c5367d 0 0 0 0;
+    }
+    85% {
+        box-shadow: transparent 0 0 0 0.5rem;
+    }
+}
+
+.btn__comments--users:hover {
+    width: 12rem;
+    margin: 0 auto;
+    background-color: #c5367d;
+    border: none;
+}
+
+.btn__comments--users:focus {
+    width: 12rem;
+    margin: 0 auto;
+    background-color: #c5367d;
+    border: none;
+}

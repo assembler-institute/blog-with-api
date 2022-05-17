@@ -28,14 +28,15 @@ function loadPosts(){
             const cardTitle = document.createElement('h5');
             cardTitle.classList.add('card-title');
             const titleLink = document.createElement('a');
+            titleLink.classList.add('card__title--post')
             titleLink.setAttribute('href','javaScript:void(0)')
             titleLink.setAttribute('data-bs-toggle', 'modal')
             titleLink.setAttribute('data-bs-target', '#exampleModal')
             titleLink.textContent = post.title.charAt(0).toUpperCase() + post.title.slice(1);
             const delIcon = document.createElement('i');
             const cardText = document.createElement('p');
-            const btnAdd = document.createElement('button');
-            const btnDel = document.createElement('button');
+            // const btnAdd = document.createElement('button');
+            // const btnDel = document.createElement('button');
             const addIcon = document.createElement('i');
             cardText.classList.add('card-text');
             cardText.textContent = (post.body.charAt(0).toUpperCase() + post.body.slice(1)).slice(0, 80) + '...';
@@ -50,8 +51,8 @@ function loadPosts(){
 
             addIcon.classList.add('bi', 'bi-pen');
             delIcon.classList.add('bi', 'bi-trash3-fill');
-            btnAdd.classList.add('btn', 'btn-success');
-            btnDel.classList.add('btn', 'btn-outline-danger');
+            // btnAdd.classList.add('btn', 'btn-success');
+            // btnDel.classList.add('btn', 'btn-outline-danger');
 
             cardTitle.addEventListener('click', () =>{
                 userBodyPost.textContent = (post.body.charAt(0).toUpperCase() + post.body.slice(1));
@@ -67,11 +68,11 @@ function loadPosts(){
             });
 
             cardTitle.append(titleLink)
-            btnDel.append(delIcon);
-            btnAdd.append(addIcon);
+            // btnDel.append(delIcon);
+            // btnAdd.append(addIcon);
             mainContainer.append(cardContainer);
             cardContainer.append(cardBody);
-            cardBody.append(cardTitle, cardText, btnAdd, btnDel);
+            cardBody.append(cardTitle, cardText, /* btnAdd, btnDel */);
         });
     })
     .catch(error => {
@@ -84,8 +85,8 @@ function getUser(idUser){
     .then(response => response.json())
     .then(data => {
         data.forEach(user => {
-            userNamePost.textContent = 'Written by: ' + user.name;
-            userEmailPost.textContent = 'Email: ' + user.email;
+            userNamePost.textContent = '— ' + user.name;
+            userEmailPost.textContent = /* 'Email: ' +  */user.email;
         });
     })
     .catch(error => {
