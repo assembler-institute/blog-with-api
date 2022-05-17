@@ -97,6 +97,19 @@ function deletePost(elementContainer) {
                 alert(`Post with id ${postId} has been deleted`);
                 console.log(postsTitlesContainer);
                 elementContainer.remove();
+
+                fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
+                        method: "DELETE",
+                })
+                        .then((response) =>{
+                            response.json(); 
+                            console.log(response)   
+                        }) 
+                        .then((data) => {
+                                console.log(data);
+                        }
+                        )
+                        .catch((error) => console.error(error));
         };
 }
 
