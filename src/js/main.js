@@ -91,26 +91,6 @@ const createPostTitleElement = (post, postsTitlesContainer) => {
         return postTitleElement;
 };
 
-function deletePost(e) {
-
-                let postId = e.target.dataset.id;
-                let postElement = document.querySelector(`[data-id="${postId}"]`);
-                postElement.remove();
-
-                fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
-                        method: "DELETE",
-                })
-                        .then((res) =>{
-                            res.json(); 
-                            console.log(res)   
-                        }) 
-                        .then((res) => {
-                                console.log("Post deleted");
-                        }
-                        )
-
-
-}
 
 
 
@@ -206,6 +186,29 @@ const getElement = (element) => {
 const createElement = (element) => {
         return document.createElement(element);
 };
+
+
+function deletePost(e) {
+
+        let postId = e.target.dataset.id;
+        let postElement = document.querySelector(`[data-id="${postId}"]`);
+        postElement.remove();
+
+        fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
+                method: "DELETE",
+        })
+                .then((res) =>{
+                    res.json(); 
+                    console.log(res)   
+                }) 
+                .then((res) => {
+                        console.log("Post deleted");
+                }
+                )
+
+
+}
+
 
 
 
