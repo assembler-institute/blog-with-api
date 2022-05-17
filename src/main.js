@@ -25,11 +25,12 @@ fetch(postUrl)
       container.appendChild(clone);
     });
 
-    // Editar New btn
+    // Edit Button - *modal*
     const editModalNew = document.querySelectorAll('[role="modal-edit"]');
     const saveFetch = document.querySelector('#saveFetch');
     const titleModal = document.querySelector('#edit-title');
     const bodyModal = document.querySelector('.bodyArea');
+
     let postId;
 
     editModalNew.forEach((button) => {
@@ -43,7 +44,7 @@ fetch(postUrl)
           });
       });
     });
-
+    // save Change buttton
     saveFetch.addEventListener('click', () => {
       fetch('http://localhost:3000/posts/' + postId, {
         method: 'PATCH',
@@ -110,7 +111,7 @@ fetch(postUrl)
           });
       });
     });
-
+    // Detele button
     const deleteButtons = document.querySelectorAll('[role="button"]');
     deleteButtons.forEach((element) => {
       element.addEventListener('click', () => {
@@ -120,10 +121,8 @@ fetch(postUrl)
       });
     });
   });
-
+// Load more button
 const loadMore = document.querySelector('.load-btn');
-const divsLoad = document.querySelectorAll('#load-Posts');
-
 let currentPage = 1;
 loadMore.addEventListener('click', () => {
   currentPage += 1;
