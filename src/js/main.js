@@ -19,7 +19,7 @@ fetchPosts
       const postNumId = post.id; // Id of the post
 
       const articlePost = document.createElement("article");
-      +articlePost.classList.add("postBox");
+      articlePost.classList.add("postBox");
       const postTitle = document.createElement("h2");
       const postBody = document.createElement("p");
 
