@@ -3,58 +3,57 @@
 # Blog with API <!-- omit in toc -->
 
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-2.0-blue.svg?cacheSeconds=2592000" />
 </p>
 
-> In this pill you will put into practice the knowledge learned about making HTTP requests to create a blog consuming the information from a third-party API. You will also learn how to use Bootstrap Framework for the layout.
+> In this project we put into practice the knowledge acquired on how to make HTTP requests to create a blog that consumes information from a third-party API. You'll also learn how to use the Bootstrap Framework for design.
 
 ## Index <!-- omit in toc -->
 
-- [Requirements](#requirements)
-- [Repository](#repository)
+- [Install](#install)
+- [Getting Started](#starting)
 - [Technologies used](#technologies-used)
-- [Project delivery](#project-delivery)
-- [Resources](#resources)
+- [MockUps](#mock-ups)
 
-## Requirements
+## Install
 
-- You must use semantic HTML5 elements for all the contents of the application
-- You must use JSON server library to create your own local repository
-- You must use fecth to do the requests
-- You have to use Bootstrap Framework for the Layout and the styles
+- Download repository
+```javascript
+  git clone git@github.com:alejandroaperez1994g/blog-with-api.git
+  cd blog-with-api
+```
 
+- Install json-server
+```javascript
+  npm install
+```
 
-## Repository
+- Execute json-server
 
-First of all you must fork this project into your GitHub account.
+```javascript
+  npm run server
+```
 
-To create a fork on GitHub is as easy as clicking the “fork” button on the repository page.
+## Starting
 
-<img src="https://docs.github.com/assets/images/help/repository/fork_button.jpg" alt="Fork on GitHub" width='450'>
+This is a project that simulates the display of posts brought from an API, being able to delete them and modify the content.
 
 ## Technologies used
 
-\* HTML
+- HTML
+- CSS
+- JS
+- Bootstrap
+- HTTP Requests
+- JSON
+- API
 
-\* CSS
+## MockUps
 
-\* JS
 
-\* Bootstrap
+![1_API_mockup](https://user-images.githubusercontent.com/90200166/168695103-23418c47-2a2b-4248-8a60-9929c2dcf07e.png)
+![2_API_mockup](https://user-images.githubusercontent.com/90200166/168695279-5a409d1c-9a25-4047-9822-383c4ff3d02e.png)
+![3_API_mockup](https://user-images.githubusercontent.com/90200166/168695309-da34fcba-6ff1-47f3-a423-347d8fc80cf4.png)
+![4_API_mockup](https://user-images.githubusercontent.com/90200166/168695337-324efcec-2d23-415f-b68e-7c23ba92c0a6.png)
 
-\* HTTP Requests
 
-\* JSON
-
-\* API
-
-## Project delivery
-
-To deliver this project you must follow the steps indicated in the document:
-
-- [Submitting a solution](https://www.notion.so/Submitting-a-solution-524dab1a71dd4b96903f26385e24cdb6)
-
-## Resources
-
-- [JSON server](https://github.com/typicode/json-server)
-- [Official Bootstrap](https://getbootstrap.com/)

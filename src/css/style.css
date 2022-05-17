@@ -1,0 +1,20 @@
+.postBox{
+  border-style: solid;
+  border-color: #52aef4;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  background-color: #4eaff9;
+  cursor: pointer;
+  transition: all 0.5s;
+  font-family: 'Cabin', sans-serif;
+}
+
+.postBox:hover{
+  background-color: #66b6f3;
+  transform: scale(1.02);
+}
+
+#title{
+  font-family: 'Bebas Neue', cursive;
+  font-size: 4rem;
+}
