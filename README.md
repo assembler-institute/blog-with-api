@@ -27,9 +27,9 @@ On Day 4, the design and visual aspect was improved by further integrating Boots
 
 ## Requirements
 
-*Use {JSON}Placeholder API with endpoints for users, comments, and posts. 
-*Use fetch method for HTTP requests.
-*Use Bootstrap to add style to the website.
+-Use {JSON}Placeholder API with endpoints for users, comments, and posts. 
+-Use fetch method for HTTP requests.
+-Use Bootstrap to add style to the website.
 
 ## Attribution
 
