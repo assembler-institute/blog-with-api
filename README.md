@@ -1,60 +1,42 @@
-`#html` `#css` `#js` `#dom` `#JSON` `#HTTP` `#API` `#Bootstrap` `#master-in-software-development`
+# News Blog with API 
+Our blog adopts a design inspired by well-known newspapers and news websites, such as The Guardian, The Washington  Post, The New York Times. Our goal for the design focused on simplicity and functionality for the user.
 
-# Blog with API <!-- omit in toc -->
+It was important for us to be able to access different endpoints for the {JSON}Placeholder API. Although we did not incorporate POST and DELETE functions for the blog posts, the code is scalable and this implementation is planned for future versions.
 
-<p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
-</p>
+![img of our blog header](./assets/header_img.png)
 
-> In this pill you will put into practice the knowledge learned about making HTTP requests to create a blog consuming the information from a third-party API. You will also learn how to use Bootstrap Framework for the layout.
 
-## Index <!-- omit in toc -->
+## Planning
 
-- [Requirements](#requirements)
-- [Repository](#repository)
-- [Technologies used](#technologies-used)
-- [Project delivery](#project-delivery)
-- [Resources](#resources)
+We began the project by outlining the project, using tools like Trello for workflow, as well as Figma and Miró for basic design plans.
+
+Day 1 of the project was dedicated toward planning the functionality and design of the app. 
+
+Day 2 began by setting up a local JSON server for testing, then moving on to basic HTML structure and Javascript functionality.
+
+On Day 3, we focused on accessing the JSON data and displaying successfully on the main page, testing several methods, finally settling on *fetch*, using a mix of standard and async functions.
+
+On Day 4, the design and visual aspect was improved by further integrating Bootstrap 5 classes into the HTML and Javascript. Then time was spent refactoring main functions.
+
+
+![img of planned functions with miro number 1](./assets/miro_img01.png)
+
+![img of planned functions with miro number 2](./assets/miro_img02.png)
+
+![img of planned functions with miro number 3](./assets/miro_img03.png)
 
 ## Requirements
 
-- You must use semantic HTML5 elements for all the contents of the application
-- You must use JSON server library to create your own local repository
-- You must use fecth to do the requests
-- You have to use Bootstrap Framework for the Layout and the styles
+-Use {JSON}Placeholder API with endpoints for users, comments, and posts. 
+-Use fetch method for HTTP requests.
+-Use Bootstrap to add style to the website.
 
+## Attribution
 
-## Repository
+Illustration on main page from Undraw (https://undraw.co/illustrations)
+Icon on header by Icons8 (https://icons8.com)
 
-First of all you must fork this project into your GitHub account.
+## The Team
 
-To create a fork on GitHub is as easy as clicking the “fork” button on the repository page.
-
-<img src="https://docs.github.com/assets/images/help/repository/fork_button.jpg" alt="Fork on GitHub" width='450'>
-
-## Technologies used
-
-\* HTML
-
-\* CSS
-
-\* JS
-
-\* Bootstrap
-
-\* HTTP Requests
-
-\* JSON
-
-\* API
-
-## Project delivery
-
-To deliver this project you must follow the steps indicated in the document:
-
-- [Submitting a solution](https://www.notion.so/Submitting-a-solution-524dab1a71dd4b96903f26385e24cdb6)
-
-## Resources
-
-- [JSON server](https://github.com/typicode/json-server)
-- [Official Bootstrap](https://getbootstrap.com/)
+Alejandro Gaerste Steger (https://github.com/Gaerste/)
+Blake Johnson (https://github.com/blakejohns5) 

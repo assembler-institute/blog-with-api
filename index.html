@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./src/css/style.css">
+    <script src="./src/js/main.js" type="module"></script>
+    <title>The Dispatch</title>
+  </head>
+  <body>
+    <!-- main  -->
+    <nav id="blogHeader" class="blog__header navbar sticky-top container-fluid p-5 d-flex align-items-center justify-content-center">
+      <div class="blog__logo d-flex">
+        <a href="index.html" class="blog__header--title navbar-brand text-dark"><h1 class="blog__header--title">The Post Dispatch<img src="./assets/icons8-bugle-50.png" class="navbar__logo-img" alt="bugle icon"></h1></a>
+      </div>
+      <div class="header__form">
+        <form class="form-inline d-flex gap-3">
+          <input id="headerSearch" class="src__header form-control " type="search" placeholder="Search" aria-label="Search">
+          <button id="headerSearchBtn" class="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
+        </form>
+      </div>
+    </nav>
+    <!-- main content -->
+    <main id="mainContent" class="main__content  d-flex align-items-center pt-5">
+      <article id="postDisplay" class="d-flex container pt-5 flex-md-wrap justify-content-center overflow-auto gap-3 offset-lg-4">
+        <!-- post content -->
+      </article>
+      <!-- modal -->
+      <dialog id="modal" class="modal__dialog modal fade">
+        <!-- modal content -->
+        <article id="modalContent" class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <header id="modalHeader" class="modal-header">
+              <!-- title of the modal -->
+              <h3 id="modalTitle" class="modal-title">Title</h3>
+              <!-- btn to close the modal -->
+              <button class="btn-close" data-bs-dismiss="modal" type="button"></button>
+            </header>
+            <section id="modalBody" class="modal-body">
+              <h5>Username</h5>
+              <p id="modalUsername" class="modal__username">username</p>
+              <h5>Email</h5>
+              <p id="modalEmail" class="modal__email">email</p>
+              <p id="modalText">
+              </p>
+            </section>
+            <section id="modalComments" class="modal-footer">
+              <button type="button" id="btnComments" class="btn btn-secondary" data-bs-dismiss="modal">
+                Close
+              </button>
+              <button
+                type="button"
+                id="commentsContentBtn"
+                class="btn btn-primary"
+              >
+                Loads Comments
+              </button>
+            </section>
+            <section id="commentsContentBody" class="comments__content container-fluid overflow-auto">              
+            </section>
+          </div>
+        </article>
+      </dialog>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  </body>
+</html>
