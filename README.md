@@ -48,13 +48,15 @@ To create a fork on GitHub is as easy as clicking the “fork” button on the r
 
 \* API
 
-## Project delivery
 
-To deliver this project you must follow the steps indicated in the document:
+## Preview
 
-- [Submitting a solution](https://www.notion.so/Submitting-a-solution-524dab1a71dd4b96903f26385e24cdb6)
+![Blog Main Page.](./src/img/blogMain.png "BlogMain")
+![Blog Post.](./src/img/blogPost.png "BlogPost")
+![Blog Post Comments.](./src/img/blogPostComment.png "BlogPostComments")
 
-## Resources
+## Team Members
 
-- [JSON server](https://github.com/typicode/json-server)
-- [Official Bootstrap](https://getbootstrap.com/)
+\* [Jesús Herrera](https://github.com/Jesusjha/).
+
+\* [Sofía Romera](https://github.com/Sofianct/).
