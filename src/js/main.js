@@ -68,6 +68,7 @@ function renderPostTitle(postData) {
 const createPostTitleElement = (post, postsTitlesContainer) => {
         let elementContainer = createElement("div");
         elementContainer.classList.add("col", "card");
+        elementContainer.setAttribute("data-id", post.id);
         let postTitleElement = createElement("div");
         let img = creatBootstrapImg();
         let editBtn = createButton("Edit", post.id);
@@ -85,32 +86,30 @@ const createPostTitleElement = (post, postsTitlesContainer) => {
         elementContainer.append(img, postTitleElement, buttonContainer);
         buttonContainer.append(editBtn, removeBtn);
 
-        removeBtn.addEventListener("click", deletePost(elementContainer));
+        removeBtn.addEventListener("click", deletePost);
 
         return postTitleElement;
 };
 
-function deletePost(elementContainer) {
-        return (e) => {
+function deletePost(e) {
+
                 let postId = e.target.dataset.id;
-                console.log(postId);
-                alert(`Post with id ${postId} has been deleted`);
-                console.log(postsTitlesContainer);
-                elementContainer.remove();
+                let postElement = document.querySelector(`[data-id="${postId}"]`);
+                postElement.remove();
 
                 fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
                         method: "DELETE",
                 })
-                        .then((response) =>{
-                            response.json(); 
-                            console.log(response)   
+                        .then((res) =>{
+                            res.json(); 
+                            console.log(res)   
                         }) 
-                        .then((data) => {
-                                console.log(data);
+                        .then((res) => {
+                                console.log("Post deleted");
                         }
                         )
-                        .catch((error) => console.error(error));
-        };
+
+
 }
 
 
