@@ -6,14 +6,8 @@ const contentTitle = document.getElementById('modal__title-content');
 const userBodyPost = document.getElementById('user__body--post');
 const userNamePost = document.getElementById('user__name--post');
 const userEmailPost = document.getElementById('user__email--post');
-/*  */
-const commentBox = document.getElementById('collapseWidthExample');
 
-const paraTitle = document.createElement('p');
-const paraBody = document.createElement('p');
-const paraEmail = document.createElement('p');
-/*  */
-const collapseWidthExample = document.getElementById('collapseWidthExample'); //cajita pal comentario
+const commentBox = document.getElementById('boxForComments');
 
 function loadPosts(){
     postsURL
@@ -40,19 +34,10 @@ function loadPosts(){
             const addIcon = document.createElement('i');
             cardText.classList.add('card-text');
             cardText.textContent = (post.body.charAt(0).toUpperCase() + post.body.slice(1)).slice(0, 80) + '...';
-            const boxUserComment = document.createElement('div');
-            boxUserComment.classList.add('card', 'card-body', 'toggle__comment--box');
-            
-            paraTitle.classList.add('toggle__comment--para');
-            paraBody.classList.add('toggle__comment--para');
-            paraEmail.classList.add('toggle__comment--para');
             
             titleLink.setAttribute('id', post.userId);
-
             addIcon.classList.add('bi', 'bi-pen');
             delIcon.classList.add('bi', 'bi-trash3-fill');
-            // btnAdd.classList.add('btn', 'btn-success');
-            // btnDel.classList.add('btn', 'btn-outline-danger');
 
             cardTitle.addEventListener('click', () =>{
                 userBodyPost.textContent = (post.body.charAt(0).toUpperCase() + post.body.slice(1));
@@ -60,19 +45,34 @@ function loadPosts(){
                 let titleLinkId = titleLink.getAttribute('id')
                 
                 contentBody.append(userBodyPost, userNamePost, userEmailPost);
-                boxUserComment.append(paraTitle, paraBody, paraEmail);
-                collapseWidthExample.append(boxUserComment);
                 
                 getUser(titleLinkId);
-                getComments(titleLinkId);
+                getComment(titleLinkId)
+                .then(data => {
+                    data.forEach(comment => {
+                        const boxUserComment = document.createElement('div');
+                        boxUserComment.classList.add('card', 'card-body', 'toggle__comment--box');
+                        
+                        const paraTitle = document.createElement('p');
+                        const paraBody = document.createElement('p');
+                        const paraEmail = document.createElement('p');
+                        paraTitle.classList.add('toggle__comment--para');
+                        paraBody.classList.add('toggle__comment--para');
+                        paraEmail.classList.add('toggle__comment--para');
+
+                        paraTitle.textContent = comment.name.charAt(0).toUpperCase() + comment.name.slice(1);
+                        paraBody.textContent = comment.body.charAt(0).toUpperCase() + comment.body.slice(1);
+                        paraEmail.textContent = comment.email;
+                        boxUserComment.append(paraTitle, paraBody, paraEmail);
+                        commentBox.appendChild(boxUserComment);
+                    });
+                })
             });
 
             cardTitle.append(titleLink)
-            // btnDel.append(delIcon);
-            // btnAdd.append(addIcon);
             mainContainer.append(cardContainer);
             cardContainer.append(cardBody);
-            cardBody.append(cardTitle, cardText, /* btnAdd, btnDel */);
+            cardBody.append(cardTitle, cardText);
         });
     })
     .catch(error => {
@@ -84,33 +84,21 @@ function getUser(idUser){
     fetch(`http://localhost:3000/users?id=${idUser}`)
     .then(response => response.json())
     .then(data => {
-        data.forEach(user => {
-            userNamePost.textContent = '— ' + user.name;
-            userEmailPost.textContent = /* 'Email: ' +  */user.email;
-        });
+         data.forEach(user => {
+             userNamePost.textContent = '— ' + user.name;
+             userEmailPost.textContent = user.email;
+         });
     })
     .catch(error => {
         console.log(error);
     });
 };
 
-function getComments(idPost){
-    fetch(`http://localhost:3000/comments?postId=${idPost}`)
+async function getComment(idPost) {
+    return await fetch(`http://localhost:3000/comments?postId=${idPost}`)
     .then(response => response.json())
-    .then(data => {
-        data.forEach(comment => {
-            console.log(comment);
-            //console.log('Title: ' + comment.name + ' ----- Comment: ' + comment.body + ' ------- Email: ' + comment.email);
-            paraTitle.textContent = comment.name.charAt(0).toUpperCase() + comment.name.slice(1);
-            paraBody.textContent = comment.body.charAt(0).toUpperCase() + comment.body.slice(1);
-            paraEmail.textContent = comment.email;
-        });
-    })
-    .catch(error => {
-        console.log(error);
-    });
+    .then(data => data)
+    .catch(error => console.log(error))
 }
-//getComments(1);
-
 
 loadPosts();
