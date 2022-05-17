@@ -1,6 +1,8 @@
-const fetchData = fetch("http://localhost:3000/posts");
+let url = "http://localhost:3000/posts";
 const postsContainer = document.getElementById('postsContainer');
-
+const comments = fetch(`${url}/comments`);
+const posts = fetch(`${url}/posts`);
+const users = fetch(`${url}/users`);
 
 const gridContainer = [
     [[""]],[[""]],
@@ -14,18 +16,37 @@ let myModal = document.getElementById("myModal");
 let modalTitle = document.getElementById('modalTitle');
 let modalBody = document.getElementById('modalBody');
 
-fetchData // Get data from Json server
+
+function getData() {
+    posts.then((response) => response.json())
+        .then((data) => {
+        renderPostTitle(data);
+    })
+        .catch((error) => console.error(error));
+    comments.then((response) => response.json())
+        .then((data) => {
+        getComments(data);
+    })
+        .catch((error) => console.error(error));
+
+    users.then((response) => response.json())
+        .then((data) => {
+        getUsers(data);
+    })
+        .catch((error) => console.error(error));
+}
+
+
+fetch(url) // Get data from Json server
 .then(response => response.json())
 .then(data => {
     displayPosts(gridContainer, data);
     modalTitle.textContent = data[index].title;
-    modalBody.textContent = data[index].title;
+    modalBody.textContent = data[index].body;
 })
 
 
-
 function displayPosts(container,data) {
-    let index = 0;
     container.map(function(row) {
         let postsRow = document.createElement("div");
         postsRow.setAttribute("id","postBox");
@@ -38,7 +59,6 @@ function displayPosts(container,data) {
             postContent.classList.add("card","mb-4","card-body");
             imgContainer.src =  data[index].img;
             imgContainer.classList.add("card-img-top");
-    
     
             content.map(function () {
                 let readMoreBtn = document.createElement("button");
@@ -70,13 +90,6 @@ function displayPosts(container,data) {
             postsRow.appendChild(postContent);
         });
     
-    
         postsContainer.appendChild(postsRow);
     })
 }
-
-container.addEventListener("click" , modalContent);
-function modalContent (e){
-
-}
-
