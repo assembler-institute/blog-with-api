@@ -85,3 +85,16 @@ fetch(postUrl)
       });
     });
   });
+
+function imagePost(){
+    const imgModalUrl ='https://dog.ceo/api/breeds/image/random';
+    fetch(imgModalUrl)
+    .then((res) => res.json())
+    .then((data) => {
+        console.log(data)
+        let imgId = document.getElementById('imgId');
+        let imgDog = document.createElement('div');
+        imgDog.innerHTML = `<img src="${data.message}" style='width:100%' height='80%'></img>`;
+        imgId.append(imgDog);
+    })
+}imagePost()
