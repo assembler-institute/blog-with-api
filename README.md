@@ -55,7 +55,7 @@ To create a fork on GitHub is as easy as clicking the “fork” button on the r
 ![Blog Post.](./src/img/blogPost.png "BlogPost")
 ![Blog Post Comments.](./src/img/blogPostComment.png "BlogPostComments")
 
-##Team Members
+## Team Members
 
 \* [Jesús Herrera](https://github.com/Jesusjha/).
 
