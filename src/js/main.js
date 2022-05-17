@@ -29,8 +29,6 @@ function loadPosts(){
             titleLink.textContent = post.title.charAt(0).toUpperCase() + post.title.slice(1);
             const delIcon = document.createElement('i');
             const cardText = document.createElement('p');
-            // const btnAdd = document.createElement('button');
-            // const btnDel = document.createElement('button');
             const addIcon = document.createElement('i');
             cardText.classList.add('card-text');
             cardText.textContent = (post.body.charAt(0).toUpperCase() + post.body.slice(1)).slice(0, 80) + '...';
@@ -67,6 +65,7 @@ function loadPosts(){
                         commentBox.appendChild(boxUserComment);
                     });
                 })
+                updateDisplay();
             });
 
             cardTitle.append(titleLink)
@@ -81,7 +80,7 @@ function loadPosts(){
 }
 
 function getUser(idUser){
-    fetch(`http://localhost:3000/users?id=${idUser}`)
+    fetch(`https://jsonplaceholder.typicode.com/users?id=${idUser}`)
     .then(response => response.json())
     .then(data => {
          data.forEach(user => {
@@ -95,10 +94,16 @@ function getUser(idUser){
 };
 
 async function getComment(idPost) {
-    return await fetch(`http://localhost:3000/comments?postId=${idPost}`)
+    return await fetch(`https://jsonplaceholder.typicode.com/posts/${idPost}/comments`)
     .then(response => response.json())
     .then(data => data)
     .catch(error => console.log(error))
+}
+
+function updateDisplay(){
+    while (commentBox.firstChild) {
+        commentBox.removeChild(commentBox.lastChild);
+    }
 }
 
 loadPosts();
