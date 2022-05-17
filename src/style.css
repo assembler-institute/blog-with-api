@@ -1,0 +1,144 @@
+/* IMPORT FONT OF TITTLE */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Libre+Franklin:wght@700&family=Open+Sans&family=Work+Sans&display=swap');
+
+/* RESET */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+/* STYLE TITLE */
+.header__title{
+    color:#fff;
+    background: #00c6ff;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #0072ff, #00c6ff);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #0072ff, #00c6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding: 3rem;
+}
+h1{
+    color:#fff;
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: 600;
+    font-size: 7rem;
+}
+
+
+/* BODY BACKGOUND */
+body{
+    background-color: rgb(207, 207, 207);
+
+}
+
+
+/* TEMPLATE SECTION */
+.template__section{
+    background-color: rgb(242, 11, 11);
+}
+
+.article__container {
+    width: 100%;
+    padding: 3rem;
+}
+
+.article__section {
+    background-color: #fff;
+    border-radius: 5px;
+    width: 100%;
+}
+
+
+.article__section--post{
+    background-color: #fff;
+    border-radius: 5px;
+    -webkit-box-shadow: -8px 6px 7px -1px #727171;
+    box-shadow: -8px 6px 7px -1px #7f7f7f;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.article__section--posts {
+    justify-content: space-around;
+    background-color: rgb(207, 207, 207);
+    grid-column-gap: 3.5rem;
+    grid-row-gap: 6rem;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.form-control{
+    width: 15rem;
+    margin-right: 0.5rem;
+}
+
+
+/* MODAL STYLE */
+
+.modal::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.modal::-webkit-scrollbar:vertical {
+    width:10px;
+}
+
+.modal::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+    display: none;
+}
+
+.modal::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+
+.modal::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+}
+
+.modal::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+
+/* RESPONSIVE DESING */
+
+@media only screen and (max-width: 768px) {
+    [class*="col-"] {
+    width: 100%;
+    }
+    h1{
+        font-size: 5.5rem;
+    }
+    body{
+        text-align: center;
+    }
+    .form-control{
+        height: 2.3rem;
+        margin-top: 0.5rem;
+    }
+}
+
+@media only screen and (max-width: 1600px) {
+    [class*="col-2"] {
+    width: 100%;
+    }
+    h1{
+        font-size: 6rem;
+    }
+    .article__section--post h3{
+        font-size: 1.2rem;
+    }
+    .article__section--posts{
+        grid-column-gap: 5.5rem;
+    }
+
+}
