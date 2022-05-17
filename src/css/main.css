@@ -4046,6 +4046,7 @@ textarea.form-control-lg {
   justify-content: space-between;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  
 }
 .navbar > .container,
 .navbar > .container-fluid,
@@ -4066,6 +4067,10 @@ textarea.form-control-lg {
   font-size: 1.25rem;
   text-decoration: none;
   white-space: nowrap;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 30px;
+  font-weight: 600;
 }
 .navbar-nav {
   display: flex;
@@ -4524,10 +4529,12 @@ textarea.form-control-lg {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #f4f4f4;
+  background-color: #05040463;
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-top: 6px solid rgb(236 0 0 / 79%);
   border-radius: 0rem 0rem 1.25rem 1.25rem;
+  box-shadow: 3px 10px 16px 5px rgba(0, 0, 0, 0.11);
+  color: aliceblue;
 }
 .card > hr {
   margin-right: 0;
@@ -7851,8 +7858,10 @@ textarea.form-control-lg {
 }
 
 .bg-light {
-  --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+  color: #ececec;
+  background: #0000003b;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
 }
 
 .bg-dark {
