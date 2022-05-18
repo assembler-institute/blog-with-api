@@ -192,19 +192,21 @@ function deletePost(e) {
 
         let postId = e.target.dataset.id;
         let postElement = document.querySelector(`[data-id="${postId}"]`);
+        if (confirm(`Are you sure you want to delete post number ${postId}?`)) {
+        
         postElement.remove();
-
-        fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
-                method: "DELETE",
-        })
-                .then((res) =>{
-                    res.json(); 
-                    console.log(res)   
-                }) 
-                .then((res) => {
-                        console.log("Post deleted");
-                }
-                )
+                fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
+                        method: "DELETE",
+                })
+                        .then((res) =>{
+                            res.json(); 
+                            console.log(res)   
+                        }) 
+                        .then((res) => {
+                                console.log("Post deleted");
+                        }
+                        )
+        }
 
 
 }
