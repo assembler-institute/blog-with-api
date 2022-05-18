@@ -6,6 +6,8 @@ window.onload = () => {
 let usersData;
 let postsComments;
 let apiImages;
+let editBtn;
+
 
 //Fetch all data from json & pixabay API
 function getData() {
@@ -60,7 +62,7 @@ function renderPostTitle(postData) {
                 const postElement = createPostTitleElement(post, postsTitlesContainer);
                 listElementAddEvent(post, postElement);
 
-                
+
         });
 }
 
@@ -71,7 +73,11 @@ const createPostTitleElement = (post, postsTitlesContainer) => {
         elementContainer.setAttribute("data-id", post.id);
         let postTitleElement = createElement("div");
         let img = creatBootstrapImg();
-        let editBtn = createButton("Edit", post.id);
+        editBtn = createButton("Edit", post.id);
+        editBtn.setAttribute("data-bs-toggle", "modal");
+        editBtn.setAttribute("data-bs-target", "#staticBackdrop");
+
+
         let removeBtn = createButton("Remove", post.id);
 
         postTitleElement.className = "list-group-item";
@@ -87,6 +93,10 @@ const createPostTitleElement = (post, postsTitlesContainer) => {
         buttonContainer.append(editBtn, removeBtn);
 
         removeBtn.addEventListener("click", deletePost);
+        // editBtn.addEventListener("click", () => {
+        //         accordion.style.display = "none";
+
+        // });
 
         return postTitleElement;
 };
@@ -126,6 +136,13 @@ const listElementAddEvent = (post, postElement) => {
                 setPostUser(post);
                 setPostComments(post);
         });
+
+        editBtn.addEventListener("click", () => {
+                setModalTitle(post);
+                setPostUser(post);
+                setPostComments(post);
+        });
+
 };
 
 //Set title & body to the modal
@@ -134,6 +151,11 @@ const setModalTitle = (post) => {
         let modalBody = getElement("bodyContent");
         modalTitle.textContent = post.title;
         modalBody.textContent = post.body;
+
+        let editTitle = getElement("staticBackdropLabel");
+        let editBody = getElement("editBodyContent");
+        editTitle.textContent = post.title;
+        editBody.textContent = post.body;
 };
 
 //Set user name & email to each post when modal displays
@@ -193,26 +215,19 @@ function deletePost(e) {
         let postId = e.target.dataset.id;
         let postElement = document.querySelector(`[data-id="${postId}"]`);
         if (confirm(`Are you sure you want to delete post number ${postId}?`)) {
-        
-        postElement.remove();
+
+                postElement.remove();
                 fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
-                        method: "DELETE",
-                })
-                        .then((res) =>{
-                            res.json(); 
-                            console.log(res)   
-                        }) 
+                                method: "DELETE",
+                        })
+                        .then((res) => {
+                                res.json();
+                                console.log(res)
+                        })
                         .then((res) => {
                                 console.log("Post deleted");
-                        }
-                        )
+                        })
         }
 
 
 }
-
-
-
-
-
-
