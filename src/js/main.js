@@ -7,6 +7,13 @@ let usersData;
 let postsComments;
 let apiImages;
 let editBtn;
+let modalTitle = document.getElementById("exampleModalLabel");
+let modalBody = document.getElementById("bodyContent");
+let editTitle = document.getElementById("staticBackdropLabel");
+let editBody = document.getElementById("editBodyContent");
+let saveChangesBtn = document.getElementById("saveChanges");
+let edited = false;
+let postTitleElement;
 
 
 //Fetch all data from json & pixabay API
@@ -40,6 +47,7 @@ function getData() {
                         getImages(data);
                 })
                 .catch((error) => console.error(error));
+
 }
 
 //Set data to global Variables
@@ -61,8 +69,6 @@ function renderPostTitle(postData) {
         postData.map((post) => {
                 const postElement = createPostTitleElement(post, postsTitlesContainer);
                 listElementAddEvent(post, postElement);
-
-
         });
 }
 
@@ -71,7 +77,7 @@ const createPostTitleElement = (post, postsTitlesContainer) => {
         let elementContainer = createElement("div");
         elementContainer.classList.add("col", "card");
         elementContainer.setAttribute("data-id", post.id);
-        let postTitleElement = createElement("div");
+        postTitleElement = createElement("div");
         let img = creatBootstrapImg();
         editBtn = createButton("Edit", post.id);
         editBtn.setAttribute("data-bs-toggle", "modal");
@@ -93,10 +99,6 @@ const createPostTitleElement = (post, postsTitlesContainer) => {
         buttonContainer.append(editBtn, removeBtn);
 
         removeBtn.addEventListener("click", deletePost);
-        // editBtn.addEventListener("click", () => {
-        //         accordion.style.display = "none";
-
-        // });
 
         return postTitleElement;
 };
@@ -131,6 +133,7 @@ const createButton = (element, id) => {
 
 //Add click event to every  post element
 const listElementAddEvent = (post, postElement) => {
+
         postElement.addEventListener("click", () => {
                 setModalTitle(post);
                 setPostUser(post);
@@ -138,25 +141,61 @@ const listElementAddEvent = (post, postElement) => {
         });
 
         editBtn.addEventListener("click", () => {
+                edited = false;
                 setModalTitle(post);
                 setPostUser(post);
                 setPostComments(post);
         });
 
+        saveChangesBtn.addEventListener("click", () => {
+                if (!edited) {
+                        saveChanges(post);
+                }
+        });
+
 };
+
+
+
 
 //Set title & body to the modal
 const setModalTitle = (post) => {
-        let modalTitle = getElement("exampleModalLabel");
-        let modalBody = getElement("bodyContent");
         modalTitle.textContent = post.title;
         modalBody.textContent = post.body;
-
-        let editTitle = getElement("staticBackdropLabel");
-        let editBody = getElement("editBodyContent");
         editTitle.textContent = post.title;
         editBody.textContent = post.body;
+        editTitle.setAttribute("contenteditable", "true");
+        editBody.setAttribute("contenteditable", "true");
 };
+
+
+
+//Save changes in edit modal
+function saveChanges(post) {
+        edited = true;
+        post.title = editTitle.textContent;
+        post.body = editBody.textContent;
+        let title = document.querySelector('[data-bs-target="#exampleModal"]');
+        title.textContent = post.title;
+
+
+        fetch(`https://jsonplaceholder.typicode.com/posts/${post.id}`, {
+                        method: "PATCH",
+                        headers: {
+                                "Content-type": "application/json; charset=UTF-8",
+                        },
+                        body: JSON.stringify( {title: editTitle.textContent, body: editBody.textContent}),
+                })
+                .then((res) => {
+                        res.json();
+                        console.log(res)
+                })
+                .then((data) => {
+                        console.log(data);
+                })
+
+}
+
 
 //Set user name & email to each post when modal displays
 const setPostUser = (post) => {
