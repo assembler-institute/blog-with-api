@@ -78,7 +78,7 @@ const createPostTitleElement = (post, postsTitlesContainer) => {
         elementContainer.classList.add("col", "card");
         elementContainer.setAttribute("data-id", post.id);
         postTitleElement = createElement("div");
-        let img = creatBootstrapImg();
+        let img = createBootstrapImg();
         editBtn = createButton("Edit", post.id);
         editBtn.setAttribute("data-bs-toggle", "modal");
         editBtn.setAttribute("data-bs-target", "#staticBackdrop");
@@ -107,7 +107,7 @@ const createPostTitleElement = (post, postsTitlesContainer) => {
 
 
 //Create bootstrapImg with each post
-const creatBootstrapImg = () => {
+const createBootstrapImg = () => {
         let i = Math.round(Math.random() * (19 - 1) + 1);
         let imgUrl = apiImages.hits[i].webformatURL;
         let img = createElement("img");
@@ -133,7 +133,6 @@ const createButton = (element, id) => {
 
 //Add click event to every  post element
 const listElementAddEvent = (post, postElement) => {
-
         postElement.addEventListener("click", () => {
                 setModalTitle(post);
                 setPostUser(post);
@@ -144,13 +143,11 @@ const listElementAddEvent = (post, postElement) => {
                 edited = false;
                 setModalTitle(post);
                 setPostUser(post);
-                setPostComments(post);
+                //setPostComments(post);
         });
 
         saveChangesBtn.addEventListener("click", () => {
-                if (!edited) {
-                        saveChanges(post);
-                }
+                saveChanges(post);
         });
 
 };
@@ -164,35 +161,49 @@ const setModalTitle = (post) => {
         modalBody.textContent = post.body;
         editTitle.textContent = post.title;
         editBody.textContent = post.body;
+        editTitle.setAttribute("data-edit-id", post.id);
         editTitle.setAttribute("contenteditable", "true");
         editBody.setAttribute("contenteditable", "true");
 };
 
 
 
+
+
 //Save changes in edit modal
 function saveChanges(post) {
-        edited = true;
-        post.title = editTitle.textContent;
-        post.body = editBody.textContent;
-        let title = document.querySelector('[data-bs-target="#exampleModal"]');
-        title.textContent = post.title;
 
+        let element = document.querySelector(`[data-edit-id`);
+        let identifier = element.getAttribute("data-edit-id");
+        let title = document.querySelector(`[data-id="${identifier}"]`);
+        //Find the post with id = identifier and console.log it
+        Object.entries(post).map(item => {
+                console.log(item);
+                //Find the post with id = identifier and console.log it
+                if (item[0] == "id" && item[1] == identifier) {
+                        //Console.log the complete post object with id = identifier
+                        post.title = editTitle.textContent;
+                        post.body = editBody.textContent;
+                        title = title.children[1];
+                        title.textContent = post.title;
+                }
+              })
 
         fetch(`https://jsonplaceholder.typicode.com/posts/${post.id}`, {
                         method: "PATCH",
                         headers: {
                                 "Content-type": "application/json; charset=UTF-8",
                         },
-                        body: JSON.stringify( {title: editTitle.textContent, body: editBody.textContent}),
+                        body: JSON.stringify( {title: post.title, body: post.body}),
                 })
                 .then((res) => {
                         res.json();
-                        console.log(res)
+                        //console.log(res)
                 })
                 .then((data) => {
-                        console.log(data);
+                        //console.log(data);
                 })
+
 
 }
 
