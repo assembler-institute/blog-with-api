@@ -176,12 +176,10 @@ function saveChanges(post) {
         let element = document.querySelector(`[data-edit-id`);
         let identifier = element.getAttribute("data-edit-id");
         let title = document.querySelector(`[data-id="${identifier}"]`);
-        //Find the post with id = identifier and console.log it
+        //Loop through all posts to find the post with the same id
         Object.entries(post).map(item => {
-                console.log(item);
-                //Find the post with id = identifier and console.log it
+                //Find the post with id = identifier and edit it
                 if (item[0] == "id" && item[1] == identifier) {
-                        //Console.log the complete post object with id = identifier
                         post.title = editTitle.textContent;
                         post.body = editBody.textContent;
                         title = title.children[1];
