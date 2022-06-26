@@ -143,7 +143,6 @@ const listElementAddEvent = (post, postElement) => {
                 edited = false;
                 setModalTitle(post);
                 setPostUser(post);
-                //setPostComments(post);
         });
 
         saveChangesBtn.addEventListener("click", () => {
