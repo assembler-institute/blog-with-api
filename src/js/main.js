@@ -12,7 +12,6 @@ let modalBody = document.getElementById("bodyContent");
 let editTitle = document.getElementById("staticBackdropLabel");
 let editBody = document.getElementById("editBodyContent");
 let saveChangesBtn = document.getElementById("saveChanges");
-let edited = false;
 let postTitleElement;
 
 
@@ -140,7 +139,6 @@ const listElementAddEvent = (post, postElement) => {
         });
 
         editBtn.addEventListener("click", () => {
-                edited = false;
                 setModalTitle(post);
                 setPostUser(post);
         });
