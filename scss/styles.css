@@ -1,0 +1,64 @@
+.nav-item {
+  font-size: 25px;
+  padding: 30px;
+}
+
+.table > :not(caption) > * > * {
+  padding: 50px;
+}
+
+.modal-content {
+  padding: 10px;
+  margin-left: 33%;
+  margin-right: 33%;
+}
+
+.modal-body h3, .modal-body input {
+  margin-bottom: 10px;
+}
+
+.modal-body h5, .modal-body textarea {
+  margin-top: 10px;
+}
+
+.modal-footer h3 {
+  margin-bottom: 10px;
+}
+
+.modal-footer h3 h5 {
+  margin-top: 1rem;
+  margin-bottom: 0rem;
+  background-color: #7070701a;
+}
+
+.modal-footer h3 p {
+  background-color: #a3a3a31a;
+}
+
+.modal-footer button {
+  margin-bottom: 100px;
+}
+
+.modal-footer .save-button {
+  margin-bottom: 0px;
+}
+
+.img-close {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin-top: -7px;
+  margin-right: -7px;
+}
+
+.img-close:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+p {
+  font-size: 20px;
+  font-weight: 150;
+}
+/*# sourceMappingURL=styles.css.map */
