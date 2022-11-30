@@ -1,0 +1,56 @@
+/**
+ * LAYOUT - COMMON
+ */
+
+.main {
+  background-color: #ffffff;
+  margin: 0 auto;
+  max-width: 992px;
+  padding: 2rem 0;
+}
+
+.section {
+  margin: 2rem;
+  background: #F8F9FA;
+}
+
+.header {
+  z-index: 2;
+  padding: 2rem 4rem;
+}
+
+.footer{
+  padding: 2rem 2rem 0;
+}
+
+.full-page{
+  height: calc(100vh - 4rem);
+  max-height: calc(100vh - 4rem);
+}
+
+.outside {
+  width: 100%;
+  padding-top: 133.33%; /* 4:3 Aspect Ratio (divide 4 by 3 = 1.3333)  */
+  position: relative; /* If you want text inside of it */
+}
+
+/* If you want text inside of the container */
+.inside {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.bg-black {
+  background-color: #121212;
+}
+
+.bi {
+  font-size: 3rem;
+}
+
+.big {
+  font-size: 6rem;
+}

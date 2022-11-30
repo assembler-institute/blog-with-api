@@ -1,0 +1,7 @@
+/**
+ * STATUS - DARK
+ */
+
+.dark-mode::before {
+  transform: translateX(0);
+}

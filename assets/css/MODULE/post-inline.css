@@ -1,0 +1,39 @@
+/**
+ * MODULE - POST INLINE
+ */
+
+.posts-inline{
+  padding: 4rem;
+}
+
+.posts-inline__content{
+  background-image: url(/assets/images/svg/anim-false.svg);
+  background-repeat: repeat-x;
+  background-size: auto 0.3rem;
+  background-position: 0 1.8rem;
+  padding-bottom: 0.8rem;
+}
+
+.post-inline__content{
+  padding-bottom: 0.5rem;
+}
+
+.post-inline__name {
+  font-size: 1.2rem;
+}
+
+.post-inline__title{
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 2.2rem;
+  line-height: 5rem;
+}
+
+@media only screen and (max-width: 575px) {
+  .posts-inline{
+    padding: 3rem 2rem;
+  }
+  .post-inline__title{
+    font-size: 2rem;
+  }
+}

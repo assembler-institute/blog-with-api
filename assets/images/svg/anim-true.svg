@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" viewBox="0 0 4 20">
+  <path fill="none" stroke="#424242" stroke-width="1" class="st0" d="M0.5,0 c 0,5, 3,5, 3,10 s -3,5,-3,10 c 0,5, 3,5, 3,10 s -3,5,-3,10"/>
+  <style type="text/css">
+    .st0 {
+      animation: shift 0.3s linear infinite;
+    }
+    @keyframes shift {
+      from {
+          transform: translateY(-20px);
+      }
+      to {
+          transform: translateY(0);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .st0 {
+        animation: none;
+      }
+    }
+  </style>
+</svg>

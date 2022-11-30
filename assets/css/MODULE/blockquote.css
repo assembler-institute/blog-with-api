@@ -1,0 +1,28 @@
+/**
+ * MODULE - BLOCKQUOTE
+ */
+
+.blockquote {
+  margin-left: 1.5rem;
+}
+
+.blockquote__body{
+  font-size: 1.2rem;
+}
+
+.blockquote__header{
+  color: var(--darkGrey);
+}
+
+.blockquote__name{
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.blockquote__dot{
+  margin: 0 0.5rem;
+}
+
+.blockquote__company-name{
+  font-weight: 300;  
+}

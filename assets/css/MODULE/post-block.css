@@ -1,0 +1,41 @@
+/**
+ * MODULE - POST BLOCK
+ */
+
+.posts-block{
+  padding: 4rem;
+}
+
+.post-block{
+  margin-bottom: 3.5rem;
+}
+
+.post-block__content{
+  background-image: url(/assets/images/svg/anim-false.svg);
+  background-repeat: repeat-x;
+  background-size: auto 0.3rem;
+  background-position-y: bottom;
+  padding-bottom: 0.8rem;
+}
+
+.post-block__name {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.post-block__title{
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 575px) {
+  .posts-block{
+    padding: 3rem 2rem;
+    margin-bottom: 3rem;
+  }
+  .post-block__title{
+    font-size: 2rem;
+  }
+}
