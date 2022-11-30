@@ -1,0 +1,25 @@
+{
+  "name": "blog-with-api",
+  "version": "1.0.0",
+  "description": "`#html` `#css` `#js` `#dom` `#JSON` `#HTTP` `#API` `#Bootstrap` `#master-in-software-development`",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "json-server --watch ./src/data/db.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dejahar/blog-with-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dejahar/blog-with-api/issues"
+  },
+  "homepage": "https://github.com/Dejahar/blog-with-api#readme",
+  "dependencies": {
+    "@popperjs/core": "^2.11.5",
+    "json-server": "^0.17.0"
+  }
+}
