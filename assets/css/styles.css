@@ -1,0 +1,204 @@
+/* 
+==================================
+*       General styles
+==================================
+*/
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 700;
+}
+h3 {
+  font-size: 1.3rem;
+}
+img {
+  filter: grayscale(30%) brightness(0.8);
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+ul {
+  list-style-type: none;
+}
+img.rounded-circle {
+  filter: none;
+  border: 2px solid black;
+}
+textarea {
+  height: 200px;
+  resize: none;
+}
+/* 
+==================================
+*       Header styles
+==================================
+*/
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.form-control {
+  min-width: 330px;
+}
+/* 
+==================================
+*       Hero styles
+==================================
+*/
+.hero-post,
+.detail-post {
+  position: relative;
+}
+.hero-post-badges,
+.detail-post-badges {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+}
+.hero-post-badges > a,
+.detail-post-badges > a {
+  display: block;
+  color: white;
+  background-color: #0b0c10;
+  font-size: 0.85rem;
+}
+.hero-post-content,
+.detail-post-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: white;
+  border-radius: 2.5rem 0 0 2.5rem;
+  width: 100%;
+}
+/* 
+==================================
+*       Main styles
+==================================
+*/
+.blog-post .col-sm-8 {
+  border-left: 3px solid black;
+}
+.blog-post img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.blog-post p {
+  font-size: 0.9rem;
+  overflow-y: hidden;
+}
+.blog-post h3 {
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+.blog-post h3:hover {
+  font-size: 1.4rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.badged {
+  margin-top: 1rem;
+  padding: 0.7rem 0.5rem;
+}
+.badged > a {
+  margin-left: 0.5rem;
+  padding: 0.3rem 1.3rem;
+  min-width: 1.5rem;
+  text-decoration: none;
+  border: 2px solid black;
+}
+.delete-post {
+  background-color: black;
+  color: white;
+}
+.edit-post {
+  background-color: white;
+  color: black;
+}
+.edit-post:hover {
+  background-color: black;
+  color: white;
+}
+.delete-post:hover {
+  background-color: white;
+  color: black;
+}
+.img-post {
+  max-height: 200px;
+}
+.post-position {
+  position: relative;
+}
+.spinner-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+.element-center {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+}
+/* 
+==================================
+*       aside styles
+==================================
+*/
+.aside-heading {
+  border-left: 3px solid black;
+}
+.social-links {
+  font-size: 0.9rem;
+}
+.badges-category > a {
+  margin: 0.3rem;
+  display: inline-block;
+  padding: 0.5rem;
+  background-color: black;
+  color: white;
+}
+/* 
+==================================
+*        modals style
+==================================
+*/
+.comment-post {
+  display: flex;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.comment-post img {
+  width: 85px;
+  max-height: 85px;
+  min-height: 85px;
+}
+.modal-header {
+  border-bottom: 1px solid black;
+}
+/* 
+==================================
+*       Footer styles
+==================================
+*/
+.footer-logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: black;
+}
+.footer p,
+.footer a {
+  font-size: 0.9rem;
+}
