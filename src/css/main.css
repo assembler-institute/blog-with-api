@@ -1,0 +1,76 @@
+/* .post-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: var(--black);
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.35s ease-in;
+} */
+.postModal {
+    background: rgba(255, 255, 255, 0.7);
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    visibility: hidden;
+    width: 100%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+  .postModal.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+  .postModal .modal-body {
+    background: #fff;
+    margin: 1em;
+    max-width: 100%;
+    width: 100%;
+    z-index: 100;
+  }
+  .postModal .modal-body {
+    background: #000;
+    float: left;
+    width: 100%;
+  }
+  .postModal .modal-body {
+    color: rgb(0, 0, 0);
+    float: left;
+    font-size: 2em;
+    margin: 0;
+    padding: 15px 30px;
+  }
+  .postModal .modal-body .close-modal {
+    background: transparent;
+    border: 0;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    float: right;
+    font-size: 40px;
+    opacity: 0.4;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+  .postModal .modal-header .close-modal:hover { opacity: 1; }
+  .postModal .modal-body {
+    float: left;
+    margin: 0;
+    padding: 15px 30px;
+    width: 100%;
+  }
+
+  
