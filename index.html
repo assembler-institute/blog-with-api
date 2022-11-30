@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog with API</title>
+  <link rel="icon" type="image/png" href="./assets/images/favicon.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous" defer></script>
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/modal.css">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <script src="./assets/js/main.js" type="module"></script>
+</head>
+
+<body>
+  <header class="header d-flex justify-content-between">
+    <section class="socialMedia">
+      <i class="fab fa-facebook socialMedia__icon"></i>
+      <i class="fab fa-instagram socialMedia__icon"></i>
+      <i class="fab fa-twitter socialMedia__icon"></i>
+    </section>
+    <nav class="menu">
+      <ul class="d-flex m-0">
+        <li class="menu__item"><i class="fas fa-home px-2"></i>Home</li>
+        <li class="menu__item"><i class="fas fa-info px-2"></i>About us</li>
+        <li class="menu__item"><i class="fas fa-address-card px-2"></i>Contact</li>
+      </ul>
+    </nav>
+
+  </header>
+
+  <section class="navbar navbar-light bg-white d-flex justify-content-center pt-5 pb-5">
+    <img src="https://fontmeme.com/permalink/210812/8535871b620910dc18050f5b64d61fd1.png" alt="cursive-fonts"
+      class="w-40">
+  </section>
+
+  <main id="app" class="container-fluid"></main>
+  <div id="container" class="d-flex justify-content-center pb-3 pt-3">
+    <div class="spinner-border " role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+      <!-- MODAL INFO POST -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="d-flex justify-content-between p-3">
+              <div class="">
+                <button type="button" class="btn btn-primary bg-dark modal__color__border" data-bs-toggle="modal"
+                  data-bs-dismiss="modal" data-bs-target="#editModal" id="edit-button"><i class="fas fa-edit"
+                    id="edit-button-icon"></i></button>
+                <button type="button" class="btn btn-primary bg-dark modal__color__border" data-bs-toggle="modal"
+                  data-bs-dismiss="modal" data-bs-target="#deleteModal" id="delete-button"><i
+                    class="fas fa-trash"></i></button>
+                <button type="button" class="btn btn-primary position-relative bg-dark modal__color__border" id="show-comments"
+                  data-bs-toggle="collapse" data-bs-target="#comments" aria-expanded="false">
+                  <i id="show-comments-icon" class="fas fa-comments"></i>
+                    <span
+                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="counter-messages">5
+                    <span class="visually-hidden">unread messages</span>
+                  </span>
+                </button>
+              </div>
+              <div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+            </div>
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer d-flex justify-content-between p-3">
+              <div class="modal-footer__username"><i></i></div>
+              <div class="modal-footer__email"><i></i></div>
+            </div>
+            <div class="collapse comments " id="comments">
+              <h3 class="text-center">Comments</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- MODAL EDIT POST -->
+      <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title"><i class="fas fa-edit"></i> Edit Post</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="edit-title" class="col-form-label fw-light font-family">Title:</label>
+                  <input type="text" class="form-control border-radius" id="edit-title" />
+                </div>
+                <div class="form-group">
+                  <label for="edit-body" class="col-form-label fw-light font-family">Body:</label>
+                  <textarea class="form-control border-radius" id="edit-body"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn modal__color__border bg-dark" data-bs-dismiss="modal"><i
+                  class="fas fa-ban"></i></button>
+              <button type="button" class="btn modal__color__border bg-dark" id="confirm-edit"><i class="far fa-save"
+                  id="confirm-edit-icon"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--MODAL DELETE CONFIRM -->
+      <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <i class="fas fa-exclamation-triangle confirm__delete__icon"></i>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center confirm__delete__font">Sure you want to delete the post?</div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary modal__color__border bg-dark" data-bs-dismiss="modal"><i
+                  class="fas fa-ban"></i></button>
+              <button type="button" class="btn btn-primary modal__color__border bg-dark" id="confirm-delete"><i
+                  id="confirm-delete-icon" class="far fa-trash"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+
+</html>
