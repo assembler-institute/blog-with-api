@@ -1,0 +1,222 @@
+body {
+  background-image: url(../img/bg1.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#post-list {
+  padding: 2rem;
+  background-color: rgba(219, 219, 219, 0.623);
+}
+
+/* POST */
+
+#post {
+  position: relative;
+}
+
+.post-hover {
+  display: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.post-hover {
+  display: none;
+}
+
+.post-hover p {
+  background-color: white;
+}
+
+#post:hover .post-hover {
+  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.753);
+  border: 5px solid rgb(0, 0, 0);
+  border-style: dashed;
+}
+
+/* MODAL */
+
+#modal {
+  animation-name: displayModal;
+  animation-duration: 0.5s;
+}
+
+@keyframes displayModal {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#modal-bg,
+#modal-edit-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.548);
+}
+
+#modal-edit-bg {
+  display: none;
+  z-index: 10;
+}
+
+.info {
+  position: fixed;
+  top: 5%;
+  left: 5%;
+  height: 90%;
+  width: 90%;
+  background-color: black;
+  padding: 1rem;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  padding: 1% 3%;
+}
+
+.modal-title {
+  position: relative;
+}
+
+.modal-body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 2rem;
+}
+
+.modal-comments {
+  overflow: auto;
+}
+
+.modal-comments-title {
+  padding: 1rem;
+}
+
+.comment {
+  border: 1px solid black;
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment:hover {
+  background-color: rgb(238, 238, 238);
+}
+
+.comment-user {
+  display: flex;
+}
+
+.comment-name {
+  font-size: 1.2rem;
+  border: 1px solid black;
+  padding: 0 2%;
+}
+
+.comment-email {
+  font-size: 1.2rem;
+  border: 1px solid black;
+}
+
+.comment-body {
+  font-size: 3rem;
+  width: 100%;
+}
+
+.modal-exit {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  z-index: 1;
+  border-width: 5px;
+  border-color: black;
+  border-style: solid;
+}
+
+.modal-edit {
+  display: none;
+}
+
+#modal-title:hover .modal-edit,
+#modal-body:hover .modal-edit {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.822);
+  border: 5px solid rgb(0, 0, 0);
+  border-style: dashed;
+}
+
+#modal-edit-title,
+#modal-edit-body {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 11;
+  background-color: rgb(255, 255, 255);
+  border: 5px solid rgb(0, 0, 0);
+  border-style: dashed;
+}
+
+#save-delete-post {
+  display: flex;
+  display: none;
+  position: relative;
+  top: 20px;
+  width: 100%;
+  background-color: white;
+  z-index: 11;
+  font-size: 2rem;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+}
+
+#save-delete-post > div {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+#save-delete-post > div:hover {
+  background-color: rgb(238, 238, 238);
+}
