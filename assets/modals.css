@@ -1,0 +1,74 @@
+:root {
+  --color-ppl: #e4dfda;
+  --color-secundario: #3c7595;
+  --color-details: #4595a5;
+  --color-details2: #f89335;
+}
+body,
+header {
+  background-color: var(--color-ppl);
+  font-family: "Literata", serif;
+}
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 150%;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
+  outline: 0;
+  cursor: pointer;
+}
+.form-control {
+  display: block;
+  width: 95%;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.modal-footer {
+  display: flex;
+}
+#text-com {
+  vertical-align: text-top;
+}
+
+/*MODAL EDIT*/
+#footerCard {
+  display: inline-flex;
+  flex-direction: row;
+}
+.btn-secondary,
+.btnCloseEdit {
+  margin-top: 3%;
+  margin-right: 10%;
+  color: #fff;
+  background-color: var(--color-details2);
+  border-color: #6c757d;
+}
+/*COMMENTS MODAL*/
+.modal-header {
+  display: flex;
+  flex-direction: column-reverse;
+}
+/*BTN COMMENTS*/
+.btn-primary-com {
+  margin-top: 3%;
+  vertical-align: text-bottom;
+  color: var(--color-ppl);
+  background-color: var(--color-secundario);
+  text-align: center;
+}
