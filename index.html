@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog with APIs</title>
+
+    <!-- Iconos traidos de Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+      crossorigin="anonymous"
+    />
+
+    <!-- fuente de google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Implementación de Bootstrap desde NPM -->
+    <link
+      rel="stylesheet"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <!-- link de CSS cambiados por SASS -->
+    <link rel="stylesheet" href="sass/custom.css" />
+
+    <!-- Script del CDN de Jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header class="container-fluid bg-dark">
+      <div class="row p-4 mb-2">
+        <nav class="col-12">
+          <h4 class="text-white">Blog with APIs by Erick Noiztbander</h4>
+        </nav>
+      </div>
+    </header>
+    <main class="container min-vh-100" id="mainContainer">
+      <div class="row" id="main-title">
+        <h4 class="col-12 p-2" id="h4-main-title">Todos los blogs</h4>
+      </div>
+    </main>
+    <aside class="aside" id="aside"></aside>
+    <footer class="container-fluid position-relative bg-dark">
+      <!-- canvas -->
+      <div
+        class="offcanvas offcanvas-start"
+        tabindex="-1"
+        id="offcanvasExample"
+        aria-labelledby="offcanvasExampleLabel"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel"></h5>
+          <button
+            type="button"
+            class="btn-close text-reset"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+            id="canvasCloseBtn"
+          ></button>
+        </div>
+        <div class="offcanvas-body">
+          <div>
+            You sure you wanna change these texts? :(
+            <div class="col d-flex justify-content-center mt-4 flex-column">
+              <h5 class="mb-1">Title</h5>
+              <input
+                type="text"
+                name="titlename"
+                id="titleInput"
+                class="m-1"
+                value=""
+              />
+              <h5 class="mt-2">Post</h5>
+              <textarea
+                name="newpostText"
+                rows="9"
+                cols="50"
+                maxlength="200"
+                id="bodyInput"
+                class="m-1 p-2"
+                value="hola"
+              >
+vd
+                </textarea
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- fin del canvas -->
+
+      <div class="row p-2">
+        <div class="col d-flex justify-content-center align-items-center">
+          <h4 class="text-white m-0">Assembler School</h4>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Modal Template -->
+    <template class="" id="templateModal">
+      <section
+        class="container-fluid position-fixed top-0 h-100 p-4"
+        style="
+          background-color: rgba(49, 49, 49, 0.603);
+          display: none !important;
+        "
+        id="asideModal"
+      >
+        <div class="row d-flex flex-row justify-content-center h-100">
+          <div class="col-12">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">Modal title</h5>
+                <i
+                  class="far fa-edit d-flex ps-2 text-danger"
+                  style="cursor: pointer"
+                  id="editBtn"
+                  data-bs-toggle="offcanvas"
+                  href="#offcanvasExample"
+                  role="button"
+                  aria-controls="offcanvasExample"
+                ></i>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                  style="cursor: pointer"
+                  id="btn-close-modal"
+                ></button>
+              </div>
+              <div class="modal-body" id="modalMainBody">
+                <p id="modalBody">Modal body text goes here.</p>
+                <h5>User</h5>
+                <h6 id="userNameModal"></h6>
+                <h6 id="userMailModal"></h6>
+                <hr />
+                <h5>Comments</h5>
+                <div
+                  id="divComments"
+                  style="overflow-y: scroll; max-height: 35vh"
+                >
+                  <!-- acordeon  -->
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                  id="btnClose"
+                >
+                  Close
+                </button>
+                <button type="button" class="btn btn-primary">
+                  Save changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </template>
+
+    <!-- My Scripts -->
+    <script src="assets/main.js" type="module"></script>
+    <script
+      src="node_modules/bootstrap/dist/js/bootstrap.min.js"
+      type="module"
+    ></script>
+  </body>
+</html>
