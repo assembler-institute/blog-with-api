@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <title>Blog with Api</title>
+
+    <script src="script.js" defer type="module"></script>
+    <link rel="stylesheet" href="main.css" />
+
+</head>
+
+<body>
+    <header id="header" style="background-color: #8afd6d;">
+        <div class="container">
+            <nav class="nav nav-pills nav-fill ">
+                <a class="navbar-brand text-dark" href="#">
+                    <img src="https://www.penguinrandomhousegrupoeditorial.com/wp-content/uploads/2017/07/B_PRHGE_negro.png" width="40" height="40" class="d-inline-block align-top" alt="logo B"> Blog with Api
+                </a>
+                <a class="nav-item nav-link btn-outline-success text-dark" href="#">Active</a>
+                <a class="nav-item nav-link btn-outline-success text-dark" href="#">Link</a>
+                <a class="nav-item nav-link btn-outline-success text-dark" href="#">Link</a>
+                <a class="nav-item nav-link btn-outline-success text-dark" href="#">Another Link</a>
+            </nav>
+        </div>
+    </header>
+    <main class="container p-0" id="main">
+        <div class="container text-center">
+            <img class="mb-5 w-75 " src="https://occ-0-1723-92.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABcb0yL8KdS3lxlB7w7kD6GfBTivnVVTfpiW0ZQTi6nvwWZIEpS5rU5iFeO_kJxGzEDnOaLx7iq0zM3FJc5e1gGqEGcaCkNotiOAl.png?r=d7f" alt="rick_and_morty">
+        </div>
+        <div class="container-fluid row row-cols-4 justify-content-md-center" id="cards-container">
+        </div>
+        <nav class="mt-5">
+            <ul class="pagination pagination-lg justify-content-center">
+                <li class="page-item" id="prev-btn"><a class="page-link">Previous</a></li>
+                <li class="page-item"><a class="page-link" data-page="0">1</a></li>
+                <li class="page-item"><a class="page-link" data-page="1">2</a></li>
+                <li class="page-item"><a class="page-link" data-page="2">3</a></li>
+                <li class="page-item"><a class="page-link" data-page="3">4</a></li>
+                <li class="page-item"><a class="page-link" data-page="4">5</a></li>
+                <li class="page-item"><a class="page-link" data-page="5">6</a></li>
+                <li class="page-item"><a class="page-link" data-page="6">7</a></li>
+                <li class="page-item"><a class="page-link" data-page="7">8</a></li>
+                <li class="page-item"><a class="page-link" data-page="8">9</a></li>
+                <li class="page-item"><a class="page-link" data-page="9">10</a></li>
+                <li class="page-item"><a class="page-link" data-page="10">11</a></li>
+                <li class="page-item" id="next-btn"><a class="page-link">Next</a></li>
+            </ul>
+        </nav>
+    </main>
+    <!--------------------------------------------------------- Modal info------------------------------------------->
+    <div class="modal fade" id="summary-modal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="post-title"></h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-btn-summary"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <p id="post-body"></p>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <h4>USER</h4>
+                        <p id="username"></p>
+                        <p id="email"></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="comments-button">Load Comments</button>
+                    <div class="d-none" id="insert-comments"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--------------------------------------------------Modal edit--------------------------------------------->
+    <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Title</label>
+                            <input type="text" class="form-control" id="recipient-title">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Body</label>
+                            <textarea class="form-control" id="message-text"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="save-btn">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--------------------------------------------------DELETE MODAL ------------------------------------------->
+    <div class="modal fade" id="delete-modal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Think about it</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure do you want to delete this post?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="sure-btn">Yes i'm sure of it</button>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <!-- ------------------------------------------------------TEMPLATE -->
+    <template id="card-temp">
+  <div class="container-md m-4 p-0 shadow d-flex flex-column justify-content-between bg-light" data-bs-toggle="modal" data-bs-target="#summary-modal" data-set="card-cont" id="card-content">
+    <figure class="figure" data-bs-toggle="modal" data-bs-target="#summary-modal">
+      <img src="https://dmagazine.com.ar/wp-content/uploads/2017/11/rick.png" class="figure-img img-fluid rounded" data-bs-toggle="modal" data-bs-target="#summary-modal" alt="rick and morty">
+      <figcaption class="m-1 ms-4" data-bs-toggle="modal" data-bs-target="#summary-modal"></figcaption>
+    </figure>
+    <div class="container mb-2 text-start">
+        <button data-bs-toggle="modal" data-bs-target="#edit-modal"type="button" class="btn btn-outline-primary" id="edit">EDIT</button>
+        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete-modal" id="delete-btn">DELETE</button>
+    </div>
+  </div>
+ </template>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+
+
+
+
+</html>
